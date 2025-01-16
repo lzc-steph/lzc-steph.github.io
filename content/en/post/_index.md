@@ -1,5 +1,8 @@
 ---
 title: "Articles"
+cascade:
+  featured_image: '/images/article.heic'
+
 description: "The soul selects her own society, then shuts the door. To her divine majority, present no more."
 ---
 欢迎来到我的文章页面。
