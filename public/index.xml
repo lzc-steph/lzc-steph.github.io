@@ -1,68 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ananke: a Hugo Theme on Ananke</title>
+    <title>AJ&#39;s blog on HomePage</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content in Ananke: a Hugo Theme on Ananke</description>
+    <description>Recent content in AJ&#39;s blog on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 14 Apr 2017 11:25:05 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Chapter VI: Esmeralda</title>
-      <link>http://localhost:1313/post/chapter-6/</link>
-      <pubDate>Fri, 14 Apr 2017 11:25:05 -0400</pubDate>
-      <guid>http://localhost:1313/post/chapter-6/</guid>
-      <description>&lt;p&gt;We are delighted to be able to inform the reader, that during the whole of&#xA;this scene, Gringoire and his piece had stood firm. His actors, spurred on&#xA;by him, had not ceased to spout his comedy, and he had not ceased to&#xA;listen to it. He had made up his mind about the tumult, and was determined&#xA;to proceed to the end, not giving up the hope of a return of attention on&#xA;the part of the public. This gleam of hope acquired fresh life, when he&#xA;saw Quasimodo, Coppenole, and the deafening escort of the pope of the&#xA;procession of fools quit the hall amid great uproar. The throng rushed&#xA;eagerly after them. “Good,” he said to himself, “there go all the&#xA;mischief-makers.” Unfortunately, all the mischief-makers constituted the&#xA;entire audience. In the twinkling of an eye, the grand hall was empty.&lt;/p&gt;</description>
+      <title>LLM</title>
+      <link>http://localhost:1313/post/llm/</link>
+      <pubDate>Wed, 15 Jan 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/llm/</guid>
+      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;&#xA;&lt;h2 id=&#34;分类&#34;&gt;分类&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;大语言模型（LLM）&lt;/p&gt;&#xA;&lt;p&gt;这类大模型专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。它们通常基于深度学习架构（如Transformer模型），经过大规模文本数据集训练而成，能够捕捉语言的复杂性，包括语法、语义、语境以及蕴含的文化和社会知识。语言大模型典型应用包括文本生成、问答系统、文本分类、机器翻译、对话系统等。示例包括：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GPT系列（OpenAI）：如GPT-3、GPT-3.5、GPT-4等。&lt;/li&gt;&#xA;&lt;li&gt;Bard（Google）：谷歌推出的大型语言模型，用于提供信息丰富的、有创意的文本输出。&lt;/li&gt;&#xA;&lt;li&gt;通义千问（阿里云）：阿里云自主研发的超大规模的语言模型。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;多模态模型 多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，并在这些模态之间建立关联和交互。它们能够整合不同类型的输入信息，进行跨模态推理、生成和理解任务。多模态大模型的应用涵盖视觉问答、图像描述生成、跨模态检索.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
-      <title>Chapter V: Quasimodo</title>
-      <link>http://localhost:1313/post/chapter-5/</link>
-      <pubDate>Thu, 13 Apr 2017 11:15:58 -0400</pubDate>
-      <guid>http://localhost:1313/post/chapter-5/</guid>
-      <description>&lt;p&gt;In the twinkling of an eye, all was ready to execute Coppenole’s idea. Bourgeois, scholars and law clerks all set to work. The little chapel situated opposite the marble table was selected for the scene of the grinning match. A pane broken in the pretty rose window above the door, left free a circle of stone through which it was agreed that the competitors should thrust their heads. In order to reach it, it was only necessary to mount upon a couple of hogsheads, which had been produced from I know not where, and perched one upon the other, after a fashion. It was settled that each candidate, man or woman (for it was possible to choose a female pope), should, for the sake of leaving the impression of his grimace fresh and complete, cover his face and remain concealed in the chapel until the moment of his appearance. In less than an instant, the chapel was crowded with competitors, upon whom the door was then closed.&lt;/p&gt;</description>
+      <title>Decision Tree</title>
+      <link>http://localhost:1313/post/decision-tree/</link>
+      <pubDate>Sat, 11 Jan 2025 10:58:08 -0400</pubDate>
+      <guid>http://localhost:1313/post/decision-tree/</guid>
+      <description>&lt;p&gt;类型：root node, decision node, leaf node&lt;/p&gt;&#xA;&lt;h3 id=&#34;要解决的问题&#34;&gt;要解决的问题&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;How to choose what feature to split on at each node?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Maximize purity (or minimize impurity)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;When do you stop splitting?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;When a node is 100% one class&lt;/li&gt;&#xA;&lt;li&gt;When splitting a node will result in the tree exceeding a maximum depth&lt;/li&gt;&#xA;&lt;li&gt;When improvements in purity score are below a threshold&lt;/li&gt;&#xA;&lt;li&gt;When number of examples in a node is below a threshold&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/chapter1/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;熵和信息增益&#34;&gt;熵和信息增益&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Measuring purity&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Chapter IV: Master Jacques Coppenole</title>
-      <link>http://localhost:1313/post/chapter-4/</link>
-      <pubDate>Wed, 12 Apr 2017 11:14:48 -0400</pubDate>
-      <guid>http://localhost:1313/post/chapter-4/</guid>
-      <description>&lt;p&gt;While the pensioner of Ghent and his eminence were exchanging very low&#xA;bows and a few words in voices still lower, a man of lofty stature, with a&#xA;large face and broad shoulders, presented himself, in order to enter&#xA;abreast with Guillaume Rym; one would have pronounced him a bull-dog by&#xA;the side of a fox. His felt doublet and leather jerkin made a spot on the&#xA;velvet and silk which surrounded him. Presuming that he was some groom who&#xA;had stolen in, the usher stopped him.&lt;/p&gt;</description>
+      <title>CV</title>
+      <link>http://localhost:1313/post/cv/</link>
+      <pubDate>Fri, 27 Dec 2024 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/cv/</guid>
+      <description>&lt;p&gt;问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。&lt;/p&gt;&#xA;&lt;p&gt;类型：root node, decision node, leaf node&lt;/p&gt;&#xA;&lt;h3 id=&#34;解决方案cnn&#34;&gt;解决方案：CNN&lt;/h3&gt;&#xA;&lt;p&gt;卷积神经网络通过引入卷积操作，有效地解决了大图片参数过大的问题。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Automatic Feature Extraction&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;CNNs automatically learn hierarchical features from raw data (like images) without needing manual feature engineering.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Parameter Sharing&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;In a CNN, the same filter (or kernel) is applied across the entire image. This concept of &lt;strong&gt;weight sharing&lt;/strong&gt; significantly reduces the number of parameters compared to fully connected networks, making CNNs more computationally efficient.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;分层特征学习&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Translation Invariance&lt;/strong&gt;（pooling layers）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Reduced Computational Complexity&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Chapter III: Monsieur the Cardinal</title>
-      <link>http://localhost:1313/post/chapter-3/</link>
-      <pubDate>Tue, 11 Apr 2017 11:13:32 -0400</pubDate>
-      <guid>http://localhost:1313/post/chapter-3/</guid>
-      <description>&lt;p&gt;Poor Gringoire! the din of all the great double petards of the Saint-Jean,&#xA;the discharge of twenty arquebuses on supports, the detonation of that&#xA;famous serpentine of the Tower of Billy, which, during the siege of Paris,&#xA;on Sunday, the twenty-sixth of September, 1465, killed seven Burgundians&#xA;at one blow, the explosion of all the powder stored at the gate of the&#xA;Temple, would have rent his ears less rudely at that solemn and dramatic&#xA;moment, than these few words, which fell from the lips of the usher, “His&#xA;eminence, Monseigneur the Cardinal de Bourbon.”&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter II: Pierre Gringoire</title>
-      <link>http://localhost:1313/post/chapter-2/</link>
-      <pubDate>Mon, 10 Apr 2017 11:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/post/chapter-2/</guid>
-      <description>&lt;p&gt;Nevertheless, as be harangued them, the satisfaction and admiration&#xA;unanimously excited by his costume were dissipated by his words; and when&#xA;he reached that untoward conclusion: “As soon as his illustrious eminence,&#xA;the cardinal, arrives, we will begin,” his voice was drowned in a thunder&#xA;of hooting.&lt;/p&gt;&#xA;&lt;p&gt;“Begin instantly! The mystery! the mystery immediately!” shrieked the&#xA;people. And above all the voices, that of Johannes de Molendino was&#xA;audible, piercing the uproar like the fife’s derisive serenade: “Commence&#xA;instantly!” yelped the scholar.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter I: The Grand Hall</title>
-      <link>http://localhost:1313/post/chapter-1/</link>
-      <pubDate>Sun, 09 Apr 2017 10:58:08 -0400</pubDate>
-      <guid>http://localhost:1313/post/chapter-1/</guid>
-      <description>&lt;p&gt;Three hundred and forty-eight years, six months, and nineteen days ago&#xA;to-day, the Parisians awoke to the sound of all the bells in the triple&#xA;circuit of the city, the university, and the town ringing a full peal.&lt;/p&gt;&#xA;&lt;p&gt;The sixth of January, 1482, is not, however, a day of which history has&#xA;preserved the memory. There was nothing notable in the event which thus&#xA;set the bells and the bourgeois of Paris in a ferment from early morning.&#xA;It was neither an assault by the Picards nor the Burgundians, nor a hunt&#xA;led along in procession, nor a revolt of scholars in the town of Laas, nor&#xA;an entry of “our much dread lord, monsieur the king,” nor even a pretty&#xA;hanging of male and female thieves by the courts of Paris. Neither was it&#xA;the arrival, so frequent in the fifteenth century, of some plumed and&#xA;bedizened embassy. It was barely two days since the last cavalcade of that&#xA;nature, that of the Flemish ambassadors charged with concluding the&#xA;marriage between the dauphin and Marguerite of Flanders, had made its&#xA;entry into Paris, to the great annoyance of M. le Cardinal de Bourbon,&#xA;who, for the sake of pleasing the king, had been obliged to assume an&#xA;amiable mien towards this whole rustic rabble of Flemish burgomasters, and&#xA;to regale them at his Hôtel de Bourbon, with a very “pretty morality,&#xA;allegorical satire, and farce,” while a driving rain drenched the&#xA;magnificent tapestries at his door.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>About</title>
+      <title>About Me</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/Victor_Hugo-Hunchback.jpg&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;Illustration from Victor Hugo et son temps (1881)&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;The Hunchback of Notre-Dame&lt;/em&gt; (French: &lt;em&gt;Notre-Dame de Paris&lt;/em&gt;) is a French Romantic/Gothic novel by Victor Hugo, published in 1831. The original French title refers to Notre Dame Cathedral, on which the story is centered. English translator Frederic Shoberl named the novel The Hunchback of Notre Dame in 1833 because at the time, Gothic novels were more popular than Romance novels in England. The story is set in Paris, France in the Late Middle Ages, during the reign of Louis XI.&lt;/p&gt;</description>
+      <description>&lt;p&gt;我的本科毕业于北京航空航天大学计算机科学与技术专业，目前，我正在香港大学攻读计算机科学硕士学位。&lt;/p&gt;&#xA;&lt;p&gt;我的生日是11月23号（是的，我的幸运数字是23），我是射手座，enfj。我喜欢和朋友一起探店美食，喜欢弹钢琴。我最喜欢的歌手是泰勒斯威夫特。&lt;/p&gt;&#xA;&lt;p&gt;最近，我刚刚开始学习吉他。欢迎和我成为朋友！&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/tayme.HEIC&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;—from AJ23&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;</description>
     </item>
     <item>
       <title>Contact</title>
       <link>http://localhost:1313/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/contact/</guid>
-      <description>&lt;p&gt;This is an example of a custom shortcode that you can put right into your content. You will need to add a form action to the shortcode to make it work. Check out &lt;a href=&#34;https://formspree.io/&#34;&gt;Formspree&lt;/a&gt; for a simple, free form service.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&lt;form class=&#34;black-80 sans-serif&#34; accept-charset=&#34;UTF-8&#34; action=&#34;https://example.com&#34; method=&#34;POST&#34; role=&#34;form&#34;&gt;&#xA;&#xA;    &lt;label class=&#34;f6 b db mb1 mt3 sans-serif mid-gray&#34;  for=&#34;name&#34;&gt;Your Name&lt;/label&gt;&#xA;    &lt;input type=&#34;text&#34; id=&#34;name&#34; name=&#34;name&#34; class=&#34;w-100 f5 pv3 ph3 bg-light-gray bn&#34;  required placeholder=&#34; &#34;  aria-labelledby=&#34;name&#34;/&gt;&#xA;&#xA;    &lt;label class=&#34;f6 b db mb1 mt3 sans-serif mid-gray&#34; for=&#34;email&#34;&gt;Email Address&lt;/label&gt;&#xA;    &lt;input type=&#34;email&#34; id=&#34;email&#34; name=&#34;email&#34; class=&#34;w-100 f5 pv3 ph3 bg-light-gray bn&#34;  required placeholder=&#34; &#34;  aria-labelledby=&#34;email&#34;/&gt;&#xA;    &lt;div class=&#34;requirements f6 gray glow i ph3 overflow-hidden&#34;&gt;&#xA;      An email address is required.&#xA;    &lt;/div&gt;&#xA;&#xA;    &lt;label class=&#34;f6 b db mb1 mt3 sans-serif mid-gray&#34; for=&#34;message&#34;&gt;Message&lt;/label&gt;&#xA;    &lt;textarea id=&#34;message&#34; name=&#34;message&#34; class=&#34;w-100 f5 pv3 ph3 bg-light-gray bn h4&#34; aria-labelledby=&#34;message&#34;&gt;&lt;/textarea&gt;&#xA;&#xA;    &lt;input class=&#34;db w-100 mv2 white pa3 bn hover-shadow hover-bg-black bg-animate bg-black&#34; type=&#34;submit&#34; value=&#34;Send&#34; /&gt;&#xA;&#xA;&lt;/form&gt;</description>
+      <description>&lt;p&gt;感谢你访问我的博客！如果你有任何问题或建议，欢迎与我取得联系：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Email&lt;/strong&gt;: &lt;a href=&#34;mailto:aijunyang1123@163.com&#34;&gt;aijunyang1123@163.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;WeChat&lt;/strong&gt;: DearAJ_23&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/contact/wechat.jpg?width=10&amp;amp;height=10&#34; alt=&#34;wc&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

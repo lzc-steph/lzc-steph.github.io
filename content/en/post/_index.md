@@ -1,5 +1,7 @@
 ---
 title: "Articles"
-date: 2017-03-02T12:00:00-05:00
+description: "The soul selects her own society, then shuts the door. To her divine majority, present no more."
 ---
-Articles are paginated with only three posts here for example. You can set the number of entries to show on this page with the "pagination" setting in the config file.
+欢迎来到我的文章页面。
+
+「很高兴与你分享我最近在做的事情」

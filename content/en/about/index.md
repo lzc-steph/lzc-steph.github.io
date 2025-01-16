@@ -1,11 +1,15 @@
 ---
-title: "About"
-description: "A few years ago, while visiting or, rather, rummaging about Notre-Dame, the author of this book found, in an obscure nook of one of the towers, the following word, engraved by hand upon the wall: —ANANKE."
-featured_image: '/images/Victor_Hugo-Hunchback.jpg'
+title: "About Me"
+description: "背景图里的瀑布来自我的家乡，贵州。"
+featured_image: '/images/me222.jpg'
 menu:
   main:
-    weight: 1
+    weight: 2
 ---
-{{< figure src="/images/Victor_Hugo-Hunchback.jpg" title="Illustration from Victor Hugo et son temps (1881)" >}}
+我的本科毕业于北京航空航天大学计算机科学与技术专业，目前，我正在香港大学攻读计算机科学硕士学位。
 
-_The Hunchback of Notre-Dame_ (French: _Notre-Dame de Paris_) is a French Romantic/Gothic novel by Victor Hugo, published in 1831. The original French title refers to Notre Dame Cathedral, on which the story is centered. English translator Frederic Shoberl named the novel The Hunchback of Notre Dame in 1833 because at the time, Gothic novels were more popular than Romance novels in England. The story is set in Paris, France in the Late Middle Ages, during the reign of Louis XI.
+我的生日是11月23号（是的，我的幸运数字是23），我是射手座，enfj。我喜欢和朋友一起探店美食，喜欢弹钢琴。我最喜欢的歌手是泰勒斯威夫特。
+
+最近，我刚刚开始学习吉他。欢迎和我成为朋友！
+
+{{< figure src="/images/tayme.HEIC" title="—from AJ23"  >}}
