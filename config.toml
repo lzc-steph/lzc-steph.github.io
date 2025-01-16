@@ -1,9 +1,6 @@
-
-theme = 'ananke'
-
-
 title = "Notre-Dame de Paris"
-baseURL = 'https://dearaj.github.io/'
+baseURL = "https://gohugo-theme-ananke.pages.dev"
+theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 resourceDir = "../resources"
 
 defaultContentLanguage = "en"
@@ -72,4 +69,3 @@ username = "patrickkollitsch"
 
 [params.ananke.social.bluesky]
 username = "kollitsch.dev"
-
