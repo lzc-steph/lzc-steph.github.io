@@ -1,0 +1,136 @@
+---
+date: 2025-01-02T11:00:59-04:00
+description: "强化学习专注于如何让智能体（Agent）通过与环境的交互来学习最优策略，以最大化累积奖励。它的核心思想是试错学习，智能体通过尝试不同的行动，观察结果并获得奖励或惩罚，从而逐步改进自己的行为策略。"
+featured_image: "/images/RL/taytay.HEIC"
+tags: ["RL"]
+title: "Reinforcement Learning"
+---
+
+The core idea is **trial-and-error learning**: the agent takes actions, observes the outcomes, and receives **rewards** or **penalties** as feedback. Over time, the agent improves its **policy** (decision-making strategy) to maximize cumulative rewards.
+
+不用告诉该怎么做，而是给定奖励函数，什么时候做好。
+
+### 回归
+
+增加折现因子
+
+![1](/images/RL/1.png)
+
+![2](/images/RL/2.png)
+
+### 强化学习的形式化
+
+A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.
+
+**goal**: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.
+
+![3](/images/RL/3.png)
+
+- **状态动作值函数**（Q-Function）
+
+  **Q(s,a)** = Return if you:
+
+  + start in state *s*.
+  +   take action *a* (once).
+  + then behave optimally after that.
+  
+  The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.
+
+### Markov Decision Process (MDP)
+
+![5](/images/RL/5.png)
+
+### Bellman 方程
+
+**目标**：计算**状态动作值函数**
+
+![6](/images/RL/6.png)
+
+- **贝尔曼方程**：
+
+  由两部分组成：立即得到的奖励 + 将来得到的奖励
+
+  ![7](/images/RL/7.png)
+
+### 随机环境
+
+![8](/images/RL/8.png)
+
+
+
+---
+
+## 连续状态空间
+
+1. **直升机**
+
+   ![9](/images/RL/9.png)
+
+2. **月球着陆器**
+
+   l :左脚是否碰地
+
+   r: 右脚是否碰地
+
+
+picks $action \space a = (s)$ so as to **maximize the return**.
+
+![10](/images/RL/10.png)
+
+
+
+## 训练强化学习
+
+- 强化学习**核心思想**：
+
+  ![12](/images/RL/12.png)
+
+- **Bellman Equation**
+
+  （Q可以先随机猜测）
+
+  ![13](/images/RL/13.png)
+
+- **完整学习算法（DQN）**
+
+  ![14](/images/RL/14.png)
+
+### 算法优化
+
+1. **改进的神经网络结构**
+
+   ![15](/images/RL/15.png)
+
+2. **$\epsilon$-贪婪策略**
+
+   ![16](/images/RL/16.png)
+
+   刚开始$\epsilon$比较大，之后逐渐减小（之后更多利用Q，贪婪）
+
+3. **小批量和软更新**
+
+   - **小批量**
+
+     目标：加速
+
+     核心思想：每次迭代只使用部分数据来进行训练
+
+     ![17](/images/RL/17.png)
+
+     ![18](/images/RL/18.png)
+
+   - **软更新**
+
+     目标：更加收敛，减少震荡
+
+     ![19](/images/RL/19.png)
+
+
+
+---
+
+## 关于强化学习的实际意义
+
+- Much easier to get to work in a simulation than a real robot!
+- ﻿﻿Far fewer applications than supervised and unsupervised learning.
+- ﻿﻿But ... exciting research direction with potential for future applications.

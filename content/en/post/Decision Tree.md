@@ -1,7 +1,7 @@
 ---
 date: 2025-01-11T10:58:08-04:00
 description: "决策树是一种用于分类和回归的机器学习算法，通过树状结构进行决策。它由节点、分支和叶子节点组成，每个内部节点表示一个特征测试，分支代表测试结果，叶子节点则输出类别或数值。"
-featured_image: "/images/CV/taytay.HEIC"
+featured_image: "/images/chapter1/taytay.HEIC"
 tags: ["machine learning"]
 title: "Decision Tree"
 ---
@@ -78,7 +78,7 @@ title: "Decision Tree"
 
 ```python
 Given training set of size m
-	For b = 1 to B：
+	For b = 1 to B:
 	Use sampling with replacement to create a new training set of size m
 	Train a decision tree on the new
 ```
@@ -105,7 +105,7 @@ Given training set of size m
 
 ```python
 Given training set of size m
-	For b = 1 to B：
+	For b = 1 to B:
 	Use sampling with replacement to create a new training set of size m
 		But instead of picking from all examples with equal (1/m) probability, make it more likely to pick examples that the previously trained trees misclassify
 	Train a decision tree on the new dataset

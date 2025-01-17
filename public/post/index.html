@@ -48,7 +48,7 @@
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
   <meta itemprop="datePublished" content="2025-01-15T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-01-15T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-12-27T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -78,8 +78,8 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/about/" title="About Me page">
-              About Me
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
             </a>
           </li>
           
@@ -175,7 +175,8 @@
 </ul>
 </li>
 <li>
-<p>多模态模型 多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，并在这些模态之间建立关联和交互。它们能够整合不同类型的输入信息，进行跨模态推理、生成和理解任务。多模态大模型的应用涵盖视觉问答、图像描述生成、跨模态检索.</p>
+<p>多模态模型</p>
+<p>多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，并在这些模态之间建立关联和交互。它们能够整合不同类型的输入信息，进行跨模态推理、生成和理解任务。多模态大模型的应用涵盖视觉问答、图像描述生成、跨模态检索.</p>
 </li>
 </ol>
     </div>
@@ -227,44 +228,55 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        December 27, 2024
+        January 2, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/cv/" class="link black dim">
-        CV
+      <a href="/post/rl/" class="link black dim">
+        Reinforcement Learning
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
-<p>类型：root node, decision node, leaf node</p>
-<h3 id="解决方案cnn">解决方案：CNN</h3>
-<p>卷积神经网络通过引入卷积操作，有效地解决了大图片参数过大的问题。</p>
-<ol>
-<li>
-<p><strong>Automatic Feature Extraction</strong></p>
-<p>CNNs automatically learn hierarchical features from raw data (like images) without needing manual feature engineering.</p>
-</li>
-<li>
-<p><strong>Parameter Sharing</strong></p>
-<p>In a CNN, the same filter (or kernel) is applied across the entire image. This concept of <strong>weight sharing</strong> significantly reduces the number of parameters compared to fully connected networks, making CNNs more computationally efficient.</p>
-</li>
-<li>
-<p><strong>分层特征学习</strong></p>
-</li>
-<li>
-<p><strong>Translation Invariance</strong>（pooling layers）</p>
-</li>
-<li>
-<p><strong>Reduced Computational Complexity</strong></p>
+      <p>The core idea is <strong>trial-and-error learning</strong>: the agent takes actions, observes the outcomes, and receives <strong>rewards</strong> or <strong>penalties</strong> as feedback. Over time, the agent improves its <strong>policy</strong> (decision-making strategy) to maximize cumulative rewards.</p>
+<p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
+<h3 id="回归">回归</h3>
+<p>增加折现因子</p>
+<p><img src="/images/RL/1.png" alt="1"></p>
+<p><img src="/images/RL/2.png" alt="2"></p>
+<h3 id="强化学习的形式化">强化学习的形式化</h3>
+<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
+<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
     </div>
-  <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
       
     </aside>
     
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/post/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/post/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/post/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
   </article>
 
     </main>

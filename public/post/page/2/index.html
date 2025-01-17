@@ -48,7 +48,7 @@
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
   <meta itemprop="datePublished" content="2025-01-15T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-12-28T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-12-27T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -61,7 +61,7 @@
 
   
   
-  <header class="cover bg-top" style="background-image: url('http://localhost:1313/images/taytay.jpg');">
+  <header class="cover bg-top" style="background-image: url('http://localhost:1313/images/article.heic');">
     
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
@@ -78,8 +78,8 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/about/" title="About Me page">
-              About Me
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
             </a>
           </li>
           
@@ -152,60 +152,105 @@
         <div class="relative w-100 w-30-l mb4 bg-white">
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
+      <div class="f6">
+        December 29, 2024
+      </div>
+    
     <h1 class="f3 near-black">
-      <a href="/post/untitled/" class="link black dim">
-        
+      <a href="/post/vae/" class="link black dim">
+        VAE
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <ol>
-<li>
-<p><strong>问题：</strong>
-处理高分辨率图像时，原始图像的像素数量通常非常庞大。例如，一张 1000x1000 像素的彩色图像，其输入维度为 1000x1000x3（RGB 三个通道），意味着每个图像需处理 300 万个参数。</p>
-<p><strong>解决：卷积神经网络（Convolutional Neural Networks, CNN）</strong>
-卷积神经网络通过引入卷积操作，有效地解决了大图片参数过大的问题。以下是 CNN 的核心机制及其优势：</p>
+      <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
 <ol>
-<li><strong>局部感受野</strong>：CNN 使用卷积核（filter）在图像上滑动，每次只处理图像的一个局部区域（如 3x3 或 5x5 的像素块），而不是一次性处理整个图像。这大大减少了参数数量。</li>
-<li><strong>参数共享</strong>：卷积核在整个图像上共享参数，这意味着无论图像有多大，卷积核的参数数量是固定的。例如，一个 3x3 的卷积核只需要 9 个参数（忽略偏置项），而不是为每个像素单独学习参数。</li>
-<li><strong>降维（池化）</strong>：CNN 通常结合池化层（如最大池化或平均池化）来逐步降低图像的空间维度，从而进一步减少计算量和参数数量。</li>
-<li><strong>层次化特征提取</strong>：CNN 通过多层卷积和池化操作，能够从低级特征（如边缘、纹理）到高级特征（如物体形状、语义信息）逐步提取图像的特征，从而高效地表示图像内容。</li>
-<li><strong>计算效率</strong>：由于卷积操作的稀疏性和参数共享，CNN 在处理大图像时具有较高的计算效率，适合在 GPU 等硬件上加速运算。</li>
-</ol>
-<hr>
-<h1 id="卷积神经网络cnn">卷积神经网络（CNN）</h1>
-<p>CNN 利用局部感受野、参数共享和池化等机制，显著降低了模型的计算复杂度和参数量，同时保留了图像的关键特征信息，使其成为计算机视觉任务中最主流的模型架构之一。</p>
-<h3 id="边缘检测">边缘检测</h3>
-<h4 id="垂直边缘检测滤波"><strong>垂直边缘检测滤波</strong></h4>
-<p><img src="/images/CV/6.png" alt="6"></p>
-<h4 id="变权"><strong>变权</strong></h4>
-<p><img src="/images/CV/7.png" alt="7"></p>
-<h4 id="利用反向传播学习"><strong>利用反向传播学习</strong></h4>
-<h3 id="padding">Padding</h3>
-<ol>
-<li>
-<p>Padding：外层填充像素</p>
+<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
+<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
+<li><strong>Encoder-Decoder Architecture</strong>:
 <ul>
-<li>存在问题：
-<ul>
-<li>throw away information from edge</li>
-<li>shranky output</li>
+<li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
+<li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
 </ul>
 </li>
-</ul>
-<p>解决：<strong>外层填充像素</strong></p>
-</li>
-<li>
-<p>填充多少像素？</p>
-<ol>
-<li><strong>Valid:</strong> (n-f+1) * (n-f+1)</li>
-<li><strong>Same</strong>: Pad so that output size is the same as the input size.</li>
 </ol>
-</li>
-</ol>
-<h3 id="三维卷积">三维卷积</h3>
-<p><img src="/images/CV/8.png" alt="8"></p>
+<h2 id="普通自动编码器">普通自动编码器</h2>
+<p>目标：将高维度数据压缩成较小的表示</p>
     </div>
-  <a href="/post/untitled/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 27, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/cv/" class="link black dim">
+        CV
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
+<p>类型：root node, decision node, leaf node
+ </p>
+<h2 id="1-解决方案cnn">1. 解决方案：CNN</h2>
+<p>卷积神经网络通过引入卷积操作，有效地解决了大图片参数过大的问题。</p>
+<ol>
+<li>
+<p><strong>Automatic Feature Extraction</strong></p>
+<p>CNNs automatically learn hierarchical features from raw data (like images) without needing manual feature engineering.</p>
+</li>
+<li>
+<p><strong>Parameter Sharing</strong></p>
+<p>In a CNN, the same filter (or kernel) is applied across the entire image. This concept of <strong>weight sharing</strong> significantly reduces the number of parameters compared to fully connected networks, making CNNs more computationally efficient.</p>
+</li>
+<li>
+<p><strong>分层特征学习</strong></p>
+</li>
+<li>
+<p><strong>Translation Invariance</strong>（pooling layers）</p>
+    </div>
+  <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 26, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/e2e/" class="link black dim">
+        End2End
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>对于由多个阶段组成的学习系统，端到端学习捕获所有阶段，将其替代为单个神经网络。</p>
+<ul>
+<li>优点：
+<ul>
+<li>Let the data speak</li>
+<li>Less hand-designing of components needed</li>
+</ul>
+</li>
+<li>缺点：
+<ul>
+<li>May need large amount of data</li>
+<li>Excludes potentially useful hand-designed components</li>
+</ul>
+</li>
+</ul>
+<p><strong>关键</strong>：是否有足够的数据</p>
+<p><img src="/images/e2e/1.png" alt="1"></p>
+    </div>
+  <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -225,11 +270,14 @@
       <li class="page-item active">
         <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      <li class="page-item">
+        <a href="/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
       </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      <li class="page-item">
+        <a href="/post/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/post/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

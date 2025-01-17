@@ -22,5 +22,12 @@
       <guid>http://localhost:1313/tags/machine-learning/</guid>
       <description></description>
     </item>
+    <item>
+      <title>RL</title>
+      <link>http://localhost:1313/tags/rl/</link>
+      <pubDate>Thu, 02 Jan 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/tags/rl/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

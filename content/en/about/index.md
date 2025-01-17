@@ -1,5 +1,5 @@
 ---
-title: "About Me"
+title: "About ME"
 description: "背景图里的瀑布来自我的家乡，贵州。"
 featured_image: '/images/me222.jpg'
 menu:
