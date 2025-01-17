@@ -155,34 +155,17 @@
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
 <ol>
-<li><strong>Latent Variables</strong>:
-<ul>
-<li>VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables. These latent variables capture the underlying structure or features of the data.</li>
-</ul>
-</li>
-<li><strong>Probabilistic Framework</strong>:
-<ul>
-<li>VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
-</ul>
-</li>
+<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
+<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
 <li><strong>Encoder-Decoder Architecture</strong>:
 <ul>
 <li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
 <li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
 </ul>
 </li>
-<li><strong>Reparameterization Trick</strong>:
-<ul>
-<li>To enable backpropagation through the stochastic sampling process, VAEs use the <strong>reparameterization trick</strong>.</li>
-<li>Instead of sampling z<em>z</em> directly from q(z∣x)<em>q</em>(<em>z</em>∣<em>x</em>), the model samples from a standard normal distribution ϵ∼N(0,1)<em>ϵ</em>∼N(0,1) and computes z=μ+σ⋅ϵ<em>z</em>=<em>μ</em>+<em>σ</em>⋅<em>ϵ</em>.</li>
-</ul>
-</li>
 </ol>
-<h1 id="概述">概述</h1>
-<h2 id="分类">分类</h2>
-<ol>
-<li>
-<p>大语言模型（LLM）</p>
+<h2 id="普通自动编码器">普通自动编码器</h2>
+<p>目标：将高维度数据压缩成较小的表示</p>
     </div>
   <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
