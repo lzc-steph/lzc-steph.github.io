@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Deep Learning">
-  <meta itemprop="datePublished" content="2025-01-15T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-01-15T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-01-17T10:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-01-17T10:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Deep Learning">
 
@@ -144,6 +144,78 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        January 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/diffusion-model/" class="link black dim">
+        DiffusionModel
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="原理">原理</h1>
+<p><strong>Reverse Process</strong>：多次Denoise</p>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
+<p><strong>Noise Predicter</strong>: 预测noise长什么样</p>
+<ul>
+<li>
+<p>如何训练Noise Predicter？</p>
+<ul>
+<li>
+<p>人为创造（加杂讯）</p>
+<p><img src="/images/DM/4.png" alt="4"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="text-to-image"><strong>Text-to-Image</strong></h3>
+<p>Laion拥有5.85B图片，可进行搜索</p>
+<p>输入：图片+噪声程度+<strong>文字叙述</strong></p>
+<p><img src="/images/DM/5.png" alt="5"></p>
+<h3 id="算法">算法</h3>
+<p><img src="/images/DM/6.png" alt="6"></p>
+<h1 id="stable-diffusion">Stable Diffusion</h1>
+<ul>
+<li>
+<p><strong>框架组成</strong>：</p>
+<ul>
+<li><strong>Text Encoder</strong>：输入为文字，输出为向量</li>
+<li><strong>Deneration Model</strong>：输入杂讯和向量，输出中间产物（图片压缩结果）</li>
+<li><strong>Decoder</strong>：将中间产物还原回原来的图片</li>
+</ul>
+<p>通常，3个Model分开训练，最后组合在一起</p>
+</li>
+</ul>
+<p><img src="/images/DM/7.png" alt="7"></p>
+<ul>
+<li>
+<p>经典结构：</p>
+<ol>
+<li>
+<p>Stable Diffusion</p>
+<p><img src="/images/DM/8.png" alt="8"></p>
+</li>
+</ol>
+</li>
+</ul>
+    </div>
+  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         January 15, 2025
       </div>
     
@@ -158,12 +230,7 @@
 <ol>
 <li>
 <p>大语言模型（LLM）</p>
-<p>这类大模型专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。它们通常基于深度学习架构（如Transformer模型），经过大规模文本数据集训练而成，能够捕捉语言的复杂性，包括语法、语义、语境以及蕴含的文化和社会知识。语言大模型典型应用包括文本生成、问答系统、文本分类、机器翻译、对话系统等。示例包括：</p>
-<ul>
-<li>GPT系列（OpenAI）：如GPT-3、GPT-3.5、GPT-4等。</li>
-<li>Bard（Google）：谷歌推出的大型语言模型，用于提供信息丰富的、有创意的文本输出。</li>
-<li>通义千问（阿里云）：阿里云自主研发的超大规模的语言模型。</li>
-</ul>
+<p>这类大模型专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。</p>
 </li>
 <li>
 <p>多模态模型</p>
