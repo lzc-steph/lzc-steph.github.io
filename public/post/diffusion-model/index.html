@@ -48,7 +48,7 @@
   <meta itemprop="description" content="扩散模型是一种生成模型，主要用于生成与给定数据集相似的数据。它的核心思想是通过逐步添加噪声（扩散过程）和逐步去噪（逆扩散过程）来学习数据的分布，从而生成高质量的数据样本。">
   <meta itemprop="datePublished" content="2025-01-17T10:00:59-04:00">
   <meta itemprop="dateModified" content="2025-01-17T10:00:59-04:00">
-  <meta itemprop="wordCount" content="108">
+  <meta itemprop="wordCount" content="157">
   <meta itemprop="keywords" content="Generative AI">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Diffusion Model">
@@ -239,8 +239,45 @@
 <p><strong>框架组成</strong>：</p>
 <ul>
 <li><strong>Text Encoder</strong>：输入为文字，输出为向量</li>
-<li><strong>Deneration Model</strong>：输入杂讯和向量，输出中间产物（图片压缩结果）</li>
-<li><strong>Decoder</strong>：将中间产物还原回原来的图片</li>
+</ul>
+<p><em>text encoder对结果的影响很大</em></p>
+<p><img src="/images/DM/9.png" alt="9"></p>
+<p>读的越多效果越好，不同大小的diffusion model影响不大。</p>
+<ul>
+<li>
+<p><strong>Deneration Model</strong>：输入杂讯和向量，输出中间产物（图片压缩结果）</p>
+<ul>
+<li>
+<p>sample出noise，加在中间产物上：</p>
+<p><img src="/images/DM/14.png" alt="14"></p>
+</li>
+<li>
+<p>得到中间产物后，再次Denoise：</p>
+<p><img src="/images/DM/15.png" alt="15"></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Decoder</strong>：将中间产物还原回原来的图片</p>
+<p>Decoder的训练可以不需要labelled data</p>
+<ul>
+<li>
+<p>训练过程：</p>
+<ul>
+<li>
+<p>若中间产物是小图</p>
+<p><img src="/images/DM/12.png" alt="12"></p>
+<p>把收集到的所有的图片缩小，小图变大图</p>
+</li>
+<li>
+<p>若中间产物是Latent Representation</p>
+<p><img src="/images/DM/13.png" alt="13"></p>
+<p>训练一个Auto-encoder，使输入与输出越接近越好。最后，再将Decoder拿出来用即可。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p>通常，3个Model分开训练，最后组合在一起</p>
 </li>
@@ -248,13 +285,61 @@
 <p><img src="/images/DM/7.png" alt="7"></p>
 <ul>
 <li>
-<p>经典结构：</p>
+<p><strong>经典结构</strong>：</p>
 <ol>
 <li>
 <p>Stable Diffusion</p>
 <p><img src="/images/DM/8.png" alt="8"></p>
+<ul>
+<li>encoder：处理输入文字等</li>
+<li>diffusion model</li>
+<li>decoder：还原</li>
+</ul>
+</li>
+<li>
+<p>DALL-E系列：</p>
+<ul>
+<li>encoder</li>
+<li>autogressive model 和 diffusion model</li>
+<li>decoder</li>
+</ul>
+</li>
+<li>
+<p>Imagen：</p>
+<ul>
+<li>encoder</li>
+<li>diffudion model：生成人类可看懂的中间结果</li>
+<li>decoder</li>
+</ul>
 </li>
 </ol>
+</li>
+<li>
+<p><strong>评估指标</strong></p>
+<ul>
+<li>
+<p><strong>Fréchet Inception Distance（FID）</strong></p>
+<p>评估影响生成模型的好坏。</p>
+<p><img src="/images/DM/10.png" alt="10"></p>
+<ul>
+<li>
+<p>现有一个pre-train好的分类CNN Model，然后将图片扔入网络，得到生成图片。计算两组生成和真实图片之间的Fréchet distance。距离越小越好。</p>
+</li>
+<li>
+<p>缺点：想要生成大量images。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Contrastive Language-Image Pre-Training</strong></p>
+<p><strong>(CLIP)</strong></p>
+<p>是用400 million image-text pairs训练出来的模型。</p>
+<p><img src="/images/DM/11.png" alt="11"></p>
+<ul>
+<li>计算产生的图片、输入的文字丢进CLIP，计算CLIP输出向量之间的距离。</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <ul class="pa0">
@@ -279,6 +364,10 @@
     <p class="f5 b mb3">Related</p>
     <ul class="pa0 list">
 	   
+	     <li  class="mb2">
+          <a href="/post/ga/">Generative AI</a>
+        </li>
+	    
 	     <li  class="mb2">
           <a href="/post/vae/">VAE</a>
         </li>

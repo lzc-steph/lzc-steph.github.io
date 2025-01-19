@@ -142,8 +142,8 @@
     <section class="ph4">
       
         <h2 class="f1">
-          <a href="/tags/deep-learning/" class="link blue hover-black">
-            Tag: Deep Learning
+          <a href="/tags/generative-ai/" class="link blue hover-black">
+            Tag: Generative AI
           </a>
         </h2>
         
@@ -155,67 +155,171 @@
     
     <h1 class="f3 near-black">
       <a href="/post/diffusion-model/" class="link black dim">
-        DiffusionModel
+        Diffusion Model
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="原理">原理</h1>
-<p><strong>Reverse Process</strong>：多次Denoise</p>
-<p><img src="/images/DM/1.png" alt="1"></p>
+      <h3 id="advantages">Advantages:</h3>
+<ul>
+<li><strong>High-Quality Outputs:</strong> Diffusion models are known for producing high-quality, realistic samples.</li>
+<li><strong>Flexibility:</strong> They can be applied to various types of data, including images, audio, and even text.</li>
+<li><strong>Theoretical Foundation:</strong> The process is grounded in well-understood principles of probability and statistics.</li>
+</ul>
+<p><strong>Challenges</strong>: Computational Cost、Training Complexity.</p>
+<h1 id="原理">原理</h1>
 <ul>
 <li>
-<p>Denoise输入：图片 + 噪音程度</p>
-<p><img src="/images/DM/2.png" alt="2"></p>
+<p><strong>Reverse Process</strong>（多次Denoise）</p>
+<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
 </li>
-</ul>
-<h3 id="denoise-model内部">Denoise Model内部</h3>
-<p><img src="/images/DM/3.png" alt="3"></p>
-<p><strong>Noise Predicter</strong>: 预测noise长什么样</p>
-<ul>
 <li>
-<p>如何训练Noise Predicter？</p>
-<ul>
-<li>
-<p>人为创造（加杂讯）</p>
-<p><img src="/images/DM/4.png" alt="4"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="text-to-image"><strong>Text-to-Image</strong></h3>
-<p>Laion拥有5.85B图片，可进行搜索</p>
-<p>输入：图片+噪声程度+<strong>文字叙述</strong></p>
-<p><img src="/images/DM/5.png" alt="5"></p>
-<h3 id="算法">算法</h3>
-<p><img src="/images/DM/6.png" alt="6"></p>
-<h1 id="stable-diffusion">Stable Diffusion</h1>
-<ul>
-<li>
-<p><strong>框架组成</strong>：</p>
-<ul>
-<li><strong>Text Encoder</strong>：输入为文字，输出为向量</li>
-<li><strong>Deneration Model</strong>：输入杂讯和向量，输出中间产物（图片压缩结果）</li>
-<li><strong>Decoder</strong>：将中间产物还原回原来的图片</li>
-</ul>
-<p>通常，3个Model分开训练，最后组合在一起</p>
-</li>
-</ul>
-<p><img src="/images/DM/7.png" alt="7"></p>
-<ul>
-<li>
-<p>经典结构：</p>
-<ol>
-<li>
-<p>Stable Diffusion</p>
-<p><img src="/images/DM/8.png" alt="8"></p>
-</li>
-</ol>
-</li>
-</ul>
+<p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
     </div>
   <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/ga/" class="link black dim">
+        Generative AI
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="chatgpt">ChatGPT</h1>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ba53c8d8-3a8d-4bb9-a20f-5cd7d295a29f/%E6%88%AA%E5%B1%8F2025-01-05_23.37.32.png" alt="截屏2025-01-05 23.37.32.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/740b097c-4c79-42af-bc9b-5817abdc3521/%E6%88%AA%E5%B1%8F2025-01-04_00.25.09.png" alt="截屏2025-01-04 00.25.09.png"></p>
+<ol>
+<li>
+<p>ChatGPT 真正做的事：文字接龙</p>
+<p><strong>Autoregressive Generation</strong>：逐个生成</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a140588c-153b-4bf3-812b-794d09b256c2/%E6%88%AA%E5%B1%8F2025-01-04_00.18.34.png" alt="截屏2025-01-04 00.18.34.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/10249f01-191e-4450-9387-201ee36c281d/247f57f5-a4f8-4859-8ce8-9664487924cd.png" alt="截屏2025-01-04 00.27.44.png"></p>
+</li>
+<li>
+<p><strong>token</strong></p>
+<p>文字接龙时可以选择的符号</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e0bc078c-68ba-4504-b3dc-2bee0739d6fa/%E6%88%AA%E5%B1%8F2025-01-04_00.29.01.png" alt="截屏2025-01-04 00.29.01.png"></p>
+</li>
+<li>
+<p>每次回答都随机（掷骰子）</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b30b483b-47dd-4cfd-9a2d-bcd030b1b169/%E6%88%AA%E5%B1%8F2025-01-04_11.07.26.png" alt="截屏2025-01-04 11.07.26.png"></p>
+</li>
+<li>
+<p>进化关键：<strong>自督导式学习(预训练) ➡️ 督导式学习(微调) ➡️ 强化学习</strong></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b2ca8f91-7703-4339-ae03-089a67c3519f/%E6%88%AA%E5%B1%8F2025-01-04_23.52.07.png" alt="截屏2025-01-04 23.52.07.png"></p>
+<p>有预训练，督导式学习不用大量资料。</p>
+<p>强化学习提供回馈。督导式学习提供完整资料，强化学习给反馈（如两次答案，有没有比上次更好）</p>
+<p>【注】：模型要有一定程度的能力才适合进入强化学习。</p>
+<p><strong>Alignment(对齐)</strong>：督导式学习 + 强化学习</p>
+</li>
+<li>
+<p><strong>强化学习</strong></p>
+<ol>
+<li>
+<p>学习reward model</p>
+<p>reward model：模仿人类的偏好</p>
+</li>
+<li>
+<p>用reward model进行学习</p>
+<p>模型只需要向reward model学习</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>GPT-4: 可以看图+引导</strong></p>
+</li>
+<li>
+<p><strong>如何激发gpt的能力？</strong></p>
+<ol>
+<li>把需求说清楚</li>
+<li>提供咨询</li>
+<li>提供范例</li>
+<li>鼓励gpt想一想</li>
+<li>训练generator</li>
+<li>上传资料</li>
+<li>使用其它工具</li>
+<li>大任务拆解成小任务</li>
+<li>gpt会反省</li>
+</ol>
+</li>
+<li>
+<p>可以做什么？</p>
+<ol>
+<li>prompt engineering</li>
+<li>训练自己的模型（如调整LLaMA参数），困难</li>
+</ol>
+</li>
+</ol>
+<h1 id="大型语言模型训练过程">大型语言模型训练过程</h1>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/7e6521a3-d2cf-42bc-8550-aacc3027b83f/%E6%88%AA%E5%B1%8F2025-01-06_00.37.19.png" alt="截屏2025-01-06 00.37.19.png"></p>
+<ol>
+<li>
+<p>自我学习阶段</p>
+<ul>
+<li>
+<p>调整超参数</p>
+</li>
+<li>
+<p>训练成果，但测试失败：找到多样数据</p>
+</li>
+<li>
+<p>找到合适的初始参数：随机/ 先验知识</p>
+<p>先验知识：爬网络资料+资料清理(训练资料品质分类器/除重)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>人类指导阶段</p>
+</li>
+</ol>
+    </div>
+  <a href="/post/ga/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 29, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/vae/" class="link black dim">
+        VAE
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
+<ol>
+<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
+<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
+<li><strong>Encoder-Decoder Architecture</strong>:
+<ul>
+<li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
+<li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
+</ul>
+</li>
+</ol>
+<h2 id="普通自动编码器">普通自动编码器</h2>
+<p>目标：将高维度数据压缩成较小的表示</p>
+    </div>
+  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/deep-learning/" class="link blue hover-black">
+            Tag: Deep Learning
+          </a>
+        </h2>
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
@@ -450,43 +554,6 @@
 <p><img src="/images/e2e/1.png" alt="1"></p>
     </div>
   <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/generative-ai/" class="link blue hover-black">
-            Tag: Generative AI
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 29, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
-<ol>
-<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
-<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
-<li><strong>Encoder-Decoder Architecture</strong>:
-<ul>
-<li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
-<li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
-</ul>
-</li>
-</ol>
-<h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
-    </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         

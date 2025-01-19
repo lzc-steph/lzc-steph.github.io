@@ -6,15 +6,8 @@
     <description>Recent content in Deep Learning on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 17 Jan 2025 10:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jan 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>DiffusionModel</title>
-      <link>http://localhost:1313/post/diffusion-model/</link>
-      <pubDate>Fri, 17 Jan 2025 10:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/post/diffusion-model/</guid>
-      <description>&lt;h1 id=&#34;原理&#34;&gt;原理&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Reverse Process&lt;/strong&gt;：多次Denoise&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Denoise输入：图片 + 噪音程度&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/2.png&#34; alt=&#34;2&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;denoise-model内部&#34;&gt;Denoise Model内部&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/3.png&#34; alt=&#34;3&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Noise Predicter&lt;/strong&gt;: 预测noise长什么样&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;如何训练Noise Predicter？&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;人为创造（加杂讯）&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/4.png&#34; alt=&#34;4&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;text-to-image&#34;&gt;&lt;strong&gt;Text-to-Image&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Laion拥有5.85B图片，可进行搜索&lt;/p&gt;&#xA;&lt;p&gt;输入：图片+噪声程度+&lt;strong&gt;文字叙述&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/5.png&#34; alt=&#34;5&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;算法&#34;&gt;算法&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/6.png&#34; alt=&#34;6&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;stable-diffusion&#34;&gt;Stable Diffusion&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;框架组成&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Text Encoder&lt;/strong&gt;：输入为文字，输出为向量&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Deneration Model&lt;/strong&gt;：输入杂讯和向量，输出中间产物（图片压缩结果）&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Decoder&lt;/strong&gt;：将中间产物还原回原来的图片&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;通常，3个Model分开训练，最后组合在一起&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/7.png&#34; alt=&#34;7&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;经典结构：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Stable Diffusion&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/DM/8.png&#34; alt=&#34;8&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
     <item>
       <title>LLM</title>
       <link>http://localhost:1313/post/llm/</link>

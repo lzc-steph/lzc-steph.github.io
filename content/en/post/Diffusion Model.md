@@ -65,18 +65,88 @@ Laion拥有5.85B图片，可进行搜索
 + **框架组成**：
 
   +  **Text Encoder**：输入为文字，输出为向量
+
+    *text encoder对结果的影响很大*
+
+    ![9](/images/DM/9.png)
+
+    读的越多效果越好，不同大小的diffusion model影响不大。
+
   + **Deneration Model**：输入杂讯和向量，输出中间产物（图片压缩结果）
+
+    + sample出noise，加在中间产物上：
+
+      ![14](/images/DM/14.png)
+
+    + 得到中间产物后，再次Denoise：
+
+      ![15](/images/DM/15.png)
+
   + **Decoder**：将中间产物还原回原来的图片
+
+    Decoder的训练可以不需要labelled data
+
+    + 训练过程：
+
+      + 若中间产物是小图
+
+        ![12](/images/DM/12.png)
+
+        把收集到的所有的图片缩小，小图变大图
+
+      + 若中间产物是Latent Representation
+
+        ![13](/images/DM/13.png)
+
+        训练一个Auto-encoder，使输入与输出越接近越好。最后，再将Decoder拿出来用即可。
 
   通常，3个Model分开训练，最后组合在一起
 
 ![7](/images/DM/7.png)
 
-+ 经典结构：
++ **经典结构**：
 
   1. Stable Diffusion
 
      ![8](/images/DM/8.png)
+
+     + encoder：处理输入文字等
+     + diffusion model
+     + decoder：还原
+
+  2. DALL-E系列：
+
+     + encoder
+     + autogressive model 和 diffusion model
+     + decoder
+
+  3. Imagen：
+
+     + encoder
+     + diffudion model：生成人类可看懂的中间结果
+     + decoder
+
++ **评估指标**
+
+  + **Fréchet Inception Distance（FID）**
+
+    评估影响生成模型的好坏。
+
+    ![10](/images/DM/10.png)
+
+    + 现有一个pre-train好的分类CNN Model，然后将图片扔入网络，得到生成图片。计算两组生成和真实图片之间的Fréchet distance。距离越小越好。
+
+    + 缺点：想要生成大量images。
+
+  + **Contrastive Language-Image Pre-Training**
+
+    **(CLIP)**
+
+    是用400 million image-text pairs训练出来的模型。
+
+    ![11](/images/DM/11.png)
+
+    + 计算产生的图片、输入的文字丢进CLIP，计算CLIP输出向量之间的距离。
 
 
 
