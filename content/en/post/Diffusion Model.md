@@ -56,6 +56,33 @@ Laion拥有5.85B图片，可进行搜索
 
 ![6](/images/DM/6.png)
 
++ **训练**：
+  
+  ![17](/images/DM/17.png)
+  
+  1. sample一张clean image
+  2. sample出一个数字
+  3. sample出一个noise
+  4. **clean image 和 noise 做加权和得到一个有杂讯的图**，然后训练noise predictor（输入有杂讯的图 和 数字；输出目标noise）
+  
++ **产生图**：
+  
+  1. sample一个全是noise图
+  
+  2. 跑T次：
+  
+     1. sample另一个noise图
+  
+     2. 生成x_t（见公式）
+  
+        ![18](/images/DM/18.png)
+
+
+
+### v.s VAE
+
+![16](/images/DM/16.png)
+
 
 
 
@@ -151,6 +178,10 @@ Laion拥有5.85B图片，可进行搜索
 
 
 
+
+
+
+# 影像生成模型本质上的共同目标
 
 
 

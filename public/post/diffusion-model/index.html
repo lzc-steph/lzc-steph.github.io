@@ -48,7 +48,7 @@
   <meta itemprop="description" content="扩散模型是一种生成模型，主要用于生成与给定数据集相似的数据。它的核心思想是通过逐步添加噪声（扩散过程）和逐步去噪（逆扩散过程）来学习数据的分布，从而生成高质量的数据样本。">
   <meta itemprop="datePublished" content="2025-01-17T10:00:59-04:00">
   <meta itemprop="dateModified" content="2025-01-17T10:00:59-04:00">
-  <meta itemprop="wordCount" content="157">
+  <meta itemprop="wordCount" content="178">
   <meta itemprop="keywords" content="Generative AI">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Diffusion Model">
@@ -233,6 +233,40 @@
 <p><img src="/images/DM/5.png" alt="5"></p>
 <h3 id="算法">算法</h3>
 <p><img src="/images/DM/6.png" alt="6"></p>
+<ul>
+<li>
+<p><strong>训练</strong>：</p>
+<p><img src="/images/DM/17.png" alt="17"></p>
+<ol>
+<li>sample一张clean image</li>
+<li>sample出一个数字</li>
+<li>sample出一个noise</li>
+<li><strong>clean image 和 noise 做加权和得到一个有杂讯的图</strong>，然后训练noise predictor（输入有杂讯的图 和 数字；输出目标noise）</li>
+</ol>
+</li>
+<li>
+<p><strong>产生图</strong>：</p>
+<ol>
+<li>
+<p>sample一个全是noise图</p>
+</li>
+<li>
+<p>跑T次：</p>
+<ol>
+<li>
+<p>sample另一个noise图</p>
+</li>
+<li>
+<p>生成x_t（见公式）</p>
+<p><img src="/images/DM/18.png" alt="18"></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="vs-vae">v.s VAE</h3>
+<p><img src="/images/DM/16.png" alt="16"></p>
 <h1 id="stable-diffusion">Stable Diffusion</h1>
 <ul>
 <li>
@@ -342,6 +376,7 @@
 </ul>
 </li>
 </ul>
+<h1 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h1>
 <ul class="pa0">
   
    <li class="list di">

@@ -13,7 +13,7 @@
       <link>http://localhost:1313/post/llm/</link>
       <pubDate>Wed, 15 Jan 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/llm/</guid>
-      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;&#xA;&lt;h2 id=&#34;分类&#34;&gt;分类&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;大语言模型（LLM）&lt;/p&gt;&#xA;&lt;p&gt;这类大模型专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;多模态模型&lt;/p&gt;&#xA;&lt;p&gt;多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，并在这些模态之间建立关联和交互。它们能够整合不同类型的输入信息，进行跨模态推理、生成和理解任务。多模态大模型的应用涵盖视觉问答、图像描述生成、跨模态检索.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;&#xA;&lt;h2 id=&#34;分类&#34;&gt;分类&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;大语言模型（LLM）&lt;/p&gt;&#xA;&lt;p&gt;这类大模型专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;多模态模型&lt;/p&gt;&#xA;&lt;p&gt;多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，并在这些模态之间建立关联和交互。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>CV</title>
