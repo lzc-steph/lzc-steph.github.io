@@ -1,7 +1,7 @@
 ---
 title: "Articles"
 cascade:
-  featured_image: '/images/Articles.heic'
+  featured_image: '/images/artitay.jpg'
 
 description: "The soul selects her own society, then shuts the door. To her divine majority, present no more."
 ---

@@ -6,6 +6,18 @@ tags: ["Generative AI"]
 title: "Diffusion Model"
 ---
 
+# 概述
+
+## 影像生成模型本质上的共同目标
+
+![19](/images/DM/19.png)
+
+进一步：输入加入了文字表述
+
+目标：产生的图片与真实图片越接近越好
+
+
+
 ### Advantages:
 
 - **High-Quality Outputs:** Diffusion models are known for producing high-quality, realistic samples.
@@ -16,7 +28,9 @@ title: "Diffusion Model"
 
 
 
-# 原理
+
+
+## 原理
 
 + **Reverse Process**（多次Denoise）
 
@@ -76,14 +90,6 @@ Laion拥有5.85B图片，可进行搜索
      2. 生成x_t（见公式）
   
         ![18](/images/DM/18.png)
-
-
-
-### v.s VAE
-
-![16](/images/DM/16.png)
-
-
 
 
 
@@ -153,37 +159,41 @@ Laion拥有5.85B图片，可进行搜索
      + diffudion model：生成人类可看懂的中间结果
      + decoder
 
-+ **评估指标**
+### v.s VAE
 
-  + **Fréchet Inception Distance（FID）**
-
-    评估影响生成模型的好坏。
-
-    ![10](/images/DM/10.png)
-
-    + 现有一个pre-train好的分类CNN Model，然后将图片扔入网络，得到生成图片。计算两组生成和真实图片之间的Fréchet distance。距离越小越好。
-
-    + 缺点：想要生成大量images。
-
-  + **Contrastive Language-Image Pre-Training**
-
-    **(CLIP)**
-
-    是用400 million image-text pairs训练出来的模型。
-
-    ![11](/images/DM/11.png)
-
-    + 计算产生的图片、输入的文字丢进CLIP，计算CLIP输出向量之间的距离。
+![16](/images/DM/16.png)
 
 
 
 
 
+# **评估指标**
 
++ **KL散度**
 
-# 影像生成模型本质上的共同目标
+  度量两个概率分布之间的差异程度
 
++ **Fréchet Inception Distance（FID）**
 
+  评估影响生成模型的好坏。
+
+  ![10](/images/DM/10.png)
+
+  + 现有一个pre-train好的分类CNN Model，然后将图片扔入网络，得到生成图片。计算两组生成和真实图片之间的Fréchet distance。距离越小越好。
+
+  + 缺点：想要生成大量images。
+
++ **Contrastive Language-Image Pre-Training**
+
+  **(CLIP)**
+
+  是用400 million image-text pairs训练出来的模型。
+
+  ![11](/images/DM/11.png)
+
+  + 计算产生的图片、输入的文字丢进CLIP，计算CLIP输出向量之间的距离。
+
+![20](/images/DM/20.png)
 
 
 
