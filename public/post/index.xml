@@ -6,8 +6,15 @@
     <description>Recent content in Articles on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 17 Jan 2025 10:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quantization</title>
+      <link>http://localhost:1313/post/quantization/</link>
+      <pubDate>Mon, 20 Jan 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/quantization/</guid>
+      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;量化&lt;/strong&gt;：Store the parameters of the model in lower precision&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Knowledge distillation&lt;/strong&gt;: Train a smaller model (student) using the original model (instructor).&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Pruning&lt;/strong&gt;: Remove connections (weights) from the model&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Application&lt;/strong&gt;: Perform linear quantization on any model using Quanto in two lines&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;内容&#34;&gt;内容&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Linear Quantization theory&lt;/strong&gt; in detail and how to code it (&lt;em&gt;per channel, per tensor, per group quantization&lt;/em&gt;)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Build your own 8-bit linear quantizer and apply it on real models.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Diffusion Model</title>
       <link>http://localhost:1313/post/diffusion-model/</link>

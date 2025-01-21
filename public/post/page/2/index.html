@@ -47,7 +47,7 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-01-17T10:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-01-20T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-12-27T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
@@ -148,6 +148,45 @@
 
     </section>
     <aside class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 11, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/decision-tree/" class="link black dim">
+        Decision Tree
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>类型：root node, decision node, leaf node</p>
+<h3 id="要解决的问题">要解决的问题</h3>
+<ol>
+<li>
+<p><strong>How to choose what feature to split on at each node?</strong></p>
+<p>Maximize purity (or minimize impurity)</p>
+</li>
+<li>
+<p><strong>When do you stop splitting?</strong></p>
+<ul>
+<li>When a node is 100% one class</li>
+<li>When splitting a node will result in the tree exceeding a maximum depth</li>
+<li>When improvements in purity score are below a threshold</li>
+<li>When number of examples in a node is below a threshold</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/chapter1/1.png" alt="1"></p>
+<h2 id="熵和信息增益">熵和信息增益</h2>
+<p><strong>Measuring purity</strong></p>
+    </div>
+  <a href="/post/decision-tree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
       
         <div class="relative w-100 w-30-l mb4 bg-white">
             <div class="mb3 pa4 mid-gray overflow-hidden">
@@ -283,38 +322,6 @@
 
         </div>
       
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 29, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
-<ol>
-<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
-<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
-<li><strong>Encoder-Decoder Architecture</strong>:
-<ul>
-<li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
-<li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
-</ul>
-</li>
-</ol>
-<h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
-    </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
     </aside>
     
     <ul class="pagination pagination-default">
@@ -334,10 +341,13 @@
         <a href="/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
       </li>
       <li class="page-item">
+        <a href="/post/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
         <a href="/post/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>
