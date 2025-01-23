@@ -158,13 +158,6 @@
 <p><img src="/images/DM/19.png" alt="19"></p>
 <p>进一步：输入加入了文字表述</p>
 <p>目标：产生的图片与真实图片越接近越好</p>
-<h3 id="advantages">Advantages:</h3>
-<ul>
-<li><strong>High-Quality Outputs:</strong> Diffusion models are known for producing high-quality, realistic samples.</li>
-<li><strong>Flexibility:</strong> They can be applied to various types of data, including images, audio, and even text.</li>
-<li><strong>Theoretical Foundation:</strong> The process is grounded in well-understood principles of probability and statistics.</li>
-</ul>
-<p><strong>Challenges</strong>: Computational Cost、Training Complexity.</p>
 <h2 id="原理">原理</h2>
 <ul>
 <li>
@@ -173,6 +166,49 @@
 </li>
 <li>
 <p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+</li>
+</ul>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
+<p><strong>Noise Predicter</strong>: 预测noise长什么样</p>
+<ul>
+<li>
+<p>如何训练Noise Predicter？</p>
+<ul>
+<li>
+<p>人为创造（加杂讯/Forward Process）</p>
+<p><img src="/images/DM/4.png" alt="4"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="text-to-image"><strong>Text-to-Image</strong></h3>
+<p>Laion拥有5.85B图片，可进行搜索</p>
+<p>输入：图片+噪声程度+<strong>文字叙述</strong></p>
+<p><img src="/images/DM/5.png" alt="5"></p>
+<h3 id="算法">算法</h3>
+<p><img src="/images/DM/6.png" alt="6"></p>
+<ul>
+<li>
+<p><strong>训练</strong>：</p>
+<p><img src="/images/DM/17.png" alt="17"></p>
+<ol>
+<li>sample一张clean image</li>
+<li>sample出一个数字</li>
+<li>sample出一个noise</li>
+<li><strong>clean image 和 noise 做加权和得到一个有杂讯的图</strong>，然后训练noise predictor（输入有杂讯的图 和 数字；输出目标noise）</li>
+</ol>
+</li>
+<li>
+<p><strong>产生图</strong>：</p>
     </div>
   <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

@@ -18,16 +18,6 @@ title: "Diffusion Model"
 
 
 
-### Advantages:
-
-- **High-Quality Outputs:** Diffusion models are known for producing high-quality, realistic samples.
-- **Flexibility:** They can be applied to various types of data, including images, audio, and even text.
-- **Theoretical Foundation:** The process is grounded in well-understood principles of probability and statistics.
-
-**Challenges**: Computational Cost、Training Complexity.
-
-
-
 
 
 ## 原理
