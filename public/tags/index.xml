@@ -6,8 +6,29 @@
     <description>Recent content in Tags on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 20 Jan 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorithm</title>
+      <link>http://localhost:1313/tags/algorithm/</link>
+      <pubDate>Wed, 05 Feb 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Generative AI</title>
+      <link>http://localhost:1313/tags/generative-ai/</link>
+      <pubDate>Wed, 22 Jan 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/tags/generative-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RL</title>
+      <link>http://localhost:1313/tags/rl/</link>
+      <pubDate>Wed, 22 Jan 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/tags/rl/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Deep Learning</title>
       <link>http://localhost:1313/tags/deep-learning/</link>
@@ -16,24 +37,10 @@
       <description></description>
     </item>
     <item>
-      <title>Generative AI</title>
-      <link>http://localhost:1313/tags/generative-ai/</link>
-      <pubDate>Fri, 17 Jan 2025 10:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/tags/generative-ai/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Machine Learning</title>
       <link>http://localhost:1313/tags/machine-learning/</link>
       <pubDate>Sat, 11 Jan 2025 10:58:08 -0400</pubDate>
       <guid>http://localhost:1313/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>RL</title>
-      <link>http://localhost:1313/tags/rl/</link>
-      <pubDate>Thu, 02 Jan 2025 11:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/tags/rl/</guid>
       <description></description>
     </item>
   </channel>

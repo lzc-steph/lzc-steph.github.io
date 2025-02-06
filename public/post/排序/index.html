@@ -4,15 +4,46 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>World Models | HomePage</title>
+    <title>基础算法 | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="SEM2
-https://arxiv.org/abs/2210.04017
-题目＆摘要解读
-背景&amp;相关工作
-﻿﻿方法
-实验
-回顾、总结、思考">
+    <meta name="description" content="
+主要思想
+代码模版
+
+背过：快速默写，调试通过
+
+先看模版思想 —— 模版已为我们考虑好了所有边界情况
+默写一遍（用题目）
+
+
+提高熟练度
+
+一道题目重复3-5次
+
+
+
+
+
+一、排序
+1. 快速排序
+
+
+核心思想 —— 分治
+
+确定分界点x
+调整区间
+递归处理左右两段
+
+
+
+调整区间的暴力做法：选定x，开a,b两数组，遍历q，小于x放a，大于x放b。
+
+
+优雅做法：用两个指针i、j，分别指向第一和最后一个数，两指针向中间移动，使得i左小于x，j右大于x；否则交换i、所指的数。
+
+
+2. 归并排序
+二、二分">
     <meta name="generator" content="Hugo 0.140.2">
     
     
@@ -36,33 +67,38 @@ https://arxiv.org/abs/2210.04017
     
 
     
-      <link rel="canonical" href="http://localhost:1313/post/world-model/">
+      <link rel="canonical" href="http://localhost:1313/post/%E6%8E%92%E5%BA%8F/">
     
 
-    <meta property="og:url" content="http://localhost:1313/post/world-model/">
+    <meta property="og:url" content="http://localhost:1313/post/%E6%8E%92%E5%BA%8F/">
   <meta property="og:site_name" content="HomePage">
-  <meta property="og:title" content="World Models">
-  <meta property="og:description" content="SEM2 https://arxiv.org/abs/2210.04017
-题目＆摘要解读 背景&amp;相关工作 ﻿﻿方法 实验 回顾、总结、思考">
+  <meta property="og:title" content="基础算法">
+  <meta property="og:description" content="主要思想 代码模版 背过：快速默写，调试通过 先看模版思想 —— 模版已为我们考虑好了所有边界情况 默写一遍（用题目） 提高熟练度 一道题目重复3-5次 一、排序 1. 快速排序 核心思想 —— 分治
+确定分界点x 调整区间 递归处理左右两段 调整区间的暴力做法：选定x，开a,b两数组，遍历q，小于x放a，大于x放b。
+优雅做法：用两个指针i、j，分别指向第一和最后一个数，两指针向中间移动，使得i左小于x，j右大于x；否则交换i、所指的数。
+2. 归并排序 二、二分">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-01-22T11:00:59-04:00">
-    <meta property="article:modified_time" content="2025-01-22T11:00:59-04:00">
-    <meta property="article:tag" content="RL">
-    <meta property="article:tag" content="Generative AI">
+    <meta property="article:published_time" content="2025-02-04T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-02-04T11:00:59-04:00">
+    <meta property="article:tag" content="Algorithm">
 
-  <meta itemprop="name" content="World Models">
-  <meta itemprop="description" content="SEM2 https://arxiv.org/abs/2210.04017
-题目＆摘要解读 背景&amp;相关工作 ﻿﻿方法 实验 回顾、总结、思考">
-  <meta itemprop="datePublished" content="2025-01-22T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-01-22T11:00:59-04:00">
-  <meta itemprop="wordCount" content="7">
-  <meta itemprop="keywords" content="RL,Generative AI">
+  <meta itemprop="name" content="基础算法">
+  <meta itemprop="description" content="主要思想 代码模版 背过：快速默写，调试通过 先看模版思想 —— 模版已为我们考虑好了所有边界情况 默写一遍（用题目） 提高熟练度 一道题目重复3-5次 一、排序 1. 快速排序 核心思想 —— 分治
+确定分界点x 调整区间 递归处理左右两段 调整区间的暴力做法：选定x，开a,b两数组，遍历q，小于x放a，大于x放b。
+优雅做法：用两个指针i、j，分别指向第一和最后一个数，两指针向中间移动，使得i左小于x，j右大于x；否则交换i、所指的数。
+2. 归并排序 二、二分">
+  <meta itemprop="datePublished" content="2025-02-04T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-02-04T11:00:59-04:00">
+  <meta itemprop="wordCount" content="23">
+  <meta itemprop="keywords" content="Algorithm">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="World Models">
-  <meta name="twitter:description" content="SEM2 https://arxiv.org/abs/2210.04017
-题目＆摘要解读 背景&amp;相关工作 ﻿﻿方法 实验 回顾、总结、思考">
+  <meta name="twitter:title" content="基础算法">
+  <meta name="twitter:description" content="主要思想 代码模版 背过：快速默写，调试通过 先看模版思想 —— 模版已为我们考虑好了所有边界情况 默写一遍（用题目） 提高熟练度 一道题目重复3-5次 一、排序 1. 快速排序 核心思想 —— 分治
+确定分界点x 调整区间 递归处理左右两段 调整区间的暴力做法：选定x，开a,b两数组，遍历q，小于x放a，大于x放b。
+优雅做法：用两个指针i、j，分别指向第一和最后一个数，两指针向中间移动，使得i左小于x，j右大于x；否则交换i、所指的数。
+2. 归并排序 二、二分">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -74,7 +110,7 @@ https://arxiv.org/abs/2210.04017
   
   
   
-  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/WM/lucky.jpg');">
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/sort/lucky.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
@@ -138,7 +174,7 @@ https://arxiv.org/abs/2210.04017
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <div class="f2 f1-l fw2 white-90 mb0 lh-title">World Models</div>
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">基础算法</div>
           
         
       </div>
@@ -155,28 +191,28 @@ https://arxiv.org/abs/2210.04017
       <aside class="instapaper_ignoref b helvetica tracked ttu">
           
         Articles
-      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fworld-model%2F&amp;subject=World&#43;Models"
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%258E%2592%25E5%25BA%258F%2F&amp;subject=%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95"
         class="ananke-social-link email no-underline"
         title="Share on Email" aria-label="Share on Email"
         target="_blank" rel="nofollow noopener noreferrer">
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
                 
-              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fworld-model%2F"
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%258E%2592%25E5%25BA%258F%2F"
         class="ananke-social-link facebook no-underline"
         title="Share on Facebook" aria-label="Share on Facebook"
         target="_blank" rel="nofollow noopener noreferrer">
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
                 
-              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fworld-model%2F"
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%258E%2592%25E5%25BA%258F%2F"
         class="ananke-social-link bluesky no-underline"
         title="Share on Bluesky" aria-label="Share on Bluesky"
         target="_blank" rel="nofollow noopener noreferrer">
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fworld-model%2F&amp;summary=SEM2&#43;https%3A%2F%2Farxiv.org%2Fabs%2F2210.04017%0A%E9%A2%98%E7%9B%AE%EF%BC%86%E6%91%98%E8%A6%81%E8%A7%A3%E8%AF%BB&#43;%E8%83%8C%E6%99%AF%26amp%3Bamp%3B%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C&#43;%EF%BB%BF%EF%BB%BF%E6%96%B9%E6%B3%95&#43;%E5%AE%9E%E9%AA%8C&#43;%E5%9B%9E%E9%A1%BE%E3%80%81%E6%80%BB%E7%BB%93%E3%80%81%E6%80%9D%E8%80%83&amp;title=World&#43;Models&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fworld-model%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%258E%2592%25E5%25BA%258F%2F&amp;summary=&#43;%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3&#43;%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88&#43;%E8%83%8C%E8%BF%87%EF%BC%9A%E5%BF%AB%E9%80%9F%E9%BB%98%E5%86%99%EF%BC%8C%E8%B0%83%E8%AF%95%E9%80%9A%E8%BF%87&#43;%E5%85%88%E7%9C%8B%E6%A8%A1%E7%89%88%E6%80%9D%E6%83%B3&#43;%E2%80%94%E2%80%94&#43;%E6%A8%A1%E7%89%88%E5%B7%B2%E4%B8%BA%E6%88%91%E4%BB%AC%E8%80%83%E8%99%91%E5%A5%BD%E4%BA%86%E6%89%80%E6%9C%89%E8%BE%B9%E7%95%8C%E6%83%85%E5%86%B5&#43;%E9%BB%98%E5%86%99%E4%B8%80%E9%81%8D%EF%BC%88%E7%94%A8%E9%A2%98%E7%9B%AE%EF%BC%89&#43;%E6%8F%90%E9%AB%98%E7%86%9F%E7%BB%83%E5%BA%A6&#43;%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE%E9%87%8D%E5%A4%8D3-5%E6%AC%A1&#43;%E4%B8%80%E3%80%81%E6%8E%92%E5%BA%8F&#43;1.&#43;%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F&#43;%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3&#43;%E2%80%94%E2%80%94&#43;%E5%88%86%E6%B2%BB%0A%E7%A1%AE%E5%AE%9A%E5%88%86%E7%95%8C%E7%82%B9x&#43;%E8%B0%83%E6%95%B4%E5%8C%BA%E9%97%B4&#43;%E9%80%92%E5%BD%92%E5%A4%84%E7%90%86%E5%B7%A6%E5%8F%B3%E4%B8%A4%E6%AE%B5&#43;%E8%B0%83%E6%95%B4%E5%8C%BA%E9%97%B4%E7%9A%84%E6%9A%B4%E5%8A%9B%E5%81%9A%E6%B3%95%EF%BC%9A%E9%80%89%E5%AE%9Ax%EF%BC%8C%E5%BC%80a%2Cb%E4%B8%A4%E6%95%B0%E7%BB%84%EF%BC%8C%E9%81%8D%E5%8E%86q%EF%BC%8C%E5%B0%8F%E4%BA%8Ex%E6%94%BEa%EF%BC%8C%E5%A4%A7%E4%BA%8Ex%E6%94%BEb%E3%80%82%0A%E4%BC%98%E9%9B%85%E5%81%9A%E6%B3%95%EF%BC%9A%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%8C%87%E9%92%88i%E3%80%81j%EF%BC%8C%E5%88%86%E5%88%AB%E6%8C%87%E5%90%91%E7%AC%AC%E4%B8%80%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E6%95%B0%EF%BC%8C%E4%B8%A4%E6%8C%87%E9%92%88%E5%90%91%E4%B8%AD%E9%97%B4%E7%A7%BB%E5%8A%A8%EF%BC%8C%E4%BD%BF%E5%BE%97i%E5%B7%A6%E5%B0%8F%E4%BA%8Ex%EF%BC%8Cj%E5%8F%B3%E5%A4%A7%E4%BA%8Ex%EF%BC%9B%E5%90%A6%E5%88%99%E4%BA%A4%E6%8D%A2i%E3%80%81%E6%89%80%E6%8C%87%E7%9A%84%E6%95%B0%E3%80%82%0A2.&#43;%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F&#43;%E4%BA%8C%E3%80%81%E4%BA%8C%E5%88%86&amp;title=%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%258E%2592%25E5%25BA%258F%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -184,31 +220,58 @@ https://arxiv.org/abs/2210.04017
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
                 
               </span></a></div>
-<h1 class="f1 athelas mt3 mb1">World Models</h1>
+<h1 class="f1 athelas mt3 mb1">基础算法</h1>
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2025-01-22T11:00:59-04:00">January 22, 2025</time>
+      <time class="f6 mv4 dib tracked" datetime="2025-02-04T11:00:59-04:00">February 4, 2025</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="sem2">SEM2</h1>
-<p><a href="https://arxiv.org/abs/2210.04017">https://arxiv.org/abs/2210.04017</a></p>
-<h2 id="题目摘要解读">题目＆摘要解读</h2>
-<h2 id="背景相关工作">背景&amp;相关工作</h2>
-<h2 id="方法">﻿﻿方法</h2>
-<h2 id="实验">实验</h2>
-<h2 id="回顾总结思考">回顾、总结、思考</h2>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><ul>
+<li><strong>主要思想</strong></li>
+<li><strong>代码模版</strong>
+<ul>
+<li><strong>背过：快速默写，调试通过</strong>
+<ul>
+<li>先看模版思想 —— 模版已为我们考虑好了所有边界情况</li>
+<li>默写一遍（用题目）</li>
+</ul>
+</li>
+<li><strong>提高熟练度</strong>
+<ul>
+<li>一道题目重复3-5次</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="一排序">一、排序</h1>
+<h3 id="1-快速排序">1. 快速排序</h3>
+<ol>
+<li>
+<p>核心思想 —— 分治</p>
+<ol>
+<li>确定分界点x</li>
+<li><strong>调整区间</strong></li>
+<li>递归处理左右两段</li>
+</ol>
+</li>
+<li>
+<p><strong>调整区间的暴力做法</strong>：选定x，开a,b两数组，遍历q，小于x放a，大于x放b。</p>
+</li>
+<li>
+<p><strong>优雅做法</strong>：用两个指针i、j，分别指向第一和最后一个数，两指针向中间移动，使得i左小于x，j右大于x；否则交换i、所指的数。</p>
+</li>
+</ol>
+<h3 id="2-归并排序">2. 归并排序</h3>
+<h1 id="二二分">二、二分</h1>
 <ul class="pa0">
   
    <li class="list di">
-     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/generative-ai/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Generative AI</a>
+     <a href="/tags/algorithm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Algorithm</a>
    </li>
   
 </ul>
@@ -228,23 +291,11 @@ https://arxiv.org/abs/2210.04017
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/post/vae/">VAE</a>
+          <a href="/post/hash/">hash map</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/post/diffusion-model/">Diffusion Model</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/ga/">Generative AI</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/rl/">Reinforcement Learning</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/e2e/">End2End</a>
+          <a href="/post/algrithom/">「持续更新」算法题笔记</a>
         </li>
 	    
     </ul>
