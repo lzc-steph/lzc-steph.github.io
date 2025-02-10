@@ -47,7 +47,7 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-02-05T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-02-09T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-12-27T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
@@ -153,36 +153,144 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        December 27, 2024
+        January 11, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/cv/" class="link black dim">
-        CV
+      <a href="/post/decision-tree/" class="link black dim">
+        Decision Tree
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
-<p>类型：root node, decision node, leaf node
- </p>
-<h2 id="1-解决方案cnn">1. 解决方案：CNN</h2>
-<p>卷积神经网络通过引入卷积操作，有效地解决了大图片参数过大的问题。</p>
+      <p><img src="/images/chapter1/1.png" alt="1"></p>
+<h2 id="熵和信息增益">熵和信息增益</h2>
+<p><strong>Measuring purity</strong></p>
+<p><img src="/images/chapter1/2.png" alt="2"></p>
+<p><img src="/images/chapter1/3.png" alt="3"></p>
+<p>选择信息增益更大的分裂特征</p>
+<p><img src="/images/chapter1/4.png" alt="4"></p>
+<h2 id="决策树训练递归">决策树训练(递归)</h2>
+<ol>
+<li>Start with all examples at the root node</li>
+<li>Calculate information gain for all possible features, and pick the one with the highest information gain</li>
+<li>Split dataset according to selected feature, and create left and right branches of the tree</li>
+<li>Keep repeating splitting process until stopping criteria is met:
+<ul>
+<li>When a node is 100% one class</li>
+<li>When splitting a node will result in the tree exceeding a maximum depth</li>
+<li>Information gain from additional splits is less than threshold</li>
+<li>When number of examples in a node is below a threshold</li>
+</ul>
+</li>
+</ol>
+    </div>
+  <a href="/post/decision-tree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/ga/" class="link black dim">
+        Generative AI
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="chatgpt">ChatGPT</h1>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ba53c8d8-3a8d-4bb9-a20f-5cd7d295a29f/%E6%88%AA%E5%B1%8F2025-01-05_23.37.32.png" alt="截屏2025-01-05 23.37.32.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/740b097c-4c79-42af-bc9b-5817abdc3521/%E6%88%AA%E5%B1%8F2025-01-04_00.25.09.png" alt="截屏2025-01-04 00.25.09.png"></p>
 <ol>
 <li>
-<p><strong>Automatic Feature Extraction</strong></p>
-<p>CNNs automatically learn hierarchical features from raw data (like images) without needing manual feature engineering.</p>
+<p>ChatGPT 真正做的事：文字接龙</p>
+<p><strong>Autoregressive Generation</strong>：逐个生成</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a140588c-153b-4bf3-812b-794d09b256c2/%E6%88%AA%E5%B1%8F2025-01-04_00.18.34.png" alt="截屏2025-01-04 00.18.34.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/10249f01-191e-4450-9387-201ee36c281d/247f57f5-a4f8-4859-8ce8-9664487924cd.png" alt="截屏2025-01-04 00.27.44.png"></p>
 </li>
 <li>
-<p><strong>Parameter Sharing</strong></p>
-<p>In a CNN, the same filter (or kernel) is applied across the entire image. This concept of <strong>weight sharing</strong> significantly reduces the number of parameters compared to fully connected networks, making CNNs more computationally efficient.</p>
+<p><strong>token</strong></p>
+<p>文字接龙时可以选择的符号</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e0bc078c-68ba-4504-b3dc-2bee0739d6fa/%E6%88%AA%E5%B1%8F2025-01-04_00.29.01.png" alt="截屏2025-01-04 00.29.01.png"></p>
 </li>
 <li>
-<p><strong>分层特征学习</strong></p>
+<p>每次回答都随机（掷骰子）</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b30b483b-47dd-4cfd-9a2d-bcd030b1b169/%E6%88%AA%E5%B1%8F2025-01-04_11.07.26.png" alt="截屏2025-01-04 11.07.26.png"></p>
 </li>
 <li>
-<p><strong>Translation Invariance</strong>（pooling layers）</p>
+<p>进化关键：<strong>自督导式学习(预训练) ➡️ 督导式学习(微调) ➡️ 强化学习</strong></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b2ca8f91-7703-4339-ae03-089a67c3519f/%E6%88%AA%E5%B1%8F2025-01-04_23.52.07.png" alt="截屏2025-01-04 23.52.07.png"></p>
+<p>有预训练，督导式学习不用大量资料。</p>
+<p>强化学习提供回馈。督导式学习提供完整资料，强化学习给反馈（如两次答案，有没有比上次更好）</p>
+<p>【注】：模型要有一定程度的能力才适合进入强化学习。</p>
+<p><strong>Alignment(对齐)</strong>：督导式学习 + 强化学习</p>
+</li>
+<li>
+<p><strong>强化学习</strong></p>
+<ol>
+<li>
+<p>学习reward model</p>
+<p>reward model：模仿人类的偏好</p>
+</li>
+<li>
+<p>用reward model进行学习</p>
+<p>模型只需要向reward model学习</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>GPT-4: 可以看图+引导</strong></p>
+</li>
+<li>
+<p><strong>如何激发gpt的能力？</strong></p>
+<ol>
+<li>把需求说清楚</li>
+<li>提供咨询</li>
+<li>提供范例</li>
+<li>鼓励gpt想一想</li>
+<li>训练generator</li>
+<li>上传资料</li>
+<li>使用其它工具</li>
+<li>大任务拆解成小任务</li>
+<li>gpt会反省</li>
+</ol>
+</li>
+<li>
+<p>可以做什么？</p>
+<ol>
+<li>prompt engineering</li>
+<li>训练自己的模型（如调整LLaMA参数），困难</li>
+</ol>
+</li>
+</ol>
+<h1 id="大型语言模型训练过程">大型语言模型训练过程</h1>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/7e6521a3-d2cf-42bc-8550-aacc3027b83f/%E6%88%AA%E5%B1%8F2025-01-06_00.37.19.png" alt="截屏2025-01-06 00.37.19.png"></p>
+<ol>
+<li>
+<p>自我学习阶段</p>
+<ul>
+<li>
+<p>调整超参数</p>
+</li>
+<li>
+<p>训练成果，但测试失败：找到多样数据</p>
+</li>
+<li>
+<p>找到合适的初始参数：随机/ 先验知识</p>
+<p>先验知识：爬网络资料+资料清理(训练资料品质分类器/除重)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>人类指导阶段</p>
+</li>
+</ol>
     </div>
-  <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/ga/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -191,66 +299,38 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        December 26, 2024
+        January 2, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/e2e/" class="link black dim">
-        End2End
+      <a href="/post/rl/" class="link black dim">
+        Reinforcement Learning
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>对于由多个阶段组成的学习系统，端到端学习捕获所有阶段，将其替代为单个神经网络。</p>
-<ul>
-<li>优点：
-<ul>
-<li>Let the data speak</li>
-<li>Less hand-designing of components needed</li>
-</ul>
-</li>
-<li>缺点：
-<ul>
-<li>May need large amount of data</li>
-<li>Excludes potentially useful hand-designed components</li>
-</ul>
-</li>
-</ul>
-<p><strong>关键</strong>：是否有足够的数据</p>
-<p><img src="/images/e2e/1.png" alt="1"></p>
-    </div>
-  <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 25, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/transformer/" class="link black dim">
-        transformer
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>The <strong>Transformer</strong> is a deep learning architecture introduced in the 2017 paper <em>&ldquo;Attention is All You Need&rdquo;</em> by Vaswani et al. It revolutionized natural language processing (NLP) and has since become the foundation for many state-of-the-art models, such as BERT, GPT, and T5.</p>
-<h3 id="seq2seq">Seq2seq</h3>
-<p>Input a sequence, output a sequence The output length is determined by model.</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e22b161f-7704-4d51-8881-70ee7e4c6dcb/%E6%88%AA%E5%B1%8F2024-12-31_15.12.59.png" alt="截屏2024-12-31 15.12.59.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/180291f8-9817-42b6-87cb-39bf0734b9ef/%E6%88%AA%E5%B1%8F2024-12-31_19.34.56.png" alt="截屏2024-12-31 19.34.56.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/31c00a57-de1e-43a9-b92a-13e3a050be48/%E6%88%AA%E5%B1%8F2024-12-31_19.35.51.png" alt="截屏2024-12-31 19.35.51.png"></p>
-<h2 id="encoder">Encoder</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/901263ca-4e06-4f07-a672-aab03a6a86d4/cb6d7470-a2be-4ea5-9611-1cf0859d782f.png" alt="截屏2024-12-31 15.15.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/3f6e614d-e0be-49d2-935e-642ebc3eaa82/%E6%88%AA%E5%B1%8F2024-12-31_15.29.37.png" alt="截屏2024-12-31 15.29.37.png"></p>
+      <p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
+<h3 id="回归">回归</h3>
+<p>增加折现因子</p>
+<p><img src="/images/RL/1.png" alt="1"></p>
+<p><img src="/images/RL/2.png" alt="2"></p>
+<h3 id="强化学习的形式化">强化学习的形式化</h3>
+<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
+<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
+<p><img src="/images/RL/3.png" alt="3"></p>
 <ul>
 <li>
-<p><strong>细节</strong>：</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/641849c0-19ea-464e-9b96-2e7b93b1d3d5/c8331594-f0cc-4348-967f-b026b8e2b68f.png" alt="截屏2024-12-31 15.18.01.png"></p>
+<p><strong>状态动作值函数</strong>（Q-Function）</p>
+<p><strong>Q(s,a)</strong> = Return if you:</p>
+<ul>
+<li>start in state <em>s</em>.</li>
+<li>take action <em>a</em> (once).</li>
+<li>then behave optimally after that.</li>
+</ul>
+<p>The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.</p>
+</li>
+</ul>
     </div>
-  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -265,9 +345,6 @@
         <a href="/post/page/4/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item">
         <a href="/post/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
       <li class="page-item">
@@ -279,11 +356,14 @@
       <li class="page-item active">
         <a aria-current="page" aria-label="Page 5" class="page-link" role="button">5</a>
       </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      <li class="page-item">
+        <a href="/post/page/6/" aria-label="Page 6" class="page-link" role="button">6</a>
       </li>
-      <li class="page-item disabled">
-        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      <li class="page-item">
+        <a href="/post/page/6/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/post/page/6/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

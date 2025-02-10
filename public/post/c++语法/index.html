@@ -6,11 +6,28 @@
     
     <title>c&#43;&#43;语法 | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="动态数组 vector
+    <meta name="description" content="在 C&#43;&#43; 中，using namespace std;指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上 std::。
+标准输出
+C&#43;&#43; 的标准输出是 cout，用 &lt;&lt; 运算符把需要打印的内容传递给 cout，endl 是换行符。
+#include &lt;iostream&gt;
+int a = 10;
+
+// 输出：10
+std::cout &lt;&lt; a &lt;&lt; std::endl;
+
+// 可以串联输出
+// 输出：Hello, World!
+std::cout &lt;&lt; &#34;Hello&#34; &lt;&lt; &#34;, &#34; &lt;&lt; &#34;World!&#34; &lt;&lt; std::endl;
+
+string s = &#34;abc&#34;;
+// 输出：abc 10
+std::cout &lt;&lt; s &lt;&lt; &#34; &#34; &lt;&lt; a &lt;&lt; std::endl;
+动态数组 vector
 
 
 vector 的初始化方法如下：
 #include &lt;vector&gt;
+using namespace std;
 
 int n = 7, m = 8;
 
@@ -33,8 +50,7 @@ vector&lt;vector&lt;int&gt;&gt; dp;
 // 其中的值都初始化为 true
 vector&lt;vector&lt;bool&gt;&gt; dp(m, vector&lt;bool&gt;(n, true));
 
-
-vector 的常用操作：">
+">
     <meta name="generator" content="Hugo 0.140.2">
     
     
@@ -64,8 +80,10 @@ vector 的常用操作：">
     <meta property="og:url" content="http://localhost:1313/post/c&#43;&#43;%E8%AF%AD%E6%B3%95/">
   <meta property="og:site_name" content="HomePage">
   <meta property="og:title" content="c&#43;&#43;语法">
-  <meta property="og:description" content="动态数组 vector vector 的初始化方法如下：
-#include &lt;vector&gt; int n = 7, m = 8; // 初始化一个 int 型的空数组 nums vector&lt;int&gt; nums; // 初始化一个大小为 n 的数组 nums，数组中的值默认都为 0 vector&lt;int&gt; nums(n); // 初始化一个元素为 1, 3, 5 的数组 nums vector&lt;int&gt; nums{1, 3, 5}; // 初始化一个大小为 n 的数组 nums，其值全都为 2 vector&lt;int&gt; nums(n, 2); // 初始化一个二维 int 数组 dp vector&lt;vector&lt;int&gt;&gt; dp; // 初始化一个大小为 m * n 的布尔数组 dp， // 其中的值都初始化为 true vector&lt;vector&lt;bool&gt;&gt; dp(m, vector&lt;bool&gt;(n, true)); vector 的常用操作：">
+  <meta property="og:description" content="在 C&#43;&#43; 中，using namespace std;指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上 std::。
+标准输出 C&#43;&#43; 的标准输出是 cout，用 &lt;&lt; 运算符把需要打印的内容传递给 cout，endl 是换行符。
+#include &lt;iostream&gt; int a = 10; // 输出：10 std::cout &lt;&lt; a &lt;&lt; std::endl; // 可以串联输出 // 输出：Hello, World! std::cout &lt;&lt; &#34;Hello&#34; &lt;&lt; &#34;, &#34; &lt;&lt; &#34;World!&#34; &lt;&lt; std::endl; string s = &#34;abc&#34;; // 输出：abc 10 std::cout &lt;&lt; s &lt;&lt; &#34; &#34; &lt;&lt; a &lt;&lt; std::endl; 动态数组 vector vector 的初始化方法如下：
+#include &lt;vector&gt; using namespace std; int n = 7, m = 8; // 初始化一个 int 型的空数组 nums vector&lt;int&gt; nums; // 初始化一个大小为 n 的数组 nums，数组中的值默认都为 0 vector&lt;int&gt; nums(n); // 初始化一个元素为 1, 3, 5 的数组 nums vector&lt;int&gt; nums{1, 3, 5}; // 初始化一个大小为 n 的数组 nums，其值全都为 2 vector&lt;int&gt; nums(n, 2); // 初始化一个二维 int 数组 dp vector&lt;vector&lt;int&gt;&gt; dp; // 初始化一个大小为 m * n 的布尔数组 dp， // 其中的值都初始化为 true vector&lt;vector&lt;bool&gt;&gt; dp(m, vector&lt;bool&gt;(n, true));">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -74,16 +92,20 @@ vector 的常用操作：">
     <meta property="article:tag" content="Algorithm">
 
   <meta itemprop="name" content="c&#43;&#43;语法">
-  <meta itemprop="description" content="动态数组 vector vector 的初始化方法如下：
-#include &lt;vector&gt; int n = 7, m = 8; // 初始化一个 int 型的空数组 nums vector&lt;int&gt; nums; // 初始化一个大小为 n 的数组 nums，数组中的值默认都为 0 vector&lt;int&gt; nums(n); // 初始化一个元素为 1, 3, 5 的数组 nums vector&lt;int&gt; nums{1, 3, 5}; // 初始化一个大小为 n 的数组 nums，其值全都为 2 vector&lt;int&gt; nums(n, 2); // 初始化一个二维 int 数组 dp vector&lt;vector&lt;int&gt;&gt; dp; // 初始化一个大小为 m * n 的布尔数组 dp， // 其中的值都初始化为 true vector&lt;vector&lt;bool&gt;&gt; dp(m, vector&lt;bool&gt;(n, true)); vector 的常用操作：">
+  <meta itemprop="description" content="在 C&#43;&#43; 中，using namespace std;指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上 std::。
+标准输出 C&#43;&#43; 的标准输出是 cout，用 &lt;&lt; 运算符把需要打印的内容传递给 cout，endl 是换行符。
+#include &lt;iostream&gt; int a = 10; // 输出：10 std::cout &lt;&lt; a &lt;&lt; std::endl; // 可以串联输出 // 输出：Hello, World! std::cout &lt;&lt; &#34;Hello&#34; &lt;&lt; &#34;, &#34; &lt;&lt; &#34;World!&#34; &lt;&lt; std::endl; string s = &#34;abc&#34;; // 输出：abc 10 std::cout &lt;&lt; s &lt;&lt; &#34; &#34; &lt;&lt; a &lt;&lt; std::endl; 动态数组 vector vector 的初始化方法如下：
+#include &lt;vector&gt; using namespace std; int n = 7, m = 8; // 初始化一个 int 型的空数组 nums vector&lt;int&gt; nums; // 初始化一个大小为 n 的数组 nums，数组中的值默认都为 0 vector&lt;int&gt; nums(n); // 初始化一个元素为 1, 3, 5 的数组 nums vector&lt;int&gt; nums{1, 3, 5}; // 初始化一个大小为 n 的数组 nums，其值全都为 2 vector&lt;int&gt; nums(n, 2); // 初始化一个二维 int 数组 dp vector&lt;vector&lt;int&gt;&gt; dp; // 初始化一个大小为 m * n 的布尔数组 dp， // 其中的值都初始化为 true vector&lt;vector&lt;bool&gt;&gt; dp(m, vector&lt;bool&gt;(n, true));">
   <meta itemprop="datePublished" content="2025-02-05T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-05T11:00:59-04:00">
-  <meta itemprop="wordCount" content="206">
+  <meta itemprop="wordCount" content="1062">
   <meta itemprop="keywords" content="Algorithm">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="c&#43;&#43;语法">
-  <meta name="twitter:description" content="动态数组 vector vector 的初始化方法如下：
-#include &lt;vector&gt; int n = 7, m = 8; // 初始化一个 int 型的空数组 nums vector&lt;int&gt; nums; // 初始化一个大小为 n 的数组 nums，数组中的值默认都为 0 vector&lt;int&gt; nums(n); // 初始化一个元素为 1, 3, 5 的数组 nums vector&lt;int&gt; nums{1, 3, 5}; // 初始化一个大小为 n 的数组 nums，其值全都为 2 vector&lt;int&gt; nums(n, 2); // 初始化一个二维 int 数组 dp vector&lt;vector&lt;int&gt;&gt; dp; // 初始化一个大小为 m * n 的布尔数组 dp， // 其中的值都初始化为 true vector&lt;vector&lt;bool&gt;&gt; dp(m, vector&lt;bool&gt;(n, true)); vector 的常用操作：">
+  <meta name="twitter:description" content="在 C&#43;&#43; 中，using namespace std;指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上 std::。
+标准输出 C&#43;&#43; 的标准输出是 cout，用 &lt;&lt; 运算符把需要打印的内容传递给 cout，endl 是换行符。
+#include &lt;iostream&gt; int a = 10; // 输出：10 std::cout &lt;&lt; a &lt;&lt; std::endl; // 可以串联输出 // 输出：Hello, World! std::cout &lt;&lt; &#34;Hello&#34; &lt;&lt; &#34;, &#34; &lt;&lt; &#34;World!&#34; &lt;&lt; std::endl; string s = &#34;abc&#34;; // 输出：abc 10 std::cout &lt;&lt; s &lt;&lt; &#34; &#34; &lt;&lt; a &lt;&lt; std::endl; 动态数组 vector vector 的初始化方法如下：
+#include &lt;vector&gt; using namespace std; int n = 7, m = 8; // 初始化一个 int 型的空数组 nums vector&lt;int&gt; nums; // 初始化一个大小为 n 的数组 nums，数组中的值默认都为 0 vector&lt;int&gt; nums(n); // 初始化一个元素为 1, 3, 5 的数组 nums vector&lt;int&gt; nums{1, 3, 5}; // 初始化一个大小为 n 的数组 nums，其值全都为 2 vector&lt;int&gt; nums(n, 2); // 初始化一个二维 int 数组 dp vector&lt;vector&lt;int&gt;&gt; dp; // 初始化一个大小为 m * n 的布尔数组 dp， // 其中的值都初始化为 true vector&lt;vector&lt;bool&gt;&gt; dp(m, vector&lt;bool&gt;(n, true));">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -197,7 +219,7 @@ vector 的常用操作：">
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fc%2B%2B%25E8%25AF%25AD%25E6%25B3%2595%2F&amp;summary=%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;vector&#43;vector&#43;%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95%E5%A6%82%E4%B8%8B%EF%BC%9A%0A%23include&#43;%26amp%3Blt%3Bvector%26amp%3Bgt%3B&#43;int&#43;n&#43;%3D&#43;7%2C&#43;m&#43;%3D&#43;8%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA&#43;int&#43;%E5%9E%8B%E7%9A%84%E7%A9%BA%E6%95%B0%E7%BB%84&#43;nums&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%A4%A7%E5%B0%8F%E4%B8%BA&#43;n&#43;%E7%9A%84%E6%95%B0%E7%BB%84&#43;nums%EF%BC%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%80%BC%E9%BB%98%E8%AE%A4%E9%83%BD%E4%B8%BA&#43;0&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%28n%29%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E4%B8%BA&#43;1%2C&#43;3%2C&#43;5&#43;%E7%9A%84%E6%95%B0%E7%BB%84&#43;nums&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%7B1%2C&#43;3%2C&#43;5%7D%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%A4%A7%E5%B0%8F%E4%B8%BA&#43;n&#43;%E7%9A%84%E6%95%B0%E7%BB%84&#43;nums%EF%BC%8C%E5%85%B6%E5%80%BC%E5%85%A8%E9%83%BD%E4%B8%BA&#43;2&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%28n%2C&#43;2%29%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E4%BA%8C%E7%BB%B4&#43;int&#43;%E6%95%B0%E7%BB%84&#43;dp&#43;vector%26amp%3Blt%3Bvector%26amp%3Blt%3Bint%26amp%3Bgt%3B%26amp%3Bgt%3B&#43;dp%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%A4%A7%E5%B0%8F%E4%B8%BA&#43;m&#43;%2A&#43;n&#43;%E7%9A%84%E5%B8%83%E5%B0%94%E6%95%B0%E7%BB%84&#43;dp%EF%BC%8C&#43;%2F%2F&#43;%E5%85%B6%E4%B8%AD%E7%9A%84%E5%80%BC%E9%83%BD%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BA&#43;true&#43;vector%26amp%3Blt%3Bvector%26amp%3Blt%3Bbool%26amp%3Bgt%3B%26amp%3Bgt%3B&#43;dp%28m%2C&#43;vector%26amp%3Blt%3Bbool%26amp%3Bgt%3B%28n%2C&#43;true%29%29%3B&#43;vector&#43;%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%EF%BC%9A%0A&amp;title=c%2B%2B%E8%AF%AD%E6%B3%95&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fc%2B%2B%25E8%25AF%25AD%25E6%25B3%2595%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fc%2B%2B%25E8%25AF%25AD%25E6%25B3%2595%2F&amp;summary=%E5%9C%A8&#43;C%2B%2B&#43;%E4%B8%AD%EF%BC%8Cusing&#43;namespace&#43;std%3B%E6%8C%87%E4%BB%A4%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8&#43;std&#43;%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%A0%87%E8%AF%86%E7%AC%A6%EF%BC%8C%E8%80%8C%E6%97%A0%E9%9C%80%E5%9C%A8%E5%AE%83%E4%BB%AC%E5%89%8D%E9%9D%A2%E5%8A%A0%E4%B8%8A&#43;std%3A%3A%E3%80%82%0A%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA&#43;C%2B%2B&#43;%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E6%98%AF&#43;cout%EF%BC%8C%E7%94%A8&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;%E8%BF%90%E7%AE%97%E7%AC%A6%E6%8A%8A%E9%9C%80%E8%A6%81%E6%89%93%E5%8D%B0%E7%9A%84%E5%86%85%E5%AE%B9%E4%BC%A0%E9%80%92%E7%BB%99&#43;cout%EF%BC%8Cendl&#43;%E6%98%AF%E6%8D%A2%E8%A1%8C%E7%AC%A6%E3%80%82%0A%23include&#43;%26amp%3Blt%3Biostream%26amp%3Bgt%3B&#43;int&#43;a&#43;%3D&#43;10%3B&#43;%2F%2F&#43;%E8%BE%93%E5%87%BA%EF%BC%9A10&#43;std%3A%3Acout&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;a&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;std%3A%3Aendl%3B&#43;%2F%2F&#43;%E5%8F%AF%E4%BB%A5%E4%B8%B2%E8%81%94%E8%BE%93%E5%87%BA&#43;%2F%2F&#43;%E8%BE%93%E5%87%BA%EF%BC%9AHello%2C&#43;World%21&#43;std%3A%3Acout&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;%26amp%3B%2334%3BHello%26amp%3B%2334%3B&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;%26amp%3B%2334%3B%2C&#43;%26amp%3B%2334%3B&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;%26amp%3B%2334%3BWorld%21%26amp%3B%2334%3B&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;std%3A%3Aendl%3B&#43;string&#43;s&#43;%3D&#43;%26amp%3B%2334%3Babc%26amp%3B%2334%3B%3B&#43;%2F%2F&#43;%E8%BE%93%E5%87%BA%EF%BC%9Aabc&#43;10&#43;std%3A%3Acout&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;s&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;%26amp%3B%2334%3B&#43;%26amp%3B%2334%3B&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;a&#43;%26amp%3Blt%3B%26amp%3Blt%3B&#43;std%3A%3Aendl%3B&#43;%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;vector&#43;vector&#43;%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95%E5%A6%82%E4%B8%8B%EF%BC%9A%0A%23include&#43;%26amp%3Blt%3Bvector%26amp%3Bgt%3B&#43;using&#43;namespace&#43;std%3B&#43;int&#43;n&#43;%3D&#43;7%2C&#43;m&#43;%3D&#43;8%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA&#43;int&#43;%E5%9E%8B%E7%9A%84%E7%A9%BA%E6%95%B0%E7%BB%84&#43;nums&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%A4%A7%E5%B0%8F%E4%B8%BA&#43;n&#43;%E7%9A%84%E6%95%B0%E7%BB%84&#43;nums%EF%BC%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%80%BC%E9%BB%98%E8%AE%A4%E9%83%BD%E4%B8%BA&#43;0&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%28n%29%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E4%B8%BA&#43;1%2C&#43;3%2C&#43;5&#43;%E7%9A%84%E6%95%B0%E7%BB%84&#43;nums&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%7B1%2C&#43;3%2C&#43;5%7D%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%A4%A7%E5%B0%8F%E4%B8%BA&#43;n&#43;%E7%9A%84%E6%95%B0%E7%BB%84&#43;nums%EF%BC%8C%E5%85%B6%E5%80%BC%E5%85%A8%E9%83%BD%E4%B8%BA&#43;2&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;nums%28n%2C&#43;2%29%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E4%BA%8C%E7%BB%B4&#43;int&#43;%E6%95%B0%E7%BB%84&#43;dp&#43;vector%26amp%3Blt%3Bvector%26amp%3Blt%3Bint%26amp%3Bgt%3B%26amp%3Bgt%3B&#43;dp%3B&#43;%2F%2F&#43;%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%A4%A7%E5%B0%8F%E4%B8%BA&#43;m&#43;%2A&#43;n&#43;%E7%9A%84%E5%B8%83%E5%B0%94%E6%95%B0%E7%BB%84&#43;dp%EF%BC%8C&#43;%2F%2F&#43;%E5%85%B6%E4%B8%AD%E7%9A%84%E5%80%BC%E9%83%BD%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BA&#43;true&#43;vector%26amp%3Blt%3Bvector%26amp%3Blt%3Bbool%26amp%3Bgt%3B%26amp%3Bgt%3B&#43;dp%28m%2C&#43;vector%26amp%3Blt%3Bbool%26amp%3Bgt%3B%28n%2C&#43;true%29%29%3B&#43;&amp;title=c%2B%2B%E8%AF%AD%E6%B3%95&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fc%2B%2B%25E8%25AF%25AD%25E6%25B3%2595%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -215,12 +237,29 @@ vector 的常用操作：">
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>在 C++ 中，<code>using namespace std;</code>指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上<code> std::</code>。</p>
+<h3 id="标准输出">标准输出</h3>
+<p>C++ 的标准输出是 <code>cout</code>，用 <code>&lt;&lt;</code> 运算符把需要打印的内容传递给 <code>cout</code>，<code>endl</code> 是换行符。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 可以串联输出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：Hello, World!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Hello&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;World!&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：abc 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span></code></pre></div><h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
 <ol>
 <li>
 <p><code>vector</code> 的初始化方法如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>, m <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个 int 型的空数组 nums
@@ -242,6 +281,8 @@ vector 的常用操作：">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 其中的值都初始化为 true
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;&gt;</span> dp(m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span>(n, true));
 </span></span></code></pre></div></li>
+</ol>
+<ol start="2">
 <li>
 <p><code>vector</code> 的常用操作：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
@@ -294,7 +335,349 @@ vector 的常用操作：">
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 </ol>
-<ul class="pa0">
+<h3 id="双链表-list">双链表 <code>list</code></h3>
+<p><code>list</code> 是 C++ 标准库中的双向链表容器。</p>
+<ol>
+<li>
+<p>初始化方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;list&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个空的双向链表 lst
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> lst;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个大小为 n 的链表 lst，链表中的值默认都为 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> lst(n);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个包含元素 1, 3, 5 的链表 lst
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> lst{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个大小为 n 的链表 lst，其中值都为 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> lst(n, <span style="color:#ae81ff">2</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><code>list</code> 的常用方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;list&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化链表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    list<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> lst{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查链表是否为空，输出：false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> lst.empty() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取链表的大小，输出：5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> lst.size() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在链表头部插入元素 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    lst.push_front(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在链表尾部插入元素 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    lst.push_back(<span style="color:#ae81ff">6</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取链表头部和尾部元素，输出：0 6
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> lst.front() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> lst.back() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除链表头部元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    lst.pop_front();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除链表尾部元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    lst.pop_back();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在链表中插入元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> lst.begin();	<span style="color:#75715e">//begin()函数用于返回指向容器或数组第一个元素的迭代器。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 移动到第三个位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    advance(it, <span style="color:#ae81ff">2</span>);		<span style="color:#75715e">//advance()函数是用于将迭代器前进或后退指定长度的距离
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 在第三个位置插入 99
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    lst.insert(it, <span style="color:#ae81ff">99</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除链表中某个元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    it <span style="color:#f92672">=</span> lst.begin();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 移动到第二个位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    advance(it, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除第二个位置的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    lst.erase(it);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 遍历链表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 输出：1 99 3 4 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> val : lst) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> val <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>一般来说，当我们想在<strong>头部增删元素</strong>时会使用<strong>双链表</strong>，它在头部增删元素的效率比 <code>vector</code> 高。</p>
+<p>通过<strong>索引访问元素</strong>，这种场景下我们会使用 <code>vector</code>。</p>
+</li>
+</ol>
+<h3 id="队列-queue">队列 <code>queue</code></h3>
+<p><code>queue</code> 基于先进先出（FIFO）的原则。队列适用于只允许从一端（队尾）添加元素、从另一端（队头）移除元素的场景。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;queue&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化一个空的整型队列 q
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> q;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在队尾添加元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    q.push(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>    q.push(<span style="color:#ae81ff">20</span>);
+</span></span><span style="display:flex;"><span>    q.push(<span style="color:#ae81ff">30</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查队列是否为空，输出：false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> q.empty() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取队列的大小，输出：3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> q.size() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取队列的队头和队尾元素，输出：10 和 30
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> q.front() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> q.back() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除队头元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    q.pop();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出新的队头元素：20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> q.front() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="栈-stack">栈 <code>stack</code></h3>
+<p>栈是一种后进先出（LIFO）的数据结构，栈适用于只允许在一端（栈顶）添加或移除元素的场景。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stack&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化一个空的整型栈 s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> s;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 向栈顶添加元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    s.push(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>    s.push(<span style="color:#ae81ff">20</span>);
+</span></span><span style="display:flex;"><span>    s.push(<span style="color:#ae81ff">30</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查栈是否为空，输出：false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> s.empty() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取栈的大小，输出：3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> s.size() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取栈顶元素，输出：30
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> s.top() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除栈顶元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    s.pop();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出新的栈顶元素：20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> s.top() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="哈希表-unordered_map">哈希表 <code>unordered_map</code></h3>
+<p><code>unordered_map</code> 提供了基于键值对（key-value）的存储，提供了常数时间复杂度的查找、插入和删除键值对的操作。</p>
+<ol>
+<li>
+<p>初始化方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_map&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个空的哈希表 map
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, string<span style="color:#f92672">&gt;</span> hashmap;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个包含一些键值对的哈希表 map
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, string<span style="color:#f92672">&gt;</span> hashmap{{<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;one&#34;</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;two&#34;</span>}, {<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;three&#34;</span>}};
+</span></span></code></pre></div></li>
+<li>
+<p><code>unordered_map</code> 的常用方法</p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p><strong>在 C++ 的哈希表中，如果你访问一个不存在的键，它会自动创建这个键，对应的值是默认构造的值</strong>。</p>
+<p>记住访问值之前要先判断键是否存在，否则可能会意外地创建新键，导致算法出错。详见下面的示例。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_map&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化哈希表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, string<span style="color:#f92672">&gt;</span> hashmap{{<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;one&#34;</span>}, {<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;two&#34;</span>}, {<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;three&#34;</span>}};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查哈希表是否为空，输出：0 (false)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap.empty() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取哈希表的大小，输出：3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap.size() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 查找指定键是否存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 注意 contains 方法是 C++20 新增的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 输出：Key 2 -&gt; two
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (hashmap.contains(<span style="color:#ae81ff">2</span>)) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Key 2 -&gt; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> hashmap[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Key 2 not found.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取指定键对应的值，若不存在会返回默认构造的值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 输出空字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 插入一个新的键值对
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    hashmap[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;four&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取新插入的值，输出：four
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除键值对
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    hashmap.erase(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查删除后键 3 是否存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 输出：Key 3 not found.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (hashmap.contains(<span style="color:#ae81ff">3</span>)) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Key 3 -&gt; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> hashmap[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Key 3 not found.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 遍历哈希表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 输出（顺序可能不同）：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 4 -&gt; four
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 2 -&gt; two
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 1 -&gt; one
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>pair: hashmap) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> pair.first <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; -&gt; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> pair.second <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 特别注意，访问不存在的键会自动创建这个键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, string<span style="color:#f92672">&gt;</span> hashmap2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 键值对的数量是 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap2.size() <span style="color:#f92672">&lt;&lt;</span> endl; <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 访问不存在的键，会自动创建这个键，对应的值是默认构造的值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap2[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;&lt;</span> endl; <span style="color:#75715e">// empty string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap2[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;&lt;</span> endl; <span style="color:#75715e">// empty string
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 现在键值对的数量是 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashmap2.size() <span style="color:#f92672">&lt;&lt;</span> endl; <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="哈希集合-unordered_set">哈希集合 <code>unordered_set</code></h3>
+<p><code>unordered_set</code> 用于存储不重复的元素，常见使用场景是<strong>对元素进行去重</strong>。</p>
+<ol>
+<li>
+<p>初始化方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_set&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个空的哈希集合 set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>unordered_set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> uset;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个包含一些元素的哈希集合 set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>unordered_set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> uset{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>};<span style="color:#960050;background-color:#1e0010">`</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>unordered_set</code> 的常用方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_set&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化哈希集合
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    unordered_set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashset{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 检查哈希集合是否为空，输出：0 (false)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashset.empty() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取哈希集合的大小，输出：4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> hashset.size() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 查找指定元素是否存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 输出：Element 3 found.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (hashset.contains(<span style="color:#ae81ff">3</span>)) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Element 3 found.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Element 3 not found.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 插入一个新的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    hashset.insert(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除一个元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    hashset.erase(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出：Element 2 not found.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (hashset.contains(<span style="color:#ae81ff">2</span>)) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Element 2 found.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Element 2 not found.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 遍历哈希集合
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 输出（顺序可能不同）：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>element : hashset) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> element <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="传值和传引用">传值和传引用</h3>
+<p>函数参数的传递方式主要有两种：<strong>传值</strong>和<strong>传引用</strong>。</p>
+<h4 id="传值pass-by-value">传值（Pass by Value）</h4>
+<p><strong>传值</strong>是指将函数参数的一个副本传递给函数，在函数内部对该副本的修改<strong>不会影响</strong>到原始数据。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">modifyValue</span>(<span style="color:#66d9ef">int</span> x) {
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;  <span style="color:#75715e">// 只修改副本，不会影响原始数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>    modifyValue(num);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出：5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After modifyValue, num = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在上述代码中，<code>num</code> 的值在调用 <code>modifyValue</code> 后并未改变，因为传入的是 <code>num</code> 的副本，函数内的修改仅影响副本。</p>
+<h4 id="传引用pass-by-reference">传引用（Pass by Reference）</h4>
+<p><strong>传引用</strong>是指将实参的地址传递给函数，函数可以直接操作原始数据。这意味着<strong>对参数的修改会直接影响原始数据</strong>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">modifyReference</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>x) {
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;  <span style="color:#75715e">// 修改原始数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>    modifyReference(num);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出：10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After modifyReference, num = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在上述代码中，<code>num</code> 的值被修改为 10，因为我们传递的是 <code>num</code> 的引用，函数内对 <code>x</code> 的修改直接影响了 <code>num</code>。</p>
+<h4 id="做算法题时的选择">做算法题时的选择</h4>
+<ul>
+<li>
+<p>如果是传递<strong>基本类型</strong>，比如 <code>int</code>、<code>bool</code> 等，用传值比较多，因为这类数据一般不需要在函数内部修改，而且复制得开销很小。</p>
+</li>
+<li>
+<p>如果是传递<strong>容器</strong>，比如 <code>vector</code>、<code>unordered_map</code> 等，用传引用比较多，因为可以避免复制数据副本的开销，而且容器一般需要在函数内部修改。</p>
+</li>
+</ul>
+<p>特别注意: <strong>递归函数的参数千万别使用传值的方式，否则每次递归都会创建一个数据副本，消耗大量的内存和时间</strong>。</p><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/algorithm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Algorithm</a>

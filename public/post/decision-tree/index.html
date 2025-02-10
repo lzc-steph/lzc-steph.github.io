@@ -48,7 +48,7 @@
   <meta itemprop="description" content="决策树是一种用于分类和回归的机器学习算法，通过树状结构进行决策。它由节点、分支和叶子节点组成，每个内部节点表示一个特征测试，分支代表测试结果，叶子节点则输出类别或数值。">
   <meta itemprop="datePublished" content="2025-01-11T10:58:08-04:00">
   <meta itemprop="dateModified" content="2025-01-11T10:58:08-04:00">
-  <meta itemprop="wordCount" content="461">
+  <meta itemprop="wordCount" content="393">
   <meta itemprop="keywords" content="Machine Learning">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Decision Tree">
@@ -170,7 +170,7 @@
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdecision-tree%2F&amp;summary=%E7%B1%BB%E5%9E%8B%EF%BC%9Aroot&#43;node%2C&#43;decision&#43;node%2C&#43;leaf&#43;node%0A%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98&#43;How&#43;to&#43;choose&#43;what&#43;feature&#43;to&#43;split&#43;on&#43;at&#43;each&#43;node%3F%0AMaximize&#43;purity&#43;%28or&#43;minimize&#43;impurity%29%0AWhen&#43;do&#43;you&#43;stop&#43;splitting%3F%0AWhen&#43;a&#43;node&#43;is&#43;100%25&#43;one&#43;class&#43;When&#43;splitting&#43;a&#43;node&#43;will&#43;result&#43;in&#43;the&#43;tree&#43;exceeding&#43;a&#43;maximum&#43;depth&#43;When&#43;improvements&#43;in&#43;purity&#43;score&#43;are&#43;below&#43;a&#43;threshold&#43;When&#43;number&#43;of&#43;examples&#43;in&#43;a&#43;node&#43;is&#43;below&#43;a&#43;threshold&#43;%E7%86%B5%E5%92%8C%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A&#43;Measuring&#43;purity%0A&amp;title=Decision&#43;Tree&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdecision-tree%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdecision-tree%2F&amp;summary=%0A%E7%86%B5%E5%92%8C%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A&#43;Measuring&#43;purity%0A%E9%80%89%E6%8B%A9%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%88%86%E8%A3%82%E7%89%B9%E5%BE%81%0A%E5%86%B3%E7%AD%96%E6%A0%91%E8%AE%AD%E7%BB%83%28%E9%80%92%E5%BD%92%29&#43;Start&#43;with&#43;all&#43;examples&#43;at&#43;the&#43;root&#43;node&#43;Calculate&#43;information&#43;gain&#43;for&#43;all&#43;possible&#43;features%2C&#43;and&#43;pick&#43;the&#43;one&#43;with&#43;the&#43;highest&#43;information&#43;gain&#43;Split&#43;dataset&#43;according&#43;to&#43;selected&#43;feature%2C&#43;and&#43;create&#43;left&#43;and&#43;right&#43;branches&#43;of&#43;the&#43;tree&#43;Keep&#43;repeating&#43;splitting&#43;process&#43;until&#43;stopping&#43;criteria&#43;is&#43;met%3A&#43;When&#43;a&#43;node&#43;is&#43;100%25&#43;one&#43;class&#43;When&#43;splitting&#43;a&#43;node&#43;will&#43;result&#43;in&#43;the&#43;tree&#43;exceeding&#43;a&#43;maximum&#43;depth&#43;Information&#43;gain&#43;from&#43;additional&#43;splits&#43;is&#43;less&#43;than&#43;threshold&#43;When&#43;number&#43;of&#43;examples&#43;in&#43;a&#43;node&#43;is&#43;below&#43;a&#43;threshold&#43;&amp;title=Decision&#43;Tree&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdecision-tree%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -188,24 +188,7 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>类型：root node, decision node, leaf node</p>
-<h3 id="要解决的问题">要解决的问题</h3>
-<ol>
-<li>
-<p><strong>How to choose what feature to split on at each node?</strong></p>
-<p>Maximize purity (or minimize impurity)</p>
-</li>
-<li>
-<p><strong>When do you stop splitting?</strong></p>
-<ul>
-<li>When a node is 100% one class</li>
-<li>When splitting a node will result in the tree exceeding a maximum depth</li>
-<li>When improvements in purity score are below a threshold</li>
-<li>When number of examples in a node is below a threshold</li>
-</ul>
-</li>
-</ol>
-<p><img src="/images/chapter1/1.png" alt="1"></p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><img src="/images/chapter1/1.png" alt="1"></p>
 <h2 id="熵和信息增益">熵和信息增益</h2>
 <p><strong>Measuring purity</strong></p>
 <p><img src="/images/chapter1/2.png" alt="2"></p>
@@ -306,8 +289,7 @@
 <li>When building a system of multiple models working together, it might be easier to string together multiple neural networks</li>
 </ul>
 </li>
-</ul>
-<ul class="pa0">
+</ul><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine Learning</a>

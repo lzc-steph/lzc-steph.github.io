@@ -50,7 +50,7 @@ void add_user(int user_id, const char *name) {
 }
 ```
 
-```c
+```c++
 // 根据用户 ID 查找用户
 struct my_struct *find_user(int user_id) {
     struct my_struct *s;
@@ -60,6 +60,8 @@ struct my_struct *find_user(int user_id) {
     return s;
 }
 ```
+
+<!--more-->
 
 ```c
 // 删除用户

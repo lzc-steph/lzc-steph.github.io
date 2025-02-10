@@ -6,21 +6,6 @@ tags: ["machine learning"]
 title: "Decision Tree"
 ---
 
-类型：root node, decision node, leaf node
-
-### 要解决的问题
-
-1. **How to choose what feature to split on at each node?**
-
-   Maximize purity (or minimize impurity)
-
-2. **When do you stop splitting?**
-
-   - When a node is 100% one class
-   - When splitting a node will result in the tree exceeding a maximum depth
-   - When improvements in purity score are below a threshold
-   - When number of examples in a node is below a threshold
-
 ![1](/images/chapter1/1.png)
 
 ## 熵和信息增益
@@ -45,6 +30,8 @@ title: "Decision Tree"
    - When splitting a node will result in the tree exceeding a maximum depth
    - Information gain from additional splits is less than threshold
    - When number of examples in a node is below a threshold
+
+<!--more-->
 
 + **取值为多个离散值**
 

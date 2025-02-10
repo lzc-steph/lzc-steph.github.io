@@ -6,28 +6,6 @@ tags: ["deep learning"]
 title: "Quantization"
 ---
 
-# 概述
-
-+ **量化**：Store the parameters of the model in lower precision
-
-- **Knowledge distillation**: Train a smaller model (student) using the original model (instructor).
-- **Pruning**: Remove connections (weights) from the model
-- **Application**: Perform linear quantization on any model using Quanto in two lines
-
-## 内容
-
-1. **Linear Quantization theory** in detail and how to code it (*per channel, per tensor, per group quantization*)
-
-2. Build your own 8-bit linear quantizer and apply it on real models.
-
-   量化与模型无关（通用）
-
-3. Learn about **quantization challenges** (weight packing, lims quantization)
-
-
-
-
-
 # 线性量化
 
 ## 量化和去量化

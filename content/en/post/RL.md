@@ -6,8 +6,6 @@ tags: ["RL"]
 title: "Reinforcement Learning"
 ---
 
-The core idea is **trial-and-error learning**: the agent takes actions, observes the outcomes, and receives **rewards** or **penalties** as feedback. Over time, the agent improves its **policy** (decision-making strategy) to maximize cumulative rewards.
-
 不用告诉该怎么做，而是给定奖励函数，什么时候做好。
 
 ### 回归
@@ -35,6 +33,8 @@ A policy is a function $\pi(s) = a$ mapping from states to actions, that tells y
   + then behave optimally after that.
   
   The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.
+
+<!--more-->
 
 ### Markov Decision Process (MDP)
 

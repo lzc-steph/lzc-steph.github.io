@@ -6,14 +6,6 @@ tags: ["Generative AI", "RL"]
 title: "VAE"
 ---
 
-### Key Concepts of VAEs
-
-1. **Latent Variables**: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables. 
-2. **Probabilistic Framework**: VAEs are based on **variational inference**, a method for approximating complex probability distributions.
-3. **Encoder-Decoder Architecture**:
-   - **Encoder**: Maps input data x*x* to a distribution over latent variables z*z*. This is often parameterized as a Gaussian distribution with mean μ*μ* and variance σ2*σ*2.
-   - **Decoder**: Maps latent variables z*z* back to the data space, generating new samples x′*x*′ that resemble the original data.
-
 
 
 ## 普通自动编码器

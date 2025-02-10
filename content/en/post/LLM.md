@@ -46,7 +46,9 @@ https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episode
 
 ### 分词化与词表映射
 
-**分词化（Tokenization）**是指将段落和句子分割成更小的分词（token）的过程。
+分词化（Tokenization）是指将段落和句子分割成更小的分词（token）的过程。
+
+<!--more-->
 
 分词化有不同的粒度分类：
 
@@ -55,6 +57,10 @@ https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episode
 - ﻿子词粒度（Subword-Level）分词化：将单词分解成更小的单位，比如词根、词缀等。
 
 每一个token都会通过预先设置好的词表，映射为一个 token id，这是token 的“身份证”，一句话最终会被表示为一个元素为token id的列表，供计算机进行下一步处理。
+
+
+
+
 
 ### 文本生成过程
 
@@ -66,33 +72,5 @@ https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episode
 
 
 
-# AI Agent
-
-## 理论
-
-### agent认知与原理分析
-
-Al Agents是基于LLM的能够自主理解、自主规划笨策、执行复杂任务的習能体。
-
-Agent的设计目的是为了处理那些简单的语言模型可能无法直接解决的问题，尤其是当这些任务涉及到多个步骤或者需要外部数据源的情况。
-
-- ﻿LLM：接受输入、思考、输出
-- ﻿人类：LLM（接受输入、思考、输出）+记忆＋工具+规划------>Agents
-
-### agent技术框架
 
 
-
-### agent策略分析与Parer解读
-
-
-
-### 单Agent系统与多Agent系统
-
-
-
-### 个性化Agent应用定制全流程详讲
-
-
-
-## 实践

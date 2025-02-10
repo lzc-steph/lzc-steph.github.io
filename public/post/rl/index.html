@@ -48,7 +48,7 @@
   <meta itemprop="description" content="强化学习专注于如何让智能体（Agent）通过与环境的交互来学习最优策略，以最大化累积奖励。它的核心思想是试错学习，智能体通过尝试不同的行动，观察结果并获得奖励或惩罚，从而逐步改进自己的行为策略。">
   <meta itemprop="datePublished" content="2025-01-02T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-01-02T11:00:59-04:00">
-  <meta itemprop="wordCount" content="214">
+  <meta itemprop="wordCount" content="181">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Reinforcement Learning">
@@ -170,7 +170,7 @@
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Frl%2F&amp;summary=The&#43;core&#43;idea&#43;is&#43;trial-and-error&#43;learning%3A&#43;the&#43;agent&#43;takes&#43;actions%2C&#43;observes&#43;the&#43;outcomes%2C&#43;and&#43;receives&#43;rewards&#43;or&#43;penalties&#43;as&#43;feedback.&#43;Over&#43;time%2C&#43;the&#43;agent&#43;improves&#43;its&#43;policy&#43;%28decision-making&#43;strategy%29&#43;to&#43;maximize&#43;cumulative&#43;rewards.%0A%E4%B8%8D%E7%94%A8%E5%91%8A%E8%AF%89%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%8C%E8%80%8C%E6%98%AF%E7%BB%99%E5%AE%9A%E5%A5%96%E5%8A%B1%E5%87%BD%E6%95%B0%EF%BC%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%81%9A%E5%A5%BD%E3%80%82%0A%E5%9B%9E%E5%BD%92&#43;%E5%A2%9E%E5%8A%A0%E6%8A%98%E7%8E%B0%E5%9B%A0%E5%AD%90%0A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96&#43;A&#43;policy&#43;is&#43;a&#43;function&#43;%24%5Cpi%28s%29&#43;%3D&#43;a%24&#43;mapping&#43;from&#43;states&#43;to&#43;actions%2C&#43;that&#43;tells&#43;you&#43;what&#43;%24action&#43;%5Cspace&#43;a%24&#43;to&#43;take&#43;in&#43;a&#43;given&#43;%24state&#43;%5Cspace&#43;s%24.%0Agoal%3A&#43;Find&#43;a&#43;%24policy&#43;%5Cspace&#43;%5Cpi%24&#43;that&#43;tells&#43;you&#43;what&#43;%24action&#43;%28a&#43;%3D&#43;%28s%29%29%24&#43;to&#43;take&#43;in&#43;every&#43;%24state&#43;%28s%29%24&#43;so&#43;as&#43;to&#43;maximize&#43;the&#43;return.%0A&amp;title=Reinforcement&#43;Learning&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Frl%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Frl%2F&amp;summary=%E4%B8%8D%E7%94%A8%E5%91%8A%E8%AF%89%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%8C%E8%80%8C%E6%98%AF%E7%BB%99%E5%AE%9A%E5%A5%96%E5%8A%B1%E5%87%BD%E6%95%B0%EF%BC%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%81%9A%E5%A5%BD%E3%80%82%0A%E5%9B%9E%E5%BD%92&#43;%E5%A2%9E%E5%8A%A0%E6%8A%98%E7%8E%B0%E5%9B%A0%E5%AD%90%0A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96&#43;A&#43;policy&#43;is&#43;a&#43;function&#43;%24%5Cpi%28s%29&#43;%3D&#43;a%24&#43;mapping&#43;from&#43;states&#43;to&#43;actions%2C&#43;that&#43;tells&#43;you&#43;what&#43;%24action&#43;%5Cspace&#43;a%24&#43;to&#43;take&#43;in&#43;a&#43;given&#43;%24state&#43;%5Cspace&#43;s%24.%0Agoal%3A&#43;Find&#43;a&#43;%24policy&#43;%5Cspace&#43;%5Cpi%24&#43;that&#43;tells&#43;you&#43;what&#43;%24action&#43;%28a&#43;%3D&#43;%28s%29%29%24&#43;to&#43;take&#43;in&#43;every&#43;%24state&#43;%28s%29%24&#43;so&#43;as&#43;to&#43;maximize&#43;the&#43;return.%0A%E7%8A%B6%E6%80%81%E5%8A%A8%E4%BD%9C%E5%80%BC%E5%87%BD%E6%95%B0%EF%BC%88Q-Function%EF%BC%89%0AQ%28s%2Ca%29&#43;%3D&#43;Return&#43;if&#43;you%3A%0Astart&#43;in&#43;state&#43;s.&#43;take&#43;action&#43;a&#43;%28once%29.&#43;then&#43;behave&#43;optimally&#43;after&#43;that.&#43;The&#43;best&#43;possible&#43;return&#43;from&#43;state&#43;s&#43;is&#43;max%24Q%28s%2C&#43;a%29%24.&#43;The&#43;best&#43;possible&#43;action&#43;in&#43;state&#43;s&#43;is&#43;the&#43;action&#43;a&#43;that&#43;gives&#43;max%24Q%28s%2C&#43;a%29%24.%0A&amp;title=Reinforcement&#43;Learning&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Frl%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -188,8 +188,7 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>The core idea is <strong>trial-and-error learning</strong>: the agent takes actions, observes the outcomes, and receives <strong>rewards</strong> or <strong>penalties</strong> as feedback. Over time, the agent improves its <strong>policy</strong> (decision-making strategy) to maximize cumulative rewards.</p>
-<p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
 <h3 id="回归">回归</h3>
 <p>增加折现因子</p>
 <p><img src="/images/RL/1.png" alt="1"></p>
@@ -290,8 +289,7 @@
 <li>Much easier to get to work in a simulation than a real robot!</li>
 <li>﻿﻿Far fewer applications than supervised and unsupervised learning.</li>
 <li>﻿﻿But &hellip; exciting research direction with potential for future applications.</li>
-</ul>
-<ul class="pa0">
+</ul><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>

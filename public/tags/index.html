@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-02-05T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-02-05T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-02-09T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-02-09T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -142,10 +142,535 @@
     <section class="ph4">
       
         <h2 class="f1">
+          <a href="/tags/cv/" class="link blue hover-black">
+            Tag: CV
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
+<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
+<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
+<ul>
+<li><strong>颜色特征</strong>：
+<ul>
+<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
+<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
+</ul>
+</li>
+<li><strong>纹理特征</strong>：
+<ul>
+<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
+<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
+</ul>
+</li>
+<li><strong>边缘与形状特征</strong>：
+<ul>
+<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
+<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
+<ul>
+<li><strong>SIFT（尺度不变特征变换）</strong>：
+<ul>
+<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
+<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
+</ul>
+</li>
+<li><strong>SURF（加速鲁棒特征）</strong>：
+<ul>
+<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
+</ul>
+</li>
+<li><strong>LBP（局部二值模式）</strong>：
+<ul>
+<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
+<ul>
+<li>手工特征依赖专家经验，泛化能力有限。</li>
+<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
+</ul>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：
+<ul>
+<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
+</ul>
+</li>
+<li><strong>经典模型</strong>：
+<ul>
+<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
+<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
+<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
+<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：
+<ul>
+<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+</ul>
+</li>
+<li><strong>优势</strong>：
+<ul>
+<li>无需局部卷积先验，直接建模长距离依赖。</li>
+<li>在ImageNet等任务上超越传统CNN。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
+<ol>
+<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
+<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
+<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
+</ol>
+<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
+<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
+<ul>
+<li>将文本表示为词汇表中单词的出现频率。</li>
+<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
+</ul>
+<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
+<ul>
+<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
+<li>用于文本分类和信息检索。</li>
+</ul>
+<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
+<ul>
+<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
+<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
+</ul>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
+<ul>
+<li>无法建模长距离上下文依赖。</li>
+<li>词向量静态，无法处理一词多义。</li>
+</ul>
+<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
+<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/llm/" class="link blue hover-black">
+            Tag: LLM
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
+<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
+<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
+<ul>
+<li><strong>颜色特征</strong>：
+<ul>
+<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
+<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
+</ul>
+</li>
+<li><strong>纹理特征</strong>：
+<ul>
+<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
+<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
+</ul>
+</li>
+<li><strong>边缘与形状特征</strong>：
+<ul>
+<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
+<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
+<ul>
+<li><strong>SIFT（尺度不变特征变换）</strong>：
+<ul>
+<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
+<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
+</ul>
+</li>
+<li><strong>SURF（加速鲁棒特征）</strong>：
+<ul>
+<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
+</ul>
+</li>
+<li><strong>LBP（局部二值模式）</strong>：
+<ul>
+<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
+<ul>
+<li>手工特征依赖专家经验，泛化能力有限。</li>
+<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
+</ul>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：
+<ul>
+<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
+</ul>
+</li>
+<li><strong>经典模型</strong>：
+<ul>
+<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
+<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
+<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
+<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：
+<ul>
+<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+</ul>
+</li>
+<li><strong>优势</strong>：
+<ul>
+<li>无需局部卷积先验，直接建模长距离依赖。</li>
+<li>在ImageNet等任务上超越传统CNN。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
+<ol>
+<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
+<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
+<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
+</ol>
+<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
+<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
+<ul>
+<li>将文本表示为词汇表中单词的出现频率。</li>
+<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
+</ul>
+<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
+<ul>
+<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
+<li>用于文本分类和信息检索。</li>
+</ul>
+<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
+<ul>
+<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
+<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
+</ul>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
+<ul>
+<li>无法建模长距离上下文依赖。</li>
+<li>词向量静态，无法处理一词多义。</li>
+</ul>
+<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
+<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 8, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/ai-agent/" class="link black dim">
+        AI Agent
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1-ai-agent认知与原理分析">1. AI agent认知与原理分析</h1>
+<h1 id="2-agent技术框架">2. agent技术框架</h1>
+<h1 id="3-agent策略分析与parer解读">3. agent策略分析与Parer解读</h1>
+<h1 id="4-单agent系统与多agent系统">4. 单Agent系统与多Agent系统</h1>
+<h1 id="5-个性社agent应用定制全流程详讲">5. 个性社Agent应用定制全流程详讲</h1>
+    </div>
+  <a href="/post/ai-agent/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/nlp/" class="link blue hover-black">
+            Tag: NLP
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
+<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
+<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
+<ul>
+<li><strong>颜色特征</strong>：
+<ul>
+<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
+<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
+</ul>
+</li>
+<li><strong>纹理特征</strong>：
+<ul>
+<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
+<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
+</ul>
+</li>
+<li><strong>边缘与形状特征</strong>：
+<ul>
+<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
+<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
+<ul>
+<li><strong>SIFT（尺度不变特征变换）</strong>：
+<ul>
+<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
+<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
+</ul>
+</li>
+<li><strong>SURF（加速鲁棒特征）</strong>：
+<ul>
+<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
+</ul>
+</li>
+<li><strong>LBP（局部二值模式）</strong>：
+<ul>
+<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
+<ul>
+<li>手工特征依赖专家经验，泛化能力有限。</li>
+<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
+</ul>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：
+<ul>
+<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
+</ul>
+</li>
+<li><strong>经典模型</strong>：
+<ul>
+<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
+<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
+<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
+<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：
+<ul>
+<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+</ul>
+</li>
+<li><strong>优势</strong>：
+<ul>
+<li>无需局部卷积先验，直接建模长距离依赖。</li>
+<li>在ImageNet等任务上超越传统CNN。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
+<ol>
+<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
+<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
+<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
+</ol>
+<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
+<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
+<ul>
+<li>将文本表示为词汇表中单词的出现频率。</li>
+<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
+</ul>
+<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
+<ul>
+<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
+<li>用于文本分类和信息检索。</li>
+</ul>
+<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
+<ul>
+<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
+<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
+</ul>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
+<ul>
+<li>无法建模长距离上下文依赖。</li>
+<li>词向量静态，无法处理一词多义。</li>
+</ul>
+<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
+<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/algorithm/" class="link blue hover-black">
             Tag: Algorithm
           </a>
         </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 6, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="link black dim">
+        数据结构实现
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="数组链表">数组链表</h1>
+<h2 id="1-动态数组">1. 动态数组</h2>
+<p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装，让我们使用起来更方便而已</strong>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 创建动态数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在末尾追加元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    arr.add(i);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在中间插入元素，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 在索引 2 的位置插入元素 666
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.add(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">666</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在头部插入元素，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.add(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除末尾元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.remove(arr.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除中间元素，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除索引 2 的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.remove(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据索引查询元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> arr.get(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据索引修改元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.set(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据元素值查找索引，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> arr.indexOf(<span style="color:#ae81ff">666</span>);
+</span></span></code></pre></div><h2 id="2-链表">2. 链表</h2>
+<p>在实际的编程语言中，我们使用的链表节点定义如下：</p>
+    </div>
+  <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
@@ -159,12 +684,29 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
+      <p>在 C++ 中，<code>using namespace std;</code>指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上<code> std::</code>。</p>
+<h3 id="标准输出">标准输出</h3>
+<p>C++ 的标准输出是 <code>cout</code>，用 <code>&lt;&lt;</code> 运算符把需要打印的内容传递给 <code>cout</code>，<code>endl</code> 是换行符。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 可以串联输出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：Hello, World!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Hello&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;World!&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：abc 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span></code></pre></div><h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
 <ol>
 <li>
 <p><code>vector</code> 的初始化方法如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>, m <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个 int 型的空数组 nums

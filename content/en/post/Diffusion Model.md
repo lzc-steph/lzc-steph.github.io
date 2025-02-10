@@ -40,6 +40,8 @@ title: "Diffusion Model"
 
 ![3](/images/DM/3.png)
 
+<!--more-->
+
 **Noise Predicter**: 预测noise长什么样
 
 + 如何训练Noise Predicter？

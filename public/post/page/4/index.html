@@ -47,7 +47,7 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-02-05T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-02-09T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-12-27T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
@@ -153,104 +153,52 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 4, 2025
+        January 20, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/ga/" class="link black dim">
-        Generative AI
+      <a href="/post/llm/" class="link black dim">
+        LLM
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="chatgpt">ChatGPT</h1>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ba53c8d8-3a8d-4bb9-a20f-5cd7d295a29f/%E6%88%AA%E5%B1%8F2025-01-05_23.37.32.png" alt="截屏2025-01-05 23.37.32.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/740b097c-4c79-42af-bc9b-5817abdc3521/%E6%88%AA%E5%B1%8F2025-01-04_00.25.09.png" alt="截屏2025-01-04 00.25.09.png"></p>
+      <p><a href="https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&amp;vd_source=80aea28698fb0235b45699fc7e6fcdac&amp;p=2">https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&vd_source=80aea28698fb0235b45699fc7e6fcdac&p=2</a></p>
+<h1 id="概述">概述</h1>
+<h2 id="大模型的演变">大模型的演变</h2>
+<p>大模型的训练整体上分为三个阶段：</p>
 <ol>
 <li>
-<p>ChatGPT 真正做的事：文字接龙</p>
-<p><strong>Autoregressive Generation</strong>：逐个生成</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a140588c-153b-4bf3-812b-794d09b256c2/%E6%88%AA%E5%B1%8F2025-01-04_00.18.34.png" alt="截屏2025-01-04 00.18.34.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/10249f01-191e-4450-9387-201ee36c281d/247f57f5-a4f8-4859-8ce8-9664487924cd.png" alt="截屏2025-01-04 00.27.44.png"></p>
+<p><strong>预训练</strong></p>
+<p>在这个阶段它会学习各种不同种类的语料，学习到语言的统计规律和一般知识。</p>
+<p>但是大模型在这个阶段只是学会了补全句子，却没有学会怎么样去领会人类的意图（类似成语接龙）。</p>
 </li>
 <li>
-<p><strong>token</strong></p>
-<p>文字接龙时可以选择的符号</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e0bc078c-68ba-4504-b3dc-2bee0739d6fa/%E6%88%AA%E5%B1%8F2025-01-04_00.29.01.png" alt="截屏2025-01-04 00.29.01.png"></p>
+<p><strong>SFT（监督微调）</strong></p>
+<p>在这个阶段大模型可以学习各种人类的对话语料，甚至是非常专业的垂直领域知识。</p>
+<p>但是模型的回答有时候可能并不符合人类的偏好，它可能会输出一些涉黄、涉政、涉暴或者种族歧视等言论。</p>
 </li>
 <li>
-<p>每次回答都随机（掷骰子）</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b30b483b-47dd-4cfd-9a2d-bcd030b1b169/%E6%88%AA%E5%B1%8F2025-01-04_11.07.26.png" alt="截屏2025-01-04 11.07.26.png"></p>
+<p><strong>RLHF（基于人类反馈的强化学习）</strong></p>
+<p>在这个阶段大模型会针对同一问题进行多次回答，人类会对这些回答打分。</p>
+<p>大模型会在此阶段学习到如何输出分数最高的回答，使得回答更符合人类的偏好。</p>
 </li>
-<li>
-<p>进化关键：<strong>自督导式学习(预训练) ➡️ 督导式学习(微调) ➡️ 强化学习</strong></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b2ca8f91-7703-4339-ae03-089a67c3519f/%E6%88%AA%E5%B1%8F2025-01-04_23.52.07.png" alt="截屏2025-01-04 23.52.07.png"></p>
-<p>有预训练，督导式学习不用大量资料。</p>
-<p>强化学习提供回馈。督导式学习提供完整资料，强化学习给反馈（如两次答案，有没有比上次更好）</p>
-<p>【注】：模型要有一定程度的能力才适合进入强化学习。</p>
-<p><strong>Alignment(对齐)</strong>：督导式学习 + 强化学习</p>
-</li>
-<li>
-<p><strong>强化学习</strong></p>
+</ol>
+<h2 id="分类">分类</h2>
 <ol>
 <li>
-<p>学习reward model</p>
-<p>reward model：模仿人类的偏好</p>
+<p>大语言模型（LLM）</p>
+<p>专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。</p>
 </li>
 <li>
-<p>用reward model进行学习</p>
-<p>模型只需要向reward model学习</p>
+<p>多模态模型</p>
+<p>多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，在这些模态之间建立关联和交互。</p>
 </li>
 </ol>
-</li>
-<li>
-<p><strong>GPT-4: 可以看图+引导</strong></p>
-</li>
-<li>
-<p><strong>如何激发gpt的能力？</strong></p>
-<ol>
-<li>把需求说清楚</li>
-<li>提供咨询</li>
-<li>提供范例</li>
-<li>鼓励gpt想一想</li>
-<li>训练generator</li>
-<li>上传资料</li>
-<li>使用其它工具</li>
-<li>大任务拆解成小任务</li>
-<li>gpt会反省</li>
-</ol>
-</li>
-<li>
-<p>可以做什么？</p>
-<ol>
-<li>prompt engineering</li>
-<li>训练自己的模型（如调整LLaMA参数），困难</li>
-</ol>
-</li>
-</ol>
-<h1 id="大型语言模型训练过程">大型语言模型训练过程</h1>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/7e6521a3-d2cf-42bc-8550-aacc3027b83f/%E6%88%AA%E5%B1%8F2025-01-06_00.37.19.png" alt="截屏2025-01-06 00.37.19.png"></p>
-<ol>
-<li>
-<p>自我学习阶段</p>
-<ul>
-<li>
-<p>调整超参数</p>
-</li>
-<li>
-<p>训练成果，但测试失败：找到多样数据</p>
-</li>
-<li>
-<p>找到合适的初始参数：随机/ 先验知识</p>
-<p>先验知识：爬网络资料+资料清理(训练资料品质分类器/除重)</p>
-</li>
-</ul>
-</li>
-<li>
-<p>人类指导阶段</p>
-</li>
-</ol>
+<h2 id="工作流程">工作流程</h2>
+<h3 id="分词化与词表映射">分词化与词表映射</h3>
+<p>分词化（Tokenization）是指将段落和句子分割成更小的分词（token）的过程。</p>
     </div>
-  <a href="/post/ga/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/llm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -259,26 +207,59 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 2, 2025
+        January 20, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/rl/" class="link black dim">
-        Reinforcement Learning
+      <a href="/post/quantization/" class="link black dim">
+        Quantization
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>The core idea is <strong>trial-and-error learning</strong>: the agent takes actions, observes the outcomes, and receives <strong>rewards</strong> or <strong>penalties</strong> as feedback. Over time, the agent improves its <strong>policy</strong> (decision-making strategy) to maximize cumulative rewards.</p>
-<p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
-<h3 id="回归">回归</h3>
-<p>增加折现因子</p>
-<p><img src="/images/RL/1.png" alt="1"></p>
-<p><img src="/images/RL/2.png" alt="2"></p>
-<h3 id="强化学习的形式化">强化学习的形式化</h3>
-<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
-<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
+      <h1 id="线性量化">线性量化</h1>
+<h2 id="量化和去量化">量化和去量化</h2>
+<p>量化指将一个大集合映射到一个较小值集合的过程。</p>
+<p><img src="/images/Quanti/1.png" alt="1"></p>
+<h3 id="可以量化的内容">可以量化的内容</h3>
+<ul>
+<li><strong>The weights</strong>: Neural network parameters</li>
+<li>﻿﻿<strong>The activations</strong>: Values that propagate through the layers of the neural network</li>
+</ul>
+<p>If you quantize the NN after it has been trained, you are doing <strong>post training quantization (PTQ)</strong></p>
+<h3 id="优点">优点</h3>
+<ol>
+<li>
+<p>更小的模型</p>
+</li>
+<li>
+<p>速度更快</p>
+<ul>
+<li>内存带宽</li>
+</ul>
+<ul>
+<li>
+<p>﻿﻿Faster operations</p>
+<ul>
+<li>
+<p>﻿﻿GEMM: General Matrix Multiply (matrix to matrix multiplication)</p>
+</li>
+<li>
+<p>﻿﻿GEMV: General Matrix Vector
+Multiplication (matrix to vector multiplication)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="线性量化理论">线性量化理论</h3>
+<ul>
+<li>
+<p>参数</p>
+<p>Scale：s（e.g. in FP32）</p>
+<p>Zero point：z（e.g. INT8）</p>
     </div>
-  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/quantization/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -287,30 +268,42 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        December 29, 2024
+        January 17, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
+      <a href="/post/diffusion-model/" class="link black dim">
+        Diffusion Model
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
-<ol>
-<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
-<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
-<li><strong>Encoder-Decoder Architecture</strong>:
+      <h1 id="概述">概述</h1>
+<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
+<p><img src="/images/DM/19.png" alt="19"></p>
+<p>进一步：输入加入了文字表述</p>
+<p>目标：产生的图片与真实图片越接近越好</p>
+<h2 id="原理">原理</h2>
 <ul>
-<li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
-<li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
-</ul>
+<li>
+<p><strong>Reverse Process</strong>（多次Denoise）</p>
+<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
 </li>
-</ol>
-<h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
+<li>
+<p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+</li>
+</ul>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
     </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -325,9 +318,6 @@
         <a href="/post/page/3/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/" aria-label="Page 1" class="page-link" role="button">1</a>
-      </li>
-      <li class="page-item">
         <a href="/post/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
       <li class="page-item">
@@ -340,10 +330,13 @@
         <a href="/post/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
       </li>
       <li class="page-item">
+        <a href="/post/page/6/" aria-label="Page 6" class="page-link" role="button">6</a>
+      </li>
+      <li class="page-item">
         <a href="/post/page/5/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/5/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/6/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>
