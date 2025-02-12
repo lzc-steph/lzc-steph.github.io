@@ -50,7 +50,7 @@
   <meta itemprop="description" content="MLLM是一种结合了多种模态数据（如文本、图像、音频等）的大型语言模型，通过深度学习算法，将不同模态的数据融合处理，从而实现对复杂信息的综合理解和创造。">
   <meta itemprop="datePublished" content="2025-02-09T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-09T11:00:59-04:00">
-  <meta itemprop="wordCount" content="209">
+  <meta itemprop="wordCount" content="215">
   <meta itemprop="keywords" content="LLM,NLP,CV">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="MLLM">
@@ -336,7 +336,25 @@ $$<ul>
 <p> </p>
 <p> </p>
 <h1 id="2多模态大模型串讲">2多模态大模型串讲</h1>
-<p><strong>对齐align</strong>：</p><ul class="pa0">
+<ul>
+<li>
+<p><strong>对齐align</strong>：将不同模态的向量，尽量聚合为同一个向量/尽量靠近。</p>
+</li>
+<li>
+<p><strong>迁移学习</strong>：在一个大的数据集上，跑自己的模型，得到source model；之后再在自己的数据上微调。</p>
+</li>
+<li>
+<p><strong>zero-shot</strong>：融合不同类别的特征，加上自己的<strong>描述</strong>，让模型去推理出之前没见过的类。</p>
+</li>
+</ul>
+<p> </p>
+<h2 id="clip">CLIP</h2>
+<ul>
+<li>
+<p>clip的核心思想：</p>
+<p>通过<strong>海量</strong>的<strong>弱监督文本</strong>对通过<strong>对比学习</strong>，将图片和文本通过各自的<strong>预训练模型</strong>获得的编码向量在向量空间上<strong>对齐</strong>。</p>
+</li>
+</ul><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/llm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">LLM</a>
@@ -372,6 +390,22 @@ $$<ul>
 	    
 	     <li  class="mb2">
           <a href="/post/object-detection/">目标检测</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm/">LLM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/diffusion-model/">Diffusion Model</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generativeai/">Generative AI</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/vae/">VAE</a>
         </li>
 	    
     </ul>

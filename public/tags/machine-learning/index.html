@@ -153,26 +153,27 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>类型：root node, decision node, leaf node</p>
-<h3 id="要解决的问题">要解决的问题</h3>
+      <p><img src="/images/chapter1/1.png" alt="1"></p>
+<h2 id="熵和信息增益">熵和信息增益</h2>
+<p><strong>Measuring purity</strong></p>
+<p><img src="/images/chapter1/2.png" alt="2"></p>
+<p><img src="/images/chapter1/3.png" alt="3"></p>
+<p>选择信息增益更大的分裂特征</p>
+<p><img src="/images/chapter1/4.png" alt="4"></p>
+<h2 id="决策树训练递归">决策树训练(递归)</h2>
 <ol>
-<li>
-<p><strong>How to choose what feature to split on at each node?</strong></p>
-<p>Maximize purity (or minimize impurity)</p>
-</li>
-<li>
-<p><strong>When do you stop splitting?</strong></p>
+<li>Start with all examples at the root node</li>
+<li>Calculate information gain for all possible features, and pick the one with the highest information gain</li>
+<li>Split dataset according to selected feature, and create left and right branches of the tree</li>
+<li>Keep repeating splitting process until stopping criteria is met:
 <ul>
 <li>When a node is 100% one class</li>
 <li>When splitting a node will result in the tree exceeding a maximum depth</li>
-<li>When improvements in purity score are below a threshold</li>
+<li>Information gain from additional splits is less than threshold</li>
 <li>When number of examples in a node is below a threshold</li>
 </ul>
 </li>
 </ol>
-<p><img src="/images/chapter1/1.png" alt="1"></p>
-<h2 id="熵和信息增益">熵和信息增益</h2>
-<p><strong>Measuring purity</strong></p>
     </div>
   <a href="/post/decision-tree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

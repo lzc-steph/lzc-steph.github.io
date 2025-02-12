@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-02-09T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-02-09T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-02-12T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-02-12T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -142,482 +142,62 @@
     <section class="ph4">
       
         <h2 class="f1">
-          <a href="/tags/cv/" class="link blue hover-black">
-            Tag: CV
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
-<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
-<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
-<ul>
-<li><strong>颜色特征</strong>：
-<ul>
-<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
-<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
-</ul>
-</li>
-<li><strong>纹理特征</strong>：
-<ul>
-<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
-<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
-</ul>
-</li>
-<li><strong>边缘与形状特征</strong>：
-<ul>
-<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
-<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
-<ul>
-<li><strong>SIFT（尺度不变特征变换）</strong>：
-<ul>
-<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
-<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
-</ul>
-</li>
-<li><strong>SURF（加速鲁棒特征）</strong>：
-<ul>
-<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
-</ul>
-</li>
-<li><strong>LBP（局部二值模式）</strong>：
-<ul>
-<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
-<ul>
-<li>手工特征依赖专家经验，泛化能力有限。</li>
-<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
-</ul>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
-</ul>
-</li>
-<li><strong>经典模型</strong>：
-<ul>
-<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
-<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
-<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
-<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-</ul>
-</li>
-<li><strong>优势</strong>：
-<ul>
-<li>无需局部卷积先验，直接建模长距离依赖。</li>
-<li>在ImageNet等任务上超越传统CNN。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
-<ol>
-<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
-<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
-<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
-</ol>
-<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
-<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
-<ul>
-<li>将文本表示为词汇表中单词的出现频率。</li>
-<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
-</ul>
-<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
-<ul>
-<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
-<li>用于文本分类和信息检索。</li>
-</ul>
-<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
-<ul>
-<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
-<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
-</ul>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
-<ul>
-<li>无法建模长距离上下文依赖。</li>
-<li>词向量静态，无法处理一词多义。</li>
-</ul>
-<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
-<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/llm/" class="link blue hover-black">
-            Tag: LLM
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
-<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
-<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
-<ul>
-<li><strong>颜色特征</strong>：
-<ul>
-<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
-<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
-</ul>
-</li>
-<li><strong>纹理特征</strong>：
-<ul>
-<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
-<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
-</ul>
-</li>
-<li><strong>边缘与形状特征</strong>：
-<ul>
-<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
-<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
-<ul>
-<li><strong>SIFT（尺度不变特征变换）</strong>：
-<ul>
-<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
-<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
-</ul>
-</li>
-<li><strong>SURF（加速鲁棒特征）</strong>：
-<ul>
-<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
-</ul>
-</li>
-<li><strong>LBP（局部二值模式）</strong>：
-<ul>
-<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
-<ul>
-<li>手工特征依赖专家经验，泛化能力有限。</li>
-<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
-</ul>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
-</ul>
-</li>
-<li><strong>经典模型</strong>：
-<ul>
-<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
-<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
-<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
-<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-</ul>
-</li>
-<li><strong>优势</strong>：
-<ul>
-<li>无需局部卷积先验，直接建模长距离依赖。</li>
-<li>在ImageNet等任务上超越传统CNN。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
-<ol>
-<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
-<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
-<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
-</ol>
-<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
-<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
-<ul>
-<li>将文本表示为词汇表中单词的出现频率。</li>
-<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
-</ul>
-<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
-<ul>
-<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
-<li>用于文本分类和信息检索。</li>
-</ul>
-<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
-<ul>
-<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
-<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
-</ul>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
-<ul>
-<li>无法建模长距离上下文依赖。</li>
-<li>词向量静态，无法处理一词多义。</li>
-</ul>
-<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
-<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 8, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/ai-agent/" class="link black dim">
-        AI Agent
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1-ai-agent认知与原理分析">1. AI agent认知与原理分析</h1>
-<h1 id="2-agent技术框架">2. agent技术框架</h1>
-<h1 id="3-agent策略分析与parer解读">3. agent策略分析与Parer解读</h1>
-<h1 id="4-单agent系统与多agent系统">4. 单Agent系统与多Agent系统</h1>
-<h1 id="5-个性社agent应用定制全流程详讲">5. 个性社Agent应用定制全流程详讲</h1>
-    </div>
-  <a href="/post/ai-agent/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/nlp/" class="link blue hover-black">
-            Tag: NLP
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
-<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
-<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
-<ul>
-<li><strong>颜色特征</strong>：
-<ul>
-<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
-<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
-</ul>
-</li>
-<li><strong>纹理特征</strong>：
-<ul>
-<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
-<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
-</ul>
-</li>
-<li><strong>边缘与形状特征</strong>：
-<ul>
-<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
-<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
-<ul>
-<li><strong>SIFT（尺度不变特征变换）</strong>：
-<ul>
-<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
-<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
-</ul>
-</li>
-<li><strong>SURF（加速鲁棒特征）</strong>：
-<ul>
-<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
-</ul>
-</li>
-<li><strong>LBP（局部二值模式）</strong>：
-<ul>
-<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
-<ul>
-<li>手工特征依赖专家经验，泛化能力有限。</li>
-<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
-</ul>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
-</ul>
-</li>
-<li><strong>经典模型</strong>：
-<ul>
-<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
-<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
-<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
-<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-</ul>
-</li>
-<li><strong>优势</strong>：
-<ul>
-<li>无需局部卷积先验，直接建模长距离依赖。</li>
-<li>在ImageNet等任务上超越传统CNN。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
-<ol>
-<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
-<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
-<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
-</ol>
-<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
-<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
-<ul>
-<li>将文本表示为词汇表中单词的出现频率。</li>
-<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
-</ul>
-<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
-<ul>
-<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
-<li>用于文本分类和信息检索。</li>
-</ul>
-<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
-<ul>
-<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
-<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
-</ul>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
-<ul>
-<li>无法建模长距离上下文依赖。</li>
-<li>词向量静态，无法处理一词多义。</li>
-</ul>
-<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
-<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
           <a href="/tags/algorithm/" class="link blue hover-black">
             Tag: Algorithm
           </a>
         </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 12, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/btree/" class="link black dim">
+        二叉树
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="二叉树基础及遍历">二叉树基础及遍历</h1>
+<h2 id="二叉树的实现方式">二叉树的实现方式</h2>
+<ol>
+<li>
+<p>最常见的二叉树就是类似链表那样的链式存储结构，每个二叉树节点有指向左右子节点的指针</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TreeNode</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> left;
+</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> right;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 构造函数，参数是int x， :后面的部分是初始化列表，{} 是构造函数的函数体为空，即不需要额外的操作。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    TreeNode(<span style="color:#66d9ef">int</span> x) <span style="color:#f92672">:</span> val(x), left(<span style="color:#66d9ef">nullptr</span>), right(<span style="color:#66d9ef">nullptr</span>) {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 你可以这样构建一棵二叉树：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>TreeNode<span style="color:#f92672">*</span> root <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>left<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">6</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 构建出来的二叉树是这样的：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//    / \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   2   3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  /   / \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 4   5   6
+</span></span></span></code></pre></div><h5 id="public用法总结"><code>public</code>用法总结：</h5>
+<ol>
+<li><code>public</code> 关键字用于指定类成员的访问权限，允许外部代码直接访问这些成员。</li>
+<li>如果不加 <code>public</code>，这些成员默认是 <code>private</code> 的，外部代码无法直接访问它们。</li>
+</ol>
+<p>在 <code>TreeNode</code> 的构造函数中，初始化列表的作用是：</p>
+    </div>
+  <a href="/post/btree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
@@ -633,7 +213,7 @@
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <h1 id="数组链表">数组链表</h1>
 <h2 id="1-动态数组">1. 动态数组</h2>
-<p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装，让我们使用起来更方便而已</strong>。</p>
+<p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装</strong>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 创建动态数组
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
@@ -684,7 +264,11 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在 C++ 中，<code>using namespace std;</code>指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上<code> std::</code>。</p>
+      <p>万能开头：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include&lt;bits/stdc++.h&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span></code></pre></div><p>在 C++ 中，<code>using namespace std;</code>指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上<code> std::</code>。</p>
+<p> </p>
 <h3 id="标准输出">标准输出</h3>
 <p>C++ 的标准输出是 <code>cout</code>，用 <code>&lt;&lt;</code> 运算符把需要打印的内容传递给 <code>cout</code>，<code>endl</code> 是换行符。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
@@ -700,7 +284,8 @@
 </span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：abc 10
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-</span></span></code></pre></div><h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
+</span></span></code></pre></div><p> </p>
+<h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
 <ol>
 <li>
 <p><code>vector</code> 的初始化方法如下：</p>
@@ -728,8 +313,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 其中的值都初始化为 true
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;&gt;</span> dp(m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span>(n, true));
 </span></span></code></pre></div></li>
-<li>
-<p><code>vector</code> 的常用操作：</p>
+</ol>
     </div>
   <a href="/post/c&#43;&#43;%E8%AF%AD%E6%B3%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -765,6 +349,7 @@
 </ul>
 </li>
 </ul>
+<p> </p>
 <h1 id="一排序">一、排序</h1>
 <h3 id="1-快速排序">1. 快速排序</h3>
 <ol>
@@ -784,6 +369,7 @@
 </li>
 </ol>
 <h3 id="2-归并排序">2. 归并排序</h3>
+<p> </p>
 <h1 id="二二分">二、二分</h1>
     </div>
   <a href="/post/%E6%8E%92%E5%BA%8F/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
@@ -833,37 +419,15 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">strcpy</span>(s<span style="color:#f92672">-&gt;</span>name, name);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 根据用户 ID 查找用户
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span><span style="color:#a6e22e">find_user</span>(<span style="color:#66d9ef">int</span> user_id) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>s;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 根据用户 ID 查找用户
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">my_struct</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">find_user</span>(<span style="color:#66d9ef">int</span> user_id) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">my_struct</span> <span style="color:#f92672">*</span>s;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 查找元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">HASH_FIND_INT</span>(users, <span style="color:#f92672">&amp;</span>user_id, s);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    HASH_FIND_INT(users, <span style="color:#f92672">&amp;</span>user_id, s);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> s;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 删除用户
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete_user</span>(<span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>user) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">HASH_DEL</span>(users, user);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">free</span>(user);  <span style="color:#75715e">// 释放内存
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 打印哈希表中的所有用户
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_users</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>s;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 遍历哈希表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (s <span style="color:#f92672">=</span> users; s <span style="color:#f92672">!=</span> NULL; s <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>)(s<span style="color:#f92672">-&gt;</span>hh.next)) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;user id %d: name %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, s<span style="color:#f92672">-&gt;</span>id, s<span style="color:#f92672">-&gt;</span>name);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="3-关键点">3. 关键点</h3>
-<ul>
-<li><strong><code>UT_hash_handle hh</code></strong>：必须包含在自定义结构体中，用于哈希表管理。</li>
-<li><strong><code>HASH_ADD_INT</code></strong>：将元素添加到哈希表，<code>INT</code> 表示键值为整数类型。</li>
-<li><strong><code>HASH_FIND_INT</code></strong>：根据键值查找元素。</li>
-<li><strong><code>HASH_DEL</code></strong>：从哈希表中删除元素。</li>
-<li><strong>遍历哈希表</strong>：通过 <code>hh.next</code> 指针遍历哈希表中的元素。</li>
-</ul>
+</span></span></code></pre></div>
     </div>
   <a href="/post/hash/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -887,50 +451,65 @@
 <p><strong>题目描述</strong>：给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
 <p><strong>方法</strong>：找数 <code>x</code>，寻找数组中是否存在 <code>target - x</code>。</p>
 <p>使用哈希表，可以将寻找 <code>target - x</code>的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code>插入到哈希表中，即可保证不会让 <code>x</code>和自己匹配。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hashTable {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> key;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> val;
-</span></span><span style="display:flex;"><span>    UT_hash_handle hh;
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> hashtable;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> <span style="color:#a6e22e">find</span>(<span style="color:#66d9ef">int</span> ikey) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> tmp;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HASH_FIND_INT</span>(hashtable, <span style="color:#f92672">&amp;</span>ikey, tmp);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tmp;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">int</span> ikey, <span style="color:#66d9ef">int</span> ival) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> it <span style="color:#f92672">=</span> <span style="color:#a6e22e">find</span>(ikey);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">==</span> NULL) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> hashTable));
-</span></span><span style="display:flex;"><span>        tmp<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">=</span> ikey, tmp<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">=</span> ival;
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">HASH_ADD_INT</span>(hashtable, key, tmp);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        it<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">=</span> ival;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">twoSum</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> nums, <span style="color:#66d9ef">int</span> numsSize, <span style="color:#66d9ef">int</span> target, <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> returnSize) {
-</span></span><span style="display:flex;"><span>    hashtable <span style="color:#f92672">=</span> NULL;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numsSize; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> it <span style="color:#f92672">=</span> <span style="color:#a6e22e">find</span>(target <span style="color:#f92672">-</span> nums[i]);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> NULL) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);
-</span></span><span style="display:flex;"><span>            ret[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> it<span style="color:#f92672">-&gt;</span>val, ret[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">*</span>returnSize <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> ret;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> twoSum(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> target) {
+</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashtable;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> hashtable.find(target <span style="color:#f92672">-</span> nums[i]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> hashtable.end()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> {it<span style="color:#f92672">-&gt;</span>second, i};
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            hashtable[nums[i]] <span style="color:#f92672">=</span> i;
 </span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">insert</span>(nums[i], i);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>returnSize <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol>
 <li>
-<h3 id="最大子数组和">最大子数组和</h3>
-<p>给你一个整数数组 <code>nums</code> ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p><strong><code>find</code> 方法</strong></p>
+<p><code>find</code> 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：</p>
+<ul>
+<li>如果哈希表中存在该键，则返回一个指向该键值对的迭代器。</li>
+<li>如果哈希表中不存在该键，则返回 <code>hashtable.end()</code>，表示未找到。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>auto it</code></strong></p>
+<ul>
+<li>
+<p><code>auto</code> 是 C++11 引入的关键字，用于自动推导变量的类型。</p>
+<p>在这里，<code>it</code> 的类型会被推导为哈希表迭代器的类型（例如 <code>std::unordered_map&lt;int, int&gt;::iterator</code>）。</p>
+</li>
+<li>
+<p><code>it</code> 是一个<strong>迭代器</strong>，指向哈希表中找到的键值对（如果找到的话）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>return {it-&gt;second, i};</code></strong></p>
+</li>
+</ol>
+<p>C++11 引入的一种语法特性，称为<strong>初始化列表</strong>（initializer list）。它用于<strong>返回一个包含多个值的对象</strong>。</p>
+<ol>
+<li>
+<p><strong><code>it-&gt;second</code></strong> 表示迭代器指向的键值对中的值（value）。</p>
+<p>在哈希表中，键值对的形式是 <code>{key, value}</code>，<code>it-&gt;second</code> 就是 <code>value</code>。</p>
+</li>
+<li>
+<p>**<code>{it-&gt;second, i}</code>**是一个初始化列表，用于构造一个包含两个值的对象。</p>
+</li>
+<li>
+<p><strong><code>return</code></strong></p>
+<ul>
+<li>返回单个值时，直接写值。</li>
+<li>返回容器或对象时，可以使用 <code>{}</code> 构造返回值。</li>
+<li>返回空容器时，使用 <code>{}</code>。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
     </div>
   <a href="/post/algrithom/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -938,369 +517,234 @@
         
       
         <h2 class="f1">
-          <a href="/tags/generative-ai/" class="link blue hover-black">
-            Tag: Generative AI
+          <a href="/tags/cv/" class="link blue hover-black">
+            Tag: CV
           </a>
         </h2>
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 22, 2025
+        February 9, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/world-model/" class="link black dim">
-        World Models
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="sem2">SEM2</h1>
-<p><a href="https://arxiv.org/abs/2210.04017">https://arxiv.org/abs/2210.04017</a></p>
-<h2 id="题目摘要解读">题目＆摘要解读</h2>
-<h2 id="背景相关工作">背景&amp;相关工作</h2>
-<h2 id="方法">﻿﻿方法</h2>
-<h2 id="实验">实验</h2>
-<h2 id="回顾总结思考">回顾、总结、思考</h2>
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
+<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
+<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
     </div>
-  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 17, 2025
+        January 31, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/diffusion-model/" class="link black dim">
-        Diffusion Model
+      <a href="/post/object-detection/" class="link black dim">
+        目标检测
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="概述">概述</h1>
-<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
-<p><img src="/images/DM/19.png" alt="19"></p>
-<p>进一步：输入加入了文字表述</p>
-<p>目标：产生的图片与真实图片越接近越好</p>
-<h2 id="原理">原理</h2>
+      <p><img src="/images/CV/19.png" alt="19"></p>
 <ul>
 <li>
-<p><strong>Reverse Process</strong>（多次Denoise）</p>
-<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
-</li>
-<li>
-<p><strong>Forward Process</strong>:</p>
-<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+<p>技巧</p>
+<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
 </li>
 </ul>
-<p><img src="/images/DM/1.png" alt="1"></p>
-<ul>
-<li>
-<p>Denoise输入：图片 + 噪音程度</p>
-<p><img src="/images/DM/2.png" alt="2"></p>
-</li>
-</ul>
-<h3 id="denoise-model内部">Denoise Model内部</h3>
-<p><img src="/images/DM/3.png" alt="3"></p>
-<p><strong>Noise Predicter</strong>: 预测noise长什么样</p>
-<ul>
-<li>
-<p>如何训练Noise Predicter？</p>
-<ul>
-<li>
-<p>人为创造（加杂讯/Forward Process）</p>
-<p><img src="/images/DM/4.png" alt="4"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="text-to-image"><strong>Text-to-Image</strong></h3>
-<p>Laion拥有5.85B图片，可进行搜索</p>
-<p>输入：图片+噪声程度+<strong>文字叙述</strong></p>
-<p><img src="/images/DM/5.png" alt="5"></p>
-<h3 id="算法">算法</h3>
-<p><img src="/images/DM/6.png" alt="6"></p>
-<ul>
-<li>
-<p><strong>训练</strong>：</p>
-<p><img src="/images/DM/17.png" alt="17"></p>
+<p> </p>
+<h3 id="定位">定位</h3>
+<p><img src="/images/CV/20.png" alt="20"></p>
+<p>Need to output bx, by, bn, bw, class label (1-4)</p>
+<p><img src="/images/CV/21.png" alt="21"></p>
+<p>需人工标注<strong>特征点的坐标</strong></p>
+<p> </p>
+<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
 <ol>
-<li>sample一张clean image</li>
-<li>sample出一个数字</li>
-<li>sample出一个noise</li>
-<li><strong>clean image 和 noise 做加权和得到一个有杂讯的图</strong>，然后训练noise predictor（输入有杂讯的图 和 数字；输出目标noise）</li>
+<li>先训练卷积网络识别物体</li>
+<li>滑动+放大窗口+再次滑动</li>
 </ol>
-</li>
-<li>
-<p><strong>产生图</strong>：</p>
+<p><strong>问题</strong>：计算效率大，慢</p>
+<p> </p>
     </div>
-  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 4, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/ga/" class="link black dim">
-        Generative AI
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="chatgpt">ChatGPT</h1>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ba53c8d8-3a8d-4bb9-a20f-5cd7d295a29f/%E6%88%AA%E5%B1%8F2025-01-05_23.37.32.png" alt="截屏2025-01-05 23.37.32.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/740b097c-4c79-42af-bc9b-5817abdc3521/%E6%88%AA%E5%B1%8F2025-01-04_00.25.09.png" alt="截屏2025-01-04 00.25.09.png"></p>
-<ol>
-<li>
-<p>ChatGPT 真正做的事：文字接龙</p>
-<p><strong>Autoregressive Generation</strong>：逐个生成</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a140588c-153b-4bf3-812b-794d09b256c2/%E6%88%AA%E5%B1%8F2025-01-04_00.18.34.png" alt="截屏2025-01-04 00.18.34.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/10249f01-191e-4450-9387-201ee36c281d/247f57f5-a4f8-4859-8ce8-9664487924cd.png" alt="截屏2025-01-04 00.27.44.png"></p>
-</li>
-<li>
-<p><strong>token</strong></p>
-<p>文字接龙时可以选择的符号</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e0bc078c-68ba-4504-b3dc-2bee0739d6fa/%E6%88%AA%E5%B1%8F2025-01-04_00.29.01.png" alt="截屏2025-01-04 00.29.01.png"></p>
-</li>
-<li>
-<p>每次回答都随机（掷骰子）</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b30b483b-47dd-4cfd-9a2d-bcd030b1b169/%E6%88%AA%E5%B1%8F2025-01-04_11.07.26.png" alt="截屏2025-01-04 11.07.26.png"></p>
-</li>
-<li>
-<p>进化关键：<strong>自督导式学习(预训练) ➡️ 督导式学习(微调) ➡️ 强化学习</strong></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/b2ca8f91-7703-4339-ae03-089a67c3519f/%E6%88%AA%E5%B1%8F2025-01-04_23.52.07.png" alt="截屏2025-01-04 23.52.07.png"></p>
-<p>有预训练，督导式学习不用大量资料。</p>
-<p>强化学习提供回馈。督导式学习提供完整资料，强化学习给反馈（如两次答案，有没有比上次更好）</p>
-<p>【注】：模型要有一定程度的能力才适合进入强化学习。</p>
-<p><strong>Alignment(对齐)</strong>：督导式学习 + 强化学习</p>
-</li>
-<li>
-<p><strong>强化学习</strong></p>
-<ol>
-<li>
-<p>学习reward model</p>
-<p>reward model：模仿人类的偏好</p>
-</li>
-<li>
-<p>用reward model进行学习</p>
-<p>模型只需要向reward model学习</p>
-</li>
-</ol>
-</li>
-<li>
-<p><strong>GPT-4: 可以看图+引导</strong></p>
-</li>
-<li>
-<p><strong>如何激发gpt的能力？</strong></p>
-<ol>
-<li>把需求说清楚</li>
-<li>提供咨询</li>
-<li>提供范例</li>
-<li>鼓励gpt想一想</li>
-<li>训练generator</li>
-<li>上传资料</li>
-<li>使用其它工具</li>
-<li>大任务拆解成小任务</li>
-<li>gpt会反省</li>
-</ol>
-</li>
-<li>
-<p>可以做什么？</p>
-<ol>
-<li>prompt engineering</li>
-<li>训练自己的模型（如调整LLaMA参数），困难</li>
-</ol>
-</li>
-</ol>
-<h1 id="大型语言模型训练过程">大型语言模型训练过程</h1>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/7e6521a3-d2cf-42bc-8550-aacc3027b83f/%E6%88%AA%E5%B1%8F2025-01-06_00.37.19.png" alt="截屏2025-01-06 00.37.19.png"></p>
-<ol>
-<li>
-<p>自我学习阶段</p>
-<ul>
-<li>
-<p>调整超参数</p>
-</li>
-<li>
-<p>训练成果，但测试失败：找到多样数据</p>
-</li>
-<li>
-<p>找到合适的初始参数：随机/ 先验知识</p>
-<p>先验知识：爬网络资料+资料清理(训练资料品质分类器/除重)</p>
-</li>
-</ul>
-</li>
-<li>
-<p>人类指导阶段</p>
-</li>
-</ol>
-    </div>
-  <a href="/post/ga/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 29, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
-<ol>
-<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
-<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
-<li><strong>Encoder-Decoder Architecture</strong>:
-<ul>
-<li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
-<li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
-</ul>
-</li>
-</ol>
-<h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
-    </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
       
         <h2 class="f1">
-          <a href="/tags/rl/" class="link blue hover-black">
-            Tag: RL
+          <a href="/tags/llm/" class="link blue hover-black">
+            Tag: LLM
           </a>
         </h2>
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 22, 2025
+        February 9, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/world-model/" class="link black dim">
-        World Models
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="sem2">SEM2</h1>
-<p><a href="https://arxiv.org/abs/2210.04017">https://arxiv.org/abs/2210.04017</a></p>
-<h2 id="题目摘要解读">题目＆摘要解读</h2>
-<h2 id="背景相关工作">背景&amp;相关工作</h2>
-<h2 id="方法">﻿﻿方法</h2>
-<h2 id="实验">实验</h2>
-<h2 id="回顾总结思考">回顾、总结、思考</h2>
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
+<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
+<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
     </div>
-  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 2, 2025
+        February 8, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/rl/" class="link black dim">
-        Reinforcement Learning
+      <a href="/post/transformer/" class="link black dim">
+        transformer
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>The core idea is <strong>trial-and-error learning</strong>: the agent takes actions, observes the outcomes, and receives <strong>rewards</strong> or <strong>penalties</strong> as feedback. Over time, the agent improves its <strong>policy</strong> (decision-making strategy) to maximize cumulative rewards.</p>
-<p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
-<h3 id="回归">回归</h3>
-<p>增加折现因子</p>
-<p><img src="/images/RL/1.png" alt="1"></p>
-<p><img src="/images/RL/2.png" alt="2"></p>
-<h3 id="强化学习的形式化">强化学习的形式化</h3>
-<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
-<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
-    </div>
-  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 29, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="key-concepts-of-vaes">Key Concepts of VAEs</h3>
+      <h2 id="一transformer架构">一、Transformer架构</h2>
+<ul>
+<li>
+<p>﻿基于编码器-解码器架构来处理序列对</p>
+</li>
+<li>
+<p>﻿跟使用注意力的seq2seq不同，Transformer是纯基于注意力</p>
+<ul>
+<li>
+<p>seq2seq</p>
+<p><img src="/images/trans/1.png" alt="1"></p>
+</li>
+<li>
+<p>transformer</p>
+<p><img src="/images/trans/2.jpg" alt="1"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h3 id="1-多头注意力muti-head-attention">1. 多头注意力(Muti-head attention)</h3>
+<ul>
+<li>
+<p>对同一key，value，query，希望抽取不同的信息*（类似卷积的多通道）*</p>
+<ul>
+<li>例如短距离关系和长距离关系</li>
+</ul>
+</li>
+<li>
+<p>多头注意力使用h个独立的注意力池化</p>
+<ul>
+<li>合并各个头（head） 输出得到最终输出</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/trans/3.png" alt="3"></p>
 <ol>
-<li><strong>Latent Variables</strong>: VAEs assume that the observed data (e.g., images) is generated from a set of unobserved, lower-dimensional latent variables.</li>
-<li><strong>Probabilistic Framework</strong>: VAEs are based on <strong>variational inference</strong>, a method for approximating complex probability distributions.</li>
-<li><strong>Encoder-Decoder Architecture</strong>:
-<ul>
-<li><strong>Encoder</strong>: Maps input data x<em>x</em> to a distribution over latent variables z<em>z</em>. This is often parameterized as a Gaussian distribution with mean μ<em>μ</em> and variance σ2<em>σ</em>2.</li>
-<li><strong>Decoder</strong>: Maps latent variables z<em>z</em> back to the data space, generating new samples x′<em>x</em>′ that resemble the original data.</li>
-</ul>
-</li>
+<li>通过全连阶层，映射到一个较低的维度</li>
+<li>进行多个attention</li>
+<li>对每一个attention的输出，进行concat</li>
+<li>再通过一个全连接，得到输出的维度</li>
 </ol>
-<h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
+<h4 id="数学原理">数学原理</h4>
+<p><img src="/images/trans/4.jpg" alt="4"></p>
     </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 26, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/e2e/" class="link black dim">
-        End2End
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>对于由多个阶段组成的学习系统，端到端学习捕获所有阶段，将其替代为单个神经网络。</p>
-<ul>
-<li>优点：
-<ul>
-<li>Let the data speak</li>
-<li>Less hand-designing of components needed</li>
-</ul>
-</li>
-<li>缺点：
-<ul>
-<li>May need large amount of data</li>
-<li>Excludes potentially useful hand-designed components</li>
-</ul>
-</li>
-</ul>
-<p><strong>关键</strong>：是否有足够的数据</p>
-<p><img src="/images/e2e/1.png" alt="1"></p>
-    </div>
-  <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/deep-learning/" class="link blue hover-black">
-            Tag: Deep Learning
-          </a>
-        </h2>
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
@@ -1348,34 +792,270 @@
 </ol>
 <h2 id="工作流程">工作流程</h2>
 <h3 id="分词化与词表映射">分词化与词表映射</h3>
-<p>**分词化（Tokenization）**是指将段落和句子分割成更小的分词（token）的过程。</p>
-<p>分词化有不同的粒度分类：</p>
-<ul>
-<li>﻿词粒度（Word-Level Tokenization）分词化：适用于大多数西方语言，如英语。</li>
-<li>﻿字符粒度（Character-Level）分词化：中文最直接的分词方法，它是以单个汉字为单位进行分词化。</li>
-<li>﻿子词粒度（Subword-Level）分词化：将单词分解成更小的单位，比如词根、词缀等。</li>
-</ul>
-<p>每一个token都会通过预先设置好的词表，映射为一个 token id，这是token 的“身份证”，一句话最终会被表示为一个元素为token id的列表，供计算机进行下一步处理。</p>
-<h3 id="文本生成过程">文本生成过程</h3>
-<p>大语言模型根据给定的文本<strong>预测下一个token</strong>。</p>
-<p>大模型进行推理时，基于现有的token，根据概率最大原则预测出下一个最有可能的token，然后将该预测的token加入到输入序列中，并将更新后的输入序列继续输入大模型预测下一个token，这个过程叫做<strong>自回归</strong>。</p>
-<p>直到输出特殊token（如<!-- raw HTML omitted -->，end of sentence，专门用来控制推理何时结束）或输出长度达到阈值。</p>
-<h1 id="ai-agent">AI Agent</h1>
-<h2 id="理论">理论</h2>
-<h3 id="agent认知与原理分析">agent认知与原理分析</h3>
-<p>Al Agents是基于LLM的能够自主理解、自主规划笨策、执行复杂任务的習能体。</p>
-<p>Agent的设计目的是为了处理那些简单的语言模型可能无法直接解决的问题，尤其是当这些任务涉及到多个步骤或者需要外部数据源的情况。</p>
-<ul>
-<li>﻿LLM：接受输入、思考、输出</li>
-<li>﻿人类：LLM（接受输入、思考、输出）+记忆＋工具+规划&mdash;&mdash;&gt;Agents</li>
-</ul>
-<h3 id="agent技术框架">agent技术框架</h3>
-<h3 id="agent策略分析与parer解读">agent策略分析与Parer解读</h3>
-<h3 id="单agent系统与多agent系统">单Agent系统与多Agent系统</h3>
-<h3 id="个性化agent应用定制全流程详讲">个性化Agent应用定制全流程详讲</h3>
-<h2 id="实践">实践</h2>
+<p>分词化（Tokenization）是指将段落和句子分割成更小的分词（token）的过程。</p>
     </div>
   <a href="/post/llm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/diffusion-model/" class="link black dim">
+        Diffusion Model
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="概述">概述</h1>
+<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
+<p><img src="/images/DM/19.png" alt="19"></p>
+<p>进一步：输入加入了文字表述</p>
+<p>目标：产生的图片与真实图片越接近越好</p>
+<h2 id="原理">原理</h2>
+<ul>
+<li>
+<p><strong>Reverse Process</strong>（多次Denoise）</p>
+<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
+</li>
+<li>
+<p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+</li>
+</ul>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
+    </div>
+  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/generativeai/" class="link black dim">
+        Generative AI
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="chatgpt">ChatGPT</h1>
+<p><img src="/images/GA/1.png" alt="1"></p>
+<ul>
+<li>
+<p>G：generative</p>
+</li>
+<li>
+<p>P：pre-trained</p>
+</li>
+<li>
+<p>T：transformer</p>
+</li>
+</ul>
+<p> </p>
+<ol>
+<li>
+<p>ChatGPT 真正做的事：文字接龙</p>
+<p><strong>Autoregressive Generation</strong>：逐个生成</p>
+<p><img src="/images/GA/3.png" alt="3"></p>
+<p><img src="/images/GA/4.png" alt="4"></p>
+</li>
+<li>
+<p><strong>token</strong></p>
+<p>文字接龙时可以选择的符号</p>
+<p><img src="/images/GA/5.png" alt="5"></p>
+</li>
+<li>
+<p>每次回答都随机（掷骰子）</p>
+<p><img src="/images/GA/6.png" alt="6"></p>
+</li>
+</ol>
+    </div>
+  <a href="/post/generativeai/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 29, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/vae/" class="link black dim">
+        VAE
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="普通自动编码器">普通自动编码器</h2>
+<p>目标：将高维度数据压缩成较小的表示</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ad01491f-ff96-44a7-9a2f-606c66461df8/%E6%88%AA%E5%B1%8F2024-12-30_19.27.19.png" alt="截屏2024-12-30 19.27.19.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/40f99add-baee-40ad-ab9b-45dc5f312af9/%E6%88%AA%E5%B1%8F2024-12-30_19.28.31.png" alt="截屏2024-12-30 19.28.31.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/99bd3fd9-fabb-421d-bcdb-0e6d0c5be310/%E6%88%AA%E5%B1%8F2024-12-30_19.29.08.png" alt="截屏2024-12-30 19.29.08.png"></p>
+<p>应用：</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/1b594f9d-d71f-4af3-b7c9-285e1dfffec6/%E6%88%AA%E5%B1%8F2024-12-30_19.29.47.png" alt="截屏2024-12-30 19.29.47.png"></p>
+<h2 id="去噪自动编码器">去噪自动编码器</h2>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a8e8568e-18b2-4281-a7af-05a627e6f5f0/%E6%88%AA%E5%B1%8F2024-12-30_19.35.42.png" alt="截屏2024-12-30 19.35.42.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ce2c3930-ae83-40a9-b9d3-aa3f4f0246bd/%E6%88%AA%E5%B1%8F2024-12-30_19.36.58.png" alt="截屏2024-12-30 19.36.58.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/fdd726fa-7eb9-4b24-af63-f917ee593b1c/%E6%88%AA%E5%B1%8F2024-12-30_19.37.09.png" alt="截屏2024-12-30 19.37.09.png"></p>
+<h2 id="变分自动编码器">变分自动编码器</h2>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/f4509f09-0920-4a7e-b5ba-74cbec294241/%E6%88%AA%E5%B1%8F2024-12-30_19.39.12.png" alt="截屏2024-12-30 19.39.12.png"></p>
+<ul>
+<li>
+<p>损失函数</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/add2cf71-1094-4639-b2d5-699f551beb48/%E6%88%AA%E5%B1%8F2024-12-30_19.40.36.png" alt="截屏2024-12-30 19.40.36.png"></p>
+</li>
+</ul>
+<h3 id="reparameterization-trick重参数化">Reparameterization Trick(重参数化)</h3>
+<p>如何实现反向传播？</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/db9e763f-81d3-460f-81dc-b81242f41cdb/%E6%88%AA%E5%B1%8F2024-12-30_19.42.30.png" alt="截屏2024-12-30 19.42.30.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e3fb22c3-4a30-4511-9457-4dc08d40b210/%E6%88%AA%E5%B1%8F2024-12-30_19.44.43.png" alt="截屏2024-12-30 19.44.43.png"></p>
+<ul>
+<li>
+<p>核心代码</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9c033e5a-8e28-4e82-ab6e-80d29dd08a20/%E6%88%AA%E5%B1%8F2024-12-30_19.45.33.png" alt="截屏2024-12-30 19.45.33.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/64564c69-b355-4559-95b2-2186d3cf9e08/%E6%88%AA%E5%B1%8F2024-12-30_19.45.42.png" alt="截屏2024-12-30 19.45.42.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/df9a2aa4-f700-4975-a5ca-f315eab2bcab/%E6%88%AA%E5%B1%8F2024-12-30_19.46.02.png" alt="截屏2024-12-30 19.46.02.png"></p>
+</li>
+</ul>
+<h3 id="解耦变分自编码器"><strong>解耦变分自编码器</strong></h3>
+<p>目的：确保潜在分布中的不同神经元互不相干，都在尝试学习输入数据中的不同内容。</p>
+<ul>
+<li>
+<p>解决方式：增加超参数$\beta$，衡量损失函数中的KL散度。</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9501fd11-c948-42ff-ba18-807ca26a11eb/%E6%88%AA%E5%B1%8F2024-12-30_22.11.49.png" alt="截屏2024-12-30 22.11.49.png"></p>
+</li>
+</ul>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/d64275f8-60ea-4cd6-862a-d8d7821c8b3d/%E6%88%AA%E5%B1%8F2024-12-30_22.18.10.png" alt="截屏2024-12-30 22.18.10.png"></p>
+<p>$\beta$过小：过拟合</p>
+<p>$\beta$过大：失去输入中的大量细节</p>
+<p><strong>在强化学习中的作用</strong>：使Agent可以在压缩后的输入T空间上运行。</p>
+    </div>
+  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/nlp/" class="link blue hover-black">
+            Tag: NLP
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
+<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
+<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/deep-learning/" class="link blue hover-black">
+            Tag: Deep Learning
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 31, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/object-detection/" class="link black dim">
+        目标检测
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/CV/19.png" alt="19"></p>
+<ul>
+<li>
+<p>技巧</p>
+<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="定位">定位</h3>
+<p><img src="/images/CV/20.png" alt="20"></p>
+<p>Need to output bx, by, bn, bw, class label (1-4)</p>
+<p><img src="/images/CV/21.png" alt="21"></p>
+<p>需人工标注<strong>特征点的坐标</strong></p>
+<p> </p>
+<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
+<ol>
+<li>先训练卷积网络识别物体</li>
+<li>滑动+放大窗口+再次滑动</li>
+</ol>
+<p><strong>问题</strong>：计算效率大，慢</p>
+<p> </p>
+    </div>
+  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -1391,22 +1071,48 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="概述">概述</h1>
+      <h1 id="线性量化">线性量化</h1>
+<h2 id="量化和去量化">量化和去量化</h2>
+<p>量化指将一个大集合映射到一个较小值集合的过程。</p>
+<p><img src="/images/Quanti/1.png" alt="1"></p>
+<h3 id="可以量化的内容">可以量化的内容</h3>
 <ul>
-<li><strong>量化</strong>：Store the parameters of the model in lower precision</li>
+<li><strong>The weights</strong>: Neural network parameters</li>
+<li>﻿﻿<strong>The activations</strong>: Values that propagate through the layers of the neural network</li>
 </ul>
-<ul>
-<li><strong>Knowledge distillation</strong>: Train a smaller model (student) using the original model (instructor).</li>
-<li><strong>Pruning</strong>: Remove connections (weights) from the model</li>
-<li><strong>Application</strong>: Perform linear quantization on any model using Quanto in two lines</li>
-</ul>
-<h2 id="内容">内容</h2>
+<p>If you quantize the NN after it has been trained, you are doing <strong>post training quantization (PTQ)</strong></p>
+<h3 id="优点">优点</h3>
 <ol>
 <li>
-<p><strong>Linear Quantization theory</strong> in detail and how to code it (<em>per channel, per tensor, per group quantization</em>)</p>
+<p>更小的模型</p>
 </li>
 <li>
-<p>Build your own 8-bit linear quantizer and apply it on real models.</p>
+<p>速度更快</p>
+<ul>
+<li>内存带宽</li>
+</ul>
+<ul>
+<li>
+<p>﻿﻿Faster operations</p>
+<ul>
+<li>
+<p>﻿﻿GEMM: General Matrix Multiply (matrix to matrix multiplication)</p>
+</li>
+<li>
+<p>﻿﻿GEMV: General Matrix Vector
+Multiplication (matrix to vector multiplication)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="线性量化理论">线性量化理论</h3>
+<ul>
+<li>
+<p>参数</p>
+<p>Scale：s（e.g. in FP32）</p>
+<p>Zero point：z（e.g. INT8）</p>
     </div>
   <a href="/post/quantization/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -1425,56 +1131,214 @@
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
-<p>类型：root node, decision node, leaf node
- </p>
-<h2 id="1-解决方案cnn">1. 解决方案：CNN</h2>
-<p>卷积神经网络通过引入卷积操作，有效地解决了大图片参数过大的问题。</p>
+<h3 id="边缘检测">边缘检测</h3>
 <ol>
 <li>
-<p><strong>Automatic Feature Extraction</strong></p>
-<p>CNNs automatically learn hierarchical features from raw data (like images) without needing manual feature engineering.</p>
+<p><strong>垂直边缘检测滤波</strong></p>
+<p><img src="/images/CV/6.png" alt="6"></p>
 </li>
 <li>
-<p><strong>Parameter Sharing</strong></p>
-<p>In a CNN, the same filter (or kernel) is applied across the entire image. This concept of <strong>weight sharing</strong> significantly reduces the number of parameters compared to fully connected networks, making CNNs more computationally efficient.</p>
+<p><strong>变权</strong></p>
+<p><img src="/images/CV/7.png" alt="7"></p>
 </li>
 <li>
-<p><strong>分层特征学习</strong></p>
+<p><strong>利用反向传播学习</strong></p>
+</li>
+</ol>
+<p> </p>
+<h3 id="padding">Padding</h3>
+<ol>
+<li>
+<p>Padding：外层填充像素</p>
+<ul>
+<li>存在问题：
+<ul>
+<li>throw away information from edge</li>
+<li>shranky output</li>
+</ul>
+</li>
+</ul>
+<p>解决：<strong>外层填充像素</strong></p>
 </li>
 <li>
-<p><strong>Translation Invariance</strong>（pooling layers）</p>
+<p>填充多少像素？</p>
+<ul>
+<li>
+<p><strong>Valid:</strong> (n-f+1) * (n-f+1)</p>
+</li>
+<li>
+<p><strong>Same</strong>: Pad so that output size is the same as the input size.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
     </div>
   <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/generative-ai/" class="link blue hover-black">
+            Tag: Generative AI
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/world-model/" class="link black dim">
+        World Models
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      
+    </div>
+  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        December 25, 2024
+        January 17, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/transformer/" class="link black dim">
-        transformer
+      <a href="/post/diffusion-model/" class="link black dim">
+        Diffusion Model
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>The <strong>Transformer</strong> is a deep learning architecture introduced in the 2017 paper <em>&ldquo;Attention is All You Need&rdquo;</em> by Vaswani et al. It revolutionized natural language processing (NLP) and has since become the foundation for many state-of-the-art models, such as BERT, GPT, and T5.</p>
-<h3 id="seq2seq">Seq2seq</h3>
-<p>Input a sequence, output a sequence The output length is determined by model.</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e22b161f-7704-4d51-8881-70ee7e4c6dcb/%E6%88%AA%E5%B1%8F2024-12-31_15.12.59.png" alt="截屏2024-12-31 15.12.59.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/180291f8-9817-42b6-87cb-39bf0734b9ef/%E6%88%AA%E5%B1%8F2024-12-31_19.34.56.png" alt="截屏2024-12-31 19.34.56.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/31c00a57-de1e-43a9-b92a-13e3a050be48/%E6%88%AA%E5%B1%8F2024-12-31_19.35.51.png" alt="截屏2024-12-31 19.35.51.png"></p>
-<h2 id="encoder">Encoder</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/901263ca-4e06-4f07-a672-aab03a6a86d4/cb6d7470-a2be-4ea5-9611-1cf0859d782f.png" alt="截屏2024-12-31 15.15.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/3f6e614d-e0be-49d2-935e-642ebc3eaa82/%E6%88%AA%E5%B1%8F2024-12-31_15.29.37.png" alt="截屏2024-12-31 15.29.37.png"></p>
+      <h1 id="概述">概述</h1>
+<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
+<p><img src="/images/DM/19.png" alt="19"></p>
+<p>进一步：输入加入了文字表述</p>
+<p>目标：产生的图片与真实图片越接近越好</p>
+<h2 id="原理">原理</h2>
 <ul>
 <li>
-<p><strong>细节</strong>：</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/641849c0-19ea-464e-9b96-2e7b93b1d3d5/c8331594-f0cc-4348-967f-b026b8e2b68f.png" alt="截屏2024-12-31 15.18.01.png"></p>
+<p><strong>Reverse Process</strong>（多次Denoise）</p>
+<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
+</li>
+<li>
+<p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+</li>
+</ul>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
     </div>
-  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/rl/" class="link blue hover-black">
+            Tag: RL
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/world-model/" class="link black dim">
+        World Models
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      
+    </div>
+  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 2, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/rl/" class="link black dim">
+        Reinforcement Learning
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
+<h3 id="回归">回归</h3>
+<p>增加折现因子</p>
+<p><img src="/images/RL/1.png" alt="1"></p>
+<p><img src="/images/RL/2.png" alt="2"></p>
+<h3 id="强化学习的形式化">强化学习的形式化</h3>
+<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
+<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
+<p><img src="/images/RL/3.png" alt="3"></p>
+<ul>
+<li>
+<p><strong>状态动作值函数</strong>（Q-Function）</p>
+<p><strong>Q(s,a)</strong> = Return if you:</p>
+<ul>
+<li>start in state <em>s</em>.</li>
+<li>take action <em>a</em> (once).</li>
+<li>then behave optimally after that.</li>
+</ul>
+<p>The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 26, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/e2e/" class="link black dim">
+        End2End
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>对于由多个阶段组成的学习系统，端到端学习捕获所有阶段，将其替代为单个神经网络。</p>
+<ul>
+<li>优点：
+<ul>
+<li>Let the data speak</li>
+<li>Less hand-designing of components needed</li>
+</ul>
+</li>
+<li>缺点：
+<ul>
+<li>May need large amount of data</li>
+<li>Excludes potentially useful hand-designed components</li>
+</ul>
+</li>
+</ul>
+<p><strong>关键</strong>：是否有足够的数据</p>
+<p><img src="/images/e2e/1.png" alt="1"></p>
+    </div>
+  <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -1497,26 +1361,27 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>类型：root node, decision node, leaf node</p>
-<h3 id="要解决的问题">要解决的问题</h3>
+      <p><img src="/images/chapter1/1.png" alt="1"></p>
+<h2 id="熵和信息增益">熵和信息增益</h2>
+<p><strong>Measuring purity</strong></p>
+<p><img src="/images/chapter1/2.png" alt="2"></p>
+<p><img src="/images/chapter1/3.png" alt="3"></p>
+<p>选择信息增益更大的分裂特征</p>
+<p><img src="/images/chapter1/4.png" alt="4"></p>
+<h2 id="决策树训练递归">决策树训练(递归)</h2>
 <ol>
-<li>
-<p><strong>How to choose what feature to split on at each node?</strong></p>
-<p>Maximize purity (or minimize impurity)</p>
-</li>
-<li>
-<p><strong>When do you stop splitting?</strong></p>
+<li>Start with all examples at the root node</li>
+<li>Calculate information gain for all possible features, and pick the one with the highest information gain</li>
+<li>Split dataset according to selected feature, and create left and right branches of the tree</li>
+<li>Keep repeating splitting process until stopping criteria is met:
 <ul>
 <li>When a node is 100% one class</li>
 <li>When splitting a node will result in the tree exceeding a maximum depth</li>
-<li>When improvements in purity score are below a threshold</li>
+<li>Information gain from additional splits is less than threshold</li>
 <li>When number of examples in a node is below a threshold</li>
 </ul>
 </li>
 </ol>
-<p><img src="/images/chapter1/1.png" alt="1"></p>
-<h2 id="熵和信息增益">熵和信息增益</h2>
-<p><strong>Measuring purity</strong></p>
     </div>
   <a href="/post/decision-tree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

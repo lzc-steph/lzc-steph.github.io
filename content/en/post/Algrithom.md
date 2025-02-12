@@ -1,5 +1,5 @@
 ---
-date: 2025-01-22T11:00:59-04:00
+date: 2025-02-12T11:00:59-04:00
 description: ""
 featured_image: "/images/algorithm/lucky.jpg"
 tags: ["algorithm"]
@@ -14,57 +14,82 @@ title: "「持续更新」算法题笔记"
 
    使用哈希表，可以将寻找 `target - x`的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 `x`，我们首先查询哈希表中是否存在 `target - x`，然后将 `x`插入到哈希表中，即可保证不会让 `x`和自己匹配。
 
-   ```c
-   struct hashTable {
-       int key;
-       int val;
-       UT_hash_handle hh;
-   };
-   
-   struct hashTable* hashtable;
-   
-   struct hashTable* find(int ikey) {
-       struct hashTable* tmp;
-       HASH_FIND_INT(hashtable, &ikey, tmp);
-       return tmp;
-   }
-   
-   void insert(int ikey, int ival) {
-       struct hashTable* it = find(ikey);
-       if (it == NULL) {
-           struct hashTable* tmp = malloc(sizeof(struct hashTable));
-           tmp->key = ikey, tmp->val = ival;
-           HASH_ADD_INT(hashtable, key, tmp);
-       } else {
-           it->val = ival;
-       }
-   }
-   
-   int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
-       hashtable = NULL;
-       for (int i = 0; i < numsSize; i++) {
-           struct hashTable* it = find(target - nums[i]);
-           if (it != NULL) {
-               int* ret = malloc(sizeof(int) * 2);
-               ret[0] = it->val, ret[1] = i;
-               *returnSize = 2;
-               return ret;
+   ```c++
+   class Solution {
+   public:
+       vector<int> twoSum(vector<int>& nums, int target) {
+           unordered_map<int, int> hashtable;
+           for (int i = 0; i < nums.size(); ++i) {
+               auto it = hashtable.find(target - nums[i]);
+               if (it != hashtable.end()) {
+                   return {it->second, i};
+               }
+               hashtable[nums[i]] = i;
            }
-           insert(nums[i], i);
+           return {};
        }
-       *returnSize = 0;
-       return NULL;
-   }
+   };
    ```
+   
+   1. **`find` 方法**
+   
+      `find` 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：
+   
+      - 如果哈希表中存在该键，则返回一个指向该键值对的迭代器。
+      - 如果哈希表中不存在该键，则返回 `hashtable.end()`，表示未找到。
+   
+   2. **`auto it`**
+   
+      - `auto` 是 C++11 引入的关键字，用于自动推导变量的类型。
+   
+        在这里，`it` 的类型会被推导为哈希表迭代器的类型（例如 `std::unordered_map<int, int>::iterator`）。
+   
+      - `it` 是一个**迭代器**，指向哈希表中找到的键值对（如果找到的话）。
+   
+      <!--more-->
+   
+   3.  **`return {it->second, i};`** 
+   
+      C++11 引入的一种语法特性，称为**初始化列表**（initializer list）。它用于**返回一个包含多个值的对象**。
+   
+      1. **`it->second`** 表示迭代器指向的键值对中的值（value）。
+   
+         在哈希表中，键值对的形式是 `{key, value}`，`it->second` 就是 `value`。
+   
+      2. **`{it->second, i}`**是一个初始化列表，用于构造一个包含两个值的对象。
+   
+      3. **`return`**
+         - 返回单个值时，直接写值。
+         - 返回容器或对象时，可以使用 `{}` 构造返回值。
+         - 返回空容器时，使用 `{}`。
+   
+   
 
-   <!--more-->
+
+
+&nbsp;
+
+2. ### 二叉树的最小深度
+
+   给定一个二叉树，找出其最小深度。最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
+
+   **说明：**叶子节点是指没有子节点的节点。
+   
+   
 
 
 
 
 
-2. ### 最大子数组和
 
-   给你一个整数数组 `nums` ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 
-   **子数组**：是数组中的一个连续部分。
+
+
+
+
+
+
+
+
+
+

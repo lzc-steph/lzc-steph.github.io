@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Algorithm">
-  <meta itemprop="datePublished" content="2025-02-06T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-02-06T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-02-12T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-02-12T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Algorithm">
 
@@ -144,6 +144,60 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        February 12, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/btree/" class="link black dim">
+        二叉树
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="二叉树基础及遍历">二叉树基础及遍历</h1>
+<h2 id="二叉树的实现方式">二叉树的实现方式</h2>
+<ol>
+<li>
+<p>最常见的二叉树就是类似链表那样的链式存储结构，每个二叉树节点有指向左右子节点的指针</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TreeNode</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> left;
+</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> right;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 构造函数，参数是int x， :后面的部分是初始化列表，{} 是构造函数的函数体为空，即不需要额外的操作。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    TreeNode(<span style="color:#66d9ef">int</span> x) <span style="color:#f92672">:</span> val(x), left(<span style="color:#66d9ef">nullptr</span>), right(<span style="color:#66d9ef">nullptr</span>) {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 你可以这样构建一棵二叉树：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>TreeNode<span style="color:#f92672">*</span> root <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>left<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">6</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 构建出来的二叉树是这样的：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//    / \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   2   3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  /   / \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 4   5   6
+</span></span></span></code></pre></div><h5 id="public用法总结"><code>public</code>用法总结：</h5>
+<ol>
+<li><code>public</code> 关键字用于指定类成员的访问权限，允许外部代码直接访问这些成员。</li>
+<li>如果不加 <code>public</code>，这些成员默认是 <code>private</code> 的，外部代码无法直接访问它们。</li>
+</ol>
+<p>在 <code>TreeNode</code> 的构造函数中，初始化列表的作用是：</p>
+    </div>
+  <a href="/post/btree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         February 6, 2025
       </div>
     
@@ -155,7 +209,7 @@
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <h1 id="数组链表">数组链表</h1>
 <h2 id="1-动态数组">1. 动态数组</h2>
-<p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装，让我们使用起来更方便而已</strong>。</p>
+<p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装</strong>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 创建动态数组
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
@@ -208,7 +262,11 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在 C++ 中，<code>using namespace std;</code>指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上<code> std::</code>。</p>
+      <p>万能开头：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include&lt;bits/stdc++.h&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span></code></pre></div><p>在 C++ 中，<code>using namespace std;</code>指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上<code> std::</code>。</p>
+<p> </p>
 <h3 id="标准输出">标准输出</h3>
 <p>C++ 的标准输出是 <code>cout</code>，用 <code>&lt;&lt;</code> 运算符把需要打印的内容传递给 <code>cout</code>，<code>endl</code> 是换行符。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
@@ -224,7 +282,8 @@
 </span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：abc 10
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-</span></span></code></pre></div><h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
+</span></span></code></pre></div><p> </p>
+<h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
 <ol>
 <li>
 <p><code>vector</code> 的初始化方法如下：</p>
@@ -252,8 +311,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 其中的值都初始化为 true
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;&gt;</span> dp(m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span>(n, true));
 </span></span></code></pre></div></li>
-<li>
-<p><code>vector</code> 的常用操作：</p>
+</ol>
     </div>
   <a href="/post/c&#43;&#43;%E8%AF%AD%E6%B3%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -291,6 +349,7 @@
 </ul>
 </li>
 </ul>
+<p> </p>
 <h1 id="一排序">一、排序</h1>
 <h3 id="1-快速排序">1. 快速排序</h3>
 <ol>
@@ -310,6 +369,7 @@
 </li>
 </ol>
 <h3 id="2-归并排序">2. 归并排序</h3>
+<p> </p>
 <h1 id="二二分">二、二分</h1>
     </div>
   <a href="/post/%E6%8E%92%E5%BA%8F/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
@@ -361,37 +421,15 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">strcpy</span>(s<span style="color:#f92672">-&gt;</span>name, name);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 根据用户 ID 查找用户
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span><span style="color:#a6e22e">find_user</span>(<span style="color:#66d9ef">int</span> user_id) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>s;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 根据用户 ID 查找用户
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">my_struct</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">find_user</span>(<span style="color:#66d9ef">int</span> user_id) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">my_struct</span> <span style="color:#f92672">*</span>s;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 查找元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">HASH_FIND_INT</span>(users, <span style="color:#f92672">&amp;</span>user_id, s);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    HASH_FIND_INT(users, <span style="color:#f92672">&amp;</span>user_id, s);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> s;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 删除用户
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete_user</span>(<span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>user) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 删除元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">HASH_DEL</span>(users, user);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">free</span>(user);  <span style="color:#75715e">// 释放内存
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 打印哈希表中的所有用户
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_users</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>s;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 遍历哈希表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (s <span style="color:#f92672">=</span> users; s <span style="color:#f92672">!=</span> NULL; s <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> my_struct <span style="color:#f92672">*</span>)(s<span style="color:#f92672">-&gt;</span>hh.next)) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;user id %d: name %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, s<span style="color:#f92672">-&gt;</span>id, s<span style="color:#f92672">-&gt;</span>name);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="3-关键点">3. 关键点</h3>
-<ul>
-<li><strong><code>UT_hash_handle hh</code></strong>：必须包含在自定义结构体中，用于哈希表管理。</li>
-<li><strong><code>HASH_ADD_INT</code></strong>：将元素添加到哈希表，<code>INT</code> 表示键值为整数类型。</li>
-<li><strong><code>HASH_FIND_INT</code></strong>：根据键值查找元素。</li>
-<li><strong><code>HASH_DEL</code></strong>：从哈希表中删除元素。</li>
-<li><strong>遍历哈希表</strong>：通过 <code>hh.next</code> 指针遍历哈希表中的元素。</li>
-</ul>
+</span></span></code></pre></div>
     </div>
   <a href="/post/hash/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -417,50 +455,65 @@
 <p><strong>题目描述</strong>：给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
 <p><strong>方法</strong>：找数 <code>x</code>，寻找数组中是否存在 <code>target - x</code>。</p>
 <p>使用哈希表，可以将寻找 <code>target - x</code>的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code>插入到哈希表中，即可保证不会让 <code>x</code>和自己匹配。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hashTable {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> key;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> val;
-</span></span><span style="display:flex;"><span>    UT_hash_handle hh;
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> hashtable;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> <span style="color:#a6e22e">find</span>(<span style="color:#66d9ef">int</span> ikey) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> tmp;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HASH_FIND_INT</span>(hashtable, <span style="color:#f92672">&amp;</span>ikey, tmp);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tmp;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">int</span> ikey, <span style="color:#66d9ef">int</span> ival) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> it <span style="color:#f92672">=</span> <span style="color:#a6e22e">find</span>(ikey);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">==</span> NULL) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> hashTable));
-</span></span><span style="display:flex;"><span>        tmp<span style="color:#f92672">-&gt;</span>key <span style="color:#f92672">=</span> ikey, tmp<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">=</span> ival;
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">HASH_ADD_INT</span>(hashtable, key, tmp);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        it<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">=</span> ival;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">twoSum</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> nums, <span style="color:#66d9ef">int</span> numsSize, <span style="color:#66d9ef">int</span> target, <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> returnSize) {
-</span></span><span style="display:flex;"><span>    hashtable <span style="color:#f92672">=</span> NULL;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numsSize; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> hashTable<span style="color:#f92672">*</span> it <span style="color:#f92672">=</span> <span style="color:#a6e22e">find</span>(target <span style="color:#f92672">-</span> nums[i]);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> NULL) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);
-</span></span><span style="display:flex;"><span>            ret[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> it<span style="color:#f92672">-&gt;</span>val, ret[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">*</span>returnSize <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> ret;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> twoSum(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> target) {
+</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashtable;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> hashtable.find(target <span style="color:#f92672">-</span> nums[i]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> hashtable.end()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> {it<span style="color:#f92672">-&gt;</span>second, i};
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            hashtable[nums[i]] <span style="color:#f92672">=</span> i;
 </span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">insert</span>(nums[i], i);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>returnSize <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NULL;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol>
 <li>
-<h3 id="最大子数组和">最大子数组和</h3>
-<p>给你一个整数数组 <code>nums</code> ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p><strong><code>find</code> 方法</strong></p>
+<p><code>find</code> 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：</p>
+<ul>
+<li>如果哈希表中存在该键，则返回一个指向该键值对的迭代器。</li>
+<li>如果哈希表中不存在该键，则返回 <code>hashtable.end()</code>，表示未找到。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>auto it</code></strong></p>
+<ul>
+<li>
+<p><code>auto</code> 是 C++11 引入的关键字，用于自动推导变量的类型。</p>
+<p>在这里，<code>it</code> 的类型会被推导为哈希表迭代器的类型（例如 <code>std::unordered_map&lt;int, int&gt;::iterator</code>）。</p>
+</li>
+<li>
+<p><code>it</code> 是一个<strong>迭代器</strong>，指向哈希表中找到的键值对（如果找到的话）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>return {it-&gt;second, i};</code></strong></p>
+</li>
+</ol>
+<p>C++11 引入的一种语法特性，称为<strong>初始化列表</strong>（initializer list）。它用于<strong>返回一个包含多个值的对象</strong>。</p>
+<ol>
+<li>
+<p><strong><code>it-&gt;second</code></strong> 表示迭代器指向的键值对中的值（value）。</p>
+<p>在哈希表中，键值对的形式是 <code>{key, value}</code>，<code>it-&gt;second</code> 就是 <code>value</code>。</p>
+</li>
+<li>
+<p>**<code>{it-&gt;second, i}</code>**是一个初始化列表，用于构造一个包含两个值的对象。</p>
+</li>
+<li>
+<p><strong><code>return</code></strong></p>
+<ul>
+<li>返回单个值时，直接写值。</li>
+<li>返回容器或对象时，可以使用 <code>{}</code> 构造返回值。</li>
+<li>返回空容器时，使用 <code>{}</code>。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
     </div>
   <a href="/post/algrithom/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

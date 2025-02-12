@@ -153,111 +153,33 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
-<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
 <h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
-<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
-<ul>
-<li><strong>颜色特征</strong>：
-<ul>
-<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
-<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
-</ul>
-</li>
-<li><strong>纹理特征</strong>：
-<ul>
-<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
-<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
-</ul>
-</li>
-<li><strong>边缘与形状特征</strong>：
-<ul>
-<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
-<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
-<ul>
-<li><strong>SIFT（尺度不变特征变换）</strong>：
-<ul>
-<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
-<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
-</ul>
-</li>
-<li><strong>SURF（加速鲁棒特征）</strong>：
-<ul>
-<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
-</ul>
-</li>
-<li><strong>LBP（局部二值模式）</strong>：
-<ul>
-<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
-<ul>
-<li>手工特征依赖专家经验，泛化能力有限。</li>
-<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
-</ul>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
 <h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
 <h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
 <ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
-</ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
 </li>
-<li><strong>经典模型</strong>：
-<ul>
-<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
-<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
-<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
-<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
-</ul>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
 </li>
 </ul>
 <h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
 <ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
-</li>
-<li><strong>优势</strong>：
-<ul>
-<li>无需局部卷积先验，直接建模长距离依赖。</li>
-<li>在ImageNet等任务上超越传统CNN。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
-<ol>
-<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
-<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
-<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
-</ol>
-<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
+<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
 <h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
-<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
-<ul>
-<li>将文本表示为词汇表中单词的出现频率。</li>
-<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
-</ul>
-<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
-<ul>
-<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
-<li>用于文本分类和信息检索。</li>
-</ul>
-<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
-<ul>
-<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
-<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
-</ul>
+<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
+<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
+<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
 <h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
 <ul>
 <li><strong>Word2Vec</strong>（2013）：
@@ -272,13 +194,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
-<ul>
-<li>无法建模长距离上下文依赖。</li>
-<li>词向量静态，无法处理一词多义。</li>
-</ul>
-<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
-<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
+<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -293,18 +209,267 @@
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/ai-agent/" class="link black dim">
-        AI Agent
+      <a href="/post/transformer/" class="link black dim">
+        transformer
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1-ai-agent认知与原理分析">1. AI agent认知与原理分析</h1>
-<h1 id="2-agent技术框架">2. agent技术框架</h1>
-<h1 id="3-agent策略分析与parer解读">3. agent策略分析与Parer解读</h1>
-<h1 id="4-单agent系统与多agent系统">4. 单Agent系统与多Agent系统</h1>
-<h1 id="5-个性社agent应用定制全流程详讲">5. 个性社Agent应用定制全流程详讲</h1>
+      <h2 id="一transformer架构">一、Transformer架构</h2>
+<ul>
+<li>
+<p>﻿基于编码器-解码器架构来处理序列对</p>
+</li>
+<li>
+<p>﻿跟使用注意力的seq2seq不同，Transformer是纯基于注意力</p>
+<ul>
+<li>
+<p>seq2seq</p>
+<p><img src="/images/trans/1.png" alt="1"></p>
+</li>
+<li>
+<p>transformer</p>
+<p><img src="/images/trans/2.jpg" alt="1"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h3 id="1-多头注意力muti-head-attention">1. 多头注意力(Muti-head attention)</h3>
+<ul>
+<li>
+<p>对同一key，value，query，希望抽取不同的信息*（类似卷积的多通道）*</p>
+<ul>
+<li>例如短距离关系和长距离关系</li>
+</ul>
+</li>
+<li>
+<p>多头注意力使用h个独立的注意力池化</p>
+<ul>
+<li>合并各个头（head） 输出得到最终输出</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/trans/3.png" alt="3"></p>
+<ol>
+<li>通过全连阶层，映射到一个较低的维度</li>
+<li>进行多个attention</li>
+<li>对每一个attention的输出，进行concat</li>
+<li>再通过一个全连接，得到输出的维度</li>
+</ol>
+<h4 id="数学原理">数学原理</h4>
+<p><img src="/images/trans/4.jpg" alt="4"></p>
     </div>
-  <a href="/post/ai-agent/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm/" class="link black dim">
+        LLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><a href="https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&amp;vd_source=80aea28698fb0235b45699fc7e6fcdac&amp;p=2">https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&vd_source=80aea28698fb0235b45699fc7e6fcdac&p=2</a></p>
+<h1 id="概述">概述</h1>
+<h2 id="大模型的演变">大模型的演变</h2>
+<p>大模型的训练整体上分为三个阶段：</p>
+<ol>
+<li>
+<p><strong>预训练</strong></p>
+<p>在这个阶段它会学习各种不同种类的语料，学习到语言的统计规律和一般知识。</p>
+<p>但是大模型在这个阶段只是学会了补全句子，却没有学会怎么样去领会人类的意图（类似成语接龙）。</p>
+</li>
+<li>
+<p><strong>SFT（监督微调）</strong></p>
+<p>在这个阶段大模型可以学习各种人类的对话语料，甚至是非常专业的垂直领域知识。</p>
+<p>但是模型的回答有时候可能并不符合人类的偏好，它可能会输出一些涉黄、涉政、涉暴或者种族歧视等言论。</p>
+</li>
+<li>
+<p><strong>RLHF（基于人类反馈的强化学习）</strong></p>
+<p>在这个阶段大模型会针对同一问题进行多次回答，人类会对这些回答打分。</p>
+<p>大模型会在此阶段学习到如何输出分数最高的回答，使得回答更符合人类的偏好。</p>
+</li>
+</ol>
+<h2 id="分类">分类</h2>
+<ol>
+<li>
+<p>大语言模型（LLM）</p>
+<p>专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。</p>
+</li>
+<li>
+<p>多模态模型</p>
+<p>多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，在这些模态之间建立关联和交互。</p>
+</li>
+</ol>
+<h2 id="工作流程">工作流程</h2>
+<h3 id="分词化与词表映射">分词化与词表映射</h3>
+<p>分词化（Tokenization）是指将段落和句子分割成更小的分词（token）的过程。</p>
+    </div>
+  <a href="/post/llm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/diffusion-model/" class="link black dim">
+        Diffusion Model
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="概述">概述</h1>
+<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
+<p><img src="/images/DM/19.png" alt="19"></p>
+<p>进一步：输入加入了文字表述</p>
+<p>目标：产生的图片与真实图片越接近越好</p>
+<h2 id="原理">原理</h2>
+<ul>
+<li>
+<p><strong>Reverse Process</strong>（多次Denoise）</p>
+<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
+</li>
+<li>
+<p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+</li>
+</ul>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
+    </div>
+  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/generativeai/" class="link black dim">
+        Generative AI
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="chatgpt">ChatGPT</h1>
+<p><img src="/images/GA/1.png" alt="1"></p>
+<ul>
+<li>
+<p>G：generative</p>
+</li>
+<li>
+<p>P：pre-trained</p>
+</li>
+<li>
+<p>T：transformer</p>
+</li>
+</ul>
+<p> </p>
+<ol>
+<li>
+<p>ChatGPT 真正做的事：文字接龙</p>
+<p><strong>Autoregressive Generation</strong>：逐个生成</p>
+<p><img src="/images/GA/3.png" alt="3"></p>
+<p><img src="/images/GA/4.png" alt="4"></p>
+</li>
+<li>
+<p><strong>token</strong></p>
+<p>文字接龙时可以选择的符号</p>
+<p><img src="/images/GA/5.png" alt="5"></p>
+</li>
+<li>
+<p>每次回答都随机（掷骰子）</p>
+<p><img src="/images/GA/6.png" alt="6"></p>
+</li>
+</ol>
+    </div>
+  <a href="/post/generativeai/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 29, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/vae/" class="link black dim">
+        VAE
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="普通自动编码器">普通自动编码器</h2>
+<p>目标：将高维度数据压缩成较小的表示</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ad01491f-ff96-44a7-9a2f-606c66461df8/%E6%88%AA%E5%B1%8F2024-12-30_19.27.19.png" alt="截屏2024-12-30 19.27.19.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/40f99add-baee-40ad-ab9b-45dc5f312af9/%E6%88%AA%E5%B1%8F2024-12-30_19.28.31.png" alt="截屏2024-12-30 19.28.31.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/99bd3fd9-fabb-421d-bcdb-0e6d0c5be310/%E6%88%AA%E5%B1%8F2024-12-30_19.29.08.png" alt="截屏2024-12-30 19.29.08.png"></p>
+<p>应用：</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/1b594f9d-d71f-4af3-b7c9-285e1dfffec6/%E6%88%AA%E5%B1%8F2024-12-30_19.29.47.png" alt="截屏2024-12-30 19.29.47.png"></p>
+<h2 id="去噪自动编码器">去噪自动编码器</h2>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a8e8568e-18b2-4281-a7af-05a627e6f5f0/%E6%88%AA%E5%B1%8F2024-12-30_19.35.42.png" alt="截屏2024-12-30 19.35.42.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ce2c3930-ae83-40a9-b9d3-aa3f4f0246bd/%E6%88%AA%E5%B1%8F2024-12-30_19.36.58.png" alt="截屏2024-12-30 19.36.58.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/fdd726fa-7eb9-4b24-af63-f917ee593b1c/%E6%88%AA%E5%B1%8F2024-12-30_19.37.09.png" alt="截屏2024-12-30 19.37.09.png"></p>
+<h2 id="变分自动编码器">变分自动编码器</h2>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/f4509f09-0920-4a7e-b5ba-74cbec294241/%E6%88%AA%E5%B1%8F2024-12-30_19.39.12.png" alt="截屏2024-12-30 19.39.12.png"></p>
+<ul>
+<li>
+<p>损失函数</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/add2cf71-1094-4639-b2d5-699f551beb48/%E6%88%AA%E5%B1%8F2024-12-30_19.40.36.png" alt="截屏2024-12-30 19.40.36.png"></p>
+</li>
+</ul>
+<h3 id="reparameterization-trick重参数化">Reparameterization Trick(重参数化)</h3>
+<p>如何实现反向传播？</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/db9e763f-81d3-460f-81dc-b81242f41cdb/%E6%88%AA%E5%B1%8F2024-12-30_19.42.30.png" alt="截屏2024-12-30 19.42.30.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e3fb22c3-4a30-4511-9457-4dc08d40b210/%E6%88%AA%E5%B1%8F2024-12-30_19.44.43.png" alt="截屏2024-12-30 19.44.43.png"></p>
+<ul>
+<li>
+<p>核心代码</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9c033e5a-8e28-4e82-ab6e-80d29dd08a20/%E6%88%AA%E5%B1%8F2024-12-30_19.45.33.png" alt="截屏2024-12-30 19.45.33.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/64564c69-b355-4559-95b2-2186d3cf9e08/%E6%88%AA%E5%B1%8F2024-12-30_19.45.42.png" alt="截屏2024-12-30 19.45.42.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/df9a2aa4-f700-4975-a5ca-f315eab2bcab/%E6%88%AA%E5%B1%8F2024-12-30_19.46.02.png" alt="截屏2024-12-30 19.46.02.png"></p>
+</li>
+</ul>
+<h3 id="解耦变分自编码器"><strong>解耦变分自编码器</strong></h3>
+<p>目的：确保潜在分布中的不同神经元互不相干，都在尝试学习输入数据中的不同内容。</p>
+<ul>
+<li>
+<p>解决方式：增加超参数$\beta$，衡量损失函数中的KL散度。</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9501fd11-c948-42ff-ba18-807ca26a11eb/%E6%88%AA%E5%B1%8F2024-12-30_22.11.49.png" alt="截屏2024-12-30 22.11.49.png"></p>
+</li>
+</ul>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/d64275f8-60ea-4cd6-862a-d8d7821c8b3d/%E6%88%AA%E5%B1%8F2024-12-30_22.18.10.png" alt="截屏2024-12-30 22.18.10.png"></p>
+<p>$\beta$过小：过拟合</p>
+<p>$\beta$过大：失去输入中的大量细节</p>
+<p><strong>在强化学习中的作用</strong>：使Agent可以在压缩后的输入T空间上运行。</p>
+    </div>
+  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

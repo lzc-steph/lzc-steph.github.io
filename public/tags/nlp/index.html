@@ -153,111 +153,33 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1-cvnlp基础">1. CV/NLP基础</h1>
-<h3 id="一计算机视觉cv中的特征提取"><strong>一、计算机视觉（CV）中的特征提取</strong></h3>
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
 <h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p>在深度学习兴起之前，CV主要依赖手工设计的特征，这些特征需要领域专家设计，能捕捉图像中的特定模式。</p>
-<h5 id="1-低级视觉特征"><strong>(1) 低级视觉特征</strong></h5>
-<ul>
-<li><strong>颜色特征</strong>：
-<ul>
-<li><strong>颜色直方图</strong>：统计图像中不同颜色值的分布，简单但缺乏空间信息。</li>
-<li><strong>颜色矩</strong>：通过数学矩（均值、方差、偏度等）描述颜色分布。</li>
-</ul>
-</li>
-<li><strong>纹理特征</strong>：
-<ul>
-<li><strong>灰度共生矩阵（GLCM）</strong>：通过统计像素对的灰度值分布，提取纹理粗糙度、对比度等。</li>
-<li><strong>Gabor滤波器</strong>：模拟人类视觉系统，通过不同方向和尺度的滤波器提取纹理。</li>
-</ul>
-</li>
-<li><strong>边缘与形状特征</strong>：
-<ul>
-<li><strong>Canny边缘检测</strong>：提取图像中的边缘信息。</li>
-<li><strong>HOG（方向梯度直方图）</strong>：统计局部区域的梯度方向分布，广泛用于目标检测（如行人检测）。</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-中级语义特征"><strong>(2) 中级语义特征</strong></h5>
-<ul>
-<li><strong>SIFT（尺度不变特征变换）</strong>：
-<ul>
-<li>通过检测关键点并生成局部特征描述子，具有尺度、旋转和光照不变性。</li>
-<li>用于图像匹配、目标识别（如全景图像拼接）。</li>
-</ul>
-</li>
-<li><strong>SURF（加速鲁棒特征）</strong>：
-<ul>
-<li>SIFT的加速版本，通过积分图像和简化描述子计算。</li>
-</ul>
-</li>
-<li><strong>LBP（局部二值模式）</strong>：
-<ul>
-<li>通过比较像素与其邻域的灰度值生成二进制模式，用于纹理分类和人脸识别。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-局限性"><strong>(3) 局限性</strong>：</h5>
-<ul>
-<li>手工特征依赖专家经验，泛化能力有限。</li>
-<li>难以捕捉高层语义信息（如物体类别、场景理解）。</li>
-</ul>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
 <h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<p>深度学习通过神经网络自动学习图像特征，显著提升了CV任务的性能。</p>
 <h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
 <ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</li>
-</ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
 </li>
-<li><strong>经典模型</strong>：
-<ul>
-<li><strong>LeNet-5</strong>（1998）：首个成功应用于手写数字识别的CNN。</li>
-<li><strong>AlexNet</strong>（2012）：引入ReLU和Dropout，大幅提升ImageNet分类精度。</li>
-<li><strong>VGGNet</strong>（2014）：通过堆叠3x3卷积层构建深层网络。</li>
-<li><strong>ResNet</strong>（2015）：提出残差连接，解决深层网络梯度消失问题。</li>
-</ul>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
 </li>
 </ul>
 <h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
 <ul>
-<li><strong>核心思想</strong>：
-<ul>
-<li>将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
-</li>
-<li><strong>优势</strong>：
-<ul>
-<li>无需局部卷积先验，直接建模长距离依赖。</li>
-<li>在ImageNet等任务上超越传统CNN。</li>
-</ul>
-</li>
-</ul>
-<h5 id="3-特征提取流程"><strong>(3) 特征提取流程</strong>：</h5>
-<ol>
-<li><strong>低级特征</strong>：边缘、纹理（浅层卷积层）。</li>
-<li><strong>中级特征</strong>：物体部件（中层卷积层）。</li>
-<li><strong>高级特征</strong>：语义类别（深层卷积层或Transformer）。</li>
-</ol>
-<h3 id="二自然语言处理nlp中的特征提取"><strong>二、自然语言处理（NLP）中的特征提取</strong></h3>
+<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
 <h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p>传统NLP依赖词法、句法和统计特征，通常需要手动设计。</p>
-<h5 id="1-词袋模型bag-of-words-bow"><strong>(1) 词袋模型（Bag of Words, BoW）</strong></h5>
-<ul>
-<li>将文本表示为词汇表中单词的出现频率。</li>
-<li><strong>缺点</strong>：忽略词序和上下文信息。</li>
-</ul>
-<h5 id="2-tf-idf词频-逆文档频率"><strong>(2) TF-IDF（词频-逆文档频率）</strong></h5>
-<ul>
-<li>衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</li>
-<li>用于文本分类和信息检索。</li>
-</ul>
-<h5 id="3-n-gram模型"><strong>(3) N-gram模型</strong></h5>
-<ul>
-<li>统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</li>
-<li>捕捉局部词序信息，但维度爆炸问题严重。</li>
-</ul>
+<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
+<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
+<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
 <h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
 <ul>
 <li><strong>Word2Vec</strong>（2013）：
@@ -272,13 +194,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="5-局限性"><strong>(5) 局限性</strong>：</h5>
-<ul>
-<li>无法建模长距离上下文依赖。</li>
-<li>词向量静态，无法处理一词多义。</li>
-</ul>
-<h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
-<p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
+<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

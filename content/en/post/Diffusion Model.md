@@ -2,7 +2,7 @@
 date: 2025-01-17T10:00:59-04:00
 description: "扩散模型是一种生成模型，主要用于生成与给定数据集相似的数据。它的核心思想是通过逐步添加噪声（扩散过程）和逐步去噪（逆扩散过程）来学习数据的分布，从而生成高质量的数据样本。"
 featured_image: "/images/DM/taytay1.HEIC"
-tags: ["Generative AI"]
+tags: ["Generative AI", "LLM"]
 title: "Diffusion Model"
 ---
 

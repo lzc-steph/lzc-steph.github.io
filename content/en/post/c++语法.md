@@ -6,9 +6,16 @@ tags: ["algorithm"]
 title: "c++语法"
 ---
 
+万能开头：
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+```
+
 在 C++ 中，`using namespace std;`指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上` std::`。
 
-
+&nbsp;
 
 ### 标准输出
 
@@ -32,7 +39,7 @@ std::cout << s << " " << a << std::endl;
 
 
 
-
+&nbsp;
 
 ### 动态数组 `vector`
 
@@ -121,7 +128,7 @@ std::cout << s << " " << a << std::endl;
 
 
 
-
+&nbsp;
 
 
 ### 双链表 `list`
@@ -209,7 +216,7 @@ std::cout << s << " " << a << std::endl;
 
 
 
-
+&nbsp;
 
 ### 队列 `queue`
 
@@ -250,7 +257,7 @@ int main() {
 
 
 
-
+&nbsp;
 
 ###  栈 `stack`
 
@@ -292,7 +299,7 @@ int main() {
 
 
 
-
+&nbsp;
 
 ### 哈希表 `unordered_map`
 
@@ -392,7 +399,7 @@ int main() {
 
    
 
-
+&nbsp;
 
 ### 哈希集合 `unordered_set`
 
@@ -462,7 +469,7 @@ int main() {
    }
    ```
 
-
+&nbsp;
 
 
 
@@ -519,7 +526,7 @@ int main() {
 
 在上述代码中，`num` 的值被修改为 10，因为我们传递的是 `num` 的引用，函数内对 `x` 的修改直接影响了 `num`。
 
-
+&nbsp;
 
 #### 做算法题时的选择
 

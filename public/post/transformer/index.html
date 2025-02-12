@@ -48,7 +48,7 @@
   <meta itemprop="description" content="Transformer 的核心思想是自注意力机制（Self-Attention），它能够捕捉序列中不同位置之间的依赖关系。通过并行处理序列数据，Transformer 显著提高了训练效率。">
   <meta itemprop="datePublished" content="2025-02-08T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-08T11:00:59-04:00">
-  <meta itemprop="wordCount" content="25">
+  <meta itemprop="wordCount" content="62">
   <meta itemprop="keywords" content="LLM">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="transformer">
@@ -238,9 +238,58 @@
 <li>解码器对序列中一个元素输出时，不应该考虑该元素之后的元素</li>
 <li>﻿可以通过掩码来实现
 <ul>
-<li>﻿也就是计算x，输出时，假装当前序列长度为i</li>
+<li>﻿也就是计算$x_i$输出时，假装当前序列长度为i；掩掉了后面的key value。</li>
 </ul>
 </li>
+</ul>
+<p> </p>
+<h3 id="3-基于位置的前馈网络全连接层">3. 基于位置的前馈网络（全连接层）</h3>
+<ul>
+<li>将输入形状由（b, n, d）变换成（bn, d）</li>
+<li>﻿﻿作用两个全连接层</li>
+<li>﻿﻿输出形状由（bn, d）变化回（b,n, d）</li>
+<li>﻿等价于两层核窗口为1的一维卷积层</li>
+</ul>
+<p> </p>
+<h3 id="4-addnorm">4. add&amp;norm</h3>
+<ul>
+<li>add是一个resnet block</li>
+</ul>
+<ul>
+<li>不能用批量归一化
+<ul>
+<li>对每个特征/通道里元素进行归一化，不稳定，不适合序列长度会变的NLP应用</li>
+</ul>
+</li>
+<li>﻿norm: 层归一化对<strong>每个样本里的元素</strong>进行归一化</li>
+</ul>
+<p><img src="/images/trans/5.png" alt="5"></p>
+<p> </p>
+<h3 id="5-信息传递">5. 信息传递</h3>
+<ul>
+<li>﻿编码器中的输出了$y_1$, &hellip;, $y_n$</li>
+<li>﻿﻿将其作为解码中第i个Transformer块中多头注意力的key和value
+<ul>
+<li>﻿它的query来自目标序列</li>
+</ul>
+</li>
+<li>﻿意味着编码器和解码器中块的个数和输出维度都是一样</li>
+</ul>
+<p><img src="/images/trans/6.png" alt="6"></p>
+<p> </p>
+<h3 id="6-预测">6. 预测</h3>
+<ul>
+<li>预测第t+1个输出时，解码器中输入前t个预测值</li>
+<li>﻿在自注意力中，前t个预测值作为key和value，第t个预测值还作为query</li>
+</ul>
+<p><img src="/images/trans/7.jpg" alt="7"></p>
+<p> </p>
+<p> </p>
+<h2 id="二transformer总结">二、Transformer总结</h2>
+<ul>
+<li>Transformer是一个纯使用注意力的编码-解码器</li>
+<li>﻿编码器和解码器都有n个 transformer块</li>
+<li>﻿﻿每个块里使用多头自注意力，基于位置的前馈网络，和层归一化</li>
 </ul><ul class="pa0">
   
    <li class="list di">
@@ -258,6 +307,29 @@
 
 
 
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/llm/">LLM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/diffusion-model/">Diffusion Model</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generativeai/">Generative AI</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/vae/">VAE</a>
+        </li>
+	    
+    </ul>
+</div>
 
 </aside>
 
