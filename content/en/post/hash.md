@@ -1,93 +1,175 @@
 ---
-date: 2025-01-25T11:00:59-04:00
-description: ""
+date: 2025-02-13T11:00:59-04:00
+description: "std::unordered_map 是 C++ 标准库中的一个关联容器，基于哈希表实现，用于存储键值对。"
 featured_image: "/images/algorithm/hash.jpg"
 tags: ["algorithm"]
-title: "hash map"
-
+title: "unordered_map"
 ---
 
-`UT_hash_handle hh` 是 `uthash` 库中的一个关键结构体，用于实现哈希表。
+### 1. 创建 `unordered_map` 对象
+```cpp
+#include <unordered_map>
+#include <string>
 
-### 1. `UT_hash_handle hh` 的作用
+int main() {
+    // 默认构造函数
+    std::unordered_map<std::string, int> map1;
 
-`UT_hash_handle hh` 是哈希表中每个元素必须包含的结构体，用于存储哈希表的内部信息（如哈希值、链表指针等）。`uthash` 通过这个结构体来管理哈希表中的元素。
+    // 初始化列表构造函数
+    std::unordered_map<std::string, int> map2 = {{"apple", 1}, {"banana", 2}};
 
-### 2. 使用方法
+    // 拷贝构造函数
+    std::unordered_map<std::string, int> map3(map2);
 
-在使用 `uthash` 时，通常会在自定义的结构体中包含 `UT_hash_handle hh`，并通过宏操作来管理哈希表。
-
-#### 示例代码
-
-```c
-#include "uthash.h"
-
-// 自定义结构体
-struct my_struct {
-    int id;                    // 键值
-    char name[10];             // 数据
-    UT_hash_handle hh;         // 必须包含的哈希句柄
-};
-
-// 全局哈希表指针
-struct my_struct *users = NULL;
-```
-
-```c
-// 添加用户到哈希表
-void add_user(int user_id, const char *name) {
-    struct my_struct *s;
-
-    // 检查是否已存在相同键值的元素
-    HASH_FIND_INT(users, &user_id, s);
-    if (s == NULL) {
-        // 不存在则创建新元素
-        s = (struct my_struct *)malloc(sizeof(struct my_struct));
-        s->id = user_id;
-        HASH_ADD_INT(users, id, s);  // 添加到哈希表
-    }
-    strcpy(s->name, name);
+    return 0;
 }
 ```
 
-```c++
-// 根据用户 ID 查找用户
-struct my_struct *find_user(int user_id) {
-    struct my_struct *s;
+&nbsp;
 
-    // 查找元素
-    HASH_FIND_INT(users, &user_id, s);
-    return s;
-}
-```
+### 2. 插入
+
+1. `insert`
+
+   插入一个键值对
+
+   ```cpp
+   map1.insert({"orange", 3});
+   map1.insert(std::make_pair("grape", 4));
+   ```
+
+
+
+
+2. `operator[]`
+
+   通过键插入或访问值。**如果键不存在，会插入一个默认值**。
+
+   ```c++
+   map1["apple"] = 10; // 插入或修改
+   int value = map1["apple"]; // 访问
+   ```
+
+
+
+
+&nbsp;
+
+### 3. **访问元素**
+1. `at`
+
+   访问指定键的值，如果键不存在会抛出 `std::out_of_range` 异常。
+
+   ```cpp
+   int value = map1.at("apple");
+   ```
+
+
+
+
+2. `operator[]`
+
+   访问或插入指定键的值。
+
+   ```cpp
+   int value = map1["apple"];
+   ```
 
 <!--more-->
 
-```c
-// 删除用户
-void delete_user(struct my_struct *user) {
-    // 删除元素
-    HASH_DEL(users, user);
-    free(user);  // 释放内存
+&nbsp;
+
+### 4. **删除元素**
+1. `erase`
+
+   删除指定键的元素。
+
+   ```c++
+   map1.erase("apple"); // 删除键为 "apple" 的元素
+   ```
+
+   
+
+2. 清空所有元素
+
+   ```c++
+   map1.clear();
+   ```
+
+&nbsp;
+
+### 5. **查找元素**
+1. `find`
+
+   查找指定键的元素，返回迭代器。如果未找到，返回 `end()`。
+
+   ```c++
+   auto it = map1.find("apple");
+   if (it != map1.end()) {
+       std::cout << "Found: " << it->first << " -> " << it->second << std::endl;
+   } else {
+       std::cout << "Not found" << std::endl;
+   }
+   ```
+
+
+
+2. `count`
+
+   返回指定键的元素个数（对于 `unordered_map`，只能是 0 或 1）。
+
+   ```c++
+   if (map1.count("apple") > 0) {
+       std::cout << "Key exists" << std::endl;
+   }
+   ```
+
+
+
+&nbsp;
+
+### 6. **容量相关**
+1. `size`
+
+   返回容器中元素的数量。
+
+   ```c++
+   std::cout << "Size: " << map1.size() << std::endl;
+   ```
+
+
+
+2. `empty`
+
+   检查容器是否为空。
+
+   ```c++
+   if (map1.empty()) {
+       std::cout << "Map is empty" << std::endl;
+   }
+   ```
+
+   
+
+
+
+&nbsp;
+
+### 7. **迭代器**
+1. `begin` 和 `end`
+
+用于遍历容器。
+
+```cpp
+for (auto it = map1.begin(); it != map1.end(); ++it) {
+    std::cout << it->first << " -> " << it->second << std::endl;
 }
 ```
 
-```c
-// 打印哈希表中的所有用户
-void print_users() {
-    struct my_struct *s;
+2. 范围 for 循环
 
-    // 遍历哈希表
-    for (s = users; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-        printf("user id %d: name %s\n", s->id, s->name);
-    }
+```cpp
+for (const auto& pair : map1) {
+    std::cout << pair.first << " -> " << pair.second << std::endl;
 }
 ```
-
-### 3. 关键点
-
-- **`UT_hash_handle hh`**：必须包含在自定义结构体中，用于哈希表管理。
-- **`HASH_ADD_INT`**：将元素添加到哈希表，`INT` 表示键值为整数类型。
-- **`HASH_FIND_INT`**：根据键值查找元素。
-- **`HASH_DEL`**：从哈希表中删除元素。
-- **遍历哈希表**：通过 `hh.next` 指针遍历哈希表中的元素。

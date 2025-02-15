@@ -6,7 +6,7 @@ tags: ["algorithm"]
 title: "二叉树"
 ---
 
-# 二叉树基础及遍历
+# 二叉树
 
 ## 二叉树的实现方式
 
@@ -79,7 +79,7 @@ title: "二叉树"
 
 
 
-
+&nbsp;
 
 &nbsp;
 
@@ -104,6 +104,8 @@ void traverse(TreeNode* root) {
 
 
 
+
+&nbsp;
 
 ### 层序遍历（BFS）
 
@@ -142,7 +144,7 @@ void traverse(TreeNode* root) {
 
 2. **改进版**
 
-   每向下遍历一层，就给 `depth` 加 1。
+   每向下遍历一层，就给 `depth` 加 1。**depth**记录当前遍历到的层数；**sz**记录队列的长度；i记录的是节点 **cur**是当前层的第几个。
 
    ```c++
    void levelOrderTraverse(TreeNode* root) {
@@ -220,22 +222,66 @@ void traverse(TreeNode* root) {
 
    这样每个节点都有了自己的 `depth` 变量，是最灵活的，可以满足所有 BFS 算法的需求.
 
-
+&nbsp;
 
 &nbsp;
 
-# 二叉堆原理
+&nbsp;
 
+# 多叉树
 
+## 多叉树的节点实现
 
-
-
-
-
-
-
-
+```c++
+class Node {
+public:
+    int val;
+    vector<Node*> children;
+};
+```
 
 &nbsp;
 
-# 线段树使用场景
+## **递归遍历**
+
+```c++
+// N 叉树的遍历框架
+void traverse(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+    // 前序位置
+    for (Node* child : root->children) {
+        traverse(child);
+    }
+    // 后序位置
+}
+```
+
+唯一的区别是，多叉树没有了中序位置。
+
+&nbsp;
+
+## 层序遍历
+
+```c++
+void levelOrderTraverse(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+    std::queue<Node*> q;
+    q.push(root);
+  
+    while (!q.empty()) {
+        Node* cur = q.front();
+        q.pop();
+        // 访问 cur 节点
+        std::cout << cur->val << std::endl;
+
+        // 把 cur 的所有子节点加入队列
+        for (Node* child : cur->children) {
+            q.push(child);
+        }
+    }
+}
+```

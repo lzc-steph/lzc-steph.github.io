@@ -204,6 +204,95 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        January 2, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="link black dim">
+        强化学习-进阶
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="总述">总述</h2>
+<p><img src="/images/RL2/1.png" alt="1"></p>
+<ul>
+<li>
+<h4 id="基础工具"><strong>基础工具</strong></h4>
+<ol>
+<li><strong>基本概念</strong>：state, action, reward, return, episode, policy, mdp&hellip;</li>
+<li><strong>贝尔曼公式</strong>：用于评价策略</li>
+<li><strong>贝尔曼最优公式</strong>：强化学习的最终目标是求解最优策略</li>
+</ol>
+</li>
+<li>
+<h4 id="算法方法">算法/方法</h4>
+<ol start="4">
+<li><strong>值迭代、策略迭代—— truncated policy iteration</strong>：值和策略update不断迭代</li>
+<li><strong>Monte Carlo Learning</strong>：无模型学习</li>
+<li><strong>随即近似理论</strong>：from non-incremental to incremental</li>
+<li><strong>时序差分方法(TD)</strong></li>
+<li><strong>值函数估计</strong>：tabular representation to function representation，引入神经网络</li>
+<li><strong>Policy Gradient Methods</strong>：from value-based to policy-based</li>
+<li><strong>Actor-Critic Methods</strong>：policy-based + value-based</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h2 id="1-基本概念">1 基本概念</h2>
+<h4 id="1-专有名词">1. 专有名词</h4>
+<ol>
+<li>
+<p><strong>grid-world</strong>：小机器人在网格里走路</p>
+</li>
+<li>
+<p><strong>state</strong>：agent在环境中的状态，用s1、s2&hellip;表示；s是列向量，可表示速度、加速度等</p>
+</li>
+<li>
+<p><strong>state space</strong>：即把所有的state放在一起的集合</p>
+</li>
+<li>
+<p><strong>action</strong>：可采取的行动，如往上走、往右走&hellip;</p>
+</li>
+<li>
+<p><strong>action-space</strong>：所有的action放在一起的集合，用A表示</p>
+</li>
+<li>
+<p><strong>state transition</strong>：采取一个action后，从一个state转到另一个state的过程；定义了agent与环境的一种交互行为</p>
+</li>
+<li>
+<p><strong>forbidden area</strong>：进去后受到惩罚/不可进入</p>
+</li>
+<li>
+<p><strong>tabular representation</strong>：使用表格描述state transition</p>
+</li>
+<li>
+<p><strong>state transition probability</strong>：使用条件概率来表述tate transition，用于描述随机性</p>
+</li>
+<li>
+<p><strong>policy</strong>：使用箭头表示，告诉agent在某state时应该采取哪个action。基于policy，可以得到path</p>
+</li>
+<li>
+<p><strong>mathematical representation</strong>：条件概率，用π表示某状态对应的策略</p>
+</li>
+<li>
+<p><strong>stochastic policies</strong>：某状态对应多个不同概率的action</p>
+</li>
+<li>
+<p>reward：一个数(标量)；正奖励负惩罚</p>
+<p><img src="/images/RL2/2.png" alt="2"></p>
+</li>
+<li></li>
+</ol>
+    </div>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         December 26, 2024
       </div>
     

@@ -6,7 +6,7 @@ tags: ["algorithm"]
 title: "「持续更新」算法题笔记"
 ---
 
-1. ### 两数之和
+1. ### 两数之和 - hash
 
    **题目描述**：给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出 **和为目标值** *`target`* 的那 **两个** 整数，并返回它们的数组下标。
 
@@ -69,13 +69,123 @@ title: "「持续更新」算法题笔记"
 
 &nbsp;
 
-2. ### 二叉树的最小深度
+2. ### 二叉树的最小深度 - D/BFS
 
-   给定一个二叉树，找出其最小深度。最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
+   最小深度是从根节点到最近叶子节点的最短路径上的节点数量 —— 本质上是求最短距离。
 
    **说明：**叶子节点是指没有子节点的节点。
    
+   1. **if-else大法**
    
+      ```c++
+      class Solution {
+      public:
+      	int minDepth(TreeNode root) {
+      		if (root == null) return 0;
+      		else if (root.left == null) return minDepth(root.right) + 1;
+      		else if (root.right == null) return minDepth(root.left) + 1;
+      		else return min(minDepth(root.left), minDepth(root.right)) + 1;
+      	}
+      }
+      ```
+   
+      *min* 函数比较了两个整数*a*和*b*，并返回较小的那个值。
+   
+   2. **DFS** 深度遍历的解法
+   
+      每当遍历到一条树枝的叶子节点，就会更新最小深度，**当遍历完整棵树后**，就能算出整棵树的最小深度。
+   
+      ```c++
+      class Solution {
+      private:
+          // 记录最小深度（根节点到最近的叶子节点的距离）
+          int minDepthValue = INT_MAX;
+          // 记录当前遍历到的节点深度
+          int currentDepth = 0;
+      
+      public:
+          int minDepth(TreeNode* root) {
+              if (root == nullptr) {
+                  return 0;
+              }
+      
+              // 从根节点开始 DFS 遍历
+              traverse(root);
+              return minDepthValue;
+          }
+      
+          void traverse(TreeNode* root) {
+              if (root == nullptr) {
+                  return;
+              }
+      
+              // 前序位置进入节点时增加当前深度
+              currentDepth++;
+      
+              // 如果当前节点是叶子节点，更新最小深度
+              if (root->left == nullptr && root->right == nullptr) {
+                  minDepthValue = min(minDepthValue, currentDepth);
+              }
+      
+              traverse(root->left);
+              traverse(root->right);
+      
+              // 后序位置离开节点时减少当前深度
+              currentDepth--;
+          }
+      };
+      ```
+   
+   3. **BFS** 层序遍历的解法
+   
+      按照 BFS 从上到下逐层遍历二叉树的特点，当遍历到第一个叶子节点时，就能得到最小深度。
+   
+      ```c++
+      class Solution {
+      public:
+          int minDepth(TreeNode* root) {
+              if (root == nullptr) return 0;
+              queue<TreeNode*> q;
+              q.push(root);
+              // root 本身就是一层，depth 初始化为 1
+              int depth = 1;
+      
+              while (!q.empty()) {
+                  int sz = q.size();
+                  // 遍历当前层的节点
+                  for (int i = 0; i < sz; i++) {
+                      TreeNode* cur = q.front();
+                      q.pop();
+                      // 判断是否到达叶子结点
+                      if (cur->left == nullptr && cur->right == nullptr)
+                          return depth;
+                      // 将下一层节点加入队列
+                      if (cur->left != nullptr)
+                          q.push(cur->left);
+                      if (cur->right != nullptr)
+                          q.push(cur->right);
+                  }
+                  // 这里增加步数
+                  depth++;
+              }
+              return depth;
+          }
+      };
+      ```
+   
+      1. **`pop()` 函数**
+   
+         该函数没有参数，也没有返回值。它仅用于删除栈顶元素。
+   
+      2. **`front()` 函数**
+   
+         返回对容器中第一个元素的引用。
+
+
+
+&nbsp;
+
+3. 
 
 
 

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>数组链表 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="1. 动态数组
+动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
+// 创建动态数组
+// 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
+ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;();
+
+for (int i = 0; i &lt; 10; i&#43;&#43;) {
+    // 在末尾追加元素，时间复杂度 O(1)
+    arr.add(i);
+}
+
+// 在中间插入元素，时间复杂度 O(N)
+// 在索引 2 的位置插入元素 666
+arr.add(2, 666);
+
+// 在头部插入元素，时间复杂度 O(N)
+arr.add(0, -1);
+
+// 删除末尾元素，时间复杂度 O(1)
+arr.remove(arr.size() - 1);
+
+// 删除中间元素，时间复杂度 O(N)
+// 删除索引 2 的元素
+arr.remove(2);
+
+// 根据索引查询元素，时间复杂度 O(1)
+int a = arr.get(0);
+
+// 根据索引修改元素，时间复杂度 O(1)
+arr.set(0, 100);
+
+// 根据元素值查找索引，时间复杂度 O(N)
+int index = arr.indexOf(666);
+ 
+2. 链表
+在实际的编程语言中，我们使用的链表节点定义如下：
+class Node&lt;E&gt; {
+    E val;
+    Node&lt;E&gt; next;
+    Node&lt;E&gt; prev;
+
+    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) {
+        this.val = element;
+        this.next = next;
+        this.prev = prev;
+    }
+}
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="数组链表">
+  <meta property="og:description" content="1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
+// 创建动态数组 // 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容 ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; 10; i&#43;&#43;) { // 在末尾追加元素，时间复杂度 O(1) arr.add(i); } // 在中间插入元素，时间复杂度 O(N) // 在索引 2 的位置插入元素 666 arr.add(2, 666); // 在头部插入元素，时间复杂度 O(N) arr.add(0, -1); // 删除末尾元素，时间复杂度 O(1) arr.remove(arr.size() - 1); // 删除中间元素，时间复杂度 O(N) // 删除索引 2 的元素 arr.remove(2); // 根据索引查询元素，时间复杂度 O(1) int a = arr.get(0); // 根据索引修改元素，时间复杂度 O(1) arr.set(0, 100); // 根据元素值查找索引，时间复杂度 O(N) int index = arr.indexOf(666); 2. 链表 在实际的编程语言中，我们使用的链表节点定义如下：
+class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) { this.val = element; this.next = next; this.prev = prev; } }">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-02-06T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-02-06T11:00:59-04:00">
+    <meta property="article:tag" content="Algorithm">
+
+  <meta itemprop="name" content="数组链表">
+  <meta itemprop="description" content="1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
+// 创建动态数组 // 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容 ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; 10; i&#43;&#43;) { // 在末尾追加元素，时间复杂度 O(1) arr.add(i); } // 在中间插入元素，时间复杂度 O(N) // 在索引 2 的位置插入元素 666 arr.add(2, 666); // 在头部插入元素，时间复杂度 O(N) arr.add(0, -1); // 删除末尾元素，时间复杂度 O(1) arr.remove(arr.size() - 1); // 删除中间元素，时间复杂度 O(N) // 删除索引 2 的元素 arr.remove(2); // 根据索引查询元素，时间复杂度 O(1) int a = arr.get(0); // 根据索引修改元素，时间复杂度 O(1) arr.set(0, 100); // 根据元素值查找索引，时间复杂度 O(N) int index = arr.indexOf(666); 2. 链表 在实际的编程语言中，我们使用的链表节点定义如下：
+class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) { this.val = element; this.next = next; this.prev = prev; } }">
+  <meta itemprop="datePublished" content="2025-02-06T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-02-06T11:00:59-04:00">
+  <meta itemprop="wordCount" content="154">
+  <meta itemprop="keywords" content="Algorithm">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="数组链表">
+  <meta name="twitter:description" content="1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
+// 创建动态数组 // 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容 ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; 10; i&#43;&#43;) { // 在末尾追加元素，时间复杂度 O(1) arr.add(i); } // 在中间插入元素，时间复杂度 O(N) // 在索引 2 的位置插入元素 666 arr.add(2, 666); // 在头部插入元素，时间复杂度 O(N) arr.add(0, -1); // 删除末尾元素，时间复杂度 O(1) arr.remove(arr.size() - 1); // 删除中间元素，时间复杂度 O(N) // 删除索引 2 的元素 arr.remove(2); // 根据索引查询元素，时间复杂度 O(1) int a = arr.get(0); // 根据索引修改元素，时间复杂度 O(1) arr.set(0, 100); // 根据元素值查找索引，时间复杂度 O(N) int index = arr.indexOf(666); 2. 链表 在实际的编程语言中，我们使用的链表节点定义如下：
+class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) { this.val = element; this.next = next; this.prev = prev; } }">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/dataStructure/lucky.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">数组链表</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E7%25BB%2584%25E9%2593%25BE%25E8%25A1%25A8%2F&amp;subject=%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E7%25BB%2584%25E9%2593%25BE%25E8%25A1%25A8%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E7%25BB%2584%25E9%2593%25BE%25E8%25A1%25A8%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E7%25BB%2584%25E9%2593%25BE%25E8%25A1%25A8%2F&amp;summary=1.&#43;%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84%E5%BA%95%E5%B1%82%E8%BF%98%E6%98%AF%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84%EF%BC%8C%E5%8F%AA%E6%98%AF%E8%87%AA%E5%8A%A8%E5%B8%AE%E6%88%91%E4%BB%AC%E8%BF%9B%E8%A1%8C%E6%95%B0%E7%BB%84%E7%A9%BA%E9%97%B4%E7%9A%84%E6%89%A9%E7%BC%A9%E5%AE%B9%EF%BC%8C%E5%B9%B6%E6%8A%8A%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9%E6%93%8D%E4%BD%9C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%B0%81%E8%A3%85%E3%80%82%0A%2F%2F&#43;%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;%2F%2F&#43;%E4%B8%8D%E7%94%A8%E6%98%BE%E5%BC%8F%E6%8C%87%E5%AE%9A%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%EF%BC%8C%E5%AE%83%E4%BC%9A%E6%A0%B9%E6%8D%AE%E5%AE%9E%E9%99%85%E5%AD%98%E5%82%A8%E7%9A%84%E5%85%83%E7%B4%A0%E6%95%B0%E9%87%8F%E8%87%AA%E5%8A%A8%E6%89%A9%E7%BC%A9%E5%AE%B9&#43;ArrayList%26amp%3Blt%3BInteger%26amp%3Bgt%3B&#43;arr&#43;%3D&#43;new&#43;ArrayList%26amp%3Blt%3B%26amp%3Bgt%3B%28%29%3B&#43;for&#43;%28int&#43;i&#43;%3D&#43;0%3B&#43;i&#43;%26amp%3Blt%3B&#43;10%3B&#43;i%2B%2B%29&#43;%7B&#43;%2F%2F&#43;%E5%9C%A8%E6%9C%AB%E5%B0%BE%E8%BF%BD%E5%8A%A0%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.add%28i%29%3B&#43;%7D&#43;%2F%2F&#43;%E5%9C%A8%E4%B8%AD%E9%97%B4%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;%2F%2F&#43;%E5%9C%A8%E7%B4%A2%E5%BC%95&#43;2&#43;%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0&#43;666&#43;arr.add%282%2C&#43;666%29%3B&#43;%2F%2F&#43;%E5%9C%A8%E5%A4%B4%E9%83%A8%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;arr.add%280%2C&#43;-1%29%3B&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E6%9C%AB%E5%B0%BE%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.remove%28arr.size%28%29&#43;-&#43;1%29%3B&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E4%B8%AD%E9%97%B4%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95&#43;2&#43;%E7%9A%84%E5%85%83%E7%B4%A0&#43;arr.remove%282%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E6%9F%A5%E8%AF%A2%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;int&#43;a&#43;%3D&#43;arr.get%280%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.set%280%2C&#43;100%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0%E5%80%BC%E6%9F%A5%E6%89%BE%E7%B4%A2%E5%BC%95%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;int&#43;index&#43;%3D&#43;arr.indexOf%28666%29%3B&#43;2.&#43;%E9%93%BE%E8%A1%A8&#43;%E5%9C%A8%E5%AE%9E%E9%99%85%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B%EF%BC%9A%0Aclass&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;%7B&#43;E&#43;val%3B&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;next%3B&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;prev%3B&#43;Node%28Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;prev%2C&#43;E&#43;element%2C&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;next%29&#43;%7B&#43;this.val&#43;%3D&#43;element%3B&#43;this.next&#43;%3D&#43;next%3B&#43;this.prev&#43;%3D&#43;prev%3B&#43;%7D&#43;%7D&#43;&amp;title=%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E7%25BB%2584%25E9%2593%25BE%25E8%25A1%25A8%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">数组链表</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-02-06T11:00:59-04:00">February 6, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="1-动态数组">1. 动态数组</h2>
+<p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装</strong>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 创建动态数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在末尾追加元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    arr.add(i);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在中间插入元素，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 在索引 2 的位置插入元素 666
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.add(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">666</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在头部插入元素，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.add(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除末尾元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.remove(arr.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除中间元素，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除索引 2 的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.remove(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据索引查询元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> arr.get(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据索引修改元素，时间复杂度 O(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.set(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据元素值查找索引，时间复杂度 O(N)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> arr.indexOf(<span style="color:#ae81ff">666</span>);
+</span></span></code></pre></div><p> </p>
+<h2 id="2-链表">2. 链表</h2>
+<p>在实际的编程语言中，我们使用的链表节点定义如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Node</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    E val;
+</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> next;
+</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> prev;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Node(Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> prev, E element, Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> next) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.val <span style="color:#f92672">=</span> element;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.next <span style="color:#f92672">=</span> next;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.prev <span style="color:#f92672">=</span> prev;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>[!NOTE]</p>
+<p>1、编程语言标准库一般都会提供泛型，即你可以指定 <code>val</code> 字段为任意类型，而力扣的单链表节点的 <code>val</code> 字段只有 int 类型。</p>
+<p>2、编程语言标准库一般使用的都是双链表而非单链表。单链表节点只有一个 <code>next</code> 指针，指向下一个节点；而双链表节点有两个指针，<code>prev</code> 指向前一个节点，<code>next</code> 指向下一个节点。</p>
+<p>有了 <code>prev</code> 前驱指针，链表支持双向遍历，但由于要多维护一个指针，增删查改时会稍微复杂一些。</p>
+</blockquote>
+<h4 id="几个关键点">几个关键点</h4>
+<h5 id="关键点一同时持有头尾节点的引用">关键点一、同时持有头尾节点的引用</h5>
+<h5 id="关键点二虚拟头尾节点">关键点二、虚拟头尾节点</h5>
+<p>在创建双链表时就创建一个虚拟头节点和一个虚拟尾节点，无论双链表是否为空，这两个节点都存在 —— 这样就不会出现空指针的问题，可以避免很多边界情况的处理。</p>
+<p>假设虚拟头尾节点分别是 <code>dummyHead</code> 和 <code>dummyTail</code>，那么一条空的双链表长这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>dummyHead <span style="color:#f92672">&lt;-&gt;</span> dummyTail
+</span></span></code></pre></div><p>如果你添加 <code>1,2,3</code> 几个元素，那么链表长这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>dummyHead <span style="color:#f92672">&lt;-&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;-&gt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&lt;-&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">&lt;-&gt;</span> dummyTail
+</span></span></code></pre></div><p>有了头尾虚拟节点，无论链表是否为空，都只需要考虑在中间插入元素的情况就可以了，这样代码会简洁很多。</p>
+<p>虚拟节点是内部实现数据结构的技巧，对外是不可见的。比如按照索引获取元素的 <code>get(index)</code>方法，都是从真实节点开始计算索引，而不是从虚拟节点开始计算。</p>
+<h5 id="关键点三内存泄露">关键点三、内存泄露？</h5>
+<p>Java 的垃圾回收的判断机制是看这个对象是否被别人引用，而并不关心这个对象是否还引用着别人。</p>
+<p>不过删除节点时，最好还是把被删除节点的指针都置为 null，可能避免一些潜在的问题。</p><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/algorithm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Algorithm</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/c&#43;&#43;%E8%AF%AD%E6%B3%95/">c&#43;&#43;语法</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

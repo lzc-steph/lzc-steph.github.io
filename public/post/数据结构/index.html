@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>数据结构实现 | HomePage</title>
+    <title>数组链表 | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="数组链表
-1. 动态数组
+    <meta name="description" content="1. 动态数组
 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
 // 创建动态数组
 // 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
@@ -83,8 +82,8 @@ class Node&lt;E&gt; {
 
     <meta property="og:url" content="http://localhost:1313/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
   <meta property="og:site_name" content="HomePage">
-  <meta property="og:title" content="数据结构实现">
-  <meta property="og:description" content="数组链表 1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
+  <meta property="og:title" content="数组链表">
+  <meta property="og:description" content="1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
 // 创建动态数组 // 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容 ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; 10; i&#43;&#43;) { // 在末尾追加元素，时间复杂度 O(1) arr.add(i); } // 在中间插入元素，时间复杂度 O(N) // 在索引 2 的位置插入元素 666 arr.add(2, 666); // 在头部插入元素，时间复杂度 O(N) arr.add(0, -1); // 删除末尾元素，时间复杂度 O(1) arr.remove(arr.size() - 1); // 删除中间元素，时间复杂度 O(N) // 删除索引 2 的元素 arr.remove(2); // 根据索引查询元素，时间复杂度 O(1) int a = arr.get(0); // 根据索引修改元素，时间复杂度 O(1) arr.set(0, 100); // 根据元素值查找索引，时间复杂度 O(N) int index = arr.indexOf(666); 2. 链表 在实际的编程语言中，我们使用的链表节点定义如下：
 class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) { this.val = element; this.next = next; this.prev = prev; } }">
   <meta property="og:locale" content="en_US">
@@ -94,17 +93,17 @@ class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&l
     <meta property="article:modified_time" content="2025-02-06T11:00:59-04:00">
     <meta property="article:tag" content="Algorithm">
 
-  <meta itemprop="name" content="数据结构实现">
-  <meta itemprop="description" content="数组链表 1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
+  <meta itemprop="name" content="数组链表">
+  <meta itemprop="description" content="1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
 // 创建动态数组 // 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容 ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; 10; i&#43;&#43;) { // 在末尾追加元素，时间复杂度 O(1) arr.add(i); } // 在中间插入元素，时间复杂度 O(N) // 在索引 2 的位置插入元素 666 arr.add(2, 666); // 在头部插入元素，时间复杂度 O(N) arr.add(0, -1); // 删除末尾元素，时间复杂度 O(1) arr.remove(arr.size() - 1); // 删除中间元素，时间复杂度 O(N) // 删除索引 2 的元素 arr.remove(2); // 根据索引查询元素，时间复杂度 O(1) int a = arr.get(0); // 根据索引修改元素，时间复杂度 O(1) arr.set(0, 100); // 根据元素值查找索引，时间复杂度 O(N) int index = arr.indexOf(666); 2. 链表 在实际的编程语言中，我们使用的链表节点定义如下：
 class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) { this.val = element; this.next = next; this.prev = prev; } }">
   <meta itemprop="datePublished" content="2025-02-06T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-06T11:00:59-04:00">
-  <meta itemprop="wordCount" content="155">
+  <meta itemprop="wordCount" content="154">
   <meta itemprop="keywords" content="Algorithm">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="数据结构实现">
-  <meta name="twitter:description" content="数组链表 1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
+  <meta name="twitter:title" content="数组链表">
+  <meta name="twitter:description" content="1. 动态数组 动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装。
 // 创建动态数组 // 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容 ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; 10; i&#43;&#43;) { // 在末尾追加元素，时间复杂度 O(1) arr.add(i); } // 在中间插入元素，时间复杂度 O(N) // 在索引 2 的位置插入元素 666 arr.add(2, 666); // 在头部插入元素，时间复杂度 O(N) arr.add(0, -1); // 删除末尾元素，时间复杂度 O(1) arr.remove(arr.size() - 1); // 删除中间元素，时间复杂度 O(N) // 删除索引 2 的元素 arr.remove(2); // 根据索引查询元素，时间复杂度 O(1) int a = arr.get(0); // 根据索引修改元素，时间复杂度 O(1) arr.set(0, 100); // 根据元素值查找索引，时间复杂度 O(N) int index = arr.indexOf(666); 2. 链表 在实际的编程语言中，我们使用的链表节点定义如下：
 class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) { this.val = element; this.next = next; this.prev = prev; } }">
 
@@ -182,7 +181,7 @@ class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&l
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <div class="f2 f1-l fw2 white-90 mb0 lh-title">数据结构实现</div>
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">数组链表</div>
           
         
       </div>
@@ -199,7 +198,7 @@ class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&l
       <aside class="instapaper_ignoref b helvetica tracked ttu">
           
         Articles
-      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584%2F&amp;subject=%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0"
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584%2F&amp;subject=%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8"
         class="ananke-social-link email no-underline"
         title="Share on Email" aria-label="Share on Email"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -220,7 +219,7 @@ class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&l
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584%2F&amp;summary=%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8&#43;1.&#43;%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84%E5%BA%95%E5%B1%82%E8%BF%98%E6%98%AF%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84%EF%BC%8C%E5%8F%AA%E6%98%AF%E8%87%AA%E5%8A%A8%E5%B8%AE%E6%88%91%E4%BB%AC%E8%BF%9B%E8%A1%8C%E6%95%B0%E7%BB%84%E7%A9%BA%E9%97%B4%E7%9A%84%E6%89%A9%E7%BC%A9%E5%AE%B9%EF%BC%8C%E5%B9%B6%E6%8A%8A%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9%E6%93%8D%E4%BD%9C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%B0%81%E8%A3%85%E3%80%82%0A%2F%2F&#43;%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;%2F%2F&#43;%E4%B8%8D%E7%94%A8%E6%98%BE%E5%BC%8F%E6%8C%87%E5%AE%9A%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%EF%BC%8C%E5%AE%83%E4%BC%9A%E6%A0%B9%E6%8D%AE%E5%AE%9E%E9%99%85%E5%AD%98%E5%82%A8%E7%9A%84%E5%85%83%E7%B4%A0%E6%95%B0%E9%87%8F%E8%87%AA%E5%8A%A8%E6%89%A9%E7%BC%A9%E5%AE%B9&#43;ArrayList%26amp%3Blt%3BInteger%26amp%3Bgt%3B&#43;arr&#43;%3D&#43;new&#43;ArrayList%26amp%3Blt%3B%26amp%3Bgt%3B%28%29%3B&#43;for&#43;%28int&#43;i&#43;%3D&#43;0%3B&#43;i&#43;%26amp%3Blt%3B&#43;10%3B&#43;i%2B%2B%29&#43;%7B&#43;%2F%2F&#43;%E5%9C%A8%E6%9C%AB%E5%B0%BE%E8%BF%BD%E5%8A%A0%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.add%28i%29%3B&#43;%7D&#43;%2F%2F&#43;%E5%9C%A8%E4%B8%AD%E9%97%B4%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;%2F%2F&#43;%E5%9C%A8%E7%B4%A2%E5%BC%95&#43;2&#43;%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0&#43;666&#43;arr.add%282%2C&#43;666%29%3B&#43;%2F%2F&#43;%E5%9C%A8%E5%A4%B4%E9%83%A8%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;arr.add%280%2C&#43;-1%29%3B&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E6%9C%AB%E5%B0%BE%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.remove%28arr.size%28%29&#43;-&#43;1%29%3B&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E4%B8%AD%E9%97%B4%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95&#43;2&#43;%E7%9A%84%E5%85%83%E7%B4%A0&#43;arr.remove%282%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E6%9F%A5%E8%AF%A2%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;int&#43;a&#43;%3D&#43;arr.get%280%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.set%280%2C&#43;100%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0%E5%80%BC%E6%9F%A5%E6%89%BE%E7%B4%A2%E5%BC%95%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;int&#43;index&#43;%3D&#43;arr.indexOf%28666%29%3B&#43;2.&#43;%E9%93%BE%E8%A1%A8&#43;%E5%9C%A8%E5%AE%9E%E9%99%85%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B%EF%BC%9A%0Aclass&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;%7B&#43;E&#43;val%3B&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;next%3B&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;prev%3B&#43;Node%28Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;prev%2C&#43;E&#43;element%2C&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;next%29&#43;%7B&#43;this.val&#43;%3D&#43;element%3B&#43;this.next&#43;%3D&#43;next%3B&#43;this.prev&#43;%3D&#43;prev%3B&#43;%7D&#43;%7D&#43;&amp;title=%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584%2F&amp;summary=1.&#43;%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84%E5%BA%95%E5%B1%82%E8%BF%98%E6%98%AF%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84%EF%BC%8C%E5%8F%AA%E6%98%AF%E8%87%AA%E5%8A%A8%E5%B8%AE%E6%88%91%E4%BB%AC%E8%BF%9B%E8%A1%8C%E6%95%B0%E7%BB%84%E7%A9%BA%E9%97%B4%E7%9A%84%E6%89%A9%E7%BC%A9%E5%AE%B9%EF%BC%8C%E5%B9%B6%E6%8A%8A%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9%E6%93%8D%E4%BD%9C%E8%BF%9B%E8%A1%8C%E4%BA%86%E5%B0%81%E8%A3%85%E3%80%82%0A%2F%2F&#43;%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84&#43;%2F%2F&#43;%E4%B8%8D%E7%94%A8%E6%98%BE%E5%BC%8F%E6%8C%87%E5%AE%9A%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%EF%BC%8C%E5%AE%83%E4%BC%9A%E6%A0%B9%E6%8D%AE%E5%AE%9E%E9%99%85%E5%AD%98%E5%82%A8%E7%9A%84%E5%85%83%E7%B4%A0%E6%95%B0%E9%87%8F%E8%87%AA%E5%8A%A8%E6%89%A9%E7%BC%A9%E5%AE%B9&#43;ArrayList%26amp%3Blt%3BInteger%26amp%3Bgt%3B&#43;arr&#43;%3D&#43;new&#43;ArrayList%26amp%3Blt%3B%26amp%3Bgt%3B%28%29%3B&#43;for&#43;%28int&#43;i&#43;%3D&#43;0%3B&#43;i&#43;%26amp%3Blt%3B&#43;10%3B&#43;i%2B%2B%29&#43;%7B&#43;%2F%2F&#43;%E5%9C%A8%E6%9C%AB%E5%B0%BE%E8%BF%BD%E5%8A%A0%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.add%28i%29%3B&#43;%7D&#43;%2F%2F&#43;%E5%9C%A8%E4%B8%AD%E9%97%B4%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;%2F%2F&#43;%E5%9C%A8%E7%B4%A2%E5%BC%95&#43;2&#43;%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0&#43;666&#43;arr.add%282%2C&#43;666%29%3B&#43;%2F%2F&#43;%E5%9C%A8%E5%A4%B4%E9%83%A8%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;arr.add%280%2C&#43;-1%29%3B&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E6%9C%AB%E5%B0%BE%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.remove%28arr.size%28%29&#43;-&#43;1%29%3B&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E4%B8%AD%E9%97%B4%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;%2F%2F&#43;%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95&#43;2&#43;%E7%9A%84%E5%85%83%E7%B4%A0&#43;arr.remove%282%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E6%9F%A5%E8%AF%A2%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;int&#43;a&#43;%3D&#43;arr.get%280%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E4%BF%AE%E6%94%B9%E5%85%83%E7%B4%A0%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%281%29&#43;arr.set%280%2C&#43;100%29%3B&#43;%2F%2F&#43;%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0%E5%80%BC%E6%9F%A5%E6%89%BE%E7%B4%A2%E5%BC%95%EF%BC%8C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&#43;O%28N%29&#43;int&#43;index&#43;%3D&#43;arr.indexOf%28666%29%3B&#43;2.&#43;%E9%93%BE%E8%A1%A8&#43;%E5%9C%A8%E5%AE%9E%E9%99%85%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B%EF%BC%9A%0Aclass&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;%7B&#43;E&#43;val%3B&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;next%3B&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;prev%3B&#43;Node%28Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;prev%2C&#43;E&#43;element%2C&#43;Node%26amp%3Blt%3BE%26amp%3Bgt%3B&#43;next%29&#43;%7B&#43;this.val&#43;%3D&#43;element%3B&#43;this.next&#43;%3D&#43;next%3B&#43;this.prev&#43;%3D&#43;prev%3B&#43;%7D&#43;%7D&#43;&amp;title=%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -228,7 +227,7 @@ class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&l
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
                 
               </span></a></div>
-<h1 class="f1 athelas mt3 mb1">数据结构实现</h1>
+<h1 class="f1 athelas mt3 mb1">数组链表</h1>
       
       
       
@@ -238,8 +237,7 @@ class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&l
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="数组链表">数组链表</h1>
-<h2 id="1-动态数组">1. 动态数组</h2>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="1-动态数组">1. 动态数组</h2>
 <p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装</strong>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 创建动态数组
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
@@ -332,10 +330,6 @@ class Node&lt;E&gt; { E val; Node&lt;E&gt; next; Node&lt;E&gt; prev; Node(Node&l
 	    
 	     <li  class="mb2">
           <a href="/post/%E6%8E%92%E5%BA%8F/">基础算法</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/hash/">hash map</a>
         </li>
 	    
     </ul>
