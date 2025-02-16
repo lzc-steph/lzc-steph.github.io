@@ -142,8 +142,8 @@
     <section class="ph4">
       
         <h2 class="f1">
-          <a href="/tags/algorithm/" class="link blue hover-black">
-            Tag: Algorithm
+          <a href="/tags/rl/" class="link blue hover-black">
+            Tag: RL
           </a>
         </h2>
         
@@ -154,7 +154,234 @@
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E6%8E%92%E5%BA%8F/" class="link black dim">
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="link black dim">
+        强化学习-进阶
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="总述">总述</h2>
+<p><img src="/images/RL2/1.png" alt="1"></p>
+<ul>
+<li>
+<h4 id="基础工具"><strong>基础工具</strong></h4>
+<ol>
+<li><strong>基本概念</strong>：state, action, reward, return, episode, policy, mdp&hellip;</li>
+<li><strong>贝尔曼公式</strong>：用于评价策略</li>
+<li><strong>贝尔曼最优公式</strong>：强化学习的最终目标是求解最优策略</li>
+</ol>
+</li>
+<li>
+<h4 id="算法方法">算法/方法</h4>
+<ol start="4">
+<li><strong>值迭代、策略迭代—— truncated policy iteration</strong>：值和策略update不断迭代</li>
+<li><strong>Monte Carlo Learning</strong>：无模型学习</li>
+<li><strong>随即近似理论</strong>：from non-incremental to incremental</li>
+<li><strong>时序差分方法(TD)</strong></li>
+<li><strong>值函数估计</strong>：tabular representation to function representation，引入神经网络</li>
+<li><strong>Policy Gradient Methods</strong>：from value-based to policy-based</li>
+<li><strong>Actor-Critic Methods</strong>：policy-based + value-based</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h2 id="1-基本概念">1 基本概念</h2>
+<h4 id="1-专有名词">1. 专有名词</h4>
+<ol>
+<li>
+<p><strong>grid-world</strong>：小机器人在网格里走路</p>
+</li>
+<li>
+<p><strong>state</strong>：agent在环境中的状态，用s1、s2&hellip;表示；s是列向量，可表示速度、加速度等</p>
+</li>
+<li>
+<p><strong>state space</strong>：即把所有的state放在一起的集合</p>
+</li>
+<li>
+<p><strong>action</strong>：可采取的行动，如往上走、往右走&hellip;</p>
+</li>
+<li>
+<p><strong>action-space</strong>：所有的action放在一起的集合，用A表示</p>
+</li>
+<li>
+<p><strong>state transition</strong>：采取一个action后，从一个state转到另一个state的过程；定义了agent与环境的一种交互行为</p>
+</li>
+<li>
+<p><strong>forbidden area</strong>：进去后受到惩罚/不可进入</p>
+</li>
+</ol>
+    </div>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/world-model/" class="link black dim">
+        World Models
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      
+    </div>
+  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 2, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/rl/" class="link black dim">
+        Reinforcement Learning
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
+<h3 id="回归">回归</h3>
+<p>增加折现因子</p>
+<p><img src="/images/RL/1.png" alt="1"></p>
+<p><img src="/images/RL/2.png" alt="2"></p>
+<h3 id="强化学习的形式化">强化学习的形式化</h3>
+<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
+<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
+<p><img src="/images/RL/3.png" alt="3"></p>
+<ul>
+<li>
+<p><strong>状态动作值函数</strong>（Q-Function）</p>
+<p><strong>Q(s,a)</strong> = Return if you:</p>
+<ul>
+<li>start in state <em>s</em>.</li>
+<li>take action <em>a</em> (once).</li>
+<li>then behave optimally after that.</li>
+</ul>
+<p>The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 26, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/e2e/" class="link black dim">
+        End2End
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>对于由多个阶段组成的学习系统，端到端学习捕获所有阶段，将其替代为单个神经网络。</p>
+<ul>
+<li>优点：
+<ul>
+<li>Let the data speak</li>
+<li>Less hand-designing of components needed</li>
+</ul>
+</li>
+<li>缺点：
+<ul>
+<li>May need large amount of data</li>
+<li>Excludes potentially useful hand-designed components</li>
+</ul>
+</li>
+</ul>
+<p><strong>关键</strong>：是否有足够的数据</p>
+<p><img src="/images/e2e/1.png" alt="1"></p>
+    </div>
+  <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/algorithm/" class="link blue hover-black">
+            Tag: Algorithm
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 13, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/hash/" class="link black dim">
+        unordered_map
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h3 id="1-创建-unordered_map-对象">1. 创建 <code>unordered_map</code> 对象</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_map&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 默认构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化列表构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map2 <span style="color:#f92672">=</span> {{<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#ae81ff">2</span>}};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 拷贝构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map3(map2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p> </p>
+<h3 id="2-插入">2. 插入</h3>
+<ol>
+<li>
+<p><code>insert</code></p>
+<p>插入一个键值对</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>map1.insert({<span style="color:#e6db74">&#34;orange&#34;</span>, <span style="color:#ae81ff">3</span>});
+</span></span><span style="display:flex;"><span>map1.insert(std<span style="color:#f92672">::</span>make_pair(<span style="color:#e6db74">&#34;grape&#34;</span>, <span style="color:#ae81ff">4</span>));
+</span></span></code></pre></div></li>
+<li>
+<p><code>operator[]</code></p>
+<p>通过键插入或访问值。<strong>如果键不存在，会插入一个默认值</strong>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>map1[<span style="color:#e6db74">&#34;apple&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// 插入或修改
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1[<span style="color:#e6db74">&#34;apple&#34;</span>]; <span style="color:#75715e">// 访问
+</span></span></span></code></pre></div></li>
+</ol>
+<p> </p>
+<h3 id="3-访问元素">3. <strong>访问元素</strong></h3>
+<ol>
+<li>
+<p><code>at</code></p>
+<p>访问指定键的值，如果键不存在会抛出 <code>std::out_of_range</code> 异常。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1.at(<span style="color:#e6db74">&#34;apple&#34;</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><code>operator[]</code></p>
+<p>访问或插入指定键的值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1[<span style="color:#e6db74">&#34;apple&#34;</span>];
+</span></span></code></pre></div></li>
+</ol>
+    </div>
+  <a href="/post/hash/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 13, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/" class="link black dim">
         算法模版
       </a>
     </h1>
@@ -230,87 +457,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p> </p>
     </div>
-  <a href="/post/%E6%8E%92%E5%BA%8F/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 13, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/hash/" class="link black dim">
-        unordered_map
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="1-创建-unordered_map-对象">1. 创建 <code>unordered_map</code> 对象</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_map&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 默认构造函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map1;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化列表构造函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map2 <span style="color:#f92672">=</span> {{<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#ae81ff">2</span>}};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 拷贝构造函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map3(map2);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p> </p>
-<h3 id="2-插入">2. 插入</h3>
-<ol>
-<li>
-<p><code>insert</code></p>
-<p>插入一个键值对</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>map1.insert({<span style="color:#e6db74">&#34;orange&#34;</span>, <span style="color:#ae81ff">3</span>});
-</span></span><span style="display:flex;"><span>map1.insert(std<span style="color:#f92672">::</span>make_pair(<span style="color:#e6db74">&#34;grape&#34;</span>, <span style="color:#ae81ff">4</span>));
-</span></span></code></pre></div></li>
-<li>
-<p><code>operator[]</code></p>
-<p>通过键插入或访问值。<strong>如果键不存在，会插入一个默认值</strong>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>map1[<span style="color:#e6db74">&#34;apple&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// 插入或修改
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1[<span style="color:#e6db74">&#34;apple&#34;</span>]; <span style="color:#75715e">// 访问
-</span></span></span></code></pre></div></li>
-</ol>
-<p> </p>
-<h3 id="3-访问元素">3. <strong>访问元素</strong></h3>
-<ol>
-<li>
-<p><code>at</code></p>
-<p>访问指定键的值，如果键不存在会抛出 <code>std::out_of_range</code> 异常。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1.at(<span style="color:#e6db74">&#34;apple&#34;</span>);
-</span></span></code></pre></div></li>
-<li>
-<p><code>operator[]</code></p>
-<p>访问或插入指定键的值。</p>
-</li>
-</ol>
-    </div>
-  <a href="/post/hash/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 13, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%9B%BE%E8%AE%BA/" class="link black dim">
-        图论
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="图结构基础及通用代码实现">图结构基础及通用代码实现</h1>
-    </div>
-  <a href="/post/%E5%9B%BE%E8%AE%BA/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -1286,190 +1433,6 @@ Multiplication (matrix to vector multiplication)</p>
 <p><img src="/images/DM/3.png" alt="3"></p>
     </div>
   <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/rl/" class="link blue hover-black">
-            Tag: RL
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/world-model/" class="link black dim">
-        World Models
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 2, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/rl/" class="link black dim">
-        Reinforcement Learning
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
-<h3 id="回归">回归</h3>
-<p>增加折现因子</p>
-<p><img src="/images/RL/1.png" alt="1"></p>
-<p><img src="/images/RL/2.png" alt="2"></p>
-<h3 id="强化学习的形式化">强化学习的形式化</h3>
-<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
-<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
-<p><img src="/images/RL/3.png" alt="3"></p>
-<ul>
-<li>
-<p><strong>状态动作值函数</strong>（Q-Function）</p>
-<p><strong>Q(s,a)</strong> = Return if you:</p>
-<ul>
-<li>start in state <em>s</em>.</li>
-<li>take action <em>a</em> (once).</li>
-<li>then behave optimally after that.</li>
-</ul>
-<p>The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.</p>
-</li>
-</ul>
-    </div>
-  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 2, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="link black dim">
-        强化学习-进阶
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="总述">总述</h2>
-<p><img src="/images/RL2/1.png" alt="1"></p>
-<ul>
-<li>
-<h4 id="基础工具"><strong>基础工具</strong></h4>
-<ol>
-<li><strong>基本概念</strong>：state, action, reward, return, episode, policy, mdp&hellip;</li>
-<li><strong>贝尔曼公式</strong>：用于评价策略</li>
-<li><strong>贝尔曼最优公式</strong>：强化学习的最终目标是求解最优策略</li>
-</ol>
-</li>
-<li>
-<h4 id="算法方法">算法/方法</h4>
-<ol start="4">
-<li><strong>值迭代、策略迭代—— truncated policy iteration</strong>：值和策略update不断迭代</li>
-<li><strong>Monte Carlo Learning</strong>：无模型学习</li>
-<li><strong>随即近似理论</strong>：from non-incremental to incremental</li>
-<li><strong>时序差分方法(TD)</strong></li>
-<li><strong>值函数估计</strong>：tabular representation to function representation，引入神经网络</li>
-<li><strong>Policy Gradient Methods</strong>：from value-based to policy-based</li>
-<li><strong>Actor-Critic Methods</strong>：policy-based + value-based</li>
-</ol>
-</li>
-</ul>
-<p> </p>
-<h2 id="1-基本概念">1 基本概念</h2>
-<h4 id="1-专有名词">1. 专有名词</h4>
-<ol>
-<li>
-<p><strong>grid-world</strong>：小机器人在网格里走路</p>
-</li>
-<li>
-<p><strong>state</strong>：agent在环境中的状态，用s1、s2&hellip;表示；s是列向量，可表示速度、加速度等</p>
-</li>
-<li>
-<p><strong>state space</strong>：即把所有的state放在一起的集合</p>
-</li>
-<li>
-<p><strong>action</strong>：可采取的行动，如往上走、往右走&hellip;</p>
-</li>
-<li>
-<p><strong>action-space</strong>：所有的action放在一起的集合，用A表示</p>
-</li>
-<li>
-<p><strong>state transition</strong>：采取一个action后，从一个state转到另一个state的过程；定义了agent与环境的一种交互行为</p>
-</li>
-<li>
-<p><strong>forbidden area</strong>：进去后受到惩罚/不可进入</p>
-</li>
-<li>
-<p><strong>tabular representation</strong>：使用表格描述state transition</p>
-</li>
-<li>
-<p><strong>state transition probability</strong>：使用条件概率来表述tate transition，用于描述随机性</p>
-</li>
-<li>
-<p><strong>policy</strong>：使用箭头表示，告诉agent在某state时应该采取哪个action。基于policy，可以得到path</p>
-</li>
-<li>
-<p><strong>mathematical representation</strong>：条件概率，用π表示某状态对应的策略</p>
-</li>
-<li>
-<p><strong>stochastic policies</strong>：某状态对应多个不同概率的action</p>
-</li>
-<li>
-<p>reward：一个数(标量)；正奖励负惩罚</p>
-<p><img src="/images/RL2/2.png" alt="2"></p>
-</li>
-<li></li>
-</ol>
-    </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 26, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/e2e/" class="link black dim">
-        End2End
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>对于由多个阶段组成的学习系统，端到端学习捕获所有阶段，将其替代为单个神经网络。</p>
-<ul>
-<li>优点：
-<ul>
-<li>Let the data speak</li>
-<li>Less hand-designing of components needed</li>
-</ul>
-</li>
-<li>缺点：
-<ul>
-<li>May need large amount of data</li>
-<li>Excludes potentially useful hand-designed components</li>
-</ul>
-</li>
-</ul>
-<p><strong>关键</strong>：是否有足够的数据</p>
-<p><img src="/images/e2e/1.png" alt="1"></p>
-    </div>
-  <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         

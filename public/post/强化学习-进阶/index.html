@@ -48,7 +48,7 @@
   <meta itemprop="description" content="强化学习专注于如何让智能体（Agent）通过与环境的交互来学习最优策略，以最大化累积奖励。它的核心思想是试错学习，智能体通过尝试不同的行动，观察结果并获得奖励或惩罚，从而逐步改进自己的行为策略。">
   <meta itemprop="datePublished" content="2025-02-14T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-14T11:00:59-04:00">
-  <meta itemprop="wordCount" content="126">
+  <meta itemprop="wordCount" content="160">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="强化学习-进阶">
@@ -265,7 +265,7 @@
 <p><strong>trajectory</strong>：一个state-action-reward链</p>
 </li>
 <li>
-<p><strong>return</strong>：沿着trajectory所得到的reward总和</p>
+<p><strong>return</strong>：沿着trajectory所得到的reward总和，用于评估策略</p>
 </li>
 <li>
 <p><strong>discounted rate</strong>、<strong>discounted return</strong>：</p>
@@ -290,7 +290,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="2-mdp-markov-decision-process">2. MDP (markov decision process)</h4>
+<p> </p>
+<h4 id="2-马尔可夫决策过程-mdp-markov-decision-process">2. 马尔可夫决策过程 (MDP markov decision process)</h4>
 <ul>
 <li>
 <p>MDP 的关键组成：</p>
@@ -301,7 +302,42 @@
 <p><img src="/images/RL2/5.png" alt="5"></p>
 </li>
 </ul>
-<p>当 policy 确定后，markov process 就成了 markov decision process</p><ul class="pa0">
+<p>当 policy 确定后，markov process 就成了 markov decision process</p>
+<p> </p>
+<p> </p>
+<h2 id="2-贝尔曼公式">2 贝尔曼公式</h2>
+<p>核心概念 state value、基础工具 bellman equation</p>
+<h4 id="1-计算return">1. 计算return</h4>
+<ol>
+<li>
+<p><strong>方法一：用定义</strong></p>
+<p><img src="/images/RL2/6.png" alt="6"></p>
+</li>
+<li>
+<p><strong>方法二</strong>：Bootstrapping!</p>
+<p><img src="/images/RL2/7.png" alt="7"></p>
+<p>从某状态出发的return，依赖于从其他状态出发的return</p>
+<p>简易贝尔曼公式：<img src="/images/RL2/8.png" alt="8"></p>
+</li>
+</ol>
+<p> </p>
+<h4 id="2-state-value">2. state value</h4>
+<ul>
+<li>
+<p>对于单步过程：</p>
+<p><img src="/images/RL2/9.png" alt="9"></p>
+</li>
+</ul>
+<p>state value就是 Gt(discounted return) 的期望值</p>
+<p> </p>
+<h4 id="3-贝尔曼公式">3. 贝尔曼公式</h4>
+<ol>
+<li>推导</li>
+<li>Matrix-vector form</li>
+<li>求解 state value</li>
+</ol>
+<p> </p>
+<h4 id="4-action-value">4. action value</h4><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
@@ -328,7 +364,7 @@
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/post/rl/">Reinforcement Learning</a>
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>
         </li>
 	    
 	     <li  class="mb2">
