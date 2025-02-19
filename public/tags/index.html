@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-02-14T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-02-14T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-02-17T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-02-17T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -142,10 +142,322 @@
     <section class="ph4">
       
         <h2 class="f1">
+          <a href="/tags/bev/" class="link blue hover-black">
+            Tag: BEV
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bev/" class="link black dim">
+        BEV 论文学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
+<p>BEV感知在自动驾驶领域具有重要应用，因为它能够提供直观的环境表示，并且便于多模态数据的融合。随着深度学习的快速发展，许多方法被提出以解决从透视视图（Perspective View, PV）到BEV的转换问题。</p>
+<p>本文系统地回顾了最新的BEV感知方法，并将其分为基于几何、基于深度、基于MLP和基于Transformer的四类方法，并详细分析了它们的优缺点。此外，本文还探讨了BEV感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
+<h4 id="1-背景介绍">1. 背景介绍</h4>
+<p>BEV感知的核心任务是将透视视图（PV）中的图像序列转换为BEV特征，并在BEV空间中进行感知任务，如3D目标检测和语义地图生成。BEV表示的优势在于它能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。然而，由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将PV转换为BEV仍然是一个具有挑战性的问题。</p>
+<h4 id="3-主要方法分类">3. 主要方法分类</h4>
+<p>本文根据PV到BEV的转换方法，将现有方法分为四类：</p>
+<ol>
+<li>
+<p><strong>基于几何的方法</strong>：这类方法主要依赖于逆透视映射（Inverse Perspective Mapping, IPM），通过几何变换将PV图像转换为BEV图像。IPM假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了语义信息或使用生成对抗网络（GAN）来增强BEV图像的质量。</p>
+</li>
+<li>
+<p><strong>基于深度的方法</strong>：这类方法通过深度估计将2D特征提升到3D空间，然后通过降维得到BEV表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。基于深度的方法可以进一步分为点云方法和体素方法。点云方法将深度图转换为伪LiDAR点云，然后使用LiDAR检测器进行3D检测；体素方法则将2D特征映射到3D体素空间，并通过体素特征进行BEV感知。</p>
+</li>
+<li>
+<p><strong>基于MLP的方法</strong>：这类方法使用多层感知器（MLP）作为通用的映射函数，将PV特征映射到BEV空间。MLP方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。尽管MLP具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</p>
+</li>
+<li>
+<p><strong>基于Transformer的方法</strong>：这类方法利用Transformer的交叉注意力机制，直接构建BEV查询并在透视图像中搜索对应的特征。Transformer方法具有强大的关系建模能力和数据依赖性，能够处理复杂的多视图输入。根据查询的粒度，Transformer方法可以分为稀疏查询、密集查询和混合查询三类。</p>
+</li>
+</ol>
+<h4 id="4-扩展应用">4. 扩展应用</h4>
+<p>本文还探讨了BEV感知的扩展应用，包括：</p>
+<ol>
+<li>
+<p><strong>多任务学习</strong>：BEV表示可以同时支持多个下游任务，如3D目标检测、语义地图分割和运动预测。一些方法提出了统一的框架，通过共享的BEV特征同时完成多个任务。</p>
+</li>
+<li>
+<p><strong>多模态融合</strong>：BEV表示为多模态数据（如摄像头、LiDAR和雷达）的融合提供了便利。通过将不同模态的数据转换到BEV空间，可以在物理对应关系的基础上进行特征融合。</p>
+</li>
+<li>
+<p><strong>语义占据预测</strong>：基于BEV感知，语义占据预测任务旨在为3D空间中的每个占据区域分配语义标签。这类任务能够提供更细粒度的几何和语义信息，适用于复杂的自动驾驶场景。</p>
+</li>
+</ol>
+<h4 id="5-实验与结果">5. 实验与结果</h4>
+<p>本文对各类方法在KITTI、nuScenes和Waymo等数据集上的性能进行了详细比较。实验结果表明，基于Transformer的方法在3D目标检测和语义分割任务中表现优异，尤其是在处理多视图输入时。此外，引入时间信息的模型（如BEVDet4D和BEVFormer）在速度和方向预测方面也有显著提升。</p>
+<h4 id="6-总结与未来方向">6. 总结与未来方向</h4>
+<p>本文系统地回顾了视觉为中心的BEV感知方法，并对其进行了分类和比较。未来的研究方向包括：</p>
+<ul>
+<li>进一步提高BEV感知的分辨率和计算效率。</li>
+<li>探索更高效的多模态融合方法。</li>
+<li>利用长时历史信息进行更精确的时间融合。</li>
+<li>开发更强大的语义占据预测模型。</li>
+</ul>
+<h4 id="7-个人思考">7. 个人思考</h4>
+<p>本文对BEV感知领域的现有方法进行了全面的总结，为未来的研究提供了清晰的方向。特别是基于Transformer的方法在复杂场景中的表现令人印象深刻，但其计算复杂度较高，如何在实际应用中实现高效部署仍然是一个挑战。此外，多模态融合和语义占据预测是未来自动驾驶感知系统的重要组成部分，值得进一步深入研究。</p>
+<h4 id="参考文献">参考文献</h4>
+<p>本文引用了大量相关文献，涵盖了从经典的几何方法到最新的深度学习和Transformer方法。这些文献为读者提供了进一步研究的参考。</p>
+<p><a href="https://arxiv.org/abs/2409.17659">Hierarchical End-to-End Autonomous Driving: Integrating BEV Perception with Deep Reinforcement Learning</a></p>
+<p><a href="https://blog.csdn.net/soaring_casia/article/details/142756723">https://blog.csdn.net/soaring_casia/article/details/142756723</a></p>
+    </div>
+  <a href="/post/bev/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/cv/" class="link blue hover-black">
+            Tag: CV
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bev/" class="link black dim">
+        BEV 论文学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
+<p>BEV感知在自动驾驶领域具有重要应用，因为它能够提供直观的环境表示，并且便于多模态数据的融合。随着深度学习的快速发展，许多方法被提出以解决从透视视图（Perspective View, PV）到BEV的转换问题。</p>
+<p>本文系统地回顾了最新的BEV感知方法，并将其分为基于几何、基于深度、基于MLP和基于Transformer的四类方法，并详细分析了它们的优缺点。此外，本文还探讨了BEV感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
+<h4 id="1-背景介绍">1. 背景介绍</h4>
+<p>BEV感知的核心任务是将透视视图（PV）中的图像序列转换为BEV特征，并在BEV空间中进行感知任务，如3D目标检测和语义地图生成。BEV表示的优势在于它能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。然而，由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将PV转换为BEV仍然是一个具有挑战性的问题。</p>
+<h4 id="3-主要方法分类">3. 主要方法分类</h4>
+<p>本文根据PV到BEV的转换方法，将现有方法分为四类：</p>
+<ol>
+<li>
+<p><strong>基于几何的方法</strong>：这类方法主要依赖于逆透视映射（Inverse Perspective Mapping, IPM），通过几何变换将PV图像转换为BEV图像。IPM假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了语义信息或使用生成对抗网络（GAN）来增强BEV图像的质量。</p>
+</li>
+<li>
+<p><strong>基于深度的方法</strong>：这类方法通过深度估计将2D特征提升到3D空间，然后通过降维得到BEV表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。基于深度的方法可以进一步分为点云方法和体素方法。点云方法将深度图转换为伪LiDAR点云，然后使用LiDAR检测器进行3D检测；体素方法则将2D特征映射到3D体素空间，并通过体素特征进行BEV感知。</p>
+</li>
+<li>
+<p><strong>基于MLP的方法</strong>：这类方法使用多层感知器（MLP）作为通用的映射函数，将PV特征映射到BEV空间。MLP方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。尽管MLP具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</p>
+</li>
+<li>
+<p><strong>基于Transformer的方法</strong>：这类方法利用Transformer的交叉注意力机制，直接构建BEV查询并在透视图像中搜索对应的特征。Transformer方法具有强大的关系建模能力和数据依赖性，能够处理复杂的多视图输入。根据查询的粒度，Transformer方法可以分为稀疏查询、密集查询和混合查询三类。</p>
+</li>
+</ol>
+<h4 id="4-扩展应用">4. 扩展应用</h4>
+<p>本文还探讨了BEV感知的扩展应用，包括：</p>
+<ol>
+<li>
+<p><strong>多任务学习</strong>：BEV表示可以同时支持多个下游任务，如3D目标检测、语义地图分割和运动预测。一些方法提出了统一的框架，通过共享的BEV特征同时完成多个任务。</p>
+</li>
+<li>
+<p><strong>多模态融合</strong>：BEV表示为多模态数据（如摄像头、LiDAR和雷达）的融合提供了便利。通过将不同模态的数据转换到BEV空间，可以在物理对应关系的基础上进行特征融合。</p>
+</li>
+<li>
+<p><strong>语义占据预测</strong>：基于BEV感知，语义占据预测任务旨在为3D空间中的每个占据区域分配语义标签。这类任务能够提供更细粒度的几何和语义信息，适用于复杂的自动驾驶场景。</p>
+</li>
+</ol>
+<h4 id="5-实验与结果">5. 实验与结果</h4>
+<p>本文对各类方法在KITTI、nuScenes和Waymo等数据集上的性能进行了详细比较。实验结果表明，基于Transformer的方法在3D目标检测和语义分割任务中表现优异，尤其是在处理多视图输入时。此外，引入时间信息的模型（如BEVDet4D和BEVFormer）在速度和方向预测方面也有显著提升。</p>
+<h4 id="6-总结与未来方向">6. 总结与未来方向</h4>
+<p>本文系统地回顾了视觉为中心的BEV感知方法，并对其进行了分类和比较。未来的研究方向包括：</p>
+<ul>
+<li>进一步提高BEV感知的分辨率和计算效率。</li>
+<li>探索更高效的多模态融合方法。</li>
+<li>利用长时历史信息进行更精确的时间融合。</li>
+<li>开发更强大的语义占据预测模型。</li>
+</ul>
+<h4 id="7-个人思考">7. 个人思考</h4>
+<p>本文对BEV感知领域的现有方法进行了全面的总结，为未来的研究提供了清晰的方向。特别是基于Transformer的方法在复杂场景中的表现令人印象深刻，但其计算复杂度较高，如何在实际应用中实现高效部署仍然是一个挑战。此外，多模态融合和语义占据预测是未来自动驾驶感知系统的重要组成部分，值得进一步深入研究。</p>
+<h4 id="参考文献">参考文献</h4>
+<p>本文引用了大量相关文献，涵盖了从经典的几何方法到最新的深度学习和Transformer方法。这些文献为读者提供了进一步研究的参考。</p>
+<p><a href="https://arxiv.org/abs/2409.17659">Hierarchical End-to-End Autonomous Driving: Integrating BEV Perception with Deep Reinforcement Learning</a></p>
+<p><a href="https://blog.csdn.net/soaring_casia/article/details/142756723">https://blog.csdn.net/soaring_casia/article/details/142756723</a></p>
+    </div>
+  <a href="/post/bev/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
+<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
+<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 31, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/object-detection/" class="link black dim">
+        目标检测
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/CV/19.png" alt="19"></p>
+<ul>
+<li>
+<p>技巧</p>
+<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="定位">定位</h3>
+<p><img src="/images/CV/20.png" alt="20"></p>
+<p>Need to output bx, by, bn, bw, class label (1-4)</p>
+<p><img src="/images/CV/21.png" alt="21"></p>
+<p>需人工标注<strong>特征点的坐标</strong></p>
+<p> </p>
+<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
+<ol>
+<li>先训练卷积网络识别物体</li>
+<li>滑动+放大窗口+再次滑动</li>
+</ol>
+<p><strong>问题</strong>：计算效率大，慢</p>
+<p> </p>
+    </div>
+  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/rl/" class="link blue hover-black">
             Tag: RL
           </a>
         </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bev/" class="link black dim">
+        BEV 论文学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
+<p>BEV感知在自动驾驶领域具有重要应用，因为它能够提供直观的环境表示，并且便于多模态数据的融合。随着深度学习的快速发展，许多方法被提出以解决从透视视图（Perspective View, PV）到BEV的转换问题。</p>
+<p>本文系统地回顾了最新的BEV感知方法，并将其分为基于几何、基于深度、基于MLP和基于Transformer的四类方法，并详细分析了它们的优缺点。此外，本文还探讨了BEV感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
+<h4 id="1-背景介绍">1. 背景介绍</h4>
+<p>BEV感知的核心任务是将透视视图（PV）中的图像序列转换为BEV特征，并在BEV空间中进行感知任务，如3D目标检测和语义地图生成。BEV表示的优势在于它能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。然而，由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将PV转换为BEV仍然是一个具有挑战性的问题。</p>
+<h4 id="3-主要方法分类">3. 主要方法分类</h4>
+<p>本文根据PV到BEV的转换方法，将现有方法分为四类：</p>
+<ol>
+<li>
+<p><strong>基于几何的方法</strong>：这类方法主要依赖于逆透视映射（Inverse Perspective Mapping, IPM），通过几何变换将PV图像转换为BEV图像。IPM假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了语义信息或使用生成对抗网络（GAN）来增强BEV图像的质量。</p>
+</li>
+<li>
+<p><strong>基于深度的方法</strong>：这类方法通过深度估计将2D特征提升到3D空间，然后通过降维得到BEV表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。基于深度的方法可以进一步分为点云方法和体素方法。点云方法将深度图转换为伪LiDAR点云，然后使用LiDAR检测器进行3D检测；体素方法则将2D特征映射到3D体素空间，并通过体素特征进行BEV感知。</p>
+</li>
+<li>
+<p><strong>基于MLP的方法</strong>：这类方法使用多层感知器（MLP）作为通用的映射函数，将PV特征映射到BEV空间。MLP方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。尽管MLP具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</p>
+</li>
+<li>
+<p><strong>基于Transformer的方法</strong>：这类方法利用Transformer的交叉注意力机制，直接构建BEV查询并在透视图像中搜索对应的特征。Transformer方法具有强大的关系建模能力和数据依赖性，能够处理复杂的多视图输入。根据查询的粒度，Transformer方法可以分为稀疏查询、密集查询和混合查询三类。</p>
+</li>
+</ol>
+<h4 id="4-扩展应用">4. 扩展应用</h4>
+<p>本文还探讨了BEV感知的扩展应用，包括：</p>
+<ol>
+<li>
+<p><strong>多任务学习</strong>：BEV表示可以同时支持多个下游任务，如3D目标检测、语义地图分割和运动预测。一些方法提出了统一的框架，通过共享的BEV特征同时完成多个任务。</p>
+</li>
+<li>
+<p><strong>多模态融合</strong>：BEV表示为多模态数据（如摄像头、LiDAR和雷达）的融合提供了便利。通过将不同模态的数据转换到BEV空间，可以在物理对应关系的基础上进行特征融合。</p>
+</li>
+<li>
+<p><strong>语义占据预测</strong>：基于BEV感知，语义占据预测任务旨在为3D空间中的每个占据区域分配语义标签。这类任务能够提供更细粒度的几何和语义信息，适用于复杂的自动驾驶场景。</p>
+</li>
+</ol>
+<h4 id="5-实验与结果">5. 实验与结果</h4>
+<p>本文对各类方法在KITTI、nuScenes和Waymo等数据集上的性能进行了详细比较。实验结果表明，基于Transformer的方法在3D目标检测和语义分割任务中表现优异，尤其是在处理多视图输入时。此外，引入时间信息的模型（如BEVDet4D和BEVFormer）在速度和方向预测方面也有显著提升。</p>
+<h4 id="6-总结与未来方向">6. 总结与未来方向</h4>
+<p>本文系统地回顾了视觉为中心的BEV感知方法，并对其进行了分类和比较。未来的研究方向包括：</p>
+<ul>
+<li>进一步提高BEV感知的分辨率和计算效率。</li>
+<li>探索更高效的多模态融合方法。</li>
+<li>利用长时历史信息进行更精确的时间融合。</li>
+<li>开发更强大的语义占据预测模型。</li>
+</ul>
+<h4 id="7-个人思考">7. 个人思考</h4>
+<p>本文对BEV感知领域的现有方法进行了全面的总结，为未来的研究提供了清晰的方向。特别是基于Transformer的方法在复杂场景中的表现令人印象深刻，但其计算复杂度较高，如何在实际应用中实现高效部署仍然是一个挑战。此外，多模态融合和语义占据预测是未来自动驾驶感知系统的重要组成部分，值得进一步深入研究。</p>
+<h4 id="参考文献">参考文献</h4>
+<p>本文引用了大量相关文献，涵盖了从经典的几何方法到最新的深度学习和Transformer方法。这些文献为读者提供了进一步研究的参考。</p>
+<p><a href="https://arxiv.org/abs/2409.17659">Hierarchical End-to-End Autonomous Driving: Integrating BEV Perception with Deep Reinforcement Learning</a></p>
+<p><a href="https://blog.csdn.net/soaring_casia/article/details/142756723">https://blog.csdn.net/soaring_casia/article/details/142756723</a></p>
+    </div>
+  <a href="/post/bev/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
@@ -217,30 +529,12 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/world-model/" class="link black dim">
-        World Models
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
         January 2, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/rl/" class="link black dim">
-        Reinforcement Learning
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        强化学习
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
@@ -266,7 +560,7 @@
 </li>
 </ul>
     </div>
-  <a href="/post/rl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -703,110 +997,6 @@
 </ol>
     </div>
   <a href="/post/c&#43;&#43;%E8%AF%AD%E6%B3%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/cv/" class="link blue hover-black">
-            Tag: CV
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1基础">1基础</h1>
-<h2 id="1-特征提取">1. 特征提取</h2>
-<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
-<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li>
-<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
-</li>
-<li>
-<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
-<p><img src="/images/MLLM/1.png" alt="1"></p>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
-</ul>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 31, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/object-detection/" class="link black dim">
-        目标检测
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/CV/19.png" alt="19"></p>
-<ul>
-<li>
-<p>技巧</p>
-<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
-</li>
-</ul>
-<p> </p>
-<h3 id="定位">定位</h3>
-<p><img src="/images/CV/20.png" alt="20"></p>
-<p>Need to output bx, by, bn, bw, class label (1-4)</p>
-<p><img src="/images/CV/21.png" alt="21"></p>
-<p>需人工标注<strong>特征点的坐标</strong></p>
-<p> </p>
-<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
-<ol>
-<li>先训练卷积网络识别物体</li>
-<li>滑动+放大窗口+再次滑动</li>
-</ol>
-<p><strong>问题</strong>：计算效率大，慢</p>
-<p> </p>
-    </div>
-  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -1375,24 +1565,6 @@ Multiplication (matrix to vector multiplication)</p>
             Tag: Generative AI
           </a>
         </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/world-model/" class="link black dim">
-        World Models
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-  <a href="/post/world-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     

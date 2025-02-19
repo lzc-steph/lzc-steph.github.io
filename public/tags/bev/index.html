@@ -29,26 +29,26 @@
 
     
     
-      <link href="/tags/rl/index.xml" rel="alternate" type="application/rss+xml" title="HomePage" />
-      <link href="/tags/rl/index.xml" rel="feed" type="application/rss+xml" title="HomePage" />
+      <link href="/tags/bev/index.xml" rel="alternate" type="application/rss+xml" title="HomePage" />
+      <link href="/tags/bev/index.xml" rel="feed" type="application/rss+xml" title="HomePage" />
       
     
 
     
-      <link rel="canonical" href="http://localhost:1313/tags/rl/">
+      <link rel="canonical" href="http://localhost:1313/tags/bev/">
     
 
-    <meta property="og:url" content="http://localhost:1313/tags/rl/">
+    <meta property="og:url" content="http://localhost:1313/tags/bev/">
   <meta property="og:site_name" content="HomePage">
-  <meta property="og:title" content="RL">
+  <meta property="og:title" content="BEV">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="RL">
+  <meta itemprop="name" content="BEV">
   <meta itemprop="datePublished" content="2025-02-17T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-17T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="RL">
+  <meta name="twitter:title" content="BEV">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -122,7 +122,7 @@
 
       <div class="tc-l pv4 pv6-l ph3 ph4-ns">
         <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
-          RL
+          BEV
         </h1>
         
       </div>
@@ -134,7 +134,7 @@
       
   <article class="cf pa3 pa4-m pa4-l">
     <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “RL”</p>
+      <p>Below you will find pages that utilize the taxonomy term “BEV”</p>
     </div>
   </article>
   <div class="mw8 center">
@@ -205,151 +205,6 @@
 <p><a href="https://blog.csdn.net/soaring_casia/article/details/142756723">https://blog.csdn.net/soaring_casia/article/details/142756723</a></p>
     </div>
   <a href="/post/bev/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 14, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="link black dim">
-        强化学习-进阶
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="总述">总述</h2>
-<p><img src="/images/RL2/1.png" alt="1"></p>
-<ul>
-<li>
-<h4 id="基础工具"><strong>基础工具</strong></h4>
-<ol>
-<li><strong>基本概念</strong>：state, action, reward, return, episode, policy, mdp&hellip;</li>
-<li><strong>贝尔曼公式</strong>：用于评价策略</li>
-<li><strong>贝尔曼最优公式</strong>：强化学习的最终目标是求解最优策略</li>
-</ol>
-</li>
-<li>
-<h4 id="算法方法">算法/方法</h4>
-<ol start="4">
-<li><strong>值迭代、策略迭代—— truncated policy iteration</strong>：值和策略update不断迭代</li>
-<li><strong>Monte Carlo Learning</strong>：无模型学习</li>
-<li><strong>随即近似理论</strong>：from non-incremental to incremental</li>
-<li><strong>时序差分方法(TD)</strong></li>
-<li><strong>值函数估计</strong>：tabular representation to function representation，引入神经网络</li>
-<li><strong>Policy Gradient Methods</strong>：from value-based to policy-based</li>
-<li><strong>Actor-Critic Methods</strong>：policy-based + value-based</li>
-</ol>
-</li>
-</ul>
-<p> </p>
-<h2 id="1-基本概念">1 基本概念</h2>
-<h4 id="1-专有名词">1. 专有名词</h4>
-<ol>
-<li>
-<p><strong>grid-world</strong>：小机器人在网格里走路</p>
-</li>
-<li>
-<p><strong>state</strong>：agent在环境中的状态，用s1、s2&hellip;表示；s是列向量，可表示速度、加速度等</p>
-</li>
-<li>
-<p><strong>state space</strong>：即把所有的state放在一起的集合</p>
-</li>
-<li>
-<p><strong>action</strong>：可采取的行动，如往上走、往右走&hellip;</p>
-</li>
-<li>
-<p><strong>action-space</strong>：所有的action放在一起的集合，用A表示</p>
-</li>
-<li>
-<p><strong>state transition</strong>：采取一个action后，从一个state转到另一个state的过程；定义了agent与环境的一种交互行为</p>
-</li>
-<li>
-<p><strong>forbidden area</strong>：进去后受到惩罚/不可进入</p>
-</li>
-</ol>
-    </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 2, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        强化学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
-<h3 id="回归">回归</h3>
-<p>增加折现因子</p>
-<p><img src="/images/RL/1.png" alt="1"></p>
-<p><img src="/images/RL/2.png" alt="2"></p>
-<h3 id="强化学习的形式化">强化学习的形式化</h3>
-<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
-<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
-<p><img src="/images/RL/3.png" alt="3"></p>
-<ul>
-<li>
-<p><strong>状态动作值函数</strong>（Q-Function）</p>
-<p><strong>Q(s,a)</strong> = Return if you:</p>
-<ul>
-<li>start in state <em>s</em>.</li>
-<li>take action <em>a</em> (once).</li>
-<li>then behave optimally after that.</li>
-</ul>
-<p>The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.</p>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 26, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/e2e/" class="link black dim">
-        End2End
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>对于由多个阶段组成的学习系统，端到端学习捕获所有阶段，将其替代为单个神经网络。</p>
-<ul>
-<li>优点：
-<ul>
-<li>Let the data speak</li>
-<li>Less hand-designing of components needed</li>
-</ul>
-</li>
-<li>缺点：
-<ul>
-<li>May need large amount of data</li>
-<li>Excludes potentially useful hand-designed components</li>
-</ul>
-</li>
-</ul>
-<p><strong>关键</strong>：是否有足够的数据</p>
-<p><img src="/images/e2e/1.png" alt="1"></p>
-    </div>
-  <a href="/post/e2e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

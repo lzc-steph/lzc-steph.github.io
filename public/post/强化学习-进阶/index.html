@@ -48,7 +48,7 @@
   <meta itemprop="description" content="强化学习专注于如何让智能体（Agent）通过与环境的交互来学习最优策略，以最大化累积奖励。它的核心思想是试错学习，智能体通过尝试不同的行动，观察结果并获得奖励或惩罚，从而逐步改进自己的行为策略。">
   <meta itemprop="datePublished" content="2025-02-14T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-14T11:00:59-04:00">
-  <meta itemprop="wordCount" content="160">
+  <meta itemprop="wordCount" content="259">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="强化学习-进阶">
@@ -270,7 +270,7 @@
 <li>
 <p><strong>discounted rate</strong>、<strong>discounted return</strong>：</p>
 <p><img src="/images/RL2/3.png" alt="3"></p>
-<p>gamma较小，比较近视，更加注重最近的一些reward；反之gammma较大，比较远视。</p>
+<p>gamma较小，比较近视，更加注重最近的一些reward；反之gamma较大，比较远视。</p>
 </li>
 <li>
 <p><strong>terminal states</strong>：终止状态</p>
@@ -328,16 +328,93 @@
 <p><img src="/images/RL2/9.png" alt="9"></p>
 </li>
 </ul>
-<p>state value就是 Gt(discounted return) 的期望值</p>
+<p>state value 就是 Gt(discounted return) 的<strong>期望值</strong></p>
 <p> </p>
 <h4 id="3-贝尔曼公式">3. 贝尔曼公式</h4>
+<p>描述了不同状态的 state value 之间的关系，可用于计算 state value</p>
 <ol>
-<li>推导</li>
-<li>Matrix-vector form</li>
-<li>求解 state value</li>
+<li>
+<p><strong>推导</strong></p>
+<p><img src="/images/RL2/10.png" alt="10"></p>
+<blockquote>
+<p>[!IMPORTANT]</p>
+<ol>
+<li>如上所示，即为 Bellman equation，表示了不同状态的 state-value functions（左边是s的，右边是s&rsquo;的）</li>
+<li>有两项组成：当前 reward 和未来的 reward</li>
+<li>该式子对所有的状态都成立！！！（若有 n 个状态，则会有 n 个这样的式子）</li>
+<li>通过这 n 个式子，联立可求出 state value —— Bootstrapping!</li>
+<li>π 是给定的 policy，解决这个问题的过程就是 policy evaluation</li>
+<li>p 代表 dynamic model，可能已知或未知</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<p>以下图 s1 为例：</p>
+<p><img src="/images/RL2/11.png" alt="11"></p>
+<p>联立所有的式子，并代入具体的gamma，即可求出所有的 state value；</p>
+<p>state value 越高，代表策略越好</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Matrix-vector form</strong></p>
+<p>将所有状态的贝尔曼公式放在一起，并写成矩阵形式：</p>
+<p><img src="/images/RL2/12.png" alt="12"></p>
+<ul>
+<li>
+<p>例如：</p>
+<p><img src="/images/RL2/13.png" alt="13"></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>求解 state value</strong></p>
+<ol>
+<li>
+<p>为什么要求解 state value？</p>
+<p>给定 policy，求解 state value 的过程叫 <strong>policy evaluation</strong>，即评估策略好不好，它是 RL 的基础问题。</p>
+</li>
+<li>
+<p>解析方法</p>
+<ol>
+<li>
+<p><strong>closed-form solution</strong></p>
+<p><img src="/images/RL2/14.png" alt="14"></p>
+<p>逆难求，实际很少用</p>
+</li>
+<li>
+<p><strong>iterative solution</strong></p>
+<p><img src="/images/RL2/15.png" alt="15"></p>
+<p><img src="/images/RL2/16.png" alt="16"></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 <p> </p>
-<h4 id="4-action-value">4. action value</h4><ul class="pa0">
+<h4 id="4-action-value">4. action value</h4>
+<p><img src="/images/RL2/17.png" alt="17"></p>
+<ul>
+<li>
+<p>区别：</p>
+<ul>
+<li><strong>state value</strong>：从一个状态出发，可以得到的平均 return</li>
+<li><strong>action value</strong>：从一个状态出发，并且选择了一个 action 后得到的平均 return</li>
+</ul>
+<p><img src="/images/RL2/18.png" alt="18"></p>
+<p>求 action value 的平均，可得 state value ；同理已知 state value 可求 action value</p>
+</li>
+<li>
+<p>例子：</p>
+<p><img src="/images/RL2/19.png" alt="19"></p>
+<p>虽然往右走，但所有的 action 都是可以计算的，<strong>非零</strong>！未来可变，详见后面的课程。</p>
+</li>
+</ul>
+<p>最后选择 action value 最大的那个 policy。</p>
+<p> </p>
+<h4 id="5-小结">5. 小结</h4>
+<p><img src="/images/RL2/20.png" alt="20"></p><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
@@ -359,10 +436,6 @@
     <p class="f5 b mb3">Related</p>
     <ul class="pa0 list">
 	   
-	     <li  class="mb2">
-          <a href="/post/world-model/">World Models</a>
-        </li>
-	    
 	     <li  class="mb2">
           <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>
         </li>
