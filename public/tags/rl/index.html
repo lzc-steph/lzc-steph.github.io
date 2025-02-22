@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="RL">
-  <meta itemprop="datePublished" content="2025-02-17T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-02-17T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-02-20T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-02-20T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="RL">
 
@@ -144,67 +144,93 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 17, 2025
+        February 20, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/bev/" class="link black dim">
-        BEV 论文学习
+      <a href="/post/ppo/" class="link black dim">
+        PPO
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
-<p>BEV感知在自动驾驶领域具有重要应用，因为它能够提供直观的环境表示，并且便于多模态数据的融合。随着深度学习的快速发展，许多方法被提出以解决从透视视图（Perspective View, PV）到BEV的转换问题。</p>
-<p>本文系统地回顾了最新的BEV感知方法，并将其分为基于几何、基于深度、基于MLP和基于Transformer的四类方法，并详细分析了它们的优缺点。此外，本文还探讨了BEV感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
-<h4 id="1-背景介绍">1. 背景介绍</h4>
-<p>BEV感知的核心任务是将透视视图（PV）中的图像序列转换为BEV特征，并在BEV空间中进行感知任务，如3D目标检测和语义地图生成。BEV表示的优势在于它能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。然而，由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将PV转换为BEV仍然是一个具有挑战性的问题。</p>
-<h4 id="3-主要方法分类">3. 主要方法分类</h4>
-<p>本文根据PV到BEV的转换方法，将现有方法分为四类：</p>
+      <h3 id="1-基础概念">1. 基础概念</h3>
+<p><img src="/images/PPO/1.png" alt="1"></p>
 <ol>
 <li>
-<p><strong>基于几何的方法</strong>：这类方法主要依赖于逆透视映射（Inverse Perspective Mapping, IPM），通过几何变换将PV图像转换为BEV图像。IPM假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了语义信息或使用生成对抗网络（GAN）来增强BEV图像的质量。</p>
+<p><strong>enviroment</strong>：看到的画面+看不到的后台画面，不了解细节</p>
 </li>
 <li>
-<p><strong>基于深度的方法</strong>：这类方法通过深度估计将2D特征提升到3D空间，然后通过降维得到BEV表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。基于深度的方法可以进一步分为点云方法和体素方法。点云方法将深度图转换为伪LiDAR点云，然后使用LiDAR检测器进行3D检测；体素方法则将2D特征映射到3D体素空间，并通过体素特征进行BEV感知。</p>
+<p><strong>agent(智能体)</strong>：根据策略得到尽可能多的奖励</p>
 </li>
 <li>
-<p><strong>基于MLP的方法</strong>：这类方法使用多层感知器（MLP）作为通用的映射函数，将PV特征映射到BEV空间。MLP方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。尽管MLP具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</p>
+<p><strong>state</strong>：当前状态</p>
 </li>
 <li>
-<p><strong>基于Transformer的方法</strong>：这类方法利用Transformer的交叉注意力机制，直接构建BEV查询并在透视图像中搜索对应的特征。Transformer方法具有强大的关系建模能力和数据依赖性，能够处理复杂的多视图输入。根据查询的粒度，Transformer方法可以分为稀疏查询、密集查询和混合查询三类。</p>
+<p><strong>observation</strong>：state的一部分（有时候agent无法看全）</p>
+</li>
+<li>
+<p><strong>action</strong>：agent做出的动作</p>
+</li>
+<li>
+<p><strong>reward</strong>：agent做出一个动作后环境给予的奖励</p>
+</li>
+<li>
+<p><strong>action space</strong>：可以选择的动作，如上下左右</p>
+</li>
+<li>
+<p><strong>policy</strong>：策略函数，输入state，输出Action的<strong>概率分布</strong>。一般用π表示。</p>
+<ol>
+<li>训练时应尝试各种action</li>
+<li>输出应具有多样性</li>
+</ol>
+</li>
+<li>
+<p><strong>Trajectory/Episode/Rollout</strong>：轨迹，用t表示，一连串状态和动作的序列。</p>
+<p>有的状态转移是确定的，也有的是不确定的。</p>
+</li>
+<li>
+<p><strong>Return</strong>：回报，从当前时间点到游戏结束的 Reward 的累积和。</p>
 </li>
 </ol>
-<h4 id="4-扩展应用">4. 扩展应用</h4>
-<p>本文还探讨了BEV感知的扩展应用，包括：</p>
+<p>强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。</p>
+<h3 id="2-policy-gradient">2. Policy gradient</h3>
+<p>目标：求return期望的最大值</p>
 <ol>
 <li>
-<p><strong>多任务学习</strong>：BEV表示可以同时支持多个下游任务，如3D目标检测、语义地图分割和运动预测。一些方法提出了统一的框架，通过共享的BEV特征同时完成多个任务。</p>
-</li>
-<li>
-<p><strong>多模态融合</strong>：BEV表示为多模态数据（如摄像头、LiDAR和雷达）的融合提供了便利。通过将不同模态的数据转换到BEV空间，可以在物理对应关系的基础上进行特征融合。</p>
-</li>
-<li>
-<p><strong>语义占据预测</strong>：基于BEV感知，语义占据预测任务旨在为3D空间中的每个占据区域分配语义标签。这类任务能够提供更细粒度的几何和语义信息，适用于复杂的自动驾驶场景。</p>
-</li>
-</ol>
-<h4 id="5-实验与结果">5. 实验与结果</h4>
-<p>本文对各类方法在KITTI、nuScenes和Waymo等数据集上的性能进行了详细比较。实验结果表明，基于Transformer的方法在3D目标检测和语义分割任务中表现优异，尤其是在处理多视图输入时。此外，引入时间信息的模型（如BEVDet4D和BEVFormer）在速度和方向预测方面也有显著提升。</p>
-<h4 id="6-总结与未来方向">6. 总结与未来方向</h4>
-<p>本文系统地回顾了视觉为中心的BEV感知方法，并对其进行了分类和比较。未来的研究方向包括：</p>
+<h4 id="计算过程"><strong>计算过程</strong></h4>
+<p><img src="/images/PPO/2.png" alt="2"></p>
+<p><img src="/images/PPO/3.png" alt="3"></p>
 <ul>
-<li>进一步提高BEV感知的分辨率和计算效率。</li>
-<li>探索更高效的多模态融合方法。</li>
-<li>利用长时历史信息进行更精确的时间融合。</li>
-<li>开发更强大的语义占据预测模型。</li>
+<li>
+<p>直观理解：</p>
+<p>对所有可能的 trajectory 期望最大的梯度。可以用这个梯度乘学习率去更新神经网络里的参数。</p>
+</li>
+<li>
+<p>若去掉梯度，则表达式的意义：</p>
+<p>若一个<strong>trajectory 得到的 return 大于零</strong>，则<strong>增大</strong>这个trajectory里所有状态下，采取当前action的概率。</p>
+</li>
 </ul>
-<h4 id="7-个人思考">7. 个人思考</h4>
-<p>本文对BEV感知领域的现有方法进行了全面的总结，为未来的研究提供了清晰的方向。特别是基于Transformer的方法在复杂场景中的表现令人印象深刻，但其计算复杂度较高，如何在实际应用中实现高效部署仍然是一个挑战。此外，多模态融合和语义占据预测是未来自动驾驶感知系统的重要组成部分，值得进一步深入研究。</p>
-<h4 id="参考文献">参考文献</h4>
-<p>本文引用了大量相关文献，涵盖了从经典的几何方法到最新的深度学习和Transformer方法。这些文献为读者提供了进一步研究的参考。</p>
-<p><a href="https://arxiv.org/abs/2409.17659">Hierarchical End-to-End Autonomous Driving: Integrating BEV Perception with Deep Reinforcement Learning</a></p>
-<p><a href="https://blog.csdn.net/soaring_casia/article/details/142756723">https://blog.csdn.net/soaring_casia/article/details/142756723</a></p>
+</li>
+<li>
+<h4 id="训练policy神经网络"><strong>训练policy神经网络</strong></h4>
+<ul>
+<li>
+<p><strong>输入</strong>：当前画面</p>
+</li>
+<li>
+<p><strong>输出</strong>：action 的概率</p>
+</li>
+</ul>
+<p><img src="/images/PPO/4.png" alt="4"></p>
+<p>玩n场游戏后，得到n个trajectory的最后的return值</p>
+<p>此时可以得到loss里的所有值，可以进行一个batch训练，来更新policy神经网络</p>
+<p><img src="/images/PPO/5.png" alt="5"></p>
+<p>存在问题：大部分时间在采集数据，很慢</p>
+</li>
+</ol>
+<p>π</p>
     </div>
-  <a href="/post/bev/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/ppo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -213,12 +239,12 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 14, 2025
+        February 19, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="link black dim">
-        强化学习-进阶
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/" class="link black dim">
+        强化学习-基础工具（1-3）
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
@@ -273,7 +299,7 @@
 </li>
 </ol>
     </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

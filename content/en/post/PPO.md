@@ -49,6 +49,8 @@ title: "PPO"
 
      对所有可能的 trajectory 期望最大的梯度。可以用这个梯度乘学习率去更新神经网络里的参数。
 
+     <!--more-->
+
    + 若去掉梯度，则表达式的意义：
 
       若一个**trajectory 得到的 return 大于零**，则**增大**这个trajectory里所有状态下，采取当前action的概率。
