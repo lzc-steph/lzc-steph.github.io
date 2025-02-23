@@ -1,5 +1,5 @@
 ---
-date: 2025-02-20T11:00:59-04:00
+date: 2025-02-23T11:00:59-04:00
 description: ""
 featured_image: "/images/PPO/lucky.jpg"
 tags: ["RL"]
@@ -33,7 +33,7 @@ title: "PPO"
 
 强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。
 
-
+&nbsp;
 
 ### 2. Policy gradient
 
@@ -51,9 +51,7 @@ title: "PPO"
 
      <!--more-->
 
-   + 若去掉梯度，则表达式的意义：
-
-      若一个**trajectory 得到的 return 大于零**，则**增大**这个trajectory里所有状态下，采取当前action的概率。
+   + 若去掉梯度，则表达式的意义：若一个**trajectory 得到的 return 大于零**，则**增大**这个trajectory里所有状态下，采取当前action的概率。
 
 2. #### **训练policy神经网络**
 
@@ -71,11 +69,74 @@ title: "PPO"
 
    存在问题：大部分时间在采集数据，很慢
 
+&nbsp;
 
+### 3. actor-critic 算法
 
++ #### 可改进：
 
+  1. 是否增大某动作概率，应该看做了该动作之后，到游戏结束累积的 reward；而不是整个 trajectory 的 reward。因为一个动作只能影响它之后的 reward，无法影响它之前的 reward。
+  2. 某动作可能只影响接下来的几步，且影响逐步衰减。后面的reward更多是被当时的action影响。
 
++ #### 修改公式：actor-critic
 
+  ![6](/images/PPO/6.png)
+
+  + 对当前动作到结束的reward进行求和
+
+    ![7](/images/PPO/7.png)
+
+  + 引入 gamma
+
+  + 为了避免训练慢：对所有的动作减去一个baseline，得到的就是该动作相对于其他动作的好坏
+
+  actor：用来做动作的神经网络
+
+  critic：评估动作好坏的网络
+
+![8](/images/PPO/8.png)
+
+&nbsp;
+
+### 4. 计算优势函数(Advantage Function)
+
+1. **动作价值函数**
+
+    ![9](/images/PPO/9.png)
+
+2. **优势函数计算公式**
+
+   ![10](/images/PPO/10.png)
+
+之前需要训练两个神经网络（动作+状态），变成只需要训练一个代表动作价值的函数。
+
+![11](/images/PPO/11.png)
+
++ #### Generalized Advantage Estimation (GAE)
+
+  全部考虑，权重随着步数增加而降低
+
+  ![12](/images/PPO/12.png)
+
+&nbsp;
+
+### 5. 基础回顾
+
+![13](/images/PPO/13.png)
+
+目标：策略梯度优化目标函数值(即第三个式子)越大越好
+
++ 状态价值函数用神经网络拟合，它可以和策略函数公用网络参数，只是最后一层不同：状态价值函数在最后一层输出一个单一值代表当前价值即可：
+
+  统计当前步到 trajectory 结束，所有 reward的加减加和。用网络拟合retuen值即可。
+
+  ![14](/images/PPO/14.png)
+
+&nbsp;
+
+&nbsp;
+
+## 6. 邻近策略优化算法(Proximal Policy Optimization, PPO)
 
 
 
