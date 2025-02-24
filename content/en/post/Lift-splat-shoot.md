@@ -39,7 +39,7 @@ title: "Lift-splat-shoot"
 
    传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。
 
-   ![1](/Users/aijunyang/DearAJ.github.io/static/images/lss/1.png)
+   ![1](/images/lss/1.png)
 
 2. #### Related Work
 
@@ -68,7 +68,7 @@ title: "Lift-splat-shoot"
 
       目的：将每个图像从本地 2 维坐标系 “提升” 到在所有摄像机之间共享的 3 维帧。
 
-      ![2](/Users/aijunyang/DearAJ.github.io/static/images/lss/2.png)
+      ![2](/images/lss/2.png)
 
    2. **Splat：支柱池**
 
@@ -76,7 +76,7 @@ title: "Lift-splat-shoot"
 
       + 将每个点分配给最近的 pillar，并执行总和池化，以创建一个可由标准 CNN 处理以进行鸟瞰推理的 C×H×W 张量。（pillars 是具有无限高度的体素）
 
-      ![3](/Users/aijunyang/DearAJ.github.io/static/images/lss/3.png)
+      ![3](/images/lss/3.png)
 
       + 加速：不是填充每个 pillar 然后执行 sum pooling，而是通过使用 packing 和利用 “cumsum 技巧” 进行 sum pooling 来避免填充。
 
@@ -84,7 +84,7 @@ title: "Lift-splat-shoot"
 
       + 定义 planning：预测自我车辆在模板轨迹上的 K 分布。
 
-        ![4](/Users/aijunyang/DearAJ.github.io/static/images/lss/4.png)
+        ![4](/images/lss/4.png)
 
       + 在测试时，实现使用 inferred cost map 的 planning：
 
@@ -92,7 +92,7 @@ title: "Lift-splat-shoot"
 
       + 在实践中，我们通过在大量 template trajectories 上运行 K-Means 来确定模板轨迹集。
 
-      ![5](/Users/aijunyang/DearAJ.github.io/static/images/lss/5.png)
+      ![5](/images/lss/5.png)
 
 4. #### Implementation
 
@@ -311,7 +311,7 @@ title: "Lift-splat-shoot"
 
       论文中表示构建图像特征点云的实现过程插图：
 
-      ![2](/Users/aijunyang/DearAJ.github.io/static/images/lss/2.png)
+      ![2](/images/lss/2.png)
 
    &nbsp;
 
@@ -373,7 +373,7 @@ title: "Lift-splat-shoot"
 
       + 该技巧是基于本文方法用图像产生的点云形状是固定的，因此每个点可以预先分配一个区间（即BEV网格）索引，用于指示其属于哪一个区间。按照索引排序后，按下列方法操作：
 
-        ![6](/Users/aijunyang/DearAJ.github.io/static/images/lss/6.png)
+        ![6](/images/lss/6.png)
 
         需要注意的，图中的`区间索引`代表下面代码中的ranks，`点的特征`代表的是x；
 
