@@ -128,7 +128,7 @@ title: "PPO"
 
 + 状态价值函数用神经网络拟合，它可以和策略函数公用网络参数，只是最后一层不同：状态价值函数在最后一层输出一个单一值代表当前价值即可：
 
-  统计当前步到 trajectory 结束，所有 reward的加减加和。用网络拟合retuen值即可。
+  统计当前步到 trajectory 结束，所有 reward的加减加和，衰减系数用gamma控制。用网络拟合retuen值即可。
 
   ![14](/images/PPO/14.png)
 
@@ -137,6 +137,10 @@ title: "PPO"
 &nbsp;
 
 ## 6. 邻近策略优化算法(Proximal Policy Optimization, PPO)
+
+
+
+
 
 
 
