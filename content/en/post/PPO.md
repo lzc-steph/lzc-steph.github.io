@@ -3,7 +3,7 @@ date: 2025-02-23T11:00:59-04:00
 description: ""
 featured_image: "/images/PPO/lucky.jpg"
 tags: ["RL"]
-title: "PPO"
+title: "强化学习-算法"
 ---
 
 ### 1. 基础概念
@@ -128,7 +128,7 @@ title: "PPO"
 
 + 状态价值函数用神经网络拟合，它可以和策略函数公用网络参数，只是最后一层不同：状态价值函数在最后一层输出一个单一值代表当前价值即可：
 
-  统计当前步到 trajectory 结束，所有 reward的加减加和，衰减系数用gamma控制。用网络拟合retuen值即可。
+  统计当前步到 trajectory 结束，所有 reward的加减加和，衰减系数用gamma控制。用价值网络拟合retuen值即可。
 
   ![14](/images/PPO/14.png)
 
@@ -136,14 +136,56 @@ title: "PPO"
 
 &nbsp;
 
-## 6. 邻近策略优化算法(Proximal Policy Optimization, PPO)
+## 6. Q-Learning
+
+动作价值函数Q(s,a)：在state s下，做出Action a，期望的回报。
+
+### 1. On-policy与off-policy
+
++ RL 算法可抽象为：
+
+  + 收集数据(Data Collection)：与环境交互，收集学习样本;
+  + 学习(Learning)样本：学习收集到的样本中的信息，提升策略。
+
+  ![15](/Users/aijunyang/DearAJ.github.io/static/images/PPO/15.png)
+
+1. #### 策略如何做到随机探索
+
+   1. 先用Q函数构造确定性策略
+
+      ![16](/Users/aijunyang/DearAJ.github.io/static/images/PPO/16.png)
+
+      即选取Q值最大的动作为最优动作。(注意：一般只有在动作空间离散的情况下采用这种策略，若动作空间连续上式中的最大化操作需要经过复杂的优化求解过程。)
+
+   2. 再用 ε-greedy方法将上述确定性策略改造成具有探索能力的策略
+
+      ![17](/Users/aijunyang/DearAJ.github.io/static/images/PPO/17.png)
+
+2. #### Off-policy方法：将收集数据当做一个单独的任务 (Q-Learning)
+
+   off-policy的方法将收集数据作为RL算法中单独的一个任务，它准备两个策略：行为策略(behavior policy)与目标策略(target policy)。
+
+   + 行为策略：专门负责学习数据的获取，具有一定的随机性，总是有一定的概率选出潜在的最优动作。
+   + 目标策略：借助行为策略收集到的样本以及策略提升方法提升自身性能，并最终成为最优策略。
+
+   ##### Q-Learning
+
+   ![18](/Users/aijunyang/DearAJ.github.io/static/images/PPO/18.png)
+
+   ![19](/Users/aijunyang/DearAJ.github.io/static/images/PPO/19.png)
+
+   Q函数更新规则(update rule)中的训练样本是由行为策略(而非目标策略)提供，因此它是典型的off-policy方法。
+
+   1. **为什么有时候off-policy需要与重要性采样配合使用？**
+
+      **重要性采样**：用一个概率分布的样本来估计某个随机变量关于另一个概率分布的期望。
+
+      假设已知随机策略π(a|s)，现在需要估计策略π对应的状态值Vπ，但是只能用另一个策略 π′(a|s)获取样本。对于这种需要用另外一个策略的数据(off-policy)来精确估计状态值的任务，需要用到重要性采样的方法：具体做法是**在对应的样本估计量上乘上一个权重(π与π′的相对概率)，称为重要性采样率。**
+
+      
+
+      
+
+   
 
 
-
-
-
-
-
-
-
-π
