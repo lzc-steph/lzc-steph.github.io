@@ -6,7 +6,22 @@ tags: ["algorithm"]
 title: "算法 - C++STL常用容器"
 ---
 
+#### 插入函数总结
+
+| 方法           | 适用容器                           | 作用                       | 性能特性                           |
+| :------------- | :--------------------------------- | :------------------------- | :--------------------------------- |
+| `push`         | `queue`、`stack`、`priority_queue` | 添加元素到容器末尾或顶部   | 适用于特定容器，性能与容器实现相关 |
+| `push_back`    | `vector`、`deque`、`list`          | 添加元素到容器末尾         | 需要拷贝或移动元素                 |
+| `emplace`      | `set`、`map`、`unordered_set` 等   | 在容器中直接构造元素       | 避免不必要的拷贝或移动             |
+| `emplace_back` | `vector`、`deque`、`list`          | 在容器末尾直接构造元素     | 避免不必要的拷贝或移动             |
+| `insert`       | 大多数容器                         | 将元素插入到容器的指定位置 | 需要拷贝或移动元素                 |
+
+------
+
+&nbsp;
+
 ### **1. string 字符串**
+
 ```cpp
 #include <string>
 using namespace std;
@@ -26,7 +41,10 @@ s.contains("or");        // C++20 判断是否包含子串
 
 ---
 
+&nbsp;
+
 ### **2. vector 动态数组**
+
 ```cpp
 #include <vector>
 vector<int> v;
@@ -49,7 +67,10 @@ vector<vector<int>> mat; // 二维数组（矩阵）
 
 ---
 
+&nbsp;
+
 ### **3. map 有序键值对**
+
 ```cpp
 #include <map>
 map<string, int> m;
@@ -69,7 +90,10 @@ for (auto& [key, val] : m) {
 
 ---
 
+&nbsp;
+
 ### **4. set 有序唯一集合**
+
 ```cpp
 #include <set>
 set<int> s;
@@ -88,6 +112,8 @@ set<int> tmp(nums.begin(), nums.end()); // → {1,2,3}
 ```
 
 ---
+
+&nbsp;
 
 ### 5. queue 队列
 
