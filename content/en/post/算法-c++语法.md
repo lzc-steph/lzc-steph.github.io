@@ -1,5 +1,5 @@
 ---
-date: 2025-02-05T11:00:59-04:00
+date: 2025-03-14T11:00:59-04:00
 description: ""
 featured_image: "/images/c++/lucky.jpg"
 tags: ["algorithm"]
@@ -41,6 +41,42 @@ a = 10;
 // 输出：abc 10
 std::cout << s << " " << a << std::endl;
 ```
+
+&nbsp;
+
+### 结构体 struct
+
+##### 定义结构体
+
+```c++
+struct Person {
+    string name;
+    int age;
+
+    // 自定义构造函数
+    Person(string n, int a) {
+        name = n;
+        age = a;
+    }
+
+    void printInfo() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+```
+
+##### 使用构造函数初始化对象
+
+```c++
+int main() {
+    Person p1("Alice", 25); // 使用构造函数初始化
+    p1.printInfo();         // 输出: Name: Alice, Age: 25
+
+    return 0;
+}
+```
+
+
 
 &nbsp;
 
@@ -159,6 +195,12 @@ int main() {
    - **起始位置**：`edges.begin()`，表示从容器的第一个元素开始。
    - **结束位置**：`edges.end()`，表示到容器的最后一个元素结束。
    - **比较函数**：用于定义排序规则。
+
+   如果需要**升序**排序，使用 `sort(classes.begin(), classes.end());`。
+
+   如果需要**降序**排序，可以使用 `sort(classes.rbegin(), classes.rend());`。
+
+   &nbsp;
 
    可以通过提供一个**比较函数**来定义排序规则 —— 使用一个 **Lambda 表达式**：
 

@@ -3,7 +3,7 @@ date: 2025-02-23T11:00:59-04:00
 description: ""
 featured_image: "/images/PPO/lucky.jpg"
 tags: ["RL"]
-title: "强化学习-算法"
+title: "PPO"
 ---
 
 ### 1. 基础概念
@@ -149,19 +149,19 @@ title: "强化学习-算法"
   + 收集数据(Data Collection)：与环境交互，收集学习样本;
   + 学习(Learning)样本：学习收集到的样本中的信息，提升策略。
 
-  ![15](/Users/aijunyang/DearAJ.github.io/static/images/PPO/15.png)
+  ![15](/images/PPO/15.png)
 
 1. #### 策略如何做到随机探索
 
    1. 先用Q函数构造确定性策略
 
-      ![16](/Users/aijunyang/DearAJ.github.io/static/images/PPO/16.png)
+      ![16](/images/PPO/16.png)
 
       即选取Q值最大的动作为最优动作。(注意：一般只有在动作空间离散的情况下采用这种策略，若动作空间连续上式中的最大化操作需要经过复杂的优化求解过程。)
 
    2. 再用 ε-greedy方法将上述确定性策略改造成具有探索能力的策略
 
-      ![17](/Users/aijunyang/DearAJ.github.io/static/images/PPO/17.png)
+      ![17](/images/PPO/17.png)
 
 2. #### Off-policy方法：将收集数据当做一个单独的任务 (Q-Learning)
 
@@ -172,11 +172,11 @@ title: "强化学习-算法"
 
    ##### Q-Learning
 
-   ![18](/Users/aijunyang/DearAJ.github.io/static/images/PPO/18.png)
+   ![18](/images/PPO/18.png)
 
-   ![19](/Users/aijunyang/DearAJ.github.io/static/images/PPO/19.png)
+   ![19](/images/PPO/19.png)
 
-   Q函数更新规则(update rule)中的训练样本是由行为策略(而非目标策略)提供，因此它是典型的off-policy方法。
+   Q 函数更新规则(update rule)中的训练样本是由行为策略(而非目标策略)提供，因此它是典型的off-policy方法。
 
    1. **为什么有时候off-policy需要与重要性采样配合使用？**
 

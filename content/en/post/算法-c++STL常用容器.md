@@ -1,5 +1,5 @@
 ---
-date: 2025-02-05T11:00:59-04:00
+date: 2025-03-14T11:00:59-04:00
 description: ""
 featured_image: "/images/c++STL/lucky.jpg"
 tags: ["algorithm"]
@@ -43,33 +43,62 @@ s.contains("or");        // C++20 判断是否包含子串
 
 &nbsp;
 
-### **2. vector 动态数组**
+### **2. **stack 栈
+
+```c++
+stack<int> s;
+```
+
+1. 压入元素：`push()`
+
+2. 弹出最后添加的元素：`pop()`，不返回该元素
+
+3. 访问栈顶元素：`top()`
+
+4. 检查栈是否为空：`empty()`
+
+5. 获取栈的大小：`size()`
+
+&nbsp;
+
+### 3. vector 动态数组
+
+注意：
+
+```c++
+vector<position> tempPath(); // 这是一个函数声明，而不是变量初始化
+vector<position> tempPath; // 正确：初始化一个空的 vector
+```
+
+
+
+```c++
+std::vector<int> vec; 												// 创建一个空的 int 类型 vector
+std::vector<int> vec(10); 										// 创建一个包含 10 个元素的 vector，初始值为 0
+std::vector<int> vec(10, 5); 									// 创建一个包含 10 个元素的 vector，初始值为 5
+std::vector<int> vec = {1, 2, 3, 4, 5}; 			// 创建一个包含 5 个元素的 vector
+```
 
 ```cpp
-#include <vector>
-vector<int> v;
+int first = vec.front(); 								// 访问第一个元素
+int last = vec.back();  								// 访问最后一个元素
 
-// 核心操作
-v.push_back(10);         // 尾部插入
-v.pop_back();            // 尾部删除
-v.size();                // 元素数量
-v[0] = 5;               // 随机访问（不检查越界）
-v.at(0);                // 带越界检查的访问
+v.push_back(10);          // 尾部插入 int
+v.push_back({x, y});      // 尾部插入 vector
 
-// 遍历方式
+v.pop_back();             // 尾部删除
+
+v.size();                 // 元素数量
+
 for (auto num : v) { /* 遍历 */ }
 for (int i=0; i<v.size(); ++i) { v[i]; }
-
-// 特性
-vector<int> v2(100, 0);  // 初始化 100 个 0
-vector<vector<int>> mat; // 二维数组（矩阵）
 ```
 
 ---
 
 &nbsp;
 
-### **3. map 有序键值对**
+### 4. map 有序键值对
 
 ```cpp
 #include <map>
@@ -92,7 +121,7 @@ for (auto& [key, val] : m) {
 
 &nbsp;
 
-### **4. set 有序唯一集合**
+### 5. set 有序唯一集合
 
 ```cpp
 #include <set>
@@ -115,21 +144,21 @@ set<int> tmp(nums.begin(), nums.end()); // → {1,2,3}
 
 &nbsp;
 
-### 5. queue 队列
+### 6. queue 队列
 
 ```c++
-queue<int> q;		// 初始化
+queue<int> q;						// 初始化
 
-q.push(10);		// 添加元素
+q.push(10);							// 添加元素
 
-cout << q.front() 	// 访问队首
-cout << q.back()   // 访问队尾
+cout << q.front() 			// 访问队首
+cout << q.back()   			// 访问队尾
 
-q.pop();		// 移除队首元素，
-q.empty();		// 检查队列是否为空
+q.pop();								// 移除队首元素，
+q.empty();							// 检查队列是否为空
 std::cout << q.size();  // 获取队列大小
 ```
-#### 5.5 priority_queue 优先队列
+#### 6.5 priority_queue 优先队列
 
 `priority_queue` 默认是一个 **最大堆**（Max Heap），即优先级最高的元素（默认是最大的元素）会最先出队。
 
@@ -155,11 +184,13 @@ priority_queue<int, vector<int>, greater<int>> minHeap;
 
 &nbsp;
 
-### 6 pair<int, int>
+### 7. pair<int, int>
 
 用于存储两个值（可以是相同类型或不同类型)
 
-### 7 tuple<int, int, int>
+- 在输出 `optPath` 时，`path[0]` 和 `path[1]` 的写法是错误的，因为 `path` 是一个 `pair<int, int>`，应该使用 `path.first` 和 `path.second`。
+
+### 8. tuple<int, int, int>
 
 用于存储三个值（可以是相同类型或不同类型)
 
