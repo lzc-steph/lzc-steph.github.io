@@ -1,7 +1,7 @@
 ---
 date: 2025-03-19T11:00:59-04:00
 description: ""
-featured_image: "/images/PPO/lucky.jpg"
+featured_image: "/images/PPO/meovv.jpg"
 tags: ["RL"]
 title: "PPO"
 ---
