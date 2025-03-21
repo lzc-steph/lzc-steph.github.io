@@ -6,7 +6,35 @@
     
     <title>Lift-splat-shoot | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="1. 语义分割
+目标：将图像中的每个像素分配一个语义类别标签。
+
+输入：一张RGB图像（或其他类型的图像，如深度图、红外图等）。
+输出：像素级标签图，标注出道路、车辆、行人、交通标志等类别。
+
+在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。
+ 
+2. 论文阅读
+Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。
+
+
+Introduction
+目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。
+
+
+单视图扩展成多视图的对称性：
+
+平移等方差： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。
+Permutation invariance： 最终输出不取决于 n 相机的特定顺序。
+自我框架等距等方差： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。
+
+缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。
+
+
+传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。
+
+">
     <meta name="generator" content="Hugo 0.140.2">
     
     
@@ -36,6 +64,14 @@
     <meta property="og:url" content="http://localhost:1313/post/lift-splat-shoot/">
   <meta property="og:site_name" content="HomePage">
   <meta property="og:title" content="Lift-splat-shoot">
+  <meta property="og:description" content="1. 语义分割 目标：将图像中的每个像素分配一个语义类别标签。
+输入：一张RGB图像（或其他类型的图像，如深度图、红外图等）。 输出：像素级标签图，标注出道路、车辆、行人、交通标志等类别。 在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。
+2. 论文阅读 Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。
+Introduction 目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。
+单视图扩展成多视图的对称性：
+平移等方差： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。 Permutation invariance： 最终输出不取决于 n 相机的特定顺序。 自我框架等距等方差： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。 缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。
+传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -44,11 +80,28 @@
     <meta property="article:tag" content="RL">
 
   <meta itemprop="name" content="Lift-splat-shoot">
+  <meta itemprop="description" content="1. 语义分割 目标：将图像中的每个像素分配一个语义类别标签。
+输入：一张RGB图像（或其他类型的图像，如深度图、红外图等）。 输出：像素级标签图，标注出道路、车辆、行人、交通标志等类别。 在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。
+2. 论文阅读 Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。
+Introduction 目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。
+单视图扩展成多视图的对称性：
+平移等方差： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。 Permutation invariance： 最终输出不取决于 n 相机的特定顺序。 自我框架等距等方差： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。 缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。
+传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。">
   <meta itemprop="datePublished" content="2025-02-21T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-21T11:00:59-04:00">
+  <meta itemprop="wordCount" content="1322">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Lift-splat-shoot">
+  <meta name="twitter:description" content="1. 语义分割 目标：将图像中的每个像素分配一个语义类别标签。
+输入：一张RGB图像（或其他类型的图像，如深度图、红外图等）。 输出：像素级标签图，标注出道路、车辆、行人、交通标志等类别。 在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。
+2. 论文阅读 Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。
+Introduction 目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。
+单视图扩展成多视图的对称性：
+平移等方差： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。 Permutation invariance： 最终输出不取决于 n 相机的特定顺序。 自我框架等距等方差： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。 缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。
+传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -162,7 +215,7 @@
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flift-splat-shoot%2F&amp;summary=&amp;title=Lift-splat-shoot&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flift-splat-shoot%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flift-splat-shoot%2F&amp;summary=1.&#43;%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2&#43;%E7%9B%AE%E6%A0%87%EF%BC%9A%E5%B0%86%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E6%AF%8F%E4%B8%AA%E5%83%8F%E7%B4%A0%E5%88%86%E9%85%8D%E4%B8%80%E4%B8%AA%E8%AF%AD%E4%B9%89%E7%B1%BB%E5%88%AB%E6%A0%87%E7%AD%BE%E3%80%82%0A%E8%BE%93%E5%85%A5%EF%BC%9A%E4%B8%80%E5%BC%A0RGB%E5%9B%BE%E5%83%8F%EF%BC%88%E6%88%96%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%9B%BE%E5%83%8F%EF%BC%8C%E5%A6%82%E6%B7%B1%E5%BA%A6%E5%9B%BE%E3%80%81%E7%BA%A2%E5%A4%96%E5%9B%BE%E7%AD%89%EF%BC%89%E3%80%82&#43;%E8%BE%93%E5%87%BA%EF%BC%9A%E5%83%8F%E7%B4%A0%E7%BA%A7%E6%A0%87%E7%AD%BE%E5%9B%BE%EF%BC%8C%E6%A0%87%E6%B3%A8%E5%87%BA%E9%81%93%E8%B7%AF%E3%80%81%E8%BD%A6%E8%BE%86%E3%80%81%E8%A1%8C%E4%BA%BA%E3%80%81%E4%BA%A4%E9%80%9A%E6%A0%87%E5%BF%97%E7%AD%89%E7%B1%BB%E5%88%AB%E3%80%82&#43;%E5%9C%A8%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%B8%AD%EF%BC%8C%E5%A4%9A%E4%B8%AA%E4%BC%A0%E6%84%9F%E5%99%A8%E4%BD%9C%E4%B8%BA%E8%BE%93%E5%85%A5%EF%BC%8C%E6%AF%8F%E4%B8%AA%E4%BC%A0%E6%84%9F%E5%99%A8%E9%83%BD%E6%9C%89%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB%EF%BC%8C%E6%84%9F%E7%9F%A5%E6%A8%A1%E5%9E%8B%E6%9C%80%E7%BB%88%E7%9A%84%E4%BB%BB%E5%8A%A1%E6%98%AF%E5%9C%A8%2A%2A%E6%96%B0%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB%EF%BC%88%E8%87%AA%E6%88%91%E6%B1%BD%E8%BD%A6%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB%EF%BC%89%2A%2A%E4%B8%AD%E4%BA%A7%E7%94%9F%E9%A2%84%E6%B5%8B%EF%BC%8C%E4%BE%9B%E4%B8%8B%E6%B8%B8%E8%A7%84%E5%88%92%E8%80%85%E4%BD%BF%E7%94%A8%E3%80%82%0A2.&#43;%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB&#43;Lift%2C&#43;Splat%2C&#43;Shoot%3A&#43;Encoding&#43;Images&#43;From&#43;Arbitrary&#43;Camera&#43;Rigs&#43;by&#43;Implicitly&#43;Unprojecting&#43;to&#43;3D%0A%E6%9C%AC%E6%96%87%E6%8F%90%E5%87%BA%E4%BA%86%E4%B8%80%E7%A7%8D%E6%9E%B6%E6%9E%84%EF%BC%8C%E6%97%A8%E5%9C%A8%E4%BB%8E%E4%BB%BB%E6%84%8F%E6%91%84%E5%83%8F%E6%9C%BA%E8%A3%85%E5%A4%87%E6%8E%A8%E6%96%AD%E9%B8%9F%E7%9E%B0%E5%9B%BE%E8%A1%A8%E7%A4%BA%E3%80%82%0AIntroduction&#43;%E7%9B%AE%E6%A0%87%EF%BC%9A%E4%BB%8E%E4%BB%BB%E6%84%8F%E6%95%B0%E9%87%8F%E7%9A%84%E6%91%84%E5%83%8F%E6%9C%BA%E4%B8%AD%E7%9B%B4%E6%8E%A5%E6%8F%90%E5%8F%96%E7%BB%99%E5%AE%9A%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9C%BA%E6%99%AF%E7%9A%84%E9%B8%9F%E7%9E%B0%E5%9B%BE%E8%A1%A8%E7%A4%BA%E3%80%82%0A%E5%8D%95%E8%A7%86%E5%9B%BE%E6%89%A9%E5%B1%95%E6%88%90%E5%A4%9A%E8%A7%86%E5%9B%BE%E7%9A%84%E5%AF%B9%E7%A7%B0%E6%80%A7%EF%BC%9A%0A%E5%B9%B3%E7%A7%BB%E7%AD%89%E6%96%B9%E5%B7%AE%EF%BC%9A&#43;%E5%A6%82%E6%9E%9C%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E5%83%8F%E7%B4%A0%E5%9D%90%E6%A0%87%E5%85%A8%E9%83%A8%E5%81%8F%E7%A7%BB%EF%BC%8C%E5%88%99%E8%BE%93%E5%87%BA%E5%B0%86%E5%81%8F%E7%A7%BB%E7%9B%B8%E5%90%8C%E7%9A%84%E9%87%8F%E3%80%82&#43;Permutation&#43;invariance%EF%BC%9A&#43;%E6%9C%80%E7%BB%88%E8%BE%93%E5%87%BA%E4%B8%8D%E5%8F%96%E5%86%B3%E4%BA%8E&#43;n&#43;%E7%9B%B8%E6%9C%BA%E7%9A%84%E7%89%B9%E5%AE%9A%E9%A1%BA%E5%BA%8F%E3%80%82&#43;%E8%87%AA%E6%88%91%E6%A1%86%E6%9E%B6%E7%AD%89%E8%B7%9D%E7%AD%89%E6%96%B9%E5%B7%AE%EF%BC%9A&#43;%E6%97%A0%E8%AE%BA%E6%8D%95%E8%8E%B7%E5%9B%BE%E5%83%8F%E7%9A%84%E7%9B%B8%E6%9C%BA%E7%9B%B8%E5%AF%B9%E4%BA%8E%E8%87%AA%E6%88%91%E6%B1%BD%E8%BD%A6%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%A6%82%E4%BD%95%EF%BC%8C%E9%83%BD%E4%BC%9A%E5%9C%A8%E7%BB%99%E5%AE%9A%E5%9B%BE%E5%83%8F%E4%B8%AD%E6%A3%80%E6%B5%8B%E5%88%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E5%AF%B9%E8%B1%A1%E3%80%82&#43;%E7%BC%BA%E7%82%B9%EF%BC%9A%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%8E%E4%BD%BF%E7%94%A8%E6%9D%A5%E8%87%AA%E4%B8%8B%E6%B8%B8%E8%A7%84%E5%88%92%E5%99%A8%E7%9A%84%E5%8F%8D%E9%A6%88%E6%9D%A5%E8%87%AA%E5%8A%A8%E6%94%B9%E8%BF%9B%E6%84%9F%E7%9F%A5%E7%B3%BB%E7%BB%9F%E3%80%82%0A%E4%BC%A0%E7%BB%9F%E5%9C%A8%E4%B8%8E%E8%BE%93%E5%85%A5%E5%9B%BE%E5%83%8F%E7%9B%B8%E5%90%8C%E7%9A%84%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%A2%84%E6%B5%8B%EF%BC%8C%E6%88%91%E4%BB%AC%E7%9A%84%E6%A8%A1%E5%9E%8B%E9%81%B5%E5%BE%AA%E4%B8%8A%E8%BF%B0%E5%AF%B9%E7%A7%B0%E6%80%A7%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%9C%A8%E7%BB%99%E5%AE%9A%E7%9A%84%E9%B8%9F%E7%9E%B0%E5%9B%BE%E6%A1%86%E6%9E%B6%E4%B8%AD%E8%BF%9B%E8%A1%8C%E9%A2%84%E6%B5%8B%EF%BC%8C%E4%BB%A5%E4%BE%BF%E4%BB%8E%E5%A4%9A%E8%A7%86%E5%9B%BE%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%88%B0%E7%AB%AF%E8%A7%84%E5%88%92%E3%80%82%0A&amp;title=Lift-splat-shoot&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flift-splat-shoot%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -180,8 +233,428 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h3 id="heading"></h3>
-<ul class="pa0">
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h3 id="1-语义分割">1. 语义分割</h3>
+<p><strong>目标</strong>：将图像中的每个像素分配一个语义类别标签。</p>
+<ul>
+<li><strong>输入</strong>：一张RGB图像（或其他类型的图像，如深度图、红外图等）。</li>
+<li><strong>输出</strong>：像素级标签图，标注出道路、车辆、行人、交通标志等类别。</li>
+</ul>
+<p>在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。</p>
+<p> </p>
+<h3 id="2-论文阅读">2. 论文阅读</h3>
+<p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<p>本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。</p>
+<ol>
+<li>
+<h4 id="introduction">Introduction</h4>
+<p>目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。</p>
+<ul>
+<li>
+<p>单视图扩展成多视图的对称性：</p>
+<ol>
+<li><strong>平移等方差</strong>： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。</li>
+<li><strong>Permutation invariance</strong>： 最终输出不取决于 n 相机的特定顺序。</li>
+<li><strong>自我框架等距等方差</strong>： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。</li>
+</ol>
+<p>缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。</p>
+</li>
+</ul>
+<p>传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。</p>
+</li>
+</ol>
+<p><img src="/images/lss/1.png" alt="1"></p>
+<ol start="2">
+<li>
+<h4 id="related-work">Related Work</h4>
+<ol>
+<li><strong>单目物体检测</strong>
+<ol>
+<li>在图像平面中应用一个成熟的 2D 对象检测器，然后训练第二个网络将 2D 框回归到 3D 框。</li>
+<li>伪激光雷达：训练一个网络进行单目深度预测，另一个网络分别进行鸟瞰检测。</li>
+<li>使用 3 维对象基元，</li>
+</ol>
+</li>
+<li><strong>BEV 框架中的推理</strong>：使用 extrinsics 和 intrinsics 直接在鸟瞰框架中执行推理
+<ol>
+<li>MonoLayout：从单个图像执行鸟瞰图推理，并使用对抗性损失来鼓励模型对合理的隐藏对象进行修复。</li>
+<li>Pyramid Occupancy Networks：提出了一种 transformer 架构，将图像表示转换为鸟瞰图表示。</li>
+<li>FISHING Net：提出了一种多视图架构，既可以分割当前时间步中的对象，也可以执行未来预测。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<h4 id="method">Method</h4>
+<p>对每个图像，都有一个 extrinsic matrix 和 intrinic matrix，它们共同定义每个相机从参考坐标 (x,y,z) 到局部像素坐标 (h,w,d) 的映射。</p>
+<ul>
+<li>
+<p>核心流程：</p>
+<ul>
+<li>
+<p><strong>Lift</strong>：将2D图像特征显式提升到3D空间（通过深度估计生成视锥特征）。</p>
+</li>
+<li>
+<p><strong>Splat</strong>：将3D特征“展开”到BEV空间，构建鸟瞰图特征。</p>
+</li>
+<li>
+<p><strong>Shoot</strong>：基于BEV特征进行运动规划或轨迹预测。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>
+<p><strong>Lift：潜在深度分布</strong></p>
+<p>目的：将每个图像从本地 2 维坐标系 “提升” 到在所有摄像机之间共享的 3 维帧。</p>
+<p><img src="/images/lss/2.png" alt="2"></p>
+</li>
+<li>
+<p><strong>Splat：支柱池</strong></p>
+<ul>
+<li>
+<p>lift输出：大点云</p>
+</li>
+<li>
+<p>将每个点分配给最近的 pillar，并执行总和池化，以创建一个可由标准 CNN 处理以进行鸟瞰推理的 C×H×W 张量。（pillars 是具有无限高度的体素）</p>
+</li>
+</ul>
+<p><img src="/images/lss/3.png" alt="3"></p>
+<ul>
+<li>加速：不是填充每个 pillar 然后执行 sum pooling，而是通过使用 packing 和利用 “cumsum 技巧” 进行 sum pooling 来避免填充。</li>
+</ul>
+</li>
+<li>
+<p><strong>Shoot: 运动规划</strong></p>
+<ul>
+<li>
+<p>定义 planning：预测自我车辆在模板轨迹上的 K 分布。</p>
+<p><img src="/images/lss/4.png" alt="4"></p>
+</li>
+<li>
+<p>在测试时，实现使用 inferred cost map 的 planning：</p>
+<p>通过“射击”不同的轨迹，对它们的成本进行评分，然后根据最低成本轨迹采取行动。</p>
+</li>
+<li>
+<p>在实践中，我们通过在大量 template trajectories 上运行 K-Means 来确定模板轨迹集。</p>
+</li>
+</ul>
+<p><img src="/images/lss/5.png" alt="5"></p>
+</li>
+</ol>
+</li>
+<li>
+<h4 id="implementation">Implementation</h4>
+<p>模型有两个大型网络主干，由 lift-splat 层连接起来。</p>
+<ol>
+<li>
+<p>其中一个主干 对每个图像单独进行操作，以便对每个图像生成的点云进行特征化。</p>
+<p><em>利用了在 Imagenet 上预训练的 EfficientNet-B0 中的层。</em></p>
+</li>
+<li>
+<p>另一个主干 在点云被展开到参考系中的pillars后，对点云进行操作。</p>
+<p><em>使用类似于 PointPillars 的 ResNet 块组合。</em></p>
+</li>
+</ol>
+<ul>
+<li>技巧：
+<ul>
+<li>选择了跨 pillar 的 sum pooling，而不是 max pooling ：免于因填充而导致的过多内存使用。</li>
+<li>Frustum Pooling：将 n 图像产生的视锥转换为固定维度 C×H×W 的张量，而与相机 n 的数量无关。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h3 id="3-算法实现过程梳理">3. 算法实现过程梳理</h3>
+<ol>
+<li>
+<p><strong>相关参数设置</strong></p>
+<p>在LSS源码中，其感知范围，BEV单元格大小，BEV下的网格尺寸如下：</p>
+<ul>
+<li>感知范围
+x轴方向的感知范围 -50m ~ 50m；y轴方向的感知范围 -50m ~ 50m；z轴方向的感知范围 -10m ~ 10m；</li>
+<li>BEV单元格大小
+x轴方向的单位长度 0.5m；y轴方向的单位长度 0.5m；z轴方向的单位长度 20m；</li>
+<li>BEV的网格尺寸
+200 x 200 x 1；</li>
+<li>深度估计范围
+由于LSS需要显式估计像素的离散深度，论文给出的范围是 4m ~ 45m，间隔为1m，也就是算法会估计41个离散深度；</li>
+</ul>
+<p> </p>
+</li>
+<li>
+<p><strong>模型相关参数</strong></p>
+<ul>
+<li>imgs：输入的环视相机图片，imgs = (bs, N, 3, H, W)，N代表环视相机个数；</li>
+<li>rots：由相机坐标系-&gt;车身坐标系的旋转矩阵，rots = (bs, N, 3, 3)；</li>
+<li>trans：由相机坐标系-&gt;车身坐标系的平移矩阵，trans=(bs, N, 3)；</li>
+<li>intrinsic：相机内参，intrinsic = (bs, N, 3, 3)；</li>
+<li>post_rots：由图像增强引起的旋转矩阵，post_rots = (bs, N, 3, 3)；</li>
+<li>post_trans：由图像增强引起的平移矩阵，post_trans = (bs, N, 3)；</li>
+<li>binimgs：由于LSS做的是语义分割任务，所以会将真值目标投影到BEV坐标系，将预测结果与真值计算损失；具体而言，在binimgs中对应物体的bbox内的位置为1，其他位置为0；</li>
+</ul>
+<p> </p>
+</li>
+<li>
+<p><strong>算法前向过程</strong></p>
+<p>1）生成视锥，并根据相机内外参将视锥中的点投影到ego坐标系；</p>
+<p>2）对环视图像完成特征的提取，并构建图像特征点云；</p>
+<p>3）利用变换后的ego坐标系的点与图像特征点云利用Voxel Pooling 构建BEV特征；</p>
+<p>4）对生成的BEV特征利用BEV Encoder做进一步的特征融合；</p>
+<p>5）利用特征融合后的BEV特征完成语义分割任务；</p>
+<p> </p>
+<p> </p>
+<ol>
+<li>
+<p><strong>生成视锥，并完成视锥锥点由图像坐标系-&gt;ego坐标系的空间位置转换</strong></p>
+<p><strong>a）生成视锥</strong></p>
+<p>需要注意的是，生成的锥点，其位置是基于图像坐标系的，同时锥点是图像特征上每个单元格映射回原始图像的位置。生成方式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_frustum</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 原始图片大小  ogfH:128  ogfW:352</span>
+</span></span><span style="display:flex;"><span>    ogfH, ogfW <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>data_aug_conf[<span style="color:#e6db74">&#39;final_dim&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 下采样16倍后图像大小  fH: 8  fW: 22</span>
+</span></span><span style="display:flex;"><span>    fH, fW <span style="color:#f92672">=</span> ogfH <span style="color:#f92672">//</span> self<span style="color:#f92672">.</span>downsample, ogfW <span style="color:#f92672">//</span> self<span style="color:#f92672">.</span>downsample 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># self.grid_conf[&#39;dbound&#39;] = [4, 45, 1]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 在深度方向上划分网格 ds: DxfHxfW (41x8x22)</span>
+</span></span><span style="display:flex;"><span>    ds <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>grid_conf[<span style="color:#e6db74">&#39;dbound&#39;</span>], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>expand(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, fH, fW)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    D, _, _ <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>shape <span style="color:#75715e"># D: 41 表示深度方向上网格的数量</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    1. torch.linspace(0, ogfW - 1, fW, dtype=torch.float)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    tensor([0.0000, 16.7143, 33.4286, 50.1429, 66.8571, 83.5714, 100.2857,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            117.0000, 133.7143, 150.4286, 167.1429, 183.8571, 200.5714, 217.2857,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            234.0000, 250.7143, 267.4286, 284.1429, 300.8571, 317.5714, 334.2857,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            351.0000])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    2. torch.linspace(0, ogfH - 1, fH, dtype=torch.float)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    tensor([0.0000, 18.1429, 36.2857, 54.4286, 72.5714, 90.7143, 108.8571,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            127.0000])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 在0到351上划分22个格子 xs: DxfHxfW(41x8x22)</span>
+</span></span><span style="display:flex;"><span>    xs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, ogfW <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, fW, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, fW)<span style="color:#f92672">.</span>expand(D, fH, fW)  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 在0到127上划分8个格子 ys: DxfHxfW(41x8x22)</span>
+</span></span><span style="display:flex;"><span>    ys <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, ogfH <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, fH, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">1</span>, fH, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>expand(D, fH, fW)  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># D x H x W x 3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 堆积起来形成网格坐标, frustum[i,j,k,0]就是(i,j)位置，深度为k的像素的宽度方向上的栅格坐标   frustum: DxfHxfWx3</span>
+</span></span><span style="display:flex;"><span>    frustum <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>stack((xs, ys, ds), <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> nn<span style="color:#f92672">.</span>Parameter(frustum, requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><p><strong>b）锥点由图像坐标系向ego坐标系进行坐标转化</strong></p>
+<p>这一过程主要涉及到相机的内外参数，对应代码中的函数为get_geometry()；</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_geometry</span>(self, rots, trans, intrins, post_rots, post_trans):
+</span></span><span style="display:flex;"><span>    B, N, _ <span style="color:#f92672">=</span> trans<span style="color:#f92672">.</span>shape  <span style="color:#75715e"># B: batch size N：环视相机个数</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># undo post-transformation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># B x N x D x H x W x 3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 抵消数据增强及预处理对像素的变化</span>
+</span></span><span style="display:flex;"><span>    points <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>frustum <span style="color:#f92672">-</span> post_trans<span style="color:#f92672">.</span>view(B, N, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    points <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>inverse(post_rots)<span style="color:#f92672">.</span>view(B, N, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>matmul(points<span style="color:#f92672">.</span>unsqueeze(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 图像坐标系 -&gt; 归一化相机坐标系 -&gt; 相机坐标系 -&gt; 车身坐标系</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 但是自认为由于转换过程是线性的，所以反归一化是在图像坐标系完成的，然后再利用</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 求完逆的内参投影回相机坐标系</span>
+</span></span><span style="display:flex;"><span>    points <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat((points[:, :, :, :, :, :<span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> points[:, :, :, :, :, <span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>                        points[:, :, :, :, :, <span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>                        ), <span style="color:#ae81ff">5</span>)  <span style="color:#75715e"># 反归一化</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    combine <span style="color:#f92672">=</span> rots<span style="color:#f92672">.</span>matmul(torch<span style="color:#f92672">.</span>inverse(intrins))
+</span></span><span style="display:flex;"><span>    points <span style="color:#f92672">=</span> combine<span style="color:#f92672">.</span>view(B, N, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>matmul(points)<span style="color:#f92672">.</span>squeeze(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    points <span style="color:#f92672">+=</span> trans<span style="color:#f92672">.</span>view(B, N, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># (bs, N, depth, H, W, 3)：其物理含义</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 每个batch中的每个环视相机图像特征点，其在不同深度下位置对应</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 在ego坐标系下的坐标</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> points
+</span></span></code></pre></div></li>
+</ol>
+<p> </p>
+<ol start="2">
+<li>
+<p><strong>对环视图像进行特征提取，并构建图像特征点云</strong></p>
+<p><strong>a）利用 Efficientnet-B0 主干网络对环视图像进行特征提取</strong>
+输入的环视图像 (bs, N, 3, H, W)，在进行特征提取之前，会将前两个维度进行合并，一起提取特征，对应维度变换为 (bs, N, 3, H, W) -&gt; (bs * N, 3, H, W)；其输出的多尺度特征尺寸大小如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>level0 <span style="color:#f92672">=</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">16</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>level1 <span style="color:#f92672">=</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">24</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">4</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>level2 <span style="color:#f92672">=</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">40</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>level3 <span style="color:#f92672">=</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">112</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>level4 <span style="color:#f92672">=</span>  (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">320</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">32</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">32</span>)
+</span></span></code></pre></div><p><strong>b）对其中的后两层特征进行融合</strong></p>
+<p>丰富特征的语义信息，融合后的特征尺寸大小为 (bs * N, 512, H / 16, W / 16）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>Step1: 对最后一层特征升采样到倒数第二层大小<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span>level4 <span style="color:#f92672">-&gt;</span> Up <span style="color:#f92672">-&gt;</span> level4<span style="color:#e6db74">&#39; = (bs * N, 320, H / 16, W / 16)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Step2<span style="color:#960050;background-color:#1e0010">：</span>对主干网络输出的后两层特征进行concat<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span>cat(level4<span style="color:#e6db74">&#39;, level3) -&gt; output = (bs * N, 432, H / 16, W / 16)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Step3<span style="color:#960050;background-color:#1e0010">：</span>对concat后的特征<span style="color:#960050;background-color:#1e0010">，</span>利用ConvLayer卷积层做进一步特征拟合<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ConvLayer(output) <span style="color:#f92672">-&gt;</span> output<span style="color:#e6db74">&#39; = (bs * N, 512, H / 16, W / 16)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>其中ConvLayer层构造如下<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;Sequential(
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (0): Conv2d(432, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (2): ReLU(inplace=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (3): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (5): ReLU(inplace=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)&#34;&#34;&#34;</span>
+</span></span></code></pre></div><p><strong>c）估计深度方向的概率分布并输出特征图每个位置的语义特征</strong> (用64维的特征表示），整个过程用1x1卷积层实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>c)步骤整体pipeline
+</span></span><span style="display:flex;"><span>output<span style="color:#e6db74">&#39; -&gt; Conv1x1 -&gt; x = (bs * N, 105, H / 16, W / 16)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b)步骤输出的特征<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">=</span> Tensor[(bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">512</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c)步骤使用的1x1卷积层<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>Conv1x1 <span style="color:#f92672">=</span> Conv2d(<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">105</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), stride<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c)步骤输出的特征以及对应的物理含义<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> Tensor[(bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">105</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>)] 
+</span></span><span style="display:flex;"><span>第二维的105个通道分成两部分<span style="color:#960050;background-color:#1e0010">；</span>第一部分<span style="color:#960050;background-color:#1e0010">：</span>前41个维度代表不同深度上41个离散深度<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span>                         第二部分<span style="color:#960050;background-color:#1e0010">：</span>后64个维度代表特征图上的不同位置对应的语义特征<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span></code></pre></div><p><strong>d）对c)步骤估计出来的离散深度利用softmax()函数计算深度方向的概率密度</strong></p>
+<p><strong>e）利用得到的深度方向的概率密度和语义特征通过外积运算构建图像特征点云</strong></p>
+<p>代码实现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#75715e"># d)步骤得到的深度方向的概率密度</span>
+</span></span><span style="display:flex;"><span>depth <span style="color:#f92672">=</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">41</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">-&gt;</span> unsqueeze <span style="color:#f92672">-&gt;</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">41</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># c)步骤得到的特征，选择后64维是预测出来的语义特征</span>
+</span></span><span style="display:flex;"><span>x[:, self<span style="color:#f92672">.</span>D:(self<span style="color:#f92672">.</span>D <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>C)] <span style="color:#f92672">=</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">64</span>, H <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">-&gt;</span> unsqueeze(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">-&gt;</span> (bs <span style="color:#f92672">*</span> N, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">1</span> , H <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>, W <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 概率密度和语义特征做外积，构建图像特征点云</span>
+</span></span><span style="display:flex;"><span>new_x <span style="color:#f92672">=</span> depth<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> x[:, self<span style="color:#f92672">.</span>D:(self<span style="color:#f92672">.</span>D <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>C)]<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># (bs * N, 64, 41, H / 16, W / 16)</span>
+</span></span></code></pre></div><p>论文中表示构建图像特征点云的实现过程插图：</p>
+<p><img src="/images/lss/2.png" alt="2"></p>
+</li>
+</ol>
+<p> </p>
+<ol start="3">
+<li>
+<p>利用ego坐标系下的坐标点与图像特征点云，利用Voxel Pooling构建BEV特征</p>
+<p><strong>a）Voxel Pooling前的准备工作</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">voxel_pooling</span>(self, geom_feats, x):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># geom_feats；(B x N x D x H x W x 3)：在ego坐标系下的坐标点；</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># x；(B x N x D x fH x fW x C)：图像点云特征</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    B, N, D, H, W, C <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>    Nprime <span style="color:#f92672">=</span> B<span style="color:#f92672">*</span>N<span style="color:#f92672">*</span>D<span style="color:#f92672">*</span>H<span style="color:#f92672">*</span>W 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 将特征点云展平，一共有 B*N*D*H*W 个点</span>
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape(Nprime, C) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># flatten indices</span>
+</span></span><span style="display:flex;"><span>    geom_feats <span style="color:#f92672">=</span> ((geom_feats <span style="color:#f92672">-</span> (self<span style="color:#f92672">.</span>bx <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>dx<span style="color:#f92672">/</span><span style="color:#ae81ff">2.</span>)) <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>dx)<span style="color:#f92672">.</span>long() <span style="color:#75715e"># ego下的空间坐标转换到体素坐标（计算栅格坐标并取整）</span>
+</span></span><span style="display:flex;"><span>    geom_feats <span style="color:#f92672">=</span> geom_feats<span style="color:#f92672">.</span>view(Nprime, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># 将体素坐标同样展平，geom_feats: (B*N*D*H*W, 3)</span>
+</span></span><span style="display:flex;"><span>    batch_ix <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([torch<span style="color:#f92672">.</span>full([Nprime<span style="color:#f92672">//</span>B, <span style="color:#ae81ff">1</span>], ix,
+</span></span><span style="display:flex;"><span>                             device<span style="color:#f92672">=</span>x<span style="color:#f92672">.</span>device, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>long) <span style="color:#66d9ef">for</span> ix <span style="color:#f92672">in</span> range(B)])  <span style="color:#75715e"># 每个点对应于哪个batch</span>
+</span></span><span style="display:flex;"><span>    geom_feats <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat((geom_feats, batch_ix), <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># geom_feats: (B*N*D*H*W, 4)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># filter out points that are outside box</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 过滤掉在边界线之外的点 x:0~199  y: 0~199  z: 0</span>
+</span></span><span style="display:flex;"><span>    kept <span style="color:#f92672">=</span> (geom_feats[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&amp;</span> (geom_feats[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">0</span>])\
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&amp;</span> (geom_feats[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&amp;</span> (geom_feats[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">1</span>])\
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&amp;</span> (geom_feats[:, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) <span style="color:#f92672">&amp;</span> (geom_feats[:, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> x[kept]
+</span></span><span style="display:flex;"><span>    geom_feats <span style="color:#f92672">=</span> geom_feats[kept]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># get tensors from the same voxel next to each other</span>
+</span></span><span style="display:flex;"><span>    ranks <span style="color:#f92672">=</span> geom_feats[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> B)\
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">+</span> geom_feats[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> B)\
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">+</span> geom_feats[:, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> B\
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">+</span> geom_feats[:, <span style="color:#ae81ff">3</span>]  <span style="color:#75715e"># 给每一个点一个rank值，rank相等的点在同一个batch，并且在在同一个格子里面</span>
+</span></span><span style="display:flex;"><span>    sorts <span style="color:#f92672">=</span> ranks<span style="color:#f92672">.</span>argsort()
+</span></span><span style="display:flex;"><span>    x, geom_feats, ranks <span style="color:#f92672">=</span> x[sorts], geom_feats[sorts], ranks[sorts]  <span style="color:#75715e"># 按照rank排序，这样rank相近的点就在一起了</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># cumsum trick</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>use_quickcumsum:
+</span></span><span style="display:flex;"><span>        x, geom_feats <span style="color:#f92672">=</span> cumsum_trick(x, geom_feats, ranks)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        x, geom_feats <span style="color:#f92672">=</span> QuickCumsum<span style="color:#f92672">.</span>apply(x, geom_feats, ranks)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># griddify (B x C x Z x X x Y)</span>
+</span></span><span style="display:flex;"><span>    final <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>zeros((B, C, self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">2</span>], self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">0</span>], self<span style="color:#f92672">.</span>nx[<span style="color:#ae81ff">1</span>]), device<span style="color:#f92672">=</span>x<span style="color:#f92672">.</span>device)  <span style="color:#75715e"># final: bs x 64 x 1 x 200 x 200</span>
+</span></span><span style="display:flex;"><span>    final[geom_feats[:, <span style="color:#ae81ff">3</span>], :, geom_feats[:, <span style="color:#ae81ff">2</span>], geom_feats[:, <span style="color:#ae81ff">0</span>], geom_feats[:, <span style="color:#ae81ff">1</span>]] <span style="color:#f92672">=</span> x  <span style="color:#75715e"># 将x按照栅格坐标放到final中</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># collapse Z</span>
+</span></span><span style="display:flex;"><span>    final <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat(final<span style="color:#f92672">.</span>unbind(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># 消除掉z维</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> final  <span style="color:#75715e"># final: bs x 64 x 200 x 200</span>
+</span></span></code></pre></div><p><strong>b）采用cumsum_trick完成Voxel Pooling运算</strong></p>
+<ul>
+<li>
+<p>该技巧是基于本文方法用图像产生的点云形状是固定的，因此每个点可以预先分配一个区间（即BEV网格）索引，用于指示其属于哪一个区间。按照索引排序后，按下列方法操作：</p>
+<p><img src="/images/lss/6.png" alt="6"></p>
+<p>需要注意的，图中的<code>区间索引</code>代表下面代码中的ranks，<code>点的特征</code>代表的是x；</p>
+</li>
+<li></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>  ```python
+  class QuickCumsum(torch.autograd.Function):
+      @staticmethod
+      def forward(ctx, x, geom_feats, ranks):
+          x = x.cumsum(0) # 求前缀和
+          kept = torch.ones(x.shape[0], device=x.device, dtype=torch.bool)  
+          kept[:-1] = (ranks[1:] != ranks[:-1])  # 筛选出ranks中前后rank值不相等的位置
+  
+          x, geom_feats = x[kept], geom_feats[kept]  # rank值相等的点只留下最后一个，即一个batch中的一个格子里只留最后一个点
+          x = torch.cat((x[:1], x[1:] - x[:-1]))  # x后一个减前一个，还原到cumsum之前的x，此时的一个点是之前与其rank相等的点的feature的和，相当于把同一个格子的点特征进行了sum
+  
+          # save kept for backward
+          ctx.save_for_backward(kept)
+  
+          # no gradient for geom_feats
+          ctx.mark_non_differentiable(geom_feats)
+  
+          return x, geom_feats
+  ```
+</code></pre>
+<p> </p>
+<ol start="4">
+<li>
+<p>(+5) <strong>对生成的BEV特征利用BEV Encoder做进一步的特征融合</strong> + <strong>语义分割结果预测</strong></p>
+<p><strong>a）对BEV特征先利用 ResNet-18 进行多尺度特征提取</strong>，输出的多尺度特征尺寸如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>level0<span style="color:#960050;background-color:#1e0010">：</span>(bs, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>level1: (bs, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>level2: (bs, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">25</span>)
+</span></span></code></pre></div><p><strong>b）对输出的多尺度特征进行特征融合 + 对融合后的特征实现BEV网格上的语义分割</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>Step1: level2 <span style="color:#f92672">-&gt;</span> Up (<span style="color:#ae81ff">4</span>x) <span style="color:#f92672">-&gt;</span> level2<span style="color:#e6db74">&#39; = (bs, 256, 100, 100)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Step2: concat(level2<span style="color:#e6db74">&#39;, level0) -&gt; output = (bs, 320, 100, 100)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Step3: ConvLayer(output) <span style="color:#f92672">-&gt;</span> output<span style="color:#e6db74">&#39; = (bs, 256, 100, 100)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;ConvLayer的配置如下
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Sequential(
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (0): Conv2d(320, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (2): ReLU(inplace=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (5): ReLU(inplace=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Step4: Up2(output<span style="color:#e6db74">&#39;) -&gt; final = (bs, 1, 200, 200) # 第二个维度的1就代表BEV每个网格下的二分类结果</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;Up2的配置如下
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Sequential(
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (0): Upsample(scale_factor=2.0, mode=bilinear)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (1): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (3): ReLU(inplace=True)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  (4): Conv2d(128, 1, kernel_size=(1, 1), stride=(1, 1))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)&#39;&#39;&#39;</span>
+</span></span></code></pre></div></li>
+</ol>
+<p><strong>最后就是将输出的语义分割结果与binimgs的真值标注做基于像素的交叉熵损失</strong>，从而指导模型的学习过程。</p><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
@@ -203,10 +676,6 @@
     <p class="f5 b mb3">Related</p>
     <ul class="pa0 list">
 	   
-	     <li  class="mb2">
-          <a href="/post/ppo/">PPO</a>
-        </li>
-	    
 	     <li  class="mb2">
           <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/">强化学习-基础工具（1-3）</a>
         </li>

@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="RL">
-  <meta itemprop="datePublished" content="2025-02-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-02-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="RL">
 
@@ -144,7 +144,7 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 20, 2025
+        March 20, 2025
       </div>
     
     <h1 class="f3 near-black">
@@ -153,7 +153,7 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="1-基础概念">1. 基础概念</h3>
+      <h2 id="1-基础概念">1. 基础概念</h2>
 <p><img src="/images/PPO/1.png" alt="1"></p>
 <ol>
 <li>
@@ -193,44 +193,120 @@
 </li>
 </ol>
 <p>强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。</p>
-<h3 id="2-policy-gradient">2. Policy gradient</h3>
-<p>目标：求return期望的最大值</p>
-<ol>
-<li>
-<h4 id="计算过程"><strong>计算过程</strong></h4>
-<p><img src="/images/PPO/2.png" alt="2"></p>
-<p><img src="/images/PPO/3.png" alt="3"></p>
-<ul>
-<li>
-<p>直观理解：</p>
-<p>对所有可能的 trajectory 期望最大的梯度。可以用这个梯度乘学习率去更新神经网络里的参数。</p>
-</li>
-<li>
-<p>若去掉梯度，则表达式的意义：</p>
-<p>若一个<strong>trajectory 得到的 return 大于零</strong>，则<strong>增大</strong>这个trajectory里所有状态下，采取当前action的概率。</p>
-</li>
-</ul>
-</li>
-<li>
-<h4 id="训练policy神经网络"><strong>训练policy神经网络</strong></h4>
-<ul>
-<li>
-<p><strong>输入</strong>：当前画面</p>
-</li>
-<li>
-<p><strong>输出</strong>：action 的概率</p>
-</li>
-</ul>
-<p><img src="/images/PPO/4.png" alt="4"></p>
-<p>玩n场游戏后，得到n个trajectory的最后的return值</p>
-<p>此时可以得到loss里的所有值，可以进行一个batch训练，来更新policy神经网络</p>
-<p><img src="/images/PPO/5.png" alt="5"></p>
-<p>存在问题：大部分时间在采集数据，很慢</p>
-</li>
-</ol>
-<p>π</p>
     </div>
   <a href="/post/ppo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%BE%AE%E8%B0%83/" class="link black dim">
+        微调
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="大模型预训练">大模型预训练</h2>
+<h4 id="1-从零开始的预训练">1 从零开始的预训练</h4>
+<h4 id="2-在已有开源模型基础上针对特定任务进行训练">2 在已有开源模型基础上针对特定任务进行训练</h4>
+<p> </p>
+<h3 id="lora">LoRa</h3>
+<p>通过化简权重矩阵，实现高效微调</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/1.png" alt="1"></p>
+<p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
+<p>训练参数量减少，但微调效果基本不变。</p>
+<ul>
+<li>
+<p>两个重要参数：</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/2.png" alt="2"></p>
+</li>
+</ul>
+<p>Lora 的<strong>优点</strong>：</p>
+<ol>
+<li>﻿﻿﻿大大节省微调大模型的参数量</li>
+<li>﻿﻿﻿效果和全量微调差不多。</li>
+<li>﻿﻿微调完的Lora模型，权重可以Merge回原来的权重，不会改变模型结构，推理时不增加额外计算量。</li>
+<li>﻿﻿你可以通过改变r参数，最高情况等同于全量微调。</li>
+</ol>
+<p> </p>
+<p> </p>
+<h2 id="大模型微调sft-trainer">大模型微调：SFT Trainer</h2>
+<p>SFT：Supervised Fine-Tuning</p>
+<h4 id="1-chat-tempate">1 Chat Tempate</h4>
+<p>在预训练基础上，更好回答人类的问题。</p>
+<ul>
+<li>网络结构：基本相同</li>
+<li>loss函数：基本相同</li>
+<li>训练数据：不同</li>
+</ul>
+<p>微调时，格式需要与原厂一致效果更好。</p>
+<p>输入整个对话，对整个对话文本进行学习，<strong>对每个输出token计算loss</strong>。</p>
+<p> </p>
+<h4 id="2-completions-only">2 Completions only</h4>
+<p>输入整个对话，对整个对话文本进行学习，<strong>只对回答部分进行loss计算</strong>。</p>
+<p>用一个loss mask来实现，query部分不需要计算loss。</p>
+<p> </p>
+<h4 id="3-neftunenoisy-embeddings-finetuning">3 NEFTune：Noisy Embeddings Finetuning</h4>
+<p>图像领域的数据增强：通过旋转等操作生成更多样本。</p>
+<p>对文本数据的增强：给每个token的embeding随机加上一些噪声，让原有token变成其他相近的token。如，<em>漂亮</em>变成了<em>美丽</em>。</p>
+<p> </p>
+<p> </p>
+    </div>
+  <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 21, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/lift-splat-shoot/" class="link black dim">
+        Lift-splat-shoot
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h3 id="1-语义分割">1. 语义分割</h3>
+<p><strong>目标</strong>：将图像中的每个像素分配一个语义类别标签。</p>
+<ul>
+<li><strong>输入</strong>：一张RGB图像（或其他类型的图像，如深度图、红外图等）。</li>
+<li><strong>输出</strong>：像素级标签图，标注出道路、车辆、行人、交通标志等类别。</li>
+</ul>
+<p>在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。</p>
+<p> </p>
+<h3 id="2-论文阅读">2. 论文阅读</h3>
+<p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<p>本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。</p>
+<ol>
+<li>
+<h4 id="introduction">Introduction</h4>
+<p>目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。</p>
+<ul>
+<li>
+<p>单视图扩展成多视图的对称性：</p>
+<ol>
+<li><strong>平移等方差</strong>： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。</li>
+<li><strong>Permutation invariance</strong>： 最终输出不取决于 n 相机的特定顺序。</li>
+<li><strong>自我框架等距等方差</strong>： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。</li>
+</ol>
+<p>缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。</p>
+</li>
+</ul>
+<p>传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。</p>
+</li>
+</ol>
+    </div>
+  <a href="/post/lift-splat-shoot/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

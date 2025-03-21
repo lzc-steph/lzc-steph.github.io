@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>算法 - C&#43;&#43;STL常用容器 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="插入函数总结
+
+  
+      
+          方法
+          适用容器
+          作用
+          性能特性
+      
+  
+  
+      
+          push
+          queue、stack、priority_queue
+          添加元素到容器末尾或顶部
+          适用于特定容器，性能与容器实现相关
+      
+      
+          push_back
+          vector、deque、list
+          添加元素到容器末尾
+          需要拷贝或移动元素
+      
+      
+          emplace
+          set、map、unordered_set 等
+          在容器中直接构造元素
+          避免不必要的拷贝或移动
+      
+      
+          emplace_back
+          vector、deque、list
+          在容器末尾直接构造元素
+          避免不必要的拷贝或移动
+      
+      
+          insert
+          大多数容器
+          将元素插入到容器的指定位置
+          需要拷贝或移动元素
+      
+  
+
+
+ 
+1. string 字符串
+#include &lt;string&gt;
+using namespace std;
+
+string s = &#34;Hello&#34;;
+s &#43;= &#34; World&#34;;          // 拼接
+
+char first_char = str[0];  // 访问第1个字符（索引为0）&#39;H&#39;
+string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34;
+size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos
+
+s.length();              // 字符串长度
+s.empty();               // 判断是否为空
+s.starts_with(&#34;He&#34;);     // C&#43;&#43;20 判断前缀
+s.contains(&#34;or&#34;);        // C&#43;&#43;20 判断是否包含子串
+
+ 
+**2. **stack 栈
+stack&lt;int&gt; s;
+
+
+压入元素：push()">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/%E7%AE%97%E6%B3%95-c&#43;&#43;stl%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/%E7%AE%97%E6%B3%95-c&#43;&#43;stl%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="算法 - C&#43;&#43;STL常用容器">
+  <meta property="og:description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素 1. string 字符串 #include &lt;string&gt; using namespace std; string s = &#34;Hello&#34;; s &#43;= &#34; World&#34;; // 拼接 char first_char = str[0]; // 访问第1个字符（索引为0）&#39;H&#39; string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34; size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos s.length(); // 字符串长度 s.empty(); // 判断是否为空 s.starts_with(&#34;He&#34;); // C&#43;&#43;20 判断前缀 s.contains(&#34;or&#34;); // C&#43;&#43;20 判断是否包含子串 **2. **stack 栈 stack&lt;int&gt; s; 压入元素：push()">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-03-14T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-03-14T11:00:59-04:00">
+    <meta property="article:tag" content="Algorithm">
+
+  <meta itemprop="name" content="算法 - C&#43;&#43;STL常用容器">
+  <meta itemprop="description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素 1. string 字符串 #include &lt;string&gt; using namespace std; string s = &#34;Hello&#34;; s &#43;= &#34; World&#34;; // 拼接 char first_char = str[0]; // 访问第1个字符（索引为0）&#39;H&#39; string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34; size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos s.length(); // 字符串长度 s.empty(); // 判断是否为空 s.starts_with(&#34;He&#34;); // C&#43;&#43;20 判断前缀 s.contains(&#34;or&#34;); // C&#43;&#43;20 判断是否包含子串 **2. **stack 栈 stack&lt;int&gt; s; 压入元素：push()">
+  <meta itemprop="datePublished" content="2025-03-14T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-03-14T11:00:59-04:00">
+  <meta itemprop="wordCount" content="396">
+  <meta itemprop="keywords" content="Algorithm">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="算法 - C&#43;&#43;STL常用容器">
+  <meta name="twitter:description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素 1. string 字符串 #include &lt;string&gt; using namespace std; string s = &#34;Hello&#34;; s &#43;= &#34; World&#34;; // 拼接 char first_char = str[0]; // 访问第1个字符（索引为0）&#39;H&#39; string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34; size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos s.length(); // 字符串长度 s.empty(); // 判断是否为空 s.starts_with(&#34;He&#34;); // C&#43;&#43;20 判断前缀 s.contains(&#34;or&#34;); // C&#43;&#43;20 判断是否包含子串 **2. **stack 栈 stack&lt;int&gt; s; 压入元素：push()">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/c&#43;&#43;STL/lucky.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">算法 - C&#43;&#43;STL常用容器</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F&amp;subject=%E7%AE%97%E6%B3%95&#43;-&#43;C%2B%2BSTL%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F&amp;summary=%E6%8F%92%E5%85%A5%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93&#43;%E6%96%B9%E6%B3%95&#43;%E9%80%82%E7%94%A8%E5%AE%B9%E5%99%A8&#43;%E4%BD%9C%E7%94%A8&#43;%E6%80%A7%E8%83%BD%E7%89%B9%E6%80%A7&#43;push&#43;queue%E3%80%81stack%E3%80%81priority_queue&#43;%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E5%88%B0%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE%E6%88%96%E9%A1%B6%E9%83%A8&#43;%E9%80%82%E7%94%A8%E4%BA%8E%E7%89%B9%E5%AE%9A%E5%AE%B9%E5%99%A8%EF%BC%8C%E6%80%A7%E8%83%BD%E4%B8%8E%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0%E7%9B%B8%E5%85%B3&#43;push_back&#43;vector%E3%80%81deque%E3%80%81list&#43;%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E5%88%B0%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE&#43;%E9%9C%80%E8%A6%81%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8%E5%85%83%E7%B4%A0&#43;emplace&#43;set%E3%80%81map%E3%80%81unordered_set&#43;%E7%AD%89&#43;%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9B%B4%E6%8E%A5%E6%9E%84%E9%80%A0%E5%85%83%E7%B4%A0&#43;%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8&#43;emplace_back&#43;vector%E3%80%81deque%E3%80%81list&#43;%E5%9C%A8%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE%E7%9B%B4%E6%8E%A5%E6%9E%84%E9%80%A0%E5%85%83%E7%B4%A0&#43;%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8&#43;insert&#43;%E5%A4%A7%E5%A4%9A%E6%95%B0%E5%AE%B9%E5%99%A8&#43;%E5%B0%86%E5%85%83%E7%B4%A0%E6%8F%92%E5%85%A5%E5%88%B0%E5%AE%B9%E5%99%A8%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE&#43;%E9%9C%80%E8%A6%81%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8%E5%85%83%E7%B4%A0&#43;1.&#43;string&#43;%E5%AD%97%E7%AC%A6%E4%B8%B2&#43;%23include&#43;%26amp%3Blt%3Bstring%26amp%3Bgt%3B&#43;using&#43;namespace&#43;std%3B&#43;string&#43;s&#43;%3D&#43;%26amp%3B%2334%3BHello%26amp%3B%2334%3B%3B&#43;s&#43;%2B%3D&#43;%26amp%3B%2334%3B&#43;World%26amp%3B%2334%3B%3B&#43;%2F%2F&#43;%E6%8B%BC%E6%8E%A5&#43;char&#43;first_char&#43;%3D&#43;str%5B0%5D%3B&#43;%2F%2F&#43;%E8%AE%BF%E9%97%AE%E7%AC%AC1%E4%B8%AA%E5%AD%97%E7%AC%A6%EF%BC%88%E7%B4%A2%E5%BC%95%E4%B8%BA0%EF%BC%89%26amp%3B%2339%3BH%26amp%3B%2339%3B&#43;string&#43;sub&#43;%3D&#43;s.substr%286%2C&#43;5%29%3B&#43;%2F%2F&#43;substr%28%E8%B5%B7%E5%A7%8B%E4%BD%8D%E7%BD%AE%2C&#43;%E6%88%AA%E5%8F%96%E9%95%BF%E5%BA%A6%29&#43;%E2%86%92&#43;%26amp%3B%2334%3BWorld%26amp%3B%2334%3B&#43;size_t&#43;pos&#43;%3D&#43;s.find%28%26amp%3B%2334%3BWorld%26amp%3B%2334%3B%29%3B%2F%2F&#43;%E6%9F%A5%E6%89%BE%E5%AD%90%E4%B8%B2%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%BD%8D%E7%BD%AE%EF%BC%8C%E6%9C%AA%E6%89%BE%E5%88%B0%E8%BF%94%E5%9B%9E&#43;string%3A%3Anpos&#43;s.length%28%29%3B&#43;%2F%2F&#43;%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6&#43;s.empty%28%29%3B&#43;%2F%2F&#43;%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA&#43;s.starts_with%28%26amp%3B%2334%3BHe%26amp%3B%2334%3B%29%3B&#43;%2F%2F&#43;C%2B%2B20&#43;%E5%88%A4%E6%96%AD%E5%89%8D%E7%BC%80&#43;s.contains%28%26amp%3B%2334%3Bor%26amp%3B%2334%3B%29%3B&#43;%2F%2F&#43;C%2B%2B20&#43;%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%AD%90%E4%B8%B2&#43;%2A%2A2.&#43;%2A%2Astack&#43;%E6%A0%88&#43;stack%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;s%3B&#43;%E5%8E%8B%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%9Apush%28%29%0A&amp;title=%E7%AE%97%E6%B3%95&#43;-&#43;C%2B%2BSTL%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">算法 - C&#43;&#43;STL常用容器</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-03-14T11:00:59-04:00">March 14, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h4 id="插入函数总结">插入函数总结</h4>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">方法</th>
+          <th style="text-align: left">适用容器</th>
+          <th style="text-align: left">作用</th>
+          <th style="text-align: left">性能特性</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>push</code></td>
+          <td style="text-align: left"><code>queue</code>、<code>stack</code>、<code>priority_queue</code></td>
+          <td style="text-align: left">添加元素到容器末尾或顶部</td>
+          <td style="text-align: left">适用于特定容器，性能与容器实现相关</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>push_back</code></td>
+          <td style="text-align: left"><code>vector</code>、<code>deque</code>、<code>list</code></td>
+          <td style="text-align: left">添加元素到容器末尾</td>
+          <td style="text-align: left">需要拷贝或移动元素</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>emplace</code></td>
+          <td style="text-align: left"><code>set</code>、<code>map</code>、<code>unordered_set</code> 等</td>
+          <td style="text-align: left">在容器中直接构造元素</td>
+          <td style="text-align: left">避免不必要的拷贝或移动</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>emplace_back</code></td>
+          <td style="text-align: left"><code>vector</code>、<code>deque</code>、<code>list</code></td>
+          <td style="text-align: left">在容器末尾直接构造元素</td>
+          <td style="text-align: left">避免不必要的拷贝或移动</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>insert</code></td>
+          <td style="text-align: left">大多数容器</td>
+          <td style="text-align: left">将元素插入到容器的指定位置</td>
+          <td style="text-align: left">需要拷贝或移动元素</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p> </p>
+<h3 id="1-string-字符串"><strong>1. string 字符串</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span><span style="display:flex;"><span>s <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34; World&#34;</span>;          <span style="color:#75715e">// 拼接
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> first_char <span style="color:#f92672">=</span> str[<span style="color:#ae81ff">0</span>];  <span style="color:#75715e">// 访问第1个字符（索引为0）&#39;H&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>string sub <span style="color:#f92672">=</span> s.substr(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>); <span style="color:#75715e">// substr(起始位置, 截取长度) → &#34;World&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t pos <span style="color:#f92672">=</span> s.find(<span style="color:#e6db74">&#34;World&#34;</span>);<span style="color:#75715e">// 查找子串，返回位置，未找到返回 string::npos
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>s.length();              <span style="color:#75715e">// 字符串长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.empty();               <span style="color:#75715e">// 判断是否为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.starts_with(<span style="color:#e6db74">&#34;He&#34;</span>);     <span style="color:#75715e">// C++20 判断前缀
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.contains(<span style="color:#e6db74">&#34;or&#34;</span>);        <span style="color:#75715e">// C++20 判断是否包含子串
+</span></span></span></code></pre></div><hr>
+<p> </p>
+<h3 id="2-stack-栈">**2. **stack 栈</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> s;
+</span></span></code></pre></div><ol>
+<li>
+<p>压入元素：<code>push()</code></p>
+</li>
+<li>
+<p>弹出最后添加的元素：<code>pop()</code>，不返回该元素</p>
+</li>
+<li>
+<p>访问栈顶元素：<code>top()</code></p>
+</li>
+<li>
+<p>检查栈是否为空：<code>empty()</code></p>
+</li>
+<li>
+<p>获取栈的大小：<code>size()</code></p>
+</li>
+</ol>
+<p> </p>
+<h3 id="3-vector-动态数组">3. vector 动态数组</h3>
+<p>注意：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span>position<span style="color:#f92672">&gt;</span> tempPath(); <span style="color:#75715e">// 这是一个函数声明，而不是变量初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span>position<span style="color:#f92672">&gt;</span> tempPath; <span style="color:#75715e">// 正确：初始化一个空的 vector
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec; 												<span style="color:#75715e">// 创建一个空的 int 类型 vector
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec(<span style="color:#ae81ff">10</span>); 										<span style="color:#75715e">// 创建一个包含 10 个元素的 vector，初始值为 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>); 									<span style="color:#75715e">// 创建一个包含 10 个元素的 vector，初始值为 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>}; 			<span style="color:#75715e">// 创建一个包含 5 个元素的 vector
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> first <span style="color:#f92672">=</span> vec.front(); 								<span style="color:#75715e">// 访问第一个元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> last <span style="color:#f92672">=</span> vec.back();  								<span style="color:#75715e">// 访问最后一个元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>v.push_back(<span style="color:#ae81ff">10</span>);          <span style="color:#75715e">// 尾部插入 int
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>v.push_back({x, y});      <span style="color:#75715e">// 尾部插入 vector
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>v.pop_back();             <span style="color:#75715e">// 尾部删除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>v.size();                 <span style="color:#75715e">// 元素数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> num : v) { <span style="color:#75715e">/* 遍历 */</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>v.size(); <span style="color:#f92672">++</span>i) { v[i]; }
+</span></span></code></pre></div><hr>
+<p> </p>
+<h3 id="4-map-有序键值对">4. map 有序键值对</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;map&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>map<span style="color:#f92672">&lt;</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> m;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>m[<span style="color:#e6db74">&#34;apple&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;         <span style="color:#75715e">// 插入/修改键值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>m.erase(<span style="color:#e6db74">&#34;apple&#34;</span>);       <span style="color:#75715e">// 删除键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>m.size();               <span style="color:#75715e">// 键值对数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>m.contains(<span style="color:#e6db74">&#34;apple&#34;</span>);    <span style="color:#75715e">// C++20 判断键是否存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 遍历（按键升序）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> [key, val] <span style="color:#f92672">:</span> m) { 
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> key <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> val <span style="color:#f92672">&lt;&lt;</span> endl; 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 注意：访问 m[&#34;key&#34;] 时若 key 不存在，会自动插入默认值！
+</span></span></span></code></pre></div><hr>
+<p> </p>
+<h3 id="5-set-有序唯一集合">5. set 有序唯一集合</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;set&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> s;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>s.insert(<span style="color:#ae81ff">3</span>);            <span style="color:#75715e">// 插入元素（自动去重）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.erase(<span style="color:#ae81ff">3</span>);             <span style="color:#75715e">// 删除元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.contains(<span style="color:#ae81ff">3</span>);          <span style="color:#75715e">// 判断存在性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.size();               <span style="color:#75715e">// 元素数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 遍历（按升序）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> num : s) { cout <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 典型用途：排序+去重
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>};
+</span></span><span style="display:flex;"><span>set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> tmp(nums.begin(), nums.end()); <span style="color:#75715e">// → {1,2,3}
+</span></span></span></code></pre></div><hr>
+<p> </p>
+<h3 id="6-queue-队列">6. queue 队列</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> q;						<span style="color:#75715e">// 初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>q.push(<span style="color:#ae81ff">10</span>);							<span style="color:#75715e">// 添加元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>cout <span style="color:#f92672">&lt;&lt;</span> q.front() 			<span style="color:#75715e">// 访问队首
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cout <span style="color:#f92672">&lt;&lt;</span> q.back()   			<span style="color:#75715e">// 访问队尾
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>q.pop();								<span style="color:#75715e">// 移除队首元素，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>q.empty();							<span style="color:#75715e">// 检查队列是否为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> q.size();  <span style="color:#75715e">// 获取队列大小
+</span></span></span></code></pre></div><h4 id="65-priority_queue-优先队列">6.5 priority_queue 优先队列</h4>
+<p><code>priority_queue</code> 默认是一个 <strong>最大堆</strong>（Max Heap），即优先级最高的元素（默认是最大的元素）会最先出队。</p>
+<p>插入操作是通过 <code>push()</code> 或 <code>emplace()</code> 来完成的，而不是 <code>push_back</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>priority_queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> pq; <span style="color:#75715e">// 定义：默认是最大堆
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>pq.push(<span style="color:#ae81ff">10</span>); <span style="color:#75715e">// 插入元素 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>pq.push(<span style="color:#ae81ff">5</span>);  <span style="color:#75715e">// 插入元素 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> topElement <span style="color:#f92672">=</span> pq.top(); <span style="color:#75715e">// 获取堆顶元素（最大值）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>pq.pop(); <span style="color:#75715e">// 删除堆顶元素
+</span></span></span></code></pre></div><p>定义最小堆：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// greater&lt;int&gt; 是一个比较函数，表示元素越小优先级越高
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>priority_queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>, greater<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> minHeap;
+</span></span></code></pre></div><p>对于 <code>priority_queue&lt;pair&lt;int, int&gt;&gt;</code>，默认情况下，它会按照 <code>pair</code> 的<strong>第一个元素</strong>（即 <code>first</code>）进行排序。如果第一个元素相同，则会比较第二个元素（即 <code>second</code>）</p>
+<p> </p>
+<h3 id="7-pairint-int">7. pair&lt;int, int&gt;</h3>
+<p>用于存储两个值（可以是相同类型或不同类型)</p>
+<ul>
+<li>在输出 <code>optPath</code> 时，<code>path[0]</code> 和 <code>path[1]</code> 的写法是错误的，因为 <code>path</code> 是一个 <code>pair&lt;int, int&gt;</code>，应该使用 <code>path.first</code> 和 <code>path.second</code>。</li>
+</ul>
+<h3 id="8-tupleint-int-int">8. tuple&lt;int, int, int&gt;</h3>
+<p>用于存储三个值（可以是相同类型或不同类型)</p>
+<p> </p>
+<ol>
+<li><strong>map 遍历有序性</strong>：题目若要求无序输出需改用 <code>unordered_map</code>（哈希表，O(1)访问）</li>
+<li><strong>set 去重原理</strong>：插入时若值已存在则忽略，需去重时优先考虑</li>
+<li><strong>复杂度</strong>：
+<ul>
+<li>vector 尾部操作 O(1)，中间插入 O(n)</li>
+<li>map/set 增删查 O(log n)</li>
+</ul>
+</li>
+</ol>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/algorithm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Algorithm</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/%E7%AE%97%E6%B3%95-c&#43;&#43;%E8%AF%AD%E6%B3%95/">c&#43;&#43;语法</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">「算法模版」动态规划</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E6%A0%91/">「算法模版」树</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%9B%BE/">「算法模版」图</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/hash/">unordered_map</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%9F%BA%E7%A1%80/">「算法模版」基础</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E7%AE%97%E6%B3%95%E9%A2%98/">「持续更新」算法题笔记</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/btree/">二叉树</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/">数组链表</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
