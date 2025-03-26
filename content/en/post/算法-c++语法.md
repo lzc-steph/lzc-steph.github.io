@@ -42,6 +42,8 @@ a = 10;
 std::cout << s << " " << a << std::endl;
 ```
 
+<!--more-->
+
 &nbsp;
 
 ### 结构体 struct
