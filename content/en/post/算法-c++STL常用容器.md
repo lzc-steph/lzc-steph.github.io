@@ -22,6 +22,77 @@ title: "算法 - C++STL常用容器"
 
 ### **1. string 字符串**
 
++ `getline(cin, s)` ：用于从标准输入（通常是键盘）读取一整行文本。
+
+  1. **读取整行**：会读取从当前光标位置直到遇到换行符（Enter键）的所有内容
+  2. **包含空格**：与 `cin >>` 不同，`getline` 会读取空格
+  3. **丢弃换行符**：读取的内容不包含最后的换行符
+
++ ##### `insert()` 函数
+
+  用于在字符串的指定位置插入内容。
+
+  ```c++
+  string s = "HelloWorld";
+  string t = "Beautiful";
+  s.insert(5, t);  // 在位置5插入
+  cout << s;  // 输出：HelloBeautifulWorld
+  ```
+
++ ##### `erase()` 函数
+
+  用于删除字符串中的部分内容.
+
+  ```c++
+  string s = "HelloBeautifulWorld";
+  s.erase(5, 9);  // 删除从位置5开始的9个字符
+  cout << s;  // 输出：HelloWorld
+  ```
+
++ ##### `substr()` 函数
+
+  - 返回从位置 `pos` 开始、长度为 `len` 的子字符串。
+  - 如果省略 `len`，则返回从 `pos` 开始到字符串末尾的子字符串。
+
+  ```c++
+  // 提取从位置0开始的5个字符
+  string sub2 = s.substr(0, 5);
+  ```
+
++ ##### `find()` 函数
+
+  用于在字符串中查找子字符串或字符。
+
+  ##### 返回值：
+
+  - 找到则返回首次出现的位置
+  - 未找到则返回 `string::npos`
+
+  ```c++
+  // 查找子字符串
+  size_t found = s.find("World");
+  if (found != string::npos) {
+    cout << "'World' found at: " << found << endl;  // 输出: 7
+  }
+  ```
+
++ ##### `replace()` 
+
+  用于替换字符串中的部分内容。
+
+  ```c++
+  string s = "I like apples and oranges.";
+  // 替换子字符串
+  s.replace(7, 6, "bananas");
+  cout << s << endl;  // 输出: I like bananas and oranges.
+  ```
+
+```c++
+string s;
+getline(cin, s);  // 读取一整行输入，存入字符串s中
+cout << "你输入的是: " << s << endl;
+```
+
 ```cpp
 #include <string>
 using namespace std;
@@ -29,15 +100,59 @@ using namespace std;
 string s = "Hello";
 s += " World";          // 拼接
 
-char first_char = str[0];  // 访问第1个字符（索引为0）'H'
-string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → "World"
-size_t pos = s.find("World");// 查找子串，返回位置，未找到返回 string::npos
+char first_char = str[0];  			// 访问第1个字符（索引为0）'H'
+string sub = s.substr(6, 5); 		// substr(起始位置, 截取长度) → "World"
+size_t pos = s.find("World");		// 查找子串，返回位置，未找到返回 string::npos
 
 s.length();              // 字符串长度
+s.size(); 
 s.empty();               // 判断是否为空
 s.starts_with("He");     // C++20 判断前缀
 s.contains("or");        // C++20 判断是否包含子串
 ```
+
+
+
+##### （3）`to_string`
+
++ 转为字符串格式
+
+#### 遍历找连续0
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+
+int longestZeroSubstring(const string& s) {
+    int max_len = 0;
+    int current = 0;
+  
+    for (char c : s) {
+        if (c == '0') {
+            current++;
+            if (current > max_len) {
+                max_len = current;
+            }
+        } else {
+            current = 0;
+        }
+    }
+  
+    return max_len;
+}
+
+int main() {
+    string s;
+    cout << "请输入一个字符串: ";
+    cin >> s;
+    int result = longestZeroSubstring(s);
+    cout << "最长连续 '0' 的子串长度是: " << result << endl;
+    return 0;
+}
+```
+
+
 
 ---
 
