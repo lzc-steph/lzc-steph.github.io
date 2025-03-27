@@ -1,27 +1,68 @@
 ---
-date: 2025-02-21T11:00:59-04:00
+date: 2025-03-27T11:00:59-04:00
 description: ""
-featured_image: "/images/lss/lucky.jpg"
+featured_image: "/images/lss/deva.jpg"
 tags: ["RL"]
 title: "Lift-splat-shoot"
 ---
 
-### 1. 语义分割
+ [Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](https://arxiv.org/abs/2008.05711)
 
-**目标**：将图像中的每个像素分配一个语义类别标签。
+### 1. 关键：Lift
 
-- **输入**：一张RGB图像（或其他类型的图像，如深度图、红外图等）。
-- **输出**：像素级标签图，标注出道路、车辆、行人、交通标志等类别。
+![1](/images/lss/1.png)
 
-在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。
+1. **特征提取&深度估计**
 
+   多视角相机输入后，进行特征提取与深度估计
 
+2. **外积（Outer product）**
+
+3. **Grid Sampling**
+
+   
+
+### 2. LSS完整流程
+
+1. 生成视锥，并根据相机内外参将视锥中的点投影到 ego 坐标系
+
+   + 生成视锥
+
+     其位置是基于图像坐标系的，同时锥点是图像特征上每个单元格映射回原始图像的位置
+
+   + 锥点由图像坐标系向 ego 坐标系进行坐标转化
+
+     主要涉及到相机的内外参数
+
+2. 对环视图像完成特征的提取，并构建图像特征点云
+
+   + 利用 [Efficientnet-B0](https://zhida.zhihu.com/search?content_id=219055188&content_type=Article&match_order=1&q=Efficientnet-B0&zhida_source=entity) 主干网络对环视图像进行特征提取。
+
+     输入的环视图像 (bs, N, 3, H, W)，在进行特征提取之前，会将前两个维度进行合并，一起提取特征，对应维度变换为 (bs, N, 3, H, W) -> (bs * N, 3, H, W)
+
+   + 对其中的后两层特征进行融合，丰富特征的语义信息，融合后的特征尺寸大小为 (bs * N, 512, H / 16, W / 16）
+
+   + 估计深度方向的概率分布，并输出特征图每个位置的语义特征 (用64维的特征表示）
+
+     整个过程用1x1卷积层实现
+
+   + 对上一步骤估计出来的离散深度，利用softmax()函数计算深度方向的概率密度
+
+   + 利用得到的深度方向的概率密度和语义特征，通过外积运算构建图像特征点云
+
+   ![2](/images/lss/2.png)
+
+3. 利用变换后的 ego 坐标系的点与图像特征点云利用[Voxel Pooling](https://zhida.zhihu.com/search?content_id=219055188&content_type=Article&match_order=1&q=Voxel+Pooling&zhida_source=entity)构建BEV特征
+
+4. 对生成的 BEV 特征利用 BEV Encoder 做进一步的特征融合
+
+5. 利用特征融合后的 BEV 特征完成语义分割任务
 
 &nbsp;
 
 ### 2. 论文阅读
 
- [Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](https://arxiv.org/abs/2008.05711)
+
 
 本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。
 
