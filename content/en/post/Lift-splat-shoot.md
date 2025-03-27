@@ -22,6 +22,8 @@ title: "Lift-splat-shoot"
 
    
 
+<!--more-->
+
 ### 2. LSS完整流程
 
 1. 生成视锥，并根据相机内外参将视锥中的点投影到 ego 坐标系
