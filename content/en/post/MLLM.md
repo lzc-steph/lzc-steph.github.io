@@ -16,6 +16,8 @@ title: "MLLM"
 
 **(2) 中级语义特征**：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）...
 
+&nbsp;
+
 #### **2. 深度学习方法（自动学习特征）**
 
 ##### **(1) 卷积神经网络（CNN）**
@@ -27,6 +29,10 @@ title: "MLLM"
 ##### **(2) 视觉Transformer（ViT）**
 - **核心思想**：将图像分割为小块（patches），通过自注意力机制建模全局关系。
 - **优势**：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。
+
+&nbsp;
+
+&nbsp;
 
 
 ### **二、NLP中的特征提取**
@@ -47,6 +53,8 @@ title: "MLLM"
 
 **(5) 局限性**：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。
 
+&nbsp;
+
 <!--more-->
 
 #### **2. 深度学习方法（上下文感知特征）**
@@ -66,7 +74,9 @@ title: "MLLM"
 - **核心思想**：通过自注意力机制（Self-Attention）建模全局上下文关系；并行计算，避免RNN的顺序处理瓶颈。
 - **经典模型**：BERT，GPT...
 
+&nbsp;
 
+&nbsp;
 
 ### **三、CV与NLP的关联与融合**
 
@@ -80,6 +90,8 @@ title: "MLLM"
 
 通过 **Cross-Attention**，Transformer 能够灵活地融合不同来源的信息，成为现代多模态模型（如 MLLM）和复杂序列任务的核心组件。
 
+&nbsp;
+
 ### 一、自注意力（Self-Attention）的计算过程
 1. **输入**：一个序列的嵌入向量（例如单词的向量表示）。
 2. **生成 Q, K, V**：
@@ -91,7 +103,9 @@ title: "MLLM"
 
 **作用**：Self-Attention 让模型关注同一序列中不同位置的相关性（例如句子中代词与实体的关系）。
 
+&nbsp;
 
+&nbsp;
 
 ### 二、交叉注意力（Cross-Attention）的原理
 
@@ -102,6 +116,8 @@ Cross-Attention 是 Self-Attention 的扩展，用于 **不同序列之间的交
 #### 1. **Cross-Attention 的输入来源**
 - **Query（Q）**：来自一个序列（例如解码器的当前输入）。
 - **Key（K）和 Value（V）**：来自另一个序列（例如编码器的输出）。
+
+&nbsp;
 
 #### 2. **计算步骤**
 假设有两个序列：
@@ -115,13 +131,17 @@ $$
 
 - **物理意义**：序列 B 的每个位置（Query）通过计算与序列 A 所有位置（Key）的相似度，决定从序列 A 的 Value 中聚合多少信息。
 
+&nbsp;
+
 #### 3. **在 Transformer 中的位置**
 - 在 **解码器层** 中，Cross-Attention 位于 Self-Attention 层之后：
   1. 解码器的 Self-Attention 层处理目标序列的内部关系。
   2. Cross-Attention 层将编码器的输出（Key/Value）与解码器的当前状态（Query）结合。
   3. 前馈网络进一步处理。
 
+&nbsp;
 
+&nbsp;
 
 ### 三、Cross-Attention 的**数学细节**
 
