@@ -20,8 +20,6 @@ title: "PPO 原理"
 
 7. **action space**：可以选择的动作，如上下左右
 
-   <!--more-->
-
 8. **policy**：策略函数，输入state，输出Action的**概率分布**。一般用π表示。
 
    1. 训练时应尝试各种action
@@ -32,6 +30,8 @@ title: "PPO 原理"
    有的状态转移是确定的，也有的是不确定的。
 
 10. **Return**：回报，从当前时间点到游戏结束的 Reward 的累积和。
+
+<!--more-->
 
 强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。
 

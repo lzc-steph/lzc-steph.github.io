@@ -21,3 +21,5 @@ title: "PPO 代码实现"
 3. 用得到的 data 去更新参数 theta
 
    ![1](/Users/aijunyang/DearAJ.github.io/static/images/PPOcode/1.png)
+
+   <!--more-->
