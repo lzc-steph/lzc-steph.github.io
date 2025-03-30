@@ -22,9 +22,9 @@ title: "PPO 代码实现"
 
 3. 用得到的 data 去更新参数 theta
 
-   ![1](/Users/aijunyang/DearAJ.github.io/static/images/PPOcode/1.png)
+   ![1](/images/PPOcode/1.png)
 
-   ![2](/Users/aijunyang/DearAJ.github.io/static/images/PPOcode/2.png)
+   ![2](/images/PPOcode/2.png)
 
    如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。
 
@@ -32,13 +32,17 @@ title: "PPO 代码实现"
 
 4. 得到新的 actor 后，再去玩新的 n 次游戏
 
-   ![3](/Users/aijunyang/DearAJ.github.io/static/images/PPOcode/3.png)
+   ![3](/images/PPOcode/3.png)
 
 5. 循环往复上述过程
 
 &nbsp;
 
 ### 2. 如何更新参数
+
++ 以分类问题为例：
+
+  
 
 
 
