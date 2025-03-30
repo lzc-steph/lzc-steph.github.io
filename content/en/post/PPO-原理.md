@@ -43,6 +43,8 @@ title: "PPO 原理"
 
    ![2](/images/PPO/2.png)
 
+   ![36](/images/PPO/36.png)
+
    ![3](/images/PPO/3.png)
 
    + 直观理解：
