@@ -27,14 +27,16 @@ title: "Lift-splat-shoot"
     目的：将构造出的 Frustum Feature 利用相机外参和内参转换到BEV视角下。
 
    过程：**通过限定好 BEV 视角的范围，划定好一个个的 grid，将能够投影到相应 grid 的 Feature 汇总到一个 grid 里**。
+   
+   <!--more-->
 
 + 缺点：
-  1. **极度依赖Depth信息的准确性，且必须显示地提供Depth 特征。**一个好的解决方法是先预训练好一个较好的Depth权重，使得LSS过程中具有较为理想的Depth输出。
+  1. 极度依赖Depth信息的准确性，且必须显示地提供Depth 特征。
+  
+     一个好的解决方法是先预训练好一个较好的Depth权重，使得LSS过程中具有较为理想的Depth输出。
   2. **外积操作过于耗时。**
 
 &nbsp;
-
-<!--more-->
 
 ### 2. LSS完整流程
 
