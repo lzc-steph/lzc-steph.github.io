@@ -3,7 +3,7 @@ date: 2025-03-20T11:00:59-04:00
 description: ""
 featured_image: "/images/PPO/meovv.jpg"
 tags: ["RL"]
-title: "大模型强化学习微调-PPO"
+title: "PPO 原理"
 ---
 
 ## 1. 基础概念
@@ -53,7 +53,7 @@ title: "大模型强化学习微调-PPO"
 
    + 若去掉梯度，则表达式的意义：若一个**trajectory 得到的 return 大于零**，则**增大**这个trajectory里所有状态下，采取当前action的概率。
 
-2. #### **训练policy神经网络**
+2. #### **训练 policy 神经网络**
 
    + **输入**：当前画面
 
@@ -95,8 +95,6 @@ title: "大模型强化学习微调-PPO"
   actor：输出动作的概率分布。
 
   critic：评估状态值函数 V(s) 的网络。估计当前状态的价值，而不是直接评估动作的好坏。
-
-
 
 &nbsp;
 
