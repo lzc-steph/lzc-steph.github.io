@@ -1,7 +1,7 @@
 ---
 date: 2025-03-29T11:00:59-04:00
 description: ""
-featured_image: "/images/PPO/meovv.jpg"
+featured_image: "/images/PPO/pia.jpg"
 tags: ["RL"]
 title: "PPO 原理"
 ---
