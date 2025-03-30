@@ -29,9 +29,9 @@ title: "PPO 原理"
 
 10. **Return**：回报，从当前时间点到游戏结束的 Reward 的累积和。
 
-<!--more-->
-
 强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。
+
+<!--more-->
 
 &nbsp;
 
