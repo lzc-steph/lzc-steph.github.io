@@ -25,15 +25,15 @@ title: "PPO 原理"
    1. 训练时应尝试各种action
    2. 输出应具有多样性
 
-9. **Trajectory/Episode/Rollout**：轨迹，用t表示，一连串状态和动作的序列。
+9. **Trajectory/Episode/Rollout**：轨迹 t，一连串状态和动作的序列。
 
    有的状态转移是确定的，也有的是不确定的。
 
 10. **Return**：回报，从当前时间点到游戏结束的 Reward 的累积和。
 
-强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。
-
 <!--more-->
+
+强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。
 
 &nbsp;
 
