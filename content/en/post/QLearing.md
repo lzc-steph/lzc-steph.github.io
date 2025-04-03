@@ -31,7 +31,13 @@ title: "Q-learing"
   ![2](/images/QLearning/2.png)
   
 
+&nbsp;
 
+#### **时序差分误差（TD Error）**
+
+目标：衡量**当前价值预测与更准确的目标估计之间的差异**
+
+![5](/images/ac/5.png)
 
 &nbsp;
 

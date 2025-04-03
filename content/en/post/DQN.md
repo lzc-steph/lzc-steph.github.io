@@ -56,6 +56,8 @@ Q-learning 算法用表格存储动作价值的做法只在 环境的状态和�
 
 &nbsp;
 
+&nbsp;
+
 ## 3. DQN 算法
 
 具体流程：
@@ -82,6 +84,8 @@ Q-learning 算法用表格存储动作价值的做法只在 环境的状态和�
            return len(self.buffer)
    ```
 
+   &nbsp;
+
 2. 定义一个只有一层隐藏层的 Q 网络
 
    ```python
@@ -96,6 +100,8 @@ Q-learning 算法用表格存储动作价值的做法只在 环境的状态和�
            x = F.relu(self.fc1(x))  # 隐藏层使用ReLU激活函数
            return self.fc2(x)
    ```
+
+   &nbsp;
 
 3.  DQN 算法
 
@@ -155,6 +161,8 @@ Q-learning 算法用表格存储动作价值的做法只在 环境的状态和�
                    self.q_net.state_dict())  # 更新目标网络
            self.count += 1
    ```
+
+   &nbsp;
 
 4. 训练
 
@@ -218,7 +226,39 @@ Q-learning 算法用表格存储动作价值的做法只在 环境的状态和�
                pbar.update(1)
    ```
 
-   
+&nbsp;
 
+&nbsp;
 
+## 4. Dueling DQN 算法
+
+### 1. 优势函数A(s,a)
+
+**在状态 s 下，选择动作 a 比平均情况（即遵循当前策略）好多少**
+
+ A(s,a)=Q(s,a)−V(s)
+
++ 定义：状态动作价值函数 减去 状态价值函数 的结果，表示采取不同动作的差异性。
++ **Q(s,a)**：表示在状态 s 下执行动作 a 后，**未来能获得的总回报**。
++ **V(s)**：表示在状态 s 下，**遵循当前策略能获得的平均回报**，即对所有可能的动作取期望。
+
+&nbsp;
+
+### 2. Dueling DQN 中 Q 网络的建模
+
+![5](/Users/aijunyang/DearAJ.github.io/static/images/DQN/5.png)
+
+![6](/Users/aijunyang/DearAJ.github.io/static/images/DQN/6.png)
+
++ 将状态价值函数和优势函数分别建模的好处：
+
+  **去中心化**，只关注动作的相对好坏。
+
+  某些情境下智能体只会关注状态的价值，而并不关心不同动作导致的差异；此时将二者分开建模能够使智能体更好地处理与动作关联较小的状态。
+
+&nbsp;
+
+存在对于值V和值A建模不唯一性的问题，改进：强制最优动作的优势函数的实际输出为 0。
+
+![7](/Users/aijunyang/DearAJ.github.io/static/images/DQN/7.png)
 

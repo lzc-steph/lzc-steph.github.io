@@ -19,6 +19,14 @@
 
 
 
+优势函数
+在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少
+A(s,a)=Q(s,a)−V(s)
+
+求解优势函数：广义优势估计(GAE)
+
+
+
 
 
 关系
@@ -74,7 +82,10 @@ Q-Learning - Off-policy - 值函数
   <meta property="og:title" content="强化学习-易混淆点">
   <meta property="og:description" content="状态价值函数 vs 动作价值函数 状态价值函数
 动作价值函数
-关系
+优势函数
+在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少
+A(s,a)=Q(s,a)−V(s)
+求解优势函数：广义优势估计(GAE) 关系
 常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
 缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
   <meta property="og:locale" content="en_US">
@@ -87,18 +98,24 @@ Q-Learning - Off-policy - 值函数
   <meta itemprop="name" content="强化学习-易混淆点">
   <meta itemprop="description" content="状态价值函数 vs 动作价值函数 状态价值函数
 动作价值函数
-关系
+优势函数
+在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少
+A(s,a)=Q(s,a)−V(s)
+求解优势函数：广义优势估计(GAE) 关系
 常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
 缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
   <meta itemprop="datePublished" content="2025-03-31T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-03-31T11:00:59-04:00">
-  <meta itemprop="wordCount" content="104">
+  <meta itemprop="wordCount" content="118">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="强化学习-易混淆点">
   <meta name="twitter:description" content="状态价值函数 vs 动作价值函数 状态价值函数
 动作价值函数
-关系
+优势函数
+在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少
+A(s,a)=Q(s,a)−V(s)
+求解优势函数：广义优势估计(GAE) 关系
 常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
 缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
 
@@ -214,7 +231,7 @@ Q-Learning - Off-policy - 值函数
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F&amp;summary=&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;vs&#43;%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E5%85%B3%E7%B3%BB%0A%E5%B8%B8%E8%A7%81%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%BC%98%E7%BC%BA%E7%82%B9&#43;Q-Learning&#43;-&#43;Off-policy&#43;-&#43;%E5%80%BC%E5%87%BD%E6%95%B0%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E7%94%A8%E8%A1%A8%E6%A0%BC%E5%AD%98%E5%82%A8%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E3%80%82%E5%8F%AA%E5%9C%A8&#43;%E7%8E%AF%E5%A2%83%E7%9A%84%E7%8A%B6%E6%80%81%E5%92%8C%E5%8A%A8%E4%BD%9C%E9%83%BD%E6%98%AF%E7%A6%BB%E6%95%A3%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%A9%BA%E9%97%B4%E9%83%BD%E6%AF%94%E8%BE%83%E5%B0%8F&#43;%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%80%82%E7%94%A8%E3%80%82&#43;&amp;title=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F&amp;summary=&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;vs&#43;%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%0A%E5%9C%A8%E7%8A%B6%E6%80%81&#43;s&#43;%E4%B8%8B%E9%80%89%E6%8B%A9%E5%8A%A8%E4%BD%9C&#43;a&#43;%E6%AF%94%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5%EF%BC%88%E5%8D%B3%E9%81%B5%E5%BE%AA%E5%BD%93%E5%89%8D%E7%AD%96%E7%95%A5%EF%BC%89%E5%A5%BD%E5%A4%9A%E5%B0%91%0AA%28s%2Ca%29%3DQ%28s%2Ca%29%E2%88%92V%28s%29%0A%E6%B1%82%E8%A7%A3%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%EF%BC%9A%E5%B9%BF%E4%B9%89%E4%BC%98%E5%8A%BF%E4%BC%B0%E8%AE%A1%28GAE%29&#43;%E5%85%B3%E7%B3%BB%0A%E5%B8%B8%E8%A7%81%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%BC%98%E7%BC%BA%E7%82%B9&#43;Q-Learning&#43;-&#43;Off-policy&#43;-&#43;%E5%80%BC%E5%87%BD%E6%95%B0%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E7%94%A8%E8%A1%A8%E6%A0%BC%E5%AD%98%E5%82%A8%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E3%80%82%E5%8F%AA%E5%9C%A8&#43;%E7%8E%AF%E5%A2%83%E7%9A%84%E7%8A%B6%E6%80%81%E5%92%8C%E5%8A%A8%E4%BD%9C%E9%83%BD%E6%98%AF%E7%A6%BB%E6%95%A3%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%A9%BA%E9%97%B4%E9%83%BD%E6%AF%94%E8%BE%83%E5%B0%8F&#43;%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%80%82%E7%94%A8%E3%80%82&#43;&amp;title=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -243,6 +260,14 @@ Q-Learning - Off-policy - 值函数
 <li>
 <p><strong>动作价值函数</strong></p>
 <p><img src="/images/RLconfused/2.png" alt="2"></p>
+</li>
+<li>
+<p><strong>优势函数</strong></p>
+<p><strong>在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少</strong></p>
+<p>A(s,a)=Q(s,a)−V(s)</p>
+<ul>
+<li>求解优势函数：<strong>广义优势估计</strong>(GAE)</li>
+</ul>
 </li>
 </ol>
 <ul>
@@ -293,6 +318,18 @@ Q-Learning - Off-policy - 值函数
 <ul>
 <li>缺点：高方差；需大量样本；训练效率低</li>
 </ul>
+<p> </p>
+</li>
+<li>
+<p><strong>Actor-Critic</strong> - 策略+值函数</p>
+<p><img src="/images/ac/3.png" alt="3"></p>
+<ul>
+<li>缺点：在实际应用过程中会遇到训练不稳定的情况。</li>
+</ul>
+<p> </p>
+</li>
+<li>
+<p><strong>TRPO</strong> -</p>
 </li>
 </ol>
 <p> </p>

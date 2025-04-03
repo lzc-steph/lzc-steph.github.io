@@ -19,6 +19,7 @@ DQN 可以用来解决连续状态的问题
 基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。
 
  
+ 
 1. 策略梯度
 
 
@@ -30,7 +31,7 @@ DQN 可以用来解决连续状态的问题
 
 J(θ) 是策略的目标函数（想要最大化的量）；
 πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；
-Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报；
+Vπθ(s0) 指从初始状态s₀开始遵循策略π能获得的预期总回报；
 Es0 是对所有可能的初始状态求期望。
 
 
@@ -69,7 +70,7 @@ Q-learning 是处理有限状态的算法 DQN 可以用来解决连续状态的�
 对比 value-based 和 policy-based
 基于值函数：主要是学习值函数，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略； 基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。 1. 策略梯度 将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。
 策略学习的目标函数
-J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
+J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态s₀开始遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -83,10 +84,10 @@ Q-learning 是处理有限状态的算法 DQN 可以用来解决连续状态的�
 对比 value-based 和 policy-based
 基于值函数：主要是学习值函数，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略； 基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。 1. 策略梯度 将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。
 策略学习的目标函数
-J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
+J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态s₀开始遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
   <meta itemprop="datePublished" content="2025-04-01T12:00:59-05:00">
   <meta itemprop="dateModified" content="2025-04-01T12:00:59-05:00">
-  <meta itemprop="wordCount" content="60">
+  <meta itemprop="wordCount" content="375">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="REINFORCE">
@@ -95,7 +96,7 @@ Q-learning 是处理有限状态的算法 DQN 可以用来解决连续状态的�
 对比 value-based 和 policy-based
 基于值函数：主要是学习值函数，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略； 基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。 1. 策略梯度 将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。
 策略学习的目标函数
-J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
+J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态s₀开始遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -209,7 +210,7 @@ J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F&amp;summary=Q-learning%E3%80%81DQN&#43;%E7%AE%97%E6%B3%95%E9%83%BD%E6%98%AF%E5%9F%BA%E4%BA%8E%E4%BB%B7%E5%80%BC%EF%BC%88value-based%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%0AQ-learning&#43;%E6%98%AF%E5%A4%84%E7%90%86%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E7%9A%84%E7%AE%97%E6%B3%95&#43;DQN&#43;%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%9A%84%E9%97%AE%E9%A2%98&#43;%E5%9C%A8%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%AD%EF%BC%8C%E9%99%A4%E4%BA%86%E5%9F%BA%E4%BA%8E%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E6%9C%89%E4%B8%80%E6%94%AF%E9%9D%9E%E5%B8%B8%E7%BB%8F%E5%85%B8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E9%82%A3%E5%B0%B1%E6%98%AF%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%EF%BC%88policy-based%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%82%0A%E5%AF%B9%E6%AF%94&#43;value-based&#43;%E5%92%8C&#43;policy-based%0A%E5%9F%BA%E4%BA%8E%E5%80%BC%E5%87%BD%E6%95%B0%EF%BC%9A%E4%B8%BB%E8%A6%81%E6%98%AF%E5%AD%A6%E4%B9%A0%E5%80%BC%E5%87%BD%E6%95%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E6%A0%B9%E6%8D%AE%E5%80%BC%E5%87%BD%E6%95%B0%E5%AF%BC%E5%87%BA%E4%B8%80%E4%B8%AA%E7%AD%96%E7%95%A5%EF%BC%8C%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%B9%B6%E4%B8%8D%E5%AD%98%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%98%BE%E5%BC%8F%E7%9A%84%E7%AD%96%E7%95%A5%EF%BC%9B&#43;%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%EF%BC%9A%E7%9B%B4%E6%8E%A5%E6%98%BE%E5%BC%8F%E5%9C%B0%E5%AD%A6%E4%B9%A0%E4%B8%80%E4%B8%AA%E7%9B%AE%E6%A0%87%E7%AD%96%E7%95%A5%E3%80%82%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%98%AF%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95%E7%9A%84%E5%9F%BA%E7%A1%80%E3%80%82&#43;1.&#43;%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6&#43;%E5%B0%86%E7%AD%96%E7%95%A5%E5%8F%82%E6%95%B0%E5%8C%96%EF%BC%9A%E5%AF%BB%E6%89%BE%E4%B8%80%E4%B8%AA%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E5%B9%B6%E6%9C%80%E5%A4%A7%E5%8C%96%E8%BF%99%E4%B8%AA%E7%AD%96%E7%95%A5%E5%9C%A8%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E6%9C%9F%E6%9C%9B%E5%9B%9E%E6%8A%A5%EF%BC%8C%E5%8D%B3%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5%E5%8F%82%E6%95%B0%E4%BD%BF%E5%B9%B3%E5%9D%87%E5%9B%9E%E6%8A%A5%E6%9C%80%E5%A4%A7%E5%8C%96%E3%80%82%0A%E7%AD%96%E7%95%A5%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%0AJ%28%CE%B8%29&#43;%E6%98%AF%E7%AD%96%E7%95%A5%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%EF%BC%88%E6%83%B3%E8%A6%81%E6%9C%80%E5%A4%A7%E5%8C%96%E7%9A%84%E9%87%8F%EF%BC%89%EF%BC%9B&#43;%CF%80%CE%B8&#43;%E6%98%AF%E5%8F%82%E6%95%B0%E4%B8%BA%CE%B8%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%80%A7%E7%AD%96%E7%95%A5%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%A4%84%E5%A4%84%E5%8F%AF%E5%BE%AE%EF%BC%88%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E4%B8%BAAI%E7%9A%84%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%99%EF%BC%89%EF%BC%9B&#43;V%CF%80%CE%B8%28s0%29&#43;%E6%8C%87%E4%BB%8E%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81&#43;s%E2%82%80&#43;%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%81%B5%E5%BE%AA%E7%AD%96%E7%95%A5%CF%80%E8%83%BD%E8%8E%B7%E5%BE%97%E7%9A%84%E9%A2%84%E6%9C%9F%E6%80%BB%E5%9B%9E%E6%8A%A5%EF%BC%9B&#43;Es0&#43;%E6%98%AF%E5%AF%B9%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E6%B1%82%E6%9C%9F%E6%9C%9B%E3%80%82&#43;&amp;title=REINFORCE&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F&amp;summary=Q-learning%E3%80%81DQN&#43;%E7%AE%97%E6%B3%95%E9%83%BD%E6%98%AF%E5%9F%BA%E4%BA%8E%E4%BB%B7%E5%80%BC%EF%BC%88value-based%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%0AQ-learning&#43;%E6%98%AF%E5%A4%84%E7%90%86%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E7%9A%84%E7%AE%97%E6%B3%95&#43;DQN&#43;%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%9A%84%E9%97%AE%E9%A2%98&#43;%E5%9C%A8%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%AD%EF%BC%8C%E9%99%A4%E4%BA%86%E5%9F%BA%E4%BA%8E%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E6%9C%89%E4%B8%80%E6%94%AF%E9%9D%9E%E5%B8%B8%E7%BB%8F%E5%85%B8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E9%82%A3%E5%B0%B1%E6%98%AF%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%EF%BC%88policy-based%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%82%0A%E5%AF%B9%E6%AF%94&#43;value-based&#43;%E5%92%8C&#43;policy-based%0A%E5%9F%BA%E4%BA%8E%E5%80%BC%E5%87%BD%E6%95%B0%EF%BC%9A%E4%B8%BB%E8%A6%81%E6%98%AF%E5%AD%A6%E4%B9%A0%E5%80%BC%E5%87%BD%E6%95%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E6%A0%B9%E6%8D%AE%E5%80%BC%E5%87%BD%E6%95%B0%E5%AF%BC%E5%87%BA%E4%B8%80%E4%B8%AA%E7%AD%96%E7%95%A5%EF%BC%8C%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%B9%B6%E4%B8%8D%E5%AD%98%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%98%BE%E5%BC%8F%E7%9A%84%E7%AD%96%E7%95%A5%EF%BC%9B&#43;%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%EF%BC%9A%E7%9B%B4%E6%8E%A5%E6%98%BE%E5%BC%8F%E5%9C%B0%E5%AD%A6%E4%B9%A0%E4%B8%80%E4%B8%AA%E7%9B%AE%E6%A0%87%E7%AD%96%E7%95%A5%E3%80%82%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%98%AF%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95%E7%9A%84%E5%9F%BA%E7%A1%80%E3%80%82&#43;1.&#43;%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6&#43;%E5%B0%86%E7%AD%96%E7%95%A5%E5%8F%82%E6%95%B0%E5%8C%96%EF%BC%9A%E5%AF%BB%E6%89%BE%E4%B8%80%E4%B8%AA%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E5%B9%B6%E6%9C%80%E5%A4%A7%E5%8C%96%E8%BF%99%E4%B8%AA%E7%AD%96%E7%95%A5%E5%9C%A8%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E6%9C%9F%E6%9C%9B%E5%9B%9E%E6%8A%A5%EF%BC%8C%E5%8D%B3%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5%E5%8F%82%E6%95%B0%E4%BD%BF%E5%B9%B3%E5%9D%87%E5%9B%9E%E6%8A%A5%E6%9C%80%E5%A4%A7%E5%8C%96%E3%80%82%0A%E7%AD%96%E7%95%A5%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%0AJ%28%CE%B8%29&#43;%E6%98%AF%E7%AD%96%E7%95%A5%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%EF%BC%88%E6%83%B3%E8%A6%81%E6%9C%80%E5%A4%A7%E5%8C%96%E7%9A%84%E9%87%8F%EF%BC%89%EF%BC%9B&#43;%CF%80%CE%B8&#43;%E6%98%AF%E5%8F%82%E6%95%B0%E4%B8%BA%CE%B8%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%80%A7%E7%AD%96%E7%95%A5%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%A4%84%E5%A4%84%E5%8F%AF%E5%BE%AE%EF%BC%88%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E4%B8%BAAI%E7%9A%84%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%99%EF%BC%89%EF%BC%9B&#43;V%CF%80%CE%B8%28s0%29&#43;%E6%8C%87%E4%BB%8E%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81s%E2%82%80%E5%BC%80%E5%A7%8B%E9%81%B5%E5%BE%AA%E7%AD%96%E7%95%A5%CF%80%E8%83%BD%E8%8E%B7%E5%BE%97%E7%9A%84%E9%A2%84%E6%9C%9F%E6%80%BB%E5%9B%9E%E6%8A%A5%EF%BC%9B&#43;Es0&#43;%E6%98%AF%E5%AF%B9%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E6%B1%82%E6%9C%9F%E6%9C%9B%E3%80%82&#43;&amp;title=REINFORCE&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -240,6 +241,7 @@ J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ
 <li>基于策略：直接显式地学习一个<strong>目标策略</strong>。策略梯度是基于策略的方法的基础。</li>
 </ul>
 <p> </p>
+<p> </p>
 <h2 id="1-策略梯度">1. 策略梯度</h2>
 <ul>
 <li>
@@ -251,7 +253,7 @@ J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ
 <ul>
 <li>J(θ) 是策略的目标函数（想要最大化的量）；</li>
 <li>πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；</li>
-<li>Vπθ(s0) 指从初始状态 s₀ 开始，<strong>遵循策略π能获得的预期总回报</strong>；</li>
+<li>Vπθ(s0) 指从初始状态s₀开始<strong>遵循策略π能获得的预期总回报</strong>；</li>
 <li>Es0 是对所有可能的初始状态求期望。</li>
 </ul>
 </li>
@@ -279,7 +281,9 @@ J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ
 </li>
 </ul>
 <p> </p>
+<p> </p>
 <h2 id="2-reinforce">2. REINFORCE</h2>
+<p>智能体根据当前策略直接和环境交互，通过采样得到的轨迹数据直接计算出策略参数的梯度，进而更新当前策略，使其向最大化策略期望回报的目标靠近。</p>
 <ul>
 <li>
 <p>策略梯度（有限步数的环境）</p>
@@ -292,7 +296,128 @@ J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ
 <p>具体算法流程</p>
 <p><img src="/images/REINFORCE/4.png" alt="4"></p>
 </li>
-</ul><ul class="pa0">
+</ul>
+<p> </p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gym
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn.functional <span style="color:#66d9ef">as</span> F
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tqdm <span style="color:#f92672">import</span> tqdm
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> rl_utils
+</span></span></code></pre></div><ol>
+<li>
+<h4 id="定义策略网络-policynet">定义策略网络 <code>PolicyNet</code></h4>
+<p>输入是某个状态，输出则是该状态下的动作概率分布。</p>
+<p>这里采用在离散动作空间上的<code>softmax()</code>函数来实现一个可学习的<strong>多项分布</strong>（multinomial distribution）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PolicyNet</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim):
+</span></span><span style="display:flex;"><span>        super(PolicyNet, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> F<span style="color:#f92672">.</span>softmax(self<span style="color:#f92672">.</span>fc2(x), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p> </p>
+</li>
+<li>
+<h4 id="定义-reinforce-算法">定义 REINFORCE 算法</h4>
+<p>在函数<code>take_action()</code>函数中，我们通过动作概率分布对离散的动作进行采样。在更新过程中，我们按照算法将损失函数写为策略回报的负数，对θ求导后就可以通过梯度下降来更新策略。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">REINFORCE</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim, learning_rate, gamma,
+</span></span><span style="display:flex;"><span>                 device):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>policy_net <span style="color:#f92672">=</span> PolicyNet(state_dim, hidden_dim,
+</span></span><span style="display:flex;"><span>                                    action_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>policy_net<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                          lr<span style="color:#f92672">=</span>learning_rate)  <span style="color:#75715e"># 使用Adam优化器</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma  <span style="color:#75715e"># 折扣因子</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device <span style="color:#f92672">=</span> device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):  <span style="color:#75715e"># 根据动作概率分布随机采样</span>
+</span></span><span style="display:flex;"><span>        state <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([state], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        probs <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>policy_net(state)
+</span></span><span style="display:flex;"><span>        action_dist <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Categorical(probs)
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> action_dist<span style="color:#f92672">.</span>sample()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> action<span style="color:#f92672">.</span>item()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, transition_dict):
+</span></span><span style="display:flex;"><span>        reward_list <span style="color:#f92672">=</span> transition_dict[<span style="color:#e6db74">&#39;rewards&#39;</span>]
+</span></span><span style="display:flex;"><span>        state_list <span style="color:#f92672">=</span> transition_dict[<span style="color:#e6db74">&#39;states&#39;</span>]
+</span></span><span style="display:flex;"><span>        action_list <span style="color:#f92672">=</span> transition_dict[<span style="color:#e6db74">&#39;actions&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        G <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> reversed(range(len(reward_list))):  <span style="color:#75715e"># 从最后一步算起</span>
+</span></span><span style="display:flex;"><span>            reward <span style="color:#f92672">=</span> reward_list[i]
+</span></span><span style="display:flex;"><span>            state <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([state_list[i]],
+</span></span><span style="display:flex;"><span>                                 dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>            action <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([action_list[i]])<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>            log_prob <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>log(self<span style="color:#f92672">.</span>policy_net(state)<span style="color:#f92672">.</span>gather(<span style="color:#ae81ff">1</span>, action))
+</span></span><span style="display:flex;"><span>            G <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> G <span style="color:#f92672">+</span> reward
+</span></span><span style="display:flex;"><span>            loss <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>log_prob <span style="color:#f92672">*</span> G  <span style="color:#75715e"># 每一步的损失函数</span>
+</span></span><span style="display:flex;"><span>            loss<span style="color:#f92672">.</span>backward()  <span style="color:#75715e"># 反向传播计算梯度</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>optimizer<span style="color:#f92672">.</span>step()  <span style="color:#75715e"># 梯度下降</span>
+</span></span></code></pre></div><p> </p>
+</li>
+<li>
+<h4 id="reinforce-算法在车杆环境上训练">REINFORCE 算法在车杆环境上训练</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-3</span>
+</span></span><span style="display:flex;"><span>num_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>hidden_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.98</span>
+</span></span><span style="display:flex;"><span>device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>) <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> torch<span style="color:#f92672">.</span>device(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cpu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>env_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CartPole-v0&#34;</span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(env_name)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>state_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>action_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>n
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> REINFORCE(state_dim, hidden_dim, action_dim, learning_rate, gamma,
+</span></span><span style="display:flex;"><span>                  device)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>return_list <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tqdm(total<span style="color:#f92672">=</span>int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>), desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Iteration </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i) <span style="color:#66d9ef">as</span> pbar:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i_episode <span style="color:#f92672">in</span> range(int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>)):
+</span></span><span style="display:flex;"><span>            episode_return <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            transition_dict <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;states&#39;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;actions&#39;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;next_states&#39;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;rewards&#39;</span>: [],
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;dones&#39;</span>: []
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            state <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span>            done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+</span></span><span style="display:flex;"><span>                action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>take_action(state)
+</span></span><span style="display:flex;"><span>                next_state, reward, done, _ <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+</span></span><span style="display:flex;"><span>                transition_dict[<span style="color:#e6db74">&#39;states&#39;</span>]<span style="color:#f92672">.</span>append(state)
+</span></span><span style="display:flex;"><span>                transition_dict[<span style="color:#e6db74">&#39;actions&#39;</span>]<span style="color:#f92672">.</span>append(action)
+</span></span><span style="display:flex;"><span>                transition_dict[<span style="color:#e6db74">&#39;next_states&#39;</span>]<span style="color:#f92672">.</span>append(next_state)
+</span></span><span style="display:flex;"><span>                transition_dict[<span style="color:#e6db74">&#39;rewards&#39;</span>]<span style="color:#f92672">.</span>append(reward)
+</span></span><span style="display:flex;"><span>                transition_dict[<span style="color:#e6db74">&#39;dones&#39;</span>]<span style="color:#f92672">.</span>append(done)
+</span></span><span style="display:flex;"><span>                state <span style="color:#f92672">=</span> next_state
+</span></span><span style="display:flex;"><span>                episode_return <span style="color:#f92672">+=</span> reward
+</span></span><span style="display:flex;"><span>            return_list<span style="color:#f92672">.</span>append(episode_return)
+</span></span><span style="display:flex;"><span>            agent<span style="color:#f92672">.</span>update(transition_dict)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                pbar<span style="color:#f92672">.</span>set_postfix({
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;episode&#39;</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;return&#39;</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> np<span style="color:#f92672">.</span>mean(return_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>:])
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>            pbar<span style="color:#f92672">.</span>update(<span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div></li>
+</ol>
+<p> </p>
+<p>REINFORCE 算法使用了更多的序列，这是因为 REINFORCE 算法是一个在线策略算法，之前收集到的轨迹数据不会被再次利用。</p>
+<p>此外，REINFORCE 算法的性能也有一定程度的波动，这主要是因为每条采样轨迹的回报值波动比较大，这也是 REINFORCE 算法主要的不足。</p>
+<p>REINFORCE 通过蒙特卡洛采样的方法对策略梯度的估计是无偏的，但是方差非常大。我们可以引入<strong>基线函数</strong>（baseline function）来减小方差。</p><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>

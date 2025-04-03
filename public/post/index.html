@@ -157,12 +157,56 @@
       </div>
     
     <h1 class="f3 near-black">
+      <a href="/post/trpo/" class="link black dim">
+        TRPO
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
+<p> </p>
+<ul>
+<li>
+<p><strong>信任区域策略优化</strong>（trust region policy optimization，TRPO）算法的核心思想：</p>
+<p><strong>信任区域</strong>（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。</p>
+</li>
+</ul>
+<p> </p>
+<h2 id="1-策略目标">1. 策略目标</h2>
+<p><img src="/images/trpo/1.png" alt="1"></p>
+<p><img src="/images/trpo/2.png" alt="2"></p>
+    </div>
+  <a href="/post/trpo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 2, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
       <a href="/post/actor-critic/" class="link black dim">
         Actor-Critic
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
+      <p>Actor-Critic 算法本质上是基于策略的算法，因为这一系列算法的<strong>目标都是优化一个带参数的策略，只是会额外学习价值函数</strong>，从而帮助策略函数更好地学习。</p>
+<p>Actor-Critic 算法则可以在每一步之后都进行更新，并且不对任务的步数做限制。</p>
+<ul>
+<li>
+<p>更一般形式的策略梯度</p>
+<p><img src="/images/ac/1.png" alt="1"></p>
+</li>
+</ul>
+<p> </p>
+<h3 id="1-actor策略网络">1. Actor（策略网络）</h3>
+<p>Actor 要做的是与环境交互，并在 Critic 价值函数的指导下用策略梯度学习一个更好的策略。</p>
+<p>Actor 的更新采用策略梯度的原则。</p>
+<h3 id="2--critic价值网络">2.  Critic（价值网络）</h3>
+<p>Critic 要做的是通过 Actor 与环境交互收集的数据学习一个价值函数，这个价值函数会用于判断在当前状态什么动作是好的，什么动作不是好的，进而帮助 Actor 进行策略更新。</p>
     </div>
   <a href="/post/actor-critic/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -195,6 +239,7 @@
 <li>基于策略：直接显式地学习一个<strong>目标策略</strong>。策略梯度是基于策略的方法的基础。</li>
 </ul>
 <p> </p>
+<p> </p>
 <h2 id="1-策略梯度">1. 策略梯度</h2>
 <ul>
 <li>
@@ -206,38 +251,13 @@
 <ul>
 <li>J(θ) 是策略的目标函数（想要最大化的量）；</li>
 <li>πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；</li>
-<li>Vπθ(s0) 指从初始状态 s₀ 开始，<strong>遵循策略π能获得的预期总回报</strong>；</li>
+<li>Vπθ(s0) 指从初始状态s₀开始<strong>遵循策略π能获得的预期总回报</strong>；</li>
 <li>Es0 是对所有可能的初始状态求期望。</li>
 </ul>
 </li>
 </ul>
     </div>
   <a href="/post/reinforce/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 1, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/dqn/" class="link black dim">
-        DQN (deep Q network)
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.</p>
-<p><strong>DQN</strong>：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。</p>
-<p><strong>Q 网络</strong>：用于拟合函数Q函数的神经网络</p>
-<p><img src="/images/DQN/1.png" alt="1"></p>
-<p><strong>Q 网络的损失函数</strong>（均方误差形式）</p>
-<p><img src="/images/DQN/2.png" alt="2"></p>
-    </div>
-  <a href="/post/dqn/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

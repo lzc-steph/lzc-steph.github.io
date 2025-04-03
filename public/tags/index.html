@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-03-31T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-31T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -150,6 +150,136 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        April 2, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/trpo/" class="link black dim">
+        TRPO
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
+<p> </p>
+<ul>
+<li>
+<p><strong>信任区域策略优化</strong>（trust region policy optimization，TRPO）算法的核心思想：</p>
+<p><strong>信任区域</strong>（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。</p>
+</li>
+</ul>
+<p> </p>
+<h2 id="1-策略目标">1. 策略目标</h2>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/trpo/1.png" alt="截屏2025-04-03 17.07.01"></p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/trpo/2.png" alt="2"></p>
+    </div>
+  <a href="/post/trpo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 2, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/actor-critic/" class="link black dim">
+        Actor-Critic
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Actor-Critic 算法本质上是基于策略的算法，因为这一系列算法的<strong>目标都是优化一个带参数的策略，只是会额外学习价值函数</strong>，从而帮助策略函数更好地学习。</p>
+<p>Actor-Critic 算法则可以在每一步之后都进行更新，并且不对任务的步数做限制。</p>
+<ul>
+<li>
+<p>更一般形式的策略梯度</p>
+<p><img src="/images/ac/1.png" alt="1"></p>
+</li>
+</ul>
+<p> </p>
+<h3 id="1-actor策略网络">1. Actor（策略网络）</h3>
+<p>Actor 要做的是与环境交互，并在 Critic 价值函数的指导下用策略梯度学习一个更好的策略。</p>
+<p>Actor 的更新采用策略梯度的原则。</p>
+<h3 id="2--critic价值网络">2.  Critic（价值网络）</h3>
+<p>Critic 要做的是通过 Actor 与环境交互收集的数据学习一个价值函数，这个价值函数会用于判断在当前状态什么动作是好的，什么动作不是好的，进而帮助 Actor 进行策略更新。</p>
+    </div>
+  <a href="/post/actor-critic/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 1, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/reinforce/" class="link black dim">
+        REINFORCE
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Q-learning、DQN 算法都是<strong>基于价值</strong>（value-based）的方法</p>
+<ul>
+<li>Q-learning 是处理有限状态的算法</li>
+<li>DQN 可以用来解决连续状态的问题</li>
+</ul>
+<p>在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是<strong>基于策略</strong>（policy-based）的方法。</p>
+<p> </p>
+<p>对比 value-based 和 policy-based</p>
+<ul>
+<li>基于值函数：主要是学习<strong>值函数</strong>，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略；</li>
+<li>基于策略：直接显式地学习一个<strong>目标策略</strong>。策略梯度是基于策略的方法的基础。</li>
+</ul>
+<p> </p>
+<p> </p>
+<h2 id="1-策略梯度">1. 策略梯度</h2>
+<ul>
+<li>
+<p>将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。</p>
+</li>
+<li>
+<p>策略学习的目标函数</p>
+<p><img src="/images/REINFORCE/1.png" alt="1"></p>
+<ul>
+<li>J(θ) 是策略的目标函数（想要最大化的量）；</li>
+<li>πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；</li>
+<li>Vπθ(s0) 指从初始状态s₀开始<strong>遵循策略π能获得的预期总回报</strong>；</li>
+<li>Es0 是对所有可能的初始状态求期望。</li>
+</ul>
+</li>
+</ul>
+    </div>
+  <a href="/post/reinforce/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 1, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/dqn/" class="link black dim">
+        DQN (deep Q network)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.</p>
+<p><strong>DQN</strong>：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。</p>
+<p><strong>Q 网络</strong>：用于拟合函数Q函数的神经网络</p>
+<p><img src="/images/DQN/1.png" alt="1"></p>
+<p><strong>Q 网络的损失函数</strong>（均方误差形式）</p>
+<p><img src="/images/DQN/2.png" alt="2"></p>
+    </div>
+  <a href="/post/dqn/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         March 31, 2025
       </div>
     
@@ -174,104 +304,12 @@
 </li>
 <li>
 <p>蒙特卡洛方法对价值函数的增量更新方式</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/1.png" alt="1"></p>
+<p><img src="/images/QLearning/1.png" alt="1"></p>
 </li>
 <li>
 <p>时序差分方法只需要当前步结束即可进行计算</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/2.png" alt="2"></p>
 </li>
 </ul>
-<p> </p>
-<p> </p>
-<h2 id="2-sarsa-算法在线策略">2. Sarsa 算法：在线策略</h2>
-<p>在不知道奖励函数和状态转移函数的情况下该怎么进行策略提升呢？</p>
-<p>直接用时序差分算法来估计动作价值函数 Q：</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/3.png" alt="3"></p>
-<p>然后用贪婪算法来选取在某个状态下动作价值最大的那个动作，即 agrmaxQ(s,a)。</p>
-<p>但是，不能一直是贪婪：</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/4.png" alt="4"></p>
-<p> </p>
-<h4 id="sarsa">Sarsa</h4>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/5.png" alt="5"></p>
-<p>必须使用当前贪婪策略采样得到的数据</p>
-<p> </p>
-<p> </p>
-<h2 id="3-q-learning离线策略">3. Q-learning：离线策略</h2>
-<p>Q-learning 的时序差分更新方式：</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/6.png" alt="6"></p>
-<p>不一定必须使用当前贪心策略采样得到的数据，因为**给定任意(s, a, r, s&rsquo;)**都可以直接根据更新公式来更新Q；为了探索，我们通常使用一个-贪婪策略来与环境交互。</p>
-<p> </p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/7.png" alt="7"></p>
-<p> </p>
-<p>class QLearning:
-&quot;&quot;&quot; Q-learning算法 &quot;&quot;&quot;
-def <strong>init</strong>(self, ncol, nrow, epsilon, alpha, gamma, n_action=4):
-self.Q_table = np.zeros([nrow * ncol, n_action])  # 初始化Q(s,a)表格
-self.n_action = n_action  # 动作个数
-self.alpha = alpha  # 学习率
-self.gamma = gamma  # 折扣因子
-self.epsilon = epsilon  # epsilon-贪婪策略中的参数</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):  <span style="color:#75715e">#选取下一步的操作</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>epsilon:
-</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(self<span style="color:#f92672">.</span>n_action)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(self<span style="color:#f92672">.</span>Q_table[state])
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> action
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_action</span>(self, state):  <span style="color:#75715e"># 用于打印策略</span>
-</span></span><span style="display:flex;"><span>    Q_max <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max(self<span style="color:#f92672">.</span>Q_table[state])
-</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n_action)]
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n_action):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>Q_table[state, i] <span style="color:#f92672">==</span> Q_max:
-</span></span><span style="display:flex;"><span>            a[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, s0, a0, r, s1):
-</span></span><span style="display:flex;"><span>    td_error <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Q_table[s1]<span style="color:#f92672">.</span>max(
-</span></span><span style="display:flex;"><span>    ) <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>Q_table[s0, a0]
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>Q_table[s0, a0] <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>alpha <span style="color:#f92672">*</span> td_error
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>epsilon <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
-</span></span><span style="display:flex;"><span>alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
-</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
-</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> QLearning(ncol, nrow, epsilon, alpha, gamma)
-</span></span><span style="display:flex;"><span>num_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>  <span style="color:#75715e"># 智能体在环境中运行的序列的数量</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>return_list <span style="color:#f92672">=</span> []  <span style="color:#75715e"># 记录每一条序列的回报</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):  <span style="color:#75715e"># 显示10个进度条</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># tqdm的进度条功能</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tqdm(total<span style="color:#f92672">=</span>int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>), desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Iteration </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i) <span style="color:#66d9ef">as</span> pbar:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i_episode <span style="color:#f92672">in</span> range(int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>)):  <span style="color:#75715e"># 每个进度条的序列数</span>
-</span></span><span style="display:flex;"><span>            episode_return <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>            state <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
-</span></span><span style="display:flex;"><span>            done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
-</span></span><span style="display:flex;"><span>                action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>take_action(state)
-</span></span><span style="display:flex;"><span>                next_state, reward, done <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
-</span></span><span style="display:flex;"><span>                episode_return <span style="color:#f92672">+=</span> reward  <span style="color:#75715e"># 这里回报的计算不进行折扣因子衰减</span>
-</span></span><span style="display:flex;"><span>                agent<span style="color:#f92672">.</span>update(state, action, reward, next_state)
-</span></span><span style="display:flex;"><span>                state <span style="color:#f92672">=</span> next_state
-</span></span><span style="display:flex;"><span>            return_list<span style="color:#f92672">.</span>append(episode_return)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:  <span style="color:#75715e"># 每10条序列打印一下这10条序列的平均回报</span>
-</span></span><span style="display:flex;"><span>                pbar<span style="color:#f92672">.</span>set_postfix({
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;episode&#39;</span>:
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;return&#39;</span>:
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> np<span style="color:#f92672">.</span>mean(return_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>:])
-</span></span><span style="display:flex;"><span>                })
-</span></span><span style="display:flex;"><span>            pbar<span style="color:#f92672">.</span>update(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>episodes_list <span style="color:#f92672">=</span> list(range(len(return_list)))
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(episodes_list, return_list)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Episodes&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Returns&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Q-learning on </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#39;Cliff Walking&#39;</span>))
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>action_meaning <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;^&#39;</span>, <span style="color:#e6db74">&#39;v&#39;</span>, <span style="color:#e6db74">&#39;&lt;&#39;</span>, <span style="color:#e6db74">&#39;&gt;&#39;</span>]
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Q-learning算法最终收敛得到的策略为：&#39;</span>)
-</span></span><span style="display:flex;"><span>print_agent(agent, env, action_meaning, list(range(<span style="color:#ae81ff">37</span>, <span style="color:#ae81ff">47</span>)), [<span style="color:#ae81ff">47</span>])
-</span></span></code></pre></div>
     </div>
   <a href="/post/qlearing/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -301,6 +339,14 @@ self.epsilon = epsilon  # epsilon-贪婪策略中的参数</p>
 <p><strong>动作价值函数</strong></p>
 <p><img src="/images/RLconfused/2.png" alt="2"></p>
 </li>
+<li>
+<p><strong>优势函数</strong></p>
+<p><strong>在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少</strong></p>
+<p>A(s,a)=Q(s,a)−V(s)</p>
+<ul>
+<li>求解优势函数：<strong>广义优势估计</strong>(GAE)</li>
+</ul>
+</li>
 </ol>
 <ul>
 <li>
@@ -312,6 +358,20 @@ self.epsilon = epsilon  # epsilon-贪婪策略中的参数</p>
 </li>
 </ol>
 <p> </p>
+<ol start="2">
+<li>
+<h3 id="常见强化学习算法优缺点">常见强化学习算法优缺点</h3>
+<ol>
+<li>
+<p><strong>Q-Learning</strong> - Off-policy - 值函数</p>
+<p><img src="/images/QLearning/6.png" alt="6"></p>
+<ul>
+<li>缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
     </div>
   <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -325,7 +385,7 @@ self.epsilon = epsilon  # epsilon-贪婪策略中的参数</p>
     
     <h1 class="f3 near-black">
       <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
-        PPO 代码实现
+        PPO-代码实现
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
@@ -361,7 +421,7 @@ self.epsilon = epsilon  # epsilon-贪婪策略中的参数</p>
     
     <h1 class="f3 near-black">
       <a href="/post/ppo-%E5%8E%9F%E7%90%86/" class="link black dim">
-        PPO 原理
+        PPO-直观理解
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
