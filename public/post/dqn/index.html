@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>DQN (deep Q network) | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.
+DQN：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。
+Q 网络：用于拟合函数Q函数的神经网络
+
+Q 网络的损失函数（均方误差形式）
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/dqn/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/dqn/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="DQN (deep Q network)">
+  <meta property="og:description" content="Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.
+DQN：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。
+Q 网络：用于拟合函数Q函数的神经网络
+Q 网络的损失函数（均方误差形式）">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-01T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-04-01T11:00:59-04:00">
+    <meta property="article:tag" content="RL">
+
+  <meta itemprop="name" content="DQN (deep Q network)">
+  <meta itemprop="description" content="Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.
+DQN：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。
+Q 网络：用于拟合函数Q函数的神经网络
+Q 网络的损失函数（均方误差形式）">
+  <meta itemprop="datePublished" content="2025-04-01T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-01T11:00:59-04:00">
+  <meta itemprop="wordCount" content="479">
+  <meta itemprop="keywords" content="RL">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DQN (deep Q network)">
+  <meta name="twitter:description" content="Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.
+DQN：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。
+Q 网络：用于拟合函数Q函数的神经网络
+Q 网络的损失函数（均方误差形式）">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/DQN/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">DQN (deep Q network)</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdqn%2F&amp;subject=DQN&#43;%28deep&#43;Q&#43;network%29"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdqn%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdqn%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdqn%2F&amp;summary=Q-learning&#43;%E7%AE%97%E6%B3%95%E7%94%A8%E8%A1%A8%E6%A0%BC%E5%AD%98%E5%82%A8%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E7%9A%84%E5%81%9A%E6%B3%95%E5%8F%AA%E5%9C%A8&#43;%E7%8E%AF%E5%A2%83%E7%9A%84%E7%8A%B6%E6%80%81%E5%92%8C%E5%8A%A8%E4%BD%9C%E9%83%BD%E6%98%AF%E7%A6%BB%E6%95%A3%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%A9%BA%E9%97%B4%E9%83%BD%E6%AF%94%E8%BE%83%E5%B0%8F&#43;%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%80%82%E7%94%A8.%0ADQN%EF%BC%9A%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E4%B8%8B%E7%A6%BB%E6%95%A3%E5%8A%A8%E4%BD%9C%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%98%AF%E7%A6%BB%E7%BA%BF%E7%AD%96%E7%95%A5%E7%AE%97%E6%B3%95%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%CE%B5-%E8%B4%AA%E5%A9%AA%E7%AD%96%E7%95%A5%E6%9D%A5%E5%B9%B3%E8%A1%A1%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%88%A9%E7%94%A8%E3%80%82%0AQ&#43;%E7%BD%91%E7%BB%9C%EF%BC%9A%E7%94%A8%E4%BA%8E%E6%8B%9F%E5%90%88%E5%87%BD%E6%95%B0Q%E5%87%BD%E6%95%B0%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%0AQ&#43;%E7%BD%91%E7%BB%9C%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%EF%BC%88%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E5%BD%A2%E5%BC%8F%EF%BC%89%0A&amp;title=DQN&#43;%28deep&#43;Q&#43;network%29&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdqn%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">DQN (deep Q network)</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-01T11:00:59-04:00">April 1, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.</p>
+<p><strong>DQN</strong>：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。</p>
+<p><strong>Q 网络</strong>：用于拟合函数Q函数的神经网络</p>
+<p><img src="/images/DQN/1.png" alt="1"></p>
+<p><strong>Q 网络的损失函数</strong>（均方误差形式）</p>
+<p><img src="/images/DQN/2.png" alt="2"></p>
+<p> </p>
+<h2 id="1-经验回放模块">1. 经验回放模块</h2>
+<p><em>v.s  Q-learning 算法</em>：Q-learning 中每一个数据只会用来更新一次值。</p>
+<ul>
+<li>
+<p><strong>经验回放</strong>（experience replay）：</p>
+<p>维护一个<strong>回放缓冲区</strong>，将每次从环境中采样得到的四元组数据（状态、动作、奖励、下一状态）存储到回放缓冲区中，训练 Q 网络的时候再从回放缓冲区中随机采样若干数据来进行训练。</p>
+</li>
+<li>
+<p><strong>作用</strong>：</p>
+<ol>
+<li>
+<p>使样本满足<strong>独立</strong>假设。</p>
+<p>在 MDP 中交互采样得到的数据本身不满足独立假设，因为这一时刻的状态和上一时刻的状态有关。</p>
+<p>非独立同分布的数据对训练神经网络有很大的影响，会使神经网络拟合到最近训练的数据上。采用经验回放可以打破样本之间的相关性，让其满足独立假设。</p>
+</li>
+<li>
+<p>提高样本效率。</p>
+<p>每一个样本可以被使用多次，适合深度神经网络的梯度学习。</p>
+</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h2 id="2-目标网络模块">2. 目标网络模块</h2>
+<ul>
+<li>
+<p><strong>目标网络</strong>（target network）核心思想：</p>
+<p>训练过程中 Q 网络的不断更新会导致目标不断发生改变，故暂时先将 TD 目标中的 Q 网络固定住。</p>
+</li>
+<li>
+<p>实现：两套 Q 网络 —— 训练网络 + 目标网络</p>
+<p><img src="/images/DQN/3.png" alt="3"></p>
+</li>
+</ul>
+<p> </p>
+<h2 id="3-dqn-算法">3. DQN 算法</h2>
+<p>具体流程：</p>
+<p><img src="/images/DQN/4.png" alt="4"></p>
+<ol>
+<li>
+<p>定义经验回放池的类，主要包括加入数据、采样数据两大函数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ReplayBuffer</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; 经验回放池 &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, capacity):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>buffer <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>deque(maxlen<span style="color:#f92672">=</span>capacity)  <span style="color:#75715e"># 队列,先进先出</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(self, state, action, reward, next_state, done):  <span style="color:#75715e"># 将数据加入buffer</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>buffer<span style="color:#f92672">.</span>append((state, action, reward, next_state, done))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sample</span>(self, batch_size):  <span style="color:#75715e"># 从buffer中采样数据,数量为batch_size</span>
+</span></span><span style="display:flex;"><span>        transitions <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>sample(self<span style="color:#f92672">.</span>buffer, batch_size)
+</span></span><span style="display:flex;"><span>        state, action, reward, next_state, done <span style="color:#f92672">=</span> zip(<span style="color:#f92672">*</span>transitions)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(state), action, reward, np<span style="color:#f92672">.</span>array(next_state), done
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">size</span>(self):  <span style="color:#75715e"># 目前buffer中数据的数量</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>buffer)
+</span></span></code></pre></div></li>
+<li>
+<p>定义一个只有一层隐藏层的 Q 网络</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Qnet</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; 只有一层隐藏层的Q网络 &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim):
+</span></span><span style="display:flex;"><span>        super(Qnet, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))  <span style="color:#75715e"># 隐藏层使用ReLU激活函数</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>fc2(x)
+</span></span></code></pre></div></li>
+<li>
+<p>DQN 算法</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DQN</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; DQN算法 &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim, learning_rate, gamma,
+</span></span><span style="display:flex;"><span>                 epsilon, target_update, device):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>action_dim <span style="color:#f92672">=</span> action_dim
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>q_net <span style="color:#f92672">=</span> Qnet(state_dim, hidden_dim,
+</span></span><span style="display:flex;"><span>                          self<span style="color:#f92672">.</span>action_dim)<span style="color:#f92672">.</span>to(device)  <span style="color:#75715e"># Q网络</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 目标网络</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>target_q_net <span style="color:#f92672">=</span> Qnet(state_dim, hidden_dim,
+</span></span><span style="display:flex;"><span>                                 self<span style="color:#f92672">.</span>action_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 使用Adam优化器</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>q_net<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                          lr<span style="color:#f92672">=</span>learning_rate)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma  <span style="color:#75715e"># 折扣因子</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>epsilon <span style="color:#f92672">=</span> epsilon  <span style="color:#75715e"># epsilon-贪婪策略</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>target_update <span style="color:#f92672">=</span> target_update  <span style="color:#75715e"># 目标网络更新频率</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 计数器,记录更新次数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device <span style="color:#f92672">=</span> device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):  <span style="color:#75715e"># epsilon-贪婪策略采取动作</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>epsilon:
+</span></span><span style="display:flex;"><span>            action <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(self<span style="color:#f92672">.</span>action_dim)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            state <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([state], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>            action <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>q_net(state)<span style="color:#f92672">.</span>argmax()<span style="color:#f92672">.</span>item()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> action
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, transition_dict):
+</span></span><span style="display:flex;"><span>        states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;states&#39;</span>],
+</span></span><span style="display:flex;"><span>                              dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        actions <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;actions&#39;</span>])<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        rewards <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;rewards&#39;</span>],
+</span></span><span style="display:flex;"><span>                               dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        next_states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;next_states&#39;</span>],
+</span></span><span style="display:flex;"><span>                                   dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        dones <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;dones&#39;</span>],
+</span></span><span style="display:flex;"><span>                             dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        q_values <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>q_net(states)<span style="color:#f92672">.</span>gather(<span style="color:#ae81ff">1</span>, actions)  <span style="color:#75715e"># Q值</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 下个状态的最大Q值</span>
+</span></span><span style="display:flex;"><span>        max_next_q_values <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>target_q_net(next_states)<span style="color:#f92672">.</span>max(<span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>view(
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        q_targets <span style="color:#f92672">=</span> rewards <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> max_next_q_values <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> dones
+</span></span><span style="display:flex;"><span>                                                                )  <span style="color:#75715e"># TD误差目标</span>
+</span></span><span style="display:flex;"><span>        dqn_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(F<span style="color:#f92672">.</span>mse_loss(q_values, q_targets))  <span style="color:#75715e"># 均方误差损失函数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>optimizer<span style="color:#f92672">.</span>zero_grad()  <span style="color:#75715e"># PyTorch中默认梯度会累积,这里需要显式将梯度置为0</span>
+</span></span><span style="display:flex;"><span>        dqn_loss<span style="color:#f92672">.</span>backward()  <span style="color:#75715e"># 反向传播更新参数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>optimizer<span style="color:#f92672">.</span>step()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>count <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>target_update <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>target_q_net<span style="color:#f92672">.</span>load_state_dict(
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>q_net<span style="color:#f92672">.</span>state_dict())  <span style="color:#75715e"># 更新目标网络</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><ol start="4">
+<li>
+<p>训练</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e-3</span>
+</span></span><span style="display:flex;"><span>num_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>hidden_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.98</span>
+</span></span><span style="display:flex;"><span>epsilon <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
+</span></span><span style="display:flex;"><span>target_update <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>buffer_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>minimal_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>
+</span></span><span style="display:flex;"><span>device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>) <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> torch<span style="color:#f92672">.</span>device(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cpu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>env_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CartPole-v0&#39;</span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(env_name)
+</span></span><span style="display:flex;"><span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>replay_buffer <span style="color:#f92672">=</span> ReplayBuffer(buffer_size)
+</span></span><span style="display:flex;"><span>state_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>action_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>n
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> DQN(state_dim, hidden_dim, action_dim, lr, gamma, epsilon,
+</span></span><span style="display:flex;"><span>            target_update, device)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>return_list <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tqdm(total<span style="color:#f92672">=</span>int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>), desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Iteration </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i) <span style="color:#66d9ef">as</span> pbar:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i_episode <span style="color:#f92672">in</span> range(int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>)):
+</span></span><span style="display:flex;"><span>            episode_return <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            state <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span>            done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+</span></span><span style="display:flex;"><span>                action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>take_action(state)
+</span></span><span style="display:flex;"><span>                next_state, reward, done, _ <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+</span></span><span style="display:flex;"><span>                replay_buffer<span style="color:#f92672">.</span>add(state, action, reward, next_state, done)
+</span></span><span style="display:flex;"><span>                state <span style="color:#f92672">=</span> next_state
+</span></span><span style="display:flex;"><span>                episode_return <span style="color:#f92672">+=</span> reward
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 当buffer数据的数量超过一定值后,才进行Q网络训练</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> replay_buffer<span style="color:#f92672">.</span>size() <span style="color:#f92672">&gt;</span> minimal_size:
+</span></span><span style="display:flex;"><span>                    b_s, b_a, b_r, b_ns, b_d <span style="color:#f92672">=</span> replay_buffer<span style="color:#f92672">.</span>sample(batch_size)
+</span></span><span style="display:flex;"><span>                    transition_dict <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#39;states&#39;</span>: b_s,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#39;actions&#39;</span>: b_a,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#39;next_states&#39;</span>: b_ns,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#39;rewards&#39;</span>: b_r,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#39;dones&#39;</span>: b_d
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    agent<span style="color:#f92672">.</span>update(transition_dict)
+</span></span><span style="display:flex;"><span>            return_list<span style="color:#f92672">.</span>append(episode_return)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                pbar<span style="color:#f92672">.</span>set_postfix({
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;episode&#39;</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;return&#39;</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> np<span style="color:#f92672">.</span>mean(return_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>:])
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>            pbar<span style="color:#f92672">.</span>update(<span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div></li>
+</ol><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">PPO-代码实现</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">强化学习-数学基础</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/">强化学习-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/e2e/">End2End</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

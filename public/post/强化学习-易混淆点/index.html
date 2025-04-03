@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>强化学习-易混淆点 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="
+
+状态价值函数 vs 动作价值函数
+
+
+状态价值函数
+
+
+
+动作价值函数
+
+
+
+
+
+关系
+
+
+
+
+
+
+ 
+
+
+常见强化学习算法优缺点
+
+
+Q-Learning - Off-policy - 值函数
+
+
+缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。
+
+
+
+
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="强化学习-易混淆点">
+  <meta property="og:description" content="状态价值函数 vs 动作价值函数 状态价值函数
+动作价值函数
+关系
+常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
+缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-03-31T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-03-31T11:00:59-04:00">
+    <meta property="article:tag" content="RL">
+
+  <meta itemprop="name" content="强化学习-易混淆点">
+  <meta itemprop="description" content="状态价值函数 vs 动作价值函数 状态价值函数
+动作价值函数
+关系
+常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
+缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
+  <meta itemprop="datePublished" content="2025-03-31T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-03-31T11:00:59-04:00">
+  <meta itemprop="wordCount" content="104">
+  <meta itemprop="keywords" content="RL">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="强化学习-易混淆点">
+  <meta name="twitter:description" content="状态价值函数 vs 动作价值函数 状态价值函数
+动作价值函数
+关系
+常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
+缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/RLconfused/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">强化学习-易混淆点</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F&amp;subject=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F&amp;summary=&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;vs&#43;%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E5%85%B3%E7%B3%BB%0A%E5%B8%B8%E8%A7%81%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%BC%98%E7%BC%BA%E7%82%B9&#43;Q-Learning&#43;-&#43;Off-policy&#43;-&#43;%E5%80%BC%E5%87%BD%E6%95%B0%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E7%94%A8%E8%A1%A8%E6%A0%BC%E5%AD%98%E5%82%A8%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E3%80%82%E5%8F%AA%E5%9C%A8&#43;%E7%8E%AF%E5%A2%83%E7%9A%84%E7%8A%B6%E6%80%81%E5%92%8C%E5%8A%A8%E4%BD%9C%E9%83%BD%E6%98%AF%E7%A6%BB%E6%95%A3%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%A9%BA%E9%97%B4%E9%83%BD%E6%AF%94%E8%BE%83%E5%B0%8F&#43;%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%80%82%E7%94%A8%E3%80%82&#43;&amp;title=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">强化学习-易混淆点</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-03-31T11:00:59-04:00">March 31, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><ol>
+<li>
+<h3 id="状态价值函数-vs-动作价值函数">状态价值函数 vs 动作价值函数</h3>
+<ol>
+<li>
+<p><strong>状态价值函数</strong></p>
+<p><img src="/images/RLconfused/1.png" alt="1"></p>
+</li>
+<li>
+<p><strong>动作价值函数</strong></p>
+<p><img src="/images/RLconfused/2.png" alt="2"></p>
+</li>
+</ol>
+<ul>
+<li>
+<p>关系</p>
+<p><img src="/images/RLconfused/3.png" alt="3"></p>
+<p><img src="/images/RLconfused/4.png" alt="4"></p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<ol start="2">
+<li>
+<h3 id="常见强化学习算法优缺点">常见强化学习算法优缺点</h3>
+<ol>
+<li>
+<p><strong>Q-Learning</strong> - Off-policy - 值函数</p>
+<p><img src="/images/QLearning/6.png" alt="6"></p>
+<ul>
+<li>缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p> </p>
+<ol start="2">
+<li>
+<p><strong>DQN</strong> - Off-policy - 值函数</p>
+<p>适用于连续状态下离散动作的问题，可以使用ε-贪婪策略来平衡探索与利用。采用经验回放。</p>
+<p><img src="/images/DQN/4.png" alt="4"></p>
+<p>训练两个Q网络：<strong>训练网络 + 目标网络</strong> —— 训练过程中 Q 网络的不断更新会导致目标不断发生改变，故暂时先将 TD 目标中的 Q 网络固定住。</p>
+<ul>
+<li>缺点：仅限离散动作；训练资源消耗大；超参数敏感。</li>
+</ul>
+<p> </p>
+</li>
+<li>
+<p><strong>REINFORCE</strong> - 策略梯度</p>
+<ul>
+<li>
+<p>策略梯度</p>
+<p><img src="/images/REINFORCE/3.png" alt="3"></p>
+</li>
+</ul>
+<p><img src="/images/REINFORCE/4.png" alt="4"></p>
+<ul>
+<li>缺点：高方差；需大量样本；训练效率低</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<ol start="3">
+<li>
+<h3 id="常见强化学习算法的总结">常见强化学习算法的总结</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>算法</strong></th>
+          <th style="text-align: left"><strong>类型</strong></th>
+          <th style="text-align: left"><strong>适用场景</strong></th>
+          <th style="text-align: left"><strong>优势</strong></th>
+          <th style="text-align: left"><strong>劣势</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Q-Learning</strong></td>
+          <td style="text-align: left">值函数（Off-policy）</td>
+          <td style="text-align: left">离散动作、中小规模状态空间（如迷宫、简单游戏）</td>
+          <td style="text-align: left">直接学习最优策略，无需遵循当前策略；实现简单</td>
+          <td style="text-align: left">高估Q值风险；无法处理连续动作；高维状态需离散化</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>SARSA</strong></td>
+          <td style="text-align: left">值函数（On-policy）</td>
+          <td style="text-align: left">离散动作、需安全探索的场景（如机器人避障）</td>
+          <td style="text-align: left">策略保守，避免高风险动作；适合在线学习</td>
+          <td style="text-align: left">可能收敛到局部最优；需遵循当前策略</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>DQN</strong></td>
+          <td style="text-align: left">值函数+深度网络</td>
+          <td style="text-align: left">高维状态（如图像输入）、离散动作（如Atari游戏）</td>
+          <td style="text-align: left">处理复杂状态；经验回放提高稳定性；适合端到端学习</td>
+          <td style="text-align: left">仅限离散动作；训练资源消耗大；超参数敏感</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>REINFORCE</strong></td>
+          <td style="text-align: left">策略梯度（蒙特卡洛）</td>
+          <td style="text-align: left">简单策略优化、连续或离散动作（如随机策略需求）</td>
+          <td style="text-align: left">直接优化策略；支持连续动作</td>
+          <td style="text-align: left">高方差；需大量样本；训练效率低</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Actor-Critic</strong></td>
+          <td style="text-align: left">策略+值函数</td>
+          <td style="text-align: left">连续/离散动作、需平衡方差与偏差（如机器人控制）</td>
+          <td style="text-align: left">结合策略梯度与TD误差，收敛更快；支持在线更新</td>
+          <td style="text-align: left">实现复杂；依赖Critic的准确性；需调参</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>PPO</strong></td>
+          <td style="text-align: left">策略优化（On-policy）</td>
+          <td style="text-align: left">复杂连续/离散控制（如人形机器人、多智能体协作）</td>
+          <td style="text-align: left">训练稳定（Clipping机制）；样本效率高；支持并行环境</td>
+          <td style="text-align: left">超参数敏感（如Clipping范围）；计算资源需求较高</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>DDPG</strong></td>
+          <td style="text-align: left">确定性策略梯度（Off-policy）</td>
+          <td style="text-align: left">高维连续动作空间（如无人机控制、精细操作）</td>
+          <td style="text-align: left">输出确定性动作；适合精细控制；结合目标网络稳定训练</td>
+          <td style="text-align: left">探索效率低（依赖噪声）；超参数敏感；对高维状态支持有限</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>TD3</strong></td>
+          <td style="text-align: left">确定性策略梯度改进版</td>
+          <td style="text-align: left">复杂连续控制（DDPG的改进版）</td>
+          <td style="text-align: left">缓解Q值高估（双Critic网络）；延迟策略更新提升稳定性</td>
+          <td style="text-align: left">实现更复杂；训练时间较长</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>SAC</strong></td>
+          <td style="text-align: left">最大熵策略（Off-policy）</td>
+          <td style="text-align: left">高维连续动作、需高探索性场景（如复杂物理仿真）</td>
+          <td style="text-align: left">平衡探索与利用（熵正则化）；鲁棒性强；适合稀疏奖励任务</td>
+          <td style="text-align: left">计算复杂度高；实现难度大</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>蒙特卡洛方法</strong></td>
+          <td style="text-align: left">无模型（On-policy/Off-policy）</td>
+          <td style="text-align: left">回合制任务（如棋类游戏胜负评估）</td>
+          <td style="text-align: left">无偏差；简单直观</td>
+          <td style="text-align: left">高方差；需完整Episode；样本效率低</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Dyna-Q</strong></td>
+          <td style="text-align: left">基于模型</td>
+          <td style="text-align: left">已知或可学习模型的环境（如仿真调度、安全关键任务）</td>
+          <td style="text-align: left">样本效率高；支持规划与学习结合</td>
+          <td style="text-align: left">模型误差影响策略；复杂环境建模困难</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>A3C/A2C</strong></td>
+          <td style="text-align: left">异步策略梯度</td>
+          <td style="text-align: left">分布式训练、并行环境交互（如多线程游戏AI）</td>
+          <td style="text-align: left">加速训练（异步采样）；适合大规模计算资源</td>
+          <td style="text-align: left">实现复杂；同步版本（A2C）效率较低</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ol><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">PPO-代码实现</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">强化学习-数学基础</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/">强化学习-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/e2e/">End2End</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

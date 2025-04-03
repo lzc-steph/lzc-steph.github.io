@@ -3,7 +3,7 @@ date: 2025-03-29T11:00:59-04:00
 description: ""
 featured_image: "/images/PPO/meovv.jpg"
 tags: ["RL"]
-title: "PPO 原理"
+title: "PPO-直观理解"
 ---
 
 ## 1. 基础概念
@@ -21,10 +21,9 @@ title: "PPO 原理"
 7. **action space**：可以选择的动作，如上下左右
 
 8. **policy**：策略函数，输入state，输出Action的**概率分布**。一般用π表示。
-
    1. 训练时应尝试各种action
    2. 输出应具有多样性
-
+   
 9. **Trajectory/Episode/Rollout**：轨迹，用 t 表示一连串状态和动作的序列。有的状态转移是确定的，也有的是不确定的。
 
 10. **Return**：回报，从当前时间点到游戏结束的 Reward 的累积和。
@@ -53,6 +52,8 @@ title: "PPO 原理"
 
    + 若去掉梯度，则表达式的意义：若一个**trajectory 得到的 return 大于零**，则**增大**这个trajectory里所有状态下，采取当前action的概率。
 
+   &nbsp;
+
 2. #### **训练 policy 神经网络**
 
    + **输入**：当前画面
@@ -68,6 +69,8 @@ title: "PPO 原理"
    ![5](/images/PPO/5.png)
 
    存在问题：大部分时间在采集数据，很慢
+
+   &nbsp;
 
 3. #### 完整过程
 
@@ -114,15 +117,67 @@ title: "PPO 原理"
 + 例如
 
   + alpha go：输入棋盘局势，输出下一步
-  + 
+  + 让机器学会玩游戏:
+    + ﻿Gym: https://gym.openai.com/
+    + ﻿﻿Universe: https://openai.com/blog/universe/
+  + 自动驾驶
+  + 对话系统
 
++ 分类问题的缺点：behavior cloning，机器不知道学到的行为的是好是坏/重点是什么。解决方式：
 
+  1. **强化学习**：自行与环境进行互动，通过观察 reward 得知行为是好是坏。
+  2. **示范学习**：expert 示范如何解决任务，机器从示范中学习。
 
 &nbsp;
 
 &nbsp;
 
-## 4. actor-critic 算法
+## 4. Actor-Critic
+
+![37](/images/PPO/37.png)
+
+![38](/images/PPO/38.png)
+
+目标：R(t) 越大越好。
+
+### 1. Actor
+
+actor 本质是神经网络
+
+**输入**：游戏画面
+
+**输出**：各动作的概率
+
+&nbsp;
+
+### 2. Critic
+
+critic 本身不能决定任何 action；给它一个 actor ，它可以告诉你这个 actor 有多好。
+
+- ﻿﻿State value function V(a|s)：给它一个 actor，它告诉你接下来一直到游戏结束，可以得到的所有 reward 的期望值是多少。
+
+  ![39](/images/PPO/39.png)
+
+- 怎么算 critic?
+
+  - **Monte-Carlo**
+
+    让 ciric 看玩游戏的过程：看 s 做出 action a 后，一直到 episode 结束，所得到的 rewrd $G_a$。
+
+    学习到：我的输出和 $G_a$ 越接近越好。
+
+    ![40](/images/PPO/40.png) 
+
+  - **Temporal-difference approach**
+
+    V(St) = V(St+1) + rt
+
+    ![41](/images/PPO/41.png)
+
+
+&nbsp;
+
+### 3. Actor-Critic
 
 + #### 上述算法可改进：
 

@@ -3,7 +3,7 @@ date: 2025-03-29T11:00:59-04:00
 description: ""
 featured_image: "/images/PPOcode/meovv.jpg"
 tags: ["RL"]
-title: "PPO 代码实现"
+title: "PPO-代码实现"
 ---
 
 ## 1. 论文详读

@@ -48,31 +48,7 @@
           需要拷贝或移动元素
       
   
-
-
- 
-1. string 字符串
-#include &lt;string&gt;
-using namespace std;
-
-string s = &#34;Hello&#34;;
-s &#43;= &#34; World&#34;;          // 拼接
-
-char first_char = str[0];  // 访问第1个字符（索引为0）&#39;H&#39;
-string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34;
-size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos
-
-s.length();              // 字符串长度
-s.empty();               // 判断是否为空
-s.starts_with(&#34;He&#34;);     // C&#43;&#43;20 判断前缀
-s.contains(&#34;or&#34;);        // C&#43;&#43;20 判断是否包含子串
-
- 
-**2. **stack 栈
-stack&lt;int&gt; s;
-
-
-压入元素：push()">
+">
     <meta name="generator" content="Hugo 0.140.2">
     
     
@@ -102,7 +78,7 @@ stack&lt;int&gt; s;
     <meta property="og:url" content="http://localhost:1313/post/%E7%AE%97%E6%B3%95-c&#43;&#43;stl%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8/">
   <meta property="og:site_name" content="HomePage">
   <meta property="og:title" content="算法 - C&#43;&#43;STL常用容器">
-  <meta property="og:description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素 1. string 字符串 #include &lt;string&gt; using namespace std; string s = &#34;Hello&#34;; s &#43;= &#34; World&#34;; // 拼接 char first_char = str[0]; // 访问第1个字符（索引为0）&#39;H&#39; string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34; size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos s.length(); // 字符串长度 s.empty(); // 判断是否为空 s.starts_with(&#34;He&#34;); // C&#43;&#43;20 判断前缀 s.contains(&#34;or&#34;); // C&#43;&#43;20 判断是否包含子串 **2. **stack 栈 stack&lt;int&gt; s; 压入元素：push()">
+  <meta property="og:description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -111,14 +87,14 @@ stack&lt;int&gt; s;
     <meta property="article:tag" content="Algorithm">
 
   <meta itemprop="name" content="算法 - C&#43;&#43;STL常用容器">
-  <meta itemprop="description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素 1. string 字符串 #include &lt;string&gt; using namespace std; string s = &#34;Hello&#34;; s &#43;= &#34; World&#34;; // 拼接 char first_char = str[0]; // 访问第1个字符（索引为0）&#39;H&#39; string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34; size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos s.length(); // 字符串长度 s.empty(); // 判断是否为空 s.starts_with(&#34;He&#34;); // C&#43;&#43;20 判断前缀 s.contains(&#34;or&#34;); // C&#43;&#43;20 判断是否包含子串 **2. **stack 栈 stack&lt;int&gt; s; 压入元素：push()">
+  <meta itemprop="description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素">
   <meta itemprop="datePublished" content="2025-03-14T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-03-14T11:00:59-04:00">
-  <meta itemprop="wordCount" content="396">
+  <meta itemprop="wordCount" content="619">
   <meta itemprop="keywords" content="Algorithm">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="算法 - C&#43;&#43;STL常用容器">
-  <meta name="twitter:description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素 1. string 字符串 #include &lt;string&gt; using namespace std; string s = &#34;Hello&#34;; s &#43;= &#34; World&#34;; // 拼接 char first_char = str[0]; // 访问第1个字符（索引为0）&#39;H&#39; string sub = s.substr(6, 5); // substr(起始位置, 截取长度) → &#34;World&#34; size_t pos = s.find(&#34;World&#34;);// 查找子串，返回位置，未找到返回 string::npos s.length(); // 字符串长度 s.empty(); // 判断是否为空 s.starts_with(&#34;He&#34;); // C&#43;&#43;20 判断前缀 s.contains(&#34;or&#34;); // C&#43;&#43;20 判断是否包含子串 **2. **stack 栈 stack&lt;int&gt; s; 压入元素：push()">
+  <meta name="twitter:description" content="插入函数总结 方法 适用容器 作用 性能特性 push queue、stack、priority_queue 添加元素到容器末尾或顶部 适用于特定容器，性能与容器实现相关 push_back vector、deque、list 添加元素到容器末尾 需要拷贝或移动元素 emplace set、map、unordered_set 等 在容器中直接构造元素 避免不必要的拷贝或移动 emplace_back vector、deque、list 在容器末尾直接构造元素 避免不必要的拷贝或移动 insert 大多数容器 将元素插入到容器的指定位置 需要拷贝或移动元素">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -232,7 +208,7 @@ stack&lt;int&gt; s;
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F&amp;summary=%E6%8F%92%E5%85%A5%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93&#43;%E6%96%B9%E6%B3%95&#43;%E9%80%82%E7%94%A8%E5%AE%B9%E5%99%A8&#43;%E4%BD%9C%E7%94%A8&#43;%E6%80%A7%E8%83%BD%E7%89%B9%E6%80%A7&#43;push&#43;queue%E3%80%81stack%E3%80%81priority_queue&#43;%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E5%88%B0%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE%E6%88%96%E9%A1%B6%E9%83%A8&#43;%E9%80%82%E7%94%A8%E4%BA%8E%E7%89%B9%E5%AE%9A%E5%AE%B9%E5%99%A8%EF%BC%8C%E6%80%A7%E8%83%BD%E4%B8%8E%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0%E7%9B%B8%E5%85%B3&#43;push_back&#43;vector%E3%80%81deque%E3%80%81list&#43;%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E5%88%B0%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE&#43;%E9%9C%80%E8%A6%81%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8%E5%85%83%E7%B4%A0&#43;emplace&#43;set%E3%80%81map%E3%80%81unordered_set&#43;%E7%AD%89&#43;%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9B%B4%E6%8E%A5%E6%9E%84%E9%80%A0%E5%85%83%E7%B4%A0&#43;%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8&#43;emplace_back&#43;vector%E3%80%81deque%E3%80%81list&#43;%E5%9C%A8%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE%E7%9B%B4%E6%8E%A5%E6%9E%84%E9%80%A0%E5%85%83%E7%B4%A0&#43;%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8&#43;insert&#43;%E5%A4%A7%E5%A4%9A%E6%95%B0%E5%AE%B9%E5%99%A8&#43;%E5%B0%86%E5%85%83%E7%B4%A0%E6%8F%92%E5%85%A5%E5%88%B0%E5%AE%B9%E5%99%A8%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE&#43;%E9%9C%80%E8%A6%81%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8%E5%85%83%E7%B4%A0&#43;1.&#43;string&#43;%E5%AD%97%E7%AC%A6%E4%B8%B2&#43;%23include&#43;%26amp%3Blt%3Bstring%26amp%3Bgt%3B&#43;using&#43;namespace&#43;std%3B&#43;string&#43;s&#43;%3D&#43;%26amp%3B%2334%3BHello%26amp%3B%2334%3B%3B&#43;s&#43;%2B%3D&#43;%26amp%3B%2334%3B&#43;World%26amp%3B%2334%3B%3B&#43;%2F%2F&#43;%E6%8B%BC%E6%8E%A5&#43;char&#43;first_char&#43;%3D&#43;str%5B0%5D%3B&#43;%2F%2F&#43;%E8%AE%BF%E9%97%AE%E7%AC%AC1%E4%B8%AA%E5%AD%97%E7%AC%A6%EF%BC%88%E7%B4%A2%E5%BC%95%E4%B8%BA0%EF%BC%89%26amp%3B%2339%3BH%26amp%3B%2339%3B&#43;string&#43;sub&#43;%3D&#43;s.substr%286%2C&#43;5%29%3B&#43;%2F%2F&#43;substr%28%E8%B5%B7%E5%A7%8B%E4%BD%8D%E7%BD%AE%2C&#43;%E6%88%AA%E5%8F%96%E9%95%BF%E5%BA%A6%29&#43;%E2%86%92&#43;%26amp%3B%2334%3BWorld%26amp%3B%2334%3B&#43;size_t&#43;pos&#43;%3D&#43;s.find%28%26amp%3B%2334%3BWorld%26amp%3B%2334%3B%29%3B%2F%2F&#43;%E6%9F%A5%E6%89%BE%E5%AD%90%E4%B8%B2%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%BD%8D%E7%BD%AE%EF%BC%8C%E6%9C%AA%E6%89%BE%E5%88%B0%E8%BF%94%E5%9B%9E&#43;string%3A%3Anpos&#43;s.length%28%29%3B&#43;%2F%2F&#43;%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6&#43;s.empty%28%29%3B&#43;%2F%2F&#43;%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA&#43;s.starts_with%28%26amp%3B%2334%3BHe%26amp%3B%2334%3B%29%3B&#43;%2F%2F&#43;C%2B%2B20&#43;%E5%88%A4%E6%96%AD%E5%89%8D%E7%BC%80&#43;s.contains%28%26amp%3B%2334%3Bor%26amp%3B%2334%3B%29%3B&#43;%2F%2F&#43;C%2B%2B20&#43;%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%AD%90%E4%B8%B2&#43;%2A%2A2.&#43;%2A%2Astack&#43;%E6%A0%88&#43;stack%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;s%3B&#43;%E5%8E%8B%E5%85%A5%E5%85%83%E7%B4%A0%EF%BC%9Apush%28%29%0A&amp;title=%E7%AE%97%E6%B3%95&#43;-&#43;C%2B%2BSTL%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F&amp;summary=%E6%8F%92%E5%85%A5%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93&#43;%E6%96%B9%E6%B3%95&#43;%E9%80%82%E7%94%A8%E5%AE%B9%E5%99%A8&#43;%E4%BD%9C%E7%94%A8&#43;%E6%80%A7%E8%83%BD%E7%89%B9%E6%80%A7&#43;push&#43;queue%E3%80%81stack%E3%80%81priority_queue&#43;%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E5%88%B0%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE%E6%88%96%E9%A1%B6%E9%83%A8&#43;%E9%80%82%E7%94%A8%E4%BA%8E%E7%89%B9%E5%AE%9A%E5%AE%B9%E5%99%A8%EF%BC%8C%E6%80%A7%E8%83%BD%E4%B8%8E%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0%E7%9B%B8%E5%85%B3&#43;push_back&#43;vector%E3%80%81deque%E3%80%81list&#43;%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E5%88%B0%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE&#43;%E9%9C%80%E8%A6%81%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8%E5%85%83%E7%B4%A0&#43;emplace&#43;set%E3%80%81map%E3%80%81unordered_set&#43;%E7%AD%89&#43;%E5%9C%A8%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9B%B4%E6%8E%A5%E6%9E%84%E9%80%A0%E5%85%83%E7%B4%A0&#43;%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8&#43;emplace_back&#43;vector%E3%80%81deque%E3%80%81list&#43;%E5%9C%A8%E5%AE%B9%E5%99%A8%E6%9C%AB%E5%B0%BE%E7%9B%B4%E6%8E%A5%E6%9E%84%E9%80%A0%E5%85%83%E7%B4%A0&#43;%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8&#43;insert&#43;%E5%A4%A7%E5%A4%9A%E6%95%B0%E5%AE%B9%E5%99%A8&#43;%E5%B0%86%E5%85%83%E7%B4%A0%E6%8F%92%E5%85%A5%E5%88%B0%E5%AE%B9%E5%99%A8%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE&#43;%E9%9C%80%E8%A6%81%E6%8B%B7%E8%B4%9D%E6%88%96%E7%A7%BB%E5%8A%A8%E5%85%83%E7%B4%A0&#43;&amp;title=%E7%AE%97%E6%B3%95&#43;-&#43;C%2B%2BSTL%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595-c%2B%2Bstl%25E5%25B8%25B8%25E7%2594%25A8%25E5%25AE%25B9%25E5%2599%25A8%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -296,21 +272,116 @@ stack&lt;int&gt; s;
 <hr>
 <p> </p>
 <h3 id="1-string-字符串"><strong>1. string 字符串</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+<ul>
+<li>
+<p><code>getline(cin, s)</code> ：用于从标准输入（通常是键盘）读取一整行文本。</p>
+<ol>
+<li><strong>读取整行</strong>：会读取从当前光标位置直到遇到换行符（Enter键）的所有内容</li>
+<li><strong>包含空格</strong>：与 <code>cin &gt;&gt;</code> 不同，<code>getline</code> 会读取空格</li>
+<li><strong>丢弃换行符</strong>：读取的内容不包含最后的换行符</li>
+</ol>
+</li>
+<li>
+<h5 id="insert-函数"><code>insert()</code> 函数</h5>
+<p>用于在字符串的指定位置插入内容。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HelloWorld&#34;</span>;
+</span></span><span style="display:flex;"><span>string t <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Beautiful&#34;</span>;
+</span></span><span style="display:flex;"><span>s.insert(<span style="color:#ae81ff">5</span>, t);  <span style="color:#75715e">// 在位置5插入
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cout <span style="color:#f92672">&lt;&lt;</span> s;  <span style="color:#75715e">// 输出：HelloBeautifulWorld
+</span></span></span></code></pre></div></li>
+<li>
+<h5 id="erase-函数"><code>erase()</code> 函数</h5>
+<p>用于删除字符串中的部分内容.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HelloBeautifulWorld&#34;</span>;
+</span></span><span style="display:flex;"><span>s.erase(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9</span>);  <span style="color:#75715e">// 删除从位置5开始的9个字符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cout <span style="color:#f92672">&lt;&lt;</span> s;  <span style="color:#75715e">// 输出：HelloWorld
+</span></span></span></code></pre></div></li>
+<li>
+<h5 id="substr-函数"><code>substr()</code> 函数</h5>
+<ul>
+<li>返回从位置 <code>pos</code> 开始、长度为 <code>len</code> 的子字符串。</li>
+<li>如果省略 <code>len</code>，则返回从 <code>pos</code> 开始到字符串末尾的子字符串。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 提取从位置0开始的5个字符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>string sub2 <span style="color:#f92672">=</span> s.substr(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">5</span>);
+</span></span></code></pre></div></li>
+<li>
+<h5 id="find-函数"><code>find()</code> 函数</h5>
+<p>用于在字符串中查找子字符串或字符。</p>
+<h5 id="返回值">返回值：</h5>
+<ul>
+<li>找到则返回首次出现的位置</li>
+<li>未找到则返回 <code>string::npos</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 查找子字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t found <span style="color:#f92672">=</span> s.find(<span style="color:#e6db74">&#34;World&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (found <span style="color:#f92672">!=</span> string<span style="color:#f92672">::</span>npos) {
+</span></span><span style="display:flex;"><span>  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;&#39;World&#39; found at: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> found <span style="color:#f92672">&lt;&lt;</span> endl;  <span style="color:#75715e">// 输出: 7
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div></li>
+<li>
+<h5 id="replace"><code>replace()</code></h5>
+<p>用于替换字符串中的部分内容。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I like apples and oranges.&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 替换子字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.replace(<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#34;bananas&#34;</span>);
+</span></span><span style="display:flex;"><span>cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> endl;  <span style="color:#75715e">// 输出: I like bananas and oranges.
+</span></span></span></code></pre></div></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string s;
+</span></span><span style="display:flex;"><span>getline(cin, s);  <span style="color:#75715e">// 读取一整行输入，存入字符串s中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;你输入的是: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
 </span></span><span style="display:flex;"><span>s <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34; World&#34;</span>;          <span style="color:#75715e">// 拼接
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> first_char <span style="color:#f92672">=</span> str[<span style="color:#ae81ff">0</span>];  <span style="color:#75715e">// 访问第1个字符（索引为0）&#39;H&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>string sub <span style="color:#f92672">=</span> s.substr(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>); <span style="color:#75715e">// substr(起始位置, 截取长度) → &#34;World&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t pos <span style="color:#f92672">=</span> s.find(<span style="color:#e6db74">&#34;World&#34;</span>);<span style="color:#75715e">// 查找子串，返回位置，未找到返回 string::npos
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> first_char <span style="color:#f92672">=</span> str[<span style="color:#ae81ff">0</span>];  			<span style="color:#75715e">// 访问第1个字符（索引为0）&#39;H&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>string sub <span style="color:#f92672">=</span> s.substr(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>); 		<span style="color:#75715e">// substr(起始位置, 截取长度) → &#34;World&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t pos <span style="color:#f92672">=</span> s.find(<span style="color:#e6db74">&#34;World&#34;</span>);		<span style="color:#75715e">// 查找子串，返回位置，未找到返回 string::npos
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>s.length();              <span style="color:#75715e">// 字符串长度
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.empty();               <span style="color:#75715e">// 判断是否为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.size(); 
+</span></span><span style="display:flex;"><span>s.empty();               <span style="color:#75715e">// 判断是否为空
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.starts_with(<span style="color:#e6db74">&#34;He&#34;</span>);     <span style="color:#75715e">// C++20 判断前缀
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.contains(<span style="color:#e6db74">&#34;or&#34;</span>);        <span style="color:#75715e">// C++20 判断是否包含子串
-</span></span></span></code></pre></div><hr>
+</span></span></span></code></pre></div><h5 id="3to_string">（3）<code>to_string</code></h5>
+<ul>
+<li>转为字符串格式</li>
+</ul>
+<h4 id="遍历找连续0">遍历找连续0</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">longestZeroSubstring</span>(<span style="color:#66d9ef">const</span> string<span style="color:#f92672">&amp;</span> s) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> max_len <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> current <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">char</span> c : s) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span>) {
+</span></span><span style="display:flex;"><span>            current<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (current <span style="color:#f92672">&gt;</span> max_len) {
+</span></span><span style="display:flex;"><span>                max_len <span style="color:#f92672">=</span> current;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            current <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> max_len;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    string s;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入一个字符串: &#34;</span>;
+</span></span><span style="display:flex;"><span>    cin <span style="color:#f92672">&gt;&gt;</span> s;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> longestZeroSubstring(s);
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;最长连续 &#39;0&#39; 的子串长度是: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> result <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
 <p> </p>
 <h3 id="2-stack-栈">**2. **stack 栈</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> s;
@@ -430,8 +501,7 @@ stack&lt;int&gt; s;
 <li>map/set 增删查 O(log n)</li>
 </ul>
 </li>
-</ol>
-<ul class="pa0">
+</ol><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/algorithm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Algorithm</a>

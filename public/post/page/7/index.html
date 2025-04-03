@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,105 +153,48 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 6, 2025
+        February 21, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/" class="link black dim">
-        数组链表
+      <a href="/post/%E5%AE%A1%E7%A8%BF/" class="link black dim">
+        审稿
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-动态数组">1. 动态数组</h2>
-<p><strong>动态数组底层还是静态数组，只是自动帮我们进行数组空间的扩缩容，并把增删查改操作进行了封装</strong>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 创建动态数组
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 不用显式指定数组大小，它会根据实际存储的元素数量自动扩缩容
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在末尾追加元素，时间复杂度 O(1)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    arr.add(i);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在中间插入元素，时间复杂度 O(N)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 在索引 2 的位置插入元素 666
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.add(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">666</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在头部插入元素，时间复杂度 O(N)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.add(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除末尾元素，时间复杂度 O(1)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.remove(arr.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除中间元素，时间复杂度 O(N)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除索引 2 的元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.remove(<span style="color:#ae81ff">2</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据索引查询元素，时间复杂度 O(1)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> arr.get(<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据索引修改元素，时间复杂度 O(1)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>arr.set(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据元素值查找索引，时间复杂度 O(N)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> arr.indexOf(<span style="color:#ae81ff">666</span>);
-</span></span></code></pre></div><p> </p>
-<h2 id="2-链表">2. 链表</h2>
-<p>在实际的编程语言中，我们使用的链表节点定义如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Node</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> {
-</span></span><span style="display:flex;"><span>    E val;
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> next;
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> prev;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Node(Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> prev, E element, Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> next) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.val <span style="color:#f92672">=</span> element;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.next <span style="color:#f92672">=</span> next;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.prev <span style="color:#f92672">=</span> prev;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-    </div>
-  <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 31, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/object-detection/" class="link black dim">
-        目标检测
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/CV/19.png" alt="19"></p>
+      <h3 id="什么是好的研究工作">什么是好的研究工作？</h3>
 <ul>
 <li>
-<p>技巧</p>
-<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
+<h4 id="核心用有新意的方法有效的解决一个研究问题"><strong>核心</strong>：用有<strong>新意</strong>的方法<strong>有效</strong>的解决一个<strong>研究</strong>问题</h4>
+<ul>
+<li><strong>研究问题：一个困难的问题，在试之前不知道是否可行</strong>
+<ul>
+<li>1: 把之前的一个工作在某个点上做得不好的地方进行改进</li>
+<li>10: 如 cv 里某一个视觉的子任务</li>
+<li>100: 如提升机器对图片的理解/机器对文字的理解/解决通用人工问题</li>
+</ul>
+</li>
+<li><strong>有效：相对于之前的工作，我解决该问题的有效性有所提升 —— 效果好(精度)、规模大成本低、安全</strong>
+<ul>
+<li>1: 如关心一个模型的精度，比之前的好一点点</li>
+<li>10: 如在一年之内，和领域研究者一起，把整个数据集的精度提升10个点；自己的工作可以提升1个点</li>
+<li>100: 一个工作就推了5+个点</li>
+</ul>
+</li>
+<li><strong>新意：相对于同专业的研究者，用到了他们之前没有想到过的的方法</strong>
+<ul>
+<li>1: 大家一点都不意外，用了之后大家都大概知道结果是什么样的</li>
+<li>10: 在某一个方面，非常聪明地用某个技术解决了还不错的问题</li>
+<li>100: 我用的技术大家不熟，我用了之后打开了新世界的大门</li>
+</ul>
 </li>
 </ul>
-<p> </p>
-<h3 id="定位">定位</h3>
-<p><img src="/images/CV/20.png" alt="20"></p>
-<p>Need to output bx, by, bn, bw, class label (1-4)</p>
-<p><img src="/images/CV/21.png" alt="21"></p>
-<p>需人工标注<strong>特征点的坐标</strong></p>
-<p> </p>
-<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
-<ol>
-<li>先训练卷积网络识别物体</li>
-<li>滑动+放大窗口+再次滑动</li>
-</ol>
-<p><strong>问题</strong>：计算效率大，慢</p>
-<p> </p>
+<p><strong>新意度 x 有效性 x 问题大小 = 价值</strong></p>
+<p>在某个维度掉为1，就不太可能成为顶会论文</p>
+</li>
+</ul>
     </div>
-  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%AE%A1%E7%A8%BF/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -260,52 +203,92 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        January 20, 2025
+        February 19, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/llm/" class="link black dim">
-        LLM
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="link black dim">
+        强化学习-数学基础
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><a href="https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&amp;vd_source=80aea28698fb0235b45699fc7e6fcdac&amp;p=2">https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&vd_source=80aea28698fb0235b45699fc7e6fcdac&p=2</a></p>
-<h1 id="概述">概述</h1>
-<h2 id="大模型的演变">大模型的演变</h2>
-<p>大模型的训练整体上分为三个阶段：</p>
+      <h2 id="总述">总述</h2>
+<p><img src="/images/RL2/1.png" alt="1"></p>
+<ul>
+<li>
+<h4 id="基础工具"><strong>基础工具</strong></h4>
 <ol>
-<li>
-<p><strong>预训练</strong></p>
-<p>在这个阶段它会学习各种不同种类的语料，学习到语言的统计规律和一般知识。</p>
-<p>但是大模型在这个阶段只是学会了补全句子，却没有学会怎么样去领会人类的意图（类似成语接龙）。</p>
-</li>
-<li>
-<p><strong>SFT（监督微调）</strong></p>
-<p>在这个阶段大模型可以学习各种人类的对话语料，甚至是非常专业的垂直领域知识。</p>
-<p>但是模型的回答有时候可能并不符合人类的偏好，它可能会输出一些涉黄、涉政、涉暴或者种族歧视等言论。</p>
-</li>
-<li>
-<p><strong>RLHF（基于人类反馈的强化学习）</strong></p>
-<p>在这个阶段大模型会针对同一问题进行多次回答，人类会对这些回答打分。</p>
-<p>大模型会在此阶段学习到如何输出分数最高的回答，使得回答更符合人类的偏好。</p>
-</li>
+<li><strong>基本概念</strong>：state, action, reward, return, episode, policy, mdp&hellip;</li>
+<li><strong>贝尔曼公式</strong>：用于评价策略</li>
+<li><strong>贝尔曼最优公式</strong>：强化学习的最终目标是求解最优策略</li>
 </ol>
-<h2 id="分类">分类</h2>
-<ol>
-<li>
-<p>大语言模型（LLM）</p>
-<p>专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。</p>
 </li>
 <li>
-<p>多模态模型</p>
-<p>多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，在这些模态之间建立关联和交互。</p>
-</li>
+<h4 id="算法方法">算法/方法</h4>
+<ol start="4">
+<li><strong>值迭代、策略迭代—— truncated policy iteration</strong>：值和策略update不断迭代</li>
+<li><strong>Monte Carlo Learning</strong>：无模型学习</li>
+<li><strong>随即近似理论</strong>：from non-incremental to incremental</li>
+<li><strong>时序差分方法(TD)</strong></li>
+<li><strong>值函数估计</strong>：tabular representation to function representation，引入神经网络</li>
+<li><strong>Policy Gradient Methods</strong>：from value-based to policy-based</li>
+<li><strong>Actor-Critic Methods</strong>：policy-based + value-based</li>
 </ol>
-<h2 id="工作流程">工作流程</h2>
-<h3 id="分词化与词表映射">分词化与词表映射</h3>
-<p>分词化（Tokenization）是指将段落和句子分割成更小的分词（token）的过程。</p>
+</li>
+</ul>
     </div>
-  <a href="/post/llm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        BEV 论文学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
+<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
+<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
+<h4 id="1-背景介绍">1. 背景介绍</h4>
+<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
+<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
+<h4 id="3-主要方法分类">3. 主要方法分类</h4>
+<ol>
+<li>
+<p><strong>基于几何的方法</strong></p>
+<ul>
+<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
+<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于深度的方法</strong></p>
+<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
+<ul>
+<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
+<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
+</ul>
+</li>
+<li>
+<p><strong>基于MLP的方法</strong></p>
+<ul>
+<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
+<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于Transformer的方法</strong>：</p>
+    </div>
+  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -338,7 +321,7 @@
         <a href="/post/page/8/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/13/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

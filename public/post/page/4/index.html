@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,48 +153,36 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 21, 2025
+        March 27, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%AE%A1%E7%A8%BF/" class="link black dim">
-        审稿
+      <a href="/post/lift-splat-shoot/" class="link black dim">
+        Lift-splat-shoot
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="什么是好的研究工作">什么是好的研究工作？</h3>
-<ul>
+      <p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<h3 id="1-关键lift">1. 关键：Lift</h3>
+<p><img src="/images/lss/1.png" alt="1"></p>
+<ol>
 <li>
-<h4 id="核心用有新意的方法有效的解决一个研究问题"><strong>核心</strong>：用有<strong>新意</strong>的方法<strong>有效</strong>的解决一个<strong>研究</strong>问题</h4>
-<ul>
-<li><strong>研究问题：一个困难的问题，在试之前不知道是否可行</strong>
-<ul>
-<li>1: 把之前的一个工作在某个点上做得不好的地方进行改进</li>
-<li>10: 如 cv 里某一个视觉的子任务</li>
-<li>100: 如提升机器对图片的理解/机器对文字的理解/解决通用人工问题</li>
-</ul>
+<p><strong>特征提取&amp;深度估计</strong></p>
+<p>多视角相机输入后，进行特征提取与深度估计</p>
 </li>
-<li><strong>有效：相对于之前的工作，我解决该问题的有效性有所提升 —— 效果好(精度)、规模大成本低、安全</strong>
-<ul>
-<li>1: 如关心一个模型的精度，比之前的好一点点</li>
-<li>10: 如在一年之内，和领域研究者一起，把整个数据集的精度提升10个点；自己的工作可以提升1个点</li>
-<li>100: 一个工作就推了5+个点</li>
-</ul>
+<li>
+<p><strong>外积（Outer product）</strong>—— 最核心的操作</p>
+<p>无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。</p>
+<p>使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。</p>
 </li>
-<li><strong>新意：相对于同专业的研究者，用到了他们之前没有想到过的的方法</strong>
-<ul>
-<li>1: 大家一点都不意外，用了之后大家都大概知道结果是什么样的</li>
-<li>10: 在某一个方面，非常聪明地用某个技术解决了还不错的问题</li>
-<li>100: 我用的技术大家不熟，我用了之后打开了新世界的大门</li>
-</ul>
+<li>
+<p><strong>Grid Sampling</strong></p>
+<p>目的：将构造出的 Frustum Feature 利用相机外参和内参转换到BEV视角下。</p>
+<p>过程：<strong>通过限定好 BEV 视角的范围，划定好一个个的 grid，将能够投影到相应 grid 的 Feature 汇总到一个 grid 里</strong>。</p>
 </li>
-</ul>
-<p><strong>新意度 x 有效性 x 问题大小 = 价值</strong></p>
-<p>在某个维度掉为1，就不太可能成为顶会论文</p>
-</li>
-</ul>
+</ol>
     </div>
-  <a href="/post/%E5%AE%A1%E7%A8%BF/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/lift-splat-shoot/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -203,118 +191,50 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 19, 2025
+        March 22, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/" class="link black dim">
-        强化学习-基础工具（1-3）
+      <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="link black dim">
+        「复试」项目
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="总述">总述</h2>
-<p><img src="/images/RL2/1.png" alt="1"></p>
-<ul>
-<li>
-<h4 id="基础工具"><strong>基础工具</strong></h4>
-<ol>
-<li><strong>基本概念</strong>：state, action, reward, return, episode, policy, mdp&hellip;</li>
-<li><strong>贝尔曼公式</strong>：用于评价策略</li>
-<li><strong>贝尔曼最优公式</strong>：强化学习的最终目标是求解最优策略</li>
-</ol>
-</li>
-<li>
-<h4 id="算法方法">算法/方法</h4>
-<ol start="4">
-<li><strong>值迭代、策略迭代—— truncated policy iteration</strong>：值和策略update不断迭代</li>
-<li><strong>Monte Carlo Learning</strong>：无模型学习</li>
-<li><strong>随即近似理论</strong>：from non-incremental to incremental</li>
-<li><strong>时序差分方法(TD)</strong></li>
-<li><strong>值函数估计</strong>：tabular representation to function representation，引入神经网络</li>
-<li><strong>Policy Gradient Methods</strong>：from value-based to policy-based</li>
-<li><strong>Actor-Critic Methods</strong>：policy-based + value-based</li>
-</ol>
-</li>
-</ul>
+      <p>尊敬的各位老师好！我叫杨瑷珺，本科就读于北京航空航天大学，计算机科学与技术专业。</p>
+<p>在校期间，我掌握了较扎实的数学基础和编程能力，通过查阅期刊论文了解最新科研动向。</p>
+<p>除此之外，我积极参与各类比赛并获得奖项，有效提升了我的工程实践能力。在毕业设计中，我独立完成从文献调研到模型实现的全流程工作，并且，该项目被获评为北航校级优秀毕设。</p>
+<p>在实践方面，我先后在中国软件与技术服公司、北京航空航天大学和清华大学进行实习。实习期间，我参与了世界模型、时间序列预测、强化学习和目标检测等人工智能相关项目。这些经历使我不仅掌握了深层技术，更形成了&quot;从理论到应用&quot;的完整研发视角。</p>
+<p>上海交通大学一直是我向往的学校，很希望能得到在贵校学习的机会。攻读研究生期间，我会专注于理论与实践的双向发展，深入学习技术背后的底层原理。我的目标是成为一名优秀的工程师，为这个行业做出实质性贡献。我深信计算机领域的技术发展，必将将推动社会的下一场变革。</p>
+<p>以上是我的自我介绍。非常感谢各位老师的聆听！</p>
+    </div>
+  <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="link black dim">
+        「复试」英语口语
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Good morning, professors. My name is Yang Aijun. I am from Beihang University, where I majored in Computer Science and Technology. During my undergraduate studies, I built a strong foundation in mathematics and programming, and I try to keep up with the latest developments in computer science by reviewing journal papers. I actively participated in various competitions, and earned awards for my efforts. And my graduation thesis was recognized as one of the most outstanding project at the school level.</p>
+<p>Additionally, I have gained practical experience through internships at China Software and Technology Company, Beihang University, and Tsinghua University. During these experiences, I worked on AI-related projects such as world models, time series prediction, reinforcement learning, and object detection. These experiences have greatly enhanced my skills and deepened my passion for computer science.</p>
+<p>As for my master studies, I plan to focus on both the theoretical and practical aspects of artificial intelligence, particularly reinforcement learning. My goal is to become an outstanding engineer and contribute meaningfully to this industry. I strongly believe that the progress made in these fields will drive significant changes in technology.</p>
+<p>That&rsquo;s all for my brief introdution. Thank you very much for taking the time to interview me.</p>
 <p> </p>
-<h2 id="1-基本概念">1 基本概念</h2>
-<h4 id="1-专有名词">1. 专有名词</h4>
-<ol>
-<li>
-<p><strong>grid-world</strong>：小机器人在网格里走路</p>
-</li>
-<li>
-<p><strong>state</strong>：agent在环境中的状态，用s1、s2&hellip;表示；s是列向量，可表示速度、加速度等</p>
-</li>
-<li>
-<p><strong>state space</strong>：即把所有的state放在一起的集合</p>
-</li>
-<li>
-<p><strong>action</strong>：可采取的行动，如往上走、往右走&hellip;</p>
-</li>
-<li>
-<p><strong>action-space</strong>：所有的action放在一起的集合，用A表示</p>
-</li>
-<li>
-<p><strong>state transition</strong>：采取一个action后，从一个state转到另一个state的过程；定义了agent与环境的一种交互行为</p>
-</li>
-<li>
-<p><strong>forbidden area</strong>：进去后受到惩罚/不可进入</p>
-</li>
-</ol>
+<p>不要说自己英文不好，按照自己理解的逻辑即可。主要是靠英文能力，不是考内容。能表达自己听到的问题，流利回答，<strong>语速不要太快</strong>。有前置语言。所有的问题是没有标准答案的，要自信。</p>
+<p>有五到六个考官，面对主考官说即可。眼睛一定要面对老师。就算老师没关注我，也要注视老师，可眼神互动。</p>
+<p>不要说，自己可能回答的不够好，要展现自己的自信。</p>
     </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        BEV 论文学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
-<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
-<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
-<h4 id="1-背景介绍">1. 背景介绍</h4>
-<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
-<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
-<h4 id="3-主要方法分类">3. 主要方法分类</h4>
-<ol>
-<li>
-<p><strong>基于几何的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
-<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于深度的方法</strong></p>
-<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
-<ul>
-<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
-<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
-</ul>
-</li>
-<li>
-<p><strong>基于MLP的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
-<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于Transformer的方法</strong>：</p>
-    </div>
-  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -347,7 +267,7 @@
         <a href="/post/page/5/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/13/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-03-31T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-03-31T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -150,12 +150,218 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        March 20, 2025
+        March 31, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/ppo/" class="link black dim">
-        PPO
+      <a href="/post/qlearing/" class="link black dim">
+        Q-learing
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><strong>无模型的强化学习</strong>：不需要事先知道环境的奖励函数和状态转移函数，而是直接使用和环境交互的过程中采样到的数据来学习。</p>
+<h2 id="1-时序差分方法">1. 时序差分方法</h2>
+<p>时序差分方法核心：对未来动作选择的价值估计来更新对当前动作选择的价值估计。</p>
+<h3 id="蒙特卡洛方法monte-carlo-methods">蒙特卡洛方法（Monte-Carlo methods）</h3>
+<p>使用重复随机抽样，然后运用概率统计方法来从抽样结果中归纳出我们想求的目标的数值估计。</p>
+<ul>
+<li>
+<p>用蒙特卡洛方法来估计一个策略在一个马尔可夫决策过程中的状态价值函数：<strong>用样本均值作为期望值的估计</strong></p>
+<ol>
+<li>在 MDP 上采样很多条序列，计算从这个状态出发的回报再求其期望</li>
+<li>一条序列只计算一次回报，也就是这条序列第一次出现该状态时计算后面的累积奖励，而后面再次出现该状态时，该状态就被忽略了。</li>
+</ol>
+</li>
+<li>
+<p>蒙特卡洛方法对价值函数的增量更新方式</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/1.png" alt="1"></p>
+</li>
+<li>
+<p>时序差分方法只需要当前步结束即可进行计算</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/2.png" alt="2"></p>
+</li>
+</ul>
+<p> </p>
+<p> </p>
+<h2 id="2-sarsa-算法在线策略">2. Sarsa 算法：在线策略</h2>
+<p>在不知道奖励函数和状态转移函数的情况下该怎么进行策略提升呢？</p>
+<p>直接用时序差分算法来估计动作价值函数 Q：</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/3.png" alt="3"></p>
+<p>然后用贪婪算法来选取在某个状态下动作价值最大的那个动作，即 agrmaxQ(s,a)。</p>
+<p>但是，不能一直是贪婪：</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/4.png" alt="4"></p>
+<p> </p>
+<h4 id="sarsa">Sarsa</h4>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/5.png" alt="5"></p>
+<p>必须使用当前贪婪策略采样得到的数据</p>
+<p> </p>
+<p> </p>
+<h2 id="3-q-learning离线策略">3. Q-learning：离线策略</h2>
+<p>Q-learning 的时序差分更新方式：</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/6.png" alt="6"></p>
+<p>不一定必须使用当前贪心策略采样得到的数据，因为**给定任意(s, a, r, s&rsquo;)**都可以直接根据更新公式来更新Q；为了探索，我们通常使用一个-贪婪策略来与环境交互。</p>
+<p> </p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/QLearning/7.png" alt="7"></p>
+<p> </p>
+<p>class QLearning:
+&quot;&quot;&quot; Q-learning算法 &quot;&quot;&quot;
+def <strong>init</strong>(self, ncol, nrow, epsilon, alpha, gamma, n_action=4):
+self.Q_table = np.zeros([nrow * ncol, n_action])  # 初始化Q(s,a)表格
+self.n_action = n_action  # 动作个数
+self.alpha = alpha  # 学习率
+self.gamma = gamma  # 折扣因子
+self.epsilon = epsilon  # epsilon-贪婪策略中的参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):  <span style="color:#75715e">#选取下一步的操作</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>epsilon:
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(self<span style="color:#f92672">.</span>n_action)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(self<span style="color:#f92672">.</span>Q_table[state])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> action
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_action</span>(self, state):  <span style="color:#75715e"># 用于打印策略</span>
+</span></span><span style="display:flex;"><span>    Q_max <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max(self<span style="color:#f92672">.</span>Q_table[state])
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n_action)]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n_action):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>Q_table[state, i] <span style="color:#f92672">==</span> Q_max:
+</span></span><span style="display:flex;"><span>            a[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, s0, a0, r, s1):
+</span></span><span style="display:flex;"><span>    td_error <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>Q_table[s1]<span style="color:#f92672">.</span>max(
+</span></span><span style="display:flex;"><span>    ) <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>Q_table[s0, a0]
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>Q_table[s0, a0] <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>alpha <span style="color:#f92672">*</span> td_error
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>epsilon <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
+</span></span><span style="display:flex;"><span>alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> QLearning(ncol, nrow, epsilon, alpha, gamma)
+</span></span><span style="display:flex;"><span>num_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>  <span style="color:#75715e"># 智能体在环境中运行的序列的数量</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>return_list <span style="color:#f92672">=</span> []  <span style="color:#75715e"># 记录每一条序列的回报</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):  <span style="color:#75715e"># 显示10个进度条</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># tqdm的进度条功能</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tqdm(total<span style="color:#f92672">=</span>int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>), desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Iteration </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i) <span style="color:#66d9ef">as</span> pbar:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i_episode <span style="color:#f92672">in</span> range(int(num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>)):  <span style="color:#75715e"># 每个进度条的序列数</span>
+</span></span><span style="display:flex;"><span>            episode_return <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            state <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span>            done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+</span></span><span style="display:flex;"><span>                action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>take_action(state)
+</span></span><span style="display:flex;"><span>                next_state, reward, done <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+</span></span><span style="display:flex;"><span>                episode_return <span style="color:#f92672">+=</span> reward  <span style="color:#75715e"># 这里回报的计算不进行折扣因子衰减</span>
+</span></span><span style="display:flex;"><span>                agent<span style="color:#f92672">.</span>update(state, action, reward, next_state)
+</span></span><span style="display:flex;"><span>                state <span style="color:#f92672">=</span> next_state
+</span></span><span style="display:flex;"><span>            return_list<span style="color:#f92672">.</span>append(episode_return)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:  <span style="color:#75715e"># 每10条序列打印一下这10条序列的平均回报</span>
+</span></span><span style="display:flex;"><span>                pbar<span style="color:#f92672">.</span>set_postfix({
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;episode&#39;</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (num_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> i_episode <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;return&#39;</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%.3f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> np<span style="color:#f92672">.</span>mean(return_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>:])
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>            pbar<span style="color:#f92672">.</span>update(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>episodes_list <span style="color:#f92672">=</span> list(range(len(return_list)))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(episodes_list, return_list)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Episodes&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Returns&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Q-learning on </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#39;Cliff Walking&#39;</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>action_meaning <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;^&#39;</span>, <span style="color:#e6db74">&#39;v&#39;</span>, <span style="color:#e6db74">&#39;&lt;&#39;</span>, <span style="color:#e6db74">&#39;&gt;&#39;</span>]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Q-learning算法最终收敛得到的策略为：&#39;</span>)
+</span></span><span style="display:flex;"><span>print_agent(agent, env, action_meaning, list(range(<span style="color:#ae81ff">37</span>, <span style="color:#ae81ff">47</span>)), [<span style="color:#ae81ff">47</span>])
+</span></span></code></pre></div>
+    </div>
+  <a href="/post/qlearing/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 31, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/" class="link black dim">
+        强化学习-易混淆点
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <ol>
+<li>
+<h3 id="状态价值函数-vs-动作价值函数">状态价值函数 vs 动作价值函数</h3>
+<ol>
+<li>
+<p><strong>状态价值函数</strong></p>
+<p><img src="/images/RLconfused/1.png" alt="1"></p>
+</li>
+<li>
+<p><strong>动作价值函数</strong></p>
+<p><img src="/images/RLconfused/2.png" alt="2"></p>
+</li>
+</ol>
+<ul>
+<li>
+<p>关系</p>
+<p><img src="/images/RLconfused/3.png" alt="3"></p>
+<p><img src="/images/RLconfused/4.png" alt="4"></p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+    </div>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
+        PPO 代码实现
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-论文详读">1. 论文详读</h2>
+<p><a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization Algorithms</a></p>
+<p> </p>
+<h2 id="2-policy-gradient">2. Policy Gradient</h2>
+<h3 id="1-完整过程">1. 完整过程</h3>
+<ol>
+<li>
+<p>随机初始化 actor 参数 theta</p>
+</li>
+<li>
+<p>玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward</p>
+</li>
+<li>
+<p>用得到的 data 去更新参数 theta</p>
+<p><img src="/images/PPOcode/1.png" alt="1"></p>
+<p><img src="/images/PPOcode/2.png" alt="2"></p>
+<p>如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。</p>
+</li>
+</ol>
+    </div>
+  <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/ppo-%E5%8E%9F%E7%90%86/" class="link black dim">
+        PPO 原理
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
@@ -191,8 +397,7 @@
 </ol>
 </li>
 <li>
-<p><strong>Trajectory/Episode/Rollout</strong>：轨迹，用t表示，一连串状态和动作的序列。</p>
-<p>有的状态转移是确定的，也有的是不确定的。</p>
+<p><strong>Trajectory/Episode/Rollout</strong>：轨迹，用 t 表示一连串状态和动作的序列。有的状态转移是确定的，也有的是不确定的。</p>
 </li>
 <li>
 <p><strong>Return</strong>：回报，从当前时间点到游戏结束的 Reward 的累积和。</p>
@@ -200,7 +405,7 @@
 </ol>
 <p>强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。</p>
     </div>
-  <a href="/post/ppo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/ppo-%E5%8E%9F%E7%90%86/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -222,93 +427,17 @@
 <p> </p>
 <h3 id="lora">LoRa</h3>
 <p>通过化简权重矩阵，实现高效微调</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/1.png" alt="1"></p>
+<p><img src="/images/preTrain/1.png" alt="1"></p>
 <p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
 <p>训练参数量减少，但微调效果基本不变。</p>
 <ul>
 <li>
 <p>两个重要参数：</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/2.png" alt="2"></p>
+<p><img src="/images/preTrain/2.png" alt="2"></p>
 </li>
 </ul>
-<p>Lora 的<strong>优点</strong>：</p>
-<ol>
-<li>﻿﻿﻿大大节省微调大模型的参数量</li>
-<li>﻿﻿﻿效果和全量微调差不多。</li>
-<li>﻿﻿微调完的Lora模型，权重可以Merge回原来的权重，不会改变模型结构，推理时不增加额外计算量。</li>
-<li>﻿﻿你可以通过改变r参数，最高情况等同于全量微调。</li>
-</ol>
-<p> </p>
-<p> </p>
-<h2 id="大模型微调sft-trainer">大模型微调：SFT Trainer</h2>
-<p>SFT：Supervised Fine-Tuning</p>
-<h4 id="1-chat-tempate">1 Chat Tempate</h4>
-<p>在预训练基础上，更好回答人类的问题。</p>
-<ul>
-<li>网络结构：基本相同</li>
-<li>loss函数：基本相同</li>
-<li>训练数据：不同</li>
-</ul>
-<p>微调时，格式需要与原厂一致效果更好。</p>
-<p>输入整个对话，对整个对话文本进行学习，<strong>对每个输出token计算loss</strong>。</p>
-<p> </p>
-<h4 id="2-completions-only">2 Completions only</h4>
-<p>输入整个对话，对整个对话文本进行学习，<strong>只对回答部分进行loss计算</strong>。</p>
-<p>用一个loss mask来实现，query部分不需要计算loss。</p>
-<p> </p>
-<h4 id="3-neftunenoisy-embeddings-finetuning">3 NEFTune：Noisy Embeddings Finetuning</h4>
-<p>图像领域的数据增强：通过旋转等操作生成更多样本。</p>
-<p>对文本数据的增强：给每个token的embeding随机加上一些噪声，让原有token变成其他相近的token。如，<em>漂亮</em>变成了<em>美丽</em>。</p>
-<p> </p>
-<p> </p>
     </div>
   <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 21, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/lift-splat-shoot/" class="link black dim">
-        Lift-splat-shoot
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="1-语义分割">1. 语义分割</h3>
-<p><strong>目标</strong>：将图像中的每个像素分配一个语义类别标签。</p>
-<ul>
-<li><strong>输入</strong>：一张RGB图像（或其他类型的图像，如深度图、红外图等）。</li>
-<li><strong>输出</strong>：像素级标签图，标注出道路、车辆、行人、交通标志等类别。</li>
-</ul>
-<p>在自动驾驶中，多个传感器作为输入，每个传感器都有不同的坐标系，感知模型最终的任务是在**新的坐标系（自我汽车的坐标系）**中产生预测，供下游规划者使用。</p>
-<p> </p>
-<h3 id="2-论文阅读">2. 论文阅读</h3>
-<p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
-<p>本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。</p>
-<ol>
-<li>
-<h4 id="introduction">Introduction</h4>
-<p>目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。</p>
-<ul>
-<li>
-<p>单视图扩展成多视图的对称性：</p>
-<ol>
-<li><strong>平移等方差</strong>： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。</li>
-<li><strong>Permutation invariance</strong>： 最终输出不取决于 n 相机的特定顺序。</li>
-<li><strong>自我框架等距等方差</strong>： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。</li>
-</ol>
-<p>缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。</p>
-</li>
-</ul>
-<p>传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。</p>
-</li>
-</ol>
-    </div>
-  <a href="/post/lift-splat-shoot/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -319,8 +448,8 @@
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/" class="link black dim">
-        强化学习-基础工具（1-3）
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="link black dim">
+        强化学习-数学基础
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
@@ -348,34 +477,8 @@
 </ol>
 </li>
 </ul>
-<p> </p>
-<h2 id="1-基本概念">1 基本概念</h2>
-<h4 id="1-专有名词">1. 专有名词</h4>
-<ol>
-<li>
-<p><strong>grid-world</strong>：小机器人在网格里走路</p>
-</li>
-<li>
-<p><strong>state</strong>：agent在环境中的状态，用s1、s2&hellip;表示；s是列向量，可表示速度、加速度等</p>
-</li>
-<li>
-<p><strong>state space</strong>：即把所有的state放在一起的集合</p>
-</li>
-<li>
-<p><strong>action</strong>：可采取的行动，如往上走、往右走&hellip;</p>
-</li>
-<li>
-<p><strong>action-space</strong>：所有的action放在一起的集合，用A表示</p>
-</li>
-<li>
-<p><strong>state transition</strong>：采取一个action后，从一个state转到另一个state的过程；定义了agent与环境的一种交互行为</p>
-</li>
-<li>
-<p><strong>forbidden area</strong>：进去后受到惩罚/不可进入</p>
-</li>
-</ol>
     </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -386,8 +489,8 @@
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        强化学习
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" class="link black dim">
+        强化学习-直观理解
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
@@ -413,7 +516,7 @@
 </li>
 </ul>
     </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -453,6 +556,422 @@
         
       
         <h2 class="f1">
+          <a href="/tags/deep-learning/" class="link blue hover-black">
+            Tag: Deep Learning
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 30, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E9%87%8F%E5%8C%96/" class="link black dim">
+        Quantization
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="线性量化">线性量化</h1>
+<h2 id="量化和去量化">量化和去量化</h2>
+<p>量化指将一个大集合映射到一个较小值集合的过程。</p>
+<p><img src="/images/Quanti/1.png" alt="1"></p>
+<h3 id="可以量化的内容">可以量化的内容</h3>
+<ul>
+<li><strong>The weights</strong>: Neural network parameters</li>
+<li>﻿﻿<strong>The activations</strong>: Values that propagate through the layers of the neural network</li>
+</ul>
+    </div>
+  <a href="/post/%E9%87%8F%E5%8C%96/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 31, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/object-detection/" class="link black dim">
+        目标检测
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/CV/19.png" alt="19"></p>
+<ul>
+<li>
+<p>技巧</p>
+<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="定位">定位</h3>
+<p><img src="/images/CV/20.png" alt="20"></p>
+<p>Need to output bx, by, bn, bw, class label (1-4)</p>
+<p><img src="/images/CV/21.png" alt="21"></p>
+<p>需人工标注<strong>特征点的坐标</strong></p>
+<p> </p>
+<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
+<ol>
+<li>先训练卷积网络识别物体</li>
+<li>滑动+放大窗口+再次滑动</li>
+</ol>
+<p><strong>问题</strong>：计算效率大，慢</p>
+<p> </p>
+    </div>
+  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 27, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/cv/" class="link black dim">
+        CV
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
+<h3 id="边缘检测">边缘检测</h3>
+<ol>
+<li>
+<p><strong>垂直边缘检测滤波</strong></p>
+<p><img src="/images/CV/6.png" alt="6"></p>
+</li>
+<li>
+<p><strong>变权</strong></p>
+<p><img src="/images/CV/7.png" alt="7"></p>
+</li>
+<li>
+<p><strong>利用反向传播学习</strong></p>
+</li>
+</ol>
+<p> </p>
+<h3 id="padding">Padding</h3>
+<ol>
+<li>
+<p>Padding：外层填充像素</p>
+<ul>
+<li>存在问题：
+<ul>
+<li>throw away information from edge</li>
+<li>shranky output</li>
+</ul>
+</li>
+</ul>
+<p>解决：<strong>外层填充像素</strong></p>
+</li>
+<li>
+<p>填充多少像素？</p>
+<ul>
+<li>
+<p><strong>Valid:</strong> (n-f+1) * (n-f+1)</p>
+</li>
+<li>
+<p><strong>Same</strong>: Pad so that output size is the same as the input size.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+    </div>
+  <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/cv/" class="link blue hover-black">
+            Tag: CV
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="link black dim">
+        语义分割
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>语义分割将图片中的<strong>每个像素</strong>分类到对应的类别。</p>
+<p><img src="/images/SemanticSegmentation/1.png" alt="1"></p>
+<ul>
+<li>
+<p><strong>应用</strong>：</p>
+<p>背景虚化、路面分割、实例分割(会关注具体是哪个个体，如 Mask R-CNN)、全景分割（还要对背景进行分割，如 Panoptic FPN）</p>
+</li>
+<li>
+<p><strong>常见模型</strong></p>
+<p><img src="/images/SemanticSegmentation/5.png" alt="5"></p>
+</li>
+<li>
+<p><strong>语义分割任务常见的数据集格式</strong></p>
+<ul>
+<li><strong>PASCAL VOC</strong>：PNG图片 + 每个像素的类别信息（每个像素都对应一个颜色）</li>
+<li><strong>MS COCO</strong>：每个目标都记录了一个多边形坐标，将所有的点连一起，即可得到边缘信息(还可以用于实例分析)</li>
+<li><strong>语义分割得到的具体形式</strong>：单通道图片，加上调色板 mask 蒙版后可以上色（palette），方便可视化。每个像素数值对应类别索引。</li>
+</ul>
+</li>
+</ul>
+    </div>
+  <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 27, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/lift-splat-shoot/" class="link black dim">
+        Lift-splat-shoot
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<h3 id="1-关键lift">1. 关键：Lift</h3>
+<p><img src="/images/lss/1.png" alt="1"></p>
+<ol>
+<li>
+<p><strong>特征提取&amp;深度估计</strong></p>
+<p>多视角相机输入后，进行特征提取与深度估计</p>
+</li>
+<li>
+<p><strong>外积（Outer product）</strong>—— 最核心的操作</p>
+<p>无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。</p>
+<p>使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。</p>
+</li>
+<li>
+<p><strong>Grid Sampling</strong></p>
+<p>目的：将构造出的 Frustum Feature 利用相机外参和内参转换到BEV视角下。</p>
+<p>过程：<strong>通过限定好 BEV 视角的范围，划定好一个个的 grid，将能够投影到相应 grid 的 Feature 汇总到一个 grid 里</strong>。</p>
+</li>
+</ol>
+    </div>
+  <a href="/post/lift-splat-shoot/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        BEV 论文学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
+<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
+<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
+<h4 id="1-背景介绍">1. 背景介绍</h4>
+<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
+<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
+<h4 id="3-主要方法分类">3. 主要方法分类</h4>
+<ol>
+<li>
+<p><strong>基于几何的方法</strong></p>
+<ul>
+<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
+<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于深度的方法</strong></p>
+<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
+<ul>
+<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
+<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
+</ul>
+</li>
+<li>
+<p><strong>基于MLP的方法</strong></p>
+<ul>
+<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
+<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于Transformer的方法</strong>：</p>
+    </div>
+  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<p> </p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+<p> </p>
+<p> </p>
+<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
+<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
+<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
+<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
+<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
+<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
+<ul>
+<li><strong>Word2Vec</strong>（2013）：
+<ul>
+<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
+<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
+</ul>
+</li>
+<li><strong>GloVe</strong>（2014）：
+<ul>
+<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
+</ul>
+</li>
+</ul>
+<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
+<p> </p>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 31, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/object-detection/" class="link black dim">
+        目标检测
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/CV/19.png" alt="19"></p>
+<ul>
+<li>
+<p>技巧</p>
+<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="定位">定位</h3>
+<p><img src="/images/CV/20.png" alt="20"></p>
+<p>Need to output bx, by, bn, bw, class label (1-4)</p>
+<p><img src="/images/CV/21.png" alt="21"></p>
+<p>需人工标注<strong>特征点的坐标</strong></p>
+<p> </p>
+<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
+<ol>
+<li>先训练卷积网络识别物体</li>
+<li>滑动+放大窗口+再次滑动</li>
+</ol>
+<p><strong>问题</strong>：计算效率大，慢</p>
+<p> </p>
+    </div>
+  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/%E9%9D%A2%E8%AF%95/" class="link blue hover-black">
+            Tag: 面试
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="link black dim">
+        「复试」项目
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>尊敬的各位老师好！我叫杨瑷珺，本科就读于北京航空航天大学，计算机科学与技术专业。</p>
+<p>在校期间，我掌握了较扎实的数学基础和编程能力，通过查阅期刊论文了解最新科研动向。</p>
+<p>除此之外，我积极参与各类比赛并获得奖项，有效提升了我的工程实践能力。在毕业设计中，我独立完成从文献调研到模型实现的全流程工作，并且，该项目被获评为北航校级优秀毕设。</p>
+<p>在实践方面，我先后在中国软件与技术服公司、北京航空航天大学和清华大学进行实习。实习期间，我参与了世界模型、时间序列预测、强化学习和目标检测等人工智能相关项目。这些经历使我不仅掌握了深层技术，更形成了&quot;从理论到应用&quot;的完整研发视角。</p>
+<p>上海交通大学一直是我向往的学校，很希望能得到在贵校学习的机会。攻读研究生期间，我会专注于理论与实践的双向发展，深入学习技术背后的底层原理。我的目标是成为一名优秀的工程师，为这个行业做出实质性贡献。我深信计算机领域的技术发展，必将将推动社会的下一场变革。</p>
+<p>以上是我的自我介绍。非常感谢各位老师的聆听！</p>
+    </div>
+  <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="link black dim">
+        「复试」英语口语
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Good morning, professors. My name is Yang Aijun. I am from Beihang University, where I majored in Computer Science and Technology. During my undergraduate studies, I built a strong foundation in mathematics and programming, and I try to keep up with the latest developments in computer science by reviewing journal papers. I actively participated in various competitions, and earned awards for my efforts. And my graduation thesis was recognized as one of the most outstanding project at the school level.</p>
+<p>Additionally, I have gained practical experience through internships at China Software and Technology Company, Beihang University, and Tsinghua University. During these experiences, I worked on AI-related projects such as world models, time series prediction, reinforcement learning, and object detection. These experiences have greatly enhanced my skills and deepened my passion for computer science.</p>
+<p>As for my master studies, I plan to focus on both the theoretical and practical aspects of artificial intelligence, particularly reinforcement learning. My goal is to become an outstanding engineer and contribute meaningfully to this industry. I strongly believe that the progress made in these fields will drive significant changes in technology.</p>
+<p>That&rsquo;s all for my brief introdution. Thank you very much for taking the time to interview me.</p>
+<p> </p>
+<p>不要说自己英文不好，按照自己理解的逻辑即可。主要是靠英文能力，不是考内容。能表达自己听到的问题，流利回答，<strong>语速不要太快</strong>。有前置语言。所有的问题是没有标准答案的，要自信。</p>
+<p>有五到六个考官，面对主考官说即可。眼睛一定要面对老师。就算老师没关注我，也要注视老师，可眼神互动。</p>
+<p>不要说，自己可能回答的不够好，要展现自己的自信。</p>
+    </div>
+  <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/llm/" class="link blue hover-black">
             Tag: LLM
           </a>
@@ -476,45 +995,15 @@
 <p> </p>
 <h3 id="lora">LoRa</h3>
 <p>通过化简权重矩阵，实现高效微调</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/1.png" alt="1"></p>
+<p><img src="/images/preTrain/1.png" alt="1"></p>
 <p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
 <p>训练参数量减少，但微调效果基本不变。</p>
 <ul>
 <li>
 <p>两个重要参数：</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/2.png" alt="2"></p>
+<p><img src="/images/preTrain/2.png" alt="2"></p>
 </li>
 </ul>
-<p>Lora 的<strong>优点</strong>：</p>
-<ol>
-<li>﻿﻿﻿大大节省微调大模型的参数量</li>
-<li>﻿﻿﻿效果和全量微调差不多。</li>
-<li>﻿﻿微调完的Lora模型，权重可以Merge回原来的权重，不会改变模型结构，推理时不增加额外计算量。</li>
-<li>﻿﻿你可以通过改变r参数，最高情况等同于全量微调。</li>
-</ol>
-<p> </p>
-<p> </p>
-<h2 id="大模型微调sft-trainer">大模型微调：SFT Trainer</h2>
-<p>SFT：Supervised Fine-Tuning</p>
-<h4 id="1-chat-tempate">1 Chat Tempate</h4>
-<p>在预训练基础上，更好回答人类的问题。</p>
-<ul>
-<li>网络结构：基本相同</li>
-<li>loss函数：基本相同</li>
-<li>训练数据：不同</li>
-</ul>
-<p>微调时，格式需要与原厂一致效果更好。</p>
-<p>输入整个对话，对整个对话文本进行学习，<strong>对每个输出token计算loss</strong>。</p>
-<p> </p>
-<h4 id="2-completions-only">2 Completions only</h4>
-<p>输入整个对话，对整个对话文本进行学习，<strong>只对回答部分进行loss计算</strong>。</p>
-<p>用一个loss mask来实现，query部分不需要计算loss。</p>
-<p> </p>
-<h4 id="3-neftunenoisy-embeddings-finetuning">3 NEFTune：Noisy Embeddings Finetuning</h4>
-<p>图像领域的数据增强：通过旋转等操作生成更多样本。</p>
-<p>对文本数据的增强：给每个token的embeding随机加上一些噪声，让原有token变成其他相近的token。如，<em>漂亮</em>变成了<em>美丽</em>。</p>
-<p> </p>
-<p> </p>
     </div>
   <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -587,6 +1076,7 @@
 <h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
 <p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
 <p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<p> </p>
 <h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
 <h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
 <ul>
@@ -603,6 +1093,8 @@
 <li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
 <li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
+<p> </p>
+<p> </p>
 <h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
 <h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
 <p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
@@ -623,6 +1115,7 @@
 </li>
 </ul>
 <p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
+<p> </p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -987,238 +1480,7 @@
 </span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：abc 10
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-</span></span></code></pre></div><p> </p>
-<h3 id="结构体-struct">结构体 struct</h3>
-<h5 id="定义结构体">定义结构体</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Person</span> {
-</span></span><span style="display:flex;"><span>    string name;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 自定义构造函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Person(string n, <span style="color:#66d9ef">int</span> a) {
-</span></span><span style="display:flex;"><span>        name <span style="color:#f92672">=</span> n;
-</span></span><span style="display:flex;"><span>        age <span style="color:#f92672">=</span> a;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printInfo</span>() {
-</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Name: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, Age: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> age <span style="color:#f92672">&lt;&lt;</span> endl;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><h5 id="使用构造函数初始化对象">使用构造函数初始化对象</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    Person p1(<span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#ae81ff">25</span>); <span style="color:#75715e">// 使用构造函数初始化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    p1.printInfo();         <span style="color:#75715e">// 输出: Name: Alice, Age: 25
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p> </p>
-<h3 id="逻辑运算符">逻辑运算符</h3>
-<ol>
-<li>
-<p><strong>逻辑与（AND）</strong>：<code>&amp;&amp;</code></p>
-<ul>
-<li>
-<p>当且仅当两个操作数都为 <code>true</code> 时，结果为 <code>true</code>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> b <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 当 a 和 b 都大于 0 时执行
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li>
-<p><strong>逻辑或（OR）</strong>：<code>||</code></p>
-<ul>
-<li>
-<p>当至少有一个操作数为 <code>true</code> 时，结果为 <code>true</code>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> b <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 当 a 或 b 中至少有一个大于 0 时执行
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-<li>
-<p><strong>逻辑非（NOT）</strong>：<code>!</code></p>
-<ul>
-<li>
-<p>对操作数的逻辑值取反。如果操作数为 <code>true</code>，则结果为 <code>false</code>；反之亦然。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 当 a 不大于 0 时执行
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div></li>
-</ul>
-</li>
-</ol>
-<p> </p>
-<h3 id="传值和传引用">传值和传引用</h3>
-<p>函数参数的传递方式主要有两种：<strong>传值</strong>和<strong>传引用</strong>。</p>
-<h4 id="传值pass-by-value">传值（Pass by Value）</h4>
-<p><strong>传值</strong>是指将函数参数的一个副本传递给函数，在函数内部对该副本的修改<strong>不会影响</strong>到原始数据。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">modifyValue</span>(<span style="color:#66d9ef">int</span> x) {
-</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;  <span style="color:#75715e">// 只修改副本，不会影响原始数据
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
-</span></span><span style="display:flex;"><span>    modifyValue(num);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出：5
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After modifyValue, num = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> endl;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>在上述代码中，<code>num</code> 的值在调用 <code>modifyValue</code> 后并未改变，因为传入的是 <code>num</code> 的副本，函数内的修改仅影响副本。</p>
-<h4 id="传引用pass-by-reference">传引用（Pass by Reference）</h4>
-<p><strong>传引用</strong>是指将实参的地址传递给函数，函数可以直接操作原始数据。这意味着<strong>对参数的修改会直接影响原始数据</strong>。</p>
-<p><strong>高效</strong>：避免了拷贝大型数据结构的开销，适合传递较大的对象。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">modifyReference</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>x) {
-</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;  <span style="color:#75715e">// 修改原始数据
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
-</span></span><span style="display:flex;"><span>    modifyReference(num);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出：10
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After modifyReference, num = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> endl;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>在上述代码中，<code>num</code> 的值被修改为 10，因为我们传递的是 <code>num</code> 的引用，函数内对 <code>x</code> 的修改直接影响了 <code>num</code>。</p>
-<p> </p>
-<h4 id="做算法题时的选择">做算法题时的选择</h4>
-<ul>
-<li>
-<p>如果是传递<strong>基本类型</strong>，比如 <code>int</code>、<code>bool</code> 等，用传值比较多，因为这类数据一般不需要在函数内部修改，而且复制得开销很小。</p>
-</li>
-<li>
-<p>如果是传递<strong>容器</strong>，比如 <code>vector</code>、<code>unordered_map</code> 等，用传引用比较多，因为可以避免复制数据副本的开销，而且容器一般需要在函数内部修改。</p>
-</li>
-</ul>
-<p>特别注意: <strong>递归函数的参数千万别使用传值的方式，否则每次递归都会创建一个数据副本，消耗大量的内存和时间</strong>。</p>
-<p> </p>
-<h3 id="常见函数">常见函数</h3>
-<ol>
-<li>
-<h5 id="sort-函数"><code>sort</code> 函数</h5>
-<p>用于对容器中的元素进行排序。它的基本用法是：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sort(<span style="color:#960050;background-color:#1e0010">起始位置</span>, <span style="color:#960050;background-color:#1e0010">结束位置</span>, <span style="color:#960050;background-color:#1e0010">比较函数</span>);
-</span></span></code></pre></div><ul>
-<li><strong>起始位置</strong>：<code>edges.begin()</code>，表示从容器的第一个元素开始。</li>
-<li><strong>结束位置</strong>：<code>edges.end()</code>，表示到容器的最后一个元素结束。</li>
-<li><strong>比较函数</strong>：用于定义排序规则。</li>
-</ul>
-<p>如果需要<strong>升序</strong>排序，使用 <code>sort(classes.begin(), classes.end());</code>。</p>
-<p>如果需要<strong>降序</strong>排序，可以使用 <code>sort(classes.rbegin(), classes.rend());</code>。</p>
-<p> </p>
-<p>可以通过提供一个<strong>比较函数</strong>来定义排序规则 —— 使用一个 <strong>Lambda 表达式</strong>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sort(edges.begin(), edges.end(), [](vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> a, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">bool</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;</span> b[<span style="color:#ae81ff">0</span>];
-</span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><h5 id="lambda-表达式基本语法是">Lambda 表达式基本语法是：</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>[<span style="color:#960050;background-color:#1e0010">捕获列表</span>](<span style="color:#960050;background-color:#1e0010">参数列表</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#960050;background-color:#1e0010">返回类型</span> { <span style="color:#960050;background-color:#1e0010">函数体</span> }
-</span></span></code></pre></div><ul>
-<li><strong>捕获列表</strong>：<code>[]</code> 表示不捕获任何外部变量。</li>
-<li><strong>参数列表</strong>：我们需要比较两个边的权重。边的类型是 <code>vector&lt;int&gt;</code>，因此参数是 <code>vector&lt;int&gt;&amp; a</code> 和 <code>vector&lt;int&gt;&amp; b</code>。</li>
-<li><strong>返回类型</strong>：省略了，编译器会自动推断为 <code>bool</code>。</li>
-<li><strong>函数体</strong>：<code>return a[0] &lt; b[0];</code>，表示比较两个边的权重。</li>
-</ul>
-<p>比较规则：</p>
-<ul>
-<li><code>a[0]</code> 是第一条边的权重。</li>
-<li><code>b[0]</code> 是第二条边的权重。</li>
-<li><code>a[0] &lt; b[0]</code> 表示按权重从小到大排序。</li>
-</ul>
-</li>
-<li>
-<h5 id="resize函数">resize函数</h5>
-<ol>
-<li><strong><code>void resize(size_type n)</code></strong>
-<ul>
-<li>将向量的大小调整为 <code>n</code>。</li>
-<li>如果 <code>n</code> 小于当前大小，多余的元素会被删除。</li>
-<li>如果 <code>n</code> 大于当前大小，新元素会被默认初始化（对于基本类型如 <code>int</code>，初始化为 <code>0</code>；对于类类型，调用默认构造函数）。</li>
-</ul>
-</li>
-<li><strong><code>void resize(size_type n, const value_type&amp; val)</code></strong>
-<ul>
-<li>将向量的大小调整为 <code>n</code>。</li>
-<li>如果 <code>n</code> 小于当前大小，多余的元素会被删除。</li>
-<li>如果 <code>n</code> 大于当前大小，新元素会被初始化为 <code>val</code>。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>
-<h5 id="auto遍历">auto遍历</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> info: prerequisites) {
-</span></span><span style="display:flex;"><span>  edges[prerequisites[info[<span style="color:#ae81ff">0</span>]]].push_back(info[<span style="color:#ae81ff">1</span>]);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-<li>
-<h5 id="反转容器reverse-函数">反转容器：<code>reverse</code> 函数</h5>
-<p>将 <code>(first, last)</code> 范围内的元素反转</p>
-<ol>
-<li>
-<p>反转 <code>std::vector</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>};
-</span></span><span style="display:flex;"><span>reverse(vec.begin(), vec.end());		<span style="color:#75715e">// 5 4 3 2 1
-</span></span></span></code></pre></div></li>
-<li>
-<p>反转 <code>std::string</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, World!&#34;</span>;
-</span></span><span style="display:flex;"><span>reverse(str.begin(), str.end());		<span style="color:#75715e">// !dlroW ,olleH
-</span></span></span></code></pre></div></li>
-<li>
-<p>反转数组</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> arr[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">50</span>};
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(arr) <span style="color:#f92672">/</span> <span style="color:#66d9ef">sizeof</span>(arr[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>reverse(arr, arr <span style="color:#f92672">+</span> n);			<span style="color:#75715e">// 50 40 30 20 10
-</span></span></span></code></pre></div></li>
-</ol>
-</li>
-<li>
-<h5 id="max_element"><code>*max_element</code></h5>
-<p>C++ 标准库（STL）中的一个函数，用于查找容器（如数组、<code>vector</code> 等）中的最大值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>max_element(vec.begin(), vec.end());
-</span></span></code></pre></div><ul>
-<li><code>first</code>：指向容器起始位置的迭代器。</li>
-<li><code>last</code>：指向容器结束位置的迭代器（不包含在查找范围内）。</li>
-</ul>
-</li>
-</ol>
-<p> </p>
-<h3 id="动态数组-vector">动态数组 <code>vector</code></h3>
-<ol>
-<li>
-<h5 id="初始化">初始化：</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>, m <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个 int 型的空数组 nums
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个大小为 n 的数组 nums，数组中的值默认都为 0
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums(n);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个元素为 1, 3, 5 的数组 nums
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个大小为 n 的数组 nums，其值全都为 2
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums(n, <span style="color:#ae81ff">2</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个二维 int 数组 dp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> dp;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化一个大小为 m * n 的布尔数组 dp，
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 其中的值都初始化为 true
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;&gt;</span> dp(m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span>(n, true));
-</span></span></code></pre></div></li>
-</ol>
+</span></span></code></pre></div>
     </div>
   <a href="/post/%E7%AE%97%E6%B3%95-c&#43;&#43;%E8%AF%AD%E6%B3%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -1279,30 +1541,6 @@
       </tr>
   </tbody>
 </table>
-<hr>
-<p> </p>
-<h3 id="1-string-字符串"><strong>1. string 字符串</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
-</span></span><span style="display:flex;"><span>s <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34; World&#34;</span>;          <span style="color:#75715e">// 拼接
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> first_char <span style="color:#f92672">=</span> str[<span style="color:#ae81ff">0</span>];  <span style="color:#75715e">// 访问第1个字符（索引为0）&#39;H&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>string sub <span style="color:#f92672">=</span> s.substr(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>); <span style="color:#75715e">// substr(起始位置, 截取长度) → &#34;World&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>size_t pos <span style="color:#f92672">=</span> s.find(<span style="color:#e6db74">&#34;World&#34;</span>);<span style="color:#75715e">// 查找子串，返回位置，未找到返回 string::npos
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>s.length();              <span style="color:#75715e">// 字符串长度
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.empty();               <span style="color:#75715e">// 判断是否为空
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.starts_with(<span style="color:#e6db74">&#34;He&#34;</span>);     <span style="color:#75715e">// C++20 判断前缀
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>s.contains(<span style="color:#e6db74">&#34;or&#34;</span>);        <span style="color:#75715e">// C++20 判断是否包含子串
-</span></span></span></code></pre></div><hr>
-<p> </p>
-<h3 id="2-stack-栈">**2. **stack 栈</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> s;
-</span></span></code></pre></div><ol>
-<li>
-<p>压入元素：<code>push()</code></p>
     </div>
   <a href="/post/%E7%AE%97%E6%B3%95-c&#43;&#43;stl%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -1459,39 +1697,6 @@
 <p><strong>优雅做法</strong>：用两个指针i、j，分别指向第一和最后一个数，两指针向中间移动，使得i左小于x，j右大于x；否则交换i、所指的数。</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">quick_sort</span>(<span style="color:#66d9ef">int</span> q[], <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;=</span> r) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, j <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, x <span style="color:#f92672">=</span> q[l <span style="color:#f92672">+</span> r <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">do</span> i <span style="color:#f92672">++</span> ; <span style="color:#66d9ef">while</span> (q[i] <span style="color:#f92672">&lt;</span> x);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">do</span> j <span style="color:#f92672">--</span> ; <span style="color:#66d9ef">while</span> (q[j] <span style="color:#f92672">&gt;</span> x);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j) swap(q[i], q[j]);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    quick_sort(q, l, j), quick_sort(q, j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="2-归并排序">2. 归并排序</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge_sort</span>(<span style="color:#66d9ef">int</span> q[], <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;=</span> r) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> l <span style="color:#f92672">+</span> r <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>    merge_sort(q, l, mid);
-</span></span><span style="display:flex;"><span>    merge_sort(q, mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, i <span style="color:#f92672">=</span> l, j <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> mid <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;=</span> r)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (q[i] <span style="color:#f92672">&lt;=</span> q[j]) tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[j <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> mid) tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (j <span style="color:#f92672">&lt;=</span> r) tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[j <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> l, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> r; i <span style="color:#f92672">++</span>, j <span style="color:#f92672">++</span> ) q[i] <span style="color:#f92672">=</span> tmp[j];
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p> </p>
     </div>
   <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%9F%BA%E7%A1%80/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -1586,42 +1791,6 @@
 <p><strong>题目描述</strong>：给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
 <p><strong>方法</strong>：找数 <code>x</code>，寻找数组中是否存在 <code>target - x</code>。</p>
 <p>使用哈希表，可以将寻找 <code>target - x</code>的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code>插入到哈希表中，即可保证不会让 <code>x</code>和自己匹配。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> twoSum(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> target) {
-</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashtable;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> hashtable.find(target <span style="color:#f92672">-</span> nums[i]);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> hashtable.end()) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> {it<span style="color:#f92672">-&gt;</span>second, i};
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            hashtable[nums[i]] <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><ol>
-<li>
-<p><strong><code>find</code> 方法</strong></p>
-<p><code>find</code> 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：</p>
-<ul>
-<li>如果哈希表中存在该键，则返回一个指向该键值对的迭代器。</li>
-<li>如果哈希表中不存在该键，则返回 <code>hashtable.end()</code>，表示未找到。</li>
-</ul>
-</li>
-<li>
-<p><strong><code>auto it</code></strong></p>
-<ul>
-<li>
-<p><code>auto</code> 是 C++11 引入的关键字，用于自动推导变量的类型。</p>
-<p>在这里，<code>it</code> 的类型会被推导为哈希表迭代器的类型（例如 <code>std::unordered_map&lt;int, int&gt;::iterator</code>）。</p>
-</li>
-<li>
-<p><code>it</code> 是一个<strong>迭代器</strong>，指向哈希表中找到的键值对（如果找到的话）。</p>
-</li>
-</ul>
-</li>
-</ol>
 </li>
 </ol>
     </div>
@@ -1726,20 +1895,6 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据元素值查找索引，时间复杂度 O(N)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> arr.indexOf(<span style="color:#ae81ff">666</span>);
-</span></span></code></pre></div><p> </p>
-<h2 id="2-链表">2. 链表</h2>
-<p>在实际的编程语言中，我们使用的链表节点定义如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Node</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> {
-</span></span><span style="display:flex;"><span>    E val;
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> next;
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> prev;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Node(Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> prev, E element, Node<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> next) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.val <span style="color:#f92672">=</span> element;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.next <span style="color:#f92672">=</span> next;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.prev <span style="color:#f92672">=</span> prev;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
     </div>
   <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E6%95%B0%E7%BB%84%E9%93%BE%E8%A1%A8/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
@@ -1804,159 +1959,6 @@
         
       
         <h2 class="f1">
-          <a href="/tags/cv/" class="link blue hover-black">
-            Tag: CV
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        BEV 论文学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
-<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
-<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
-<h4 id="1-背景介绍">1. 背景介绍</h4>
-<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
-<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
-<h4 id="3-主要方法分类">3. 主要方法分类</h4>
-<ol>
-<li>
-<p><strong>基于几何的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
-<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于深度的方法</strong></p>
-<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
-<ul>
-<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
-<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
-</ul>
-</li>
-<li>
-<p><strong>基于MLP的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
-<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于Transformer的方法</strong>：</p>
-    </div>
-  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1基础">1基础</h1>
-<h2 id="1-特征提取">1. 特征提取</h2>
-<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
-<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li>
-<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
-</li>
-<li>
-<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
-<p><img src="/images/MLLM/1.png" alt="1"></p>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
-</ul>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 31, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/object-detection/" class="link black dim">
-        目标检测
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/CV/19.png" alt="19"></p>
-<ul>
-<li>
-<p>技巧</p>
-<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
-</li>
-</ul>
-<p> </p>
-<h3 id="定位">定位</h3>
-<p><img src="/images/CV/20.png" alt="20"></p>
-<p>Need to output bx, by, bn, bw, class label (1-4)</p>
-<p><img src="/images/CV/21.png" alt="21"></p>
-<p>需人工标注<strong>特征点的坐标</strong></p>
-<p> </p>
-<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
-<ol>
-<li>先训练卷积网络识别物体</li>
-<li>滑动+放大窗口+再次滑动</li>
-</ol>
-<p><strong>问题</strong>：计算效率大，慢</p>
-<p> </p>
-    </div>
-  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
           <a href="/tags/nlp/" class="link blue hover-black">
             Tag: NLP
           </a>
@@ -1980,6 +1982,7 @@
 <h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
 <p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
 <p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<p> </p>
 <h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
 <h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
 <ul>
@@ -1996,6 +1999,8 @@
 <li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
 <li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
+<p> </p>
+<p> </p>
 <h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
 <h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
 <p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
@@ -2016,172 +2021,9 @@
 </li>
 </ul>
 <p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
+<p> </p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/deep-learning/" class="link blue hover-black">
-            Tag: Deep Learning
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 31, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/object-detection/" class="link black dim">
-        目标检测
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/CV/19.png" alt="19"></p>
-<ul>
-<li>
-<p>技巧</p>
-<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
-</li>
-</ul>
-<p> </p>
-<h3 id="定位">定位</h3>
-<p><img src="/images/CV/20.png" alt="20"></p>
-<p>Need to output bx, by, bn, bw, class label (1-4)</p>
-<p><img src="/images/CV/21.png" alt="21"></p>
-<p>需人工标注<strong>特征点的坐标</strong></p>
-<p> </p>
-<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
-<ol>
-<li>先训练卷积网络识别物体</li>
-<li>滑动+放大窗口+再次滑动</li>
-</ol>
-<p><strong>问题</strong>：计算效率大，慢</p>
-<p> </p>
-    </div>
-  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 20, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/quantization/" class="link black dim">
-        Quantization
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="线性量化">线性量化</h1>
-<h2 id="量化和去量化">量化和去量化</h2>
-<p>量化指将一个大集合映射到一个较小值集合的过程。</p>
-<p><img src="/images/Quanti/1.png" alt="1"></p>
-<h3 id="可以量化的内容">可以量化的内容</h3>
-<ul>
-<li><strong>The weights</strong>: Neural network parameters</li>
-<li>﻿﻿<strong>The activations</strong>: Values that propagate through the layers of the neural network</li>
-</ul>
-<p>If you quantize the NN after it has been trained, you are doing <strong>post training quantization (PTQ)</strong></p>
-<h3 id="优点">优点</h3>
-<ol>
-<li>
-<p>更小的模型</p>
-</li>
-<li>
-<p>速度更快</p>
-<ul>
-<li>内存带宽</li>
-</ul>
-<ul>
-<li>
-<p>﻿﻿Faster operations</p>
-<ul>
-<li>
-<p>﻿﻿GEMM: General Matrix Multiply (matrix to matrix multiplication)</p>
-</li>
-<li>
-<p>﻿﻿GEMV: General Matrix Vector
-Multiplication (matrix to vector multiplication)</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="线性量化理论">线性量化理论</h3>
-<ul>
-<li>
-<p>参数</p>
-<p>Scale：s（e.g. in FP32）</p>
-<p>Zero point：z（e.g. INT8）</p>
-    </div>
-  <a href="/post/quantization/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 27, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/cv/" class="link black dim">
-        CV
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
-<h3 id="边缘检测">边缘检测</h3>
-<ol>
-<li>
-<p><strong>垂直边缘检测滤波</strong></p>
-<p><img src="/images/CV/6.png" alt="6"></p>
-</li>
-<li>
-<p><strong>变权</strong></p>
-<p><img src="/images/CV/7.png" alt="7"></p>
-</li>
-<li>
-<p><strong>利用反向传播学习</strong></p>
-</li>
-</ol>
-<p> </p>
-<h3 id="padding">Padding</h3>
-<ol>
-<li>
-<p>Padding：外层填充像素</p>
-<ul>
-<li>存在问题：
-<ul>
-<li>throw away information from edge</li>
-<li>shranky output</li>
-</ul>
-</li>
-</ul>
-<p>解决：<strong>外层填充像素</strong></p>
-</li>
-<li>
-<p>填充多少像素？</p>
-<ul>
-<li>
-<p><strong>Valid:</strong> (n-f+1) * (n-f+1)</p>
-</li>
-<li>
-<p><strong>Same</strong>: Pad so that output size is the same as the input size.</p>
-</li>
-</ul>
-</li>
-</ol>
-<p> </p>
-    </div>
-  <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         

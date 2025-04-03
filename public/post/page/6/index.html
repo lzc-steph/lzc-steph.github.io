@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,176 +153,166 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 12, 2025
+        March 14, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/btree/" class="link black dim">
-        二叉树
+      <a href="/post/%E7%AE%97%E6%B3%95-c&#43;&#43;stl%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8/" class="link black dim">
+        算法 - C&#43;&#43;STL常用容器
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="二叉树">二叉树</h1>
-<h2 id="二叉树的实现方式">二叉树的实现方式</h2>
+      <h4 id="插入函数总结">插入函数总结</h4>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">方法</th>
+          <th style="text-align: left">适用容器</th>
+          <th style="text-align: left">作用</th>
+          <th style="text-align: left">性能特性</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>push</code></td>
+          <td style="text-align: left"><code>queue</code>、<code>stack</code>、<code>priority_queue</code></td>
+          <td style="text-align: left">添加元素到容器末尾或顶部</td>
+          <td style="text-align: left">适用于特定容器，性能与容器实现相关</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>push_back</code></td>
+          <td style="text-align: left"><code>vector</code>、<code>deque</code>、<code>list</code></td>
+          <td style="text-align: left">添加元素到容器末尾</td>
+          <td style="text-align: left">需要拷贝或移动元素</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>emplace</code></td>
+          <td style="text-align: left"><code>set</code>、<code>map</code>、<code>unordered_set</code> 等</td>
+          <td style="text-align: left">在容器中直接构造元素</td>
+          <td style="text-align: left">避免不必要的拷贝或移动</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>emplace_back</code></td>
+          <td style="text-align: left"><code>vector</code>、<code>deque</code>、<code>list</code></td>
+          <td style="text-align: left">在容器末尾直接构造元素</td>
+          <td style="text-align: left">避免不必要的拷贝或移动</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>insert</code></td>
+          <td style="text-align: left">大多数容器</td>
+          <td style="text-align: left">将元素插入到容器的指定位置</td>
+          <td style="text-align: left">需要拷贝或移动元素</td>
+      </tr>
+  </tbody>
+</table>
+    </div>
+  <a href="/post/%E7%AE%97%E6%B3%95-c&#43;&#43;stl%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 12, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E6%A0%91/" class="link black dim">
+        「算法模版」树
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="层级遍历">层级遍历</h2>
+<p><strong>while</strong> 循环控制⼀层⼀层往下⾛，<strong>for</strong> 循环利⽤ <strong>sz</strong> 变量控制从左到右遍历每⼀层⼆叉树节点。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 输⼊⼀棵⼆叉树的根节点，层序遍历这棵⼆叉树
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">levelTraverse</span>(TreeNode root) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (root <span style="color:#f92672">==</span> null) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  Queue<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> q <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>  q.push(root);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> depth <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 从上到下遍历⼆叉树的每⼀层
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.isEmpty()) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> sz <span style="color:#f92672">=</span> q.size();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 从左到右遍历每⼀层的每个节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> sz; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      TreeNode cur <span style="color:#f92672">=</span> q.poll();
+</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;节点 %s 在第 %s 层&#34;</span>, cur, depth);
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 将下⼀层节点放⼊队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (cur.left <span style="color:#f92672">!=</span> null) {
+</span></span><span style="display:flex;"><span>        q.push(cur.left);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (cur.right <span style="color:#f92672">!=</span> null) {
+</span></span><span style="display:flex;"><span>        q.offer(cur.right);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    depth<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="/images/btree/1.png" alt="1"></p>
+    </div>
+  <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E6%A0%91/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 11, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%9B%BE/" class="link black dim">
+        「算法模版」图
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="存储图">存储图</h2>
 <ol>
 <li>
-<p>最常见的二叉树就是类似链表那样的链式存储结构，每个二叉树节点有指向左右子节点的指针</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TreeNode</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> val;
-</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> left;
-</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> right;
+<h4 id="邻接矩阵">邻接矩阵</h4>
+</li>
+<li>
+<h4 id="邻接表">邻接表</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 对于每个点k，开一个单链表，存储k所有可以走到的点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// h[k]存储这个单链表的头结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> h[N], e[N], ne[N], idx;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 构造函数，参数是int x， :后面的部分是初始化列表，{} 是构造函数的函数体为空，即不需要额外的操作。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    TreeNode(<span style="color:#66d9ef">int</span> x) <span style="color:#f92672">:</span> val(x), left(<span style="color:#66d9ef">nullptr</span>), right(<span style="color:#66d9ef">nullptr</span>) {}
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 添加一条边a-&gt;b
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    e[idx] <span style="color:#f92672">=</span> b, ne[idx] <span style="color:#f92672">=</span> h[a], h[a] <span style="color:#f92672">=</span> idx <span style="color:#f92672">++</span> ;
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 你可以这样构建一棵二叉树：
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>TreeNode<span style="color:#f92672">*</span> root <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">2</span>);
-</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">3</span>);
-</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>left<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">4</span>);
-</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">5</span>);
-</span></span><span style="display:flex;"><span>root<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(<span style="color:#ae81ff">6</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 构建出来的二叉树是这样的：
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//    / \
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   2   3
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  /   / \
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 4   5   6
-</span></span></span></code></pre></div><h5 id="public用法总结"><code>public</code>用法总结：</h5>
-<ol>
-<li><code>public</code> 关键字用于指定类成员的访问权限，允许外部代码直接访问这些成员。</li>
-<li>如果不加 <code>public</code>，这些成员默认是 <code>private</code> 的，外部代码无法直接访问它们。</li>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>memset(h, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">sizeof</span> h);
+</span></span></code></pre></div></li>
 </ol>
-<p>在 <code>TreeNode</code> 的构造函数中，初始化列表的作用是：</p>
-    </div>
-  <a href="/post/btree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1基础">1基础</h1>
-<h2 id="1-特征提取">1. 特征提取</h2>
-<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
-<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li>
-<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
-</li>
-<li>
-<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
-<p><img src="/images/MLLM/1.png" alt="1"></p>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
-</ul>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 8, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/transformer/" class="link black dim">
-        transformer
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="一transformer架构">一、Transformer架构</h2>
-<ul>
-<li>
-<p>﻿基于编码器-解码器架构来处理序列对</p>
-</li>
-<li>
-<p>﻿跟使用注意力的seq2seq不同，Transformer是纯基于注意力</p>
-<ul>
-<li>
-<p>seq2seq</p>
-<p><img src="/images/trans/1.png" alt="1"></p>
-</li>
-<li>
-<p>transformer</p>
-<p><img src="/images/trans/2.jpg" alt="1"></p>
-</li>
-</ul>
-</li>
-</ul>
 <p> </p>
-<h3 id="1-多头注意力muti-head-attention">1. 多头注意力(Muti-head attention)</h3>
-<ul>
-<li>
-<p>对同一key，value，query，希望抽取不同的信息*（类似卷积的多通道）*</p>
-<ul>
-<li>例如短距离关系和长距离关系</li>
-</ul>
-</li>
-<li>
-<p>多头注意力使用h个独立的注意力池化</p>
-<ul>
-<li>合并各个头（head） 输出得到最终输出</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/trans/3.png" alt="3"></p>
-<ol>
-<li>通过全连阶层，映射到一个较低的维度</li>
-<li>进行多个attention</li>
-<li>对每一个attention的输出，进行concat</li>
-<li>再通过一个全连接，得到输出的维度</li>
-</ol>
-<h4 id="数学原理">数学原理</h4>
-<p><img src="/images/trans/4.jpg" alt="4"></p>
+<h2 id="回溯算法">回溯算法</h2>
+<p>回溯法：一种通过探索所有可能的候选解来找出所有的解的算法。如果候选解被确认不是一个解（或者至少不是最后一个解），回溯算法会通过在上一步进行一些变化抛弃该解，即回溯并且再次尝试。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">backtracking</span>(<span style="color:#960050;background-color:#1e0010">参数</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">终止条件</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#960050;background-color:#1e0010">存放结果</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">选择</span> <span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">本层集合中的元素</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#960050;background-color:#1e0010">处理节点</span>;
+</span></span><span style="display:flex;"><span>		backtracking(<span style="color:#960050;background-color:#1e0010">路径</span>, <span style="color:#960050;background-color:#1e0010">选择列表</span>); <span style="color:#75715e">// 递归
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#960050;background-color:#1e0010">撤销处理</span>; <span style="color:#75715e">// 回溯
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
     </div>
-  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%9B%BE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -355,7 +345,7 @@
         <a href="/post/page/7/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/13/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

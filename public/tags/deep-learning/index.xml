@@ -6,21 +6,21 @@
     <description>Recent content in Deep Learning on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 31 Jan 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 30 Mar 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quantization</title>
+      <link>http://localhost:1313/post/%E9%87%8F%E5%8C%96/</link>
+      <pubDate>Sun, 30 Mar 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/%E9%87%8F%E5%8C%96/</guid>
+      <description>&lt;h1 id=&#34;线性量化&#34;&gt;线性量化&lt;/h1&gt;&#xA;&lt;h2 id=&#34;量化和去量化&#34;&gt;量化和去量化&lt;/h2&gt;&#xA;&lt;p&gt;量化指将一个大集合映射到一个较小值集合的过程。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/Quanti/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;可以量化的内容&#34;&gt;可以量化的内容&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;The weights&lt;/strong&gt;: Neural network parameters&lt;/li&gt;&#xA;&lt;li&gt;﻿﻿&lt;strong&gt;The activations&lt;/strong&gt;: Values that propagate through the layers of the neural network&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>目标检测</title>
       <link>http://localhost:1313/post/object-detection/</link>
       <pubDate>Fri, 31 Jan 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/object-detection/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/CV/19.png&#34; alt=&#34;19&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;技巧&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Ensembling&lt;/strong&gt;：Train several networks independently and average their outputs &lt;strong&gt;Multi-crop at test time&lt;/strong&gt;：Run classifier on multiple versions of test images and average results&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h3 id=&#34;定位&#34;&gt;定位&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/CV/20.png&#34; alt=&#34;20&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Need to output bx, by, bn, bw, class label (1-4)&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/CV/21.png&#34; alt=&#34;21&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;需人工标注&lt;strong&gt;特征点的坐标&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h3 id=&#34;基于滑动窗口的目标检测算法&#34;&gt;基于滑动窗口的目标检测算法&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;先训练卷积网络识别物体&lt;/li&gt;&#xA;&lt;li&gt;滑动+放大窗口+再次滑动&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：计算效率大，慢&lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Quantization</title>
-      <link>http://localhost:1313/post/quantization/</link>
-      <pubDate>Mon, 20 Jan 2025 11:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/post/quantization/</guid>
-      <description>&lt;h1 id=&#34;线性量化&#34;&gt;线性量化&lt;/h1&gt;&#xA;&lt;h2 id=&#34;量化和去量化&#34;&gt;量化和去量化&lt;/h2&gt;&#xA;&lt;p&gt;量化指将一个大集合映射到一个较小值集合的过程。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/Quanti/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;可以量化的内容&#34;&gt;可以量化的内容&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;The weights&lt;/strong&gt;: Neural network parameters&lt;/li&gt;&#xA;&lt;li&gt;﻿﻿&lt;strong&gt;The activations&lt;/strong&gt;: Values that propagate through the layers of the neural network&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;If you quantize the NN after it has been trained, you are doing &lt;strong&gt;post training quantization (PTQ)&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;优点&#34;&gt;优点&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;更小的模型&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;速度更快&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;内存带宽&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;﻿﻿Faster operations&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;﻿﻿GEMM: General Matrix Multiply (matrix to matrix multiplication)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;﻿﻿GEMV: General Matrix Vector&#xA;Multiplication (matrix to vector multiplication)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;线性量化理论&#34;&gt;线性量化理论&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;参数&lt;/p&gt;&#xA;&lt;p&gt;Scale：s（e.g. in FP32）&lt;/p&gt;&#xA;&lt;p&gt;Zero point：z（e.g. INT8）&lt;/p&gt;</description>
     </item>
     <item>
       <title>CV</title>

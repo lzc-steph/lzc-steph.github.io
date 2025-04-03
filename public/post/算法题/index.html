@@ -20,42 +20,6 @@ hash
 题目描述：给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 方法：找数 x，寻找数组中是否存在 target - x。
 使用哈希表，可以将寻找 target - x的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x插入到哈希表中，即可保证不会让 x和自己匹配。
-class Solution {
-public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {
-        unordered_map&lt;int, int&gt; hashtable;
-        for (int i = 0; i &lt; nums.size(); &#43;&#43;i) {
-            auto it = hashtable.find(target - nums[i]);
-            if (it != hashtable.end()) {
-                return {it-&gt;second, i};
-            }
-            hashtable[nums[i]] = i;
-        }
-        return {};
-    }
-};
-
-
-find 方法
-find 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：
-
-如果哈希表中存在该键，则返回一个指向该键值对的迭代器。
-如果哈希表中不存在该键，则返回 hashtable.end()，表示未找到。
-
-
-
-auto it
-
-
-auto 是 C&#43;&#43;11 引入的关键字，用于自动推导变量的类型。
-在这里，it 的类型会被推导为哈希表迭代器的类型（例如 std::unordered_map&lt;int, int&gt;::iterator）。
-
-
-it 是一个迭代器，指向哈希表中找到的键值对（如果找到的话）。
-
-
-
-
 
 ">
     <meta name="generator" content="Hugo 0.140.2">
@@ -90,13 +54,7 @@ it 是一个迭代器，指向哈希表中找到的键值对（如果找到的�
   <meta property="og:description" content="万能开头 #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; 在 C&#43;&#43; 中，using namespace std;指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上 std::。
 leetcode hot 100 hash 两数之和 题目描述：给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 方法：找数 x，寻找数组中是否存在 target - x。
-使用哈希表，可以将寻找 target - x的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x插入到哈希表中，即可保证不会让 x和自己匹配。
-class Solution { public: vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) { unordered_map&lt;int, int&gt; hashtable; for (int i = 0; i &lt; nums.size(); &#43;&#43;i) { auto it = hashtable.find(target - nums[i]); if (it != hashtable.end()) { return {it-&gt;second, i}; } hashtable[nums[i]] = i; } return {}; } }; find 方法
-find 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：
-如果哈希表中存在该键，则返回一个指向该键值对的迭代器。 如果哈希表中不存在该键，则返回 hashtable.end()，表示未找到。 auto it
-auto 是 C&#43;&#43;11 引入的关键字，用于自动推导变量的类型。
-在这里，it 的类型会被推导为哈希表迭代器的类型（例如 std::unordered_map&lt;int, int&gt;::iterator）。
-it 是一个迭代器，指向哈希表中找到的键值对（如果找到的话）。">
+使用哈希表，可以将寻找 target - x的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x插入到哈希表中，即可保证不会让 x和自己匹配。">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -108,29 +66,17 @@ it 是一个迭代器，指向哈希表中找到的键值对（如果找到的�
   <meta itemprop="description" content="万能开头 #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; 在 C&#43;&#43; 中，using namespace std;指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上 std::。
 leetcode hot 100 hash 两数之和 题目描述：给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 方法：找数 x，寻找数组中是否存在 target - x。
-使用哈希表，可以将寻找 target - x的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x插入到哈希表中，即可保证不会让 x和自己匹配。
-class Solution { public: vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) { unordered_map&lt;int, int&gt; hashtable; for (int i = 0; i &lt; nums.size(); &#43;&#43;i) { auto it = hashtable.find(target - nums[i]); if (it != hashtable.end()) { return {it-&gt;second, i}; } hashtable[nums[i]] = i; } return {}; } }; find 方法
-find 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：
-如果哈希表中存在该键，则返回一个指向该键值对的迭代器。 如果哈希表中不存在该键，则返回 hashtable.end()，表示未找到。 auto it
-auto 是 C&#43;&#43;11 引入的关键字，用于自动推导变量的类型。
-在这里，it 的类型会被推导为哈希表迭代器的类型（例如 std::unordered_map&lt;int, int&gt;::iterator）。
-it 是一个迭代器，指向哈希表中找到的键值对（如果找到的话）。">
+使用哈希表，可以将寻找 target - x的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x插入到哈希表中，即可保证不会让 x和自己匹配。">
   <meta itemprop="datePublished" content="2025-02-12T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-02-12T11:00:59-04:00">
-  <meta itemprop="wordCount" content="596">
+  <meta itemprop="wordCount" content="602">
   <meta itemprop="keywords" content="Algorithm">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="「持续更新」算法题笔记">
   <meta name="twitter:description" content="万能开头 #include&lt;bits/stdc&#43;&#43;.h&gt; using namespace std; 在 C&#43;&#43; 中，using namespace std;指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上 std::。
 leetcode hot 100 hash 两数之和 题目描述：给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
 方法：找数 x，寻找数组中是否存在 target - x。
-使用哈希表，可以将寻找 target - x的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x插入到哈希表中，即可保证不会让 x和自己匹配。
-class Solution { public: vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) { unordered_map&lt;int, int&gt; hashtable; for (int i = 0; i &lt; nums.size(); &#43;&#43;i) { auto it = hashtable.find(target - nums[i]); if (it != hashtable.end()) { return {it-&gt;second, i}; } hashtable[nums[i]] = i; } return {}; } }; find 方法
-find 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：
-如果哈希表中存在该键，则返回一个指向该键值对的迭代器。 如果哈希表中不存在该键，则返回 hashtable.end()，表示未找到。 auto it
-auto 是 C&#43;&#43;11 引入的关键字，用于自动推导变量的类型。
-在这里，it 的类型会被推导为哈希表迭代器的类型（例如 std::unordered_map&lt;int, int&gt;::iterator）。
-it 是一个迭代器，指向哈希表中找到的键值对（如果找到的话）。">
+使用哈希表，可以将寻找 target - x的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x插入到哈希表中，即可保证不会让 x和自己匹配。">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -244,7 +190,7 @@ it 是一个迭代器，指向哈希表中找到的键值对（如果找到的�
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595%25E9%25A2%2598%2F&amp;summary=%E4%B8%87%E8%83%BD%E5%BC%80%E5%A4%B4&#43;%23include%26amp%3Blt%3Bbits%2Fstdc%2B%2B.h%26amp%3Bgt%3B&#43;using&#43;namespace&#43;std%3B&#43;%E5%9C%A8&#43;C%2B%2B&#43;%E4%B8%AD%EF%BC%8Cusing&#43;namespace&#43;std%3B%E6%8C%87%E4%BB%A4%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8&#43;std&#43;%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%A0%87%E8%AF%86%E7%AC%A6%EF%BC%8C%E8%80%8C%E6%97%A0%E9%9C%80%E5%9C%A8%E5%AE%83%E4%BB%AC%E5%89%8D%E9%9D%A2%E5%8A%A0%E4%B8%8A&#43;std%3A%3A%E3%80%82%0Aleetcode&#43;hot&#43;100&#43;hash&#43;%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C&#43;%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E6%95%B0%E7%BB%84&#43;nums&#43;%E5%92%8C%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E7%9B%AE%E6%A0%87%E5%80%BC&#43;target%EF%BC%8C%E8%AF%B7%E4%BD%A0%E5%9C%A8%E8%AF%A5%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA&#43;%E5%92%8C%E4%B8%BA%E7%9B%AE%E6%A0%87%E5%80%BC&#43;target&#43;%E7%9A%84%E9%82%A3&#43;%E4%B8%A4%E4%B8%AA&#43;%E6%95%B4%E6%95%B0%EF%BC%8C%E5%B9%B6%E8%BF%94%E5%9B%9E%E5%AE%83%E4%BB%AC%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E3%80%82%0A%E6%96%B9%E6%B3%95%EF%BC%9A%E6%89%BE%E6%95%B0&#43;x%EF%BC%8C%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8&#43;target&#43;-&#43;x%E3%80%82%0A%E4%BD%BF%E7%94%A8%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%B0%86%E5%AF%BB%E6%89%BE&#43;target&#43;-&#43;x%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E9%99%8D%E4%BD%8E%E5%88%B0%E4%BB%8E&#43;O%28N%29&#43;%E9%99%8D%E4%BD%8E%E5%88%B0&#43;O%281%29&#43;%E2%80%94%E2%80%94&#43;%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%8C%E5%AF%B9%E4%BA%8E%E6%AF%8F%E4%B8%80%E4%B8%AA&#43;x%EF%BC%8C%E6%88%91%E4%BB%AC%E9%A6%96%E5%85%88%E6%9F%A5%E8%AF%A2%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8&#43;target&#43;-&#43;x%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B0%86&#43;x%E6%8F%92%E5%85%A5%E5%88%B0%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%AD%EF%BC%8C%E5%8D%B3%E5%8F%AF%E4%BF%9D%E8%AF%81%E4%B8%8D%E4%BC%9A%E8%AE%A9&#43;x%E5%92%8C%E8%87%AA%E5%B7%B1%E5%8C%B9%E9%85%8D%E3%80%82%0Aclass&#43;Solution&#43;%7B&#43;public%3A&#43;vector%26amp%3Blt%3Bint%26amp%3Bgt%3B&#43;twoSum%28vector%26amp%3Blt%3Bint%26amp%3Bgt%3B%26amp%3Bamp%3B&#43;nums%2C&#43;int&#43;target%29&#43;%7B&#43;unordered_map%26amp%3Blt%3Bint%2C&#43;int%26amp%3Bgt%3B&#43;hashtable%3B&#43;for&#43;%28int&#43;i&#43;%3D&#43;0%3B&#43;i&#43;%26amp%3Blt%3B&#43;nums.size%28%29%3B&#43;%2B%2Bi%29&#43;%7B&#43;auto&#43;it&#43;%3D&#43;hashtable.find%28target&#43;-&#43;nums%5Bi%5D%29%3B&#43;if&#43;%28it&#43;%21%3D&#43;hashtable.end%28%29%29&#43;%7B&#43;return&#43;%7Bit-%26amp%3Bgt%3Bsecond%2C&#43;i%7D%3B&#43;%7D&#43;hashtable%5Bnums%5Bi%5D%5D&#43;%3D&#43;i%3B&#43;%7D&#43;return&#43;%7B%7D%3B&#43;%7D&#43;%7D%3B&#43;find&#43;%E6%96%B9%E6%B3%95%0Afind&#43;%E6%98%AF%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E7%9A%84%E9%94%AE%EF%BC%88key%EF%BC%89%E3%80%82%E5%AE%83%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%EF%BC%9A%0A%E5%A6%82%E6%9E%9C%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%AD%E5%AD%98%E5%9C%A8%E8%AF%A5%E9%94%AE%EF%BC%8C%E5%88%99%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E6%8C%87%E5%90%91%E8%AF%A5%E9%94%AE%E5%80%BC%E5%AF%B9%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%82&#43;%E5%A6%82%E6%9E%9C%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%AD%E4%B8%8D%E5%AD%98%E5%9C%A8%E8%AF%A5%E9%94%AE%EF%BC%8C%E5%88%99%E8%BF%94%E5%9B%9E&#43;hashtable.end%28%29%EF%BC%8C%E8%A1%A8%E7%A4%BA%E6%9C%AA%E6%89%BE%E5%88%B0%E3%80%82&#43;auto&#43;it%0Aauto&#43;%E6%98%AF&#43;C%2B%2B11&#43;%E5%BC%95%E5%85%A5%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%87%AA%E5%8A%A8%E6%8E%A8%E5%AF%BC%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B%E3%80%82%0A%E5%9C%A8%E8%BF%99%E9%87%8C%EF%BC%8Cit&#43;%E7%9A%84%E7%B1%BB%E5%9E%8B%E4%BC%9A%E8%A2%AB%E6%8E%A8%E5%AF%BC%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E7%B1%BB%E5%9E%8B%EF%BC%88%E4%BE%8B%E5%A6%82&#43;std%3A%3Aunordered_map%26amp%3Blt%3Bint%2C&#43;int%26amp%3Bgt%3B%3A%3Aiterator%EF%BC%89%E3%80%82%0Ait&#43;%E6%98%AF%E4%B8%80%E4%B8%AA%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%8C%E6%8C%87%E5%90%91%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%AD%E6%89%BE%E5%88%B0%E7%9A%84%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%88%E5%A6%82%E6%9E%9C%E6%89%BE%E5%88%B0%E7%9A%84%E8%AF%9D%EF%BC%89%E3%80%82%0A&amp;title=%E3%80%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%8D%E7%AE%97%E6%B3%95%E9%A2%98%E7%AC%94%E8%AE%B0&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595%25E9%25A2%2598%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595%25E9%25A2%2598%2F&amp;summary=%E4%B8%87%E8%83%BD%E5%BC%80%E5%A4%B4&#43;%23include%26amp%3Blt%3Bbits%2Fstdc%2B%2B.h%26amp%3Bgt%3B&#43;using&#43;namespace&#43;std%3B&#43;%E5%9C%A8&#43;C%2B%2B&#43;%E4%B8%AD%EF%BC%8Cusing&#43;namespace&#43;std%3B%E6%8C%87%E4%BB%A4%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8&#43;std&#43;%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%A0%87%E8%AF%86%E7%AC%A6%EF%BC%8C%E8%80%8C%E6%97%A0%E9%9C%80%E5%9C%A8%E5%AE%83%E4%BB%AC%E5%89%8D%E9%9D%A2%E5%8A%A0%E4%B8%8A&#43;std%3A%3A%E3%80%82%0Aleetcode&#43;hot&#43;100&#43;hash&#43;%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C&#43;%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E6%95%B0%E7%BB%84&#43;nums&#43;%E5%92%8C%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E7%9B%AE%E6%A0%87%E5%80%BC&#43;target%EF%BC%8C%E8%AF%B7%E4%BD%A0%E5%9C%A8%E8%AF%A5%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA&#43;%E5%92%8C%E4%B8%BA%E7%9B%AE%E6%A0%87%E5%80%BC&#43;target&#43;%E7%9A%84%E9%82%A3&#43;%E4%B8%A4%E4%B8%AA&#43;%E6%95%B4%E6%95%B0%EF%BC%8C%E5%B9%B6%E8%BF%94%E5%9B%9E%E5%AE%83%E4%BB%AC%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E3%80%82%0A%E6%96%B9%E6%B3%95%EF%BC%9A%E6%89%BE%E6%95%B0&#43;x%EF%BC%8C%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8&#43;target&#43;-&#43;x%E3%80%82%0A%E4%BD%BF%E7%94%A8%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%B0%86%E5%AF%BB%E6%89%BE&#43;target&#43;-&#43;x%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E9%99%8D%E4%BD%8E%E5%88%B0%E4%BB%8E&#43;O%28N%29&#43;%E9%99%8D%E4%BD%8E%E5%88%B0&#43;O%281%29&#43;%E2%80%94%E2%80%94&#43;%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%8C%E5%AF%B9%E4%BA%8E%E6%AF%8F%E4%B8%80%E4%B8%AA&#43;x%EF%BC%8C%E6%88%91%E4%BB%AC%E9%A6%96%E5%85%88%E6%9F%A5%E8%AF%A2%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8&#43;target&#43;-&#43;x%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B0%86&#43;x%E6%8F%92%E5%85%A5%E5%88%B0%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%AD%EF%BC%8C%E5%8D%B3%E5%8F%AF%E4%BF%9D%E8%AF%81%E4%B8%8D%E4%BC%9A%E8%AE%A9&#43;x%E5%92%8C%E8%87%AA%E5%B7%B1%E5%8C%B9%E9%85%8D%E3%80%82%0A&amp;title=%E3%80%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%8D%E7%AE%97%E6%B3%95%E9%A2%98%E7%AC%94%E8%AE%B0&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E7%25AE%2597%25E6%25B3%2595%25E9%25A2%2598%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -276,20 +222,22 @@ it 是一个迭代器，指向哈希表中找到的键值对（如果找到的�
 <p><strong>题目描述</strong>：给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
 <p><strong>方法</strong>：找数 <code>x</code>，寻找数组中是否存在 <code>target - x</code>。</p>
 <p>使用哈希表，可以将寻找 <code>target - x</code>的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code>插入到哈希表中，即可保证不会让 <code>x</code>和自己匹配。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> twoSum(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> target) {
-</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashtable;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> hashtable.find(target <span style="color:#f92672">-</span> nums[i]);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> hashtable.end()) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> {it<span style="color:#f92672">-&gt;</span>second, i};
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            hashtable[nums[i]] <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>   <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>       vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> twoSum(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> target) {
+</span></span><span style="display:flex;"><span>           unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashtable;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> hashtable.find(target <span style="color:#f92672">-</span> nums[i]);
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> hashtable.end()) {
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">return</span> {it<span style="color:#f92672">-&gt;</span>second, i};
+</span></span><span style="display:flex;"><span>               }
+</span></span><span style="display:flex;"><span>               hashtable[nums[i]] <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>           }
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">return</span> {};
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>   };
 </span></span></code></pre></div><ol>
 <li>
 <p><strong><code>find</code> 方法</strong></p>
@@ -310,33 +258,25 @@ it 是一个迭代器，指向哈希表中找到的键值对（如果找到的�
 <p><code>it</code> 是一个<strong>迭代器</strong>，指向哈希表中找到的键值对（如果找到的话）。</p>
 </li>
 </ul>
+<!-- raw HTML omitted -->
 </li>
-</ol>
-</li>
-</ol>
-<ol start="3">
 <li>
 <p><strong><code>return {it-&gt;second, i};</code></strong></p>
-<p>C++11 引入的一种语法特性，称为<strong>初始化列表</strong>（initializer list）。它用于<strong>返回一个包含多个值的对象</strong>。</p>
-<ol>
-<li>
-<p><strong><code>it-&gt;second</code></strong> 表示迭代器指向的键值对中的值（value）。</p>
-<p>在哈希表中，键值对的形式是 <code>{key, value}</code>，<code>it-&gt;second</code> 就是 <code>value</code>。</p>
-</li>
-<li>
-<p>**<code>{it-&gt;second, i}</code>**是一个初始化列表，用于构造一个包含两个值的对象。</p>
-</li>
-<li>
-<p><strong><code>return</code></strong></p>
-<ul>
-<li>返回单个值时，直接写值。</li>
-<li>返回容器或对象时，可以使用 <code>{}</code> 构造返回值。</li>
-<li>返回空容器时，使用 <code>{}</code>。</li>
-</ul>
 </li>
 </ol>
-</li>
-</ol>
+<pre><code>  C++11 引入的一种语法特性，称为**初始化列表**（initializer list）。它用于**返回一个包含多个值的对象**。
+
+  1. **`it-&gt;second`** 表示迭代器指向的键值对中的值（value）。
+
+     在哈希表中，键值对的形式是 `{key, value}`，`it-&gt;second` 就是 `value`。
+
+  2. **`{it-&gt;second, i}`**是一个初始化列表，用于构造一个包含两个值的对象。
+
+  3. **`return`**
+     - 返回单个值时，直接写值。
+     - 返回容器或对象时，可以使用 `{}` 构造返回值。
+     - 返回空容器时，使用 `{}`。
+</code></pre>
 <p> </p>
 <p> </p>
 <ol start="2">

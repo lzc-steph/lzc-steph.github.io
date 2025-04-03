@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,87 +153,87 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 13, 2025
+        March 19, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%9F%BA%E7%A1%80/" class="link black dim">
-        「算法模版」基础
+      <a href="/post/%E5%BE%AE%E8%B0%83/" class="link black dim">
+        微调
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <ul>
-<li><strong>主要思想</strong></li>
-<li><strong>代码模版</strong>
-<ul>
-<li><strong>背过：快速默写，调试通过</strong>
-<ul>
-<li>先看模版思想 —— 模版已为我们考虑好了所有边界情况</li>
-<li>默写一遍（用题目）</li>
-</ul>
-</li>
-<li><strong>提高熟练度</strong>
-<ul>
-<li>一道题目重复3-5次</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+      <h2 id="大模型预训练">大模型预训练</h2>
+<h4 id="1-从零开始的预训练">1 从零开始的预训练</h4>
+<h4 id="2-在已有开源模型基础上针对特定任务进行训练">2 在已有开源模型基础上针对特定任务进行训练</h4>
 <p> </p>
-<h1 id="一排序">一、排序</h1>
-<h3 id="1-快速排序">1. 快速排序</h3>
-<ol>
+<h3 id="lora">LoRa</h3>
+<p>通过化简权重矩阵，实现高效微调</p>
+<p><img src="/images/preTrain/1.png" alt="1"></p>
+<p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
+<p>训练参数量减少，但微调效果基本不变。</p>
+<ul>
 <li>
-<h5 id="核心思想--分治">核心思想 —— 分治</h5>
-<ol>
-<li>确定分界点x</li>
-<li><strong>调整区间</strong></li>
-<li>递归处理左右两段</li>
-</ol>
+<p>两个重要参数：</p>
+<p><img src="/images/preTrain/2.png" alt="2"></p>
 </li>
-<li>
-<p><strong>调整区间的暴力做法</strong>：选定x，开a,b两数组，遍历q，小于x放a，大于x放b。</p>
-</li>
-<li>
-<p><strong>优雅做法</strong>：用两个指针i、j，分别指向第一和最后一个数，两指针向中间移动，使得i左小于x，j右大于x；否则交换i、所指的数。</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">quick_sort</span>(<span style="color:#66d9ef">int</span> q[], <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;=</span> r) <span style="color:#66d9ef">return</span>;
+</ul>
+    </div>
+  <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 14, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="link black dim">
+        「算法模版」动态规划
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>「状态」-&gt; 「选择」 -&gt; 定义 <code>dp</code> 数组/函数的含义 ；自底向上进行递推求解。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 自顶向下递归的动态规划</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dp</span>(状态1, 状态2, <span style="color:#f92672">...</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> 选择 <span style="color:#f92672">in</span> 所有可能的选择:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 此时的状态已经因为做了选择而改变</span>
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> 求最值(result, dp(状态1, 状态2, <span style="color:#f92672">...</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, j <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, x <span style="color:#f92672">=</span> q[l <span style="color:#f92672">+</span> r <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> j)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">do</span> i <span style="color:#f92672">++</span> ; <span style="color:#66d9ef">while</span> (q[i] <span style="color:#f92672">&lt;</span> x);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">do</span> j <span style="color:#f92672">--</span> ; <span style="color:#66d9ef">while</span> (q[j] <span style="color:#f92672">&gt;</span> x);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&lt;</span> j) swap(q[i], q[j]);
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 自底向上迭代的动态规划</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 初始化 base case</span>
+</span></span><span style="display:flex;"><span>dp[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>][<span style="color:#f92672">...</span>] <span style="color:#f92672">=</span> base <span style="color:#66d9ef">case</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 进行状态转移</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> 状态1 <span style="color:#f92672">in</span> 状态1的所有取值<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> 状态2 <span style="color:#f92672">in</span> 状态2的所有取值<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>            dp[状态1][状态2][<span style="color:#f92672">...</span>] <span style="color:#f92672">=</span> 求最值(选择1<span style="color:#960050;background-color:#1e0010">，</span>选择2<span style="color:#f92672">...</span>)
+</span></span></code></pre></div><p> </p>
+<h3 id="核心框架">核心框架</h3>
+<ol>
+<li>
+<p><strong>备忘录</strong> - 斐波那契数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fib</span>(<span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)		<span style="color:#66d9ef">return</span> n;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 分别代表 dp[i - 1] 和 dp[i - 2]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> dp_i_1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, dp_i_2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> dp_i <span style="color:#f92672">=</span> dp_i_1 <span style="color:#f92672">+</span> dp_i_2;
+</span></span><span style="display:flex;"><span>        dp_i_2 <span style="color:#f92672">=</span> dp_i_1;
+</span></span><span style="display:flex;"><span>        dp_i_1 <span style="color:#f92672">=</span> dp_i;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    quick_sort(q, l, j), quick_sort(q, j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dp_i;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="2-归并排序">2. 归并排序</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge_sort</span>(<span style="color:#66d9ef">int</span> q[], <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;=</span> r) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> l <span style="color:#f92672">+</span> r <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>    merge_sort(q, l, mid);
-</span></span><span style="display:flex;"><span>    merge_sort(q, mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, i <span style="color:#f92672">=</span> l, j <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> mid <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;=</span> r)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (q[i] <span style="color:#f92672">&lt;=</span> q[j]) tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[j <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;=</span> mid) tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (j <span style="color:#f92672">&lt;=</span> r) tmp[k <span style="color:#f92672">++</span> ] <span style="color:#f92672">=</span> q[j <span style="color:#f92672">++</span> ];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> l, j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> r; i <span style="color:#f92672">++</span>, j <span style="color:#f92672">++</span> ) q[i] <span style="color:#f92672">=</span> tmp[j];
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p> </p>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>最优子结构</strong> - 零点兑换</p>
     </div>
-  <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%9F%BA%E7%A1%80/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -242,134 +242,42 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        February 13, 2025
+        March 14, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/hash/" class="link black dim">
-        unordered_map
+      <a href="/post/%E7%AE%97%E6%B3%95-c&#43;&#43;%E8%AF%AD%E6%B3%95/" class="link black dim">
+        c&#43;&#43;语法
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="1-创建-unordered_map-对象">1. 创建 <code>unordered_map</code> 对象</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_map&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 默认构造函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map1;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化列表构造函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map2 <span style="color:#f92672">=</span> {{<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#ae81ff">1</span>}, {<span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#ae81ff">2</span>}};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 拷贝构造函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unordered_map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> map3(map2);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p> </p>
-<h3 id="2-插入">2. 插入</h3>
-<ol>
-<li>
-<p><code>insert</code></p>
-<p>插入一个键值对</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>map1.insert({<span style="color:#e6db74">&#34;orange&#34;</span>, <span style="color:#ae81ff">3</span>});
-</span></span><span style="display:flex;"><span>map1.insert(std<span style="color:#f92672">::</span>make_pair(<span style="color:#e6db74">&#34;grape&#34;</span>, <span style="color:#ae81ff">4</span>));
-</span></span></code></pre></div></li>
-<li>
-<p><code>operator[]</code></p>
-<p>通过键插入或访问值。<strong>如果键不存在，会插入一个默认值</strong>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>map1[<span style="color:#e6db74">&#34;apple&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// 插入或修改
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1[<span style="color:#e6db74">&#34;apple&#34;</span>]; <span style="color:#75715e">// 访问
-</span></span></span></code></pre></div></li>
-</ol>
-<p> </p>
-<h3 id="3-访问元素">3. <strong>访问元素</strong></h3>
-<ol>
-<li>
-<p><code>at</code></p>
-<p>访问指定键的值，如果键不存在会抛出 <code>std::out_of_range</code> 异常。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1.at(<span style="color:#e6db74">&#34;apple&#34;</span>);
-</span></span></code></pre></div></li>
-<li>
-<p><code>operator[]</code></p>
-<p>访问或插入指定键的值。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> map1[<span style="color:#e6db74">&#34;apple&#34;</span>];
-</span></span></code></pre></div></li>
-</ol>
-    </div>
-  <a href="/post/hash/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 12, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E7%AE%97%E6%B3%95%E9%A2%98/" class="link black dim">
-        「持续更新」算法题笔记
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="万能开头">万能开头</h3>
+      <p>万能开头：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include&lt;bits/stdc++.h&gt;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
 </span></span></code></pre></div><p>在 C++ 中，<code>using namespace std;</code>指令允许用户使用 std 命名空间中的所有标识符，而无需在它们前面加上<code> std::</code>。</p>
 <p> </p>
-<p> </p>
-<h1 id="leetcode-hot-100">leetcode hot 100</h1>
-<h2 id="hash">hash</h2>
-<ol>
-<li>
-<h4 id="两数之和">两数之和</h4>
-<p><strong>题目描述</strong>：给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
-<p><strong>方法</strong>：找数 <code>x</code>，寻找数组中是否存在 <code>target - x</code>。</p>
-<p>使用哈希表，可以将寻找 <code>target - x</code>的时间复杂度降低到从 O(N) 降低到 O(1) —— 创建一个哈希表，对于每一个 <code>x</code>，我们首先查询哈希表中是否存在 <code>target - x</code>，然后将 <code>x</code>插入到哈希表中，即可保证不会让 <code>x</code>和自己匹配。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> twoSum(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> target) {
-</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashtable;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> hashtable.find(target <span style="color:#f92672">-</span> nums[i]);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (it <span style="color:#f92672">!=</span> hashtable.end()) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> {it<span style="color:#f92672">-&gt;</span>second, i};
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            hashtable[nums[i]] <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><ol>
-<li>
-<p><strong><code>find</code> 方法</strong></p>
-<p><code>find</code> 是哈希表的一个成员函数，用于查找指定的键（key）。它的作用是：</p>
-<ul>
-<li>如果哈希表中存在该键，则返回一个指向该键值对的迭代器。</li>
-<li>如果哈希表中不存在该键，则返回 <code>hashtable.end()</code>，表示未找到。</li>
-</ul>
-</li>
-<li>
-<p><strong><code>auto it</code></strong></p>
-<ul>
-<li>
-<p><code>auto</code> 是 C++11 引入的关键字，用于自动推导变量的类型。</p>
-<p>在这里，<code>it</code> 的类型会被推导为哈希表迭代器的类型（例如 <code>std::unordered_map&lt;int, int&gt;::iterator</code>）。</p>
-</li>
-<li>
-<p><code>it</code> 是一个<strong>迭代器</strong>，指向哈希表中找到的键值对（如果找到的话）。</p>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
+<h3 id="标准输入输出">标准输入输出</h3>
+<p>标准输入是 <code>cin</code>， <code>cin</code>用 <code>&gt;&gt;</code> 运算符把输入传给变量。</p>
+<p>标准输出是 <code>cout</code>，用 <code>&lt;&lt;</code> 运算符把需要打印的内容传递给 <code>cout</code>，<code>endl</code> 是换行符。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;bits/stdc++.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> a;
+</span></span><span style="display:flex;"><span>cin <span style="color:#f92672">&gt;&gt;</span> a;  <span style="color:#75715e">// 从输入读取一个整数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 可以串联输出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：Hello, World!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Hello&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;World!&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：abc 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span></code></pre></div>
     </div>
-  <a href="/post/%E7%AE%97%E6%B3%95%E9%A2%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E7%AE%97%E6%B3%95-c&#43;&#43;%E8%AF%AD%E6%B3%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -402,7 +310,7 @@
         <a href="/post/page/6/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/13/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

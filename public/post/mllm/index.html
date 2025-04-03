@@ -196,6 +196,7 @@
 <h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
 <p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
 <p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<p> </p>
 <h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
 <h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
 <ul>
@@ -212,6 +213,8 @@
 <li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
 <li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
+<p> </p>
+<p> </p>
 <h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
 <h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
 <p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
@@ -232,6 +235,7 @@
 </li>
 </ul>
 <p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
+<p> </p>
 <h4 id="2-深度学习方法上下文感知特征"><strong>2. 深度学习方法（上下文感知特征）</strong></h4>
 <p>深度学习通过神经网络自动捕捉文本的语义和上下文信息。</p>
 <h5 id="1-循环神经网络rnn"><strong>(1) 循环神经网络（RNN）</strong></h5>
@@ -250,6 +254,8 @@
 <li><strong>核心思想</strong>：通过自注意力机制（Self-Attention）建模全局上下文关系；并行计算，避免RNN的顺序处理瓶颈。</li>
 <li><strong>经典模型</strong>：BERT，GPT&hellip;</li>
 </ul>
+<p> </p>
+<p> </p>
 <h3 id="三cv与nlp的关联与融合"><strong>三、CV与NLP的关联与融合</strong></h3>
 <ol>
 <li><strong>多模态学习</strong>：结合图像特征（CNN/ViT）和文本特征（Transformer），实现跨模态任务（如图像描述、视觉问答）。</li>
@@ -259,6 +265,7 @@
 <p> </p>
 <h2 id="2-tansformer">2. Tansformer</h2>
 <p>通过 <strong>Cross-Attention</strong>，Transformer 能够灵活地融合不同来源的信息，成为现代多模态模型（如 MLLM）和复杂序列任务的核心组件。</p>
+<p> </p>
 <h3 id="一自注意力self-attention的计算过程">一、自注意力（Self-Attention）的计算过程</h3>
 <ol>
 <li><strong>输入</strong>：一个序列的嵌入向量（例如单词的向量表示）。</li>
@@ -276,6 +283,8 @@
 <li><strong>加权聚合</strong>：通过 softmax 归一化后的权重对 Value 加权求和，得到每个位置的输出。</li>
 </ol>
 <p><strong>作用</strong>：Self-Attention 让模型关注同一序列中不同位置的相关性（例如句子中代词与实体的关系）。</p>
+<p> </p>
+<p> </p>
 <h3 id="二交叉注意力cross-attention的原理">二、交叉注意力（Cross-Attention）的原理</h3>
 <p>Cross-Attention 是 Self-Attention 的扩展，用于 <strong>不同序列之间的交互</strong>。例如：</p>
 <ul>
@@ -287,6 +296,7 @@
 <li><strong>Query（Q）</strong>：来自一个序列（例如解码器的当前输入）。</li>
 <li><strong>Key（K）和 Value（V）</strong>：来自另一个序列（例如编码器的输出）。</li>
 </ul>
+<p> </p>
 <h4 id="2-计算步骤">2. <strong>计算步骤</strong></h4>
 <p>假设有两个序列：</p>
 <ul>
@@ -298,6 +308,7 @@ CrossAttention(Q_B, K_A, V_A) = softmax(Q_B K_A^T / √d_k) V_A
 $$<ul>
 <li><strong>物理意义</strong>：序列 B 的每个位置（Query）通过计算与序列 A 所有位置（Key）的相似度，决定从序列 A 的 Value 中聚合多少信息。</li>
 </ul>
+<p> </p>
 <h4 id="3-在-transformer-中的位置">3. <strong>在 Transformer 中的位置</strong></h4>
 <ul>
 <li>在 <strong>解码器层</strong> 中，Cross-Attention 位于 Self-Attention 层之后：
@@ -308,6 +319,8 @@ $$<ul>
 </ol>
 </li>
 </ul>
+<p> </p>
+<p> </p>
 <h3 id="三cross-attention-的数学细节">三、Cross-Attention 的<strong>数学细节</strong></h3>
 <ol>
 <li><strong>维度说明</strong>：

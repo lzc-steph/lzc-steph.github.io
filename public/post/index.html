@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,57 +153,18 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        March 20, 2025
+        April 2, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/ppo/" class="link black dim">
-        PPO
+      <a href="/post/actor-critic/" class="link black dim">
+        Actor-Critic
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-基础概念">1. 基础概念</h2>
-<p><img src="/images/PPO/1.png" alt="1"></p>
-<ol>
-<li>
-<p><strong>enviroment</strong>：看到的画面+看不到的后台画面，不了解细节</p>
-</li>
-<li>
-<p><strong>agent(智能体)</strong>：根据策略得到尽可能多的奖励</p>
-</li>
-<li>
-<p><strong>state</strong>：当前状态</p>
-</li>
-<li>
-<p><strong>observation</strong>：state的一部分（有时候agent无法看全）</p>
-</li>
-<li>
-<p><strong>action</strong>：agent做出的动作</p>
-</li>
-<li>
-<p><strong>reward</strong>：agent做出一个动作后环境给予的奖励</p>
-</li>
-<li>
-<p><strong>action space</strong>：可以选择的动作，如上下左右</p>
-</li>
-<li>
-<p><strong>policy</strong>：策略函数，输入state，输出Action的<strong>概率分布</strong>。一般用π表示。</p>
-<ol>
-<li>训练时应尝试各种action</li>
-<li>输出应具有多样性</li>
-</ol>
-</li>
-<li>
-<p><strong>Trajectory/Episode/Rollout</strong>：轨迹，用t表示，一连串状态和动作的序列。</p>
-<p>有的状态转移是确定的，也有的是不确定的。</p>
-</li>
-<li>
-<p><strong>Return</strong>：回报，从当前时间点到游戏结束的 Reward 的累积和。</p>
-</li>
-</ol>
-<p>强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。</p>
+      
     </div>
-  <a href="/post/ppo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/actor-critic/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -212,18 +173,46 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        March 19, 2025
+        April 1, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="link black dim">
-        「复试」英语口语
+      <a href="/post/reinforce/" class="link black dim">
+        REINFORCE
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Good morning, professors. My name is Yang Aijun. I am from Beihang University, where I majored in Computer Science and Technology. During my undergraduate studies, I have built a strong foundation in mathematics and programming. I try to keep up with the the latest developments in computer science by reviewing journal papers. I actively participated in various competitions and earned awards for my efforts. And my graduation thesis was recognized as an outstanding project at the school level.</p>
+      <p>Q-learning、DQN 算法都是<strong>基于价值</strong>（value-based）的方法</p>
+<ul>
+<li>Q-learning 是处理有限状态的算法</li>
+<li>DQN 可以用来解决连续状态的问题</li>
+</ul>
+<p>在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是<strong>基于策略</strong>（policy-based）的方法。</p>
+<p> </p>
+<p>对比 value-based 和 policy-based</p>
+<ul>
+<li>基于值函数：主要是学习<strong>值函数</strong>，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略；</li>
+<li>基于策略：直接显式地学习一个<strong>目标策略</strong>。策略梯度是基于策略的方法的基础。</li>
+</ul>
+<p> </p>
+<h2 id="1-策略梯度">1. 策略梯度</h2>
+<ul>
+<li>
+<p>将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。</p>
+</li>
+<li>
+<p>策略学习的目标函数</p>
+<p><img src="/images/REINFORCE/1.png" alt="1"></p>
+<ul>
+<li>J(θ) 是策略的目标函数（想要最大化的量）；</li>
+<li>πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；</li>
+<li>Vπθ(s0) 指从初始状态 s₀ 开始，<strong>遵循策略π能获得的预期总回报</strong>；</li>
+<li>Es0 是对所有可能的初始状态求期望。</li>
+</ul>
+</li>
+</ul>
     </div>
-  <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/reinforce/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -232,62 +221,23 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        March 19, 2025
+        April 1, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BE%AE%E8%B0%83/" class="link black dim">
-        微调
+      <a href="/post/dqn/" class="link black dim">
+        DQN (deep Q network)
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="大模型预训练">大模型预训练</h2>
-<h4 id="1-从零开始的预训练">1 从零开始的预训练</h4>
-<h4 id="2-在已有开源模型基础上针对特定任务进行训练">2 在已有开源模型基础上针对特定任务进行训练</h4>
-<p> </p>
-<h3 id="lora">LoRa</h3>
-<p>通过化简权重矩阵，实现高效微调</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/1.png" alt="1"></p>
-<p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
-<p>训练参数量减少，但微调效果基本不变。</p>
-<ul>
-<li>
-<p>两个重要参数：</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/preTrain/2.png" alt="2"></p>
-</li>
-</ul>
-<p>Lora 的<strong>优点</strong>：</p>
-<ol>
-<li>﻿﻿﻿大大节省微调大模型的参数量</li>
-<li>﻿﻿﻿效果和全量微调差不多。</li>
-<li>﻿﻿微调完的Lora模型，权重可以Merge回原来的权重，不会改变模型结构，推理时不增加额外计算量。</li>
-<li>﻿﻿你可以通过改变r参数，最高情况等同于全量微调。</li>
-</ol>
-<p> </p>
-<p> </p>
-<h2 id="大模型微调sft-trainer">大模型微调：SFT Trainer</h2>
-<p>SFT：Supervised Fine-Tuning</p>
-<h4 id="1-chat-tempate">1 Chat Tempate</h4>
-<p>在预训练基础上，更好回答人类的问题。</p>
-<ul>
-<li>网络结构：基本相同</li>
-<li>loss函数：基本相同</li>
-<li>训练数据：不同</li>
-</ul>
-<p>微调时，格式需要与原厂一致效果更好。</p>
-<p>输入整个对话，对整个对话文本进行学习，<strong>对每个输出token计算loss</strong>。</p>
-<p> </p>
-<h4 id="2-completions-only">2 Completions only</h4>
-<p>输入整个对话，对整个对话文本进行学习，<strong>只对回答部分进行loss计算</strong>。</p>
-<p>用一个loss mask来实现，query部分不需要计算loss。</p>
-<p> </p>
-<h4 id="3-neftunenoisy-embeddings-finetuning">3 NEFTune：Noisy Embeddings Finetuning</h4>
-<p>图像领域的数据增强：通过旋转等操作生成更多样本。</p>
-<p>对文本数据的增强：给每个token的embeding随机加上一些噪声，让原有token变成其他相近的token。如，<em>漂亮</em>变成了<em>美丽</em>。</p>
-<p> </p>
-<p> </p>
+      <p>Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.</p>
+<p><strong>DQN</strong>：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。</p>
+<p><strong>Q 网络</strong>：用于拟合函数Q函数的神经网络</p>
+<p><img src="/images/DQN/1.png" alt="1"></p>
+<p><strong>Q 网络的损失函数</strong>（均方误差形式）</p>
+<p><img src="/images/DQN/2.png" alt="2"></p>
     </div>
-  <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/dqn/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -320,7 +270,7 @@
         <a href="/post/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/10/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/13/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

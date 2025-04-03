@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>REINFORCE | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Q-learning、DQN 算法都是基于价值（value-based）的方法
+
+Q-learning 是处理有限状态的算法
+DQN 可以用来解决连续状态的问题
+
+在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是基于策略（policy-based）的方法。
+ 
+对比 value-based 和 policy-based
+
+基于值函数：主要是学习值函数，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略；
+基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。
+
+ 
+1. 策略梯度
+
+
+将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。
+
+
+策略学习的目标函数
+
+
+J(θ) 是策略的目标函数（想要最大化的量）；
+πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；
+Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报；
+Es0 是对所有可能的初始状态求期望。
+
+
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/reinforce/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/reinforce/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="REINFORCE">
+  <meta property="og:description" content="Q-learning、DQN 算法都是基于价值（value-based）的方法
+Q-learning 是处理有限状态的算法 DQN 可以用来解决连续状态的问题 在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是基于策略（policy-based）的方法。
+对比 value-based 和 policy-based
+基于值函数：主要是学习值函数，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略； 基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。 1. 策略梯度 将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。
+策略学习的目标函数
+J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-01T12:00:59-05:00">
+    <meta property="article:modified_time" content="2025-04-01T12:00:59-05:00">
+    <meta property="article:tag" content="RL">
+
+  <meta itemprop="name" content="REINFORCE">
+  <meta itemprop="description" content="Q-learning、DQN 算法都是基于价值（value-based）的方法
+Q-learning 是处理有限状态的算法 DQN 可以用来解决连续状态的问题 在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是基于策略（policy-based）的方法。
+对比 value-based 和 policy-based
+基于值函数：主要是学习值函数，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略； 基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。 1. 策略梯度 将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。
+策略学习的目标函数
+J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
+  <meta itemprop="datePublished" content="2025-04-01T12:00:59-05:00">
+  <meta itemprop="dateModified" content="2025-04-01T12:00:59-05:00">
+  <meta itemprop="wordCount" content="60">
+  <meta itemprop="keywords" content="RL">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="REINFORCE">
+  <meta name="twitter:description" content="Q-learning、DQN 算法都是基于价值（value-based）的方法
+Q-learning 是处理有限状态的算法 DQN 可以用来解决连续状态的问题 在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是基于策略（policy-based）的方法。
+对比 value-based 和 policy-based
+基于值函数：主要是学习值函数，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略； 基于策略：直接显式地学习一个目标策略。策略梯度是基于策略的方法的基础。 1. 策略梯度 将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。
+策略学习的目标函数
+J(θ) 是策略的目标函数（想要最大化的量）； πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）； Vπθ(s0) 指从初始状态 s₀ 开始，遵循策略π能获得的预期总回报； Es0 是对所有可能的初始状态求期望。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/REINFORCE/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">REINFORCE</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F&amp;subject=REINFORCE"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F&amp;summary=Q-learning%E3%80%81DQN&#43;%E7%AE%97%E6%B3%95%E9%83%BD%E6%98%AF%E5%9F%BA%E4%BA%8E%E4%BB%B7%E5%80%BC%EF%BC%88value-based%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%0AQ-learning&#43;%E6%98%AF%E5%A4%84%E7%90%86%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E7%9A%84%E7%AE%97%E6%B3%95&#43;DQN&#43;%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E8%BF%9E%E7%BB%AD%E7%8A%B6%E6%80%81%E7%9A%84%E9%97%AE%E9%A2%98&#43;%E5%9C%A8%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%AD%EF%BC%8C%E9%99%A4%E4%BA%86%E5%9F%BA%E4%BA%8E%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E6%9C%89%E4%B8%80%E6%94%AF%E9%9D%9E%E5%B8%B8%E7%BB%8F%E5%85%B8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E9%82%A3%E5%B0%B1%E6%98%AF%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%EF%BC%88policy-based%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%82%0A%E5%AF%B9%E6%AF%94&#43;value-based&#43;%E5%92%8C&#43;policy-based%0A%E5%9F%BA%E4%BA%8E%E5%80%BC%E5%87%BD%E6%95%B0%EF%BC%9A%E4%B8%BB%E8%A6%81%E6%98%AF%E5%AD%A6%E4%B9%A0%E5%80%BC%E5%87%BD%E6%95%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E6%A0%B9%E6%8D%AE%E5%80%BC%E5%87%BD%E6%95%B0%E5%AF%BC%E5%87%BA%E4%B8%80%E4%B8%AA%E7%AD%96%E7%95%A5%EF%BC%8C%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%B9%B6%E4%B8%8D%E5%AD%98%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%98%BE%E5%BC%8F%E7%9A%84%E7%AD%96%E7%95%A5%EF%BC%9B&#43;%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%EF%BC%9A%E7%9B%B4%E6%8E%A5%E6%98%BE%E5%BC%8F%E5%9C%B0%E5%AD%A6%E4%B9%A0%E4%B8%80%E4%B8%AA%E7%9B%AE%E6%A0%87%E7%AD%96%E7%95%A5%E3%80%82%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%98%AF%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95%E7%9A%84%E5%9F%BA%E7%A1%80%E3%80%82&#43;1.&#43;%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6&#43;%E5%B0%86%E7%AD%96%E7%95%A5%E5%8F%82%E6%95%B0%E5%8C%96%EF%BC%9A%E5%AF%BB%E6%89%BE%E4%B8%80%E4%B8%AA%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E5%B9%B6%E6%9C%80%E5%A4%A7%E5%8C%96%E8%BF%99%E4%B8%AA%E7%AD%96%E7%95%A5%E5%9C%A8%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E6%9C%9F%E6%9C%9B%E5%9B%9E%E6%8A%A5%EF%BC%8C%E5%8D%B3%E8%B0%83%E6%95%B4%E7%AD%96%E7%95%A5%E5%8F%82%E6%95%B0%E4%BD%BF%E5%B9%B3%E5%9D%87%E5%9B%9E%E6%8A%A5%E6%9C%80%E5%A4%A7%E5%8C%96%E3%80%82%0A%E7%AD%96%E7%95%A5%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%0AJ%28%CE%B8%29&#43;%E6%98%AF%E7%AD%96%E7%95%A5%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%EF%BC%88%E6%83%B3%E8%A6%81%E6%9C%80%E5%A4%A7%E5%8C%96%E7%9A%84%E9%87%8F%EF%BC%89%EF%BC%9B&#43;%CF%80%CE%B8&#43;%E6%98%AF%E5%8F%82%E6%95%B0%E4%B8%BA%CE%B8%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%80%A7%E7%AD%96%E7%95%A5%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%A4%84%E5%A4%84%E5%8F%AF%E5%BE%AE%EF%BC%88%E5%8F%AF%E4%BB%A5%E7%90%86%E8%A7%A3%E4%B8%BAAI%E7%9A%84%E5%86%B3%E7%AD%96%E8%A7%84%E5%88%99%EF%BC%89%EF%BC%9B&#43;V%CF%80%CE%B8%28s0%29&#43;%E6%8C%87%E4%BB%8E%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81&#43;s%E2%82%80&#43;%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%81%B5%E5%BE%AA%E7%AD%96%E7%95%A5%CF%80%E8%83%BD%E8%8E%B7%E5%BE%97%E7%9A%84%E9%A2%84%E6%9C%9F%E6%80%BB%E5%9B%9E%E6%8A%A5%EF%BC%9B&#43;Es0&#43;%E6%98%AF%E5%AF%B9%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E6%B1%82%E6%9C%9F%E6%9C%9B%E3%80%82&#43;&amp;title=REINFORCE&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Freinforce%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">REINFORCE</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-01T12:00:59-05:00">April 1, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Q-learning、DQN 算法都是<strong>基于价值</strong>（value-based）的方法</p>
+<ul>
+<li>Q-learning 是处理有限状态的算法</li>
+<li>DQN 可以用来解决连续状态的问题</li>
+</ul>
+<p>在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是<strong>基于策略</strong>（policy-based）的方法。</p>
+<p> </p>
+<p>对比 value-based 和 policy-based</p>
+<ul>
+<li>基于值函数：主要是学习<strong>值函数</strong>，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略；</li>
+<li>基于策略：直接显式地学习一个<strong>目标策略</strong>。策略梯度是基于策略的方法的基础。</li>
+</ul>
+<p> </p>
+<h2 id="1-策略梯度">1. 策略梯度</h2>
+<ul>
+<li>
+<p>将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。</p>
+</li>
+<li>
+<p>策略学习的目标函数</p>
+<p><img src="/images/REINFORCE/1.png" alt="1"></p>
+<ul>
+<li>J(θ) 是策略的目标函数（想要最大化的量）；</li>
+<li>πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；</li>
+<li>Vπθ(s0) 指从初始状态 s₀ 开始，<strong>遵循策略π能获得的预期总回报</strong>；</li>
+<li>Es0 是对所有可能的初始状态求期望。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>对目标函数求导：</p>
+<p><img src="/images/REINFORCE/2.png" alt="2"></p>
+<ul>
+<li>
+<p><strong>状态分布νπθ(s)</strong></p>
+<p>策略 πθ 下状态 s 的<strong>稳态分布</strong>（即在长期运行中，状态 s 出现的概率）</p>
+</li>
+<li>
+<p><strong>状态-动作值函数Qπθ(s,a)</strong></p>
+<p>在状态 s 下执行动作 a 后，<strong>按策略 πθ 继续执行能获得的期望回报</strong></p>
+</li>
+<li>
+<p><strong>策略梯度 ∇θπθ(a∣s)</strong></p>
+<p>πθ(a∣s) 是策略在状态 s 下选择动作 a 的概率。</p>
+</li>
+</ul>
+<p>在每一个状态下，梯度的修改是让策略更多地去采样到带来较高值的动作，更少地去采样到带来较低值的动作。</p>
+<p>注：期望E的下标是πθ，所以策略梯度算法为在线策略（on-policy）算法，即必须使用<strong>当前策略</strong>采样得到的数据来计算梯度。</p>
+</li>
+</ul>
+<p> </p>
+<h2 id="2-reinforce">2. REINFORCE</h2>
+<ul>
+<li>
+<p>策略梯度（有限步数的环境）</p>
+<p><img src="/images/REINFORCE/3.png" alt="3"></p>
+</li>
+<li>
+<p>采用蒙特卡洛方法来估计 Qπθ(s,a)。</p>
+</li>
+<li>
+<p>具体算法流程</p>
+<p><img src="/images/REINFORCE/4.png" alt="4"></p>
+</li>
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/dqn/">DQN (deep Q network)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">PPO-代码实现</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">强化学习-数学基础</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/">强化学习-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/e2e/">End2End</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
