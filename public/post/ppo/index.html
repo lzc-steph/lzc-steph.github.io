@@ -6,46 +6,36 @@
     
     <title>PPO | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="1. 基础概念
+    <meta name="description" content="1. 论文详读
+Proximal Policy Optimization Algorithms（Proximal：近似）
+2. PPO
+回顾 TRPO
+
+
+使用 KL 散度约束 policy 的更新幅度；使用重要性采样
+
+
+缺点：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难
+
+
+PPO 的改进
+
+
+TRPO 采用重要性采样 &mdash;-&gt; PPO 采用 clip 截断，限制新旧策略差异，避免更新过大。
+
+
+优势函数 At 选用多步时序差分
+
+
+自适应的 KL 惩罚项
 
 
 
-enviroment：看到的画面&#43;看不到的后台画面，不了解细节
 
-
-agent(智能体)：根据策略得到尽可能多的奖励
-
-
-state：当前状态
-
-
-observation：state的一部分（有时候agent无法看全）
-
-
-action：agent做出的动作
-
-
-reward：agent做出一个动作后环境给予的奖励
-
-
-action space：可以选择的动作，如上下左右
-
-
-policy：策略函数，输入state，输出Action的概率分布。一般用π表示。
-
-训练时应尝试各种action
-输出应具有多样性
-
-
-
-Trajectory/Episode/Rollout：轨迹，用t表示，一连串状态和动作的序列。
-有的状态转移是确定的，也有的是不确定的。
-
-
-Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
-
-
-强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。">
+ 
+3. PPO-惩罚
+PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。
+">
     <meta name="generator" content="Hugo 0.140.2">
     
     
@@ -75,56 +65,41 @@ Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
     <meta property="og:url" content="http://localhost:1313/post/ppo/">
   <meta property="og:site_name" content="HomePage">
   <meta property="og:title" content="PPO">
-  <meta property="og:description" content="1. 基础概念 enviroment：看到的画面&#43;看不到的后台画面，不了解细节
-agent(智能体)：根据策略得到尽可能多的奖励
-state：当前状态
-observation：state的一部分（有时候agent无法看全）
-action：agent做出的动作
-reward：agent做出一个动作后环境给予的奖励
-action space：可以选择的动作，如上下左右
-policy：策略函数，输入state，输出Action的概率分布。一般用π表示。
-训练时应尝试各种action 输出应具有多样性 Trajectory/Episode/Rollout：轨迹，用t表示，一连串状态和动作的序列。
-有的状态转移是确定的，也有的是不确定的。
-Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
-强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。">
+  <meta property="og:description" content="1. 论文详读 Proximal Policy Optimization Algorithms（Proximal：近似）
+2. PPO 回顾 TRPO 使用 KL 散度约束 policy 的更新幅度；使用重要性采样
+缺点：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难
+PPO 的改进 TRPO 采用重要性采样 —-&gt; PPO 采用 clip 截断，限制新旧策略差异，避免更新过大。
+优势函数 At 选用多步时序差分
+自适应的 KL 惩罚项
+3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-03-20T11:00:59-04:00">
-    <meta property="article:modified_time" content="2025-03-20T11:00:59-04:00">
+    <meta property="article:published_time" content="2025-04-03T04:00:59-07:00">
+    <meta property="article:modified_time" content="2025-04-03T04:00:59-07:00">
     <meta property="article:tag" content="RL">
 
   <meta itemprop="name" content="PPO">
-  <meta itemprop="description" content="1. 基础概念 enviroment：看到的画面&#43;看不到的后台画面，不了解细节
-agent(智能体)：根据策略得到尽可能多的奖励
-state：当前状态
-observation：state的一部分（有时候agent无法看全）
-action：agent做出的动作
-reward：agent做出一个动作后环境给予的奖励
-action space：可以选择的动作，如上下左右
-policy：策略函数，输入state，输出Action的概率分布。一般用π表示。
-训练时应尝试各种action 输出应具有多样性 Trajectory/Episode/Rollout：轨迹，用t表示，一连串状态和动作的序列。
-有的状态转移是确定的，也有的是不确定的。
-Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
-强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。">
-  <meta itemprop="datePublished" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-20T11:00:59-04:00">
-  <meta itemprop="wordCount" content="166">
+  <meta itemprop="description" content="1. 论文详读 Proximal Policy Optimization Algorithms（Proximal：近似）
+2. PPO 回顾 TRPO 使用 KL 散度约束 policy 的更新幅度；使用重要性采样
+缺点：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难
+PPO 的改进 TRPO 采用重要性采样 —-&gt; PPO 采用 clip 截断，限制新旧策略差异，避免更新过大。
+优势函数 At 选用多步时序差分
+自适应的 KL 惩罚项
+3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
+  <meta itemprop="datePublished" content="2025-04-03T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-03T04:00:59-07:00">
+  <meta itemprop="wordCount" content="679">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="PPO">
-  <meta name="twitter:description" content="1. 基础概念 enviroment：看到的画面&#43;看不到的后台画面，不了解细节
-agent(智能体)：根据策略得到尽可能多的奖励
-state：当前状态
-observation：state的一部分（有时候agent无法看全）
-action：agent做出的动作
-reward：agent做出一个动作后环境给予的奖励
-action space：可以选择的动作，如上下左右
-policy：策略函数，输入state，输出Action的概率分布。一般用π表示。
-训练时应尝试各种action 输出应具有多样性 Trajectory/Episode/Rollout：轨迹，用t表示，一连串状态和动作的序列。
-有的状态转移是确定的，也有的是不确定的。
-Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
-强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。">
+  <meta name="twitter:description" content="1. 论文详读 Proximal Policy Optimization Algorithms（Proximal：近似）
+2. PPO 回顾 TRPO 使用 KL 散度约束 policy 的更新幅度；使用重要性采样
+缺点：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难
+PPO 的改进 TRPO 采用重要性采样 —-&gt; PPO 采用 clip 截断，限制新旧策略差异，避免更新过大。
+优势函数 At 选用多步时序差分
+自适应的 KL 惩罚项
+3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -136,7 +111,7 @@ Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
   
   
   
-  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/PPO/meovv.jpg');">
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/PPO2/pia.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
@@ -238,7 +213,7 @@ Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F&amp;summary=1.&#43;%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5&#43;enviroment%EF%BC%9A%E7%9C%8B%E5%88%B0%E7%9A%84%E7%94%BB%E9%9D%A2%2B%E7%9C%8B%E4%B8%8D%E5%88%B0%E7%9A%84%E5%90%8E%E5%8F%B0%E7%94%BB%E9%9D%A2%EF%BC%8C%E4%B8%8D%E4%BA%86%E8%A7%A3%E7%BB%86%E8%8A%82%0Aagent%28%E6%99%BA%E8%83%BD%E4%BD%93%29%EF%BC%9A%E6%A0%B9%E6%8D%AE%E7%AD%96%E7%95%A5%E5%BE%97%E5%88%B0%E5%B0%BD%E5%8F%AF%E8%83%BD%E5%A4%9A%E7%9A%84%E5%A5%96%E5%8A%B1%0Astate%EF%BC%9A%E5%BD%93%E5%89%8D%E7%8A%B6%E6%80%81%0Aobservation%EF%BC%9Astate%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%88%E6%9C%89%E6%97%B6%E5%80%99agent%E6%97%A0%E6%B3%95%E7%9C%8B%E5%85%A8%EF%BC%89%0Aaction%EF%BC%9Aagent%E5%81%9A%E5%87%BA%E7%9A%84%E5%8A%A8%E4%BD%9C%0Areward%EF%BC%9Aagent%E5%81%9A%E5%87%BA%E4%B8%80%E4%B8%AA%E5%8A%A8%E4%BD%9C%E5%90%8E%E7%8E%AF%E5%A2%83%E7%BB%99%E4%BA%88%E7%9A%84%E5%A5%96%E5%8A%B1%0Aaction&#43;space%EF%BC%9A%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E7%9A%84%E5%8A%A8%E4%BD%9C%EF%BC%8C%E5%A6%82%E4%B8%8A%E4%B8%8B%E5%B7%A6%E5%8F%B3%0Apolicy%EF%BC%9A%E7%AD%96%E7%95%A5%E5%87%BD%E6%95%B0%EF%BC%8C%E8%BE%93%E5%85%A5state%EF%BC%8C%E8%BE%93%E5%87%BAAction%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E3%80%82%E4%B8%80%E8%88%AC%E7%94%A8%CF%80%E8%A1%A8%E7%A4%BA%E3%80%82%0A%E8%AE%AD%E7%BB%83%E6%97%B6%E5%BA%94%E5%B0%9D%E8%AF%95%E5%90%84%E7%A7%8Daction&#43;%E8%BE%93%E5%87%BA%E5%BA%94%E5%85%B7%E6%9C%89%E5%A4%9A%E6%A0%B7%E6%80%A7&#43;Trajectory%2FEpisode%2FRollout%EF%BC%9A%E8%BD%A8%E8%BF%B9%EF%BC%8C%E7%94%A8t%E8%A1%A8%E7%A4%BA%EF%BC%8C%E4%B8%80%E8%BF%9E%E4%B8%B2%E7%8A%B6%E6%80%81%E5%92%8C%E5%8A%A8%E4%BD%9C%E7%9A%84%E5%BA%8F%E5%88%97%E3%80%82%0A%E6%9C%89%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%98%AF%E7%A1%AE%E5%AE%9A%E7%9A%84%EF%BC%8C%E4%B9%9F%E6%9C%89%E7%9A%84%E6%98%AF%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84%E3%80%82%0AReturn%EF%BC%9A%E5%9B%9E%E6%8A%A5%EF%BC%8C%E4%BB%8E%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4%E7%82%B9%E5%88%B0%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F%E7%9A%84&#43;Reward&#43;%E7%9A%84%E7%B4%AF%E7%A7%AF%E5%92%8C%E3%80%82%0A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87%EF%BC%9A%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AAPolicy%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%CF%80%EF%BC%8C%E5%9C%A8%E6%89%80%E6%9C%89%E7%8A%B6%E6%80%81S%E4%B8%8B%EF%BC%8C%E7%BB%99%E5%87%BA%E7%9B%B8%E5%BA%94%E7%9A%84Action%EF%BC%8C%E5%BE%97%E5%88%B0Return%E7%9A%84%E6%9C%9F%E6%9C%9B%E6%9C%80%E5%A4%A7%E3%80%82%0A&amp;title=PPO&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F&amp;summary=1.&#43;%E8%AE%BA%E6%96%87%E8%AF%A6%E8%AF%BB&#43;Proximal&#43;Policy&#43;Optimization&#43;Algorithms%EF%BC%88Proximal%EF%BC%9A%E8%BF%91%E4%BC%BC%EF%BC%89%0A2.&#43;PPO&#43;%E5%9B%9E%E9%A1%BE&#43;TRPO&#43;%E4%BD%BF%E7%94%A8&#43;KL&#43;%E6%95%A3%E5%BA%A6%E7%BA%A6%E6%9D%9F&#43;policy&#43;%E7%9A%84%E6%9B%B4%E6%96%B0%E5%B9%85%E5%BA%A6%EF%BC%9B%E4%BD%BF%E7%94%A8%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E8%BF%91%E4%BC%BC%E4%BC%9A%E5%B8%A6%E6%9D%A5%E8%AF%AF%E5%B7%AE%EF%BC%88%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E7%9A%84%E9%80%9A%E7%97%85%EF%BC%89%EF%BC%9B%E8%A7%A3%E5%B8%A6%E7%BA%A6%E6%9D%9F%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E5%9B%B0%E9%9A%BE%0APPO&#43;%E7%9A%84%E6%94%B9%E8%BF%9B&#43;TRPO&#43;%E9%87%87%E7%94%A8%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7&#43;%26amp%3Bmdash%3B-%26amp%3Bgt%3B&#43;PPO&#43;%E9%87%87%E7%94%A8&#43;clip&#43;%E6%88%AA%E6%96%AD%EF%BC%8C%E9%99%90%E5%88%B6%E6%96%B0%E6%97%A7%E7%AD%96%E7%95%A5%E5%B7%AE%E5%BC%82%EF%BC%8C%E9%81%BF%E5%85%8D%E6%9B%B4%E6%96%B0%E8%BF%87%E5%A4%A7%E3%80%82%0A%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0&#43;At&#43;%E9%80%89%E7%94%A8%E5%A4%9A%E6%AD%A5%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%0A%E8%87%AA%E9%80%82%E5%BA%94%E7%9A%84&#43;KL&#43;%E6%83%A9%E7%BD%9A%E9%A1%B9%0A3.&#43;PPO-%E6%83%A9%E7%BD%9A&#43;PPO-%E6%83%A9%E7%BD%9A%EF%BC%88PPO-Penalty%EF%BC%89%EF%BC%9A%E7%94%A8%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E6%95%B0%E6%B3%95%E5%B0%86&#43;KL&#43;%E6%95%A3%E5%BA%A6%E7%9A%84%E9%99%90%E5%88%B6%E6%94%BE%E8%BF%9B%E4%BA%86%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E4%B8%AD%EF%BC%8C%E4%BD%BF%E5%85%B6%E5%8F%98%E6%88%90%E4%BA%86%E4%B8%80%E4%B8%AA%E6%97%A0%E7%BA%A6%E6%9D%9F%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%EF%BC%8C%E5%9C%A8%E8%BF%AD%E4%BB%A3%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0&#43;KL&#43;%E6%95%A3%E5%BA%A6%E5%89%8D%E7%9A%84%E7%B3%BB%E6%95%B0&#43;beta%E3%80%82%0A&amp;title=PPO&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -250,274 +225,292 @@ Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2025-03-20T11:00:59-04:00">March 20, 2025</time>
+      <time class="f6 mv4 dib tracked" datetime="2025-04-03T04:00:59-07:00">April 3, 2025</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="1-基础概念">1. 基础概念</h2>
-<p><img src="/images/PPO/1.png" alt="1"></p>
-<ol>
-<li>
-<p><strong>enviroment</strong>：看到的画面+看不到的后台画面，不了解细节</p>
-</li>
-<li>
-<p><strong>agent(智能体)</strong>：根据策略得到尽可能多的奖励</p>
-</li>
-<li>
-<p><strong>state</strong>：当前状态</p>
-</li>
-<li>
-<p><strong>observation</strong>：state的一部分（有时候agent无法看全）</p>
-</li>
-<li>
-<p><strong>action</strong>：agent做出的动作</p>
-</li>
-<li>
-<p><strong>reward</strong>：agent做出一个动作后环境给予的奖励</p>
-</li>
-<li>
-<p><strong>action space</strong>：可以选择的动作，如上下左右</p>
-</li>
-<li>
-<p><strong>policy</strong>：策略函数，输入state，输出Action的<strong>概率分布</strong>。一般用π表示。</p>
-<ol>
-<li>训练时应尝试各种action</li>
-<li>输出应具有多样性</li>
-</ol>
-</li>
-<li>
-<p><strong>Trajectory/Episode/Rollout</strong>：轨迹，用t表示，一连串状态和动作的序列。</p>
-<p>有的状态转移是确定的，也有的是不确定的。</p>
-</li>
-<li>
-<p><strong>Return</strong>：回报，从当前时间点到游戏结束的 Reward 的累积和。</p>
-</li>
-</ol>
-<p>强化学习目标：训练一个Policy神经网络π，在所有状态S下，给出相应的Action，得到Return的期望最大。</p>
-<p> </p>
-<h2 id="2-policy-gradient">2. Policy gradient</h2>
-<p>目标：求return期望的最大值</p>
-<ol>
-<li>
-<h4 id="计算过程"><strong>计算过程</strong></h4>
-<p><img src="/images/PPO/2.png" alt="2"></p>
-<p><img src="/images/PPO/3.png" alt="3"></p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="1-论文详读">1. 论文详读</h2>
+<p><a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization Algorithms</a>（Proximal：近似）</p>
+<h2 id="2-ppo">2. PPO</h2>
+<h4 id="回顾-trpo">回顾 TRPO</h4>
 <ul>
 <li>
-<p>直观理解：</p>
-<p>对所有可能的 trajectory 期望最大的梯度。可以用这个梯度乘学习率去更新神经网络里的参数。</p>
+<p>使用 KL 散度约束 policy 的更新幅度；使用重要性采样</p>
 </li>
 <li>
-<p>若去掉梯度，则表达式的意义：若一个<strong>trajectory 得到的 return 大于零</strong>，则<strong>增大</strong>这个trajectory里所有状态下，采取当前action的概率。</p>
-</li>
-</ul>
+<p><strong>缺点</strong>：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难</p>
 </li>
 <li>
-<h4 id="训练policy神经网络"><strong>训练policy神经网络</strong></h4>
-<ul>
-<li>
-<p><strong>输入</strong>：当前画面</p>
-</li>
-<li>
-<p><strong>输出</strong>：action 的概率</p>
-</li>
-</ul>
-<p><img src="/images/PPO/4.png" alt="4"></p>
-<p>玩n场游戏后，得到n个trajectory的最后的return值</p>
-<p>此时可以得到loss里的所有值，可以进行一个batch训练，来更新policy神经网络</p>
-<p><img src="/images/PPO/5.png" alt="5"></p>
-<p>存在问题：大部分时间在采集数据，很慢</p>
-</li>
-</ol>
-<p> </p>
-<h2 id="3-actor-critic-算法">3. actor-critic 算法</h2>
-<ul>
-<li>
-<h4 id="上述算法可改进">上述算法可改进：</h4>
+<h4 id="ppo-的改进">PPO 的改进</h4>
 <ol>
 <li>
-<p>是否增大某动作概率，应该看做了该动作之后，到游戏结束累积的 reward；而不是整个 trajectory 的 reward。</p>
-<p>一个动作只能影响它之后的 reward，而无法影响它之前的 reward</p>
+<p>TRPO 采用重要性采样 &mdash;-&gt; PPO 采用 <strong>clip 截断</strong>，限制新旧策略差异，避免更新过大。</p>
 </li>
 <li>
-<p>某动作可能只影响接下来的几步，且影响逐步衰减。后面的reward更多是被当时的action影响。</p>
+<p>优势函数 At 选用多步时序差分</p>
+</li>
+<li>
+<p>自适应的 KL 惩罚项</p>
 </li>
 </ol>
 </li>
-<li>
-<h4 id="修改公式actor-critic">修改公式：actor-critic</h4>
-<p><img src="/images/PPO/6.png" alt="6"></p>
+</ul>
+<p> </p>
+<h2 id="3-ppo-惩罚">3. PPO-惩罚</h2>
+<p>PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。</p>
+<p><img src="/images/PPO2/2.png" alt="2"></p>
 <ul>
 <li>
-<p>对当前动作之后的折扣累积回报进行求和</p>
-<p><img src="/images/PPO/7.png" alt="7"></p>
-</li>
-<li>
-<p><strong>引入 gamma</strong>：距离当前越远，影响越小</p>
-</li>
-<li>
-<p>对所有的动作减去一个baseline，得到的就是该动作相对于其他动作的好坏。避免训练慢。</p>
-</li>
-</ul>
-<p>actor：输出动作的概率分布。</p>
-<p>critic：评估状态值函数 V(s) 的网络。估计当前状态的价值，而不是直接评估动作的好坏。</p>
+<p>dk 即为KL散度值。</p>
+<p>第一种情况 dk 小，说明安全，关注前项；第二种情况 dk 大，不安全，故乘 2 关注后一项。</p>
 </li>
 </ul>
 <p> </p>
-<h2 id="4-优势函数advantage-function">4. 优势函数(Advantage Function)</h2>
-<p><img src="/images/PPO/8.png" alt="8"></p>
+<h2 id="4-ppo-截断">4. PPO-截断</h2>
+<p>在目标函数中进行限制，以保证新的参数和旧的参数的差距不会太大。</p>
+<p><img src="/images/PPO2/3.png" alt="3"></p>
+<p>前一项是原来的，后一项是要做截断的；保证更新幅度不会过大或过小。</p>
+<p><img src="/images/PPO2/4.png" alt="4"></p>
+<p> </p>
+<h2 id="5-ppo-代码实践">5. PPO 代码实践</h2>
+<p>大量实验表明，PPO-截断总是比 PPO-惩罚表现得更好。因此下面我们使用 <strong>PPO-截断</strong>的代码实现。</p>
+<h3 id="离散环境">离散环境</h3>
 <ol>
 <li>
-<p><strong>动作价值函数</strong></p>
-<p><img src="/images/PPO/9.png" alt="9"></p>
+<h4 id="定义策略网络和价值网络">定义策略网络和价值网络</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gym
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn.functional <span style="color:#66d9ef">as</span> F
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> rl_utils
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PolicyNet</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim):
+</span></span><span style="display:flex;"><span>        super(PolicyNet, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> F<span style="color:#f92672">.</span>softmax(self<span style="color:#f92672">.</span>fc2(x), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ValueNet</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim):
+</span></span><span style="display:flex;"><span>        super(ValueNet, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>fc2(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PPO</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; PPO算法,采用截断方式 &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim, actor_lr, critic_lr,
+</span></span><span style="display:flex;"><span>                 lmbda, epochs, eps, gamma, device):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actor <span style="color:#f92672">=</span> PolicyNet(state_dim, hidden_dim, action_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic <span style="color:#f92672">=</span> ValueNet(state_dim, hidden_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actor_optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                                lr<span style="color:#f92672">=</span>actor_lr)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>critic<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                                 lr<span style="color:#f92672">=</span>critic_lr)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>lmbda <span style="color:#f92672">=</span> lmbda
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>epochs <span style="color:#f92672">=</span> epochs  <span style="color:#75715e"># 一条序列的数据用来训练轮数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>eps <span style="color:#f92672">=</span> eps  <span style="color:#75715e"># PPO中截断范围的参数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device <span style="color:#f92672">=</span> device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):
+</span></span><span style="display:flex;"><span>        state <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([state], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        probs <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(state)
+</span></span><span style="display:flex;"><span>        action_dist <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Categorical(probs)
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> action_dist<span style="color:#f92672">.</span>sample()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> action<span style="color:#f92672">.</span>item()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, transition_dict):
+</span></span><span style="display:flex;"><span>        states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;states&#39;</span>],
+</span></span><span style="display:flex;"><span>                              dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        actions <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;actions&#39;</span>])<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        rewards <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;rewards&#39;</span>],
+</span></span><span style="display:flex;"><span>                               dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        next_states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;next_states&#39;</span>],
+</span></span><span style="display:flex;"><span>                                   dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        dones <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;dones&#39;</span>],
+</span></span><span style="display:flex;"><span>                             dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        td_target <span style="color:#f92672">=</span> rewards <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>critic(next_states) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span>                                                                       dones)
+</span></span><span style="display:flex;"><span>        td_delta <span style="color:#f92672">=</span> td_target <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>critic(states)
+</span></span><span style="display:flex;"><span>        advantage <span style="color:#f92672">=</span> rl_utils<span style="color:#f92672">.</span>compute_advantage(self<span style="color:#f92672">.</span>gamma, self<span style="color:#f92672">.</span>lmbda,
+</span></span><span style="display:flex;"><span>                                               td_delta<span style="color:#f92672">.</span>cpu())<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        old_log_probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>log(self<span style="color:#f92672">.</span>actor(states)<span style="color:#f92672">.</span>gather(<span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>                                                            actions))<span style="color:#f92672">.</span>detach()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>epochs):
+</span></span><span style="display:flex;"><span>            log_probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>log(self<span style="color:#f92672">.</span>actor(states)<span style="color:#f92672">.</span>gather(<span style="color:#ae81ff">1</span>, actions))
+</span></span><span style="display:flex;"><span>            ratio <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>exp(log_probs <span style="color:#f92672">-</span> old_log_probs)
+</span></span><span style="display:flex;"><span>            surr1 <span style="color:#f92672">=</span> ratio <span style="color:#f92672">*</span> advantage
+</span></span><span style="display:flex;"><span>            surr2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>clamp(ratio, <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>eps,
+</span></span><span style="display:flex;"><span>                                <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>eps) <span style="color:#f92672">*</span> advantage  <span style="color:#75715e"># 截断</span>
+</span></span><span style="display:flex;"><span>            actor_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(<span style="color:#f92672">-</span>torch<span style="color:#f92672">.</span>min(surr1, surr2))  <span style="color:#75715e"># PPO损失函数</span>
+</span></span><span style="display:flex;"><span>            critic_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>                F<span style="color:#f92672">.</span>mse_loss(self<span style="color:#f92672">.</span>critic(states), td_target<span style="color:#f92672">.</span>detach()))
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>actor_optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>            actor_loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>            critic_loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>actor_optimizer<span style="color:#f92672">.</span>step()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>step()
+</span></span></code></pre></div><p> </p>
 </li>
 <li>
-<p><strong>优势函数计算公式</strong></p>
-<p><img src="/images/PPO/10.png" alt="10"></p>
-</li>
+<h4 id="在车杆环境中训练-ppo-算法">在车杆环境中训练 PPO 算法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>actor_lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-3</span>
+</span></span><span style="display:flex;"><span>critic_lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-2</span>
+</span></span><span style="display:flex;"><span>num_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>hidden_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.98</span>
+</span></span><span style="display:flex;"><span>lmbda <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.95</span>
+</span></span><span style="display:flex;"><span>epochs <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span>
+</span></span><span style="display:flex;"><span>device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>) <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> torch<span style="color:#f92672">.</span>device(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cpu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>env_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CartPole-v0&#39;</span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(env_name)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>state_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>action_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>n
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> PPO(state_dim, hidden_dim, action_dim, actor_lr, critic_lr, lmbda,
+</span></span><span style="display:flex;"><span>            epochs, eps, gamma, device)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>return_list <span style="color:#f92672">=</span> rl_utils<span style="color:#f92672">.</span>train_on_policy_agent(env, agent, num_episodes)
+</span></span></code></pre></div></li>
 </ol>
-<p>之前需要训练两个神经网络（动作+状态），变成只需要训练一个代表状态价值的函数。</p>
-<p><img src="/images/PPO/11.png" alt="11"></p>
-<ul>
-<li>
-<p>要采样几步？<strong>Generalized Advantage Estimation (GAE)</strong>：全都要</p>
-<p>通过一个超参数控制了我们想要的方差-偏差间的平衡。权重随着步数增加而降低。</p>
-<p><img src="/images/PPO/12.png" alt="12"></p>
-</li>
-</ul>
 <p> </p>
-<p><img src="/images/PPO/13.png" alt="13"></p>
-<p>目标：策略梯度优化目标函数值(即第三个式子)越大越好</p>
-<ul>
-<li>
-<p>状态价值函数用神经网络拟合，它可以和策略函数公用网络参数，只是最后一层不同：状态价值函数在最后一层<strong>输出一个单一值代表当前价值即可</strong>。</p>
-<p>训练价值函数：统计当前步到 trajectory 结束，所有 reward的加减加和 作为label。衰减系数用gamma控制。用价值网络拟合retuen值即可。</p>
-<p><img src="/images/PPO/14.png" alt="14"></p>
-</li>
-</ul>
-<p> </p>
-<p> </p>
-<h2 id="5-on-policy与off-policy">5. on-policy与off-policy</h2>
-<p><img src="/images/PPO/23.png" alt="23"></p>
-<p>动作价值函数Q(s,a)：在state s下，做出Action a，期望的回报。</p>
-<ul>
-<li>
-<p>RL 算法可抽象为：</p>
-<ul>
-<li>收集数据(Data Collection)：与环境交互，收集学习样本;</li>
-<li>学习(Learning)样本：学习收集到的样本中的信息，提升策略。</li>
-</ul>
-<p><img src="/images/PPO/15.png" alt="15"></p>
-</li>
-</ul>
+<h3 id="连续环境">连续环境</h3>
+<p>让策略网络输出连续动作<strong>高斯分布</strong>的均值和标准差。后续的连续动作则在该高斯分布中采样得到。</p>
 <ol>
 <li>
-<h4 id="随机探索策略">随机探索策略</h4>
-<ol>
-<li>
-<p>先用Q函数构造确定性策略</p>
-<p><img src="/images/PPO/16.png" alt="16"></p>
-<p>选取Q值最大的动作为最优动作。(注意：一般只有在动作空间离散的情况下采用这种策略，若动作空间连续上式中的最大化操作需要经过复杂的优化求解过程。)</p>
+<h4 id="定义网络">定义网络</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PolicyNetContinuous</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim):
+</span></span><span style="display:flex;"><span>        super(PolicyNetContinuous, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc_mu <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc_std <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        mu <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.0</span> <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>tanh(self<span style="color:#f92672">.</span>fc_mu(x))
+</span></span><span style="display:flex;"><span>        std <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>softplus(self<span style="color:#f92672">.</span>fc_std(x))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mu, std
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PPOContinuous</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; 处理连续动作的PPO算法 &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim, actor_lr, critic_lr,
+</span></span><span style="display:flex;"><span>                 lmbda, epochs, eps, gamma, device):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actor <span style="color:#f92672">=</span> PolicyNetContinuous(state_dim, hidden_dim,
+</span></span><span style="display:flex;"><span>                                         action_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic <span style="color:#f92672">=</span> ValueNet(state_dim, hidden_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actor_optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                                lr<span style="color:#f92672">=</span>actor_lr)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>critic<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                                 lr<span style="color:#f92672">=</span>critic_lr)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>lmbda <span style="color:#f92672">=</span> lmbda
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>epochs <span style="color:#f92672">=</span> epochs
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>eps <span style="color:#f92672">=</span> eps
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device <span style="color:#f92672">=</span> device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):
+</span></span><span style="display:flex;"><span>        state <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([state], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        mu, sigma <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(state)
+</span></span><span style="display:flex;"><span>        action_dist <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu, sigma)
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> action_dist<span style="color:#f92672">.</span>sample()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> [action<span style="color:#f92672">.</span>item()]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, transition_dict):
+</span></span><span style="display:flex;"><span>        states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;states&#39;</span>],
+</span></span><span style="display:flex;"><span>                              dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        actions <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;actions&#39;</span>],
+</span></span><span style="display:flex;"><span>                               dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        rewards <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;rewards&#39;</span>],
+</span></span><span style="display:flex;"><span>                               dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        next_states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;next_states&#39;</span>],
+</span></span><span style="display:flex;"><span>                                   dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        dones <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;dones&#39;</span>],
+</span></span><span style="display:flex;"><span>                             dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        rewards <span style="color:#f92672">=</span> (rewards <span style="color:#f92672">+</span> <span style="color:#ae81ff">8.0</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">8.0</span>  <span style="color:#75715e"># 和TRPO一样,对奖励进行修改,方便训练</span>
+</span></span><span style="display:flex;"><span>        td_target <span style="color:#f92672">=</span> rewards <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>critic(next_states) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span>                                                                       dones)
+</span></span><span style="display:flex;"><span>        td_delta <span style="color:#f92672">=</span> td_target <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>critic(states)
+</span></span><span style="display:flex;"><span>        advantage <span style="color:#f92672">=</span> rl_utils<span style="color:#f92672">.</span>compute_advantage(self<span style="color:#f92672">.</span>gamma, self<span style="color:#f92672">.</span>lmbda,
+</span></span><span style="display:flex;"><span>                                               td_delta<span style="color:#f92672">.</span>cpu())<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        mu, std <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(states)
+</span></span><span style="display:flex;"><span>        action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu<span style="color:#f92672">.</span>detach(), std<span style="color:#f92672">.</span>detach())
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 动作是正态分布</span>
+</span></span><span style="display:flex;"><span>        old_log_probs <span style="color:#f92672">=</span> action_dists<span style="color:#f92672">.</span>log_prob(actions)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>epochs):
+</span></span><span style="display:flex;"><span>            mu, std <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(states)
+</span></span><span style="display:flex;"><span>            action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu, std)
+</span></span><span style="display:flex;"><span>            log_probs <span style="color:#f92672">=</span> action_dists<span style="color:#f92672">.</span>log_prob(actions)
+</span></span><span style="display:flex;"><span>            ratio <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>exp(log_probs <span style="color:#f92672">-</span> old_log_probs)
+</span></span><span style="display:flex;"><span>            surr1 <span style="color:#f92672">=</span> ratio <span style="color:#f92672">*</span> advantage
+</span></span><span style="display:flex;"><span>            surr2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>clamp(ratio, <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>eps, <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>eps) <span style="color:#f92672">*</span> advantage
+</span></span><span style="display:flex;"><span>            actor_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(<span style="color:#f92672">-</span>torch<span style="color:#f92672">.</span>min(surr1, surr2))
+</span></span><span style="display:flex;"><span>            critic_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>                F<span style="color:#f92672">.</span>mse_loss(self<span style="color:#f92672">.</span>critic(states), td_target<span style="color:#f92672">.</span>detach()))
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>actor_optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>            actor_loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>            critic_loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>actor_optimizer<span style="color:#f92672">.</span>step()
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>step()
+</span></span></code></pre></div><p> </p>
 </li>
 <li>
-<p>再用 ε-greedy方法将上述确定性策略改造成具有探索能力的策略</p>
-<p><img src="/images/PPO/17.png" alt="17"></p>
-<p>以ϵ的概率选择随机动作(Exploration)，以1-ϵ的概率按照确定性策略选取动作。</p>
-</li>
+<h4 id="在倒立摆环境中训练">在倒立摆环境中训练</h4>
+<p>创建环境<code>Pendulum-v0</code>，并设定随机数种子以便重复实现。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>actor_lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-4</span>
+</span></span><span style="display:flex;"><span>critic_lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">5e-3</span>
+</span></span><span style="display:flex;"><span>num_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
+</span></span><span style="display:flex;"><span>hidden_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
+</span></span><span style="display:flex;"><span>lmbda <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
+</span></span><span style="display:flex;"><span>epochs <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span>
+</span></span><span style="display:flex;"><span>device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>) <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> torch<span style="color:#f92672">.</span>device(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cpu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>env_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Pendulum-v0&#39;</span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(env_name)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>state_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>action_dim <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># 连续动作空间</span>
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> PPOContinuous(state_dim, hidden_dim, action_dim, actor_lr, critic_lr,
+</span></span><span style="display:flex;"><span>                      lmbda, epochs, eps, gamma, device)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>return_list <span style="color:#f92672">=</span> rl_utils<span style="color:#f92672">.</span>train_on_policy_agent(env, agent, num_episodes)
+</span></span></code></pre></div></li>
 </ol>
 <p> </p>
-</li>
-<li>
-<h4 id="off-policy方法">off-policy方法</h4>
-<h5 id="将收集数据当做一个单独的任务-q-learning">将收集数据当做一个单独的任务 (Q-Learning)</h5>
-<p>off-policy的方法将收集数据作为RL算法中单独的一个任务，它准备两个策略：行为策略(behavior policy)与目标策略(target policy)。</p>
-<ul>
-<li><strong>行为策略</strong>：专门负责学习数据的获取，具有一定的随机性，总是有一定的概率选出潜在的最优动作。</li>
-<li><strong>目标策略</strong>：借助行为策略收集到的样本以及策略提升方法提升自身性能，并最终成为最优策略。</li>
-</ul>
-<h5 id="q-learning">Q-Learning</h5>
-<p><img src="/images/PPO/18.png" alt="18"></p>
-<p><img src="/images/PPO/19.png" alt="19"></p>
-<p>Q 函数更新规则(update rule)中的训练样本是由<strong>行为策略</strong>(而非目标策略)提供，因此它是典型的off-policy方法。</p>
-<ol>
-<li>
-<p>如果需要用off-policy方法估计/预测状态值或动作值时，需要用到重要性采样！</p>
-<p><strong>重要性采样</strong>：用一个概率分布的样本来估计某个随机变量关于另一个概率分布的期望。</p>
-<p>假设已知随机策略π(a|s)，现在需要估计策略π对应的状态值Vπ，但是只能用另一个策略 π′(a|s)获取样本。对于这种需要用另外一个策略的数据(off-policy)来精确估计状态值的任务，需要用到重要性采样的方法：具体做法是<strong>在对应的样本估计量上乘上一个权重(π与π′的相对概率)，称为重要性采样率。</strong></p>
-</li>
-<li>
-<p>Q-Learning算法(或DQN)身为off-policy可以不用重要性采样</p>
-<p><strong>Q-Learning的思想：从任意初始化的Q函数出发，以最优贝尔曼方程为标准调整Q函数。</strong></p>
-<p><img src="/images/PPO/20.png" alt="20"></p>
-</li>
-</ol>
+<h2 id="6-ppo-在-chatgpt-中的使用">6. PPO 在 ChatGPT 中的使用</h2>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/PPO2/1.png" alt="1"></p>
 <p> </p>
-</li>
-<li>
-<h4 id="on-policy方法">on-policy方法</h4>
-<h5 id="on-policy里面只有一种策略它既为目标策略又为行为策略">on-policy里面只有一种策略，它既为目标策略又为行为策略。</h5>
-<p><img src="/images/PPO/21.png" alt="21"></p>
-<p>Actor-Critic 方法通常是 <strong>on-policy</strong> 的，Critic 的评估基于当前策略生成的数据，因此需要遵循当前策略来收集数据。</p>
-<p>采集数据只用一次就要丢弃，训练速度慢。</p>
-<p> </p>
-</li>
-<li>
-<h4 id="重要性采样">重要性采样</h4>
-<p><img src="/images/PPO/24.png" alt="24"></p>
-<p>利用重要性采样更新目标函数的梯度公式，可以将on-policy策略替换为off-policy策略。</p>
-<p><img src="/images/PPO/25.png" alt="25"></p>
-<p> </p>
-</li>
-<li>
-<h4 id="总结">总结</h4>
-<ul>
-<li>off-policy 的最简单解释: the learning is from the data off the target policy。</li>
-<li>on-policy 方法要求使用当前策略生成的数据来更新策略。</li>
-<li>on/off-policy的概念帮助区分训练的数据来自于哪里。</li>
-<li>off-policy方法中不一定非要采用重要性采样，要根据实际情况采用（比如，需要精确估计值函数时需要采用重要性采样；若是用于使值函数靠近最优值函数则不一定）。</li>
-</ul>
-<p><em>例如：小明根据老师的表扬和批评来调整自己的行为，是on-policy；其他同学根据老师对小明的评价，调整自己的行为，是off-policy。</em></p>
-</li>
-</ol>
-<p> </p>
-<p> </p>
-<h2 id="6-ppo">6. PPO</h2>
-<ol>
-<li>
-<h5 id="概述">概述</h5>
-<p>算法全称 <strong>Proximal Policy Optimization</strong>（近端策略优化）。</p>
-<ul>
-<li>
-<p><strong>核心思想</strong>：通过限制策略更新的幅度，避免策略更新过大导致训练不稳定。</p>
-<p>使用了重要性采样（importance sampling）来复用旧策略的数据，同时通过限制策略更新的幅度来保证训练的稳定性。</p>
-</li>
-</ul>
-</li>
-<li>
-<h5 id="loss函数">loss函数</h5>
-<p><img src="/images/PPO/26.png" alt="26"></p>
-<ul>
-<li>
-<p>解决了on-policy 训练效率低的问题</p>
-<p><strong>用参考策略进行数据采样</strong>：通过重要性采样复用旧策略的数据，从而提高了数据利用率。</p>
-<p><strong>采样的数据可以多次用于训练</strong>：通过限制策略更新的幅度，使得旧策略的数据可以多次用于训练，从而提高了训练效率。</p>
-</li>
-</ul>
-<p><em>但是，训练策略和参考策略相差不能太大，不然很难学到有用的经验和训练。</em></p>
-</li>
-<li>
-<h5 id="添加kl散度作约束">添加KL散度作约束</h5>
-<p><strong>目的</strong>：通过限制策略更新的幅度，避免了策略更新过大导致的训练不稳定。</p>
-<ul>
-<li>法一：<strong>KL 散度</strong>是一种衡量两个概率分布相似程度的指标。分布越一致，KL散度越小。</li>
-<li>法二：PPO-Clip 使用**截断函数（clipping function）**来限制策略更新的幅度，从而避免策略更新过大。</li>
-</ul>
-<p><img src="/images/PPO/27.png" alt="27"></p>
-<p>PPO-Clip 实现简单且效果稳定，因此在实践中更为常用。</p>
-</li>
-</ol><ul class="pa0">
+<h2 id="总结">总结</h2>
+<p>PPO 是 TRPO 的一种改进算法，它在实现上简化了 TRPO 中的复杂计算，并且它在实验中的性能大多数情况下会比 TRPO 更好，因此目前常被用作一种常用的基准算法。</p>
+<p>TRPO 和 PPO 都属于<strong>在线策略</strong>学习算法，即使优化目标中包含重要性采样的过程，但其只是用到了上一轮策略的数据，而不是过去所有策略的数据。</p><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
@@ -540,19 +533,43 @@ Return：回报，从当前时间点到游戏结束的 Reward 的累积和。
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
+          <a href="/post/trpo/">TRPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/actor-critic/">Actor-Critic</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/reinforce/">REINFORCE</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dqn/">DQN (deep Q network)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
           <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/post/lift-splat-shoot/">Lift-splat-shoot</a>
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">强化学习-数学基础</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7/">强化学习-基础工具（1-3）</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/">强化学习-直观理解</a>
         </li>
 	    
 	     <li  class="mb2">

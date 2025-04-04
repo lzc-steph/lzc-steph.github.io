@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="AJ&#39;s blog">
   <meta itemprop="description" content="The Sternstunden of mankind are always just a small number of moments in which a single individual shapes history.">
-  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
-  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="datePublished" content="2025-04-03T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-03T04:00:59-07:00">
   <meta itemprop="wordCount" content="3">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="AJ&#39;s blog">
@@ -179,6 +179,66 @@
       
           
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/post/ppo/" class="db grow">
+            <img src="http://localhost:1313/images/PPO2/pia.jpg" class="img" alt="image from PPO">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/post/ppo/" class="color-inherit dim link">
+            PPO
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="1-论文详读">1. 论文详读</h2>
+<p><a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization Algorithms</a>（Proximal：近似）</p>
+<h2 id="2-ppo">2. PPO</h2>
+<h4 id="回顾-trpo">回顾 TRPO</h4>
+<ul>
+<li>
+<p>使用 KL 散度约束 policy 的更新幅度；使用重要性采样</p>
+</li>
+<li>
+<p><strong>缺点</strong>：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难</p>
+</li>
+<li>
+<h4 id="ppo-的改进">PPO 的改进</h4>
+<ol>
+<li>
+<p>TRPO 采用重要性采样 &mdash;-&gt; PPO 采用 <strong>clip 截断</strong>，限制新旧策略差异，避免更新过大。</p>
+</li>
+<li>
+<p>优势函数 At 选用多步时序差分</p>
+</li>
+<li>
+<p>自适应的 KL 惩罚项</p>
+</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h2 id="3-ppo-惩罚">3. PPO-惩罚</h2>
+<p>PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。</p>
+<p><img src="/images/PPO2/2.png" alt="2"></p>
+        </div>
+          <a href="/post/ppo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+            </div>
+          
+            <div class="relative w-100 mb4">
+              
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
           <a href="/post/trpo/" class="db grow">
             <img src="http://localhost:1313/images/trpo/pia.jpg" class="img" alt="image from TRPO">
           </a>
@@ -191,11 +251,10 @@
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
-<p> </p>
+          <p>基于策略的方法的缺点：当策略网络是深度模型时沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
 <ul>
 <li>
-<p><strong>信任区域策略优化</strong>（trust region policy optimization，TRPO）算法的核心思想：</p>
+<p><strong>信任区域策略优化</strong>（TRPO）算法的核心思想：</p>
 <p><strong>信任区域</strong>（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。</p>
 </li>
 </ul>
@@ -257,72 +316,18 @@
 
             </div>
           
-            <div class="relative w-100 mb4">
-              
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-          
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/post/reinforce/" class="db grow">
-            <img src="http://localhost:1313/images/REINFORCE/pia.jpg" class="img" alt="image from REINFORCE">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/post/reinforce/" class="color-inherit dim link">
-            REINFORCE
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>Q-learning、DQN 算法都是<strong>基于价值</strong>（value-based）的方法</p>
-<ul>
-<li>Q-learning 是处理有限状态的算法</li>
-<li>DQN 可以用来解决连续状态的问题</li>
-</ul>
-<p>在强化学习中，除了基于值函数的方法，还有一支非常经典的方法，那就是<strong>基于策略</strong>（policy-based）的方法。</p>
-<p> </p>
-<p>对比 value-based 和 policy-based</p>
-<ul>
-<li>基于值函数：主要是学习<strong>值函数</strong>，然后根据值函数导出一个策略，学习过程中并不存在一个显式的策略；</li>
-<li>基于策略：直接显式地学习一个<strong>目标策略</strong>。策略梯度是基于策略的方法的基础。</li>
-</ul>
-<p> </p>
-<p> </p>
-<h2 id="1-策略梯度">1. 策略梯度</h2>
-<ul>
-<li>
-<p>将策略参数化：寻找一个最优策略并最大化这个策略在环境中的期望回报，即调整策略参数使平均回报最大化。</p>
-</li>
-<li>
-<p>策略学习的目标函数</p>
-<p><img src="/images/REINFORCE/1.png" alt="1"></p>
-<ul>
-<li>J(θ) 是策略的目标函数（想要最大化的量）；</li>
-<li>πθ 是参数为θ的随机性策略，并且处处可微（可以理解为AI的决策规则）；</li>
-<li>Vπθ(s0) 指从初始状态s₀开始<strong>遵循策略π能获得的预期总回报</strong>；</li>
-<li>Es0 是对所有可能的初始状态求期望。</li>
-</ul>
-</li>
-</ul>
-        </div>
-          <a href="/post/reinforce/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-            </div>
-          
         </section>
 
         
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/post/reinforce/" class="link black dim">
+                REINFORCE
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/post/dqn/" class="link black dim">
@@ -339,12 +344,6 @@
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/" class="link black dim">
                 强化学习-易混淆点
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/post/%E9%87%8F%E5%8C%96/" class="link black dim">
-                Quantization
               </a>
             </h2>
           

@@ -6,11 +6,10 @@
     
     <title>TRPO | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
- 
+    <meta name="description" content="基于策略的方法的缺点：当策略网络是深度模型时沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
 
 
-信任区域策略优化（trust region policy optimization，TRPO）算法的核心思想：
+信任区域策略优化（TRPO）算法的核心思想：
 信任区域（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。
 
 
@@ -47,8 +46,8 @@
     <meta property="og:url" content="http://localhost:1313/post/trpo/">
   <meta property="og:site_name" content="HomePage">
   <meta property="og:title" content="TRPO">
-  <meta property="og:description" content="基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
-信任区域策略优化（trust region policy optimization，TRPO）算法的核心思想：
+  <meta property="og:description" content="基于策略的方法的缺点：当策略网络是深度模型时沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
+信任区域策略优化（TRPO）算法的核心思想：
 信任区域（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。
 1. 策略目标">
   <meta property="og:locale" content="en_US">
@@ -59,18 +58,18 @@
     <meta property="article:tag" content="RL">
 
   <meta itemprop="name" content="TRPO">
-  <meta itemprop="description" content="基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
-信任区域策略优化（trust region policy optimization，TRPO）算法的核心思想：
+  <meta itemprop="description" content="基于策略的方法的缺点：当策略网络是深度模型时沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
+信任区域策略优化（TRPO）算法的核心思想：
 信任区域（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。
 1. 策略目标">
   <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
   <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
-  <meta itemprop="wordCount" content="9">
+  <meta itemprop="wordCount" content="1173">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="TRPO">
-  <meta name="twitter:description" content="基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
-信任区域策略优化（trust region policy optimization，TRPO）算法的核心思想：
+  <meta name="twitter:description" content="基于策略的方法的缺点：当策略网络是深度模型时沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。
+信任区域策略优化（TRPO）算法的核心思想：
 信任区域（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。
 1. 策略目标">
 
@@ -186,7 +185,7 @@
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Ftrpo%2F&amp;summary=%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A%E5%BD%93%E7%AD%96%E7%95%A5%E7%BD%91%E7%BB%9C%E6%98%AF%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B%E6%97%B6%EF%BC%8C%E6%B2%BF%E7%9D%80%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%9B%B4%E6%96%B0%E5%8F%82%E6%95%B0%EF%BC%8C%E5%BE%88%E6%9C%89%E5%8F%AF%E8%83%BD%E7%94%B1%E4%BA%8E%E6%AD%A5%E9%95%BF%E5%A4%AA%E9%95%BF%EF%BC%8C%E7%AD%96%E7%95%A5%E7%AA%81%E7%84%B6%E6%98%BE%E8%91%97%E5%8F%98%E5%B7%AE%EF%BC%8C%E8%BF%9B%E8%80%8C%E5%BD%B1%E5%93%8D%E8%AE%AD%E7%BB%83%E6%95%88%E6%9E%9C%E3%80%82%0A%E4%BF%A1%E4%BB%BB%E5%8C%BA%E5%9F%9F%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%EF%BC%88trust&#43;region&#43;policy&#43;optimization%EF%BC%8CTRPO%EF%BC%89%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%EF%BC%9A%0A%E4%BF%A1%E4%BB%BB%E5%8C%BA%E5%9F%9F%EF%BC%88trust&#43;region%EF%BC%89%EF%BC%9A%E5%9C%A8%E8%BF%99%E4%B8%AA%E5%8C%BA%E5%9F%9F%E4%B8%8A%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5%E6%97%B6%E8%83%BD%E5%A4%9F%E5%BE%97%E5%88%B0%E6%9F%90%E7%A7%8D%E7%AD%96%E7%95%A5%E6%80%A7%E8%83%BD%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%BF%9D%E8%AF%81%E3%80%82%0A1.&#43;%E7%AD%96%E7%95%A5%E7%9B%AE%E6%A0%87&#43;&amp;title=TRPO&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Ftrpo%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Ftrpo%2F&amp;summary=%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A%E5%BD%93%E7%AD%96%E7%95%A5%E7%BD%91%E7%BB%9C%E6%98%AF%E6%B7%B1%E5%BA%A6%E6%A8%A1%E5%9E%8B%E6%97%B6%E6%B2%BF%E7%9D%80%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%9B%B4%E6%96%B0%E5%8F%82%E6%95%B0%EF%BC%8C%E5%BE%88%E6%9C%89%E5%8F%AF%E8%83%BD%E7%94%B1%E4%BA%8E%E6%AD%A5%E9%95%BF%E5%A4%AA%E9%95%BF%EF%BC%8C%E7%AD%96%E7%95%A5%E7%AA%81%E7%84%B6%E6%98%BE%E8%91%97%E5%8F%98%E5%B7%AE%EF%BC%8C%E8%BF%9B%E8%80%8C%E5%BD%B1%E5%93%8D%E8%AE%AD%E7%BB%83%E6%95%88%E6%9E%9C%E3%80%82%0A%E4%BF%A1%E4%BB%BB%E5%8C%BA%E5%9F%9F%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%EF%BC%88TRPO%EF%BC%89%E7%AE%97%E6%B3%95%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%EF%BC%9A%0A%E4%BF%A1%E4%BB%BB%E5%8C%BA%E5%9F%9F%EF%BC%88trust&#43;region%EF%BC%89%EF%BC%9A%E5%9C%A8%E8%BF%99%E4%B8%AA%E5%8C%BA%E5%9F%9F%E4%B8%8A%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5%E6%97%B6%E8%83%BD%E5%A4%9F%E5%BE%97%E5%88%B0%E6%9F%90%E7%A7%8D%E7%AD%96%E7%95%A5%E6%80%A7%E8%83%BD%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%BF%9D%E8%AF%81%E3%80%82%0A1.&#43;%E7%AD%96%E7%95%A5%E7%9B%AE%E6%A0%87&#43;&amp;title=TRPO&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Ftrpo%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -204,11 +203,10 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
-<p> </p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>基于策略的方法的缺点：当策略网络是深度模型时沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
 <ul>
 <li>
-<p><strong>信任区域策略优化</strong>（trust region policy optimization，TRPO）算法的核心思想：</p>
+<p><strong>信任区域策略优化</strong>（TRPO）算法的核心思想：</p>
 <p><strong>信任区域</strong>（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。</p>
 </li>
 </ul>
@@ -216,7 +214,483 @@
 <h2 id="1-策略目标">1. 策略目标</h2>
 <p><img src="/images/trpo/1.png" alt="1"></p>
 <p><img src="/images/trpo/2.png" alt="2"></p>
-<ul class="pa0">
+<p>πθ&rsquo; 是我们需要求解的策略，但我们又要用它来收集样本，不现实。</p>
+<p>TRPO 对状态访问分布进行处理：忽略两个策略之间的状态访问分布变化，直接采用旧的策略 πθ 的状态分布，定义如下替代优化目标：</p>
+<p><img src="/images/trpo/3.png" alt="3"></p>
+<p>可以用重要性采样对动作分布进行处理：</p>
+<p><img src="/images/trpo/4.png" alt="4"></p>
+<p>这样，就可以基于旧策略已经采样出的数据来估计并优化新策略了。</p>
+<p> </p>
+<h3 id="2-库尔贝克-莱布勒kullback-leiblerkl散度">2. 库尔贝克-莱布勒（Kullback-Leibler，KL）散度</h3>
+<p>整体优化公式如下：</p>
+<p><img src="/images/trpo/5.png" alt="5"></p>
+<ul>
+<li>
+<p>其中 <strong>KL散度</strong> 用于衡量策略之间的距离。：</p>
+<p><img src="/images/trpo/7.png" alt="7"></p>
+</li>
+</ul>
+<p>该不等式约束定义了策略空间中的一个 KL 球，被称为<strong>信任区域</strong>。</p>
+<p>在这个区域中，可认为当前学习策略和环境交互的状态分布与上一轮策略最后采样的状态分布一致，进而可以基于一步行动的<strong>重要性采样</strong>方法使当前学习策略稳定提升。</p>
+<p><img src="/images/trpo/6.png" alt="6"></p>
+<p> </p>
+<h3 id="3-近似求解">3. 近似求解</h3>
+<p>求解上式带约束的优化问题 —— 用近似操作快速求解。</p>
+<p>通过泰勒展开，将优化目标变成：</p>
+<p><img src="/images/trpo/8.png" alt="8"></p>
+<p><img src="/images/trpo/9.png" alt="9"></p>
+<ul>
+<li>
+<h4 id="黑塞矩阵hessian-matrix">黑塞矩阵（Hessian Matrix）</h4>
+<p>黑塞矩阵是一个多元函数的二阶偏导数构成的<strong>对称方阵</strong>，用于描述函数在某点的<strong>局部曲率</strong>。</p>
+<p><img src="/images/trpo/17.png" alt="17"></p>
+</li>
+</ul>
+<p><img src="/images/trpo/10.png" alt="10"></p>
+<ul>
+<li>
+<h4 id="kkt条件">KKT条件</h4>
+<p><strong>非线性优化问题</strong>（特别是<strong>约束优化问题</strong>）中判定最优解的必要条件</p>
+<p><img src="/images/trpo/18.png" alt="18"></p>
+<p><img src="/images/trpo/19.png" alt="19"></p>
+</li>
+</ul>
+<p> </p>
+<h3 id="4-共轭梯度">4. 共轭梯度</h3>
+<ul>
+<li>
+<p>目的：</p>
+<p>TRPO 通过<strong>共轭梯度法</strong>（conjugate gradient method）节约参数的内存资源和时间。</p>
+</li>
+<li>
+<p>核心思想：直接计算 x = H-1g (x是参数更新方向)</p>
+</li>
+<li>
+<p>具体流程：</p>
+<p><img src="/images/trpo/11.png" alt="11"></p>
+</li>
+</ul>
+<p> </p>
+<p><em>（为什么强化学习有那么多数学？我要看晕了 我想去吃饭了</em>&hellip;最后两个概念 加油！！！</p>
+<h3 id="5-线性搜索line-search">5. 线性搜索（Line Search）</h3>
+<ul>
+<li>
+<p>目的：</p>
+<p>之前用 1 阶和 2 阶近似，并非精确求解。故 TRPO 每次迭代进行一次 <strong>线性搜索</strong>，找到一个最小的非负整数 i，使按照</p>
+<p><img src="/images/trpo/12.png" alt="12"></p>
+</li>
+<li>
+<p>具体流程：</p>
+<p><img src="/images/trpo/13.png" alt="13"></p>
+</li>
+</ul>
+<p> </p>
+<h3 id="6-广义优势估计generalized-advantage-estimationgae">6. 广义优势估计（Generalized Advantage Estimation，GAE）</h3>
+<ul>
+<li>
+<p>目的：</p>
+<p>通过指数加权平均不同步长的优势估计（从1步到无穷步），求解优势函数 A。</p>
+<p><img src="/images/trpo/14.png" alt="14"></p>
+<p><img src="/images/trpo/15.png" alt="15"></p>
+</li>
+<li>
+<p><em>γ</em> <strong>折扣因子</strong>：决定未来奖励的权重。</p>
+</li>
+<li>
+<p><em>λ</em> <strong>GAE参数</strong>：控制优势估计中不同步长回报的权衡。</p>
+</li>
+<li>
+<p><strong>δt 时序差分误差</strong>：反映当前状态值函数的估计质量。</p>
+<ul>
+<li>若 δt&gt;0，说明实际回报高于预期，动作可能更优；若 δt&lt;0，则相反。</li>
+</ul>
+</li>
+</ul>
+<p>给定 γ，λ 和每个时间步后的 δt，即可直接公式求解优势估计。</p>
+<p> </p>
+<ul>
+<li>
+<p><strong>GAE 实现代码</strong>：</p>
+<p><img src="/images/trpo/16.png" alt="16"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_advantage</span>(gamma, lmbda, td_delta):
+</span></span><span style="display:flex;"><span>    td_delta <span style="color:#f92672">=</span> td_delta<span style="color:#f92672">.</span>detach()<span style="color:#f92672">.</span>numpy()
+</span></span><span style="display:flex;"><span>    advantage_list <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    advantage <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> delta <span style="color:#f92672">in</span> td_delta[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+</span></span><span style="display:flex;"><span>        advantage <span style="color:#f92672">=</span> delta <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> lmbda <span style="color:#f92672">*</span> advantage
+</span></span><span style="display:flex;"><span>        advantage_list<span style="color:#f92672">.</span>append(advantage)
+</span></span><span style="display:flex;"><span>    advantage_list<span style="color:#f92672">.</span>reverse()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> torch<span style="color:#f92672">.</span>tensor(advantage_list, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)
+</span></span></code></pre></div></li>
+</ul>
+<p> </p>
+<h3 id="7-trpo-代码实践">7. TRPO 代码实践</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> gym
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn.functional <span style="color:#66d9ef">as</span> F
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> rl_utils
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> copy
+</span></span></code></pre></div><h4 id="离散环境">离散环境</h4>
+<ol>
+<li>
+<p><strong>定义策略网络和价值网络</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PolicyNet</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim):
+</span></span><span style="display:flex;"><span>        super(PolicyNet, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> F<span style="color:#f92672">.</span>softmax(self<span style="color:#f92672">.</span>fc2(x), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ValueNet</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim):
+</span></span><span style="display:flex;"><span>        super(ValueNet, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>fc2(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TRPO</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; TRPO算法 &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, hidden_dim, state_space, action_space, lmbda,
+</span></span><span style="display:flex;"><span>                 kl_constraint, alpha, critic_lr, gamma, device):
+</span></span><span style="display:flex;"><span>        state_dim <span style="color:#f92672">=</span> state_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        action_dim <span style="color:#f92672">=</span> action_space<span style="color:#f92672">.</span>n
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 策略网络参数不需要优化器更新</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actor <span style="color:#f92672">=</span> PolicyNet(state_dim, hidden_dim, action_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic <span style="color:#f92672">=</span> ValueNet(state_dim, hidden_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>critic<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                                 lr<span style="color:#f92672">=</span>critic_lr)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>lmbda <span style="color:#f92672">=</span> lmbda  <span style="color:#75715e"># GAE参数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>kl_constraint <span style="color:#f92672">=</span> kl_constraint  <span style="color:#75715e"># KL距离最大限制</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>alpha <span style="color:#f92672">=</span> alpha  <span style="color:#75715e"># 线性搜索参数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device <span style="color:#f92672">=</span> device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):
+</span></span><span style="display:flex;"><span>        state <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([state], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        probs <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(state)
+</span></span><span style="display:flex;"><span>        action_dist <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Categorical(probs)
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> action_dist<span style="color:#f92672">.</span>sample()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> action<span style="color:#f92672">.</span>item()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hessian_matrix_vector_product</span>(self, states, old_action_dists, vector):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 计算黑塞矩阵和一个向量的乘积</span>
+</span></span><span style="display:flex;"><span>        new_action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Categorical(self<span style="color:#f92672">.</span>actor(states))
+</span></span><span style="display:flex;"><span>        kl <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>            torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>kl<span style="color:#f92672">.</span>kl_divergence(old_action_dists,
+</span></span><span style="display:flex;"><span>                                                 new_action_dists))  <span style="color:#75715e"># 计算平均KL距离</span>
+</span></span><span style="display:flex;"><span>        kl_grad <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>autograd<span style="color:#f92672">.</span>grad(kl,
+</span></span><span style="display:flex;"><span>                                      self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                      create_graph<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        kl_grad_vector <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([grad<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> grad <span style="color:#f92672">in</span> kl_grad])
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># KL距离的梯度先和向量进行点积运算</span>
+</span></span><span style="display:flex;"><span>        kl_grad_vector_product <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>dot(kl_grad_vector, vector)
+</span></span><span style="display:flex;"><span>        grad2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>autograd<span style="color:#f92672">.</span>grad(kl_grad_vector_product,
+</span></span><span style="display:flex;"><span>                                    self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>        grad2_vector <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([grad<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> grad <span style="color:#f92672">in</span> grad2])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> grad2_vector
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">conjugate_gradient</span>(self, grad, states, old_action_dists):  <span style="color:#75715e"># 共轭梯度法求解方程</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>zeros_like(grad)
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> grad<span style="color:#f92672">.</span>clone()
+</span></span><span style="display:flex;"><span>        p <span style="color:#f92672">=</span> grad<span style="color:#f92672">.</span>clone()
+</span></span><span style="display:flex;"><span>        rdotr <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>dot(r, r)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):  <span style="color:#75715e"># 共轭梯度主循环</span>
+</span></span><span style="display:flex;"><span>            Hp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>hessian_matrix_vector_product(states, old_action_dists,
+</span></span><span style="display:flex;"><span>                                                    p)
+</span></span><span style="display:flex;"><span>            alpha <span style="color:#f92672">=</span> rdotr <span style="color:#f92672">/</span> torch<span style="color:#f92672">.</span>dot(p, Hp)
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">+=</span> alpha <span style="color:#f92672">*</span> p
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">-=</span> alpha <span style="color:#f92672">*</span> Hp
+</span></span><span style="display:flex;"><span>            new_rdotr <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>dot(r, r)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> new_rdotr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1e-10</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            beta <span style="color:#f92672">=</span> new_rdotr <span style="color:#f92672">/</span> rdotr
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> beta <span style="color:#f92672">*</span> p
+</span></span><span style="display:flex;"><span>            rdotr <span style="color:#f92672">=</span> new_rdotr
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_surrogate_obj</span>(self, states, actions, advantage, old_log_probs,
+</span></span><span style="display:flex;"><span>                              actor):  <span style="color:#75715e"># 计算策略目标</span>
+</span></span><span style="display:flex;"><span>        log_probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>log(actor(states)<span style="color:#f92672">.</span>gather(<span style="color:#ae81ff">1</span>, actions))
+</span></span><span style="display:flex;"><span>        ratio <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>exp(log_probs <span style="color:#f92672">-</span> old_log_probs)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> torch<span style="color:#f92672">.</span>mean(ratio <span style="color:#f92672">*</span> advantage)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">line_search</span>(self, states, actions, advantage, old_log_probs,
+</span></span><span style="display:flex;"><span>                    old_action_dists, max_vec):  <span style="color:#75715e"># 线性搜索</span>
+</span></span><span style="display:flex;"><span>        old_para <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>convert_parameters<span style="color:#f92672">.</span>parameters_to_vector(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>        old_obj <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>compute_surrogate_obj(states, actions, advantage,
+</span></span><span style="display:flex;"><span>                                             old_log_probs, self<span style="color:#f92672">.</span>actor)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">15</span>):  <span style="color:#75715e"># 线性搜索主循环</span>
+</span></span><span style="display:flex;"><span>            coef <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>alpha<span style="color:#f92672">**</span>i
+</span></span><span style="display:flex;"><span>            new_para <span style="color:#f92672">=</span> old_para <span style="color:#f92672">+</span> coef <span style="color:#f92672">*</span> max_vec
+</span></span><span style="display:flex;"><span>            new_actor <span style="color:#f92672">=</span> copy<span style="color:#f92672">.</span>deepcopy(self<span style="color:#f92672">.</span>actor)
+</span></span><span style="display:flex;"><span>            torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>convert_parameters<span style="color:#f92672">.</span>vector_to_parameters(
+</span></span><span style="display:flex;"><span>                new_para, new_actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>            new_action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Categorical(
+</span></span><span style="display:flex;"><span>                new_actor(states))
+</span></span><span style="display:flex;"><span>            kl_div <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>                torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>kl<span style="color:#f92672">.</span>kl_divergence(old_action_dists,
+</span></span><span style="display:flex;"><span>                                                     new_action_dists))
+</span></span><span style="display:flex;"><span>            new_obj <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>compute_surrogate_obj(states, actions, advantage,
+</span></span><span style="display:flex;"><span>                                                 old_log_probs, new_actor)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> new_obj <span style="color:#f92672">&gt;</span> old_obj <span style="color:#f92672">and</span> kl_div <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>kl_constraint:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> new_para
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> old_para
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">policy_learn</span>(self, states, actions, old_action_dists, old_log_probs,
+</span></span><span style="display:flex;"><span>                     advantage):  <span style="color:#75715e"># 更新策略函数</span>
+</span></span><span style="display:flex;"><span>        surrogate_obj <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>compute_surrogate_obj(states, actions, advantage,
+</span></span><span style="display:flex;"><span>                                                   old_log_probs, self<span style="color:#f92672">.</span>actor)
+</span></span><span style="display:flex;"><span>        grads <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>autograd<span style="color:#f92672">.</span>grad(surrogate_obj, self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>        obj_grad <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([grad<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> grad <span style="color:#f92672">in</span> grads])<span style="color:#f92672">.</span>detach()
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 用共轭梯度法计算x = H^(-1)g</span>
+</span></span><span style="display:flex;"><span>        descent_direction <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conjugate_gradient(obj_grad, states,
+</span></span><span style="display:flex;"><span>                                                    old_action_dists)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Hd <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>hessian_matrix_vector_product(states, old_action_dists,
+</span></span><span style="display:flex;"><span>                                                descent_direction)
+</span></span><span style="display:flex;"><span>        max_coef <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>kl_constraint <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>                              (torch<span style="color:#f92672">.</span>dot(descent_direction, Hd) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-8</span>))
+</span></span><span style="display:flex;"><span>        new_para <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>line_search(states, actions, advantage, old_log_probs,
+</span></span><span style="display:flex;"><span>                                    old_action_dists,
+</span></span><span style="display:flex;"><span>                                    descent_direction <span style="color:#f92672">*</span> max_coef)  <span style="color:#75715e"># 线性搜索</span>
+</span></span><span style="display:flex;"><span>        torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>convert_parameters<span style="color:#f92672">.</span>vector_to_parameters(
+</span></span><span style="display:flex;"><span>            new_para, self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())  <span style="color:#75715e"># 用线性搜索后的参数更新策略</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, transition_dict):
+</span></span><span style="display:flex;"><span>        states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;states&#39;</span>],
+</span></span><span style="display:flex;"><span>                              dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        actions <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;actions&#39;</span>])<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        rewards <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;rewards&#39;</span>],
+</span></span><span style="display:flex;"><span>                               dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        next_states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;next_states&#39;</span>],
+</span></span><span style="display:flex;"><span>                                   dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        dones <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;dones&#39;</span>],
+</span></span><span style="display:flex;"><span>                             dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        td_target <span style="color:#f92672">=</span> rewards <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>critic(next_states) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span>                                                                       dones)
+</span></span><span style="display:flex;"><span>        td_delta <span style="color:#f92672">=</span> td_target <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>critic(states)
+</span></span><span style="display:flex;"><span>        advantage <span style="color:#f92672">=</span> compute_advantage(self<span style="color:#f92672">.</span>gamma, self<span style="color:#f92672">.</span>lmbda,
+</span></span><span style="display:flex;"><span>                                      td_delta<span style="color:#f92672">.</span>cpu())<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        old_log_probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>log(self<span style="color:#f92672">.</span>actor(states)<span style="color:#f92672">.</span>gather(<span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>                                                            actions))<span style="color:#f92672">.</span>detach()
+</span></span><span style="display:flex;"><span>        old_action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Categorical(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>actor(states)<span style="color:#f92672">.</span>detach())
+</span></span><span style="display:flex;"><span>        critic_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>            F<span style="color:#f92672">.</span>mse_loss(self<span style="color:#f92672">.</span>critic(states), td_target<span style="color:#f92672">.</span>detach()))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>        critic_loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>step()  <span style="color:#75715e"># 更新价值函数</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 更新策略函数</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>policy_learn(states, actions, old_action_dists, old_log_probs,
+</span></span><span style="display:flex;"><span>                          advantage)
+</span></span></code></pre></div><p> </p>
+</li>
+<li>
+<p><strong>在车杆环境中训练 TRPO</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>num_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>
+</span></span><span style="display:flex;"><span>hidden_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.98</span>
+</span></span><span style="display:flex;"><span>lmbda <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.95</span>
+</span></span><span style="display:flex;"><span>critic_lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-2</span>
+</span></span><span style="display:flex;"><span>kl_constraint <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0005</span>
+</span></span><span style="display:flex;"><span>alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
+</span></span><span style="display:flex;"><span>device <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>device(<span style="color:#e6db74">&#34;cuda&#34;</span>) <span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available() <span style="color:#66d9ef">else</span> torch<span style="color:#f92672">.</span>device(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cpu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>env_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CartPole-v0&#39;</span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(env_name)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> TRPO(hidden_dim, env<span style="color:#f92672">.</span>observation_space, env<span style="color:#f92672">.</span>action_space, lmbda,
+</span></span><span style="display:flex;"><span>             kl_constraint, alpha, critic_lr, gamma, device)
+</span></span><span style="display:flex;"><span>return_list <span style="color:#f92672">=</span> rl_utils<span style="color:#f92672">.</span>train_on_policy_agent(env, agent, num_episodes)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>episodes_list <span style="color:#f92672">=</span> list(range(len(return_list)))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(episodes_list, return_list)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Episodes&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Returns&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;TRPO on </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(env_name))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mv_return <span style="color:#f92672">=</span> rl_utils<span style="color:#f92672">.</span>moving_average(return_list, <span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(episodes_list, mv_return)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Episodes&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Returns&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;TRPO on </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(env_name))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div></li>
+</ol>
+<p> </p>
+<h4 id="连续环境">连续环境</h4>
+<p>对于策略网络，因为环境是连续动作的，所以策略网络分别输出表示动作分布的高斯分布的均值和标准差。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PolicyNetContinuous</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, state_dim, hidden_dim, action_dim):
+</span></span><span style="display:flex;"><span>        super(PolicyNetContinuous, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(state_dim, hidden_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc_mu <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc_std <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Linear(hidden_dim, action_dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        mu <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.0</span> <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>tanh(self<span style="color:#f92672">.</span>fc_mu(x))
+</span></span><span style="display:flex;"><span>        std <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>softplus(self<span style="color:#f92672">.</span>fc_std(x))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mu, std  <span style="color:#75715e"># 高斯分布的均值和标准差</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TRPOContinuous</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; 处理连续动作的TRPO算法 &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, hidden_dim, state_space, action_space, lmbda,
+</span></span><span style="display:flex;"><span>                 kl_constraint, alpha, critic_lr, gamma, device):
+</span></span><span style="display:flex;"><span>        state_dim <span style="color:#f92672">=</span> state_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        action_dim <span style="color:#f92672">=</span> action_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>actor <span style="color:#f92672">=</span> PolicyNetContinuous(state_dim, hidden_dim,
+</span></span><span style="display:flex;"><span>                                         action_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic <span style="color:#f92672">=</span> ValueNet(state_dim, hidden_dim)<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(self<span style="color:#f92672">.</span>critic<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                                 lr<span style="color:#f92672">=</span>critic_lr)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>lmbda <span style="color:#f92672">=</span> lmbda
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>kl_constraint <span style="color:#f92672">=</span> kl_constraint
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>alpha <span style="color:#f92672">=</span> alpha
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>device <span style="color:#f92672">=</span> device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">take_action</span>(self, state):
+</span></span><span style="display:flex;"><span>        state <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([state], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        mu, std <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(state)
+</span></span><span style="display:flex;"><span>        action_dist <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu, std)
+</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> action_dist<span style="color:#f92672">.</span>sample()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> [action<span style="color:#f92672">.</span>item()]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hessian_matrix_vector_product</span>(self,
+</span></span><span style="display:flex;"><span>                                      states,
+</span></span><span style="display:flex;"><span>                                      old_action_dists,
+</span></span><span style="display:flex;"><span>                                      vector,
+</span></span><span style="display:flex;"><span>                                      damping<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>):
+</span></span><span style="display:flex;"><span>        mu, std <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(states)
+</span></span><span style="display:flex;"><span>        new_action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu, std)
+</span></span><span style="display:flex;"><span>        kl <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>            torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>kl<span style="color:#f92672">.</span>kl_divergence(old_action_dists,
+</span></span><span style="display:flex;"><span>                                                 new_action_dists))
+</span></span><span style="display:flex;"><span>        kl_grad <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>autograd<span style="color:#f92672">.</span>grad(kl,
+</span></span><span style="display:flex;"><span>                                      self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters(),
+</span></span><span style="display:flex;"><span>                                      create_graph<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        kl_grad_vector <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([grad<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> grad <span style="color:#f92672">in</span> kl_grad])
+</span></span><span style="display:flex;"><span>        kl_grad_vector_product <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>dot(kl_grad_vector, vector)
+</span></span><span style="display:flex;"><span>        grad2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>autograd<span style="color:#f92672">.</span>grad(kl_grad_vector_product,
+</span></span><span style="display:flex;"><span>                                    self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>        grad2_vector <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat(
+</span></span><span style="display:flex;"><span>            [grad<span style="color:#f92672">.</span>contiguous()<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> grad <span style="color:#f92672">in</span> grad2])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> grad2_vector <span style="color:#f92672">+</span> damping <span style="color:#f92672">*</span> vector
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">conjugate_gradient</span>(self, grad, states, old_action_dists):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>zeros_like(grad)
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> grad<span style="color:#f92672">.</span>clone()
+</span></span><span style="display:flex;"><span>        p <span style="color:#f92672">=</span> grad<span style="color:#f92672">.</span>clone()
+</span></span><span style="display:flex;"><span>        rdotr <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>dot(r, r)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>            Hp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>hessian_matrix_vector_product(states, old_action_dists,
+</span></span><span style="display:flex;"><span>                                                    p)
+</span></span><span style="display:flex;"><span>            alpha <span style="color:#f92672">=</span> rdotr <span style="color:#f92672">/</span> torch<span style="color:#f92672">.</span>dot(p, Hp)
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">+=</span> alpha <span style="color:#f92672">*</span> p
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">-=</span> alpha <span style="color:#f92672">*</span> Hp
+</span></span><span style="display:flex;"><span>            new_rdotr <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>dot(r, r)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> new_rdotr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1e-10</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            beta <span style="color:#f92672">=</span> new_rdotr <span style="color:#f92672">/</span> rdotr
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">=</span> r <span style="color:#f92672">+</span> beta <span style="color:#f92672">*</span> p
+</span></span><span style="display:flex;"><span>            rdotr <span style="color:#f92672">=</span> new_rdotr
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_surrogate_obj</span>(self, states, actions, advantage, old_log_probs,
+</span></span><span style="display:flex;"><span>                              actor):
+</span></span><span style="display:flex;"><span>        mu, std <span style="color:#f92672">=</span> actor(states)
+</span></span><span style="display:flex;"><span>        action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu, std)
+</span></span><span style="display:flex;"><span>        log_probs <span style="color:#f92672">=</span> action_dists<span style="color:#f92672">.</span>log_prob(actions)
+</span></span><span style="display:flex;"><span>        ratio <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>exp(log_probs <span style="color:#f92672">-</span> old_log_probs)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> torch<span style="color:#f92672">.</span>mean(ratio <span style="color:#f92672">*</span> advantage)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">line_search</span>(self, states, actions, advantage, old_log_probs,
+</span></span><span style="display:flex;"><span>                    old_action_dists, max_vec):
+</span></span><span style="display:flex;"><span>        old_para <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>convert_parameters<span style="color:#f92672">.</span>parameters_to_vector(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>        old_obj <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>compute_surrogate_obj(states, actions, advantage,
+</span></span><span style="display:flex;"><span>                                             old_log_probs, self<span style="color:#f92672">.</span>actor)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">15</span>):
+</span></span><span style="display:flex;"><span>            coef <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>alpha<span style="color:#f92672">**</span>i
+</span></span><span style="display:flex;"><span>            new_para <span style="color:#f92672">=</span> old_para <span style="color:#f92672">+</span> coef <span style="color:#f92672">*</span> max_vec
+</span></span><span style="display:flex;"><span>            new_actor <span style="color:#f92672">=</span> copy<span style="color:#f92672">.</span>deepcopy(self<span style="color:#f92672">.</span>actor)
+</span></span><span style="display:flex;"><span>            torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>convert_parameters<span style="color:#f92672">.</span>vector_to_parameters(
+</span></span><span style="display:flex;"><span>                new_para, new_actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>            mu, std <span style="color:#f92672">=</span> new_actor(states)
+</span></span><span style="display:flex;"><span>            new_action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu, std)
+</span></span><span style="display:flex;"><span>            kl_div <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>                torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>kl<span style="color:#f92672">.</span>kl_divergence(old_action_dists,
+</span></span><span style="display:flex;"><span>                                                     new_action_dists))
+</span></span><span style="display:flex;"><span>            new_obj <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>compute_surrogate_obj(states, actions, advantage,
+</span></span><span style="display:flex;"><span>                                                 old_log_probs, new_actor)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> new_obj <span style="color:#f92672">&gt;</span> old_obj <span style="color:#f92672">and</span> kl_div <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>kl_constraint:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> new_para
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> old_para
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">policy_learn</span>(self, states, actions, old_action_dists, old_log_probs,
+</span></span><span style="display:flex;"><span>                     advantage):
+</span></span><span style="display:flex;"><span>        surrogate_obj <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>compute_surrogate_obj(states, actions, advantage,
+</span></span><span style="display:flex;"><span>                                                   old_log_probs, self<span style="color:#f92672">.</span>actor)
+</span></span><span style="display:flex;"><span>        grads <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>autograd<span style="color:#f92672">.</span>grad(surrogate_obj, self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>        obj_grad <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([grad<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> grad <span style="color:#f92672">in</span> grads])<span style="color:#f92672">.</span>detach()
+</span></span><span style="display:flex;"><span>        descent_direction <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conjugate_gradient(obj_grad, states,
+</span></span><span style="display:flex;"><span>                                                    old_action_dists)
+</span></span><span style="display:flex;"><span>        Hd <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>hessian_matrix_vector_product(states, old_action_dists,
+</span></span><span style="display:flex;"><span>                                                descent_direction)
+</span></span><span style="display:flex;"><span>        max_coef <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>kl_constraint <span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>                              (torch<span style="color:#f92672">.</span>dot(descent_direction, Hd) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-8</span>))
+</span></span><span style="display:flex;"><span>        new_para <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>line_search(states, actions, advantage, old_log_probs,
+</span></span><span style="display:flex;"><span>                                    old_action_dists,
+</span></span><span style="display:flex;"><span>                                    descent_direction <span style="color:#f92672">*</span> max_coef)
+</span></span><span style="display:flex;"><span>        torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>convert_parameters<span style="color:#f92672">.</span>vector_to_parameters(
+</span></span><span style="display:flex;"><span>            new_para, self<span style="color:#f92672">.</span>actor<span style="color:#f92672">.</span>parameters())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, transition_dict):
+</span></span><span style="display:flex;"><span>        states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;states&#39;</span>],
+</span></span><span style="display:flex;"><span>                              dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        actions <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;actions&#39;</span>],
+</span></span><span style="display:flex;"><span>                               dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        rewards <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;rewards&#39;</span>],
+</span></span><span style="display:flex;"><span>                               dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        next_states <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;next_states&#39;</span>],
+</span></span><span style="display:flex;"><span>                                   dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        dones <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(transition_dict[<span style="color:#e6db74">&#39;dones&#39;</span>],
+</span></span><span style="display:flex;"><span>                             dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        rewards <span style="color:#f92672">=</span> (rewards <span style="color:#f92672">+</span> <span style="color:#ae81ff">8.0</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">8.0</span>  <span style="color:#75715e"># 对奖励进行修改,方便训练</span>
+</span></span><span style="display:flex;"><span>        td_target <span style="color:#f92672">=</span> rewards <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>critic(next_states) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span>
+</span></span><span style="display:flex;"><span>                                                                       dones)
+</span></span><span style="display:flex;"><span>        td_delta <span style="color:#f92672">=</span> td_target <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>critic(states)
+</span></span><span style="display:flex;"><span>        advantage <span style="color:#f92672">=</span> compute_advantage(self<span style="color:#f92672">.</span>gamma, self<span style="color:#f92672">.</span>lmbda,
+</span></span><span style="display:flex;"><span>                                      td_delta<span style="color:#f92672">.</span>cpu())<span style="color:#f92672">.</span>to(self<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>        mu, std <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>actor(states)
+</span></span><span style="display:flex;"><span>        old_action_dists <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>distributions<span style="color:#f92672">.</span>Normal(mu<span style="color:#f92672">.</span>detach(),
+</span></span><span style="display:flex;"><span>                                                      std<span style="color:#f92672">.</span>detach())
+</span></span><span style="display:flex;"><span>        old_log_probs <span style="color:#f92672">=</span> old_action_dists<span style="color:#f92672">.</span>log_prob(actions)
+</span></span><span style="display:flex;"><span>        critic_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mean(
+</span></span><span style="display:flex;"><span>            F<span style="color:#f92672">.</span>mse_loss(self<span style="color:#f92672">.</span>critic(states), td_target<span style="color:#f92672">.</span>detach()))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>        critic_loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>critic_optimizer<span style="color:#f92672">.</span>step()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>policy_learn(states, actions, old_action_dists, old_log_probs,
+</span></span><span style="display:flex;"><span>                          advantage)
+</span></span></code></pre></div><p>TRPO 算法属于<strong>在线策略</strong>：每次策略训练仅使用上一轮策略采样的数据。</p><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
@@ -256,10 +730,6 @@
 	    
 	     <li  class="mb2">
           <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">PPO-代码实现</a>
         </li>
 	    
 	     <li  class="mb2">

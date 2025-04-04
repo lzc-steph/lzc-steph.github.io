@@ -153,18 +153,17 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>基于策略的方法的缺点：当策略网络是深度模型时，沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
-<p> </p>
+      <p>基于策略的方法的缺点：当策略网络是深度模型时沿着策略梯度更新参数，很有可能由于步长太长，策略突然显著变差，进而影响训练效果。</p>
 <ul>
 <li>
-<p><strong>信任区域策略优化</strong>（trust region policy optimization，TRPO）算法的核心思想：</p>
+<p><strong>信任区域策略优化</strong>（TRPO）算法的核心思想：</p>
 <p><strong>信任区域</strong>（trust region）：在这个区域上更新策略时能够得到某种策略性能的安全性保证。</p>
 </li>
 </ul>
 <p> </p>
 <h2 id="1-策略目标">1. 策略目标</h2>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/trpo/1.png" alt="截屏2025-04-03 17.07.01"></p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/trpo/2.png" alt="2"></p>
+<p><img src="/images/trpo/1.png" alt="1"></p>
+<p><img src="/images/trpo/2.png" alt="2"></p>
     </div>
   <a href="/post/trpo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -350,6 +349,11 @@
 <ul>
 <li>求解优势函数：<strong>广义优势估计</strong>(GAE)</li>
 </ul>
+</li>
+<li>
+<p><strong>广义优势估计</strong>(GAE)</p>
+<p>通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ<em>γ</em>和λ<em>λ</em>的幂次衰减，实现平滑的回报估计。</p>
+<p><img src="/images/RLconfused/5.png" alt="5"></p>
 </li>
 </ol>
 <ul>

@@ -27,6 +27,11 @@ A(s,a)=Q(s,a)−V(s)
 
 
 
+广义优势估计(GAE)
+通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γγ和λλ的幂次衰减，实现平滑的回报估计。
+
+
+
 
 
 关系
@@ -85,7 +90,9 @@ Q-Learning - Off-policy - 值函数
 优势函数
 在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少
 A(s,a)=Q(s,a)−V(s)
-求解优势函数：广义优势估计(GAE) 关系
+求解优势函数：广义优势估计(GAE) 广义优势估计(GAE)
+通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γγ和λλ的幂次衰减，实现平滑的回报估计。
+关系
 常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
 缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
   <meta property="og:locale" content="en_US">
@@ -101,12 +108,14 @@ A(s,a)=Q(s,a)−V(s)
 优势函数
 在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少
 A(s,a)=Q(s,a)−V(s)
-求解优势函数：广义优势估计(GAE) 关系
+求解优势函数：广义优势估计(GAE) 广义优势估计(GAE)
+通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γγ和λλ的幂次衰减，实现平滑的回报估计。
+关系
 常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
 缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
   <meta itemprop="datePublished" content="2025-03-31T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-03-31T11:00:59-04:00">
-  <meta itemprop="wordCount" content="118">
+  <meta itemprop="wordCount" content="325">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="强化学习-易混淆点">
@@ -115,7 +124,9 @@ A(s,a)=Q(s,a)−V(s)
 优势函数
 在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少
 A(s,a)=Q(s,a)−V(s)
-求解优势函数：广义优势估计(GAE) 关系
+求解优势函数：广义优势估计(GAE) 广义优势估计(GAE)
+通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γγ和λλ的幂次衰减，实现平滑的回报估计。
+关系
 常见强化学习算法优缺点 Q-Learning - Off-policy - 值函数
 缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。">
 
@@ -231,7 +242,7 @@ A(s,a)=Q(s,a)−V(s)
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F&amp;summary=&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;vs&#43;%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%0A%E5%9C%A8%E7%8A%B6%E6%80%81&#43;s&#43;%E4%B8%8B%E9%80%89%E6%8B%A9%E5%8A%A8%E4%BD%9C&#43;a&#43;%E6%AF%94%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5%EF%BC%88%E5%8D%B3%E9%81%B5%E5%BE%AA%E5%BD%93%E5%89%8D%E7%AD%96%E7%95%A5%EF%BC%89%E5%A5%BD%E5%A4%9A%E5%B0%91%0AA%28s%2Ca%29%3DQ%28s%2Ca%29%E2%88%92V%28s%29%0A%E6%B1%82%E8%A7%A3%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%EF%BC%9A%E5%B9%BF%E4%B9%89%E4%BC%98%E5%8A%BF%E4%BC%B0%E8%AE%A1%28GAE%29&#43;%E5%85%B3%E7%B3%BB%0A%E5%B8%B8%E8%A7%81%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%BC%98%E7%BC%BA%E7%82%B9&#43;Q-Learning&#43;-&#43;Off-policy&#43;-&#43;%E5%80%BC%E5%87%BD%E6%95%B0%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E7%94%A8%E8%A1%A8%E6%A0%BC%E5%AD%98%E5%82%A8%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E3%80%82%E5%8F%AA%E5%9C%A8&#43;%E7%8E%AF%E5%A2%83%E7%9A%84%E7%8A%B6%E6%80%81%E5%92%8C%E5%8A%A8%E4%BD%9C%E9%83%BD%E6%98%AF%E7%A6%BB%E6%95%A3%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%A9%BA%E9%97%B4%E9%83%BD%E6%AF%94%E8%BE%83%E5%B0%8F&#43;%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%80%82%E7%94%A8%E3%80%82&#43;&amp;title=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F&amp;summary=&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;vs&#43;%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0&#43;%E7%8A%B6%E6%80%81%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%0A%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%0A%E5%9C%A8%E7%8A%B6%E6%80%81&#43;s&#43;%E4%B8%8B%E9%80%89%E6%8B%A9%E5%8A%A8%E4%BD%9C&#43;a&#43;%E6%AF%94%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5%EF%BC%88%E5%8D%B3%E9%81%B5%E5%BE%AA%E5%BD%93%E5%89%8D%E7%AD%96%E7%95%A5%EF%BC%89%E5%A5%BD%E5%A4%9A%E5%B0%91%0AA%28s%2Ca%29%3DQ%28s%2Ca%29%E2%88%92V%28s%29%0A%E6%B1%82%E8%A7%A3%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%EF%BC%9A%E5%B9%BF%E4%B9%89%E4%BC%98%E5%8A%BF%E4%BC%B0%E8%AE%A1%28GAE%29&#43;%E5%B9%BF%E4%B9%89%E4%BC%98%E5%8A%BF%E4%BC%B0%E8%AE%A1%28GAE%29%0A%E9%80%9A%E8%BF%87%E6%8C%87%E6%95%B0%E5%8A%A0%E6%9D%83%E5%B9%B3%E5%9D%87%E4%B8%8D%E5%90%8C%E6%AD%A5%E9%95%BF%E7%9A%84%E4%BC%98%E5%8A%BF%E4%BC%B0%E8%AE%A1%EF%BC%88%E4%BB%8E1%E6%AD%A5%E5%88%B0%E6%97%A0%E7%A9%B7%E6%AD%A5%EF%BC%89%EF%BC%8C%E7%BB%93%E5%90%88%CE%B3%CE%B3%E5%92%8C%CE%BB%CE%BB%E7%9A%84%E5%B9%82%E6%AC%A1%E8%A1%B0%E5%87%8F%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%B9%B3%E6%BB%91%E7%9A%84%E5%9B%9E%E6%8A%A5%E4%BC%B0%E8%AE%A1%E3%80%82%0A%E5%85%B3%E7%B3%BB%0A%E5%B8%B8%E8%A7%81%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%BC%98%E7%BC%BA%E7%82%B9&#43;Q-Learning&#43;-&#43;Off-policy&#43;-&#43;%E5%80%BC%E5%87%BD%E6%95%B0%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E7%94%A8%E8%A1%A8%E6%A0%BC%E5%AD%98%E5%82%A8%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BC%E3%80%82%E5%8F%AA%E5%9C%A8&#43;%E7%8E%AF%E5%A2%83%E7%9A%84%E7%8A%B6%E6%80%81%E5%92%8C%E5%8A%A8%E4%BD%9C%E9%83%BD%E6%98%AF%E7%A6%BB%E6%95%A3%E7%9A%84%EF%BC%8C%E5%B9%B6%E4%B8%94%E7%A9%BA%E9%97%B4%E9%83%BD%E6%AF%94%E8%BE%83%E5%B0%8F&#43;%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E9%80%82%E7%94%A8%E3%80%82&#43;&amp;title=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E6%2598%2593%25E6%25B7%25B7%25E6%25B7%2586%25E7%2582%25B9%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -268,6 +279,11 @@ A(s,a)=Q(s,a)−V(s)
 <ul>
 <li>求解优势函数：<strong>广义优势估计</strong>(GAE)</li>
 </ul>
+</li>
+<li>
+<p><strong>广义优势估计</strong>(GAE)</p>
+<p>通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ<em>γ</em>和λ<em>λ</em>的幂次衰减，实现平滑的回报估计。</p>
+<p><img src="/images/RLconfused/5.png" alt="5"></p>
 </li>
 </ol>
 <ul>
@@ -329,11 +345,62 @@ A(s,a)=Q(s,a)−V(s)
 <p> </p>
 </li>
 <li>
-<p><strong>TRPO</strong> -</p>
+<p><strong>TRPO</strong> - online - Actor-Critic</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>输入: 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> 初始策略参数 θ, 价值网络参数 ϕ
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> 最大迭代次数 K
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> 信任域半径 δ (如 <span style="color:#ae81ff">0.01</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> 折扣因子 γ, GAE 参数 λ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> to K do:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 采样轨迹</span>
+</span></span><span style="display:flex;"><span>    使用当前策略 π_θ 与环境交互<span style="color:#960050;background-color:#1e0010">，</span>收集轨迹 {sₜ, aₜ, rₜ, sₜ<span style="color:#960050;background-color:#1e0010">₊₁</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 计算优势估计</span>
+</span></span><span style="display:flex;"><span>    对每个状态动作对 (sₜ, aₜ):
+</span></span><span style="display:flex;"><span>        δₜ <span style="color:#f92672">=</span> rₜ <span style="color:#f92672">+</span> γ <span style="color:#f92672">*</span> V_ϕ(sₜ<span style="color:#960050;background-color:#1e0010">₊₁</span>) <span style="color:#f92672">-</span> V_ϕ(sₜ)  <span style="color:#75715e"># TD误差</span>
+</span></span><span style="display:flex;"><span>        Aₜ <span style="color:#f92672">=</span> GAE(δₜ, γ, λ)                  <span style="color:#75715e"># 广义优势估计</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 计算策略梯度</span>
+</span></span><span style="display:flex;"><span>    g <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">∇</span>θ [ (πθ(aₜ<span style="color:#f92672">|</span>sₜ) <span style="color:#f92672">/</span> πθ_old(aₜ<span style="color:#f92672">|</span>sₜ) <span style="color:#f92672">*</span> Aₜ ]  <span style="color:#75715e"># 重要性采样梯度</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 4. 共轭梯度法求解更新方向</span>
+</span></span><span style="display:flex;"><span>    F <span style="color:#f92672">=</span> 计算Fisher信息矩阵(πθ, 样本)       <span style="color:#75715e"># F = E[∇logπ ∇logπᵀ]</span>
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> 共轭梯度法(F, g)                  <span style="color:#75715e"># 解 Fx = g</span>
+</span></span><span style="display:flex;"><span>    Δθ <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">√</span>(<span style="color:#ae81ff">2</span>δ <span style="color:#f92672">/</span> (xᵀFx)) <span style="color:#f92672">*</span> x               <span style="color:#75715e"># 缩放以满足KL约束</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 5. 线性搜索找可行步长</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>,<span style="color:#f92672">...</span> do:
+</span></span><span style="display:flex;"><span>        θ_new <span style="color:#f92672">=</span> θ <span style="color:#f92672">+</span> α<span style="color:#f92672">^</span>j <span style="color:#f92672">*</span> Δθ              <span style="color:#75715e"># α ∈ (0,1) 如 α=0.5</span>
+</span></span><span style="display:flex;"><span>        KL <span style="color:#f92672">=</span> E[ KL(πθ_old(<span style="color:#960050;background-color:#1e0010">·</span><span style="color:#f92672">|</span>s) <span style="color:#f92672">||</span> πθ_new(<span style="color:#960050;background-color:#1e0010">·</span><span style="color:#f92672">|</span>s)) ]
+</span></span><span style="display:flex;"><span>        L_new <span style="color:#f92672">=</span> E[ (πθ_new<span style="color:#f92672">/</span>πθ_old) <span style="color:#f92672">*</span> Aₜ ]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> KL <span style="color:#960050;background-color:#1e0010">≤</span> δ <span style="color:#f92672">and</span> L_new <span style="color:#960050;background-color:#1e0010">≥</span> L(θ_old):
+</span></span><span style="display:flex;"><span>            θ <span style="color:#f92672">=</span> θ_new                     <span style="color:#75715e"># 接受更新</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 6. 更新价值网络</span>
+</span></span><span style="display:flex;"><span>    最小化 MSE: ϕ <span style="color:#f92672">=</span> argmin <span style="color:#960050;background-color:#1e0010">∑</span>(V_ϕ(sₜ) <span style="color:#f92672">-</span> Rₜ)<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>  <span style="color:#75715e"># Rₜ为回报-to-go</span>
+</span></span><span style="display:flex;"><span>end <span style="color:#66d9ef">for</span>
+</span></span></code></pre></div><ul>
+<li><strong>缺点</strong>：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难</li>
+</ul>
 </li>
 </ol>
 <p> </p>
 <ol start="3">
+<li>
+<p>TRPO 和 PPO 都属于on-policy算法，即使包含重要性采样过程，但只用到了上一轮策略的数据，不是过去所有策略的数据。</p>
+</li>
+<li>
+<h3 id="总结深度策略梯度方法">总结深度策略梯度方法</h3>
+<ul>
+<li>﻿相比价值函数学习最小化TD误差的目标，策略梯度方法直接优化策略价值的目标更加贴合强化学习本质目标</li>
+<li>﻿分布式的 actor-critic 算法能够充分利用多核 CPU 资源采样环境的经验数据，利用 GPU 资源异步地更新网络，这有效提升了 DRL 的训练效率</li>
+<li>﻿基于神经网络的策略在优化时容易因为一步走得太大而变得很差，进而下一轮产生很低质量的经验数据，进一步无法学习好</li>
+<li>﻿Trust Region 一类方法限制一步更新前后策略的差距（用 KL 散度），进而对策略价值做稳步地提升</li>
+<li>﻿PPO 在 TRPO 的基础上进一步通过限制 importance ratio 的 range，构建优化目标的上下界，进一步保证优化的稳定效果，是目前最常用的深度策略梯度算法</li>
+</ul>
+</li>
 <li>
 <h3 id="常见强化学习算法的总结">常见强化学习算法的总结</h3>
 <table>
@@ -458,10 +525,6 @@ A(s,a)=Q(s,a)−V(s)
 	   
 	     <li  class="mb2">
           <a href="/post/qlearing/">Q-learing</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">PPO-代码实现</a>
         </li>
 	    
 	     <li  class="mb2">

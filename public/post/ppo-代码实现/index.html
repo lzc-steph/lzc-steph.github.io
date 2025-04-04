@@ -4,27 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>PPO-代码实现 | HomePage</title>
+    <title>PPO | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="1. 论文详读
 Proximal Policy Optimization Algorithms
  
-2. Policy Gradient
-1. 完整过程
-
-
-随机初始化 actor 参数 theta
-
-
-玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward
-
-
-用得到的 data 去更新参数 theta
-
-
-如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。
-
-">
+2.
+ ">
     <meta name="generator" content="Hugo 0.140.2">
     
     
@@ -53,36 +39,27 @@ Proximal Policy Optimization Algorithms
 
     <meta property="og:url" content="http://localhost:1313/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">
   <meta property="og:site_name" content="HomePage">
-  <meta property="og:title" content="PPO-代码实现">
+  <meta property="og:title" content="PPO">
   <meta property="og:description" content="1. 论文详读 Proximal Policy Optimization Algorithms
-2. Policy Gradient 1. 完整过程 随机初始化 actor 参数 theta
-玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward
-用得到的 data 去更新参数 theta
-如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。">
+2.">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-03-29T11:00:59-04:00">
-    <meta property="article:modified_time" content="2025-03-29T11:00:59-04:00">
+    <meta property="article:published_time" content="2025-04-03T04:00:59-07:00">
+    <meta property="article:modified_time" content="2025-04-03T04:00:59-07:00">
     <meta property="article:tag" content="RL">
 
-  <meta itemprop="name" content="PPO-代码实现">
+  <meta itemprop="name" content="PPO">
   <meta itemprop="description" content="1. 论文详读 Proximal Policy Optimization Algorithms
-2. Policy Gradient 1. 完整过程 随机初始化 actor 参数 theta
-玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward
-用得到的 data 去更新参数 theta
-如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。">
-  <meta itemprop="datePublished" content="2025-03-29T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-29T11:00:59-04:00">
-  <meta itemprop="wordCount" content="43">
+2.">
+  <meta itemprop="datePublished" content="2025-04-03T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-03T04:00:59-07:00">
+  <meta itemprop="wordCount" content="7">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="PPO-代码实现">
+  <meta name="twitter:title" content="PPO">
   <meta name="twitter:description" content="1. 论文详读 Proximal Policy Optimization Algorithms
-2. Policy Gradient 1. 完整过程 随机初始化 actor 参数 theta
-玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward
-用得到的 data 去更新参数 theta
-如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。">
+2.">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -94,7 +71,7 @@ Proximal Policy Optimization Algorithms
   
   
   
-  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/PPOcode/meovv.jpg');">
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/PPO2/pia.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
@@ -158,7 +135,7 @@ Proximal Policy Optimization Algorithms
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <div class="f2 f1-l fw2 white-90 mb0 lh-title">PPO-代码实现</div>
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">PPO</div>
           
         
       </div>
@@ -175,7 +152,7 @@ Proximal Policy Optimization Algorithms
       <aside class="instapaper_ignoref b helvetica tracked ttu">
           
         Articles
-      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo-%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0%2F&amp;subject=PPO-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo-%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0%2F&amp;subject=PPO"
         class="ananke-social-link email no-underline"
         title="Share on Email" aria-label="Share on Email"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -196,7 +173,7 @@ Proximal Policy Optimization Algorithms
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo-%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0%2F&amp;summary=1.&#43;%E8%AE%BA%E6%96%87%E8%AF%A6%E8%AF%BB&#43;Proximal&#43;Policy&#43;Optimization&#43;Algorithms%0A2.&#43;Policy&#43;Gradient&#43;1.&#43;%E5%AE%8C%E6%95%B4%E8%BF%87%E7%A8%8B&#43;%E9%9A%8F%E6%9C%BA%E5%88%9D%E5%A7%8B%E5%8C%96&#43;actor&#43;%E5%8F%82%E6%95%B0&#43;theta%0A%E7%8E%A9&#43;n&#43;%E6%AC%A1%E6%B8%B8%E6%88%8F%EF%BC%8C%E6%94%B6%E9%9B%86&#43;n&#43;%E4%B8%AA&#43;trajectory%EF%BC%88state%E3%80%81action%EF%BC%89%EF%BC%8C%E7%AE%97%E5%87%BA&#43;reward%0A%E7%94%A8%E5%BE%97%E5%88%B0%E7%9A%84&#43;data&#43;%E5%8E%BB%E6%9B%B4%E6%96%B0%E5%8F%82%E6%95%B0&#43;theta%0A%E5%A6%82%E6%9E%9C&#43;R%28%CF%84%E2%81%BF%29&#43;%E4%B8%BA%E6%AD%A3%EF%BC%8C%E6%A2%AF%E5%BA%A6%E6%9B%B4%E6%96%B0%E4%BC%9A%E6%8F%90%E5%8D%87%E8%AF%A5%E8%BD%A8%E8%BF%B9%E4%B8%AD%E6%89%80%E6%9C%89%E5%8A%A8%E4%BD%9C%E7%9A%84%E6%A6%82%E7%8E%87%EF%BC%9B%E8%8B%A5%E4%B8%BA%E8%B4%9F%EF%BC%8C%E5%88%99%E9%99%8D%E4%BD%8E%E6%A6%82%E7%8E%87%E3%80%82%0A&amp;title=PPO-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo-%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo-%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0%2F&amp;summary=1.&#43;%E8%AE%BA%E6%96%87%E8%AF%A6%E8%AF%BB&#43;Proximal&#43;Policy&#43;Optimization&#43;Algorithms%0A2.&#43;&amp;title=PPO&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo-%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -204,11 +181,11 @@ Proximal Policy Optimization Algorithms
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
                 
               </span></a></div>
-<h1 class="f1 athelas mt3 mb1">PPO-代码实现</h1>
+<h1 class="f1 athelas mt3 mb1">PPO</h1>
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2025-03-29T11:00:59-04:00">March 29, 2025</time>
+      <time class="f6 mv4 dib tracked" datetime="2025-04-03T04:00:59-07:00">April 3, 2025</time>
       
 
       
@@ -217,42 +194,9 @@ Proximal Policy Optimization Algorithms
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="1-论文详读">1. 论文详读</h2>
 <p><a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization Algorithms</a></p>
 <p> </p>
-<h2 id="2-policy-gradient">2. Policy Gradient</h2>
-<h3 id="1-完整过程">1. 完整过程</h3>
-<ol>
-<li>
-<p>随机初始化 actor 参数 theta</p>
-</li>
-<li>
-<p>玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward</p>
-</li>
-<li>
-<p>用得到的 data 去更新参数 theta</p>
-<p><img src="/images/PPOcode/1.png" alt="1"></p>
-<p><img src="/images/PPOcode/2.png" alt="2"></p>
-<p>如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。</p>
-</li>
-</ol>
-<ol start="4">
-<li>
-<p>得到新的 actor 后，再去玩新的 n 次游戏</p>
-<p><img src="/images/PPOcode/3.png" alt="3"></p>
-</li>
-<li>
-<p>循环往复上述过程</p>
-</li>
-</ol>
+<h2 id="2">2.</h2>
 <p> </p>
-<h3 id="2-如何更新参数">2. 如何更新参数</h3>
-<ul>
-<li>
-<p>以分类问题为例：</p>
-<p>每个训练数据通过乘以 R，来调整输入数据的权重。</p>
-<p>每搜集一次数据，都要 train 一次。</p>
-</li>
-</ul>
-<p> </p>
-<p> </p><ul class="pa0">
+<ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
@@ -274,6 +218,30 @@ Proximal Policy Optimization Algorithms
     <p class="f5 b mb3">Related</p>
     <ul class="pa0 list">
 	   
+	     <li  class="mb2">
+          <a href="/post/trpo/">TRPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/actor-critic/">Actor-Critic</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/reinforce/">REINFORCE</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dqn/">DQN (deep Q network)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
 	     <li  class="mb2">
           <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
         </li>
