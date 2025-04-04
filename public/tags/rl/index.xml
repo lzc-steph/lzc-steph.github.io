@@ -6,8 +6,15 @@
     <description>Recent content in RL on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 02 Apr 2025 12:00:59 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 03 Apr 2025 04:00:59 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/rl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PPO</title>
+      <link>http://localhost:1313/post/ppo/</link>
+      <pubDate>Thu, 03 Apr 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/post/ppo/</guid>
+      <description>&lt;h2 id=&#34;1-论文详读&#34;&gt;1. 论文详读&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1707.06347&#34;&gt;Proximal Policy Optimization Algorithms&lt;/a&gt;（Proximal：近似）&lt;/p&gt;&#xA;&lt;h2 id=&#34;2-ppo&#34;&gt;2. PPO&lt;/h2&gt;&#xA;&lt;h4 id=&#34;回顾-trpo&#34;&gt;回顾 TRPO&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;使用 KL 散度约束 policy 的更新幅度；使用重要性采样&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;ppo-的改进&#34;&gt;PPO 的改进&lt;/h4&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;TRPO 采用重要性采样 &amp;mdash;-&amp;gt; PPO 采用 &lt;strong&gt;clip 截断&lt;/strong&gt;，限制新旧策略差异，避免更新过大。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;优势函数 At 选用多步时序差分&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;自适应的 KL 惩罚项&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Critic网络训练&lt;/strong&gt;：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;通过最小化&lt;code&gt;critic_loss = MSE(critic(states), td_target)&lt;/code&gt;，让critic的价值估计更准确&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Actor网络更新&lt;/strong&gt;：&#xA;&lt;ul&gt;&#xA;&lt;li&gt;TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向&lt;/li&gt;&#xA;&lt;li&gt;优势函数越大，表示该动作比平均表现更好，应被加强&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h2 id=&#34;3-ppo-惩罚&#34;&gt;3. PPO-惩罚&lt;/h2&gt;&#xA;&lt;p&gt;PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>TRPO</title>
       <link>http://localhost:1313/post/trpo/</link>
@@ -49,13 +56,6 @@
       <pubDate>Mon, 31 Mar 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/</guid>
       <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h3 id=&#34;状态价值函数-vs-动作价值函数&#34;&gt;状态价值函数 vs 动作价值函数&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;状态价值函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;动作价值函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/2.png&#34; alt=&#34;2&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;优势函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;A(s,a)=Q(s,a)−V(s)&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;求解优势函数：&lt;strong&gt;广义优势估计&lt;/strong&gt;(GAE)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;广义优势估计&lt;/strong&gt;(GAE)&lt;/p&gt;&#xA;&lt;p&gt;通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ&lt;em&gt;γ&lt;/em&gt;和λ&lt;em&gt;λ&lt;/em&gt;的幂次衰减，实现平滑的回报估计。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/5.png&#34; alt=&#34;5&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;关系&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/3.png&#34; alt=&#34;3&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/4.png&#34; alt=&#34;4&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;h3 id=&#34;常见强化学习算法优缺点&#34;&gt;常见强化学习算法优缺点&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Q-Learning&lt;/strong&gt; - Off-policy - 值函数&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/QLearning/6.png&#34; alt=&#34;6&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
-    </item>
-    <item>
-      <title>PPO-代码实现</title>
-      <link>http://localhost:1313/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
-      <pubDate>Sat, 29 Mar 2025 11:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
-      <description>&lt;h2 id=&#34;1-论文详读&#34;&gt;1. 论文详读&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1707.06347&#34;&gt;Proximal Policy Optimization Algorithms&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h2 id=&#34;2-policy-gradient&#34;&gt;2. Policy Gradient&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-完整过程&#34;&gt;1. 完整过程&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;随机初始化 actor 参数 theta&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;用得到的 data 去更新参数 theta&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/PPOcode/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/PPOcode/2.png&#34; alt=&#34;2&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>PPO-直观理解</title>

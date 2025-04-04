@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-04-02T12:00:59-05:00">
-  <meta itemprop="dateModified" content="2025-04-02T12:00:59-05:00">
+  <meta itemprop="datePublished" content="2025-04-03T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-03T04:00:59-07:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -146,6 +146,66 @@
             Tag: RL
           </a>
         </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 3, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/ppo/" class="link black dim">
+        PPO
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-论文详读">1. 论文详读</h2>
+<p><a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization Algorithms</a>（Proximal：近似）</p>
+<h2 id="2-ppo">2. PPO</h2>
+<h4 id="回顾-trpo">回顾 TRPO</h4>
+<ul>
+<li>
+<p>使用 KL 散度约束 policy 的更新幅度；使用重要性采样</p>
+</li>
+<li>
+<p><strong>缺点</strong>：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难</p>
+</li>
+<li>
+<h4 id="ppo-的改进">PPO 的改进</h4>
+<ol>
+<li>
+<p>TRPO 采用重要性采样 &mdash;-&gt; PPO 采用 <strong>clip 截断</strong>，限制新旧策略差异，避免更新过大。</p>
+</li>
+<li>
+<p>优势函数 At 选用多步时序差分</p>
+</li>
+<li>
+<p>自适应的 KL 惩罚项</p>
+</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<ol>
+<li><strong>Critic网络训练</strong>：
+<ul>
+<li>通过最小化<code>critic_loss = MSE(critic(states), td_target)</code>，让critic的价值估计更准确</li>
+</ul>
+</li>
+<li><strong>Actor网络更新</strong>：
+<ul>
+<li>TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向</li>
+<li>优势函数越大，表示该动作比平均表现更好，应被加强</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h2 id="3-ppo-惩罚">3. PPO-惩罚</h2>
+<p>PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。</p>
+    </div>
+  <a href="/post/ppo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
@@ -378,42 +438,6 @@
 </ol>
     </div>
   <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 29, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
-        PPO-代码实现
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-论文详读">1. 论文详读</h2>
-<p><a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization Algorithms</a></p>
-<p> </p>
-<h2 id="2-policy-gradient">2. Policy Gradient</h2>
-<h3 id="1-完整过程">1. 完整过程</h3>
-<ol>
-<li>
-<p>随机初始化 actor 参数 theta</p>
-</li>
-<li>
-<p>玩 n 次游戏，收集 n 个 trajectory（state、action），算出 reward</p>
-</li>
-<li>
-<p>用得到的 data 去更新参数 theta</p>
-<p><img src="/images/PPOcode/1.png" alt="1"></p>
-<p><img src="/images/PPOcode/2.png" alt="2"></p>
-<p>如果 R(τⁿ) 为正，梯度更新会提升该轨迹中所有动作的概率；若为负，则降低概率。</p>
-</li>
-</ol>
-    </div>
-  <a href="/post/ppo-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         

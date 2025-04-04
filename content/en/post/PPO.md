@@ -15,8 +15,8 @@ title: "PPO"
 #### 回顾 TRPO
 
 + 使用 KL 散度约束 policy 的更新幅度；使用重要性采样
-+ **缺点**：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难
 
+  **缺点**：近似会带来误差（重要性采样的通病）；解带约束的优化问题困难
 + #### PPO 的改进
 
   1. TRPO 采用重要性采样 ----> PPO 采用 **clip 截断**，限制新旧策略差异，避免更新过大。
@@ -25,15 +25,20 @@ title: "PPO"
 
   3. 自适应的 KL 惩罚项
 
+1. **Critic网络训练**：通过最小化`critic_loss = MSE(critic(states), td_target)`，让critic的价值估计更准确
+2. **Actor网络更新**：
+   - TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向
+   - 优势函数越大，表示该动作比平均表现更好，应被加强
+
 &nbsp;
 
 ## 3. PPO-惩罚
 
 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。
 
-![2](/images/PPO2/2.png)
-
 <!--more-->
+
+![2](/images/PPO2/2.png)
 
 + dk 即为KL散度值。
 
@@ -57,6 +62,45 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
 
 大量实验表明，PPO-截断总是比 PPO-惩罚表现得更好。因此下面我们使用 **PPO-截断**的代码实现。
 
+![5](/images/PPO2/5.png)
+
++ #### TD 误差
+
+  1. 计算TD目标
+
+     ```python
+     td_target = rewards + γ * critic(next_states) * (1 - dones)
+     ```
+
+     + `rewards`：当前获得的即时奖励（r_t）
+     + `critic(next_states)`：critic网络对下一状态的估值（V(s_{t+1})）
+     + `(1 - dones)`：终止状态处理（如果done=True，则忽略后续状态价值）
+
+  2. 计算TD误差
+
+     ```python
+     td_delta = td_target - critic(states)
+     ```
+
+     + `critic(states)`：critic 网络对当前状态的估值（V(s_t)）
+     + 结果即为`δ_t = (r_t + γV(s_{t+1})) - V(s_t)`
+
+  ![7](/images/PPO2/7.png)
+
++ #### 优势函数（GAE）
+
+  核心：**对多个时间步的TD误差进行加权平均**
+
+  ![8](/images/PPO2/8.png)
+
+  ```python
+  advantage = rl_utils.compute_advantage(gamma, lmbda, td_delta)
+  ```
+
+  
+
+
+
 ### 离散环境
 
 1. #### 定义策略网络和价值网络
@@ -78,7 +122,7 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
    
        def forward(self, x):
            x = F.relu(self.fc1(x))
-           return F.softmax(self.fc2(x), dim=1)
+           return F.softmax(self.fc2(x), dim=1)	 # 输出动作概率分布
    
    
    class ValueNet(torch.nn.Module):
@@ -89,8 +133,9 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
    
        def forward(self, x):
            x = F.relu(self.fc1(x))
-           return self.fc2(x)
+           return self.fc2(x)	  # 不接激活函数，直接输出值
    
+         
    
    class PPO:
        ''' PPO算法,采用截断方式 '''
@@ -102,12 +147,13 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
                                                    lr=actor_lr)
            self.critic_optimizer = torch.optim.Adam(self.critic.parameters(),
                                                     lr=critic_lr)
-           self.gamma = gamma
-           self.lmbda = lmbda
-           self.epochs = epochs  # 一条序列的数据用来训练轮数
-           self.eps = eps  # PPO中截断范围的参数
+           self.gamma = gamma    # 折扣因子
+           self.lmbda = lmbda    # GAE参数
+           self.epochs = epochs	# 一条序列的数据用来训练轮数
+           self.eps = eps  			# PPO中截断范围的参数
            self.device = device
    
+        '''通过策略网络得到动作概率分布；使用分类分布进行动作采样'''   
        def take_action(self, state):
            state = torch.tensor([state], dtype=torch.float).to(self.device)
            probs = self.actor(state)
@@ -115,34 +161,39 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
            action = action_dist.sample()
            return action.item()
    
+       '''关键部分，实现了PPO的更新逻辑。'''
        def update(self, transition_dict):
-           states = torch.tensor(transition_dict['states'],
-                                 dtype=torch.float).to(self.device)
-           actions = torch.tensor(transition_dict['actions']).view(-1, 1).to(
-               self.device)
-           rewards = torch.tensor(transition_dict['rewards'],
-                                  dtype=torch.float).view(-1, 1).to(self.device)
-           next_states = torch.tensor(transition_dict['next_states'],
-                                      dtype=torch.float).to(self.device)
-           dones = torch.tensor(transition_dict['dones'],
-                                dtype=torch.float).view(-1, 1).to(self.device)
-           td_target = rewards + self.gamma * self.critic(next_states) * (1 -
-                                                                          dones)
+           states = torch.tensor(transition_dict['states'], dtype=torch.float).to(self.device)
+           actions = torch.tensor(transition_dict['actions']).view(-1, 1).to(self.device)
+           rewards = torch.tensor(transition_dict['rewards'], dtype=torch.float).view(-1, 1).to(self.device)
+           next_states = torch.tensor(transition_dict['next_states'], dtype=torch.float).to(self.device)
+           
+           dones = torch.tensor(transition_dict['dones'], dtype=torch.float).view(-1, 1).to(self.device)
+           
+           # 计算TD目标
+           td_target = rewards + self.gamma * self.critic(next_states) * (1 - dones)
+           
+           # 计算优势函数（使用GAE）
            td_delta = td_target - self.critic(states)
-           advantage = rl_utils.compute_advantage(self.gamma, self.lmbda,
-                                                  td_delta.cpu()).to(self.device)
-           old_log_probs = torch.log(self.actor(states).gather(1,
-                                                               actions)).detach()
+           advantage = rl_utils.compute_advantage(self.gamma, self.lmbda, td_delta.cpu()).to(self.device)
+           
+           # 旧策略的概率（固定不更新）
+           old_log_probs = torch.log(self.actor(states).gather(1, actions)).detach()
    
            for _ in range(self.epochs):
+             	# 计算新旧策略概率比
                log_probs = torch.log(self.actor(states).gather(1, actions))
                ratio = torch.exp(log_probs - old_log_probs)
+               
+               # PPO核心损失计算
                surr1 = ratio * advantage
-               surr2 = torch.clamp(ratio, 1 - self.eps,
-                                   1 + self.eps) * advantage  # 截断
-               actor_loss = torch.mean(-torch.min(surr1, surr2))  # PPO损失函数
-               critic_loss = torch.mean(
-                   F.mse_loss(self.critic(states), td_target.detach()))
+               surr2 = torch.clamp(ratio, 1 - self.eps, 1 + self.eps) * advantage  # 截断
+               actor_loss = torch.mean(-torch.min(surr1, surr2))  									# PPO损失函数
+               
+               # 价值网络损失
+               critic_loss = torch.mean(F.mse_loss(self.critic(states), td_target.detach()))
+               
+               # 反向传播更新
                self.actor_optimizer.zero_grad()
                self.critic_optimizer.zero_grad()
                actor_loss.backward()
@@ -300,7 +351,7 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
 
 ## 6. PPO 在 ChatGPT 中的使用
 
-![1](/Users/aijunyang/DearAJ.github.io/static/images/PPO2/1.png)
+![1](/images/PPO2/1.png)
 
 &nbsp;
 
