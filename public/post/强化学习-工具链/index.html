@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>强化学习-工具链 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="1. gym
+官方文档：https://www.gymlibrary.dev
+
+
+最小例子 CartPole-v0
+import gymenv = gym.make(&#39;CartPole-v0&#39;)
+env.reset()
+for _ in range(1000):
+    env.render()
+    env.step(env.action_space.sample()) # take a random action
+
+
+ 
+观测 (Observations)
+在 Gym 仿真中，每一次回合开始，需要先执行 reset() 函数，返回初始观测信息，然后根据标志位 done 的状态，来决定是否进行下一次回合。代码表示：
+ 
+env.step() 函数对每一步进行仿真，返回 4 个参数：
+
+
+观测 Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；
+
+
+奖励 Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；
+
+
+完成 Done (Boolen): 表示是否需要将环境重置 env.reset。
+
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="强化学习-工具链">
+  <meta property="og:description" content="1. gym 官方文档：https://www.gymlibrary.dev
+最小例子 CartPole-v0
+import gymenv = gym.make(&#39;CartPole-v0&#39;) env.reset() for _ in range(1000): env.render() env.step(env.action_space.sample()) # take a random action 观测 (Observations) 在 Gym 仿真中，每一次回合开始，需要先执行 reset() 函数，返回初始观测信息，然后根据标志位 done 的状态，来决定是否进行下一次回合。代码表示：
+env.step() 函数对每一步进行仿真，返回 4 个参数：
+观测 Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；
+奖励 Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；
+完成 Done (Boolen): 表示是否需要将环境重置 env.reset。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-04T04:00:59-07:00">
+    <meta property="article:modified_time" content="2025-04-04T04:00:59-07:00">
+    <meta property="article:tag" content="RL">
+
+  <meta itemprop="name" content="强化学习-工具链">
+  <meta itemprop="description" content="1. gym 官方文档：https://www.gymlibrary.dev
+最小例子 CartPole-v0
+import gymenv = gym.make(&#39;CartPole-v0&#39;) env.reset() for _ in range(1000): env.render() env.step(env.action_space.sample()) # take a random action 观测 (Observations) 在 Gym 仿真中，每一次回合开始，需要先执行 reset() 函数，返回初始观测信息，然后根据标志位 done 的状态，来决定是否进行下一次回合。代码表示：
+env.step() 函数对每一步进行仿真，返回 4 个参数：
+观测 Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；
+奖励 Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；
+完成 Done (Boolen): 表示是否需要将环境重置 env.reset。">
+  <meta itemprop="datePublished" content="2025-04-04T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-04T04:00:59-07:00">
+  <meta itemprop="wordCount" content="138">
+  <meta itemprop="keywords" content="RL">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="强化学习-工具链">
+  <meta name="twitter:description" content="1. gym 官方文档：https://www.gymlibrary.dev
+最小例子 CartPole-v0
+import gymenv = gym.make(&#39;CartPole-v0&#39;) env.reset() for _ in range(1000): env.render() env.step(env.action_space.sample()) # take a random action 观测 (Observations) 在 Gym 仿真中，每一次回合开始，需要先执行 reset() 函数，返回初始观测信息，然后根据标志位 done 的状态，来决定是否进行下一次回合。代码表示：
+env.step() 函数对每一步进行仿真，返回 4 个参数：
+观测 Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；
+奖励 Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；
+完成 Done (Boolen): 表示是否需要将环境重置 env.reset。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/RLchain/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">强化学习-工具链</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%25B7%25A5%25E5%2585%25B7%25E9%2593%25BE%2F&amp;subject=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%25B7%25A5%25E5%2585%25B7%25E9%2593%25BE%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%25B7%25A5%25E5%2585%25B7%25E9%2593%25BE%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%25B7%25A5%25E5%2585%25B7%25E9%2593%25BE%2F&amp;summary=1.&#43;gym&#43;%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%EF%BC%9Ahttps%3A%2F%2Fwww.gymlibrary.dev%0A%E6%9C%80%E5%B0%8F%E4%BE%8B%E5%AD%90&#43;CartPole-v0%0Aimport&#43;gymenv&#43;%3D&#43;gym.make%28%26amp%3B%2339%3BCartPole-v0%26amp%3B%2339%3B%29&#43;env.reset%28%29&#43;for&#43;_&#43;in&#43;range%281000%29%3A&#43;env.render%28%29&#43;env.step%28env.action_space.sample%28%29%29&#43;%23&#43;take&#43;a&#43;random&#43;action&#43;%E8%A7%82%E6%B5%8B&#43;%28Observations%29&#43;%E5%9C%A8&#43;Gym&#43;%E4%BB%BF%E7%9C%9F%E4%B8%AD%EF%BC%8C%E6%AF%8F%E4%B8%80%E6%AC%A1%E5%9B%9E%E5%90%88%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%9C%80%E8%A6%81%E5%85%88%E6%89%A7%E8%A1%8C&#43;reset%28%29&#43;%E5%87%BD%E6%95%B0%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%88%9D%E5%A7%8B%E8%A7%82%E6%B5%8B%E4%BF%A1%E6%81%AF%EF%BC%8C%E7%84%B6%E5%90%8E%E6%A0%B9%E6%8D%AE%E6%A0%87%E5%BF%97%E4%BD%8D&#43;done&#43;%E7%9A%84%E7%8A%B6%E6%80%81%EF%BC%8C%E6%9D%A5%E5%86%B3%E5%AE%9A%E6%98%AF%E5%90%A6%E8%BF%9B%E8%A1%8C%E4%B8%8B%E4%B8%80%E6%AC%A1%E5%9B%9E%E5%90%88%E3%80%82%E4%BB%A3%E7%A0%81%E8%A1%A8%E7%A4%BA%EF%BC%9A%0Aenv.step%28%29&#43;%E5%87%BD%E6%95%B0%E5%AF%B9%E6%AF%8F%E4%B8%80%E6%AD%A5%E8%BF%9B%E8%A1%8C%E4%BB%BF%E7%9C%9F%EF%BC%8C%E8%BF%94%E5%9B%9E&#43;4&#43;%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%9A%0A%E8%A7%82%E6%B5%8B&#43;Observation&#43;%28Object%29%EF%BC%9A%E5%BD%93%E5%89%8D&#43;step&#43;%E6%89%A7%E8%A1%8C%E5%90%8E%EF%BC%8C%E7%8E%AF%E5%A2%83%E7%9A%84%E8%A7%82%E6%B5%8B%28%E7%B1%BB%E5%9E%8B%E4%B8%BA%E5%AF%B9%E8%B1%A1%29%E3%80%82%E4%BE%8B%E5%A6%82%EF%BC%8C%E4%BB%8E%E7%9B%B8%E6%9C%BA%E8%8E%B7%E5%8F%96%E7%9A%84%E5%83%8F%E7%B4%A0%E7%82%B9%EF%BC%8C%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%90%84%E4%B8%AA%E5%85%B3%E8%8A%82%E7%9A%84%E8%A7%92%E5%BA%A6%E6%88%96%E6%A3%8B%E7%9B%98%E6%B8%B8%E6%88%8F%E5%BD%93%E5%89%8D%E7%9A%84%E7%8A%B6%E6%80%81%E7%AD%89%EF%BC%9B%0A%E5%A5%96%E5%8A%B1&#43;Reward&#43;%28Float%29%3A&#43;%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%80%E6%AD%A5%E5%8A%A8%E4%BD%9C%28action%29%E5%90%8E%EF%BC%8C%E6%99%BA%E4%BD%93%28agent%29%E8%8E%B7%E5%BE%97%E7%9A%84%E5%A5%96%E5%8A%B1%EF%BC%8C%E4%B8%8D%E5%90%8C%E7%9A%84%E7%8E%AF%E5%A2%83%E4%B8%AD%E5%A5%96%E5%8A%B1%E5%80%BC%E5%8F%98%E5%8C%96%E8%8C%83%E5%9B%B4%E4%B9%9F%E4%B8%8D%E7%9B%B8%E5%90%8C%EF%BC%8C%E4%BD%86%E6%98%AF%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%9B%AE%E6%A0%87%E5%B0%B1%E6%98%AF%E4%BD%BF%E5%BE%97%E6%80%BB%E5%A5%96%E5%8A%B1%E5%80%BC%E6%9C%80%E5%A4%A7%EF%BC%9B%0A%E5%AE%8C%E6%88%90&#43;Done&#43;%28Boolen%29%3A&#43;%E8%A1%A8%E7%A4%BA%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E5%B0%86%E7%8E%AF%E5%A2%83%E9%87%8D%E7%BD%AE&#43;env.reset%E3%80%82%0A&amp;title=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%25B7%25A5%25E5%2585%25B7%25E9%2593%25BE%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">强化学习-工具链</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-04T04:00:59-07:00">April 4, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="1-gym">1. gym</h2>
+<p>官方文档：https://www.gymlibrary.dev</p>
+<ul>
+<li>
+<p>最小例子 <code>CartPole-v0</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>render()
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>step(env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()) <span style="color:#75715e"># take a random action</span>
+</span></span></code></pre></div></li>
+</ul>
+<p> </p>
+<h3 id="观测-observations">观测 (Observations)</h3>
+<p>在 Gym 仿真中，每一次回合开始，需要先执行 <code>reset()</code> 函数，返回<strong>初始观测信息，然后根据标志位 <code>done</code> 的状态，来决定是否进行下一次回合</strong>。代码表示：</p>
+<p> </p>
+<p><code>env.step()</code> 函数对每一步进行仿真，返回 4 个参数：</p>
+<ul>
+<li>
+<p><strong>观测</strong> Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；</p>
+</li>
+<li>
+<p><strong>奖励</strong> Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；</p>
+</li>
+<li>
+<p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
+</li>
+</ul>
+<p>大多数情况下，当 <code>Done</code> 为 <code>True</code>时，就表明当前回合(episode)或者试验(tial)结束。例如当机器人摔倒或者掉出台面，就应当终止当前回合进行重置(reset);</p>
+<ul>
+<li><strong>信息</strong> Info (Dict): 针对调试过程的诊断信息。在标准的智体仿真评估当中不会使用到这个 info。</li>
+</ul>
+<p>总结来说，这就是一个强化学习的基本流程：在每个时间点上，智体执行 action，环境返回上一次 action 的观测和奖励。</p>
+<p> </p>
+<h3 id="空间spaces">空间（Spaces）</h3>
+<p>每次执行的动作(action)都是从环境动作空间中随机进行选取的.</p>
+<p>在 Gym 的仿真环境中，有<strong>运动空间 <code>action_space</code></strong> 和<strong>观测空间 <code>observation_space</code></strong> 两个指标，程序中被定义为 <code>Space</code>类型，用于描述有效的运动和观测的格式和范围。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
+</span></span><span style="display:flex;"><span>print(env<span style="color:#f92672">.</span>action_space)<span style="color:#75715e">#&gt; Discrete(2)</span>
+</span></span><span style="display:flex;"><span>print(env<span style="color:#f92672">.</span>observation_space)<span style="color:#75715e">#&gt; Box(4,)</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">33</span>mWARN: gym<span style="color:#f92672">.</span>spaces<span style="color:#f92672">.</span>Box autodetected dtype <span style="color:#66d9ef">as</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">numpy</span><span style="color:#f92672">.</span>float32<span style="color:#e6db74">&#39;&gt;. Please provide explicit dtype.[0m</span>
+</span></span><span style="display:flex;"><span>Discrete(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>Box(<span style="color:#ae81ff">4</span>,)
+</span></span></code></pre></div><p> </p>
+<h3 id="注册表">注册表</h3>
+<p>Gym 是一个包含各种各样强化学习仿真环境的大集合，并且封装成通用的接口暴露给用户，查看所有环境的代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> gym <span style="color:#f92672">import</span> envsprint(envs<span style="color:#f92672">.</span>registry<span style="color:#f92672">.</span>all())
+</span></span><span style="display:flex;"><span>dict_values([EnvSpec(Copy<span style="color:#f92672">-</span>v0), EnvSpec(RepeatCopy<span style="color:#f92672">-</span>v0), EnvSpec(ReversedAddition<span style="color:#f92672">-</span>v0), EnvSpec(ReversedAddition3<span style="color:#f92672">-</span>v0), EnvSpec(DuplicatedInput<span style="color:#f92672">-</span>v0), EnvSpec(Reverse<span style="color:#f92672">-</span>v0), EnvSpec(CartPole<span style="color:#f92672">-</span>v0), EnvSpec(CartPole<span style="color:#f92672">-</span>v1), EnvSpec(MountainCar<span style="color:#f92672">-</span>v0), EnvSpec(MountainCarContinuous<span style="color:#f92672">-</span>v0), EnvSpec(Pendulum<span style="color:#f92672">-</span>v0), EnvSpec(Acrobot<span style="color:#f92672">-</span>v1), EnvSpec(LunarLander<span style="color:#f92672">-</span>v2), EnvSpec(LunarLanderContinuous<span style="color:#f92672">-</span>v2), EnvSpec(BipedalWalker<span style="color:#f92672">-</span>v2),<span style="color:#f92672">...</span>
+</span></span></code></pre></div><p>Gym 支持将用户制作的环境写入到注册表中，需要执行 <code>gym.make()</code> 和在启动时注册 <code>register</code>，如:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>register(
+</span></span><span style="display:flex;"><span>    id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;CartPole-v0&#39;</span>,
+</span></span><span style="display:flex;"><span>    entry_point<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gym.envs.classic_control:CartPoleEnv&#39;</span>,
+</span></span><span style="display:flex;"><span>    max_episode_steps<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>,
+</span></span><span style="display:flex;"><span>    reward_threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">195.0</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p> </p>
+<h3 id="gym-基本函数接口">gym 基本函数接口</h3>
+<ol>
+<li>make()：生成环境对象</li>
+<li>reset()：环境复位初始化函数。将环境的状态恢复到初始状态。</li>
+<li>env.state：查看环境当前状态。</li>
+<li>env.step()：单步执行/智能体与环境之间的一次交互，即智能体在当前状态s下执行一次动作a，环境相应地更新至状态s&rsquo;，并向智能体反馈及时奖励r。</li>
+<li>env.render()：环境显示。以图形化的方式显示环境当前状态，在智能体与环境的持续交互过程中，该图形化显示也是相应地持续更新的。</li>
+<li>env.close()：关闭环境。</li>
+<li>env.sample_space.sample(): 对动作空间进行随机采样。</li>
+<li>env.seed()：指定随机种子。</li>
+</ol>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2 id="2-stable-baselines3">2. stable-baselines3</h2><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/ppo/">PPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/trpo/">TRPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/actor-critic/">Actor-Critic</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/reinforce/">REINFORCE</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dqn/">DQN (deep Q network)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">强化学习-数学基础</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/">强化学习-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/e2e/">End2End</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

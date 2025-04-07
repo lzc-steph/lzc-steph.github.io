@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>强化学习-发展趋势 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="1阶段
+RL：一种解决马尔可夫决策过程的方法。
+分类：value-based算法（DQN）和 policy-based算法（PPO)。
+应用方向：多智能体强化学习， 安全强化学习等等。
+ 
+2 阶段
+强化学习应用的论文描述严格（必须有以下内容）：
+
+非常准确的状态空间和动作空间定义
+必须存在状态转移函数，不允许单步决策，也就是一个动作就gameover
+必须有过程奖励，且需要存在牺牲短期的过程奖励而获取最大累计回报的case案例
+
+应用方向：游戏AI（份额不大）
+ 
+3 阶段
+RL 落地的真正难点在于问题的真实构建，而非近似构建或策略求解等等方面的问题。从原先任务只有求解策略的过程是强化学习，变成了 构建问题&#43;求解策略 统称为强化学习。
+典型如 offline model-based RL 和 RLHF，其中核心的模块变成了通过神经网络模拟状态转移函数和奖励函数，策略求解反而在方法论中被一句带过。
+这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="强化学习-发展趋势">
+  <meta property="og:description" content="1阶段 RL：一种解决马尔可夫决策过程的方法。
+分类：value-based算法（DQN）和 policy-based算法（PPO)。
+应用方向：多智能体强化学习， 安全强化学习等等。
+2 阶段 强化学习应用的论文描述严格（必须有以下内容）：
+非常准确的状态空间和动作空间定义 必须存在状态转移函数，不允许单步决策，也就是一个动作就gameover 必须有过程奖励，且需要存在牺牲短期的过程奖励而获取最大累计回报的case案例 应用方向：游戏AI（份额不大）
+3 阶段 RL 落地的真正难点在于问题的真实构建，而非近似构建或策略求解等等方面的问题。从原先任务只有求解策略的过程是强化学习，变成了 构建问题&#43;求解策略 统称为强化学习。
+典型如 offline model-based RL 和 RLHF，其中核心的模块变成了通过神经网络模拟状态转移函数和奖励函数，策略求解反而在方法论中被一句带过。
+这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-06T04:00:59-07:00">
+    <meta property="article:modified_time" content="2025-04-06T04:00:59-07:00">
+    <meta property="article:tag" content="RL">
+
+  <meta itemprop="name" content="强化学习-发展趋势">
+  <meta itemprop="description" content="1阶段 RL：一种解决马尔可夫决策过程的方法。
+分类：value-based算法（DQN）和 policy-based算法（PPO)。
+应用方向：多智能体强化学习， 安全强化学习等等。
+2 阶段 强化学习应用的论文描述严格（必须有以下内容）：
+非常准确的状态空间和动作空间定义 必须存在状态转移函数，不允许单步决策，也就是一个动作就gameover 必须有过程奖励，且需要存在牺牲短期的过程奖励而获取最大累计回报的case案例 应用方向：游戏AI（份额不大）
+3 阶段 RL 落地的真正难点在于问题的真实构建，而非近似构建或策略求解等等方面的问题。从原先任务只有求解策略的过程是强化学习，变成了 构建问题&#43;求解策略 统称为强化学习。
+典型如 offline model-based RL 和 RLHF，其中核心的模块变成了通过神经网络模拟状态转移函数和奖励函数，策略求解反而在方法论中被一句带过。
+这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。">
+  <meta itemprop="datePublished" content="2025-04-06T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-06T04:00:59-07:00">
+  <meta itemprop="wordCount" content="37">
+  <meta itemprop="keywords" content="RL">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="强化学习-发展趋势">
+  <meta name="twitter:description" content="1阶段 RL：一种解决马尔可夫决策过程的方法。
+分类：value-based算法（DQN）和 policy-based算法（PPO)。
+应用方向：多智能体强化学习， 安全强化学习等等。
+2 阶段 强化学习应用的论文描述严格（必须有以下内容）：
+非常准确的状态空间和动作空间定义 必须存在状态转移函数，不允许单步决策，也就是一个动作就gameover 必须有过程奖励，且需要存在牺牲短期的过程奖励而获取最大累计回报的case案例 应用方向：游戏AI（份额不大）
+3 阶段 RL 落地的真正难点在于问题的真实构建，而非近似构建或策略求解等等方面的问题。从原先任务只有求解策略的过程是强化学习，变成了 构建问题&#43;求解策略 统称为强化学习。
+典型如 offline model-based RL 和 RLHF，其中核心的模块变成了通过神经网络模拟状态转移函数和奖励函数，策略求解反而在方法论中被一句带过。
+这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/RLdev/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">强化学习-发展趋势</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%258F%2591%25E5%25B1%2595%25E8%25B6%258B%25E5%258A%25BF%2F&amp;subject=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%258F%2591%25E5%25B1%2595%25E8%25B6%258B%25E5%258A%25BF%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%258F%2591%25E5%25B1%2595%25E8%25B6%258B%25E5%258A%25BF%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%258F%2591%25E5%25B1%2595%25E8%25B6%258B%25E5%258A%25BF%2F&amp;summary=1%E9%98%B6%E6%AE%B5&#43;RL%EF%BC%9A%E4%B8%80%E7%A7%8D%E8%A7%A3%E5%86%B3%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%82%0A%E5%88%86%E7%B1%BB%EF%BC%9Avalue-based%E7%AE%97%E6%B3%95%EF%BC%88DQN%EF%BC%89%E5%92%8C&#43;policy-based%E7%AE%97%E6%B3%95%EF%BC%88PPO%29%E3%80%82%0A%E5%BA%94%E7%94%A8%E6%96%B9%E5%90%91%EF%BC%9A%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%8C&#43;%E5%AE%89%E5%85%A8%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AD%89%E7%AD%89%E3%80%82%0A2&#43;%E9%98%B6%E6%AE%B5&#43;%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%BA%94%E7%94%A8%E7%9A%84%E8%AE%BA%E6%96%87%E6%8F%8F%E8%BF%B0%E4%B8%A5%E6%A0%BC%EF%BC%88%E5%BF%85%E9%A1%BB%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%89%EF%BC%9A%0A%E9%9D%9E%E5%B8%B8%E5%87%86%E7%A1%AE%E7%9A%84%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E5%92%8C%E5%8A%A8%E4%BD%9C%E7%A9%BA%E9%97%B4%E5%AE%9A%E4%B9%89&#43;%E5%BF%85%E9%A1%BB%E5%AD%98%E5%9C%A8%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0%EF%BC%8C%E4%B8%8D%E5%85%81%E8%AE%B8%E5%8D%95%E6%AD%A5%E5%86%B3%E7%AD%96%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8A%A8%E4%BD%9C%E5%B0%B1gameover&#43;%E5%BF%85%E9%A1%BB%E6%9C%89%E8%BF%87%E7%A8%8B%E5%A5%96%E5%8A%B1%EF%BC%8C%E4%B8%94%E9%9C%80%E8%A6%81%E5%AD%98%E5%9C%A8%E7%89%BA%E7%89%B2%E7%9F%AD%E6%9C%9F%E7%9A%84%E8%BF%87%E7%A8%8B%E5%A5%96%E5%8A%B1%E8%80%8C%E8%8E%B7%E5%8F%96%E6%9C%80%E5%A4%A7%E7%B4%AF%E8%AE%A1%E5%9B%9E%E6%8A%A5%E7%9A%84case%E6%A1%88%E4%BE%8B&#43;%E5%BA%94%E7%94%A8%E6%96%B9%E5%90%91%EF%BC%9A%E6%B8%B8%E6%88%8FAI%EF%BC%88%E4%BB%BD%E9%A2%9D%E4%B8%8D%E5%A4%A7%EF%BC%89%0A3&#43;%E9%98%B6%E6%AE%B5&#43;RL&#43;%E8%90%BD%E5%9C%B0%E7%9A%84%E7%9C%9F%E6%AD%A3%E9%9A%BE%E7%82%B9%E5%9C%A8%E4%BA%8E%E9%97%AE%E9%A2%98%E7%9A%84%E7%9C%9F%E5%AE%9E%E6%9E%84%E5%BB%BA%EF%BC%8C%E8%80%8C%E9%9D%9E%E8%BF%91%E4%BC%BC%E6%9E%84%E5%BB%BA%E6%88%96%E7%AD%96%E7%95%A5%E6%B1%82%E8%A7%A3%E7%AD%89%E7%AD%89%E6%96%B9%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82%E4%BB%8E%E5%8E%9F%E5%85%88%E4%BB%BB%E5%8A%A1%E5%8F%AA%E6%9C%89%E6%B1%82%E8%A7%A3%E7%AD%96%E7%95%A5%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%8C%E5%8F%98%E6%88%90%E4%BA%86&#43;%E6%9E%84%E5%BB%BA%E9%97%AE%E9%A2%98%2B%E6%B1%82%E8%A7%A3%E7%AD%96%E7%95%A5&#43;%E7%BB%9F%E7%A7%B0%E4%B8%BA%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%82%0A%E5%85%B8%E5%9E%8B%E5%A6%82&#43;offline&#43;model-based&#43;RL&#43;%E5%92%8C&#43;RLHF%EF%BC%8C%E5%85%B6%E4%B8%AD%E6%A0%B8%E5%BF%83%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8F%98%E6%88%90%E4%BA%86%E9%80%9A%E8%BF%87%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E6%8B%9F%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0%E5%92%8C%E5%A5%96%E5%8A%B1%E5%87%BD%E6%95%B0%EF%BC%8C%E7%AD%96%E7%95%A5%E6%B1%82%E8%A7%A3%E5%8F%8D%E8%80%8C%E5%9C%A8%E6%96%B9%E6%B3%95%E8%AE%BA%E4%B8%AD%E8%A2%AB%E4%B8%80%E5%8F%A5%E5%B8%A6%E8%BF%87%E3%80%82%0A%E8%BF%99%E4%B8%AA%E8%BF%87%E7%A8%8B%E5%8F%AF%E4%BB%A5%E8%A2%AB%E8%A7%A3%E8%80%A6%EF%BC%8C%E5%8F%98%E6%88%90%E8%B7%9F%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%AF%AB%E6%97%A0%E7%9B%B8%E5%85%B3%E7%9A%84%E5%90%8D%E8%AF%8D%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%BE%8B%E5%A6%82%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E6%A6%82%E5%BF%B5%E7%AD%89%E3%80%82%E5%AF%B9%E4%BA%8ERL%EF%BC%8C%E6%B2%A1%E6%9C%89%E6%9C%89%E6%95%88%E7%9A%84%E4%BA%A4%E4%BA%92%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E5%B0%B1%E6%B2%A1%E6%B3%95%E8%BE%BE%E5%88%B0%E7%9B%AE%E6%A0%87%EF%BC%8C%E6%9C%89%E8%BF%99%E7%A7%8D%E6%9C%89%E6%95%88%E4%BA%A4%E4%BA%92%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E5%8D%B4%E9%9D%9E%E5%B8%B8%E5%B0%91%E3%80%82%0A&amp;title=%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25BC%25BA%25E5%258C%2596%25E5%25AD%25A6%25E4%25B9%25A0-%25E5%258F%2591%25E5%25B1%2595%25E8%25B6%258B%25E5%258A%25BF%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">强化学习-发展趋势</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-06T04:00:59-07:00">April 6, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h4 id="1阶段">1阶段</h4>
+<p><strong>RL</strong>：一种解决马尔可夫决策过程的方法。</p>
+<p><strong>分类</strong>：value-based算法（DQN）和 policy-based算法（PPO)。</p>
+<p><strong>应用方向</strong>：多智能体强化学习， 安全强化学习等等。</p>
+<p> </p>
+<h4 id="2-阶段">2 阶段</h4>
+<p>强化学习应用的论文描述严格（必须有以下内容）：</p>
+<ol>
+<li>非常准确的状态空间和动作空间定义</li>
+<li>必须存在状态转移函数，不允许单步决策，也就是一个动作就gameover</li>
+<li>必须有过程奖励，且需要存在牺牲短期的过程奖励而获取最大累计回报的case案例</li>
+</ol>
+<p><strong>应用方向</strong>：游戏AI（份额不大）</p>
+<p> </p>
+<h4 id="3-阶段">3 阶段</h4>
+<p>RL 落地的真正难点在于<strong>问题的真实构建</strong>，而非近似构建或策略求解等等方面的问题。从原先任务只有求解策略的过程是强化学习，变成了 <strong>构建问题+求解策略</strong> 统称为强化学习。</p>
+<p>典型如 offline model-based RL 和 RLHF，其中核心的模块变成了<strong>通过神经网络模拟状态转移函数和奖励函数</strong>，策略求解反而在方法论中被一句带过。</p>
+<p>这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。</p>
+<p>导致把决策问题的过程步骤：问题建模、样本收集、策略训练、策略部署的周期拉得更长了，这几个步骤不是跟在线强化一样那么紧凑，是断开了链路的。<strong>中间过程的任何一个步骤都变成了强化学习！</strong></p>
+<p>于是神奇的事情发生了：<strong>中间过程的任何一个步骤都变成了强化学习！</strong></p>
+<p> </p>
+<h4 id="4-阶段猜测未来">4 阶段：猜测未来</h4>
+<p>监督学习优化的是 非参分布下的含参loss function
+强化学习优化的是 含参分布下的非参loss (cost/reward) function</p>
+<p><img src="/images/RLdev/1.png" alt="1"></p>
+<p> </p><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/">强化学习-工具链</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo/">PPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/trpo/">TRPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/actor-critic/">Actor-Critic</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/reinforce/">REINFORCE</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dqn/">DQN (deep Q network)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">强化学习-数学基础</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/">强化学习-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/e2e/">End2End</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
