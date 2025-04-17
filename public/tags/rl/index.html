@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="RL">
-  <meta itemprop="datePublished" content="2025-04-06T04:00:59-07:00">
-  <meta itemprop="dateModified" content="2025-04-06T04:00:59-07:00">
+  <meta itemprop="datePublished" content="2025-04-11T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-11T04:00:59-07:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="RL">
 
@@ -144,6 +144,69 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        April 11, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="link black dim">
+        数据集-NuSences
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <ol>
+<li>
+<h4 id="内容">内容</h4>
+<p>nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。</p>
+<p>nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。</p>
+<p> </p>
+</li>
+<li>
+<h4 id="数据采集">数据采集</h4>
+<ol>
+<li>
+<p><strong>车辆设置</strong></p>
+<p><img src="/images/nuSences/1.png" alt="1"></p>
+<ol>
+<li>1 个旋转激光雷达 （Velodyne HDL32E）</li>
+<li>5 个远程雷达传感器 （Continental ARS 408-21）</li>
+<li>6 个相机 （Basler acA1600-60gc）</li>
+<li>1个 IMU &amp; GPS （高级导航空间版）</li>
+</ol>
+</li>
+<li>
+<p><strong>Sensor(传感器)校准 - 内外参</strong></p>
+<ol>
+<li>LIDAR extrinsics</li>
+<li>相机 extrinsics</li>
+<li>RADAR extrinsics</li>
+<li>相机 intrinsic 校准</li>
+</ol>
+</li>
+<li>
+<p><strong>Sensor(传感器)同步</strong></p>
+<p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
+</li>
+</ol>
+<p> </p>
+</li>
+<li>
+<h4 id="数据标准">数据标准</h4>
+<ul>
+<li>
+<p>nuScenes 数据集中的所有对象都带有一个<strong>语义类别</strong>，以及一个 <strong>3D 边界框</strong>和它们所在的<strong>每一帧的属性</strong>。：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_nuscenes.md">类的定义</a></p>
+</li>
+<li>
+<p>nuScenes-lidarseg 使用<strong>语义标签</strong>注释激光雷达点云中的每个点：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_lidarseg.md">类的定义</a></p>
+    </div>
+  <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         April 6, 2025
       </div>
     
@@ -159,28 +222,18 @@
 <p><strong>应用方向</strong>：多智能体强化学习， 安全强化学习等等。</p>
 <p> </p>
 <h4 id="2-阶段">2 阶段</h4>
-<ul>
-<li>强化学习应用的论文描述严格（必须有以下内容）：
+<p>强化学习应用的论文描述严格（必须有以下内容）：</p>
 <ol>
 <li>非常准确的状态空间和动作空间定义</li>
 <li>必须存在状态转移函数，不允许单步决策，也就是一个动作就gameover</li>
 <li>必须有过程奖励，且需要存在牺牲短期的过程奖励而获取最大累计回报的case案例</li>
 </ol>
-</li>
-</ul>
 <p><strong>应用方向</strong>：游戏AI（份额不大）</p>
 <p> </p>
 <h4 id="3-阶段">3 阶段</h4>
 <p>RL 落地的真正难点在于<strong>问题的真实构建</strong>，而非近似构建或策略求解等等方面的问题。从原先任务只有求解策略的过程是强化学习，变成了 <strong>构建问题+求解策略</strong> 统称为强化学习。</p>
 <p>典型如 offline model-based RL 和 RLHF，其中核心的模块变成了<strong>通过神经网络模拟状态转移函数和奖励函数</strong>，策略求解反而在方法论中被一句带过。</p>
-<p>这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。导致把决策问题的过程步骤：问题建模、样本收集、策略训练、策略部署的周期拉得更长了，这几个步骤不是跟在线强化一样那么紧凑，是断开了链路的。<strong>中间过程的任何一个步骤都变成了强化学习！</strong></p>
-<p>于是神奇的事情发生了：<strong>中间过程的任何一个步骤都变成了强化学习！</strong></p>
-<p> </p>
-<h4 id="4-阶段猜测未来">4 阶段：猜测未来</h4>
-<p>监督学习优化的是 非参分布下的含参loss function
-强化学习优化的是 含参分布下的非参loss (cost/reward) function</p>
-<p><img src="/images/RLdev/1.png" alt="1"></p>
-<p> </p>
+<p>这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。</p>
     </div>
   <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -226,16 +279,8 @@
 </li>
 <li>
 <p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
-<p>大多数情况下，当 <code>Done</code> 为 <code>True</code>时，就表明当前回合(episode)或者试验(tial)结束。例如当机器人摔倒或者掉出台面，就应当终止当前回合进行重置(reset);</p>
-</li>
-<li>
-<p><strong>信息</strong> Info (Dict): 针对调试过程的诊断信息。在标准的智体仿真评估当中不会使用到这个 info。</p>
 </li>
 </ul>
-<p>总结来说，这就是一个强化学习的基本流程：在每个时间点上，智体执行 action，环境返回上一次 action 的观测和奖励。</p>
-<p> </p>
-<p> </p>
-<h3 id="空间spaces">空间（Spaces）</h3>
     </div>
   <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

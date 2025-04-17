@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>数据集-NuSences | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="
+
+内容
+nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。
+nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。
+ 
+
+
+数据采集
+
+
+车辆设置
+
+
+1 个旋转激光雷达 （Velodyne HDL32E）
+5 个远程雷达传感器 （Continental ARS 408-21）
+6 个相机 （Basler acA1600-60gc）
+1个 IMU &amp; GPS （高级导航空间版）
+
+
+
+Sensor(传感器)校准 - 内外参
+
+LIDAR extrinsics
+相机 extrinsics
+RADAR extrinsics
+相机 intrinsic 校准
+
+
+
+Sensor(传感器)同步
+实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光
+
+
+
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="数据集-NuSences">
+  <meta property="og:description" content="内容 nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。
+nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。
+数据采集 车辆设置
+1 个旋转激光雷达 （Velodyne HDL32E） 5 个远程雷达传感器 （Continental ARS 408-21） 6 个相机 （Basler acA1600-60gc） 1个 IMU &amp; GPS （高级导航空间版） Sensor(传感器)校准 - 内外参
+LIDAR extrinsics 相机 extrinsics RADAR extrinsics 相机 intrinsic 校准 Sensor(传感器)同步
+实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-11T04:00:59-07:00">
+    <meta property="article:modified_time" content="2025-04-11T04:00:59-07:00">
+    <meta property="article:tag" content="RL">
+    <meta property="article:tag" content="AD">
+    <meta property="article:tag" content="Data Processing">
+
+  <meta itemprop="name" content="数据集-NuSences">
+  <meta itemprop="description" content="内容 nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。
+nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。
+数据采集 车辆设置
+1 个旋转激光雷达 （Velodyne HDL32E） 5 个远程雷达传感器 （Continental ARS 408-21） 6 个相机 （Basler acA1600-60gc） 1个 IMU &amp; GPS （高级导航空间版） Sensor(传感器)校准 - 内外参
+LIDAR extrinsics 相机 extrinsics RADAR extrinsics 相机 intrinsic 校准 Sensor(传感器)同步
+实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光">
+  <meta itemprop="datePublished" content="2025-04-11T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-11T04:00:59-07:00">
+  <meta itemprop="wordCount" content="70">
+  <meta itemprop="keywords" content="RL,AD,Data Processing">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="数据集-NuSences">
+  <meta name="twitter:description" content="内容 nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。
+nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。
+数据采集 车辆设置
+1 个旋转激光雷达 （Velodyne HDL32E） 5 个远程雷达传感器 （Continental ARS 408-21） 6 个相机 （Basler acA1600-60gc） 1个 IMU &amp; GPS （高级导航空间版） Sensor(传感器)校准 - 内外参
+LIDAR extrinsics 相机 extrinsics RADAR extrinsics 相机 intrinsic 校准 Sensor(传感器)同步
+实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/nuSences/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">数据集-NuSences</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E9%259B%2586-nusences%2F&amp;subject=%E6%95%B0%E6%8D%AE%E9%9B%86-NuSences"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E9%259B%2586-nusences%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E9%259B%2586-nusences%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E9%259B%2586-nusences%2F&amp;summary=&#43;%E5%86%85%E5%AE%B9&#43;nuScenes&#43;%E5%8C%85%E5%90%AB&#43;1000&#43;%E4%B8%AA%E5%9C%BA%E6%99%AF%EF%BC%8C%E5%A4%A7%E7%BA%A6&#43;1.4M&#43;%E7%9A%84%E7%9B%B8%E6%9C%BA%E5%9B%BE%E5%83%8F%E3%80%81390k&#43;LIDAR&#43;%E6%89%AB%E6%8F%8F%E3%80%811.4M&#43;%E9%9B%B7%E8%BE%BE%E6%89%AB%E6%8F%8F%E5%92%8C&#43;40k&#43;%E5%85%B3%E9%94%AE%E5%B8%A7%E4%B8%AD%E7%9A%84&#43;1.4M&#43;%E5%AF%B9%E8%B1%A1%E8%BE%B9%E7%95%8C%E6%A1%86%E3%80%82%0AnuScenes-lidarseg&#43;%E5%8C%85%E5%90%AB&#43;40000&#43;%E4%B8%AA%E7%82%B9%E4%BA%91%E5%92%8C&#43;1000&#43;%E4%B8%AA%E5%9C%BA%E6%99%AF%EF%BC%88850&#43;%E4%B8%AA%E7%94%A8%E4%BA%8E%E8%AE%AD%E7%BB%83%E5%92%8C%E9%AA%8C%E8%AF%81%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%8C%E4%BB%A5%E5%8F%8A&#43;150&#43;%E4%B8%AA%E7%94%A8%E4%BA%8E%E6%B5%8B%E8%AF%95%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%89%E4%B8%AD%E7%9A%84&#43;14&#43;%E4%BA%BF%E4%B8%AA%E6%B3%A8%E9%87%8A%E7%82%B9%E3%80%82%0A%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86&#43;%E8%BD%A6%E8%BE%86%E8%AE%BE%E7%BD%AE%0A1&#43;%E4%B8%AA%E6%97%8B%E8%BD%AC%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE&#43;%EF%BC%88Velodyne&#43;HDL32E%EF%BC%89&#43;5&#43;%E4%B8%AA%E8%BF%9C%E7%A8%8B%E9%9B%B7%E8%BE%BE%E4%BC%A0%E6%84%9F%E5%99%A8&#43;%EF%BC%88Continental&#43;ARS&#43;408-21%EF%BC%89&#43;6&#43;%E4%B8%AA%E7%9B%B8%E6%9C%BA&#43;%EF%BC%88Basler&#43;acA1600-60gc%EF%BC%89&#43;1%E4%B8%AA&#43;IMU&#43;%26amp%3Bamp%3B&#43;GPS&#43;%EF%BC%88%E9%AB%98%E7%BA%A7%E5%AF%BC%E8%88%AA%E7%A9%BA%E9%97%B4%E7%89%88%EF%BC%89&#43;Sensor%28%E4%BC%A0%E6%84%9F%E5%99%A8%29%E6%A0%A1%E5%87%86&#43;-&#43;%E5%86%85%E5%A4%96%E5%8F%82%0ALIDAR&#43;extrinsics&#43;%E7%9B%B8%E6%9C%BA&#43;extrinsics&#43;RADAR&#43;extrinsics&#43;%E7%9B%B8%E6%9C%BA&#43;intrinsic&#43;%E6%A0%A1%E5%87%86&#43;Sensor%28%E4%BC%A0%E6%84%9F%E5%99%A8%29%E5%90%8C%E6%AD%A5%0A%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%A8%A1%E6%80%81%E6%95%B0%E6%8D%AE%E5%AF%B9%E9%BD%90%EF%BC%9A%E5%BD%93%E9%A1%B6%E9%83%A8&#43;LIDAR&#43;%E6%89%AB%E6%8F%8F%E7%9B%B8%E6%9C%BA&#43;FOV&#43;%E7%9A%84%E4%B8%AD%E5%BF%83%E6%97%B6%EF%BC%8C%E4%BC%9A%E8%A7%A6%E5%8F%91%E7%9B%B8%E6%9C%BA%E7%9A%84%E6%9B%9D%E5%85%89%0A&amp;title=%E6%95%B0%E6%8D%AE%E9%9B%86-NuSences&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E6%2595%25B0%25E6%258D%25AE%25E9%259B%2586-nusences%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">数据集-NuSences</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-11T04:00:59-07:00">April 11, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><ol>
+<li>
+<h4 id="内容">内容</h4>
+<p>nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。</p>
+<p>nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。</p>
+<p> </p>
+</li>
+<li>
+<h4 id="数据采集">数据采集</h4>
+<ol>
+<li>
+<p><strong>车辆设置</strong></p>
+<p><img src="/images/nuSences/1.png" alt="1"></p>
+<ol>
+<li>1 个旋转激光雷达 （Velodyne HDL32E）</li>
+<li>5 个远程雷达传感器 （Continental ARS 408-21）</li>
+<li>6 个相机 （Basler acA1600-60gc）</li>
+<li>1个 IMU &amp; GPS （高级导航空间版）</li>
+</ol>
+</li>
+<li>
+<p><strong>Sensor(传感器)校准 - 内外参</strong></p>
+<ol>
+<li>LIDAR extrinsics</li>
+<li>相机 extrinsics</li>
+<li>RADAR extrinsics</li>
+<li>相机 intrinsic 校准</li>
+</ol>
+</li>
+<li>
+<p><strong>Sensor(传感器)同步</strong></p>
+<p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
+</li>
+</ol>
+</li>
+</ol>
+<p> </p>
+<ol start="3">
+<li>
+<h4 id="数据标准">数据标准</h4>
+<ul>
+<li>
+<p>nuScenes 数据集中的所有对象都带有一个<strong>语义类别</strong>，以及一个 <strong>3D 边界框</strong>和它们所在的<strong>每一帧的属性</strong>。：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_nuscenes.md">类的定义</a></p>
+</li>
+<li>
+<p>nuScenes-lidarseg 使用<strong>语义标签</strong>注释激光雷达点云中的每个点：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_lidarseg.md">类的定义</a></p>
+</li>
+</ul>
+</li>
+</ol><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/ad/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">AD</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/data-processing/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Processing</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/">强化学习-发展趋势</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/">强化学习-工具链</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo/">PPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/trpo/">TRPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/actor-critic/">Actor-Critic</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/reinforce/">REINFORCE</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dqn/">DQN (deep Q network)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">强化学习-数学基础</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/">强化学习-直观理解</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/e2e/">End2End</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

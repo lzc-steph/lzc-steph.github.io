@@ -87,7 +87,7 @@ env.step() 函数对每一步进行仿真，返回 4 个参数：
 完成 Done (Boolen): 表示是否需要将环境重置 env.reset。">
   <meta itemprop="datePublished" content="2025-04-04T04:00:59-07:00">
   <meta itemprop="dateModified" content="2025-04-04T04:00:59-07:00">
-  <meta itemprop="wordCount" content="138">
+  <meta itemprop="wordCount" content="1258">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="强化学习-工具链">
@@ -299,7 +299,587 @@ env.step() 函数对每一步进行仿真，返回 4 个参数：
 <p> </p>
 <p> </p>
 <p> </p>
-<h2 id="2-stable-baselines3">2. stable-baselines3</h2><ul class="pa0">
+<h2 id="2-stable-baselines3">2. stable-baselines3</h2>
+<p>强化学习资源：<a href="https://stable-baselines3.readthedocs.io/en/master/guide/rl.html">https://stable-baselines3.readthedocs.io/en/master/guide/rl.html</a></p>
+<p>强化学习训练技巧：<a href="https://stable-baselines3.readthedocs.io/en/master/guide/rl_tips.html">https://stable-baselines3.readthedocs.io/en/master/guide/rl_tips.html</a></p>
+<p>PPO 官方文档：<a href="https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html">https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html</a></p>
+<p> </p>
+<h3 id="1-ppo-源码阅读">1. PPO 源码阅读</h3>
+<h4 id="train">train()</h4>
+<p><strong>输入</strong>：使用预先收集的rollout buffer数据</p>
+<p><strong>输出</strong>：更新策略网络参数</p>
+<p><strong>核心操作</strong>：<code>n_epochs</code> 次的批量梯度更新，包含策略损失、值函数损失和熵正则项</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train</span>(self) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        Update policy using the currently gathered rollout buffer.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 预处理</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># train for n_epochs epochs</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n_epochs):
+</span></span><span style="display:flex;"><span>          			<span style="color:#75715e"># 训练</span>
+</span></span><span style="display:flex;"><span>            		<span style="color:#75715e"># 策略评估</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 优势归一化</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># PPO核心损失:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 1. Clipped Surrogate Loss</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 2. 值函数损失</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 3. 熵正则项</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>								<span style="color:#75715e"># 多组件加权损失</span>
+</span></span><span style="display:flex;"><span>                loss <span style="color:#f92672">=</span> policy_loss <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>ent_coef <span style="color:#f92672">*</span> entropy_loss <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>vf_coef <span style="color:#f92672">*</span> value_loss
+</span></span><span style="display:flex;"><span>								
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Early Stopping</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Optimization step</span>
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>policy<span style="color:#f92672">.</span>optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>                loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Clip grad norm</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> continue_training:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_n_updates <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>n_epochs
+</span></span><span style="display:flex;"><span>        explained_var <span style="color:#f92672">=</span> explained_variance(self<span style="color:#f92672">.</span>rollout_buffer<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>flatten(), self<span style="color:#f92672">.</span>rollout_buffer<span style="color:#f92672">.</span>returns<span style="color:#f92672">.</span>flatten())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Logs 监控指标</span>
+</span></span></code></pre></div><ol>
+<li>
+<p><strong>预处理</strong></p>
+<ul>
+<li><strong>动态学习率</strong>：<code>_update_learning_rate</code> 根据训练进度调整优化器学习率</li>
+<li><strong>Clip范围计算</strong>：
+<ul>
+<li>策略网络clip范围 <code>clip_range</code>（随时间衰减）</li>
+<li>值函数clip范围 <code>clip_range_vf</code>（可选）</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> <span style="color:#75715e"># Update optimizer learning rate</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_update_learning_rate(self<span style="color:#f92672">.</span>policy<span style="color:#f92672">.</span>optimizer)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Compute current clip range</span>
+</span></span><span style="display:flex;"><span>        clip_range <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>clip_range(self<span style="color:#f92672">.</span>_current_progress_remaining)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Optional: clip range for the value function</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>clip_range_vf <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            clip_range_vf <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>clip_range_vf(self<span style="color:#f92672">.</span>_current_progress_remaining)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        entropy_losses <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        pg_losses, value_losses <span style="color:#f92672">=</span> [], []
+</span></span><span style="display:flex;"><span>        clip_fractions <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        continue_training <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>训练循环</strong></p>
+<p>策略评估、损失计算、参数更新</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>approx_kl_divs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Do a complete pass on the rollout buffer</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> rollout_data <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>rollout_buffer<span style="color:#f92672">.</span>get(self<span style="color:#f92672">.</span>batch_size):
+</span></span><span style="display:flex;"><span>                actions <span style="color:#f92672">=</span> rollout_data<span style="color:#f92672">.</span>actions
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> isinstance(self<span style="color:#f92672">.</span>action_space, spaces<span style="color:#f92672">.</span>Discrete):
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># Convert discrete action from float to long</span>
+</span></span><span style="display:flex;"><span>                    actions <span style="color:#f92672">=</span> rollout_data<span style="color:#f92672">.</span>actions<span style="color:#f92672">.</span>long()<span style="color:#f92672">.</span>flatten()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Re-sample the noise matrix because the log_std has changed</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># TODO: investigate why there is no issue with the gradient</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># if that line is commented (as in SAC)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>use_sde:
+</span></span><span style="display:flex;"><span>                    self<span style="color:#f92672">.</span>policy<span style="color:#f92672">.</span>reset_noise(self<span style="color:#f92672">.</span>batch_size)
+</span></span></code></pre></div></li>
+<li>
+<p><strong>策略评估</strong></p>
+</li>
+</ol>
+<p>计算当前策略下动作的<strong>价值估计</strong>、<strong>对数概率</strong>和<strong>熵</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>values, log_prob, entropy <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>policy<span style="color:#f92672">.</span>evaluate_actions(rollout_data<span style="color:#f92672">.</span>observations, actions)
+</span></span><span style="display:flex;"><span>values <span style="color:#f92672">=</span> values<span style="color:#f92672">.</span>flatten()
+</span></span></code></pre></div><ol start="4">
+<li>
+<p><strong>优势归一化</strong></p>
+<p>标准化优势值以稳定训练</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>advantages <span style="color:#f92672">=</span> rollout_data<span style="color:#f92672">.</span>advantages
+</span></span><span style="display:flex;"><span>advantages <span style="color:#f92672">=</span> (advantages <span style="color:#f92672">-</span> advantages<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> (advantages<span style="color:#f92672">.</span>std() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-8</span>)
+</span></span></code></pre></div></li>
+<li>
+<p><strong>PPO核心损失</strong></p>
+<ul>
+<li>
+<p><strong>Clipped Surrogate Loss</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># ratio between old and new policy, should be one at the first iteration</span>
+</span></span><span style="display:flex;"><span>	ratio <span style="color:#f92672">=</span> th<span style="color:#f92672">.</span>exp(log_prob <span style="color:#f92672">-</span> rollout_data<span style="color:#f92672">.</span>old_log_prob)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># clipped surrogate loss</span>
+</span></span><span style="display:flex;"><span>	policy_loss_1 <span style="color:#f92672">=</span> advantages <span style="color:#f92672">*</span> ratio
+</span></span><span style="display:flex;"><span>	policy_loss_2 <span style="color:#f92672">=</span> advantages <span style="color:#f92672">*</span> th<span style="color:#f92672">.</span>clamp(ratio, <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> clip_range, <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> clip_range)
+</span></span><span style="display:flex;"><span>	policy_loss <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>th<span style="color:#f92672">.</span>min(policy_loss_1, policy_loss_2)<span style="color:#f92672">.</span>mean()
+</span></span></code></pre></div></li>
+<li>
+<p><strong>值函数损失</strong>（支持clip）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>clip_range_vf <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># No clipping</span>
+</span></span><span style="display:flex;"><span>	values_pred <span style="color:#f92672">=</span> values
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Clip the different between old and new value</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># NOTE: this depends on the reward scaling</span>
+</span></span><span style="display:flex;"><span>	values_pred <span style="color:#f92672">=</span> rollout_data<span style="color:#f92672">.</span>old_values <span style="color:#f92672">+</span> th<span style="color:#f92672">.</span>clamp(
+</span></span><span style="display:flex;"><span>    values <span style="color:#f92672">-</span> rollout_data<span style="color:#f92672">.</span>old_values, <span style="color:#f92672">-</span>clip_range_vf, clip_range_vf)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Value loss using the TD(gae_lambda) target</span>
+</span></span><span style="display:flex;"><span>value_loss <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>mse_loss(rollout_data<span style="color:#f92672">.</span>returns, values_pred)
+</span></span><span style="display:flex;"><span>value_losses<span style="color:#f92672">.</span>append(value_loss<span style="color:#f92672">.</span>item())
+</span></span></code></pre></div></li>
+<li>
+<p><strong>熵正则项</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Entropy loss favor exploration</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> entropy <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Approximate entropy when no analytical form</span>
+</span></span><span style="display:flex;"><span>    entropy_loss <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>th<span style="color:#f92672">.</span>mean(<span style="color:#f92672">-</span>log_prob)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>		entropy_loss <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>th<span style="color:#f92672">.</span>mean(entropy)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>entropy_losses<span style="color:#f92672">.</span>append(entropy_loss<span style="color:#f92672">.</span>item())
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>优化</strong></p>
+<ul>
+<li>
+<p><strong>Early Stopping</strong>：当近似KL散度超过阈值时终止训练</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Calculate approximate form of reverse KL Divergence for early stopping</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># see issue #417: https://github.com/DLR-RM/stable-baselines3/issues/417</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># and discussion in PR #419: https://github.com/DLR-RM/stable-baselines3/pull/419</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># and Schulman blog: http://joschu.net/blog/kl-approx.html</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">with</span> th<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>                    log_ratio <span style="color:#f92672">=</span> log_prob <span style="color:#f92672">-</span> rollout_data<span style="color:#f92672">.</span>old_log_prob
+</span></span><span style="display:flex;"><span>                    approx_kl_div <span style="color:#f92672">=</span> th<span style="color:#f92672">.</span>mean((th<span style="color:#f92672">.</span>exp(log_ratio) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> log_ratio)<span style="color:#f92672">.</span>cpu()<span style="color:#f92672">.</span>numpy()
+</span></span><span style="display:flex;"><span>                    approx_kl_divs<span style="color:#f92672">.</span>append(approx_kl_div)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>target_kl <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">and</span> approx_kl_div <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1.5</span> <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>target_kl:
+</span></span><span style="display:flex;"><span>                    continue_training <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>verbose <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Early stopping at step </span><span style="color:#e6db74">{</span>epoch<span style="color:#e6db74">}</span><span style="color:#e6db74"> due to reaching max kl: </span><span style="color:#e6db74">{</span>approx_kl_div<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>梯度裁剪</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Clip grad norm</span>
+</span></span><span style="display:flex;"><span>                th<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>clip_grad_norm_(self<span style="color:#f92672">.</span>policy<span style="color:#f92672">.</span>parameters(), self<span style="color:#f92672">.</span>max_grad_norm)
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>policy<span style="color:#f92672">.</span>optimizer<span style="color:#f92672">.</span>step()
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>监控指标</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/entropy_loss&#34;</span>, np<span style="color:#f92672">.</span>mean(entropy_losses))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/policy_gradient_loss&#34;</span>, np<span style="color:#f92672">.</span>mean(pg_losses))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/value_loss&#34;</span>, np<span style="color:#f92672">.</span>mean(value_losses))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/approx_kl&#34;</span>, np<span style="color:#f92672">.</span>mean(approx_kl_divs))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/clip_fraction&#34;</span>, np<span style="color:#f92672">.</span>mean(clip_fractions))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/loss&#34;</span>, loss<span style="color:#f92672">.</span>item())
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/explained_variance&#34;</span>, explained_var)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> hasattr(self<span style="color:#f92672">.</span>policy, <span style="color:#e6db74">&#34;log_std&#34;</span>):
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/std&#34;</span>, th<span style="color:#f92672">.</span>exp(self<span style="color:#f92672">.</span>policy<span style="color:#f92672">.</span>log_std)<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>item())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/n_updates&#34;</span>, self<span style="color:#f92672">.</span>_n_updates, exclude<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tensorboard&#34;</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/clip_range&#34;</span>, clip_range)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>clip_range_vf <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>logger<span style="color:#f92672">.</span>record(<span style="color:#e6db74">&#34;train/clip_range_vf&#34;</span>, clip_range_vf)
+</span></span></code></pre></div></li>
+</ol>
+<p> </p>
+<p> </p>
+<ul>
+<li>
+<h4 id="dummyvecenv">DummyVecEnv</h4>
+<p>序列化的环境封装类，实现了环境的自动reset</p>
+<p> </p>
+</li>
+<li>
+<h4 id="basealgorithm">BaseAlgorithm</h4>
+<ol>
+<li><strong>构造函数</strong>：初始化环境env</li>
+<li><strong>_setup_learn函数</strong>：记录过程</li>
+<li><strong>_setup_lr_schedule函数</strong>：用来适应learning rate可变的情况</li>
+<li><strong>_update_learning_rate</strong>：记录 learning_rate</li>
+<li><strong>其他</strong>：实现了 save 和 load 函数</li>
+</ol>
+<p> </p>
+</li>
+<li>
+<h4 id="onpolicyalgorithm">OnPolicyAlgorithm</h4>
+<p>继承自BaseAlgorithm，实现了环境中数据的获取collect_rollout，网络的初始化（_setup_model函数），以及训练的整体架构</p>
+<ol>
+<li><strong>构造函数</strong>：初始化</li>
+<li><strong>collect_rollout()</strong>：从网络中获得当前状态的 action、values 和 log_probs；进行一次 step；连续进行 n_rollout_steps 次，每次的结果存入 roll_buffer；最后使用 GAE 计算优势函数。</li>
+<li><strong>learn()</strong>：调用 collect_rollouts 与环境交互后更新参数，调用 train() 更新网络。</li>
+</ol>
+<p> </p>
+</li>
+<li>
+<h4 id="basepolicy">BasePolicy</h4>
+<p>Policy 网络通常是如下所示的结构，由一个特征提取器和全连接神经网络构成</p>
+<p><img src="/images/RLchain/1.jpg" alt="1"></p>
+<p>需要实现的虚函数： <strong>_predict函数</strong>（根据观测返回一个action）</p>
+<p> </p>
+</li>
+<li>
+<h4 id="actorcriticpolicy">ActorCriticPolicy</h4>
+<p>定义在 stable_baselines3.common.policies 里，输入状态，输出 value（实数），action（与分布有关），log_prob（实数）</p>
+<p>实现具体网络的构造（在构造函数和 _build 函数中），forward 函数（一口气返回value, action, log_prob）和 evaluate_actions（不返回 action，但是会返回分布的熵）</p>
+<ul>
+<li>
+<p><strong>_build_mlp_extractor 函数</strong></p>
+<p>需要定义 forward 函数（share_features_extractor 情况下）， forward_actor 和 forward_critic 函数（不 share 的情况下）</p>
+<p>如果想要定制中间层形状的话，可以传入 net_arch 参数自定义</p>
+</li>
+</ul>
+<p> </p>
+</li>
+<li>
+<h4 id="basecallback">BaseCallback</h4>
+<p>用来实时检测训练是否需要继续的类</p>
+</li>
+</ul>
+<p> </p>
+<p> </p>
+<h4 id="commonpoliciespy---实现特征提取">common/policies.py - 实现特征提取</h4>
+<ul>
+<li>在 Stable Baselines3 的 PPO 中实现<strong>自定义特征提取网络</strong>：
+<ol>
+<li>定义自定义特征提取器类：继承 <code>BaseFeaturesExtractor</code>，并实现 <code>forward</code> 方法</li>
+<li>配置 PPO 的 policy_kwargs</li>
+<li>创建 PPO 模型并训练</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>观测输入 (obs)
+</span></span><span style="display:flex;"><span>    │
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>preprocess_obs()          # 图像归一化/转置
+</span></span><span style="display:flex;"><span>    │
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>features_extractor()      # 自定义特征提取 (如输出256维)
+</span></span><span style="display:flex;"><span>    │
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>mlp_extractor()           # 分离 latent_pi (Actor) 和 latent_vf (Critic)
+</span></span><span style="display:flex;"><span>    │                      # 示例：latent_pi=[256], latent_vf=[128]
+</span></span><span style="display:flex;"><span>    ├─→ actor_net() → 动作分布
+</span></span><span style="display:flex;"><span>    └─→ value_net() → 值预测
+</span></span></code></pre></div><p> </p>
+<ol>
+<li>
+<p><strong>BaseModel 基类</strong></p>
+<ul>
+<li>
+<p><strong>功能</strong>：模型基类，定义特征提取和预处理流程。</p>
+<p>输入参数的 param features_extractor 即为 Network to extract features</p>
+</li>
+<li>
+<p><strong>特征提取器初始化</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_features_extractor</span>(self) <span style="color:#f92672">-&gt;</span> BaseFeaturesExtractor:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>features_extractor_class(self<span style="color:#f92672">.</span>observation_space, <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>features_extractor_kwargs)
+</span></span></code></pre></div><p><em><code>-&gt;</code> 符号用于<strong>类型注解（type annotations）</strong>，表示函数或方法的<strong>返回类型</strong></em></p>
+</li>
+<li>
+<p><strong>特征提取</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">extract_features</span>(self, obs: th<span style="color:#f92672">.</span>Tensor) <span style="color:#f92672">-&gt;</span> th<span style="color:#f92672">.</span>Tensor:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 预处理观测数据（如图像归一化）</span>
+</span></span><span style="display:flex;"><span>    preprocessed_obs <span style="color:#f92672">=</span> preprocess_obs(obs, self<span style="color:#f92672">.</span>observation_space, normalize_images<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>normalize_images)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 调用特征提取器</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>features_extractor(preprocessed_obs)
+</span></span></code></pre></div></li>
+</ul>
+<p> </p>
+</li>
+<li>
+<p><strong>ActorCriticPolicy 类（核心策略类）</strong></p>
+<ul>
+<li><strong>功能</strong>：
+<ul>
+<li>从观测数据中提取特征（通过自定义特征提取器）</li>
+<li>生成动作分布（Actor 网络）</li>
+<li>计算状态价值（Critic 网络）</li>
+<li>支持多种动作分布（高斯分布、分类分布等）</li>
+<li>支持状态依赖探索（gSDE）</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><strong>网络架构定义</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self, <span style="color:#f92672">...</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 特征提取器（如自定义的CustomFeatureExtractor）</span>
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>features_extractor <span style="color:#f92672">=</span> features_extractor_class(<span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>features_dim <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>features_extractor<span style="color:#f92672">.</span>features_dim  <span style="color:#75715e"># 特征维度（如256）</span>
+</span></span></code></pre></div><p> </p>
+<ol start="2">
+<li>
+<p><strong>网络构建</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_build</span>(self, lr_schedule):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 创建MLP提取器（分离Actor/Critic网络）</span>
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>mlp_extractor <span style="color:#f92672">=</span> MlpExtractor(
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>features_dim,
+</span></span><span style="display:flex;"><span>        net_arch<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>net_arch,       <span style="color:#75715e"># 例如 pi=[256], vf=[128]</span>
+</span></span><span style="display:flex;"><span>        activation_fn<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>activation_fn
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 创建动作分布网络</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> Gaussian分布:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>action_net, self<span style="color:#f92672">.</span>log_std <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>  <span style="color:#75715e"># 均值网络和log标准差</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> 分类分布:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>action_net <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>                <span style="color:#75715e"># 动作logits</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 价值网络</span>
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>value_net <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(mlp_extractor<span style="color:#f92672">.</span>latent_dim_vf, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 正交初始化权重</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>ortho_init:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> module <span style="color:#f92672">in</span> [特征提取器, MLP提取器, action_net, value_net]:
+</span></span><span style="display:flex;"><span>            module<span style="color:#f92672">.</span>apply(正交初始化)
+</span></span></code></pre></div><p> </p>
+</li>
+<li>
+<p><strong>特征提取与推理</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_get_latent</span>(self, obs):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 特征提取流程</span>
+</span></span><span style="display:flex;"><span>    features <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>extract_features(obs)          <span style="color:#75715e"># 自定义特征提取器</span>
+</span></span><span style="display:flex;"><span>    latent_pi, latent_vf <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>mlp_extractor(features)  <span style="color:#75715e"># Actor/Critic专用特征</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> latent_pi, latent_vf, latent_sde
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, obs):
+</span></span><span style="display:flex;"><span>    latent_pi, latent_vf, _ <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_get_latent(obs)
+</span></span><span style="display:flex;"><span>    values <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>value_net(latent_vf)            <span style="color:#75715e"># 价值预测</span>
+</span></span><span style="display:flex;"><span>    distribution <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_get_action_dist_from_latent(latent_pi)  <span style="color:#75715e"># 动作分布</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> actions, values, log_prob
+</span></span></code></pre></div><p> </p>
+</li>
+<li>
+<p><strong>动作分布生成</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_get_action_dist_from_latent</span>(self, latent_pi):
+</span></span><span style="display:flex;"><span>    mean_actions <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>action_net(latent_pi)  <span style="color:#75715e"># 通过Actor网络得到动作参数</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 根据分布类型生成最终分布</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> 高斯分布:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 高斯分布(mean_actions, self<span style="color:#f92672">.</span>log_std)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> 分类分布:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 分类分布(logits<span style="color:#f92672">=</span>mean_actions)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ... 其他分布处理</span>
+</span></span></code></pre></div><p> </p>
+</li>
+<li>
+<p><strong>动作评估</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">evaluate_actions</span>(self, obs, actions):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 计算给定动作的对数概率和价值</span>
+</span></span><span style="display:flex;"><span>    latent_pi, latent_vf, _ <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_get_latent(obs)
+</span></span><span style="display:flex;"><span>    distribution <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_get_action_dist_from_latent(latent_pi)
+</span></span><span style="display:flex;"><span>    log_prob <span style="color:#f92672">=</span> distribution<span style="color:#f92672">.</span>log_prob(actions)
+</span></span><span style="display:flex;"><span>    values <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>value_net(latent_vf)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> values, log_prob, entropy
+</span></span></code></pre></div></li>
+</ol>
+</li>
+</ol>
+<p> </p>
+<p> </p>
+<h2 id="3-carlahttpsgithubcomcarla-simulatorcarla">3. <a href="https://github.com/carla-simulator/carla">Carla</a></h2>
+<p>官方文档：<a href="https://carla.readthedocs.io/en/0.9.9/#getting-started">https://carla.readthedocs.io/en/0.9.9/#getting-started</a></p>
+<p>Carla是一款开源的 <em>自动驾驶</em> 仿真器，它基本可以用来帮助训练自动驾驶的所有模块，包括感知系统，Localization，规划系统等等。许多自动驾驶公司在进行实际路跑前都要在这Carla上先进行训练。</p>
+<h3 id="1-基本架构">1. 基本架构</h3>
+<h4 id="client-server-的交互形式">Client-Server 的交互形式</h4>
+<p>Carla主要分为Server与Client两个模块</p>
+<ol>
+<li>
+<p><strong>Server 端</strong></p>
+<p>基于 UnrealEnigne3D 渲染建立仿真世界。</p>
+</li>
+<li>
+<p><strong>Client 端</strong></p>
+<p>由用户控制，用来调整、变化仿真世界：不同时刻到底该如何运转（比如天气是什么样，有多少辆车在跑，速度是多少）。用户通过书写 Python/C++ 脚本来向 Server 端输送指令指导世界的变化，Server 根据用户的指令去执行。</p>
+<p>另外，Client 端也可以接受 Server 端的信息，譬如某个照相机拍到的路面图片。</p>
+</li>
+</ol>
+<p> </p>
+<h4 id="核心模块">核心模块</h4>
+<ol>
+<li>
+<p><strong>Traffic Manager</strong>:</p>
+<p>模拟类似现实世界负责的交通环境。通过这个模块，用户可以定义N多不同车型、不同行为模式、不同速度的车辆在路上与你的自动驾驶汽车（Ego-Vehicle）一起玩耍。</p>
+</li>
+<li>
+<p><strong>Sensors:</strong></p>
+<p>Carla 里面有各种各样模拟真实世界的传感器模型，包括相机、激光雷达、声波雷达、IMU、GNSS等等。为了让仿真更接近真实世界，它里面的相机拍出的照片甚至有畸变和动态模糊效果。用户一般将这些Sensor attach到不同的车辆上来收集各种数据。</p>
+</li>
+<li>
+<p><strong>Recorder：</strong></p>
+<p>该模块用来记录仿真每一个时刻（Step)的状态，可以用来回顾、复现等等。</p>
+</li>
+<li>
+<p><strong>ROS bridge：</strong></p>
+<p>该模块可以让 Carla 与 ROS、Autoware 交互，使得在仿真里测试自动驾驶系统变得可能。</p>
+</li>
+<li>
+<p><strong>Open Assest</strong>：</p>
+<p>这个模块为仿真世界添加 customized 的物体库，比如可以在默认的汽车蓝图里再加一个真实世界不存在、外形酷炫的小飞汽车，用来给 Client 端调用。</p>
+</li>
+</ol>
+<p> </p>
+<p> </p>
+<h3 id="2-api-使用httpscarlareadthedocsioen099python_api">2. <a href="https://carla.readthedocs.io/en/0.9.9/python_api/">API 使用</a></h3>
+<ol start="0">
+<li>
+<h4 id="启动">启动</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> <span style="color:#f92672">./</span>CarlaUE4<span style="color:#f92672">.</span>sh
+</span></span></code></pre></div></li>
+<li>
+<h4 id="client-and-world">Client and World</h4>
+<ul>
+<li>
+<p>创建 Client，并且设置一个 timeout 时间防止连接时间过久。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#75715e"># 其中2000是端口，2.0是秒数</span>
+</span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Client(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">2000</span>)
+</span></span><span style="display:flex;"><span>client<span style="color:#f92672">.</span>set_timeout(<span style="color:#ae81ff">2.0</span>)
+</span></span></code></pre></div></li>
+<li>
+<p>通过构建的 Client 来获取仿真世界（World)。如果想让仿真世界有任何变化，都要对这个获取的world进行操作。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>world <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_world()
+</span></span></code></pre></div></li>
+<li>
+<p>改变世界的天气</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>weather <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>WeatherParameters(cloudiness<span style="color:#f92672">=</span><span style="color:#ae81ff">10.0</span>,
+</span></span><span style="display:flex;"><span>                                  precipitation<span style="color:#f92672">=</span><span style="color:#ae81ff">10.0</span>,
+</span></span><span style="display:flex;"><span>                                  fog_density<span style="color:#f92672">=</span><span style="color:#ae81ff">10.0</span>)
+</span></span><span style="display:flex;"><span>world<span style="color:#f92672">.</span>set_weather(weather)
+</span></span></code></pre></div></li>
+</ul>
+<p> </p>
+</li>
+<li>
+<h4 id="actor-与-blueprint">Actor 与 Blueprint</h4>
+<p>Actor 是在仿真世界里则代表可以移动的物体，包括汽车，传感器（因为传感器要安在车身上）以及行人。</p>
+<ol>
+<li>
+<p><strong>生成（spawn) Actor</strong></p>
+<p>如果想生成一个Actor, 必须要先定义它的蓝图（Blueprint）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#75715e"># 拿到这个世界所有物体的蓝图</span>
+</span></span><span style="display:flex;"><span>blueprint_library <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 从浩瀚如海的蓝图中找到奔驰的蓝图</span>
+</span></span><span style="display:flex;"><span>ego_vehicle_bp <span style="color:#f92672">=</span> blueprint_library<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;vehicle.mercedes-benz.coupe&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 给我们的车加上特定的颜色</span>
+</span></span><span style="display:flex;"><span>ego_vehicle_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;color&#39;</span>, <span style="color:#e6db74">&#39;0, 0, 0&#39;</span>)
+</span></span></code></pre></div><p>构建好蓝图以后，下一步便是选定它的出生点。</p>
+<p>可以给固定的位子，也可以赋予随机的位置，不过这个位置必须是空的位置，比如你不能将奔驰扔在一棵树上。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#75715e"># 找到所有可以作为初始点的位置并随机选择一个</span>
+</span></span><span style="display:flex;"><span>transform <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>choice(world<span style="color:#f92672">.</span>get_map()<span style="color:#f92672">.</span>get_spawn_points())
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在这个位置生成汽车</span>
+</span></span><span style="display:flex;"><span>ego_vehicle <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>spawn_actor(ego_vehicle_bp, transform)
+</span></span></code></pre></div></li>
+<li>
+<p><strong>操纵（Handling）Actor</strong></p>
+<p>汽车生成以后，便可以随意挪动它的初始位置，定义它的动态参数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#75715e"># 给它挪挪窝</span>
+</span></span><span style="display:flex;"><span>location <span style="color:#f92672">=</span> ego_vehicle<span style="color:#f92672">.</span>get_location()
+</span></span><span style="display:flex;"><span>location<span style="color:#f92672">.</span>x <span style="color:#f92672">+=</span> <span style="color:#ae81ff">10.0</span>
+</span></span><span style="display:flex;"><span>ego_vehicle<span style="color:#f92672">.</span>set_location(location)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 把它设置成自动驾驶模式</span>
+</span></span><span style="display:flex;"><span>ego_vehicle<span style="color:#f92672">.</span>set_autopilot(<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 我们可以甚至在中途将这辆车“冻住”，通过抹杀它的物理仿真</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># actor.set_simulate_physics(False)</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>注销（Destroy) Actor</strong></p>
+<p>当这个脚本运行完后要记得将这个汽车销毁掉，否则它会一直存在于仿真世界，可能影响其他脚本的运行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#75715e"># 如果注销单个Actor</span>
+</span></span><span style="display:flex;"><span>ego_vehicle<span style="color:#f92672">.</span>destroy()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果你有多个Actor 存在list里，想一起销毁。</span>
+</span></span><span style="display:flex;"><span>client<span style="color:#f92672">.</span>apply_batch([carla<span style="color:#f92672">.</span>command<span style="color:#f92672">.</span>DestroyActor(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> actor_list])
+</span></span></code></pre></div></li>
+</ol>
+<p> </p>
+</li>
+<li>
+<h4 id="sensor搭建">Sensor搭建</h4>
+<p><img src="/images/RLchain/2.png" alt="2"></p>
+<ul>
+<li>
+<p><strong>Camera构建</strong></p>
+<p>与汽车类似，我们先创建蓝图，再定义位置，然后再选择我们想要的汽车安装上去。不过，这里的位置都是相对汽车中心点的位置（以米计量）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>camera_bp <span style="color:#f92672">=</span> blueprint_library<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;sensor.camera.rgb&#39;</span>)
+</span></span><span style="display:flex;"><span>camera_transform <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Transform(carla<span style="color:#f92672">.</span>Location(x<span style="color:#f92672">=</span><span style="color:#ae81ff">1.5</span>, z<span style="color:#f92672">=</span><span style="color:#ae81ff">2.4</span>))
+</span></span><span style="display:flex;"><span>camera <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>spawn_actor(camera_bp, camera_transform, attach_to<span style="color:#f92672">=</span>ego_vehicle)
+</span></span></code></pre></div><p>再对相机定义它的 callback function，定义每次仿真世界里传感器数据传回来后，我们要对它进行什么样的处理。如，只简单地将文件存在硬盘里。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>listen(<span style="color:#66d9ef">lambda</span> image: image<span style="color:#f92672">.</span>save_to_disk(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(output_path, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%06d</span><span style="color:#e6db74">.png&#39;</span> <span style="color:#f92672">%</span> image<span style="color:#f92672">.</span>frame)))
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Lidar构建</strong></p>
+<p>Lidar 可以设置的参数比较多，现阶段设置一些常用参数即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>lidar_bp <span style="color:#f92672">=</span> blueprint_library<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;sensor.lidar.ray_cast&#39;</span>)
+</span></span><span style="display:flex;"><span>lidar_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;channels&#39;</span>, str(<span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>lidar_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;points_per_second&#39;</span>, str(<span style="color:#ae81ff">90000</span>))
+</span></span><span style="display:flex;"><span>lidar_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;rotation_frequency&#39;</span>, str(<span style="color:#ae81ff">40</span>))
+</span></span><span style="display:flex;"><span>lidar_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;range&#39;</span>, str(<span style="color:#ae81ff">20</span>))
+</span></span></code></pre></div><p>接着把 lidar 放置在奔驰上, 定义它的 callback function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span>lidar_location <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Location(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>lidar_rotation <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Rotation(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>lidar_transform <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Transform(lidar_location, lidar_rotation)
+</span></span><span style="display:flex;"><span>lidar <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>spawn_actor(lidar_bp, lidar_transform, attach_to<span style="color:#f92672">=</span>ego_vehicle)
+</span></span><span style="display:flex;"><span>lidar<span style="color:#f92672">.</span>listen(<span style="color:#66d9ef">lambda</span> point_cloud: \
+</span></span><span style="display:flex;"><span>            point_cloud<span style="color:#f92672">.</span>save_to_disk(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(output_path, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%06d</span><span style="color:#e6db74">.ply&#39;</span> <span style="color:#f92672">%</span> point_cloud<span style="color:#f92672">.</span>frame)))
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<h4 id="观察者spectator放置">观察者（spectator）放置</h4>
+<p>观察仿真界面时，自己的视野并不会随我们造的小车子移动，所以经常会跟丢它。</p>
+<p><strong>解决办法</strong>：把 spectator 对准汽车，这样小汽车就永远在我们的视野里了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>spectator <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_spectator()
+</span></span><span style="display:flex;"><span>transform <span style="color:#f92672">=</span> ego_vehicle<span style="color:#f92672">.</span>get_transform()
+</span></span><span style="display:flex;"><span>spectator<span style="color:#f92672">.</span>set_transform(carla<span style="color:#f92672">.</span>Transform(transform<span style="color:#f92672">.</span>location <span style="color:#f92672">+</span> carla<span style="color:#f92672">.</span>Location(z<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>                                                    carla<span style="color:#f92672">.</span>Rotation(pitch<span style="color:#f92672">=-</span><span style="color:#ae81ff">90</span>)))
+</span></span></code></pre></div></li>
+<li>
+<h4 id="查看储存的照片与3d点云">查看储存的照片与3D点云</h4>
+<p>查看点云图需要另外安装 meshlab, 然后进入 meshlab 后选择 import mesh：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sudo apt-get update -y
+</span></span><span style="display:flex;"><span>sudo apt-get install -y meshlab
+</span></span><span style="display:flex;"><span>meshlab
+</span></span></code></pre></div></li>
+</ol>
+<p> </p>
+<p> </p>
+<h3 id="3-同步模式">3. 同步模式</h3>
+<ul>
+<li>
+<p><strong>问题</strong>：储存的相机照片有严重的掉帧现象</p>
+<p><strong>仿真server默认为异步模式，它会尽可能快地进行仿真，而不管客户是否跟上了它的步伐</strong></p>
+</li>
+</ul>
+<p><strong>仿真世界里的时间步长</strong>：一个 time-step 相当于仿真世界进行了一次更新（比如小车们又往前挪了一小步，天气变阴了一丢丢）。分为 Variable time-step 和 Fixed time-step。</p>
+<ul>
+<li>
+<p><strong>异步模式</strong>：<strong>Variable time-step</strong></p>
+<p>仿真每次步长所需要的真实时间是不一定的，可能这一步用了3ms, 下一步用了5ms, 但是它会竭尽所能地快速运行。这是仿真默认的模式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>settings <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_settings()
+</span></span><span style="display:flex;"><span>settings<span style="color:#f92672">.</span>fixed_delta_seconds <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span> <span style="color:#75715e"># Set a variable time-step</span>
+</span></span><span style="display:flex;"><span>world<span style="color:#f92672">.</span>apply_settings(settings)
+</span></span></code></pre></div><p>在异步模式下, server会自个跑自个的，client需要跟随它的脚步，如果client过慢，可能导致server跑了三次，client才跑完一次, 这就是为什么照相机储存的照片会掉帧的原因。</p>
+</li>
+<li>
+<p><strong>同步模式</strong>：<strong>Fixed time-step</strong></p>
+<p>在这种时间步长设置下，每次time-step所消耗的时间是固定的，比如永远是5ms. 设置代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>settings <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_settings()
+</span></span><span style="display:flex;"><span>settings<span style="color:#f92672">.</span>fixed_delta_seconds <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.05</span> <span style="color:#75715e">#20 fps, 5ms</span>
+</span></span><span style="display:flex;"><span>world<span style="color:#f92672">.</span>apply_settings(settings)
+</span></span></code></pre></div><p>在同步模式下，simulation会等待客户完成手头的工作后，再进行下一次更新。</p>
+</li>
+</ul>
+<p> </p>
+<p> </p>
+<h3 id="4-交通管理器">4. 交通管理器</h3>
+<p>Traffic Manager 简称TM，是仿真里用来控制车辆行为的模块。纯C++构造包装被Python调用的：~/carla/Libcarla/source/trafficmanager/TrafficManager.h</p>
+<ol>
+<li>
+<h4 id="traffic-manager的内部架构">Traffic Manager的内部架构</h4>
+</li>
+</ol><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>

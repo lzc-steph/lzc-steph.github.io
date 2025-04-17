@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>脚本使用 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="脚本学习
+
+
+python main.py train mini/trainval &ndash;dataroot=NUSCENES_ROOT &ndash;logdir=./runs &ndash;gpuid=0 tensorboard &ndash;logdir=./runs &ndash;bind_all
+第一部分：python main.py train mini/trainval ...
+python main.py train mini/trainval --dataroot=NUSCENES_ROOT --logdir=./runs --gpuid=0
+参数解析：
+
+train：表示执行训练模式。
+mini/trainval：数据集的子集（如训练集&#43;验证集的迷你版本）。
+--dataroot=NUSCENES_ROOT：指定数据集路径，需替换NUSCENES_ROOT为实际路径。
+--logdir=./runs：训练日志和模型检查点会保存在./runs目录。
+--gpuid=0：使用第0号GPU（如果有多块GPU）。
+
+ 
+第二部分：tensorboard --logdir=./runs --bind_all
+tensorboard --logdir=./runs --bind_all
+
+
+作用：
+启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。
+
+
+参数解析：
+
+--logdir=./runs：指定TensorBoard读取的日志目录（与训练脚本的--logdir一致）。
+--bind_all：允许通过网络访问TensorBoard（默认地址通常是localhost:6006）。
+
+
+
+
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="脚本使用">
+  <meta property="og:description" content="脚本学习 python main.py train mini/trainval –dataroot=NUSCENES_ROOT –logdir=./runs –gpuid=0 tensorboard –logdir=./runs –bind_all
+第一部分：python main.py train mini/trainval ... python main.py train mini/trainval --dataroot=NUSCENES_ROOT --logdir=./runs --gpuid=0 参数解析：
+train：表示执行训练模式。 mini/trainval：数据集的子集（如训练集&#43;验证集的迷你版本）。 --dataroot=NUSCENES_ROOT：指定数据集路径，需替换NUSCENES_ROOT为实际路径。 --logdir=./runs：训练日志和模型检查点会保存在./runs目录。 --gpuid=0：使用第0号GPU（如果有多块GPU）。 第二部分：tensorboard --logdir=./runs --bind_all
+tensorboard --logdir=./runs --bind_all 作用：
+启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。
+参数解析：
+--logdir=./runs：指定TensorBoard读取的日志目录（与训练脚本的--logdir一致）。 --bind_all：允许通过网络访问TensorBoard（默认地址通常是localhost:6006）。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-12T04:00:59-07:00">
+    <meta property="article:modified_time" content="2025-04-12T04:00:59-07:00">
+    <meta property="article:tag" content="Data Processing">
+
+  <meta itemprop="name" content="脚本使用">
+  <meta itemprop="description" content="脚本学习 python main.py train mini/trainval –dataroot=NUSCENES_ROOT –logdir=./runs –gpuid=0 tensorboard –logdir=./runs –bind_all
+第一部分：python main.py train mini/trainval ... python main.py train mini/trainval --dataroot=NUSCENES_ROOT --logdir=./runs --gpuid=0 参数解析：
+train：表示执行训练模式。 mini/trainval：数据集的子集（如训练集&#43;验证集的迷你版本）。 --dataroot=NUSCENES_ROOT：指定数据集路径，需替换NUSCENES_ROOT为实际路径。 --logdir=./runs：训练日志和模型检查点会保存在./runs目录。 --gpuid=0：使用第0号GPU（如果有多块GPU）。 第二部分：tensorboard --logdir=./runs --bind_all
+tensorboard --logdir=./runs --bind_all 作用：
+启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。
+参数解析：
+--logdir=./runs：指定TensorBoard读取的日志目录（与训练脚本的--logdir一致）。 --bind_all：允许通过网络访问TensorBoard（默认地址通常是localhost:6006）。">
+  <meta itemprop="datePublished" content="2025-04-12T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-04-12T04:00:59-07:00">
+  <meta itemprop="wordCount" content="72">
+  <meta itemprop="keywords" content="Data Processing">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="脚本使用">
+  <meta name="twitter:description" content="脚本学习 python main.py train mini/trainval –dataroot=NUSCENES_ROOT –logdir=./runs –gpuid=0 tensorboard –logdir=./runs –bind_all
+第一部分：python main.py train mini/trainval ... python main.py train mini/trainval --dataroot=NUSCENES_ROOT --logdir=./runs --gpuid=0 参数解析：
+train：表示执行训练模式。 mini/trainval：数据集的子集（如训练集&#43;验证集的迷你版本）。 --dataroot=NUSCENES_ROOT：指定数据集路径，需替换NUSCENES_ROOT为实际路径。 --logdir=./runs：训练日志和模型检查点会保存在./runs目录。 --gpuid=0：使用第0号GPU（如果有多块GPU）。 第二部分：tensorboard --logdir=./runs --bind_all
+tensorboard --logdir=./runs --bind_all 作用：
+启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。
+参数解析：
+--logdir=./runs：指定TensorBoard读取的日志目录（与训练脚本的--logdir一致）。 --bind_all：允许通过网络访问TensorBoard（默认地址通常是localhost:6006）。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/script/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">脚本使用</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdp-%25E8%2584%259A%25E6%259C%25AC%25E4%25BD%25BF%25E7%2594%25A8%2F&amp;subject=%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdp-%25E8%2584%259A%25E6%259C%25AC%25E4%25BD%25BF%25E7%2594%25A8%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdp-%25E8%2584%259A%25E6%259C%25AC%25E4%25BD%25BF%25E7%2594%25A8%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdp-%25E8%2584%259A%25E6%259C%25AC%25E4%25BD%25BF%25E7%2594%25A8%2F&amp;summary=%E8%84%9A%E6%9C%AC%E5%AD%A6%E4%B9%A0&#43;python&#43;main.py&#43;train&#43;mini%2Ftrainval&#43;%26amp%3Bndash%3Bdataroot%3DNUSCENES_ROOT&#43;%26amp%3Bndash%3Blogdir%3D.%2Fruns&#43;%26amp%3Bndash%3Bgpuid%3D0&#43;tensorboard&#43;%26amp%3Bndash%3Blogdir%3D.%2Fruns&#43;%26amp%3Bndash%3Bbind_all%0A%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9Apython&#43;main.py&#43;train&#43;mini%2Ftrainval&#43;...&#43;python&#43;main.py&#43;train&#43;mini%2Ftrainval&#43;--dataroot%3DNUSCENES_ROOT&#43;--logdir%3D.%2Fruns&#43;--gpuid%3D0&#43;%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%EF%BC%9A%0Atrain%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%89%A7%E8%A1%8C%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%BC%8F%E3%80%82&#43;mini%2Ftrainval%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%AD%90%E9%9B%86%EF%BC%88%E5%A6%82%E8%AE%AD%E7%BB%83%E9%9B%86%2B%E9%AA%8C%E8%AF%81%E9%9B%86%E7%9A%84%E8%BF%B7%E4%BD%A0%E7%89%88%E6%9C%AC%EF%BC%89%E3%80%82&#43;--dataroot%3DNUSCENES_ROOT%EF%BC%9A%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E9%9B%86%E8%B7%AF%E5%BE%84%EF%BC%8C%E9%9C%80%E6%9B%BF%E6%8D%A2NUSCENES_ROOT%E4%B8%BA%E5%AE%9E%E9%99%85%E8%B7%AF%E5%BE%84%E3%80%82&#43;--logdir%3D.%2Fruns%EF%BC%9A%E8%AE%AD%E7%BB%83%E6%97%A5%E5%BF%97%E5%92%8C%E6%A8%A1%E5%9E%8B%E6%A3%80%E6%9F%A5%E7%82%B9%E4%BC%9A%E4%BF%9D%E5%AD%98%E5%9C%A8.%2Fruns%E7%9B%AE%E5%BD%95%E3%80%82&#43;--gpuid%3D0%EF%BC%9A%E4%BD%BF%E7%94%A8%E7%AC%AC0%E5%8F%B7GPU%EF%BC%88%E5%A6%82%E6%9E%9C%E6%9C%89%E5%A4%9A%E5%9D%97GPU%EF%BC%89%E3%80%82&#43;%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9Atensorboard&#43;--logdir%3D.%2Fruns&#43;--bind_all%0Atensorboard&#43;--logdir%3D.%2Fruns&#43;--bind_all&#43;%E4%BD%9C%E7%94%A8%EF%BC%9A%0A%E5%90%AF%E5%8A%A8TensorBoard%E6%9C%8D%E5%8A%A1%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%8F%AF%E8%A7%86%E5%8C%96%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%8C%87%E6%A0%87%EF%BC%88%E5%A6%82%E6%8D%9F%E5%A4%B1%E6%9B%B2%E7%BA%BF%E3%80%81%E5%87%86%E7%A1%AE%E7%8E%87%E7%AD%89%EF%BC%89%E3%80%82%0A%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%EF%BC%9A%0A--logdir%3D.%2Fruns%EF%BC%9A%E6%8C%87%E5%AE%9ATensorBoard%E8%AF%BB%E5%8F%96%E7%9A%84%E6%97%A5%E5%BF%97%E7%9B%AE%E5%BD%95%EF%BC%88%E4%B8%8E%E8%AE%AD%E7%BB%83%E8%84%9A%E6%9C%AC%E7%9A%84--logdir%E4%B8%80%E8%87%B4%EF%BC%89%E3%80%82&#43;--bind_all%EF%BC%9A%E5%85%81%E8%AE%B8%E9%80%9A%E8%BF%87%E7%BD%91%E7%BB%9C%E8%AE%BF%E9%97%AETensorBoard%EF%BC%88%E9%BB%98%E8%AE%A4%E5%9C%B0%E5%9D%80%E9%80%9A%E5%B8%B8%E6%98%AFlocalhost%3A6006%EF%BC%89%E3%80%82&#43;&amp;title=%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fdp-%25E8%2584%259A%25E6%259C%25AC%25E4%25BD%25BF%25E7%2594%25A8%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">脚本使用</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-12T04:00:59-07:00">April 12, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h4 id="脚本学习">脚本学习</h4>
+<ol>
+<li>
+<p>python main.py train mini/trainval &ndash;dataroot=NUSCENES_ROOT &ndash;logdir=./runs &ndash;gpuid=0 tensorboard &ndash;logdir=./runs &ndash;bind_all</p>
+<h4 id="第一部分python-mainpy-train-minitrainval-">第一部分：<code>python main.py train mini/trainval ...</code></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py train mini/trainval --dataroot<span style="color:#f92672">=</span>NUSCENES_ROOT --logdir<span style="color:#f92672">=</span>./runs --gpuid<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p><strong>参数解析</strong>：</p>
+<ul>
+<li><code>train</code>：表示执行训练模式。</li>
+<li><code>mini/trainval</code>：数据集的子集（如训练集+验证集的迷你版本）。</li>
+<li><code>--dataroot=NUSCENES_ROOT</code>：指定数据集路径，需替换<code>NUSCENES_ROOT</code>为实际路径。</li>
+<li><code>--logdir=./runs</code>：训练日志和模型检查点会保存在<code>./runs</code>目录。</li>
+<li><code>--gpuid=0</code>：使用第0号GPU（如果有多块GPU）。</li>
+</ul>
+<p> </p>
+<p><strong>第二部分：<code>tensorboard --logdir=./runs --bind_all</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tensorboard --logdir<span style="color:#f92672">=</span>./runs --bind_all
+</span></span></code></pre></div><ol>
+<li>
+<p><strong>作用</strong>：</p>
+<p>启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。</p>
+</li>
+<li>
+<p><strong>参数解析</strong>：</p>
+<ul>
+<li><code>--logdir=./runs</code>：指定TensorBoard读取的日志目录（与训练脚本的<code>--logdir</code>一致）。</li>
+<li><code>--bind_all</code>：允许通过网络访问TensorBoard（默认地址通常是<code>localhost:6006</code>）。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p> </p>
+<h4 id="fire-库"><code>Fire</code> 库</h4>
+<p>作用：将Python函数<strong>自动转换为命令行接口</strong></p>
+<ul>
+<li>
+<p><strong>命令结构</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py &lt;函数名&gt; <span style="color:#f92672">[</span>函数参数<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--选项<span style="color:#f92672">=</span>值<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li>&lt;函数名&gt;：必须是 <code>Fire</code> 字典中的键（如 <code>train</code>、<code>lidar_check</code>）。</li>
+<li>[函数参数]：传递给对应函数的位置参数。</li>
+<li>[&ndash;选项=值]：对应函数的关键字参数（如 <code>--dataroot</code>、<code>--logdir</code>）。</li>
+</ul>
+</li>
+<li>
+<p><strong>举例</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py train mini/trainval --dataroot<span style="color:#f92672">=</span>NUSCENES_ROOT --logdir<span style="color:#f92672">=</span>./runs --gpuid<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><ul>
+<li><strong><code>train</code></strong>：选择执行 <code>src.train.train</code> 函数。</li>
+<li><strong><code>mini/trainval</code></strong>：作为位置参数传递给 <code>src.train.train</code> 的第一个参数。</li>
+<li><strong><code>--dataroot</code>、<code>--logdir</code>、<code>--gpuid</code></strong>：作为关键字参数传递给 <code>src.train.train</code>。</li>
+</ul>
+</li>
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/data-processing/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Data Processing</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/">数据集-NuSences</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

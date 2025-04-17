@@ -8,6 +8,14 @@ title: "Lift-splat-shoot"
 
  [Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D](https://arxiv.org/abs/2008.05711)
 
+简单来说，**Lift**就是预测了一个**深度值分布D**，以及**提取的特征c**，然后将两种进行外积操作，实现了**增维**操作。
+
+**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。
+
+最后的**Shooting**，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。
+
+&nbsp;
+
 ### 1. 关键：Lift
 
 ![1](/images/lss/1.png)
@@ -22,13 +30,14 @@ title: "Lift-splat-shoot"
 
    使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。
 
+   <!--more-->
+
 3. **Grid Sampling**
 
     目的：将构造出的 Frustum Feature 利用相机外参和内参转换到BEV视角下。
 
    过程：**通过限定好 BEV 视角的范围，划定好一个个的 grid，将能够投影到相应 grid 的 Feature 汇总到一个 grid 里**。
    
-   <!--more-->
 
 + 缺点：
   1. 极度依赖Depth信息的准确性，且必须显示地提供Depth 特征。
@@ -97,7 +106,7 @@ title: "Lift-splat-shoot"
 
 &nbsp;
 
-### 论文阅读
+### 3. 论文阅读
 
 本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。
 

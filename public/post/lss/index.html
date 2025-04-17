@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Lift-splat-shoot | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+简单来说，Lift就是预测了一个深度值分布D，以及提取的特征c，然后将两种进行外积操作，实现了增维操作。
+**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。
+最后的Shooting，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。
+ 
+1. 关键：Lift
+
+
+
+特征提取&amp;深度估计
+多视角相机输入后，进行特征提取与深度估计
+
+
+外积（Outer product）—— 最核心的操作
+无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。
+使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。
+
+">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/lss/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/lss/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="Lift-splat-shoot">
+  <meta property="og:description" content="Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+简单来说，Lift就是预测了一个深度值分布D，以及提取的特征c，然后将两种进行外积操作，实现了增维操作。
+**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。
+最后的Shooting，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。
+1. 关键：Lift 特征提取&amp;深度估计
+多视角相机输入后，进行特征提取与深度估计
+外积（Outer product）—— 最核心的操作
+无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。
+使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-03-27T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-03-27T11:00:59-04:00">
+    <meta property="article:tag" content="CV">
+
+  <meta itemprop="name" content="Lift-splat-shoot">
+  <meta itemprop="description" content="Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+简单来说，Lift就是预测了一个深度值分布D，以及提取的特征c，然后将两种进行外积操作，实现了增维操作。
+**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。
+最后的Shooting，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。
+1. 关键：Lift 特征提取&amp;深度估计
+多视角相机输入后，进行特征提取与深度估计
+外积（Outer product）—— 最核心的操作
+无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。
+使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。">
+  <meta itemprop="datePublished" content="2025-03-27T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-03-27T11:00:59-04:00">
+  <meta itemprop="wordCount" content="302">
+  <meta itemprop="keywords" content="CV">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Lift-splat-shoot">
+  <meta name="twitter:description" content="Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D
+简单来说，Lift就是预测了一个深度值分布D，以及提取的特征c，然后将两种进行外积操作，实现了增维操作。
+**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。
+最后的Shooting，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。
+1. 关键：Lift 特征提取&amp;深度估计
+多视角相机输入后，进行特征提取与深度估计
+外积（Outer product）—— 最核心的操作
+无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。
+使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/lss/deva.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Lift-splat-shoot</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flss%2F&amp;subject=Lift-splat-shoot"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flss%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flss%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flss%2F&amp;summary=Lift%2C&#43;Splat%2C&#43;Shoot%3A&#43;Encoding&#43;Images&#43;From&#43;Arbitrary&#43;Camera&#43;Rigs&#43;by&#43;Implicitly&#43;Unprojecting&#43;to&#43;3D%0A%E7%AE%80%E5%8D%95%E6%9D%A5%E8%AF%B4%EF%BC%8CLift%E5%B0%B1%E6%98%AF%E9%A2%84%E6%B5%8B%E4%BA%86%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%80%BC%E5%88%86%E5%B8%83D%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%8F%90%E5%8F%96%E7%9A%84%E7%89%B9%E5%BE%81c%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B0%86%E4%B8%A4%E7%A7%8D%E8%BF%9B%E8%A1%8C%E5%A4%96%E7%A7%AF%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BA%86%E5%A2%9E%E7%BB%B4%E6%93%8D%E4%BD%9C%E3%80%82%0A%2A%2ASplat%EF%BC%88%E6%8B%8D%E6%89%81%EF%BC%89%2A%2A%E6%93%8D%E4%BD%9C%E5%88%99%E6%98%AF%E4%BD%BF%E7%94%A8%E4%BA%86%E4%B8%80%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%9A%84%E2%80%9C%E6%B1%82%E5%92%8C%E6%B1%A0%E5%8C%96%E2%80%9D%E6%93%8D%E4%BD%9C%EF%BC%88z%E7%B4%AF%E5%8A%A0%EF%BC%8C%E5%8E%8B%E5%B9%B3%EF%BC%89%EF%BC%8C%E5%AE%9E%E7%8E%B0%E9%99%8D%E7%BB%B4%E3%80%82%0A%E6%9C%80%E5%90%8E%E7%9A%84Shooting%EF%BC%8C%E5%88%99%E6%98%AF%E5%B0%86%E9%A2%84%E6%B5%8B%E7%9A%84%E4%B8%80%E7%BB%84%E8%BD%A8%E8%BF%B9%E6%8A%95%E5%B0%84%E5%87%BA%E6%9D%A5%EF%BC%8C%E9%80%89%E5%8F%96%E6%9C%80%E4%BC%98%E7%9A%84%E8%BD%A8%E8%BF%B9%E4%BD%9C%E4%B8%BA%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E3%80%82%0A1.&#43;%E5%85%B3%E9%94%AE%EF%BC%9ALift&#43;%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%26amp%3Bamp%3B%E6%B7%B1%E5%BA%A6%E4%BC%B0%E8%AE%A1%0A%E5%A4%9A%E8%A7%86%E8%A7%92%E7%9B%B8%E6%9C%BA%E8%BE%93%E5%85%A5%E5%90%8E%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E6%B7%B1%E5%BA%A6%E4%BC%B0%E8%AE%A1%0A%E5%A4%96%E7%A7%AF%EF%BC%88Outer&#43;product%EF%BC%89%E2%80%94%E2%80%94&#43;%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E6%93%8D%E4%BD%9C%0A%E6%97%A0%E6%B3%95%E7%A1%AE%E5%AE%9A%E6%AF%8F%E4%B8%AA&#43;pixel&#43;%E7%9A%84%E7%89%B9%E5%BE%81%E6%8A%95%E5%BD%B1&#43;BEV&#43;%E8%A7%86%E8%A7%92%E4%B8%8B%E7%9A%84%E5%85%B7%E4%BD%93%E4%BD%8D%E7%BD%AE%EF%BC%9B%E5%AF%B9%E4%BA%8E%E6%AF%8F%E4%B8%AA&#43;pixel&#43;%E7%89%B9%E5%BE%81%EF%BC%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF%E2%80%9Call&#43;possible&#43;depths%E2%80%9D%E3%80%82%0A%E4%BD%BF%E7%94%A8%E5%A4%96%E7%A7%AF%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%B0%86&#43;Image&#43;feature&#43;%28H&#43;%2A&#43;W&#43;%2A&#43;C%29&#43;%E5%92%8C&#43;Depth&#43;feature&#43;%28H&#43;%2A&#43;W&#43;%2A&#43;D%29%E6%9E%84%E9%80%A0%E6%88%90%E4%B8%80%E4%B8%AA%28H&#43;%2A&#43;W&#43;%2A&#43;D&#43;%2A&#43;C%29&#43;%E7%9A%84&#43;Frustum&#43;feature%E3%80%82%0A&amp;title=Lift-splat-shoot&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flss%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Lift-splat-shoot</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-03-27T11:00:59-04:00">March 27, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<p>简单来说，<strong>Lift</strong>就是预测了一个<strong>深度值分布D</strong>，以及<strong>提取的特征c</strong>，然后将两种进行外积操作，实现了<strong>增维</strong>操作。</p>
+<p>**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。</p>
+<p>最后的<strong>Shooting</strong>，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。</p>
+<p> </p>
+<h3 id="1-关键lift">1. 关键：Lift</h3>
+<p><img src="/images/lss/1.png" alt="1"></p>
+<ol>
+<li>
+<p><strong>特征提取&amp;深度估计</strong></p>
+<p>多视角相机输入后，进行特征提取与深度估计</p>
+</li>
+<li>
+<p><strong>外积（Outer product）</strong>—— 最核心的操作</p>
+<p>无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。</p>
+<p>使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。</p>
+</li>
+</ol>
+<ol start="3">
+<li>
+<p><strong>Grid Sampling</strong></p>
+<p>目的：将构造出的 Frustum Feature 利用相机外参和内参转换到BEV视角下。</p>
+<p>过程：<strong>通过限定好 BEV 视角的范围，划定好一个个的 grid，将能够投影到相应 grid 的 Feature 汇总到一个 grid 里</strong>。</p>
+</li>
+</ol>
+<ul>
+<li>缺点：
+<ol>
+<li>
+<p>极度依赖Depth信息的准确性，且必须显示地提供Depth 特征。</p>
+<p>一个好的解决方法是先预训练好一个较好的Depth权重，使得LSS过程中具有较为理想的Depth输出。</p>
+</li>
+<li>
+<p><strong>外积操作过于耗时。</strong></p>
+</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h3 id="2-lss完整流程">2. LSS完整流程</h3>
+<ol>
+<li>
+<p><strong>生成视锥，并根据相机内外参将视锥中的点投影到 ego 坐标系</strong></p>
+<ul>
+<li>
+<p>生成视锥</p>
+<p>其位置是基于图像坐标系的，同时锥点是图像特征上每个单元格映射回原始图像的位置</p>
+</li>
+<li>
+<p>锥点由图像坐标系向 ego 坐标系进行坐标转化</p>
+<p>主要涉及到相机的内外参数</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>对环视图像完成特征的提取，并构建图像特征点云</strong></p>
+<ul>
+<li>
+<p>利用 <a href="https://zhida.zhihu.com/search?content_id=219055188&amp;content_type=Article&amp;match_order=1&amp;q=Efficientnet-B0&amp;zhida_source=entity">Efficientnet-B0</a> 主干网络对环视图像进行特征提取。</p>
+<p>输入的环视图像 (bs, N, 3, H, W)，在进行特征提取之前，会将前两个维度进行合并，一起提取特征，对应维度变换为 (bs, N, 3, H, W) -&gt; (bs * N, 3, H, W)</p>
+</li>
+<li>
+<p>特征融合</p>
+<p>对其中的后两层特征进行融合，丰富特征的语义信息，融合后的特征尺寸大小为 (bs * N, 512, H / 16, W / 16）</p>
+</li>
+<li>
+<p>估计深度</p>
+<p>估计深度方向的概率分布，并输出特征图每个位置的语义特征 (用64维的特征表示）；整个过程用1x1卷积层实现。</p>
+<p>对上一步骤估计出来的离散深度，利用softmax()函数计算深度方向的概率密度</p>
+</li>
+<li>
+<p>外积</p>
+<p>利用得到的深度方向的概率密度和语义特征，通过外积运算构建图像特征点云</p>
+</li>
+</ul>
+<p><img src="/images/lss/2.png" alt="2"></p>
+</li>
+<li>
+<p><strong>利用变换后的 ego 坐标系的点与图像特征点云利用 <a href="https://zhida.zhihu.com/search?content_id=219055188&amp;content_type=Article&amp;match_order=1&amp;q=Voxel&#43;Pooling&amp;zhida_source=entity">Voxel Pooling</a> 构建 BEV 特征</strong></p>
+<ul>
+<li>
+<p>Voxel Pooling 前的准备工作</p>
+<p>数据展平与坐标转换、边界过滤、排序与分组、累积求和、网格化输出</p>
+</li>
+<li>
+<p>采用cumsum_trick完成Voxel Pooling运算</p>
+<p><strong>前向传播</strong>：计算前缀和、筛选体素边界点、差分计算恢复原始特征。</p>
+<p><strong>反向传播</strong>：梯度会从最后一个点累积到前面的点</p>
+<p><img src="/images/lss/7.png" alt="7"></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>对生成的 BEV 特征利用 BEV Encoder 做进一步的特征融合</strong></p>
+</li>
+<li>
+<p><strong>利用特征融合后的 BEV 特征完成语义分割任务</strong></p>
+</li>
+</ol>
+<p>最后将输出的语义分割结果与 binimgs 的真值标注做基于像素的交叉熵损失，从而指导模型的学习过程。</p>
+<p> </p>
+<p> </p>
+<h3 id="3-论文阅读">3. 论文阅读</h3>
+<p>本文提出了一种架构，旨在从任意摄像机装备推断鸟瞰图表示。</p>
+<ol>
+<li>
+<h4 id="introduction">Introduction</h4>
+<p>目标：从任意数量的摄像机中直接提取给定图像数据的场景的鸟瞰图表示。</p>
+<ul>
+<li>
+<p>单视图扩展成多视图的对称性：</p>
+<ol>
+<li><strong>平移等方差</strong>： 如果图像中的像素坐标全部偏移，则输出将偏移相同的量。</li>
+<li><strong>Permutation invariance</strong>： 最终输出不取决于 n 相机的特定顺序。</li>
+<li><strong>自我框架等距等方差</strong>： 无论捕获图像的相机相对于自我汽车的位置如何，都会在给定图像中检测到相同的对象。</li>
+</ol>
+<p>缺点：反向传播不能用于使用来自下游规划器的反馈来自动改进感知系统。</p>
+</li>
+</ul>
+<p>传统在与输入图像相同的坐标系中进行预测，我们的模型遵循上述对称性，直接在给定的鸟瞰图框架中进行预测，以便从多视图图像进行端到端规划。</p>
+<p><img src="/images/lss/1.png" alt="1"></p>
+</li>
+<li>
+<h4 id="related-work">Related Work</h4>
+<ol>
+<li><strong>单目物体检测</strong>
+<ol>
+<li>在图像平面中应用一个成熟的 2D 对象检测器，然后训练第二个网络将 2D 框回归到 3D 框。</li>
+<li>伪激光雷达：训练一个网络进行单目深度预测，另一个网络分别进行鸟瞰检测。</li>
+<li>使用 3 维对象基元，</li>
+</ol>
+</li>
+<li><strong>BEV 框架中的推理</strong>：使用 extrinsics 和 intrinsics 直接在鸟瞰框架中执行推理
+<ol>
+<li>MonoLayout：从单个图像执行鸟瞰图推理，并使用对抗性损失来鼓励模型对合理的隐藏对象进行修复。</li>
+<li>Pyramid Occupancy Networks：提出了一种 transformer 架构，将图像表示转换为鸟瞰图表示。</li>
+<li>FISHING Net：提出了一种多视图架构，既可以分割当前时间步中的对象，也可以执行未来预测。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<h4 id="method">Method</h4>
+<p>对每个图像，都有一个 extrinsic matrix 和 intrinic matrix，它们共同定义每个相机从参考坐标 (x,y,z) 到局部像素坐标 (h,w,d) 的映射。</p>
+<ul>
+<li>
+<p>核心流程：</p>
+<ul>
+<li>
+<p><strong>Lift</strong>：将2D图像特征显式提升到3D空间（通过深度估计生成视锥特征）。</p>
+</li>
+<li>
+<p><strong>Splat</strong>：将3D特征“展开”到BEV空间，构建鸟瞰图特征。</p>
+</li>
+<li>
+<p><strong>Shoot</strong>：基于BEV特征进行运动规划或轨迹预测。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>
+<p><strong>Lift：潜在深度分布</strong></p>
+<p>目的：将每个图像从本地 2 维坐标系 “提升” 到在所有摄像机之间共享的 3 维帧。</p>
+<p><img src="/images/lss/2.png" alt="2"></p>
+</li>
+<li>
+<p><strong>Splat：支柱池</strong></p>
+<ul>
+<li>
+<p>lift输出：大点云</p>
+</li>
+<li>
+<p>将每个点分配给最近的 pillar，并执行总和池化，以创建一个可由标准 CNN 处理以进行鸟瞰推理的 C×H×W 张量。（pillars 是具有无限高度的体素）</p>
+</li>
+</ul>
+<p><img src="/images/lss/3.png" alt="3"></p>
+<ul>
+<li>加速：不是填充每个 pillar 然后执行 sum pooling，而是通过使用 packing 和利用 “cumsum 技巧” 进行 sum pooling 来避免填充。</li>
+</ul>
+</li>
+<li>
+<p><strong>Shoot: 运动规划</strong></p>
+<ul>
+<li>
+<p>定义 planning：预测自我车辆在模板轨迹上的 K 分布。</p>
+<p><img src="/images/lss/4.png" alt="4"></p>
+</li>
+<li>
+<p>在测试时，实现使用 inferred cost map 的 planning：</p>
+<p>通过“射击”不同的轨迹，对它们的成本进行评分，然后根据最低成本轨迹采取行动。</p>
+</li>
+<li>
+<p>在实践中，我们通过在大量 template trajectories 上运行 K-Means 来确定模板轨迹集。</p>
+</li>
+</ul>
+<p><img src="/images/lss/5.png" alt="5"></p>
+</li>
+</ol>
+</li>
+<li>
+<h4 id="implementation">Implementation</h4>
+<p>模型有两个大型网络主干，由 lift-splat 层连接起来。</p>
+<ol>
+<li>
+<p>其中一个主干 对每个图像单独进行操作，以便对每个图像生成的点云进行特征化。</p>
+<p><em>利用了在 Imagenet 上预训练的 EfficientNet-B0 中的层。</em></p>
+</li>
+<li>
+<p>另一个主干 在点云被展开到参考系中的pillars后，对点云进行操作。</p>
+<p><em>使用类似于 PointPillars 的 ResNet 块组合。</em></p>
+</li>
+</ol>
+<ul>
+<li>技巧：
+<ul>
+<li>选择了跨 pillar 的 sum pooling，而不是 max pooling ：免于因填充而导致的过多内存使用。</li>
+<li>Frustum Pooling：将 n 图像产生的视锥转换为固定维度 C×H×W 的张量，而与相机 n 的数量无关。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/cv/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">CV</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/">BEV 论文学习</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/mllm/">MLLM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/object-detection/">目标检测</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

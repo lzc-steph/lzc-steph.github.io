@@ -1,8 +1,7 @@
-
 theme = 'ananke'
 
 
-title = "Notre-Dame de Paris"
+title = "Aijun"
 baseURL = 'https://dearaj.github.io/'
 resourceDir = "../resources"
 
