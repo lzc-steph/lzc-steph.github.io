@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>LLM - 1.基础理论 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/llm1/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/llm1/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="LLM - 1.基础理论">
+  <meta property="og:description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-20T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-04-20T11:00:59-04:00">
+    <meta property="article:tag" content="LLM">
+
+  <meta itemprop="name" content="LLM - 1.基础理论">
+  <meta itemprop="description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+  <meta itemprop="datePublished" content="2025-04-20T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-20T11:00:59-04:00">
+  <meta itemprop="wordCount" content="292">
+  <meta itemprop="keywords" content="LLM">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LLM - 1.基础理论">
+  <meta name="twitter:description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/LLM1/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">LLM - 1.基础理论</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm1%2F&amp;subject=LLM&#43;-&#43;1.%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm1%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm1%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm1%2F&amp;summary=%0A&amp;title=LLM&#43;-&#43;1.%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm1%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">LLM - 1.基础理论</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-04-20T11:00:59-04:00">April 20, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><img src="/images/LLM1/0.png" alt="0"></p>
+<p> </p>
+<h2 id="1-绪论">1. 绪论</h2>
+<p>核心目标：对自然语言的概率分布建模</p>
+<ul>
+<li>
+<p><strong>n元语法/n元文法模型</strong>：假设任意单词 wi 出现的概率只与过去 n−1 个词相关。</p>
+<ul>
+<li><strong>统计语言模型(SLM)</strong>：使用平滑处理，提高低概率事件，降低高概率事件，使整体的概率分布趋于均匀。</li>
+<li><strong>缺点</strong>：长度限制；依赖人工设计的平滑技术；参数多。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于分布式表示和神经网络的语言模型</strong></p>
+<ul>
+<li>
+<p><strong>词向量</strong>：词的独热编码被映射为一个低维稠密的实数向量</p>
+</li>
+<li>
+<p><strong>自监督学习</strong>：深度神经网络需要采用有监督方法，使用标注数据进行训练。</p>
+<p>但由于训练目标可以通过无标注文本直接获得，因此模型的训练仅需要大规模无标注文本。</p>
+</li>
+<li>
+<p><strong>预训练语言模型(PLM)</strong>：将预训练模型应用于下游任务时，只需要“微调”预训练模型，使用具体任务的标注数据在预训练语言模型上进行监督训练，就可以取得显著的性能提升。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>语境学习 (ICL)</strong>：直接使用大语言模型，就可以在很多任务的少样本场景中取得很好的效果。</p>
+</li>
+<li>
+<p><strong>缩放法则(Scaling Laws)</strong>：模型的性能依赖于模型的规模，包括参数量、数据集大小和计算量，模型的效果会随着三者的指数增加而平稳提升。</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<p> </p>
+<h3 id="11-发展历程">1.1 发展历程</h3>
+<p><img src="/images/LLM1/1.png" alt="1"></p>
+<ol>
+<li>
+<p><strong>基础模型阶段</strong></p>
+<p>此阶段的研究主要集中在语言模型本身，对</p>
+<p>仅编码器（Encoder Only）、编码器-解码器（Encoder-Decoder）、仅解码器（Decoder Only）等各种类型的模型结构都有相应的研究。</p>
+<p>模型大小与 BERT 类似，参数量大都在 10 亿个以上。通常采用预训练微调范式，针对不同下游任务进行微调。</p>
+</li>
+<li>
+<p><strong>能力探索阶段</strong></p>
+<p>在直接利用大语言模型进行零样本和少样本学习的基础上，逐渐扩展为利用<strong>生成式</strong>框架针对大量任务进行有监督微调的方法，有效提升了模型的性能。</p>
+</li>
+<li>
+<p><strong>突破发展阶段</strong></p>
+<p>从 2022 年开始，大语言模型的数量呈爆发式的增长，各大公司和研究机构都在发布不同类型的大语言模型。</p>
+</li>
+</ol>
+<p>模型类型中，<strong>基础模型</strong>是指仅经过预训练的模型；<strong>对话模型</strong>是指在预训练模型基础上经过有监督微调和强化学习训练的模型，具备对话和完成任务的能力；<strong>推理模型</strong>是指专注于逻辑推理增强的大语言模型。</p>
+<p> </p>
+<h3 id="12-构建流程">1.2 构建流程</h3>
+<p><img src="/images/LLM1/2.png" alt="2"></p>
+<ol>
+<li>
+<p><strong>预训练</strong></p>
+<p>基础模型对长文本进行建模，使模型具有语言生成能力：根据输入的提示词，模型可以生成文本补全句子。建模过程构建了包括事实</p>
+<p>性知识(Factual Knowledge)和常识性知识(Commonsense)在内的世界知识(World Knowledge)。</p>
+</li>
+<li>
+<p><strong>有监督微调(SFT)</strong></p>
+<p>也称为<strong>指令微调</strong>，利用少量高质量数据集，通过有监督训练使模型具备问题回答、翻译、写作等专业能力。</p>
+<p>SFT 阶段所需的训练数据量较少，不需要消耗大量的计算资源。该阶段的数据选择对 SFT 模型效果有非常大的影响，因此构造少量并且高质量的训练数据是本阶段的研究重点。</p>
+</li>
+<li>
+<p><strong>奖励建模</strong></p>
+<p>构建一个文本质量对比模型。奖励模型可以通过二分类模型，对输入的两个结果之间的优劣进行判断。</p>
+</li>
+<li>
+<p><strong>强化学习</strong></p>
+<p>根据数十万条提示词，利用前一阶段训练的奖励模型，给出 SFT 模型对提示词回答结果的质量评估，并与语言模型建模目标综合得到更好的效果。</p>
+<p>使用强化学习，在 SFT 模型的基础上调整参数，使最终生成的文本可以获得更高的奖励。</p>
+</li>
+</ol>
+<p><img src="/images/LLM1/3.png" alt="3"></p>
+<p> </p>
+<p> </p>
+<h2 id="2-transformer-结构">2. Transformer 结构</h2>
+<p><img src="/images/LLM1/4.png" alt="4"></p>
+<h3 id="21-嵌入表示层">2.1 嵌入表示层</h3>
+<p>目标：对于输入文本序列，先通过输入嵌入层(Input Embedding)将每个单词转换为其相对应的向量表示。</p>
+<h4 id="位置编码">位置编码：</h4>
+<ul>
+<li>
+<p><strong>原因</strong>：Transformer 序列中不再有任何信息能够提示模型单词之间的相对位置关系</p>
+</li>
+<li>
+<p><strong>内容</strong>：序列中每一个单词所在的<strong>位置都对应一个向量</strong>，这一向量会与单词表示对应<strong>相加</strong>并送入后续模块中做进一步处理。</p>
+<p><img src="/images/LLM1/5.png" alt="5"></p>
+<ul>
+<li>
+<p>优点：</p>
+<p>第一，正余弦函数的范围是 [−1,+1]，导出的位置编码与原词嵌入相加，不会使得结果偏离过远而破坏原有单词的语义信息；</p>
+<p>第二，依据三角函数的基本性质，可以得知第 pos + k个位置编码是第 pos 个位置编码的线性组合，意味着位置编码中蕴含着单词之间的距离信息。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h3 id="22-注意力层">2.2 注意力层</h3>
+<p><strong>目标</strong>：建模源语言、目标语言任意两个单词之间的依赖关系。</p>
+<p>在编码输入序列的每一个单词的表示中，引入查询 q、键 k 和值 v 计算上下文单词对应的权重得分。这些权重反映了<strong>在编码当前单词的表示时，对于上下文不同部分所需的关注程度</strong>。</p>
+<p><img src="/images/LLM1/6.png" alt="6"></p>
+<ol>
+<li><strong>点积</strong>：位置i查询向量与其他位置的键向量做点积得到匹配分数 qi·k1,qi·k2,···,qi·kt。</li>
+<li><strong>除以放缩因子</strong>：为了防止过大的匹配分数在后续 Softmax 计算过程中导致的梯度爆炸及收敛效率差的问题，这些得分会除以√d以稳定优化</li>
+<li><strong>softmax 归一化</strong>：放缩后的得分经过 Softmax 归一化为概率。</li>
+<li><strong>相乘</strong>：将上述步骤得到的概率与其他位置的值向量相乘来聚合希望关注的上下文信息，并最小化不相关信息的干扰。</li>
+</ol>
+<p><img src="/images/LLM1/8.png" alt="8"></p>
+<ul>
+<li>
+<h4 id="改进多头注意力机制">改进：多头注意力机制</h4>
+<p>目的：关注上下文的不同侧面</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="23-前馈层">2.3 前馈层</h3>
+<p>前馈层接收自注意力子层的输出作为输入，并通过一个带有 <strong>ReLU 激活函数</strong>的<strong>两层全连接网络</strong>对输入进行更复杂的非线性变换。</p>
+<p><img src="/images/LLM1/9.png" alt="9"></p>
+<p>增大前馈子层隐状态的维度有利于提高最终翻译结果的质量，因此，前馈子层隐状态的维度一般比自注意力子层要大。</p>
+<p> </p>
+<h3 id="24-残差连接与层归一化">2.4 残差连接与层归一化</h3>
+<p>目的：提升训练的稳定性</p>
+<ol>
+<li>
+<p>使用一条直连通道直接将对应子层的输入连接到输出，避免在优化过程中因网络过深而产生潜在的<strong>梯度消失</strong>问题：</p>
+<p><img src="/images/LLM1/10.png" alt="10"></p>
+</li>
+<li>
+<p>为了使每一层的输入/输出稳定在一个合理的范围内，层归一化技术被进一步引入每个 Transformer 块中</p>
+<p><img src="/images/LLM1/11.png" alt="11"></p>
+<p>层归一化技术可以有效地缓解优化过程中潜在的不稳定、收敛速度慢等问题。</p>
+</li>
+</ol>
+<p> </p>
+<h3 id="25-解码器结构">2.5 解码器结构</h3>
+<ol>
+<li>
+<h4 id="掩码多头注意力">掩码多头注意力</h4>
+<p><strong>目的</strong>：对于每一个单词的生成过程，仅有当前单词之前的目标语言序列是可以被观测的，以防模型在训练阶段直接看到后续的文本序列，无法得到有效的训练。</p>
+</li>
+<li>
+<h4 id="多头交叉注意力">多头交叉注意力</h4>
+<p>使用交叉注意力方法，同时接收来自<strong>编码器端的输出</strong>和<strong>当前 Transformer 块的前一个掩码注意力层的输出</strong>。</p>
+<p>查询是通过解码器前一层的输出进行投影的，而键和值是使用编码器的输出进行投影的。</p>
+<p>目的：翻译的过程中，为了生成合理的目标语言序列，观测待翻译的源语言序列是什么。</p>
+</li>
+</ol>
+<p> </p>
+<p> </p>
+<h2 id="3-生成式预训练语言模型-gpt">3. 生成式预训练语言模型 GPT</h2>
+<p><strong>GPT</strong>：由多层 Transformer 组成的单向语言模型，主要分为输入层、编码层和输出层三部分。</p>
+<p><img src="/images/LLM1/12.png" alt="12"></p>
+<h3 id="31-自监督预训练">3.1 自监督预训练</h3>
+<ol>
+<li>
+<p><strong>映射（添加位置向量）</strong></p>
+<p><img src="/images/LLM1/13.png" alt="13"></p>
+</li>
+<li>
+<p><strong>编码层（由 L个 Transformer 模块组成）</strong></p>
+<p><img src="/images/LLM1/14.png" alt="14"></p>
+</li>
+<li>
+<p><strong>输出层（预测每个位置上的条件概率）</strong></p>
+<p><img src="/images/LLM1/15.png" alt="15"></p>
+</li>
+</ol>
+<p>单向语言模型按照阅读顺序输入文本序列 w，用常规语言模型目标优化 w 的最大似然估计：</p>
+<p><img src="/images/LLM1/16.png" alt="16"></p>
+<p> </p>
+<h3 id="32-有监督下游任务微调">3.2 有监督下游任务微调</h3>
+<p><strong>目的</strong>：在通用语义表示的基础上，根据下游任务的特性进行适配。</p>
+<p>通常需要利用<strong>有标注数据集</strong>进行训练</p>
+<ol>
+<li>
+<p>文本序列输入 gpt，得到输出后，通过全连接层变换结合 Softmax 函数，得到标签预测结果</p>
+<p><img src="/images/LLM1/17.png" alt="17"></p>
+</li>
+<li>
+<p>优化目标函数</p>
+<p><img src="/images/LLM1/18.png" alt="18"></p>
+</li>
+</ol>
+<ul>
+<li>
+<p>解决<strong>灾难性遗忘</strong>问题（模型遗忘预训练阶段所学习的通用语义知识表示，从而损失模型的通用性和泛化能力</p>
+<p>采用混合 <strong>预训练任务损失</strong> 和 <strong>下游微调损失</strong> 进行微调。</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="33-实践">3.3 实践</h3>
+<p>基于 HuggingFace 的 BERT 模型的构建和使用</p>
+<p> </p>
+<p> </p>
+<h2 id="4-大语言模型的结构">4. 大语言模型的结构</h2>
+<h3 id="41-llama-模型">4.1 LLaMA 模型</h3>
+<p><img src="/images/LLM1/19.png" alt="19"></p>
+<ul>
+<li>
+<p>改进</p>
+<ol>
+<li>
+<p><strong>前置层归一化</strong>（Pre-normalization）方法</p>
+<p>将第一个层归一化移动到多头自注意力层之前，将第二个层归一化移动到全连接层之前。</p>
+</li>
+<li>
+<p><strong>RMSNorm 归一化函数</strong></p>
+</li>
+</ol>
+<p>残差连接的位置调整到多头自注意力层与全连接层之后</p>
+<p>层归一化中采用 RMSNorm 归一化函数</p>
+<ol start="3">
+<li>
+<p><strong>激活函数</strong>更换为 SwiGLU</p>
+</li>
+<li>
+<p><strong>旋转位置嵌入RoPE</strong></p>
+<p>RoPE 借助复数的思想，通过绝对位置编码的方式实现相对位置编码。也使用逐位相乘⊗操作提高计算速度。</p>
+<p>目标：通过下向量旋转给 q,k 添加绝对位置信息。</p>
+</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h3 id="42-注意力机制优化">4.2 注意力机制优化</h3>
+<p>常见方法：稀疏近似、低秩近似、利用硬件特性&hellip;</p>
+<h4 id="421-稀疏近似">4.2.1 稀疏近似</h4>
+<h5 id="基于位置的稀疏注意力机制">基于位置的稀疏注意力机制</h5>
+<ol>
+<li>全局注意力（Global Attention）：为了增强模型建模长距离依赖关系的能力，可以<strong>加入一些全局节点</strong>。</li>
+<li>带状注意力（Band Attention）：大部分数据都带有局部性，<strong>限制 Query 只与相邻的几个节点进行交互</strong>。</li>
+<li>膨胀注意力（Dilated Attention）：与 CNN 中的 Dilated Conv 类似，通过增<strong>加空隙</strong>获取更大的感受野。</li>
+<li>随机注意力（Random Attention）：通过<strong>随机采样</strong>，提升非局部的交互能力。</li>
+<li>局部块注意力（Block Local Attention）：使用多个**不重叠的块（Block）**来限制信息交互。</li>
+</ol>
+<p><img src="/images/LLM1/20.png" alt="20"></p>
+<p>例如：Star-Transformer, Longformer, ETC, BigBird.</p>
+<h5 id="基于内容的稀疏注意力机制">基于内容的稀疏注意力机制</h5>
+<p>根据输入数据创建稀疏注意力。如选择和给定查询q有很高相似度的键k</p>
+<p>例如：Routing Transformer, Reformer.</p>
+<p> </p>
+<h4 id="422-flashattention">4.2.2 FlashAttention</h4>
+<p><img src="/images/LLM1/21.png" alt="21"></p>
+<p>尽可能高效地使用 SRAM 来加快计算速度，避免从全局内存中读取和写入注意力矩阵。FlashAttention 不使用中间注意力矩阵，通过<strong>存储归一化因子</strong>来减少全局内存消耗的方法（将输入分割成块，并在输入块上进行多次传递，以增量的方式执行 Softmax 计算）。</p>
+<p><img src="/images/LLM1/22.png" alt="22"></p>
+<p> </p>
+<h4 id="423-多查询注意力">4.2.3 多查询注意力</h4>
+<p>不同的注意力头共享一个键和值的集合，每个头只单独保留了一份查询参数</p>
+<p> </p>
+<h4 id="424-多头潜在注意力mla">4.2.4 多头潜在注意力（MLA）</h4>
+<p>利用低秩矩阵，实现对压缩潜在键值状态的缓存。</p>
+<p>具体来说， MLA 方法的核心是是将传统多头注意力中的键（Key）和值（Vale）进行低秩联合压缩，得到一个低秩表示形式，以减少键值（KV）缓存。</p>
+<p> </p>
+<p> </p>
+<h2 id="5-混合专家模型moes">5. 混合专家模型(MoEs)</h2>
+<p><strong>核心思想：模型不同部分（即“专家”）专注不同任务或数据层面。</strong></p>
+<p>MoE 层通常由门控网络 G 和 N 个专家网络 {f1,f2,&hellip;,fN } 组成，通常安置于每个 Transformer 模块中前馈层（FFN）。</p>
+<p><img src="/images/LLM1/23.png" alt="23"></p>
+<h3 id="51-稀疏混合专家模型sparse-moe">5.1 稀疏混合专家模型（Sparse MoE）</h3>
+<p>对于每个输入词元，在前向计算中仅激活专家集合中的一个子集。门控网络通过计算排名前 K位专家的输出加权和来实现稀疏性。</p>
+<p><img src="/images/LLM1/24.png" alt="24"></p>
+<ul>
+<li>
+<p><strong>添加噪声项 R</strong>：</p>
+<ul>
+<li>促使不同专家模块之间展开多样化的尝试与协作</li>
+<li>打破可能出现的局部最优情况，提高了整个混合专家训练过程的稳定性</li>
+</ul>
+</li>
+<li>
+<h4 id="共享专家模型"><strong>共享专家模型</strong>：</h4>
+<p>问题：采用常规的门控时，分配给不同专家的词元可能需要一些共有知识或信息才能处理，导致专家参数出现冗余。</p>
+<p>DeepSeekMoE 提出了分离 Ks 个专家作为共享专家的思路。无论门控网络所给出的结果如何，每个词元都将被确定性地分配给这些共享专家。</p>
+<p><img src="/images/LLM1/25.png" alt="25"></p>
+</li>
+</ul>
+<p> </p>
+<h3 id="52-稠密混合专家模型dense-moe">5.2 稠密混合专家模型（Dense MoE）</h3>
+<p>在前向计算中激活<strong>所有</strong>专家网络 {f1,&hellip;,fN }，门控网络根据输入赋予专家不同的权重，不能降低模型计算量。</p>
+<p><img src="/images/LLM1/27.png" alt="27"></p>
+<p>但是，将 <strong>LoRA 和 MoE 相结合</strong>，可以在占用很少 GPU 显存的同时，减少微调数据的大规模扩增与<strong>模型世界知识维持</strong>之间存在的冲突。</p>
+<ul>
+<li>
+<h4 id="loramoe"><strong>LoRAMoE</strong></h4>
+<p>采用融合混合专家和 LoRA 插件的思想，插件形式确保了在训练阶段冻结主模型，保证了主模型世界知识的完整性。</p>
+<p><img src="/images/LLM1/26.png" alt="26"></p>
+<ul>
+<li>训练阶段使用<strong>局部平衡约束损失</strong>
+<ul>
+<li>一部分专家专注于做下游任务，另一部分专家专注于将指令与主模型的世界知识对齐，以缓解世界知识遗忘。</li>
+<li>防止单个专家组内的专家退化现象，使路由平衡地关注于单个专家组的所有专家。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h3 id="53-软混合专家模型soft-moe">5.3 软混合专家模型（Soft MoE）</h3>
+<p>根据输入为各个专家分配不同的权重（稠密混合）+ 融合前馈层（MergedFFN）</p>
+<p><img src="/images/LLM1/28.png" alt="28"></p>
+<p>该方法通过门控网络分配的权重对不同专家的参数进行融合，仅对融合后的前馈层参数进行计算，始终只计算单个专家的输出。</p>
+<p> </p>
+<p> </p><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/llm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">LLM</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/bert/">BERT</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/mllm/">MLLM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/transformer/">transformer</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

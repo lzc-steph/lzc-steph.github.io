@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-04-14T04:00:59-07:00">
-  <meta itemprop="dateModified" content="2025-04-14T04:00:59-07:00">
+  <meta itemprop="datePublished" content="2025-04-22T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-22T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,37 +153,23 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        March 29, 2025
+        April 1, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="link black dim">
-        语义分割
+      <a href="/post/dqn/" class="link black dim">
+        DQN (deep Q network)
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>语义分割将图片中的<strong>每个像素</strong>分类到对应的类别。</p>
-<p><img src="/images/SemanticSegmentation/1.png" alt="1"></p>
-<ul>
-<li>
-<p><strong>应用</strong>：</p>
-<p>背景虚化、路面分割、实例分割(会关注具体是哪个个体，如 Mask R-CNN)、全景分割（还要对背景进行分割，如 Panoptic FPN）</p>
-</li>
-<li>
-<p><strong>常见模型</strong></p>
-<p><img src="/images/SemanticSegmentation/5.png" alt="5"></p>
-</li>
-<li>
-<p><strong>语义分割任务常见的数据集格式</strong></p>
-<ul>
-<li><strong>PASCAL VOC</strong>：PNG图片 + 每个像素的类别信息（每个像素都对应一个颜色）</li>
-<li><strong>MS COCO</strong>：每个目标都记录了一个多边形坐标，将所有的点连一起，即可得到边缘信息(还可以用于实例分析)</li>
-<li><strong>语义分割得到的具体形式</strong>：单通道图片，加上调色板 mask 蒙版后可以上色（palette），方便可视化。每个像素数值对应类别索引。</li>
-</ul>
-</li>
-</ul>
+      <p>Q-learning 算法用表格存储动作价值的做法只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用.</p>
+<p><strong>DQN</strong>：用来解决连续状态下离散动作的问题，是离线策略算法，可以使用ε-贪婪策略来平衡探索与利用。</p>
+<p><strong>Q 网络</strong>：用于拟合函数Q函数的神经网络</p>
+<p><img src="/images/DQN/1.png" alt="1"></p>
+<p><strong>Q 网络的损失函数</strong>（均方误差形式）</p>
+<p><img src="/images/DQN/2.png" alt="2"></p>
     </div>
-  <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/dqn/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -192,60 +178,107 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        March 27, 2025
+        March 31, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/lss/" class="link black dim">
-        Lift-splat-shoot
+      <a href="/post/qlearing/" class="link black dim">
+        Q-learing
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
-<p>简单来说，<strong>Lift</strong>就是预测了一个<strong>深度值分布D</strong>，以及<strong>提取的特征c</strong>，然后将两种进行外积操作，实现了<strong>增维</strong>操作。</p>
-<p>**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。</p>
-<p>最后的<strong>Shooting</strong>，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。</p>
-<p> </p>
-<h3 id="1-关键lift">1. 关键：Lift</h3>
-<p><img src="/images/lss/1.png" alt="1"></p>
-<ol>
+      <p><strong>无模型的强化学习</strong>：不需要事先知道环境的奖励函数和状态转移函数，而是直接使用和环境交互的过程中采样到的数据来学习。</p>
+<h2 id="1-时序差分方法">1. 时序差分方法</h2>
+<p>时序差分方法核心：对未来动作选择的价值估计来更新对当前动作选择的价值估计。</p>
+<h3 id="蒙特卡洛方法monte-carlo-methods">蒙特卡洛方法（Monte-Carlo methods）</h3>
+<p>使用重复随机抽样，然后运用概率统计方法来从抽样结果中归纳出我们想求的目标的数值估计。</p>
+<ul>
 <li>
-<p><strong>特征提取&amp;深度估计</strong></p>
-<p>多视角相机输入后，进行特征提取与深度估计</p>
+<p>用蒙特卡洛方法来估计一个策略在一个马尔可夫决策过程中的状态价值函数：<strong>用样本均值作为期望值的估计</strong></p>
+<ol>
+<li>在 MDP 上采样很多条序列，计算从这个状态出发的回报再求其期望</li>
+<li>一条序列只计算一次回报，也就是这条序列第一次出现该状态时计算后面的累积奖励，而后面再次出现该状态时，该状态就被忽略了。</li>
+</ol>
 </li>
 <li>
-<p><strong>外积（Outer product）</strong>—— 最核心的操作</p>
-<p>无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。</p>
-<p>使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。</p>
+<p>蒙特卡洛方法对价值函数的增量更新方式</p>
+<p><img src="/images/QLearning/1.png" alt="1"></p>
+</li>
+<li>
+<p>时序差分方法只需要当前步结束即可进行计算</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/qlearing/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 31, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/" class="link black dim">
+        强化学习-易混淆点
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <ol>
+<li>
+<h3 id="状态价值函数-vs-动作价值函数">状态价值函数 vs 动作价值函数</h3>
+<ol>
+<li>
+<p><strong>状态价值函数</strong></p>
+<p><img src="/images/RLconfused/1.png" alt="1"></p>
+</li>
+<li>
+<p><strong>动作价值函数</strong></p>
+<p><img src="/images/RLconfused/2.png" alt="2"></p>
+</li>
+<li>
+<p><strong>优势函数</strong></p>
+<p><strong>在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少</strong></p>
+<p>A(s,a)=Q(s,a)−V(s)</p>
+<ul>
+<li>求解优势函数：<strong>广义优势估计</strong>(GAE)</li>
+</ul>
+</li>
+<li>
+<p><strong>广义优势估计</strong>(GAE)</p>
+<p>通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ<em>γ</em>和λ<em>λ</em>的幂次衰减，实现平滑的回报估计。</p>
+<p><img src="/images/RLconfused/5.png" alt="5"></p>
+</li>
+</ol>
+<ul>
+<li>
+<p>关系</p>
+<p><img src="/images/RLconfused/3.png" alt="3"></p>
+<p><img src="/images/RLconfused/4.png" alt="4"></p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<ol start="2">
+<li>
+<h3 id="常见强化学习算法优缺点">常见强化学习算法优缺点</h3>
+<ol>
+<li>
+<p><strong>Q-Learning</strong> - Off-policy - 值函数</p>
+<p><img src="/images/QLearning/6.png" alt="6"></p>
+<ul>
+<li>缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。</li>
+</ul>
+</li>
+</ol>
 </li>
 </ol>
     </div>
-  <a href="/post/lss/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="link black dim">
-        「复试」项目
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>尊敬的各位老师好！我叫杨瑷珺，本科就读于北京航空航天大学，计算机科学与技术专业。</p>
-<p>在校期间，我掌握了较扎实的数学基础和编程能力，通过查阅期刊论文了解最新科研动向。</p>
-<p>除此之外，我积极参与各类比赛并获得奖项，有效提升了我的工程实践能力。在毕业设计中，我独立完成从文献调研到模型实现的全流程工作，并且，该项目被获评为北航校级优秀毕设。</p>
-<p>在实践方面，我先后在中国软件与技术服公司、北京航空航天大学和清华大学进行实习。实习期间，我参与了世界模型、时间序列预测、强化学习和目标检测等人工智能相关项目。这些经历使我不仅掌握了深层技术，更形成了&quot;从理论到应用&quot;的完整研发视角。</p>
-<p>上海交通大学一直是我向往的学校，很希望能得到在贵校学习的机会。攻读研究生期间，我会专注于理论与实践的双向发展，深入学习技术背后的底层原理。我的目标是成为一名优秀的工程师，为这个行业做出实质性贡献。我深信计算机领域的技术发展，必将将推动社会的下一场变革。</p>
-<p>以上是我的自我介绍。非常感谢各位老师的聆听！</p>
-    </div>
-  <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -278,7 +311,7 @@
         <a href="/post/page/7/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/15/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/16/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="LLM">
-  <meta itemprop="datePublished" content="2025-03-19T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-03-19T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-20T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-20T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="LLM">
 
@@ -144,6 +144,122 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        April 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm1/" class="link black dim">
+        LLM - 1.基础理论
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM1/0.png" alt="0"></p>
+<p> </p>
+<h2 id="1-绪论">1. 绪论</h2>
+<p>核心目标：对自然语言的概率分布建模</p>
+<ul>
+<li>
+<p><strong>n元语法/n元文法模型</strong>：假设任意单词 wi 出现的概率只与过去 n−1 个词相关。</p>
+<ul>
+<li><strong>统计语言模型(SLM)</strong>：使用平滑处理，提高低概率事件，降低高概率事件，使整体的概率分布趋于均匀。</li>
+<li><strong>缺点</strong>：长度限制；依赖人工设计的平滑技术；参数多。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于分布式表示和神经网络的语言模型</strong></p>
+<ul>
+<li>
+<p><strong>词向量</strong>：词的独热编码被映射为一个低维稠密的实数向量</p>
+</li>
+<li>
+<p><strong>自监督学习</strong>：深度神经网络需要采用有监督方法，使用标注数据进行训练。</p>
+<p>但由于训练目标可以通过无标注文本直接获得，因此模型的训练仅需要大规模无标注文本。</p>
+</li>
+<li>
+<p><strong>预训练语言模型(PLM)</strong>：将预训练模型应用于下游任务时，只需要“微调”预训练模型，使用具体任务的标注数据在预训练语言模型上进行监督训练，就可以取得显著的性能提升。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>语境学习 (ICL)</strong>：直接使用大语言模型，就可以在很多任务的少样本场景中取得很好的效果。</p>
+</li>
+<li>
+<p><strong>缩放法则(Scaling Laws)</strong>：模型的性能依赖于模型的规模，包括参数量、数据集大小和计算量，模型的效果会随着三者的指数增加而平稳提升。</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/llm1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bert/" class="link black dim">
+        BERT
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>名字来源：美国的一个动画片芝麻街里的主人公</p>
+<p>论文：https://arxiv.org/abs/1810.04805</p>
+<h3 id="nlp-里的迁移学习">NLP 里的迁移学习</h3>
+<ol>
+<li>
+<p><strong>在 bert 之前：使用预训练好的模型来抽取词、句子的特征</strong></p>
+<ul>
+<li>如用 word2vec 或 语言模型（当作embedding层）</li>
+<li>﻿不更新预训练好的模型</li>
+<li>﻿缺点
+<ul>
+<li>需要构建新的网络来抓取新任务需要的信息</li>
+<li>﻿Word2vec 忽略了时序信息，语言模型只看了一个方向</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>bert 的动机</strong></p>
+<ul>
+<li>
+<p>基于微调的 NLP 模型</p>
+<p>前面的层不用动，改最后一层的 output layer 即可</p>
+</li>
+<li>
+<p>预训练的模型抽取了足够多的信息，新的任务只需要增加一个简单的输出层</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h2 id="bert-架构">BERT 架构</h2>
+<p><strong>本质</strong>：一个砍掉解码器、只有编码器的 transformer</p>
+<p>bert 的工作：证明了效果非常好</p>
+<ul>
+<li>
+<p>两个版本：</p>
+<p><strong>Base</strong>: #blocks=12, hidden size=768, #heads=12,  #parameters=110M</p>
+<p>﻿﻿<strong>Large</strong>: #blocks=24, hidden size=1024, #heads=1, #parameter=340M</p>
+</li>
+<li>
+<p>﻿在大规模数据上训练&gt;3B词</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/bert/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         March 19, 2025
       </div>
     
@@ -170,57 +286,6 @@
 </ul>
     </div>
   <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        BEV 论文学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
-<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
-<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
-<h4 id="1-背景介绍">1. 背景介绍</h4>
-<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
-<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
-<h4 id="3-主要方法分类">3. 主要方法分类</h4>
-<ol>
-<li>
-<p><strong>基于几何的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
-<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于深度的方法</strong></p>
-<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
-<ul>
-<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
-<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
-</ul>
-</li>
-<li>
-<p><strong>基于MLP的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
-<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于Transformer的方法</strong>：</p>
-    </div>
-  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -261,29 +326,6 @@
 <li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
 <li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
-<p> </p>
-<p> </p>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-<p> </p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -322,243 +364,8 @@
 </ul>
 </li>
 </ul>
-<p> </p>
-<h3 id="1-多头注意力muti-head-attention">1. 多头注意力(Muti-head attention)</h3>
-<ul>
-<li>
-<p>对同一key，value，query，希望抽取不同的信息*（类似卷积的多通道）*</p>
-<ul>
-<li>例如短距离关系和长距离关系</li>
-</ul>
-</li>
-<li>
-<p>多头注意力使用h个独立的注意力池化</p>
-<ul>
-<li>合并各个头（head） 输出得到最终输出</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/trans/3.png" alt="3"></p>
-<ol>
-<li>通过全连阶层，映射到一个较低的维度</li>
-<li>进行多个attention</li>
-<li>对每一个attention的输出，进行concat</li>
-<li>再通过一个全连接，得到输出的维度</li>
-</ol>
-<h4 id="数学原理">数学原理</h4>
-<p><img src="/images/trans/4.jpg" alt="4"></p>
     </div>
   <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 20, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/llm/" class="link black dim">
-        LLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><a href="https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&amp;vd_source=80aea28698fb0235b45699fc7e6fcdac&amp;p=2">https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&vd_source=80aea28698fb0235b45699fc7e6fcdac&p=2</a></p>
-<h1 id="概述">概述</h1>
-<h2 id="大模型的演变">大模型的演变</h2>
-<p>大模型的训练整体上分为三个阶段：</p>
-<ol>
-<li>
-<p><strong>预训练</strong></p>
-<p>在这个阶段它会学习各种不同种类的语料，学习到语言的统计规律和一般知识。</p>
-<p>但是大模型在这个阶段只是学会了补全句子，却没有学会怎么样去领会人类的意图（类似成语接龙）。</p>
-</li>
-<li>
-<p><strong>SFT（监督微调）</strong></p>
-<p>在这个阶段大模型可以学习各种人类的对话语料，甚至是非常专业的垂直领域知识。</p>
-<p>但是模型的回答有时候可能并不符合人类的偏好，它可能会输出一些涉黄、涉政、涉暴或者种族歧视等言论。</p>
-</li>
-<li>
-<p><strong>RLHF（基于人类反馈的强化学习）</strong></p>
-<p>在这个阶段大模型会针对同一问题进行多次回答，人类会对这些回答打分。</p>
-<p>大模型会在此阶段学习到如何输出分数最高的回答，使得回答更符合人类的偏好。</p>
-</li>
-</ol>
-<h2 id="分类">分类</h2>
-<ol>
-<li>
-<p>大语言模型（LLM）</p>
-<p>专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。</p>
-</li>
-<li>
-<p>多模态模型</p>
-<p>多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，在这些模态之间建立关联和交互。</p>
-</li>
-</ol>
-<h2 id="工作流程">工作流程</h2>
-<h3 id="分词化与词表映射">分词化与词表映射</h3>
-<p>分词化（Tokenization）是指将段落和句子分割成更小的分词（token）的过程。</p>
-    </div>
-  <a href="/post/llm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/diffusion-model/" class="link black dim">
-        Diffusion Model
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="概述">概述</h1>
-<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
-<p><img src="/images/DM/19.png" alt="19"></p>
-<p>进一步：输入加入了文字表述</p>
-<p>目标：产生的图片与真实图片越接近越好</p>
-<h2 id="原理">原理</h2>
-<ul>
-<li>
-<p><strong>Reverse Process</strong>（多次Denoise）</p>
-<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
-</li>
-<li>
-<p><strong>Forward Process</strong>:</p>
-<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
-</li>
-</ul>
-<p><img src="/images/DM/1.png" alt="1"></p>
-<ul>
-<li>
-<p>Denoise输入：图片 + 噪音程度</p>
-<p><img src="/images/DM/2.png" alt="2"></p>
-</li>
-</ul>
-<h3 id="denoise-model内部">Denoise Model内部</h3>
-<p><img src="/images/DM/3.png" alt="3"></p>
-    </div>
-  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 4, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/generativeai/" class="link black dim">
-        Generative AI
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="chatgpt">ChatGPT</h1>
-<p><img src="/images/GA/1.png" alt="1"></p>
-<ul>
-<li>
-<p>G：generative</p>
-</li>
-<li>
-<p>P：pre-trained</p>
-</li>
-<li>
-<p>T：transformer</p>
-</li>
-</ul>
-<p> </p>
-<ol>
-<li>
-<p>ChatGPT 真正做的事：文字接龙</p>
-<p><strong>Autoregressive Generation</strong>：逐个生成</p>
-<p><img src="/images/GA/3.png" alt="3"></p>
-<p><img src="/images/GA/4.png" alt="4"></p>
-</li>
-<li>
-<p><strong>token</strong></p>
-<p>文字接龙时可以选择的符号</p>
-<p><img src="/images/GA/5.png" alt="5"></p>
-</li>
-<li>
-<p>每次回答都随机（掷骰子）</p>
-<p><img src="/images/GA/6.png" alt="6"></p>
-</li>
-</ol>
-    </div>
-  <a href="/post/generativeai/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 29, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ad01491f-ff96-44a7-9a2f-606c66461df8/%E6%88%AA%E5%B1%8F2024-12-30_19.27.19.png" alt="截屏2024-12-30 19.27.19.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/40f99add-baee-40ad-ab9b-45dc5f312af9/%E6%88%AA%E5%B1%8F2024-12-30_19.28.31.png" alt="截屏2024-12-30 19.28.31.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/99bd3fd9-fabb-421d-bcdb-0e6d0c5be310/%E6%88%AA%E5%B1%8F2024-12-30_19.29.08.png" alt="截屏2024-12-30 19.29.08.png"></p>
-<p>应用：</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/1b594f9d-d71f-4af3-b7c9-285e1dfffec6/%E6%88%AA%E5%B1%8F2024-12-30_19.29.47.png" alt="截屏2024-12-30 19.29.47.png"></p>
-<h2 id="去噪自动编码器">去噪自动编码器</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a8e8568e-18b2-4281-a7af-05a627e6f5f0/%E6%88%AA%E5%B1%8F2024-12-30_19.35.42.png" alt="截屏2024-12-30 19.35.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ce2c3930-ae83-40a9-b9d3-aa3f4f0246bd/%E6%88%AA%E5%B1%8F2024-12-30_19.36.58.png" alt="截屏2024-12-30 19.36.58.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/fdd726fa-7eb9-4b24-af63-f917ee593b1c/%E6%88%AA%E5%B1%8F2024-12-30_19.37.09.png" alt="截屏2024-12-30 19.37.09.png"></p>
-<h2 id="变分自动编码器">变分自动编码器</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/f4509f09-0920-4a7e-b5ba-74cbec294241/%E6%88%AA%E5%B1%8F2024-12-30_19.39.12.png" alt="截屏2024-12-30 19.39.12.png"></p>
-<ul>
-<li>
-<p>损失函数</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/add2cf71-1094-4639-b2d5-699f551beb48/%E6%88%AA%E5%B1%8F2024-12-30_19.40.36.png" alt="截屏2024-12-30 19.40.36.png"></p>
-</li>
-</ul>
-<h3 id="reparameterization-trick重参数化">Reparameterization Trick(重参数化)</h3>
-<p>如何实现反向传播？</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/db9e763f-81d3-460f-81dc-b81242f41cdb/%E6%88%AA%E5%B1%8F2024-12-30_19.42.30.png" alt="截屏2024-12-30 19.42.30.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e3fb22c3-4a30-4511-9457-4dc08d40b210/%E6%88%AA%E5%B1%8F2024-12-30_19.44.43.png" alt="截屏2024-12-30 19.44.43.png"></p>
-<ul>
-<li>
-<p>核心代码</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9c033e5a-8e28-4e82-ab6e-80d29dd08a20/%E6%88%AA%E5%B1%8F2024-12-30_19.45.33.png" alt="截屏2024-12-30 19.45.33.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/64564c69-b355-4559-95b2-2186d3cf9e08/%E6%88%AA%E5%B1%8F2024-12-30_19.45.42.png" alt="截屏2024-12-30 19.45.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/df9a2aa4-f700-4975-a5ca-f315eab2bcab/%E6%88%AA%E5%B1%8F2024-12-30_19.46.02.png" alt="截屏2024-12-30 19.46.02.png"></p>
-</li>
-</ul>
-<h3 id="解耦变分自编码器"><strong>解耦变分自编码器</strong></h3>
-<p>目的：确保潜在分布中的不同神经元互不相干，都在尝试学习输入数据中的不同内容。</p>
-<ul>
-<li>
-<p>解决方式：增加超参数$\beta$，衡量损失函数中的KL散度。</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9501fd11-c948-42ff-ba18-807ca26a11eb/%E6%88%AA%E5%B1%8F2024-12-30_22.11.49.png" alt="截屏2024-12-30 22.11.49.png"></p>
-</li>
-</ul>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/d64275f8-60ea-4cd6-862a-d8d7821c8b3d/%E6%88%AA%E5%B1%8F2024-12-30_22.18.10.png" alt="截屏2024-12-30 22.18.10.png"></p>
-<p>$\beta$过小：过拟合</p>
-<p>$\beta$过大：失去输入中的大量细节</p>
-<p><strong>在强化学习中的作用</strong>：使Agent可以在压缩后的输入T空间上运行。</p>
-    </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

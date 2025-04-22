@@ -156,7 +156,8 @@
       <p>文章搬运，自用。</p>
 <p>论文：<a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
 <p>官方源码：<a href="https://github.com/nv-tlabs/lift-splat-shoot">lift-splat-shoot</a></p>
-<h2 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h2>
+<p> </p>
+<h4 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h4>
 <p>对于任意数量不同相机帧的图像直接提取场景的BEV表达；主要由三部分实现：</p>
 <ol>
 <li><strong>Lift</strong>：将每一个相机的图像帧根据相机的内参转换提升到 frustum（锥形）形状的点云空间中。</li>
@@ -333,29 +334,6 @@
 <li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
 <li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
-<p> </p>
-<p> </p>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-<p> </p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

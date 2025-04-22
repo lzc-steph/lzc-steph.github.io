@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-04-14T04:00:59-07:00">
-  <meta itemprop="dateModified" content="2025-04-14T04:00:59-07:00">
+  <meta itemprop="datePublished" content="2025-04-20T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-20T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -142,6 +142,845 @@
     <section class="ph4">
       
         <h2 class="f1">
+          <a href="/tags/llm/" class="link blue hover-black">
+            Tag: LLM
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm1/" class="link black dim">
+        LLM - 1.基础理论
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM1/0.png" alt="0"></p>
+<p> </p>
+<h2 id="1-绪论">1. 绪论</h2>
+<p>核心目标：对自然语言的概率分布建模</p>
+<ul>
+<li>
+<p><strong>n元语法/n元文法模型</strong>：假设任意单词 wi 出现的概率只与过去 n−1 个词相关。</p>
+<ul>
+<li><strong>统计语言模型(SLM)</strong>：使用平滑处理，提高低概率事件，降低高概率事件，使整体的概率分布趋于均匀。</li>
+<li><strong>缺点</strong>：长度限制；依赖人工设计的平滑技术；参数多。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于分布式表示和神经网络的语言模型</strong></p>
+<ul>
+<li>
+<p><strong>词向量</strong>：词的独热编码被映射为一个低维稠密的实数向量</p>
+</li>
+<li>
+<p><strong>自监督学习</strong>：深度神经网络需要采用有监督方法，使用标注数据进行训练。</p>
+<p>但由于训练目标可以通过无标注文本直接获得，因此模型的训练仅需要大规模无标注文本。</p>
+</li>
+<li>
+<p><strong>预训练语言模型(PLM)</strong>：将预训练模型应用于下游任务时，只需要“微调”预训练模型，使用具体任务的标注数据在预训练语言模型上进行监督训练，就可以取得显著的性能提升。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>语境学习 (ICL)</strong>：直接使用大语言模型，就可以在很多任务的少样本场景中取得很好的效果。</p>
+</li>
+<li>
+<p><strong>缩放法则(Scaling Laws)</strong>：模型的性能依赖于模型的规模，包括参数量、数据集大小和计算量，模型的效果会随着三者的指数增加而平稳提升。</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/llm1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bert/" class="link black dim">
+        BERT
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>名字来源：美国的一个动画片芝麻街里的主人公</p>
+<p>论文：https://arxiv.org/abs/1810.04805</p>
+<h3 id="nlp-里的迁移学习">NLP 里的迁移学习</h3>
+<ol>
+<li>
+<p><strong>在 bert 之前：使用预训练好的模型来抽取词、句子的特征</strong></p>
+<ul>
+<li>如用 word2vec 或 语言模型（当作embedding层）</li>
+<li>﻿不更新预训练好的模型</li>
+<li>﻿缺点
+<ul>
+<li>需要构建新的网络来抓取新任务需要的信息</li>
+<li>﻿Word2vec 忽略了时序信息，语言模型只看了一个方向</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>bert 的动机</strong></p>
+<ul>
+<li>
+<p>基于微调的 NLP 模型</p>
+<p>前面的层不用动，改最后一层的 output layer 即可</p>
+</li>
+<li>
+<p>预训练的模型抽取了足够多的信息，新的任务只需要增加一个简单的输出层</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h2 id="bert-架构">BERT 架构</h2>
+<p><strong>本质</strong>：一个砍掉解码器、只有编码器的 transformer</p>
+<p>bert 的工作：证明了效果非常好</p>
+<ul>
+<li>
+<p>两个版本：</p>
+<p><strong>Base</strong>: #blocks=12, hidden size=768, #heads=12,  #parameters=110M</p>
+<p>﻿﻿<strong>Large</strong>: #blocks=24, hidden size=1024, #heads=1, #parameter=340M</p>
+</li>
+<li>
+<p>﻿在大规模数据上训练&gt;3B词</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/bert/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%BE%AE%E8%B0%83/" class="link black dim">
+        微调
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="大模型预训练">大模型预训练</h2>
+<h4 id="1-从零开始的预训练">1 从零开始的预训练</h4>
+<h4 id="2-在已有开源模型基础上针对特定任务进行训练">2 在已有开源模型基础上针对特定任务进行训练</h4>
+<p> </p>
+<h3 id="lora">LoRa</h3>
+<p>通过化简权重矩阵，实现高效微调</p>
+<p><img src="/images/preTrain/1.png" alt="1"></p>
+<p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
+<p>训练参数量减少，但微调效果基本不变。</p>
+<ul>
+<li>
+<p>两个重要参数：</p>
+<p><img src="/images/preTrain/2.png" alt="2"></p>
+</li>
+</ul>
+    </div>
+  <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<p> </p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 8, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/transformer/" class="link black dim">
+        transformer
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="一transformer架构">一、Transformer架构</h2>
+<ul>
+<li>
+<p>﻿基于编码器-解码器架构来处理序列对</p>
+</li>
+<li>
+<p>﻿跟使用注意力的seq2seq不同，Transformer是纯基于注意力</p>
+<ul>
+<li>
+<p>seq2seq</p>
+<p><img src="/images/trans/1.png" alt="1"></p>
+</li>
+<li>
+<p>transformer</p>
+<p><img src="/images/trans/2.jpg" alt="1"></p>
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/automatic-driving/" class="link blue hover-black">
+            Tag: Automatic Driving
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
+        工具链-carla
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="0-预备">0 预备</h2>
+<p>下载 carla</p>
+<ol>
+<li>
+<p>﻿﻿﻿Get Python from anaconda.com</p>
+</li>
+<li>
+<p>﻿﻿﻿Create virtual environment</p>
+<ul>
+<li>
+<p>﻿﻿launch anaconda prompt</p>
+</li>
+<li>
+<p>﻿﻿conda create &ndash;name carla-sim python=3.7</p>
+</li>
+<li>
+<p>﻿﻿activate carla-sim</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Install additional libraries via &ldquo;pip install&rdquo;:</p>
+<ul>
+<li>﻿﻿pip install carla, pygame, numpy, jupyter and opencv-python</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h2 id="1-基本构件块">1 基本构件块</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># all imports</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> carla 				<span style="color:#75715e"># the sim Library itself </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random 			<span style="color:#75715e"># to pick random spawn point </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2 					<span style="color:#75715e"># to work with images from cameras</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np 	<span style="color:#75715e"># in this example to change image representation - re-shaping</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># connect to the sim</span>
+</span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Client(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">2000</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># optional to Load different towns</span>
+</span></span><span style="display:flex;"><span>client<span style="color:#f92672">.</span>load_world(<span style="color:#e6db74">&#39;Towne5&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># define environment/world and get possible places to spawn a car</span>
+</span></span><span style="display:flex;"><span>world <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_world()
+</span></span><span style="display:flex;"><span>spawn_points <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_map()<span style="color:#f92672">.</span>get_spawn_points()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Look for a blueprint of Mini car,得到很多名为&#34;mini&#34;的汽车实例</span>
+</span></span><span style="display:flex;"><span>vehicle_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*mini*&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># spawn a car in a random location</span>
+</span></span><span style="display:flex;"><span>start_point <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>choice(spawn_points)
+</span></span><span style="display:flex;"><span>vehicle <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>try_spawn_actor(vehicle_bp[<span style="color:#ae81ff">0</span>], start_point)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># move simulator view to the car</span>
+</span></span><span style="display:flex;"><span>spectator <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_spectator()
+</span></span><span style="display:flex;"><span>start_point<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>z <span style="color:#f92672">=</span> start_point<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>z<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> 	<span style="color:#75715e">#start_point was used to spawn</span>
+</span></span><span style="display:flex;"><span>spectator<span style="color:#f92672">.</span>set_transform(start_point)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#send the car off on autopilot - this will leave the spectator</span>
+</span></span><span style="display:flex;"><span>vehicle<span style="color:#f92672">.</span>set_autopilot(<span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p> </p>
+<h2 id="2-在汽车上设置摄像头">2 在汽车上设置摄像头</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#setting RGB Camera - this follow the approach explained in a Carla video</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Link: https://www.youtube.com/watch?v=om8kLsBj4rc&amp;t=1184s</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#camera mount offset on the car - you can tweak these to each car to avoid any p</span>
+</span></span><span style="display:flex;"><span>CAMERA_POS_Z <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.6</span> 																<span style="color:#75715e"># this means 1.6m up from the ground</span>
+</span></span><span style="display:flex;"><span>CAMERA_POS_X <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span> 																<span style="color:#75715e"># this is 0.9m forward</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>camera_op <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;sensor.camera.rgb&#39;</span>)
+</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>, <span style="color:#e6db74">&#39;640&#39;</span>) 		<span style="color:#75715e"># this ratio works in CARLA 9.14 </span>
+</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>, <span style="color:#e6db74">&#39;360&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>camera_init_trans <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Transform(carla<span style="color:#f92672">.</span>Location(z<span style="color:#f92672">=</span>CAMERA_POS_Z, x<span style="color:#f92672">=</span>CAMERA_POS_X))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this creates the camera in the sim</span>
+</span></span><span style="display:flex;"><span>camera <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>spawn_actor(camera_bp, camera_init_trans, attach_to<span style="color:#f92672">=</span>vehicle)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">camera_callback</span>(image, data _dict):
+</span></span><span style="display:flex;"><span>  data_dict[<span style="color:#e6db74">&#39;image&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(np<span style="color:#f92672">.</span>copy(image<span style="color:#f92672">.</span>raw_data), (image<span style="color:#f92672">.</span>height, image<span style="color:#f92672">.</span>width, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>                                    
+</span></span><span style="display:flex;"><span>image_w <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>) <span style="color:#f92672">.</span>as_int()
+</span></span><span style="display:flex;"><span>image_h <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>)<span style="color:#f92672">.</span>as_int()
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>camera_data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;image&#39;</span>: np<span style="color:#f92672">.</span>zeros ((image_h, image_w,<span style="color:#ae81ff">4</span>))}
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this actually opens a live stream from the camera</span>
+</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>listen(<span style="color:#66d9ef">lambda</span> image: camera_callback(image, camera_data))
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># grab a snapshot from the camera an show in a pop-up window</span>
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> camera_data[<span style="color:#e6db74">&#39;image&#39;</span>]
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, img)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p>Output: -1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># clean up after yourself</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>stop() <span style="color:#75715e"># this is the opposite of camera.listen</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> actor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*vehicle*&#39;</span>):
+</span></span><span style="display:flex;"><span>  	actor<span style="color:#f92672">.</span>destroy()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sensor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*sensor*&#39;</span>):
+</span></span><span style="display:flex;"><span>  	sensor<span style="color:#f92672">.</span>destroy()
+</span></span></code></pre></div><p> </p>
+<p> </p>
+<h2 id="3-控制汽车">3 控制汽车</h2>
+<h3 id="速度和油门踏板">速度和油门踏板</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This is the new Bit for tutorial 4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">First we need to create controls functions so we could
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">push the car along the route
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># define speed contstants</span>
+</span></span><span style="display:flex;"><span>PREFERRED_SPEED <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> 			<span style="color:#75715e"># what it says</span>
+</span></span><span style="display:flex;"><span>SPEED_THRESHOLD <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> 			<span style="color:#75715e"># defines when we get close to desired speed so we drop the</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># adding params to display text to image</span>
+</span></span><span style="display:flex;"><span>font <span style="color:#f92672">=</span> CV2<span style="color:#f92672">.</span>FONT_HERSHEY_SIMPLEX
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># org - defining lines to display telemetry values on the screen</span>
+</span></span><span style="display:flex;"><span>org <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">30</span>) 						<span style="color:#75715e"># this Line will be used to show current speed</span>
+</span></span><span style="display:flex;"><span>org2 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">50</span>) 					<span style="color:#75715e"># this Line will be used for future steering angle</span>
+</span></span><span style="display:flex;"><span>org3 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">70</span>) 					<span style="color:#75715e"># and another line for future telemetry outputs</span>
+</span></span><span style="display:flex;"><span>fontScale <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># white color</span>
+</span></span><span style="display:flex;"><span>color <span style="color:#f92672">=</span> (<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">255</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># line thickness of 2 px</span>
+</span></span><span style="display:flex;"><span>thickness <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maintain_</span> speed(s):
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  this is a very simple function to maintan desired speed s arg is actual current speed
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">&gt;=</span> PREFERRED_SPEED:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">elif</span> s <span style="color:#f92672">&lt;</span> PREFERRED_SPEED <span style="color:#f92672">-</span> SPEED_THRESHOLD:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.8</span> 						<span style="color:#75715e"># think of it as % of &#34;full gas&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.4</span> 						<span style="color:#75715e"># tweak this if the car is way over or under preferred speed</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># now Little demo to drive straight</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># close to a desired speed</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># - press l to exit, you need to run the bit above to start the car</span>
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>namedWindow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, CV2<span style="color:#f92672">.</span>WINDOW_AUTOSIZE)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, camera_data[<span style="color:#e6db74">&#39;image&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># main Loop</span>
+</span></span><span style="display:flex;"><span>quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Carla Tick</span>
+</span></span><span style="display:flex;"><span>	world<span style="color:#f92672">.</span>tick()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> cv2<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> ord(<span style="color:#e6db74">&#39;q&#39;</span>):
+</span></span><span style="display:flex;"><span>		quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>	image <span style="color:#f92672">=</span> camera_data[<span style="color:#e6db74">&#39;image&#39;</span>]
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>	steering_angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 					<span style="color:#75715e"># we do not have it yet</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># to get speed we need to use &#39;get velocity&#39; function</span>
+</span></span><span style="display:flex;"><span>	v <span style="color:#f92672">=</span> vehicle<span style="color:#f92672">.</span>get_velocity()
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># if velocity is a vector in 3d</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># then speed is like hypothenuse in a right triangle</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># and 3.6 is a conversion factor from meters per second to kmh</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># e.g. mh is 1000 meters and one hour is 60 min with 60 sec = 3600 sec</span>
+</span></span><span style="display:flex;"><span>	speed <span style="color:#f92672">=</span> round(<span style="color:#ae81ff">3.6</span> <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>sqrt(v<span style="color:#f92672">.</span>x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>y<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>z<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>),<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># now we add the speed to the window showing a camera mounted on the car</span>
+</span></span><span style="display:flex;"><span>	image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span> putText (image, <span style="color:#e6db74">&#39;Speed: &#39;</span><span style="color:#f92672">+</span>str(int(speed))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39; kmh&#39;</span>, org2,
+</span></span><span style="display:flex;"><span>                        font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span> LINE_AA)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># this is where we used the function above to determine accelerator input</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># from current speed</span>
+</span></span><span style="display:flex;"><span>	estimated_throttle <span style="color:#f92672">=</span> maintain_speed (speed)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># now we apply accelerator</span>
+</span></span><span style="display:flex;"><span>	vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span>estimated_throttle,
+</span></span><span style="display:flex;"><span>                                             steer<span style="color:#f92672">=</span>steering_angle))
+</span></span><span style="display:flex;"><span>  cv2<span style="color:#f92672">.</span> imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, image)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#clean up </span>
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>destroyAllWindows()
+</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>stop()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> actor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*vehicle*&#39;</span>):
+</span></span><span style="display:flex;"><span>  actor<span style="color:#f92672">.</span>destroy()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sensor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter (<span style="color:#e6db74">&#39;*sensor*&#39;</span>):
+</span></span><span style="display:flex;"><span>  sensor<span style="color:#f92672">.</span>destroy()
+</span></span></code></pre></div><p> </p>
+<h3 id="转向角度">转向角度</h3>
+<ol>
+<li>汽车当前位置</li>
+<li>汽车想去的位置</li>
+<li>汽车当前角度</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># test steering function</span>
+</span></span><span style="display:flex;"><span>world <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_world()
+</span></span><span style="display:flex;"><span>spawn_points <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_map()<span style="color:#f92672">.</span>get_spawn_points()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># look for a blueprint of Mini car</span>
+</span></span><span style="display:flex;"><span>vehicle_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*mini*&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>start_point <span style="color:#f92672">=</span> spawn_points[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>vehicle <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>try_spawn_actor(vehicle_bp[<span style="color:#ae81ff">0</span>], start_point)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># setting RGB Camera - this follow the approach explained in a Carla video</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># link: https://www.youtube.com/watch?v=om8klsBj4rc&amp;t=1184s</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># camera mount offset on the car - you can tweak these to have the car in view or not</span>
+</span></span><span style="display:flex;"><span>CAMERA_POS_Z <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> 
+</span></span><span style="display:flex;"><span>CAMERA_POS_X <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>camera_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;sensor.camera.rgb&#39;</span>)
+</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>, <span style="color:#e6db74">&#39;640&#39;</span>) <span style="color:#75715e"># this ratio works in CARLA 9.14 on Windows</span>
+</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>, <span style="color:#e6db74">&#39;360&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>camera_init_trans <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Transform(carla<span style="color:#f92672">.</span>Location(z<span style="color:#f92672">=</span>CAMERA_POS_Z,x<span style="color:#f92672">=</span>CAMERA_POS_X))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this creates the camera in the sim</span>
+</span></span><span style="display:flex;"><span>camera <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>spawn_actor(camera_bp,camera_init_trans,attach_to<span style="color:#f92672">=</span>vehicle)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">camera_callback</span>(image,data_dict):
+</span></span><span style="display:flex;"><span>    data_dict[<span style="color:#e6db74">&#39;image&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(np<span style="color:#f92672">.</span>copy(image<span style="color:#f92672">.</span>raw_data),(image<span style="color:#f92672">.</span>height,image<span style="color:#f92672">.</span>width,<span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>image_w <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>)<span style="color:#f92672">.</span>as_int()
+</span></span><span style="display:flex;"><span>image_h <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>)<span style="color:#f92672">.</span>as_int()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>camera_data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;image&#39;</span>: np<span style="color:#f92672">.</span>zeros((image_h,image_w,<span style="color:#ae81ff">4</span>))}
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this actually opens a live stream from the camera</span>
+</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>listen(<span style="color:#66d9ef">lambda</span> image: camera_callback(image,camera_data))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>namedWindow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>,cv2<span style="color:#f92672">.</span>WINDOW_AUTOSIZE)
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>,camera_data[<span style="color:#e6db74">&#39;image&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># main loop </span>
+</span></span><span style="display:flex;"><span>quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>curr_wp <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#75715e"># we will be tracking waypoints in the route and switch to next one wen we get close to current one</span>
+</span></span><span style="display:flex;"><span>predicted_angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> curr_wp<span style="color:#f92672">&lt;</span>len(route)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Carla Tick</span>
+</span></span><span style="display:flex;"><span>    world<span style="color:#f92672">.</span>tick()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> cv2<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> ord(<span style="color:#e6db74">&#39;q&#39;</span>):
+</span></span><span style="display:flex;"><span>        quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,steer<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,brake<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> camera_data[<span style="color:#e6db74">&#39;image&#39;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> curr_wp<span style="color:#f92672">&lt;</span>len(route) <span style="color:#f92672">and</span> vehicle<span style="color:#f92672">.</span>get_transform()<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>distance(route[curr_wp][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>transform<span style="color:#f92672">.</span>location)<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">5</span>:
+</span></span><span style="display:flex;"><span>        curr_wp <span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span> <span style="color:#75715e"># move to next wp if we are too close</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    predicted_angle <span style="color:#f92672">=</span> get_angle(vehicle,route[curr_wp][<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>putText(image, <span style="color:#e6db74">&#39;Steering angle: &#39;</span><span style="color:#f92672">+</span>str(round(predicted_angle,<span style="color:#ae81ff">3</span>)), org, font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span>LINE_AA)
+</span></span><span style="display:flex;"><span>    v <span style="color:#f92672">=</span> vehicle<span style="color:#f92672">.</span>get_velocity()
+</span></span><span style="display:flex;"><span>    speed <span style="color:#f92672">=</span> round(<span style="color:#ae81ff">3.6</span> <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>sqrt(v<span style="color:#f92672">.</span>x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>y<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>z<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>),<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>putText(image, <span style="color:#e6db74">&#39;Speed: &#39;</span><span style="color:#f92672">+</span>str(int(speed)), org2, font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span>LINE_AA)
+</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>putText(image, <span style="color:#e6db74">&#39;Next wp: &#39;</span><span style="color:#f92672">+</span>str(curr_wp), org3, font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span>LINE_AA)
+</span></span><span style="display:flex;"><span>    estimated_throttle <span style="color:#f92672">=</span> maintain_speed(speed)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># extra checks on predicted angle when values close to 360 degrees are returned</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> predicted_angle<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">300</span>:
+</span></span><span style="display:flex;"><span>        predicted_angle <span style="color:#f92672">=</span> predicted_angle<span style="color:#f92672">+</span><span style="color:#ae81ff">360</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> predicted_angle <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">300</span>:
+</span></span><span style="display:flex;"><span>        predicted_angle <span style="color:#f92672">=</span> predicted_angle <span style="color:#f92672">-</span><span style="color:#ae81ff">360</span>
+</span></span><span style="display:flex;"><span>    steer_input <span style="color:#f92672">=</span> predicted_angle
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># and conversion of to -1 to +1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> predicted_angle<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">40</span>:
+</span></span><span style="display:flex;"><span>        steer_input <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">40</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> predicted_angle<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">40</span>:
+</span></span><span style="display:flex;"><span>        steer_input <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># conversion from degrees to -1 to +1 input for apply control function</span>
+</span></span><span style="display:flex;"><span>    steer_input <span style="color:#f92672">=</span> steer_input<span style="color:#f92672">/</span><span style="color:#ae81ff">75</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span>estimated_throttle, steer<span style="color:#f92672">=</span>steer_input))
+</span></span><span style="display:flex;"><span>    cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>,image)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># clean up</span>
+</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>destroyAllWindows()
+</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>stop()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sensor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*sensor*&#39;</span>):
+</span></span><span style="display:flex;"><span>    sensor<span style="color:#f92672">.</span>destroy()
+</span></span><span style="display:flex;"><span>vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,steer<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,brake<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+</span></span></code></pre></div><p> </p>
+<p> </p>
+<h2 id="定位汽车">定位汽车</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> carla
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>client <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Client(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">2000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>world <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_world()
+</span></span><span style="display:flex;"><span>spawn_points <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_map()<span style="color:#f92672">.</span>get_spawn_points()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vehicle_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*firetruck*&#39;</span>)
+</span></span><span style="display:flex;"><span>start_point <span style="color:#f92672">=</span> spawn_points[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>vehicle <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>try_spawn_actor(vehicle_bp[<span style="color:#ae81ff">0</span>], start_point)
+</span></span></code></pre></div>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 14, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
+        LSS代码
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>文章搬运，自用。</p>
+<p>论文：<a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<p>官方源码：<a href="https://github.com/nv-tlabs/lift-splat-shoot">lift-splat-shoot</a></p>
+<p> </p>
+<h4 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h4>
+<p>对于任意数量不同相机帧的图像直接提取场景的BEV表达；主要由三部分实现：</p>
+<ol>
+<li><strong>Lift</strong>：将每一个相机的图像帧根据相机的内参转换提升到 frustum（锥形）形状的点云空间中。</li>
+<li><strong>splate</strong>：将所有相机转换到锥形点云空间中的特征根据相机的内参 K 与相机相对于 ego 的外参T映射到栅格化的 3D 空间（BEV）中来融合多帧信息。</li>
+<li><strong>shoot</strong>：根据上述 BEV 的检测或分割结果来生成规划的路径 proposal；从而实现可解释的端到端的路径规划任务。</li>
+</ol>
+<p>注：LSS在训练的过程中并不需要激光雷达的点云来进行监督。</p>
+    </div>
+  <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/data-processing/" class="link blue hover-black">
+            Tag: Data Processing
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="link black dim">
+        工具链-PyTorch
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-处理数据">1. 处理数据</h2>
+<p>PyTorch 有两个用于处理数据的基元： <code>torch.utils.data.DataLoader</code> 和 <code>torch.utils.data.Dataset</code>。
+<code>Dataset</code> 存储样本及其相应的标签，<code>DataLoader</code> 将 <code>Dataset</code> 包装成一个迭代器。</p>
+<ul>
+<li>
+<p>下面以 TorchVision 库模块里的 FashionMNIST 数据集为例：</p>
+<p>每个 TorchVision <code>Dataset</code> 都包含两个参数： <code>transform</code> 和 <code>target_transform</code> 分别修改样本和标签</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Download training data from open datasets.</span>
+</span></span><span style="display:flex;"><span>training_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download test data from open datasets.</span>
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>将 <code>Dataset</code> 作为参数传递给 <code>DataLoader</code> ，将一个可迭代对象包装在数据集上，支持自动批处理、采样、洗牌和多进程数据加载。</p>
+<p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 12, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="link black dim">
+        脚本使用
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h4 id="脚本学习">脚本学习</h4>
+<ol>
+<li>
+<p>python main.py train mini/trainval &ndash;dataroot=NUSCENES_ROOT &ndash;logdir=./runs &ndash;gpuid=0 tensorboard &ndash;logdir=./runs &ndash;bind_all</p>
+<h4 id="第一部分python-mainpy-train-minitrainval-">第一部分：<code>python main.py train mini/trainval ...</code></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py train mini/trainval --dataroot<span style="color:#f92672">=</span>NUSCENES_ROOT --logdir<span style="color:#f92672">=</span>./runs --gpuid<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p><strong>参数解析</strong>：</p>
+<ul>
+<li><code>train</code>：表示执行训练模式。</li>
+<li><code>mini/trainval</code>：数据集的子集（如训练集+验证集的迷你版本）。</li>
+<li><code>--dataroot=NUSCENES_ROOT</code>：指定数据集路径，需替换<code>NUSCENES_ROOT</code>为实际路径。</li>
+<li><code>--logdir=./runs</code>：训练日志和模型检查点会保存在<code>./runs</code>目录。</li>
+<li><code>--gpuid=0</code>：使用第0号GPU（如果有多块GPU）。</li>
+</ul>
+<p> </p>
+<p><strong>第二部分：<code>tensorboard --logdir=./runs --bind_all</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tensorboard --logdir<span style="color:#f92672">=</span>./runs --bind_all
+</span></span></code></pre></div><ol>
+<li>
+<p><strong>作用</strong>：</p>
+<p>启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。</p>
+</li>
+<li>
+<p><strong>参数解析</strong>：</p>
+<ul>
+<li><code>--logdir=./runs</code>：指定TensorBoard读取的日志目录（与训练脚本的<code>--logdir</code>一致）。</li>
+<li><code>--bind_all</code>：允许通过网络访问TensorBoard（默认地址通常是<code>localhost:6006</code>）。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+    </div>
+  <a href="/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 11, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="link black dim">
+        数据集-NuSences
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <ol>
+<li>
+<h4 id="内容">内容</h4>
+<p>nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。</p>
+<p>nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。</p>
+<p> </p>
+</li>
+<li>
+<h4 id="数据采集">数据采集</h4>
+<ol>
+<li>
+<p><strong>车辆设置</strong></p>
+<p><img src="/images/nuSences/1.png" alt="1"></p>
+<ol>
+<li>1 个旋转激光雷达 （Velodyne HDL32E）</li>
+<li>5 个远程雷达传感器 （Continental ARS 408-21）</li>
+<li>6 个相机 （Basler acA1600-60gc）</li>
+<li>1个 IMU &amp; GPS （高级导航空间版）</li>
+</ol>
+</li>
+<li>
+<p><strong>Sensor(传感器)校准 - 内外参</strong></p>
+<ol>
+<li>LIDAR extrinsics</li>
+<li>相机 extrinsics</li>
+<li>RADAR extrinsics</li>
+<li>相机 intrinsic 校准</li>
+</ol>
+</li>
+<li>
+<p><strong>Sensor(传感器)同步</strong></p>
+<p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
+</li>
+</ol>
+</li>
+</ol>
+    </div>
+  <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/tool/" class="link blue hover-black">
+            Tag: Tool
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="link black dim">
+        工具链-PyTorch
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-处理数据">1. 处理数据</h2>
+<p>PyTorch 有两个用于处理数据的基元： <code>torch.utils.data.DataLoader</code> 和 <code>torch.utils.data.Dataset</code>。
+<code>Dataset</code> 存储样本及其相应的标签，<code>DataLoader</code> 将 <code>Dataset</code> 包装成一个迭代器。</p>
+<ul>
+<li>
+<p>下面以 TorchVision 库模块里的 FashionMNIST 数据集为例：</p>
+<p>每个 TorchVision <code>Dataset</code> 都包含两个参数： <code>transform</code> 和 <code>target_transform</code> 分别修改样本和标签</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Download training data from open datasets.</span>
+</span></span><span style="display:flex;"><span>training_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download test data from open datasets.</span>
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>将 <code>Dataset</code> 作为参数传递给 <code>DataLoader</code> ，将一个可迭代对象包装在数据集上，支持自动批处理、采样、洗牌和多进程数据加载。</p>
+<p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-深度学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="torch--cuda--nvidia"><strong>Torch + CUDA + NVIDIA</strong>：</h2>
+<ul>
+<li>
+<p>安装步骤：</p>
+<ol>
+<li>
+<p>去 Nvidia 官网下载 CUDA 并安装（核心：驱动+CUDA开发环境）</p>
+<p><img src="/images/DLtool/1.png" alt="1"></p>
+<p>检查：<code>nvidia-smi</code> 指令</p>
+</li>
+<li>
+<p>下载 Anaconda，用于运行 python 环境</p>
+</li>
+<li>
+<p>下载 GPU 版本的 pytorch</p>
+<p><img src="/images/DLtool/2.png" alt="2"></p>
+</li>
+<li>
+<p>可以开始跑深度学习了！</p>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>Torch</strong> 是一个深度学习框架，用于构建和训练神经网络，该可以利用<strong>CUDA</strong>在<strong>NVIDIA GPU</strong>上加速计算。通过在PyTorch中指定使用CUDA进行训练，可以在处理大数据集时大大提高计算效率。</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-强化学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-gym">1. gym</h2>
+<p>官方文档：https://www.gymlibrary.dev</p>
+<ul>
+<li>
+<p>最小例子 <code>CartPole-v0</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>render()
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>step(env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()) <span style="color:#75715e"># take a random action</span>
+</span></span></code></pre></div></li>
+</ul>
+<p> </p>
+<h3 id="观测-observations">观测 (Observations)</h3>
+<p>在 Gym 仿真中，每一次回合开始，需要先执行 <code>reset()</code> 函数，返回<strong>初始观测信息，然后根据标志位 <code>done</code> 的状态，来决定是否进行下一次回合</strong>。代码表示：</p>
+<p> </p>
+<p><code>env.step()</code> 函数对每一步进行仿真，返回 4 个参数：</p>
+<ul>
+<li>
+<p><strong>观测</strong> Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；</p>
+</li>
+<li>
+<p><strong>奖励</strong> Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；</p>
+</li>
+<li>
+<p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/cv/" class="link blue hover-black">
             Tag: CV
           </a>
@@ -162,7 +1001,8 @@
       <p>文章搬运，自用。</p>
 <p>论文：<a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
 <p>官方源码：<a href="https://github.com/nv-tlabs/lift-splat-shoot">lift-splat-shoot</a></p>
-<h2 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h2>
+<p> </p>
+<h4 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h4>
 <p>对于任意数量不同相机帧的图像直接提取场景的BEV表达；主要由三部分实现：</p>
 <ol>
 <li><strong>Lift</strong>：将每一个相机的图像帧根据相机的内参转换提升到 frustum（锥形）形状的点云空间中。</li>
@@ -331,29 +1171,6 @@
 <li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
 <li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
-<p> </p>
-<p> </p>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-<p> </p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -394,217 +1211,6 @@
 <p> </p>
     </div>
   <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/data-processing/" class="link blue hover-black">
-            Tag: Data Processing
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 14, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/pytorch/" class="link black dim">
-        PyTorch
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="1-基础概念"><strong>1. 基础概念</strong></h3>
-<p><strong>DataLoader</strong>：包装 <code>Dataset</code>，提供批量迭代、多线程加载等功能。</p>
-<ul>
-<li><strong>Dataset</strong> (必需)：存储样本及其标签，需实现 <code>__len__</code> 和 <code>__getitem__</code> 方法。</li>
-<li><strong><code>batch_size</code></strong>：每批的样本数。默认值为1。</li>
-<li><strong><code>shuffle</code></strong>：是否在每个epoch开始时打乱数据（训练集通常设为True，验证集False）。</li>
-<li><strong><code>num_workers</code></strong>：加载数据的子进程数。默认为0，意味着数据将在主进程中加载。</li>
-<li><strong><code>drop_last</code></strong>：当样本数不能被batch_size整除时，是否丢弃最后一个不完整的批次。</li>
-<li><code>sampler</code> (可选)：定义从数据集中抽取样本的策略。如果指定，则忽略shuffle参数。</li>
-<li><code>batch_sampler</code> (可选)：与 sampler 类似，但一次返回一个批次的索引。不能与 batch_size、shuffle 和 sampler 同时使用。</li>
-<li><code>collate_fn</code> (可选)：如何将多个数据样本整合成一个批次。通常不需要指定。</li>
-<li><code>drop_last</code> (可选)：如果数据集大小不能被批次大小整除，是否丢弃最后一个不完整的批次。默认为False。</li>
-</ul>
-<hr>
-<h3 id="2-创建自定义dataset"><strong>2. 创建自定义Dataset</strong></h3>
-<p>假设数据是随机生成的张量，实际场景中可能需要从文件读取。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> torch.utils.data <span style="color:#f92672">import</span> Dataset, DataLoader
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomDataset</span>(Dataset):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, data, labels):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> data      <span style="color:#75715e"># 样本数据（例如图像）</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>labels <span style="color:#f92672">=</span> labels  <span style="color:#75715e"># 样本标签</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __len__(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>data)  <span style="color:#75715e"># 返回数据总数量</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __getitem__(self, idx):
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 返回单个样本及其标签（自动组成批次由DataLoader处理）</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>data[idx], self<span style="color:#f92672">.</span>labels[idx]
-</span></span></code></pre></div><hr>
-<h3 id="3-生成示例数据"><strong>3. 生成示例数据</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 假设有100个样本，每个样本是3通道的32x32图像</span>
-</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 对应的标签是0-9的整数</span>
-</span></span><span style="display:flex;"><span>labels <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, (<span style="color:#ae81ff">100</span>,))
-</span></span></code></pre></div><hr>
-<h3 id="4-实例化dataset和dataloader"><strong>4. 实例化Dataset和DataLoader</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dataset <span style="color:#f92672">=</span> CustomDataset(data, labels)
-</span></span><span style="display:flex;"><span>dataloader <span style="color:#f92672">=</span> DataLoader(
-</span></span><span style="display:flex;"><span>    dataset,
-</span></span><span style="display:flex;"><span>    batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,    <span style="color:#75715e"># 每批4个样本</span>
-</span></span><span style="display:flex;"><span>    shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,    <span style="color:#75715e"># 每个epoch打乱数据</span>
-</span></span><span style="display:flex;"><span>    num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,   <span style="color:#75715e"># 使用2个子进程加载数据</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><hr>
-<h3 id="5-遍历dataloader"><strong>5. 遍历DataLoader</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> batch_data, batch_labels <span style="color:#f92672">in</span> dataloader:
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># batch_data形状: [4, 3, 32, 32]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># batch_labels形状: [4]</span>
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Batch data shape:&#34;</span>, batch_data<span style="color:#f92672">.</span>shape)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Batch labels shape:&#34;</span>, batch_labels<span style="color:#f92672">.</span>shape)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 在此处执行模型训练/验证...</span>
-</span></span></code></pre></div><hr>
-<h3 id="6-处理真实数据示例图像分类"><strong>6. 处理真实数据（示例：图像分类）</strong></h3>
-<p>若处理图像文件，需在 <code>Dataset</code> 中读取图片并预处理：</p>
-    </div>
-  <a href="/post/pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 12, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="link black dim">
-        脚本使用
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h4 id="脚本学习">脚本学习</h4>
-<ol>
-<li>
-<p>python main.py train mini/trainval &ndash;dataroot=NUSCENES_ROOT &ndash;logdir=./runs &ndash;gpuid=0 tensorboard &ndash;logdir=./runs &ndash;bind_all</p>
-<h4 id="第一部分python-mainpy-train-minitrainval-">第一部分：<code>python main.py train mini/trainval ...</code></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py train mini/trainval --dataroot<span style="color:#f92672">=</span>NUSCENES_ROOT --logdir<span style="color:#f92672">=</span>./runs --gpuid<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-</span></span></code></pre></div><p><strong>参数解析</strong>：</p>
-<ul>
-<li><code>train</code>：表示执行训练模式。</li>
-<li><code>mini/trainval</code>：数据集的子集（如训练集+验证集的迷你版本）。</li>
-<li><code>--dataroot=NUSCENES_ROOT</code>：指定数据集路径，需替换<code>NUSCENES_ROOT</code>为实际路径。</li>
-<li><code>--logdir=./runs</code>：训练日志和模型检查点会保存在<code>./runs</code>目录。</li>
-<li><code>--gpuid=0</code>：使用第0号GPU（如果有多块GPU）。</li>
-</ul>
-<p><strong>第二部分：<code>tensorboard --logdir=./runs --bind_all</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tensorboard --logdir<span style="color:#f92672">=</span>./runs --bind_all
-</span></span></code></pre></div><ol>
-<li>
-<p><strong>作用</strong>：</p>
-<p>启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。</p>
-</li>
-<li>
-<p><strong>参数解析</strong>：</p>
-<ul>
-<li><code>--logdir=./runs</code>：指定TensorBoard读取的日志目录（与训练脚本的<code>--logdir</code>一致）。</li>
-<li><code>--bind_all</code>：允许通过网络访问TensorBoard（默认地址通常是<code>localhost:6006</code>）。</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="fire-库"><code>Fire</code> 库</h4>
-<p>作用：将Python函数<strong>自动转换为命令行接口</strong></p>
-<ul>
-<li>
-<p><strong>命令结构</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py &lt;函数名&gt; <span style="color:#f92672">[</span>函数参数<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>--选项<span style="color:#f92672">=</span>值<span style="color:#f92672">]</span>
-</span></span></code></pre></div><ul>
-<li>&lt;函数名&gt;：必须是 <code>Fire</code> 字典中的键（如 <code>train</code>、<code>lidar_check</code>）。</li>
-<li>[函数参数]：传递给对应函数的位置参数。</li>
-<li>[&ndash;选项=值]：对应函数的关键字参数（如 <code>--dataroot</code>、<code>--logdir</code>）。</li>
-</ul>
-</li>
-<li>
-<p><strong>举例</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py train mini/trainval --dataroot<span style="color:#f92672">=</span>NUSCENES_ROOT --logdir<span style="color:#f92672">=</span>./runs --gpuid<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-</span></span></code></pre></div><ul>
-<li><strong><code>train</code></strong>：选择执行 <code>src.train.train</code> 函数。</li>
-<li><strong><code>mini/trainval</code></strong>：作为位置参数传递给 <code>src.train.train</code> 的第一个参数。</li>
-<li><strong><code>--dataroot</code>、<code>--logdir</code>、<code>--gpuid</code></strong>：作为关键字参数传递给 <code>src.train.train</code>。</li>
-</ul>
-</li>
-</ul>
-    </div>
-  <a href="/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 11, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="link black dim">
-        数据集-NuSences
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <ol>
-<li>
-<h4 id="内容">内容</h4>
-<p>nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。</p>
-<p>nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。</p>
-<p> </p>
-</li>
-<li>
-<h4 id="数据采集">数据采集</h4>
-<ol>
-<li>
-<p><strong>车辆设置</strong></p>
-<p><img src="/images/nuSences/1.png" alt="1"></p>
-<ol>
-<li>1 个旋转激光雷达 （Velodyne HDL32E）</li>
-<li>5 个远程雷达传感器 （Continental ARS 408-21）</li>
-<li>6 个相机 （Basler acA1600-60gc）</li>
-<li>1个 IMU &amp; GPS （高级导航空间版）</li>
-</ol>
-</li>
-<li>
-<p><strong>Sensor(传感器)校准 - 内外参</strong></p>
-<ol>
-<li>LIDAR extrinsics</li>
-<li>相机 extrinsics</li>
-<li>RADAR extrinsics</li>
-<li>相机 intrinsic 校准</li>
-</ol>
-</li>
-<li>
-<p><strong>Sensor(传感器)同步</strong></p>
-<p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
-</li>
-</ol>
-<p> </p>
-</li>
-<li>
-<h4 id="数据标准">数据标准</h4>
-<ul>
-<li>
-<p>nuScenes 数据集中的所有对象都带有一个<strong>语义类别</strong>，以及一个 <strong>3D 边界框</strong>和它们所在的<strong>每一帧的属性</strong>。：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_nuscenes.md">类的定义</a></p>
-</li>
-<li>
-<p>nuScenes-lidarseg 使用<strong>语义标签</strong>注释激光雷达点云中的每个点：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_lidarseg.md">类的定义</a></p>
-    </div>
-  <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -661,16 +1267,8 @@
 <p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
 </li>
 </ol>
-<p> </p>
 </li>
-<li>
-<h4 id="数据标准">数据标准</h4>
-<ul>
-<li>
-<p>nuScenes 数据集中的所有对象都带有一个<strong>语义类别</strong>，以及一个 <strong>3D 边界框</strong>和它们所在的<strong>每一帧的属性</strong>。：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_nuscenes.md">类的定义</a></p>
-</li>
-<li>
-<p>nuScenes-lidarseg 使用<strong>语义标签</strong>注释激光雷达点云中的每个点：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_lidarseg.md">类的定义</a></p>
+</ol>
     </div>
   <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -729,16 +1327,8 @@
 <p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
 </li>
 </ol>
-<p> </p>
 </li>
-<li>
-<h4 id="数据标准">数据标准</h4>
-<ul>
-<li>
-<p>nuScenes 数据集中的所有对象都带有一个<strong>语义类别</strong>，以及一个 <strong>3D 边界框</strong>和它们所在的<strong>每一帧的属性</strong>。：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_nuscenes.md">类的定义</a></p>
-</li>
-<li>
-<p>nuScenes-lidarseg 使用<strong>语义标签</strong>注释激光雷达点云中的每个点：<a href="https://github.com/nutonomy/nuscenes-devkit/blob/master/docs/instructions_lidarseg.md">类的定义</a></p>
+</ol>
     </div>
   <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -786,8 +1376,8 @@
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/" class="link black dim">
-        强化学习-工具链
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-强化学习
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
@@ -820,7 +1410,7 @@
 </li>
 </ul>
     </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -1500,420 +2090,6 @@
         
       
         <h2 class="f1">
-          <a href="/tags/llm/" class="link blue hover-black">
-            Tag: LLM
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 19, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%BE%AE%E8%B0%83/" class="link black dim">
-        微调
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="大模型预训练">大模型预训练</h2>
-<h4 id="1-从零开始的预训练">1 从零开始的预训练</h4>
-<h4 id="2-在已有开源模型基础上针对特定任务进行训练">2 在已有开源模型基础上针对特定任务进行训练</h4>
-<p> </p>
-<h3 id="lora">LoRa</h3>
-<p>通过化简权重矩阵，实现高效微调</p>
-<p><img src="/images/preTrain/1.png" alt="1"></p>
-<p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
-<p>训练参数量减少，但微调效果基本不变。</p>
-<ul>
-<li>
-<p>两个重要参数：</p>
-<p><img src="/images/preTrain/2.png" alt="2"></p>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        BEV 论文学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
-<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
-<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
-<h4 id="1-背景介绍">1. 背景介绍</h4>
-<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
-<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
-<h4 id="3-主要方法分类">3. 主要方法分类</h4>
-<ol>
-<li>
-<p><strong>基于几何的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
-<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于深度的方法</strong></p>
-<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
-<ul>
-<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
-<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
-</ul>
-</li>
-<li>
-<p><strong>基于MLP的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
-<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于Transformer的方法</strong>：</p>
-    </div>
-  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1基础">1基础</h1>
-<h2 id="1-特征提取">1. 特征提取</h2>
-<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
-<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
-<p> </p>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li>
-<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
-</li>
-<li>
-<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
-<p><img src="/images/MLLM/1.png" alt="1"></p>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
-</ul>
-<p> </p>
-<p> </p>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-<p> </p>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 8, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/transformer/" class="link black dim">
-        transformer
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="一transformer架构">一、Transformer架构</h2>
-<ul>
-<li>
-<p>﻿基于编码器-解码器架构来处理序列对</p>
-</li>
-<li>
-<p>﻿跟使用注意力的seq2seq不同，Transformer是纯基于注意力</p>
-<ul>
-<li>
-<p>seq2seq</p>
-<p><img src="/images/trans/1.png" alt="1"></p>
-</li>
-<li>
-<p>transformer</p>
-<p><img src="/images/trans/2.jpg" alt="1"></p>
-</li>
-</ul>
-</li>
-</ul>
-<p> </p>
-<h3 id="1-多头注意力muti-head-attention">1. 多头注意力(Muti-head attention)</h3>
-<ul>
-<li>
-<p>对同一key，value，query，希望抽取不同的信息*（类似卷积的多通道）*</p>
-<ul>
-<li>例如短距离关系和长距离关系</li>
-</ul>
-</li>
-<li>
-<p>多头注意力使用h个独立的注意力池化</p>
-<ul>
-<li>合并各个头（head） 输出得到最终输出</li>
-</ul>
-</li>
-</ul>
-<p><img src="/images/trans/3.png" alt="3"></p>
-<ol>
-<li>通过全连阶层，映射到一个较低的维度</li>
-<li>进行多个attention</li>
-<li>对每一个attention的输出，进行concat</li>
-<li>再通过一个全连接，得到输出的维度</li>
-</ol>
-<h4 id="数学原理">数学原理</h4>
-<p><img src="/images/trans/4.jpg" alt="4"></p>
-    </div>
-  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 20, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/llm/" class="link black dim">
-        LLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><a href="https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&amp;vd_source=80aea28698fb0235b45699fc7e6fcdac&amp;p=2">https://www.bilibili.com/video/BV1uNk1YxEJQ?spm_id_from=333.788.videopod.episodes&vd_source=80aea28698fb0235b45699fc7e6fcdac&p=2</a></p>
-<h1 id="概述">概述</h1>
-<h2 id="大模型的演变">大模型的演变</h2>
-<p>大模型的训练整体上分为三个阶段：</p>
-<ol>
-<li>
-<p><strong>预训练</strong></p>
-<p>在这个阶段它会学习各种不同种类的语料，学习到语言的统计规律和一般知识。</p>
-<p>但是大模型在这个阶段只是学会了补全句子，却没有学会怎么样去领会人类的意图（类似成语接龙）。</p>
-</li>
-<li>
-<p><strong>SFT（监督微调）</strong></p>
-<p>在这个阶段大模型可以学习各种人类的对话语料，甚至是非常专业的垂直领域知识。</p>
-<p>但是模型的回答有时候可能并不符合人类的偏好，它可能会输出一些涉黄、涉政、涉暴或者种族歧视等言论。</p>
-</li>
-<li>
-<p><strong>RLHF（基于人类反馈的强化学习）</strong></p>
-<p>在这个阶段大模型会针对同一问题进行多次回答，人类会对这些回答打分。</p>
-<p>大模型会在此阶段学习到如何输出分数最高的回答，使得回答更符合人类的偏好。</p>
-</li>
-</ol>
-<h2 id="分类">分类</h2>
-<ol>
-<li>
-<p>大语言模型（LLM）</p>
-<p>专注于自然语言处理（NLP），旨在处理语言、文章、对话等自然语言文本。</p>
-</li>
-<li>
-<p>多模态模型</p>
-<p>多模态大模型能够同时处理和理解来自不同感知通道（如文本、图像、音频、视频等）的数据，在这些模态之间建立关联和交互。</p>
-</li>
-</ol>
-<h2 id="工作流程">工作流程</h2>
-<h3 id="分词化与词表映射">分词化与词表映射</h3>
-<p>分词化（Tokenization）是指将段落和句子分割成更小的分词（token）的过程。</p>
-    </div>
-  <a href="/post/llm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/diffusion-model/" class="link black dim">
-        Diffusion Model
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="概述">概述</h1>
-<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
-<p><img src="/images/DM/19.png" alt="19"></p>
-<p>进一步：输入加入了文字表述</p>
-<p>目标：产生的图片与真实图片越接近越好</p>
-<h2 id="原理">原理</h2>
-<ul>
-<li>
-<p><strong>Reverse Process</strong>（多次Denoise）</p>
-<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
-</li>
-<li>
-<p><strong>Forward Process</strong>:</p>
-<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
-</li>
-</ul>
-<p><img src="/images/DM/1.png" alt="1"></p>
-<ul>
-<li>
-<p>Denoise输入：图片 + 噪音程度</p>
-<p><img src="/images/DM/2.png" alt="2"></p>
-</li>
-</ul>
-<h3 id="denoise-model内部">Denoise Model内部</h3>
-<p><img src="/images/DM/3.png" alt="3"></p>
-    </div>
-  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 4, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/generativeai/" class="link black dim">
-        Generative AI
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="chatgpt">ChatGPT</h1>
-<p><img src="/images/GA/1.png" alt="1"></p>
-<ul>
-<li>
-<p>G：generative</p>
-</li>
-<li>
-<p>P：pre-trained</p>
-</li>
-<li>
-<p>T：transformer</p>
-</li>
-</ul>
-<p> </p>
-<ol>
-<li>
-<p>ChatGPT 真正做的事：文字接龙</p>
-<p><strong>Autoregressive Generation</strong>：逐个生成</p>
-<p><img src="/images/GA/3.png" alt="3"></p>
-<p><img src="/images/GA/4.png" alt="4"></p>
-</li>
-<li>
-<p><strong>token</strong></p>
-<p>文字接龙时可以选择的符号</p>
-<p><img src="/images/GA/5.png" alt="5"></p>
-</li>
-<li>
-<p>每次回答都随机（掷骰子）</p>
-<p><img src="/images/GA/6.png" alt="6"></p>
-</li>
-</ol>
-    </div>
-  <a href="/post/generativeai/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 29, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ad01491f-ff96-44a7-9a2f-606c66461df8/%E6%88%AA%E5%B1%8F2024-12-30_19.27.19.png" alt="截屏2024-12-30 19.27.19.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/40f99add-baee-40ad-ab9b-45dc5f312af9/%E6%88%AA%E5%B1%8F2024-12-30_19.28.31.png" alt="截屏2024-12-30 19.28.31.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/99bd3fd9-fabb-421d-bcdb-0e6d0c5be310/%E6%88%AA%E5%B1%8F2024-12-30_19.29.08.png" alt="截屏2024-12-30 19.29.08.png"></p>
-<p>应用：</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/1b594f9d-d71f-4af3-b7c9-285e1dfffec6/%E6%88%AA%E5%B1%8F2024-12-30_19.29.47.png" alt="截屏2024-12-30 19.29.47.png"></p>
-<h2 id="去噪自动编码器">去噪自动编码器</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a8e8568e-18b2-4281-a7af-05a627e6f5f0/%E6%88%AA%E5%B1%8F2024-12-30_19.35.42.png" alt="截屏2024-12-30 19.35.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ce2c3930-ae83-40a9-b9d3-aa3f4f0246bd/%E6%88%AA%E5%B1%8F2024-12-30_19.36.58.png" alt="截屏2024-12-30 19.36.58.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/fdd726fa-7eb9-4b24-af63-f917ee593b1c/%E6%88%AA%E5%B1%8F2024-12-30_19.37.09.png" alt="截屏2024-12-30 19.37.09.png"></p>
-<h2 id="变分自动编码器">变分自动编码器</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/f4509f09-0920-4a7e-b5ba-74cbec294241/%E6%88%AA%E5%B1%8F2024-12-30_19.39.12.png" alt="截屏2024-12-30 19.39.12.png"></p>
-<ul>
-<li>
-<p>损失函数</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/add2cf71-1094-4639-b2d5-699f551beb48/%E6%88%AA%E5%B1%8F2024-12-30_19.40.36.png" alt="截屏2024-12-30 19.40.36.png"></p>
-</li>
-</ul>
-<h3 id="reparameterization-trick重参数化">Reparameterization Trick(重参数化)</h3>
-<p>如何实现反向传播？</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/db9e763f-81d3-460f-81dc-b81242f41cdb/%E6%88%AA%E5%B1%8F2024-12-30_19.42.30.png" alt="截屏2024-12-30 19.42.30.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e3fb22c3-4a30-4511-9457-4dc08d40b210/%E6%88%AA%E5%B1%8F2024-12-30_19.44.43.png" alt="截屏2024-12-30 19.44.43.png"></p>
-<ul>
-<li>
-<p>核心代码</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9c033e5a-8e28-4e82-ab6e-80d29dd08a20/%E6%88%AA%E5%B1%8F2024-12-30_19.45.33.png" alt="截屏2024-12-30 19.45.33.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/64564c69-b355-4559-95b2-2186d3cf9e08/%E6%88%AA%E5%B1%8F2024-12-30_19.45.42.png" alt="截屏2024-12-30 19.45.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/df9a2aa4-f700-4975-a5ca-f315eab2bcab/%E6%88%AA%E5%B1%8F2024-12-30_19.46.02.png" alt="截屏2024-12-30 19.46.02.png"></p>
-</li>
-</ul>
-<h3 id="解耦变分自编码器"><strong>解耦变分自编码器</strong></h3>
-<p>目的：确保潜在分布中的不同神经元互不相干，都在尝试学习输入数据中的不同内容。</p>
-<ul>
-<li>
-<p>解决方式：增加超参数$\beta$，衡量损失函数中的KL散度。</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9501fd11-c948-42ff-ba18-807ca26a11eb/%E6%88%AA%E5%B1%8F2024-12-30_22.11.49.png" alt="截屏2024-12-30 22.11.49.png"></p>
-</li>
-</ul>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/d64275f8-60ea-4cd6-862a-d8d7821c8b3d/%E6%88%AA%E5%B1%8F2024-12-30_22.18.10.png" alt="截屏2024-12-30 22.18.10.png"></p>
-<p>$\beta$过小：过拟合</p>
-<p>$\beta$过大：失去输入中的大量细节</p>
-<p><strong>在强化学习中的作用</strong>：使Agent可以在压缩后的输入T空间上运行。</p>
-    </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
           <a href="/tags/algorithm/" class="link blue hover-black">
             Tag: Algorithm
           </a>
@@ -2527,29 +2703,6 @@
 <li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
 <li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
 </ul>
-<p> </p>
-<p> </p>
-<h3 id="二nlp中的特征提取"><strong>二、NLP中的特征提取</strong></h3>
-<h4 id="1-传统方法基于统计与规则"><strong>1. 传统方法（基于统计与规则）</strong></h4>
-<p><strong>(1) 词袋模型（Bag of Words, BoW）</strong>: 将文本表示为词汇表中单词的出现频率。</p>
-<p><strong>(2) TF-IDF（词频-逆文档频率）</strong>: 衡量单词在文档中的重要性（TF-IDF值 = 词频 × 逆文档频率）。</p>
-<p><strong>(3) N-gram模型</strong>: 统计连续N个词的组合频率（如Bi-gram、Tri-gram）。</p>
-<h5 id="4-词嵌入预训练词向量"><strong>(4) 词嵌入（预训练词向量）</strong></h5>
-<ul>
-<li><strong>Word2Vec</strong>（2013）：
-<ul>
-<li>通过Skip-Gram或CBOW模型，将词映射为低维稠密向量。</li>
-<li>相似词在向量空间中距离相近（如“国王-王后≈男人-女人”）。</li>
-</ul>
-</li>
-<li><strong>GloVe</strong>（2014）：
-<ul>
-<li>基于全局词共现矩阵，结合统计信息和词向量学习。</li>
-</ul>
-</li>
-</ul>
-<p><strong>(5) 局限性</strong>：无法建模长距离上下文依赖; 词向量静态，无法处理一词多义。</p>
-<p> </p>
     </div>
   <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -2601,6 +2754,114 @@
 <p><img src="/images/DM/3.png" alt="3"></p>
     </div>
   <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/generativeai/" class="link black dim">
+        Generative AI
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="chatgpt">ChatGPT</h1>
+<p><img src="/images/GA/1.png" alt="1"></p>
+<ul>
+<li>
+<p>G：generative</p>
+</li>
+<li>
+<p>P：pre-trained</p>
+</li>
+<li>
+<p>T：transformer</p>
+</li>
+</ul>
+<p> </p>
+<ol>
+<li>
+<p>ChatGPT 真正做的事：文字接龙</p>
+<p><strong>Autoregressive Generation</strong>：逐个生成</p>
+<p><img src="/images/GA/3.png" alt="3"></p>
+<p><img src="/images/GA/4.png" alt="4"></p>
+</li>
+<li>
+<p><strong>token</strong></p>
+<p>文字接龙时可以选择的符号</p>
+<p><img src="/images/GA/5.png" alt="5"></p>
+</li>
+<li>
+<p>每次回答都随机（掷骰子）</p>
+<p><img src="/images/GA/6.png" alt="6"></p>
+</li>
+</ol>
+    </div>
+  <a href="/post/generativeai/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 29, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/vae/" class="link black dim">
+        VAE
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="普通自动编码器">普通自动编码器</h2>
+<p>目标：将高维度数据压缩成较小的表示</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ad01491f-ff96-44a7-9a2f-606c66461df8/%E6%88%AA%E5%B1%8F2024-12-30_19.27.19.png" alt="截屏2024-12-30 19.27.19.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/40f99add-baee-40ad-ab9b-45dc5f312af9/%E6%88%AA%E5%B1%8F2024-12-30_19.28.31.png" alt="截屏2024-12-30 19.28.31.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/99bd3fd9-fabb-421d-bcdb-0e6d0c5be310/%E6%88%AA%E5%B1%8F2024-12-30_19.29.08.png" alt="截屏2024-12-30 19.29.08.png"></p>
+<p>应用：</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/1b594f9d-d71f-4af3-b7c9-285e1dfffec6/%E6%88%AA%E5%B1%8F2024-12-30_19.29.47.png" alt="截屏2024-12-30 19.29.47.png"></p>
+<h2 id="去噪自动编码器">去噪自动编码器</h2>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a8e8568e-18b2-4281-a7af-05a627e6f5f0/%E6%88%AA%E5%B1%8F2024-12-30_19.35.42.png" alt="截屏2024-12-30 19.35.42.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ce2c3930-ae83-40a9-b9d3-aa3f4f0246bd/%E6%88%AA%E5%B1%8F2024-12-30_19.36.58.png" alt="截屏2024-12-30 19.36.58.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/fdd726fa-7eb9-4b24-af63-f917ee593b1c/%E6%88%AA%E5%B1%8F2024-12-30_19.37.09.png" alt="截屏2024-12-30 19.37.09.png"></p>
+<h2 id="变分自动编码器">变分自动编码器</h2>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/f4509f09-0920-4a7e-b5ba-74cbec294241/%E6%88%AA%E5%B1%8F2024-12-30_19.39.12.png" alt="截屏2024-12-30 19.39.12.png"></p>
+<ul>
+<li>
+<p>损失函数</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/add2cf71-1094-4639-b2d5-699f551beb48/%E6%88%AA%E5%B1%8F2024-12-30_19.40.36.png" alt="截屏2024-12-30 19.40.36.png"></p>
+</li>
+</ul>
+<h3 id="reparameterization-trick重参数化">Reparameterization Trick(重参数化)</h3>
+<p>如何实现反向传播？</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/db9e763f-81d3-460f-81dc-b81242f41cdb/%E6%88%AA%E5%B1%8F2024-12-30_19.42.30.png" alt="截屏2024-12-30 19.42.30.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e3fb22c3-4a30-4511-9457-4dc08d40b210/%E6%88%AA%E5%B1%8F2024-12-30_19.44.43.png" alt="截屏2024-12-30 19.44.43.png"></p>
+<ul>
+<li>
+<p>核心代码</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9c033e5a-8e28-4e82-ab6e-80d29dd08a20/%E6%88%AA%E5%B1%8F2024-12-30_19.45.33.png" alt="截屏2024-12-30 19.45.33.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/64564c69-b355-4559-95b2-2186d3cf9e08/%E6%88%AA%E5%B1%8F2024-12-30_19.45.42.png" alt="截屏2024-12-30 19.45.42.png"></p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/df9a2aa4-f700-4975-a5ca-f315eab2bcab/%E6%88%AA%E5%B1%8F2024-12-30_19.46.02.png" alt="截屏2024-12-30 19.46.02.png"></p>
+</li>
+</ul>
+<h3 id="解耦变分自编码器"><strong>解耦变分自编码器</strong></h3>
+<p>目的：确保潜在分布中的不同神经元互不相干，都在尝试学习输入数据中的不同内容。</p>
+<ul>
+<li>
+<p>解决方式：增加超参数$\beta$，衡量损失函数中的KL散度。</p>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9501fd11-c948-42ff-ba18-807ca26a11eb/%E6%88%AA%E5%B1%8F2024-12-30_22.11.49.png" alt="截屏2024-12-30 22.11.49.png"></p>
+</li>
+</ul>
+<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/d64275f8-60ea-4cd6-862a-d8d7821c8b3d/%E6%88%AA%E5%B1%8F2024-12-30_22.18.10.png" alt="截屏2024-12-30 22.18.10.png"></p>
+<p>$\beta$过小：过拟合</p>
+<p>$\beta$过大：失去输入中的大量细节</p>
+<p><strong>在强化学习中的作用</strong>：使Agent可以在压缩后的输入T空间上运行。</p>
+    </div>
+  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         

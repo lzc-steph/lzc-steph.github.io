@@ -2,7 +2,7 @@
 date: 2025-02-17T11:00:59-04:00
 description: ""
 featured_image: "/images/BEVthesis/lucky.jpg"
-tags: ["LLM", "CV", "BEV"]
+tags: ["CV", "BEV"]
 title: "BEV 论文学习"
 ---
 

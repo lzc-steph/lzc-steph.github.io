@@ -2,7 +2,7 @@
 date: 2024-12-29T11:00:59-04:00
 description: "变分自编码器（VAE） 是一种生成模型，通过学习数据的潜在表示来生成新样本。它结合了深度学习和概率建模，通过编码器将输入数据映射到潜在空间，再通过解码器从潜在空间重建数据。VAE的训练目标包括重建误差和潜在空间的正则化（KL散度），确保潜在空间连续且结构化。"
 featured_image: "/images/vae/taytay.HEIC"
-tags: ["LLM"]
+tags: ["Generative AI"]
 title: "VAE"
 ---
 

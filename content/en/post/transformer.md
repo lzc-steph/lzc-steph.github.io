@@ -20,6 +20,8 @@ title: "transformer"
 
     ![1](/images/trans/2.jpg)
 
+<!--more-->
+
 &nbsp;
 
 ### 1. 多头注意力(Muti-head attention)
@@ -40,10 +42,6 @@ title: "transformer"
 #### 数学原理
 
 ![4](/images/trans/4.jpg)
-
-<!--more-->
-
-
 
 &nbsp;
 

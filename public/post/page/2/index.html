@@ -47,8 +47,8 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-04-14T04:00:59-07:00">
-  <meta itemprop="dateModified" content="2025-04-14T04:00:59-07:00">
+  <meta itemprop="datePublished" content="2025-04-22T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-22T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,53 +153,43 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        April 11, 2025
+        April 17, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="link black dim">
-        数据集-NuSences
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="link black dim">
+        工具链-PyTorch
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <ol>
+      <h2 id="1-处理数据">1. 处理数据</h2>
+<p>PyTorch 有两个用于处理数据的基元： <code>torch.utils.data.DataLoader</code> 和 <code>torch.utils.data.Dataset</code>。
+<code>Dataset</code> 存储样本及其相应的标签，<code>DataLoader</code> 将 <code>Dataset</code> 包装成一个迭代器。</p>
+<ul>
 <li>
-<h4 id="内容">内容</h4>
-<p>nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。</p>
-<p>nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。</p>
-<p> </p>
+<p>下面以 TorchVision 库模块里的 FashionMNIST 数据集为例：</p>
+<p>每个 TorchVision <code>Dataset</code> 都包含两个参数： <code>transform</code> 和 <code>target_transform</code> 分别修改样本和标签</p>
 </li>
-<li>
-<h4 id="数据采集">数据采集</h4>
-<ol>
-<li>
-<p><strong>车辆设置</strong></p>
-<p><img src="/images/nuSences/1.png" alt="1"></p>
-<ol>
-<li>1 个旋转激光雷达 （Velodyne HDL32E）</li>
-<li>5 个远程雷达传感器 （Continental ARS 408-21）</li>
-<li>6 个相机 （Basler acA1600-60gc）</li>
-<li>1个 IMU &amp; GPS （高级导航空间版）</li>
-</ol>
-</li>
-<li>
-<p><strong>Sensor(传感器)校准 - 内外参</strong></p>
-<ol>
-<li>LIDAR extrinsics</li>
-<li>相机 extrinsics</li>
-<li>RADAR extrinsics</li>
-<li>相机 intrinsic 校准</li>
-</ol>
-</li>
-<li>
-<p><strong>Sensor(传感器)同步</strong></p>
-<p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
-</li>
-</ol>
-</li>
-</ol>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Download training data from open datasets.</span>
+</span></span><span style="display:flex;"><span>training_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download test data from open datasets.</span>
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>将 <code>Dataset</code> 作为参数传递给 <code>DataLoader</code> ，将一个可迭代对象包装在数据集上，支持自动批处理、采样、洗牌和多进程数据加载。</p>
+<p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
     </div>
-  <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -208,35 +198,41 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        April 6, 2025
+        April 17, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/" class="link black dim">
-        强化学习-发展趋势
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-深度学习
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h4 id="1阶段">1阶段</h4>
-<p><strong>RL</strong>：一种解决马尔可夫决策过程的方法。</p>
-<p><strong>分类</strong>：value-based算法（DQN）和 policy-based算法（PPO)。</p>
-<p><strong>应用方向</strong>：多智能体强化学习， 安全强化学习等等。</p>
-<p> </p>
-<h4 id="2-阶段">2 阶段</h4>
-<p>强化学习应用的论文描述严格（必须有以下内容）：</p>
+      <h2 id="torch--cuda--nvidia"><strong>Torch + CUDA + NVIDIA</strong>：</h2>
+<ul>
+<li>
+<p>安装步骤：</p>
 <ol>
-<li>非常准确的状态空间和动作空间定义</li>
-<li>必须存在状态转移函数，不允许单步决策，也就是一个动作就gameover</li>
-<li>必须有过程奖励，且需要存在牺牲短期的过程奖励而获取最大累计回报的case案例</li>
+<li>
+<p>去 Nvidia 官网下载 CUDA 并安装（核心：驱动+CUDA开发环境）</p>
+<p><img src="/images/DLtool/1.png" alt="1"></p>
+<p>检查：<code>nvidia-smi</code> 指令</p>
+</li>
+<li>
+<p>下载 Anaconda，用于运行 python 环境</p>
+</li>
+<li>
+<p>下载 GPU 版本的 pytorch</p>
+<p><img src="/images/DLtool/2.png" alt="2"></p>
+</li>
+<li>
+<p>可以开始跑深度学习了！</p>
+</li>
 </ol>
-<p><strong>应用方向</strong>：游戏AI（份额不大）</p>
-<p> </p>
-<h4 id="3-阶段">3 阶段</h4>
-<p>RL 落地的真正难点在于<strong>问题的真实构建</strong>，而非近似构建或策略求解等等方面的问题。从原先任务只有求解策略的过程是强化学习，变成了 <strong>构建问题+求解策略</strong> 统称为强化学习。</p>
-<p>典型如 offline model-based RL 和 RLHF，其中核心的模块变成了<strong>通过神经网络模拟状态转移函数和奖励函数</strong>，策略求解反而在方法论中被一句带过。</p>
-<p>这个过程可以被解耦，变成跟强化学习毫无相关的名词概念，例如世界模型概念等。对于RL，没有有效的交互环境下的就没法达到目标，有这种有效交互环境的实际应用场景却非常少。</p>
+</li>
+</ul>
+<p><strong>Torch</strong> 是一个深度学习框架，用于构建和训练神经网络，该可以利用<strong>CUDA</strong>在<strong>NVIDIA GPU</strong>上加速计算。通过在PyTorch中指定使用CUDA进行训练，可以在处理大数据集时大大提高计算效率。</p>
     </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -245,45 +241,61 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        April 4, 2025
+        April 16, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/" class="link black dim">
-        强化学习-工具链
+      <a href="/post/bert/" class="link black dim">
+        BERT
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-gym">1. gym</h2>
-<p>官方文档：https://www.gymlibrary.dev</p>
-<ul>
+      <p>名字来源：美国的一个动画片芝麻街里的主人公</p>
+<p>论文：https://arxiv.org/abs/1810.04805</p>
+<h3 id="nlp-里的迁移学习">NLP 里的迁移学习</h3>
+<ol>
 <li>
-<p>最小例子 <code>CartPole-v0</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
-</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>reset()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>render()
-</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>step(env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()) <span style="color:#75715e"># take a random action</span>
-</span></span></code></pre></div></li>
+<p><strong>在 bert 之前：使用预训练好的模型来抽取词、句子的特征</strong></p>
+<ul>
+<li>如用 word2vec 或 语言模型（当作embedding层）</li>
+<li>﻿不更新预训练好的模型</li>
+<li>﻿缺点
+<ul>
+<li>需要构建新的网络来抓取新任务需要的信息</li>
+<li>﻿Word2vec 忽略了时序信息，语言模型只看了一个方向</li>
 </ul>
-<p> </p>
-<h3 id="观测-observations">观测 (Observations)</h3>
-<p>在 Gym 仿真中，每一次回合开始，需要先执行 <code>reset()</code> 函数，返回<strong>初始观测信息，然后根据标志位 <code>done</code> 的状态，来决定是否进行下一次回合</strong>。代码表示：</p>
-<p> </p>
-<p><code>env.step()</code> 函数对每一步进行仿真，返回 4 个参数：</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>bert 的动机</strong></p>
 <ul>
 <li>
-<p><strong>观测</strong> Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；</p>
+<p>基于微调的 NLP 模型</p>
+<p>前面的层不用动，改最后一层的 output layer 即可</p>
 </li>
 <li>
-<p><strong>奖励</strong> Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；</p>
+<p>预训练的模型抽取了足够多的信息，新的任务只需要增加一个简单的输出层</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h2 id="bert-架构">BERT 架构</h2>
+<p><strong>本质</strong>：一个砍掉解码器、只有编码器的 transformer</p>
+<p>bert 的工作：证明了效果非常好</p>
+<ul>
+<li>
+<p>两个版本：</p>
+<p><strong>Base</strong>: #blocks=12, hidden size=768, #heads=12,  #parameters=110M</p>
+<p>﻿﻿<strong>Large</strong>: #blocks=24, hidden size=1024, #heads=1, #parameter=340M</p>
 </li>
 <li>
-<p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
+<p>﻿在大规模数据上训练&gt;3B词</p>
 </li>
 </ul>
     </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E5%85%B7%E9%93%BE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/bert/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -316,7 +328,7 @@
         <a href="/post/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/15/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/16/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>
