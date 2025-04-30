@@ -40,14 +40,15 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-04-22T11:00:59-04:00">
-    <meta property="article:modified_time" content="2025-04-22T11:00:59-04:00">
+    <meta property="article:published_time" content="2025-04-27T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-04-27T11:00:59-04:00">
     <meta property="article:tag" content="LLM">
 
   <meta itemprop="name" content="LLM - 2.预训练阶段">
   <meta itemprop="description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
-  <meta itemprop="datePublished" content="2025-04-22T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-04-22T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-27T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-27T11:00:59-04:00">
+  <meta itemprop="wordCount" content="164">
   <meta itemprop="keywords" content="LLM">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="LLM - 2.预训练阶段">
@@ -169,7 +170,7 @@
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm2%2F&amp;summary=&amp;title=LLM&#43;-&#43;2.%E9%A2%84%E8%AE%AD%E7%BB%83%E9%98%B6%E6%AE%B5&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm2%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm2%2F&amp;summary=%0A&amp;title=LLM&#43;-&#43;2.%E9%A2%84%E8%AE%AD%E7%BB%83%E9%98%B6%E6%AE%B5&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm2%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -181,13 +182,200 @@
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2025-04-22T11:00:59-04:00">April 22, 2025</time>
+      <time class="f6 mv4 dib tracked" datetime="2025-04-27T11:00:59-04:00">April 27, 2025</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><ul class="pa0">
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><img src="/images/LLM2/0.png" alt="0"></p>
+<h1 id="1-预训练数据">1 预训练数据</h1>
+<p>目标：构造海量“高质量”数据。</p>
+<h3 id="11-数据来源">1.1 数据来源</h3>
+<p>数据来源可分为两类：通用数据和专用数据。</p>
+<p><img src="/images/LLM2/1.png" alt="1"></p>
+<ul>
+<li>
+<p><strong>通用数据</strong></p>
+<p>网页、对话文本、书籍、多语言数据、科学文本、百科、代码&hellip;</p>
+</li>
+<li>
+<p><strong>专业数据</strong></p>
+<p>金融领域、医疗领域、法律领域&hellip;</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="12-数据处理">1.2 数据处理</h3>
+<p><img src="/images/LLM2/2.png" alt="2"></p>
+<h4 id="1-质量过滤">1. 质量过滤</h4>
+<ol>
+<li>
+<p><strong>基于分类器的方法</strong></p>
+<p>目标：训练文本质量判断模型，利用该模型识别并过滤低质量数据。</p>
+<p>分类器使用一组精选文本（维基百科、书籍等）进行训练，给于训练数据类似的网页较高分数，从而可以评估网页的内容质量。</p>
+</li>
+<li>
+<p><strong>基于启发式的方法</strong></p>
+<p>通过一组精心设计的规则来消除低质量文本。</p>
+<p>规则：语言过滤、指标过滤、统计特征过滤、关键词过滤&hellip;</p>
+</li>
+</ol>
+<h4 id="2-冗余去除">2. 冗余去除</h4>
+<p>在不同的粒度上去除重复内容（包括句子、文档和数据集等粒度）。</p>
+<ol>
+<li><strong>句子级别</strong>：删除包含大量重复单词或者短语的句子</li>
+<li><strong>文档级别</strong>：依靠文档之间的表面特征相似度（例如 n-gram 重叠比例）进行检测并删除重复文档</li>
+<li><strong>数据集级别</strong>：从句子、文档、数据集三个级别去除重复</li>
+</ol>
+<h4 id="3-隐私消除">3. 隐私消除</h4>
+<p>从预训练语料库中删除包含个人身份信息的内容。</p>
+<h4 id="4-词元切分">4. 词元切分</h4>
+<p><strong>未登录词 (OOV)</strong>：不在词表中的词，模型无法为其生成对应的表示。通常用[UNK]表示。</p>
+<ol>
+<li>
+<p><strong>子词（Subword）词元化</strong></p>
+<p>词元表示模型会维护一个词元词表，其中既存在完整的单词，也存在形如&quot;c&quot; &ldquo;re&quot;等单词的部分信息，称为子词。</p>
+<p>词元分析（Tokenization）是将原始文本分割成词元序列的过程。</p>
+</li>
+<li>
+<p><strong>字节对编码</strong></p>
+<p>一种常见的子词词元算法。采用的词表包含 最常见的单词 和 高频出现的子词。</p>
+<p>常见词通常位于 BPE 词表中；罕见词通常能被分解为若干个包含在 BPE 词表中的词元。</p>
+<ul>
+<li>
+<p>BPE 中词元词表计算过程</p>
+<p><img src="/images/LLM2/3.png" alt="3"></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>WordPiece</strong></p>
+<p>一种常见的词元分析算法。在每次合并时，选择使得训练数据似然概率增加最多的词元对。</p>
+<ul>
+<li>度量方法如：根据训练数据库中两个词元的共现计数除以它们各自的出现计数的乘积</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h3 id="13-数据影响分析">1.3 数据影响分析</h3>
+<h4 id="1-数据规模">1. 数据规模</h4>
+<ol>
+<li><strong>模型大小加倍</strong>，则训练词元数量也应该加倍</li>
+<li>对于给定训练计算量目标，存在一个<strong>最佳</strong>模型参数量和训练数据量配置</li>
+<li>随着训练数据量的增加，模型在任务的数据集上的<strong>性能</strong>都在稳步提高</li>
+<li>仅对模型进行 10M∼100M个词元的训练，就可以获得可靠的语法和语义特征。然而，需要更多的训练数据才能获得足够的常识知识和其他技能，并在典型的下游自然语言理解任务中取得较好的结果</li>
+</ol>
+<h4 id="2-数据质量">2. 数据质量</h4>
+<ol>
+<li>大量重复的低质量数据甚至导致训练过程不稳定，造成模型训练不收敛</li>
+<li>语言模型在经过清洗的高质量数据上训练可以得到更好的性能</li>
+<li>数据时效性对于模型效果有影响</li>
+<li>重复数据对于语言模型建模具有重要影响</li>
+</ol>
+<h4 id="3-数据多样性">3. 数据多样性</h4>
+<p>通过使用不同来源的数据进行训练，大语言模型可以获得广泛的知识。</p>
+<p> </p>
+<h3 id="14-开源数据集">1.4 开源数据集</h3>
+<p>包括 Pile, ROOTS, RefinedWeb, CulturaX, SlimPajama&hellip;</p>
+<p> </p>
+<p> </p>
+<h1 id="2-分布式训练">2 分布式训练</h1>
+<p><strong>目标</strong>：解决<strong>海量的计算</strong>和<strong>内存资源需求</strong>问题</p>
+<p><strong>分布式训练</strong>：将机器学习或深度学习模型训练任务分解成多个子任务，并在多个计算设备（<em>如中央处理器(CPU)、图形处理器(GPU)、张量处理器(TPU)和神经网络处理器(NPU)</em>）上并行训练。</p>
+<p><img src="/images/LLM2/4.png" alt="4"></p>
+<h3 id="21-分布式训练的并行策略">2.1 分布式训练的并行策略</h3>
+<p><strong>目标</strong>：将单节点模型训练转换成等价的分布式并行模型训练</p>
+<h4 id="1-数据并行">1. 数据并行</h4>
+<p>每个计算设备只分配一个批次数据样本的子集。计算完成后，所有计算设备聚合其他加速卡给出的梯度值，然后使用<strong>平均梯度</strong>对模型进行更新，完成该批次训练。</p>
+<h4 id="2-模型并行">2. 模型并行</h4>
+<ol>
+<li>
+<p>流水线并行</p>
+<ul>
+<li>
+<p><strong>并行气泡/流水线气泡</strong>：下游设备需要长时间持续处于空闲状态，等待上游设备计算完成，才能开始计算自身的任务。</p>
+<p><img src="/images/LLM2/5.png" alt="5"></p>
+</li>
+<li>
+<p><strong>GPipe 方法</strong>：将小批次进一步划分成更小的微批次。</p>
+<p><img src="/images/LLM2/6.png" alt="6"></p>
+</li>
+<li>
+<p><strong>1F1B 非交错式调度模式</strong>：</p>
+<ol>
+<li>热身阶段，在计算设备中进行不同数量的前向计算</li>
+<li>前向-后向阶段，计算设备按顺序执行一次前向计算，然后进行一次后向计算</li>
+<li>后向阶段，计算设备完成最后一次后向计算</li>
+</ol>
+</li>
+<li>
+<p><strong>1F1B 交错式调度模式</strong>：</p>
+<p><img src="/images/LLM2/7.png" alt="7"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>张量并行</p>
+<p>关注如何<strong>将参数切分到不同设备</strong>，以及如何<strong>保证切分后的数学一致性</strong>这两个问题</p>
+<ul>
+<li>
+<p>嵌入式表示(Embedding)</p>
+<p><img src="/images/LLM2/8.png" alt="8"></p>
+</li>
+<li>
+<p>矩阵乘(MatMul)</p>
+<p><img src="/images/LLM2/9.png" alt="9"></p>
+</li>
+<li>
+<p>交叉熵损失(Cross Entropy Loss)</p>
+<p>按照类别维度切分，同时通过中间结果通信，得到最终的全局交叉熵损失。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-混合并行">3. 混合并行</h4>
+<p>将多种并行策略如数据并行、流水线并行和张量并行等混合使用。</p>
+<h4 id="4-计算设备内存优化">4. 计算设备内存优化</h4>
+<p>零冗余优化器(ZeRO)的目标：针对模型状态的存储进行去除冗余的优化</p>
+<ol>
+<li>对 Adam 优化器状态进行分区</li>
+<li>对模型梯度进行分区</li>
+<li>对模型参数进行分区</li>
+</ol>
+<p><img src="/images/LLM2/10.png" alt="10"></p>
+<p> </p>
+<h3 id="22-分布式训练的集群架构">2.2 分布式训练的集群架构</h3>
+<p>属于高性能计算集群，目标是提供海量的计算能力。</p>
+<p>有两种常见架构：参数服务器架构 和 去中心化架构。</p>
+<h4 id="1-高性能计算集群的典型硬件组成">1. 高性能计算集群的典型硬件组成</h4>
+<p><img src="/images/LLM2/11.png" alt="11"></p>
+<h4 id="2-参数服务器架构">2. 参数服务器架构</h4>
+<p>系统中有两种服务器角色：训练服务器和参数服务器。</p>
+<ul>
+<li>
+<p>训练服务器</p>
+<p>提供大量的计算资源，将分配到此服务器的训练数据集切片并进行计算，将得到的梯度推送到相应的参数服务器。</p>
+</li>
+<li>
+<p>参数服务器</p>
+<p>提供充足的内存资源和通信资源，等待两个训练服务器都完成梯度推送，再计算平均梯度并更新参数。</p>
+</li>
+</ul>
+<p><img src="/images/LLM2/12.png" alt="12"></p>
+<ul>
+<li>分类
+<ul>
+<li>同步训练：参数服务器在收到所有训练服务器的梯度后，进行梯度聚合和参数更新。</li>
+<li>异步训练：参数服务器不再等待接收所有训练服务器的梯度，而是直接基于已收到的梯度进行参数更新。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-去中心化架构">3. 去中心化架构</h4>
+<p>采用集合通信实现分布式训练系统。没有中央服务器或控制节点，而是由节点之间进行直接通信和协调。</p>
+<p><strong>集合通信原语</strong>： Broadcast, Scatter, Reduce, All Reduce, Gather, All Gather, Reduce Scatter&hellip;</p>
+<p><strong>常见通信库</strong>: MPI、 GLOO、 NCCL&hellip;</p>
+<p> </p>
+<h3 id="23-实践使用-deepseed-框架训练-llama-模型">2.3 实践：使用 DeepSeed 框架训练 LLaMA 模型</h3><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/llm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">LLM</a>

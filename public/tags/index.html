@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-04-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-04-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-29T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-29T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -150,6 +150,78 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        April 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm3/" class="link black dim">
+        LLM - 3.指令理解阶段(核心)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1-指令微调">1 指令微调</h1>
+    </div>
+  <a href="/post/llm3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm4/" class="link black dim">
+        LLM - 4.大模型增强
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      
+    </div>
+  <a href="/post/llm4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm5/" class="link black dim">
+        LLM - 5.大模型应用
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      
+    </div>
+  <a href="/post/llm5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 27, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm2/" class="link black dim">
+        LLM - 2.预训练阶段
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM2/0.png" alt="0"></p>
+    </div>
+  <a href="/post/llm2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         April 20, 2025
       </div>
     
@@ -160,39 +232,6 @@
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <p><img src="/images/LLM1/0.png" alt="0"></p>
-<p> </p>
-<h2 id="1-绪论">1. 绪论</h2>
-<p>核心目标：对自然语言的概率分布建模</p>
-<ul>
-<li>
-<p><strong>n元语法/n元文法模型</strong>：假设任意单词 wi 出现的概率只与过去 n−1 个词相关。</p>
-<ul>
-<li><strong>统计语言模型(SLM)</strong>：使用平滑处理，提高低概率事件，降低高概率事件，使整体的概率分布趋于均匀。</li>
-<li><strong>缺点</strong>：长度限制；依赖人工设计的平滑技术；参数多。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于分布式表示和神经网络的语言模型</strong></p>
-<ul>
-<li>
-<p><strong>词向量</strong>：词的独热编码被映射为一个低维稠密的实数向量</p>
-</li>
-<li>
-<p><strong>自监督学习</strong>：深度神经网络需要采用有监督方法，使用标注数据进行训练。</p>
-<p>但由于训练目标可以通过无标注文本直接获得，因此模型的训练仅需要大规模无标注文本。</p>
-</li>
-<li>
-<p><strong>预训练语言模型(PLM)</strong>：将预训练模型应用于下游任务时，只需要“微调”预训练模型，使用具体任务的标注数据在预训练语言模型上进行监督训练，就可以取得显著的性能提升。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>语境学习 (ICL)</strong>：直接使用大语言模型，就可以在很多任务的少样本场景中取得很好的效果。</p>
-</li>
-<li>
-<p><strong>缩放法则(Scaling Laws)</strong>：模型的性能依赖于模型的规模，包括参数量、数据集大小和计算量，模型的效果会随着三者的指数增加而平稳提升。</p>
-</li>
-</ul>
     </div>
   <a href="/post/llm1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -369,6 +408,403 @@
         
       
         <h2 class="f1">
+          <a href="/tags/cv/" class="link blue hover-black">
+            Tag: CV
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/efficientnet/" class="link black dim">
+        EfficientNet
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <ul>
+<li>
+<p><strong>传统的模型缩放</strong>：</p>
+<p>任意增加 CNN 的深度或宽度，或使用更大的输入图像分辨率进行训练和评估。</p>
+<p>缺点：通常需要长时间的手动调优，并且仍然会经常产生次优的性能。</p>
+</li>
+<li>
+<p><strong><a href="https://arxiv.org/abs/1905.11946">EfficientNet</a></strong>：</p>
+<ol>
+<li>提出了一种新的模型缩放方法和 AutoML 技术，使用使用简单但高效的<strong>复合系数</strong>，均匀缩放深度/宽度/分辨率的所有维度。</li>
+<li>使用神经架构搜索来设计一个新的基线网络，并将其扩展以获得一系列模型，称为 EfficientNets。</li>
+</ol>
+<p>优点：更小、更快。</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="复合模型放缩">复合模型放缩</h3>
+<h4 id="1-概述">1. 概述</h4>
+<p><strong>目的</strong>：找到在固定资源约束下，基线网络的不同缩放维度之间的关系。</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/efficientNet/1.png" alt="1"></p>
+<p>应用这些系数扩大基线网络，达到期望的模型大小或资源要求。</p>
+<p> </p>
+<h4 id="2-复合模型扩张方法">2. 复合模型扩张方法</h4>
+<p>更大的网络具有更大的宽度、深度或分辨率，往往可以获得更高的精度，但精度增益会迅速饱和，这表明了只对单一维度进行扩张的局限性。</p>
+<p>为了追求更好的精度和效率，在ConvNet缩放过程中平衡网络宽度、深度和分辨率的所有维度是至关重要的。</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/efficientNet/2.png" alt="2"></p>
+<p>( α,β,γ)是需要求解的一组参数 —— 带约束的最优参数求解。</p>
+<p>( α,β,γ) 分别衡量着 depth, width 和 resolution的比重，其中 β,γ在约束上有平方，是因为如果增加宽度或分辨率两倍，其计算量是增加四倍；但是增加深度两倍，其计算量只会增加两倍。</p>
+<ul>
+<li>
+<p>求解方式：</p>
+<ol>
+<li>固定公式中的φ=1，然后通过网格搜索（grid search）得出最优的α、β、γ，得出最基本的模型EfficientNet-B0.</li>
+<li>固定α、β、γ的值，使用不同的φ，得到EfficientNet-B1, &hellip;, EfficientNet-B7</li>
+</ol>
+</li>
+<li>
+<p>φ 的大小对应着消耗资源的大小：</p>
+<ol>
+<li>当φ=1时，得出了一个最小的最优基础模型；</li>
+<li>增大φ时，相当于对基模型三个维度同时扩展，模型变大，性能也会提升，资源消耗也变大。</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h4 id="3-efficientnet-architecture">3. EfficientNet Architecture</h4>
+<p>模型扩展的有效性在很大程度上依赖于baseline网络。为了进一步提高性能，作者开发了<strong>一个新的基线网络，称为 EfficientNet</strong>。</p>
+<ul>
+<li>
+<p>EfficientNet-B0 的网络结构如下：</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/efficientNet/3.png" alt="3"></p>
+</li>
+<li>
+<p>实验结果</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/efficientNet/4.png" alt="4"></p>
+</li>
+</ul>
+    </div>
+  <a href="/post/efficientnet/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 24, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/resnet18/" class="link black dim">
+        ResNet18
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h3 id="1-退化现象">1. 退化现象</h3>
+<p>ResNet 随着网络层不断的加深，模型的准确率</p>
+<ol>
+<li>先是不断的提高，达到最大值（准确率饱和），</li>
+<li>然后随着网络深度的继续增加，模型准确率出现大幅度的降低。</li>
+</ol>
+<p><strong>原因</strong>：随着网络深度的不断增大，所引入的激活函数也越来越多，数据被映射到更加离散的空间，此时已经难以让数据回到原点。也就是说，神经网络将这些数据映射回原点所需要的计算量，已经远远超过我们所能承受的。</p>
+<p> </p>
+<h3 id="2-快捷连接">2. 快捷连接</h3>
+<p>核心思想：通过添加额外的连接来解决深度神经网络训练中的<strong>梯度消失和梯度爆炸</strong>等问题，从而允许构建非常深的神经网络。</p>
+<p><img src="/images/resnet18/1.jpg" alt="1"></p>
+    </div>
+  <a href="/post/resnet18/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 14, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
+        LSS代码
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>文章搬运，自用。</p>
+<p>论文：<a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<p>官方源码：<a href="https://github.com/nv-tlabs/lift-splat-shoot">lift-splat-shoot</a></p>
+<p> </p>
+<h4 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h4>
+<p>对于任意数量不同相机帧的图像直接提取场景的BEV表达；主要由三部分实现：</p>
+<ol>
+<li><strong>Lift</strong>：将每一个相机的图像帧根据相机的内参转换提升到 frustum（锥形）形状的点云空间中。</li>
+<li><strong>splate</strong>：将所有相机转换到锥形点云空间中的特征根据相机的内参 K 与相机相对于 ego 的外参T映射到栅格化的 3D 空间（BEV）中来融合多帧信息。</li>
+<li><strong>shoot</strong>：根据上述 BEV 的检测或分割结果来生成规划的路径 proposal；从而实现可解释的端到端的路径规划任务。</li>
+</ol>
+<p>注：LSS在训练的过程中并不需要激光雷达的点云来进行监督。</p>
+    </div>
+  <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="link black dim">
+        语义分割
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>语义分割将图片中的<strong>每个像素</strong>分类到对应的类别。</p>
+<p><img src="/images/SemanticSegmentation/1.png" alt="1"></p>
+<ul>
+<li>
+<p><strong>应用</strong>：</p>
+<p>背景虚化、路面分割、实例分割(会关注具体是哪个个体，如 Mask R-CNN)、全景分割（还要对背景进行分割，如 Panoptic FPN）</p>
+</li>
+<li>
+<p><strong>常见模型</strong></p>
+<p><img src="/images/SemanticSegmentation/5.png" alt="5"></p>
+</li>
+<li>
+<p><strong>语义分割任务常见的数据集格式</strong></p>
+<ul>
+<li><strong>PASCAL VOC</strong>：PNG图片 + 每个像素的类别信息（每个像素都对应一个颜色）</li>
+<li><strong>MS COCO</strong>：每个目标都记录了一个多边形坐标，将所有的点连一起，即可得到边缘信息(还可以用于实例分析)</li>
+<li><strong>语义分割得到的具体形式</strong>：单通道图片，加上调色板 mask 蒙版后可以上色（palette），方便可视化。每个像素数值对应类别索引。</li>
+</ul>
+</li>
+</ul>
+    </div>
+  <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 27, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/lss/" class="link black dim">
+        Lift-splat-shoot
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<p>简单来说，<strong>Lift</strong>就是预测了一个<strong>深度值分布D</strong>，以及<strong>提取的特征c</strong>，然后将两种进行外积操作，实现了<strong>增维</strong>操作。</p>
+<p>**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。</p>
+<p>最后的<strong>Shooting</strong>，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。</p>
+<p> </p>
+<h3 id="1-关键lift">1. 关键：Lift</h3>
+<p><img src="/images/lss/1.png" alt="1"></p>
+<ol>
+<li>
+<p><strong>特征提取&amp;深度估计</strong></p>
+<p>多视角相机输入后，进行特征提取与深度估计</p>
+</li>
+<li>
+<p><strong>外积（Outer product）</strong>—— 最核心的操作</p>
+<p>无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。</p>
+<p>使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。</p>
+</li>
+</ol>
+    </div>
+  <a href="/post/lss/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        BEV 论文学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
+<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
+<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
+<h4 id="1-背景介绍">1. 背景介绍</h4>
+<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
+<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
+<h4 id="3-主要方法分类">3. 主要方法分类</h4>
+<ol>
+<li>
+<p><strong>基于几何的方法</strong></p>
+<ul>
+<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
+<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于深度的方法</strong></p>
+<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
+<ul>
+<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
+<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
+</ul>
+</li>
+<li>
+<p><strong>基于MLP的方法</strong></p>
+<ul>
+<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
+<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
+</ul>
+</li>
+<li>
+<p><strong>基于Transformer的方法</strong>：</p>
+    </div>
+  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<p> </p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 31, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/object-detection/" class="link black dim">
+        目标检测
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/CV/19.png" alt="19"></p>
+<ul>
+<li>
+<p>技巧</p>
+<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="定位">定位</h3>
+<p><img src="/images/CV/20.png" alt="20"></p>
+<p>Need to output bx, by, bn, bw, class label (1-4)</p>
+<p><img src="/images/CV/21.png" alt="21"></p>
+<p>需人工标注<strong>特征点的坐标</strong></p>
+<p> </p>
+<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
+<ol>
+<li>先训练卷积网络识别物体</li>
+<li>滑动+放大窗口+再次滑动</li>
+</ol>
+<p><strong>问题</strong>：计算效率大，慢</p>
+<p> </p>
+    </div>
+  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 27, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/cv/" class="link black dim">
+        CV
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
+<h3 id="边缘检测">边缘检测</h3>
+<ol>
+<li>
+<p><strong>垂直边缘检测滤波</strong></p>
+<p><img src="/images/CV/6.png" alt="6"></p>
+</li>
+<li>
+<p><strong>变权</strong></p>
+<p><img src="/images/CV/7.png" alt="7"></p>
+</li>
+<li>
+<p><strong>利用反向传播学习</strong></p>
+</li>
+</ol>
+<p> </p>
+<h3 id="padding">Padding</h3>
+<ol>
+<li>
+<p>Padding：外层填充像素</p>
+<ul>
+<li>存在问题：
+<ul>
+<li>throw away information from edge</li>
+<li>shranky output</li>
+</ul>
+</li>
+</ul>
+<p>解决：<strong>外层填充像素</strong></p>
+</li>
+<li>
+<p>填充多少像素？</p>
+<ul>
+<li>
+<p><strong>Valid:</strong> (n-f+1) * (n-f+1)</p>
+</li>
+<li>
+<p><strong>Same</strong>: Pad so that output size is the same as the input size.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+    </div>
+  <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/automatic-driving/" class="link blue hover-black">
             Tag: Automatic Driving
           </a>
@@ -422,240 +858,6 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np 	<span style="color:#75715e"># in this example to change image representation - re-shaping</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># connect to the sim</span>
 </span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Client(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">2000</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># optional to Load different towns</span>
-</span></span><span style="display:flex;"><span>client<span style="color:#f92672">.</span>load_world(<span style="color:#e6db74">&#39;Towne5&#39;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># define environment/world and get possible places to spawn a car</span>
-</span></span><span style="display:flex;"><span>world <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_world()
-</span></span><span style="display:flex;"><span>spawn_points <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_map()<span style="color:#f92672">.</span>get_spawn_points()
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Look for a blueprint of Mini car,得到很多名为&#34;mini&#34;的汽车实例</span>
-</span></span><span style="display:flex;"><span>vehicle_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*mini*&#39;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># spawn a car in a random location</span>
-</span></span><span style="display:flex;"><span>start_point <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>choice(spawn_points)
-</span></span><span style="display:flex;"><span>vehicle <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>try_spawn_actor(vehicle_bp[<span style="color:#ae81ff">0</span>], start_point)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># move simulator view to the car</span>
-</span></span><span style="display:flex;"><span>spectator <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_spectator()
-</span></span><span style="display:flex;"><span>start_point<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>z <span style="color:#f92672">=</span> start_point<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>z<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> 	<span style="color:#75715e">#start_point was used to spawn</span>
-</span></span><span style="display:flex;"><span>spectator<span style="color:#f92672">.</span>set_transform(start_point)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#send the car off on autopilot - this will leave the spectator</span>
-</span></span><span style="display:flex;"><span>vehicle<span style="color:#f92672">.</span>set_autopilot(<span style="color:#66d9ef">True</span>)
-</span></span></code></pre></div><p> </p>
-<h2 id="2-在汽车上设置摄像头">2 在汽车上设置摄像头</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#setting RGB Camera - this follow the approach explained in a Carla video</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Link: https://www.youtube.com/watch?v=om8kLsBj4rc&amp;t=1184s</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#camera mount offset on the car - you can tweak these to each car to avoid any p</span>
-</span></span><span style="display:flex;"><span>CAMERA_POS_Z <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.6</span> 																<span style="color:#75715e"># this means 1.6m up from the ground</span>
-</span></span><span style="display:flex;"><span>CAMERA_POS_X <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span> 																<span style="color:#75715e"># this is 0.9m forward</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>camera_op <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;sensor.camera.rgb&#39;</span>)
-</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>, <span style="color:#e6db74">&#39;640&#39;</span>) 		<span style="color:#75715e"># this ratio works in CARLA 9.14 </span>
-</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>, <span style="color:#e6db74">&#39;360&#39;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>camera_init_trans <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Transform(carla<span style="color:#f92672">.</span>Location(z<span style="color:#f92672">=</span>CAMERA_POS_Z, x<span style="color:#f92672">=</span>CAMERA_POS_X))
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># this creates the camera in the sim</span>
-</span></span><span style="display:flex;"><span>camera <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>spawn_actor(camera_bp, camera_init_trans, attach_to<span style="color:#f92672">=</span>vehicle)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">camera_callback</span>(image, data _dict):
-</span></span><span style="display:flex;"><span>  data_dict[<span style="color:#e6db74">&#39;image&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(np<span style="color:#f92672">.</span>copy(image<span style="color:#f92672">.</span>raw_data), (image<span style="color:#f92672">.</span>height, image<span style="color:#f92672">.</span>width, <span style="color:#ae81ff">4</span>))
-</span></span><span style="display:flex;"><span>                                    
-</span></span><span style="display:flex;"><span>image_w <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>) <span style="color:#f92672">.</span>as_int()
-</span></span><span style="display:flex;"><span>image_h <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>)<span style="color:#f92672">.</span>as_int()
-</span></span><span style="display:flex;"><span>                    
-</span></span><span style="display:flex;"><span>camera_data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;image&#39;</span>: np<span style="color:#f92672">.</span>zeros ((image_h, image_w,<span style="color:#ae81ff">4</span>))}
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># this actually opens a live stream from the camera</span>
-</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>listen(<span style="color:#66d9ef">lambda</span> image: camera_callback(image, camera_data))
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># grab a snapshot from the camera an show in a pop-up window</span>
-</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> camera_data[<span style="color:#e6db74">&#39;image&#39;</span>]
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, img)
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">0</span>)
-</span></span></code></pre></div><p>Output: -1</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># clean up after yourself</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>stop() <span style="color:#75715e"># this is the opposite of camera.listen</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> actor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*vehicle*&#39;</span>):
-</span></span><span style="display:flex;"><span>  	actor<span style="color:#f92672">.</span>destroy()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sensor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*sensor*&#39;</span>):
-</span></span><span style="display:flex;"><span>  	sensor<span style="color:#f92672">.</span>destroy()
-</span></span></code></pre></div><p> </p>
-<p> </p>
-<h2 id="3-控制汽车">3 控制汽车</h2>
-<h3 id="速度和油门踏板">速度和油门踏板</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This is the new Bit for tutorial 4
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">First we need to create controls functions so we could
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">push the car along the route
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># define speed contstants</span>
-</span></span><span style="display:flex;"><span>PREFERRED_SPEED <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> 			<span style="color:#75715e"># what it says</span>
-</span></span><span style="display:flex;"><span>SPEED_THRESHOLD <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> 			<span style="color:#75715e"># defines when we get close to desired speed so we drop the</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># adding params to display text to image</span>
-</span></span><span style="display:flex;"><span>font <span style="color:#f92672">=</span> CV2<span style="color:#f92672">.</span>FONT_HERSHEY_SIMPLEX
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># org - defining lines to display telemetry values on the screen</span>
-</span></span><span style="display:flex;"><span>org <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">30</span>) 						<span style="color:#75715e"># this Line will be used to show current speed</span>
-</span></span><span style="display:flex;"><span>org2 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">50</span>) 					<span style="color:#75715e"># this Line will be used for future steering angle</span>
-</span></span><span style="display:flex;"><span>org3 <span style="color:#f92672">=</span> (<span style="color:#ae81ff">30</span>, <span style="color:#ae81ff">70</span>) 					<span style="color:#75715e"># and another line for future telemetry outputs</span>
-</span></span><span style="display:flex;"><span>fontScale <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># white color</span>
-</span></span><span style="display:flex;"><span>color <span style="color:#f92672">=</span> (<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">255</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># line thickness of 2 px</span>
-</span></span><span style="display:flex;"><span>thickness <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">maintain_</span> speed(s):
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  this is a very simple function to maintan desired speed s arg is actual current speed
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#39;&#39;&#39;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">&gt;=</span> PREFERRED_SPEED:
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">elif</span> s <span style="color:#f92672">&lt;</span> PREFERRED_SPEED <span style="color:#f92672">-</span> SPEED_THRESHOLD:
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.8</span> 						<span style="color:#75715e"># think of it as % of &#34;full gas&#34;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.4</span> 						<span style="color:#75715e"># tweak this if the car is way over or under preferred speed</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># now Little demo to drive straight</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># close to a desired speed</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># - press l to exit, you need to run the bit above to start the car</span>
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>namedWindow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, CV2<span style="color:#f92672">.</span>WINDOW_AUTOSIZE)
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, camera_data[<span style="color:#e6db74">&#39;image&#39;</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># main Loop</span>
-</span></span><span style="display:flex;"><span>quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Carla Tick</span>
-</span></span><span style="display:flex;"><span>	world<span style="color:#f92672">.</span>tick()
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> cv2<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> ord(<span style="color:#e6db74">&#39;q&#39;</span>):
-</span></span><span style="display:flex;"><span>		quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>	image <span style="color:#f92672">=</span> camera_data[<span style="color:#e6db74">&#39;image&#39;</span>]
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>	steering_angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 					<span style="color:#75715e"># we do not have it yet</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># to get speed we need to use &#39;get velocity&#39; function</span>
-</span></span><span style="display:flex;"><span>	v <span style="color:#f92672">=</span> vehicle<span style="color:#f92672">.</span>get_velocity()
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># if velocity is a vector in 3d</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># then speed is like hypothenuse in a right triangle</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># and 3.6 is a conversion factor from meters per second to kmh</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># e.g. mh is 1000 meters and one hour is 60 min with 60 sec = 3600 sec</span>
-</span></span><span style="display:flex;"><span>	speed <span style="color:#f92672">=</span> round(<span style="color:#ae81ff">3.6</span> <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>sqrt(v<span style="color:#f92672">.</span>x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>y<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>z<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>),<span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># now we add the speed to the window showing a camera mounted on the car</span>
-</span></span><span style="display:flex;"><span>	image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span> putText (image, <span style="color:#e6db74">&#39;Speed: &#39;</span><span style="color:#f92672">+</span>str(int(speed))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39; kmh&#39;</span>, org2,
-</span></span><span style="display:flex;"><span>                        font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span> LINE_AA)
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># this is where we used the function above to determine accelerator input</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># from current speed</span>
-</span></span><span style="display:flex;"><span>	estimated_throttle <span style="color:#f92672">=</span> maintain_speed (speed)
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># now we apply accelerator</span>
-</span></span><span style="display:flex;"><span>	vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span>estimated_throttle,
-</span></span><span style="display:flex;"><span>                                             steer<span style="color:#f92672">=</span>steering_angle))
-</span></span><span style="display:flex;"><span>  cv2<span style="color:#f92672">.</span> imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>, image)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#clean up </span>
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>destroyAllWindows()
-</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>stop()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> actor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*vehicle*&#39;</span>):
-</span></span><span style="display:flex;"><span>  actor<span style="color:#f92672">.</span>destroy()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sensor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter (<span style="color:#e6db74">&#39;*sensor*&#39;</span>):
-</span></span><span style="display:flex;"><span>  sensor<span style="color:#f92672">.</span>destroy()
-</span></span></code></pre></div><p> </p>
-<h3 id="转向角度">转向角度</h3>
-<ol>
-<li>汽车当前位置</li>
-<li>汽车想去的位置</li>
-<li>汽车当前角度</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># test steering function</span>
-</span></span><span style="display:flex;"><span>world <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_world()
-</span></span><span style="display:flex;"><span>spawn_points <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_map()<span style="color:#f92672">.</span>get_spawn_points()
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># look for a blueprint of Mini car</span>
-</span></span><span style="display:flex;"><span>vehicle_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*mini*&#39;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>start_point <span style="color:#f92672">=</span> spawn_points[<span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>vehicle <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>try_spawn_actor(vehicle_bp[<span style="color:#ae81ff">0</span>], start_point)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># setting RGB Camera - this follow the approach explained in a Carla video</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># link: https://www.youtube.com/watch?v=om8klsBj4rc&amp;t=1184s</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># camera mount offset on the car - you can tweak these to have the car in view or not</span>
-</span></span><span style="display:flex;"><span>CAMERA_POS_Z <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> 
-</span></span><span style="display:flex;"><span>CAMERA_POS_X <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span> 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>camera_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;sensor.camera.rgb&#39;</span>)
-</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>, <span style="color:#e6db74">&#39;640&#39;</span>) <span style="color:#75715e"># this ratio works in CARLA 9.14 on Windows</span>
-</span></span><span style="display:flex;"><span>camera_bp<span style="color:#f92672">.</span>set_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>, <span style="color:#e6db74">&#39;360&#39;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>camera_init_trans <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Transform(carla<span style="color:#f92672">.</span>Location(z<span style="color:#f92672">=</span>CAMERA_POS_Z,x<span style="color:#f92672">=</span>CAMERA_POS_X))
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># this creates the camera in the sim</span>
-</span></span><span style="display:flex;"><span>camera <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>spawn_actor(camera_bp,camera_init_trans,attach_to<span style="color:#f92672">=</span>vehicle)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">camera_callback</span>(image,data_dict):
-</span></span><span style="display:flex;"><span>    data_dict[<span style="color:#e6db74">&#39;image&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(np<span style="color:#f92672">.</span>copy(image<span style="color:#f92672">.</span>raw_data),(image<span style="color:#f92672">.</span>height,image<span style="color:#f92672">.</span>width,<span style="color:#ae81ff">4</span>))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>image_w <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_x&#39;</span>)<span style="color:#f92672">.</span>as_int()
-</span></span><span style="display:flex;"><span>image_h <span style="color:#f92672">=</span> camera_bp<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#39;image_size_y&#39;</span>)<span style="color:#f92672">.</span>as_int()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>camera_data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;image&#39;</span>: np<span style="color:#f92672">.</span>zeros((image_h,image_w,<span style="color:#ae81ff">4</span>))}
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># this actually opens a live stream from the camera</span>
-</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>listen(<span style="color:#66d9ef">lambda</span> image: camera_callback(image,camera_data))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>namedWindow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>,cv2<span style="color:#f92672">.</span>WINDOW_AUTOSIZE)
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>,camera_data[<span style="color:#e6db74">&#39;image&#39;</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># main loop </span>
-</span></span><span style="display:flex;"><span>quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>curr_wp <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#75715e"># we will be tracking waypoints in the route and switch to next one wen we get close to current one</span>
-</span></span><span style="display:flex;"><span>predicted_angle <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> curr_wp<span style="color:#f92672">&lt;</span>len(route)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Carla Tick</span>
-</span></span><span style="display:flex;"><span>    world<span style="color:#f92672">.</span>tick()
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> cv2<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> ord(<span style="color:#e6db74">&#39;q&#39;</span>):
-</span></span><span style="display:flex;"><span>        quit <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-</span></span><span style="display:flex;"><span>        vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,steer<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,brake<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> camera_data[<span style="color:#e6db74">&#39;image&#39;</span>]
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> curr_wp<span style="color:#f92672">&lt;</span>len(route) <span style="color:#f92672">and</span> vehicle<span style="color:#f92672">.</span>get_transform()<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>distance(route[curr_wp][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>transform<span style="color:#f92672">.</span>location)<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">5</span>:
-</span></span><span style="display:flex;"><span>        curr_wp <span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span> <span style="color:#75715e"># move to next wp if we are too close</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    predicted_angle <span style="color:#f92672">=</span> get_angle(vehicle,route[curr_wp][<span style="color:#ae81ff">0</span>])
-</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>putText(image, <span style="color:#e6db74">&#39;Steering angle: &#39;</span><span style="color:#f92672">+</span>str(round(predicted_angle,<span style="color:#ae81ff">3</span>)), org, font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span>LINE_AA)
-</span></span><span style="display:flex;"><span>    v <span style="color:#f92672">=</span> vehicle<span style="color:#f92672">.</span>get_velocity()
-</span></span><span style="display:flex;"><span>    speed <span style="color:#f92672">=</span> round(<span style="color:#ae81ff">3.6</span> <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>sqrt(v<span style="color:#f92672">.</span>x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>y<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> v<span style="color:#f92672">.</span>z<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>),<span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>putText(image, <span style="color:#e6db74">&#39;Speed: &#39;</span><span style="color:#f92672">+</span>str(int(speed)), org2, font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span>LINE_AA)
-</span></span><span style="display:flex;"><span>    image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>putText(image, <span style="color:#e6db74">&#39;Next wp: &#39;</span><span style="color:#f92672">+</span>str(curr_wp), org3, font, fontScale, color, thickness, cv2<span style="color:#f92672">.</span>LINE_AA)
-</span></span><span style="display:flex;"><span>    estimated_throttle <span style="color:#f92672">=</span> maintain_speed(speed)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># extra checks on predicted angle when values close to 360 degrees are returned</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> predicted_angle<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">300</span>:
-</span></span><span style="display:flex;"><span>        predicted_angle <span style="color:#f92672">=</span> predicted_angle<span style="color:#f92672">+</span><span style="color:#ae81ff">360</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> predicted_angle <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">300</span>:
-</span></span><span style="display:flex;"><span>        predicted_angle <span style="color:#f92672">=</span> predicted_angle <span style="color:#f92672">-</span><span style="color:#ae81ff">360</span>
-</span></span><span style="display:flex;"><span>    steer_input <span style="color:#f92672">=</span> predicted_angle
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># and conversion of to -1 to +1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> predicted_angle<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">40</span>:
-</span></span><span style="display:flex;"><span>        steer_input <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">40</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> predicted_angle<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">40</span>:
-</span></span><span style="display:flex;"><span>        steer_input <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># conversion from degrees to -1 to +1 input for apply control function</span>
-</span></span><span style="display:flex;"><span>    steer_input <span style="color:#f92672">=</span> steer_input<span style="color:#f92672">/</span><span style="color:#ae81ff">75</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span>estimated_throttle, steer<span style="color:#f92672">=</span>steer_input))
-</span></span><span style="display:flex;"><span>    cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;RGB Camera&#39;</span>,image)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># clean up</span>
-</span></span><span style="display:flex;"><span>cv2<span style="color:#f92672">.</span>destroyAllWindows()
-</span></span><span style="display:flex;"><span>camera<span style="color:#f92672">.</span>stop()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sensor <span style="color:#f92672">in</span> world<span style="color:#f92672">.</span>get_actors()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*sensor*&#39;</span>):
-</span></span><span style="display:flex;"><span>    sensor<span style="color:#f92672">.</span>destroy()
-</span></span><span style="display:flex;"><span>vehicle<span style="color:#f92672">.</span>apply_control(carla<span style="color:#f92672">.</span>VehicleControl(throttle<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,steer<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,brake<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
-</span></span></code></pre></div><p> </p>
-<p> </p>
-<h2 id="定位汽车">定位汽车</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> carla
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>client <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Client(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">2000</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>world <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_world()
-</span></span><span style="display:flex;"><span>spawn_points <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_map()<span style="color:#f92672">.</span>get_spawn_points()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>vehicle_bp <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>get_blueprint_library()<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#39;*firetruck*&#39;</span>)
-</span></span><span style="display:flex;"><span>start_point <span style="color:#f92672">=</span> spawn_points[<span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>vehicle <span style="color:#f92672">=</span> world<span style="color:#f92672">.</span>try_spawn_actor(vehicle_bp[<span style="color:#ae81ff">0</span>], start_point)
 </span></span></code></pre></div>
     </div>
   <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
@@ -976,241 +1178,6 @@
 </ul>
     </div>
   <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/cv/" class="link blue hover-black">
-            Tag: CV
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 14, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
-        LSS代码
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>文章搬运，自用。</p>
-<p>论文：<a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
-<p>官方源码：<a href="https://github.com/nv-tlabs/lift-splat-shoot">lift-splat-shoot</a></p>
-<p> </p>
-<h4 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h4>
-<p>对于任意数量不同相机帧的图像直接提取场景的BEV表达；主要由三部分实现：</p>
-<ol>
-<li><strong>Lift</strong>：将每一个相机的图像帧根据相机的内参转换提升到 frustum（锥形）形状的点云空间中。</li>
-<li><strong>splate</strong>：将所有相机转换到锥形点云空间中的特征根据相机的内参 K 与相机相对于 ego 的外参T映射到栅格化的 3D 空间（BEV）中来融合多帧信息。</li>
-<li><strong>shoot</strong>：根据上述 BEV 的检测或分割结果来生成规划的路径 proposal；从而实现可解释的端到端的路径规划任务。</li>
-</ol>
-<p>注：LSS在训练的过程中并不需要激光雷达的点云来进行监督。</p>
-    </div>
-  <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 29, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="link black dim">
-        语义分割
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>语义分割将图片中的<strong>每个像素</strong>分类到对应的类别。</p>
-<p><img src="/images/SemanticSegmentation/1.png" alt="1"></p>
-<ul>
-<li>
-<p><strong>应用</strong>：</p>
-<p>背景虚化、路面分割、实例分割(会关注具体是哪个个体，如 Mask R-CNN)、全景分割（还要对背景进行分割，如 Panoptic FPN）</p>
-</li>
-<li>
-<p><strong>常见模型</strong></p>
-<p><img src="/images/SemanticSegmentation/5.png" alt="5"></p>
-</li>
-<li>
-<p><strong>语义分割任务常见的数据集格式</strong></p>
-<ul>
-<li><strong>PASCAL VOC</strong>：PNG图片 + 每个像素的类别信息（每个像素都对应一个颜色）</li>
-<li><strong>MS COCO</strong>：每个目标都记录了一个多边形坐标，将所有的点连一起，即可得到边缘信息(还可以用于实例分析)</li>
-<li><strong>语义分割得到的具体形式</strong>：单通道图片，加上调色板 mask 蒙版后可以上色（palette），方便可视化。每个像素数值对应类别索引。</li>
-</ul>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 27, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/lss/" class="link black dim">
-        Lift-splat-shoot
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
-<p>简单来说，<strong>Lift</strong>就是预测了一个<strong>深度值分布D</strong>，以及<strong>提取的特征c</strong>，然后将两种进行外积操作，实现了<strong>增维</strong>操作。</p>
-<p>**Splat（拍扁）**操作则是使用了一种特殊的“求和池化”操作（z累加，压平），实现降维。</p>
-<p>最后的<strong>Shooting</strong>，则是将预测的一组轨迹投射出来，选取最优的轨迹作为预测结果。</p>
-<p> </p>
-<h3 id="1-关键lift">1. 关键：Lift</h3>
-<p><img src="/images/lss/1.png" alt="1"></p>
-<ol>
-<li>
-<p><strong>特征提取&amp;深度估计</strong></p>
-<p>多视角相机输入后，进行特征提取与深度估计</p>
-</li>
-<li>
-<p><strong>外积（Outer product）</strong>—— 最核心的操作</p>
-<p>无法确定每个 pixel 的特征投影 BEV 视角下的具体位置；对于每个 pixel 特征，使用的是“all possible depths”。</p>
-<p>使用外积操作，将 Image feature (H * W * C) 和 Depth feature (H * W * D)构造成一个(H * W * D * C) 的 Frustum feature。</p>
-</li>
-</ol>
-    </div>
-  <a href="/post/lss/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        BEV 论文学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="vision-centric-bev-perception-a-survey">Vision-Centric BEV Perception: A Survey</h2>
-<p>许多方法被提出以<strong>解决从透视视图（Perspective View, PV）到 BEV 的转换问题</strong>，本文将它们分为基于几何、基于深度、基于 MLP 和基于 Transformer 的四类方法。</p>
-<p>此外，本文还探讨了 BEV 感知的扩展应用，如多任务学习、多模态融合和语义占据预测等。</p>
-<h4 id="1-背景介绍">1. 背景介绍</h4>
-<p>BEV 感知的核心任务是将 PV 中的<strong>图像序列转换为BEV特征，并在BEV空间中进行感知任务</strong>（如3D目标检测和语义地图生成），能够提供精确的定位和绝对尺度信息，便于多视图、多模态和时间序列数据的融合。</p>
-<p>但由于摄像头通常安装在车辆上，捕捉到的图像是透视视图，如何将 PV 转换为 BEV 仍然是一个具有挑战性的问题。</p>
-<h4 id="3-主要方法分类">3. 主要方法分类</h4>
-<ol>
-<li>
-<p><strong>基于几何的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：这类方法主要依赖于<strong>逆透视映射（IPM）</strong>，通过几何变换将 PV 图像转换为 BEV 图像。</li>
-<li><strong>缺陷</strong>：但 IPM 假设地面是平坦的，因此在复杂场景中（如存在高度变化的物体）会产生失真。为了减少失真，一些方法引入了<strong>语义信息</strong>或使用 <strong>GAN</strong> 。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于深度的方法</strong></p>
-<p>通过深度估计将 2D 特征提升到 3D 空间，然后通过降维得到 BEV 表示。深度估计可以是显式的（如通过深度图）或隐式的（如通过任务监督）。</p>
-<ul>
-<li><strong>点云方法</strong>：将深度图转换为伪 LiDAR 点云，然后使用 LiDAR 检测器进行 3D 检测</li>
-<li><strong>体素方法</strong>：将 2D 特征映射到 3D 体素空间，并通过体素特征进行 BEV 感知</li>
-</ul>
-</li>
-<li>
-<p><strong>基于MLP的方法</strong></p>
-<ul>
-<li><strong>优势</strong>：MLP 方法不依赖于摄像头的几何参数，而是通过学习隐式表示来完成视图转换。</li>
-<li><strong>缺陷</strong>：尽管 MLP 具有通用逼近能力，但由于缺乏深度信息和遮挡问题，视图转换仍然具有挑战性。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于Transformer的方法</strong>：</p>
-    </div>
-  <a href="/post/bev%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1基础">1基础</h1>
-<h2 id="1-特征提取">1. 特征提取</h2>
-<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
-<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
-<p> </p>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li>
-<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
-</li>
-<li>
-<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
-<p><img src="/images/MLLM/1.png" alt="1"></p>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
-</ul>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 31, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/object-detection/" class="link black dim">
-        目标检测
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/CV/19.png" alt="19"></p>
-<ul>
-<li>
-<p>技巧</p>
-<p><strong>Ensembling</strong>：Train several networks independently and average their outputs <strong>Multi-crop at test time</strong>：Run classifier on multiple versions of test images and average results</p>
-</li>
-</ul>
-<p> </p>
-<h3 id="定位">定位</h3>
-<p><img src="/images/CV/20.png" alt="20"></p>
-<p>Need to output bx, by, bn, bw, class label (1-4)</p>
-<p><img src="/images/CV/21.png" alt="21"></p>
-<p>需人工标注<strong>特征点的坐标</strong></p>
-<p> </p>
-<h3 id="基于滑动窗口的目标检测算法">基于滑动窗口的目标检测算法</h3>
-<ol>
-<li>先训练卷积网络识别物体</li>
-<li>滑动+放大窗口+再次滑动</li>
-</ol>
-<p><strong>问题</strong>：计算效率大，慢</p>
-<p> </p>
-    </div>
-  <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -1672,28 +1639,6 @@
 <p><img src="/images/RLconfused/5.png" alt="5"></p>
 </li>
 </ol>
-<ul>
-<li>
-<p>关系</p>
-<p><img src="/images/RLconfused/3.png" alt="3"></p>
-<p><img src="/images/RLconfused/4.png" alt="4"></p>
-</li>
-</ul>
-</li>
-</ol>
-<p> </p>
-<ol start="2">
-<li>
-<h3 id="常见强化学习算法优缺点">常见强化学习算法优缺点</h3>
-<ol>
-<li>
-<p><strong>Q-Learning</strong> - Off-policy - 值函数</p>
-<p><img src="/images/QLearning/6.png" alt="6"></p>
-<ul>
-<li>缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。</li>
-</ul>
-</li>
-</ol>
 </li>
 </ol>
     </div>
@@ -1970,66 +1915,6 @@
 <p> </p>
     </div>
   <a href="/post/object-detection/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 27, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/cv/" class="link black dim">
-        CV
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>问题: 处理高分辨率图像时，原始图像的像素数量通常非常庞大。</p>
-<h3 id="边缘检测">边缘检测</h3>
-<ol>
-<li>
-<p><strong>垂直边缘检测滤波</strong></p>
-<p><img src="/images/CV/6.png" alt="6"></p>
-</li>
-<li>
-<p><strong>变权</strong></p>
-<p><img src="/images/CV/7.png" alt="7"></p>
-</li>
-<li>
-<p><strong>利用反向传播学习</strong></p>
-</li>
-</ol>
-<p> </p>
-<h3 id="padding">Padding</h3>
-<ol>
-<li>
-<p>Padding：外层填充像素</p>
-<ul>
-<li>存在问题：
-<ul>
-<li>throw away information from edge</li>
-<li>shranky output</li>
-</ul>
-</li>
-</ul>
-<p>解决：<strong>外层填充像素</strong></p>
-</li>
-<li>
-<p>填充多少像素？</p>
-<ul>
-<li>
-<p><strong>Valid:</strong> (n-f+1) * (n-f+1)</p>
-</li>
-<li>
-<p><strong>Same</strong>: Pad so that output size is the same as the input size.</p>
-</li>
-</ul>
-</li>
-</ol>
-<p> </p>
-    </div>
-  <a href="/post/cv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         

@@ -6,14 +6,42 @@
     <description>Recent content in LLM on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 20 Apr 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 29 Apr 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM - 3.指令理解阶段(核心)</title>
+      <link>http://localhost:1313/post/llm3/</link>
+      <pubDate>Tue, 29 Apr 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/llm3/</guid>
+      <description>&lt;h1 id=&#34;1-指令微调&#34;&gt;1 指令微调&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>LLM - 4.大模型增强</title>
+      <link>http://localhost:1313/post/llm4/</link>
+      <pubDate>Tue, 29 Apr 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/llm4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM - 5.大模型应用</title>
+      <link>http://localhost:1313/post/llm5/</link>
+      <pubDate>Tue, 29 Apr 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/llm5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM - 2.预训练阶段</title>
+      <link>http://localhost:1313/post/llm2/</link>
+      <pubDate>Sun, 27 Apr 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/llm2/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LLM2/0.png&#34; alt=&#34;0&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM - 1.基础理论</title>
       <link>http://localhost:1313/post/llm1/</link>
       <pubDate>Sun, 20 Apr 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/llm1/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LLM1/0.png&#34; alt=&#34;0&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h2 id=&#34;1-绪论&#34;&gt;1. 绪论&lt;/h2&gt;&#xA;&lt;p&gt;核心目标：对自然语言的概率分布建模&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;n元语法/n元文法模型&lt;/strong&gt;：假设任意单词 wi 出现的概率只与过去 n−1 个词相关。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;统计语言模型(SLM)&lt;/strong&gt;：使用平滑处理，提高低概率事件，降低高概率事件，使整体的概率分布趋于均匀。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;缺点&lt;/strong&gt;：长度限制；依赖人工设计的平滑技术；参数多。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;基于分布式表示和神经网络的语言模型&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;词向量&lt;/strong&gt;：词的独热编码被映射为一个低维稠密的实数向量&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;自监督学习&lt;/strong&gt;：深度神经网络需要采用有监督方法，使用标注数据进行训练。&lt;/p&gt;&#xA;&lt;p&gt;但由于训练目标可以通过无标注文本直接获得，因此模型的训练仅需要大规模无标注文本。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;预训练语言模型(PLM)&lt;/strong&gt;：将预训练模型应用于下游任务时，只需要“微调”预训练模型，使用具体任务的标注数据在预训练语言模型上进行监督训练，就可以取得显著的性能提升。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;语境学习 (ICL)&lt;/strong&gt;：直接使用大语言模型，就可以在很多任务的少样本场景中取得很好的效果。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;缩放法则(Scaling Laws)&lt;/strong&gt;：模型的性能依赖于模型的规模，包括参数量、数据集大小和计算量，模型的效果会随着三者的指数增加而平稳提升。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LLM1/0.png&#34; alt=&#34;0&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>BERT</title>

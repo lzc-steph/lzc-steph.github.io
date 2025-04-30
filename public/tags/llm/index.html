@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="LLM">
-  <meta itemprop="datePublished" content="2025-04-20T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-04-20T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-04-29T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-04-29T11:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="LLM">
 
@@ -144,6 +144,86 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        April 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm3/" class="link black dim">
+        LLM - 3.指令理解阶段(核心)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1-指令微调">1 指令微调</h1>
+    </div>
+  <a href="/post/llm3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm4/" class="link black dim">
+        LLM - 4.大模型增强
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      
+    </div>
+  <a href="/post/llm4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 29, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm5/" class="link black dim">
+        LLM - 5.大模型应用
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      
+    </div>
+  <a href="/post/llm5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 27, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm2/" class="link black dim">
+        LLM - 2.预训练阶段
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM2/0.png" alt="0"></p>
+    </div>
+  <a href="/post/llm2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         April 20, 2025
       </div>
     
@@ -154,39 +234,6 @@
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <p><img src="/images/LLM1/0.png" alt="0"></p>
-<p> </p>
-<h2 id="1-绪论">1. 绪论</h2>
-<p>核心目标：对自然语言的概率分布建模</p>
-<ul>
-<li>
-<p><strong>n元语法/n元文法模型</strong>：假设任意单词 wi 出现的概率只与过去 n−1 个词相关。</p>
-<ul>
-<li><strong>统计语言模型(SLM)</strong>：使用平滑处理，提高低概率事件，降低高概率事件，使整体的概率分布趋于均匀。</li>
-<li><strong>缺点</strong>：长度限制；依赖人工设计的平滑技术；参数多。</li>
-</ul>
-</li>
-<li>
-<p><strong>基于分布式表示和神经网络的语言模型</strong></p>
-<ul>
-<li>
-<p><strong>词向量</strong>：词的独热编码被映射为一个低维稠密的实数向量</p>
-</li>
-<li>
-<p><strong>自监督学习</strong>：深度神经网络需要采用有监督方法，使用标注数据进行训练。</p>
-<p>但由于训练目标可以通过无标注文本直接获得，因此模型的训练仅需要大规模无标注文本。</p>
-</li>
-<li>
-<p><strong>预训练语言模型(PLM)</strong>：将预训练模型应用于下游任务时，只需要“微调”预训练模型，使用具体任务的标注数据在预训练语言模型上进行监督训练，就可以取得显著的性能提升。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>语境学习 (ICL)</strong>：直接使用大语言模型，就可以在很多任务的少样本场景中取得很好的效果。</p>
-</li>
-<li>
-<p><strong>缩放法则(Scaling Laws)</strong>：模型的性能依赖于模型的规模，包括参数量、数据集大小和计算量，模型的效果会随着三者的指数增加而平稳提升。</p>
-</li>
-</ul>
     </div>
   <a href="/post/llm1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

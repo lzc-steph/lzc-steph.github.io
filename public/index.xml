@@ -6,14 +6,28 @@
     <description>Recent content in AJ&#39;s blog on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 22 Apr 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 29 Apr 2025 04:00:59 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EfficientNet</title>
+      <link>http://localhost:1313/post/efficientnet/</link>
+      <pubDate>Tue, 29 Apr 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/post/efficientnet/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;传统的模型缩放&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;p&gt;任意增加 CNN 的深度或宽度，或使用更大的输入图像分辨率进行训练和评估。&lt;/p&gt;&#xA;&lt;p&gt;缺点：通常需要长时间的手动调优，并且仍然会经常产生次优的性能。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://arxiv.org/abs/1905.11946&#34;&gt;EfficientNet&lt;/a&gt;&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;提出了一种新的模型缩放方法和 AutoML 技术，使用使用简单但高效的&lt;strong&gt;复合系数&lt;/strong&gt;，均匀缩放深度/宽度/分辨率的所有维度。&lt;/li&gt;&#xA;&lt;li&gt;使用神经架构搜索来设计一个新的基线网络，并将其扩展以获得一系列模型，称为 EfficientNets。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;优点：更小、更快。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h3 id=&#34;复合模型放缩&#34;&gt;复合模型放缩&lt;/h3&gt;&#xA;&lt;h4 id=&#34;1-概述&#34;&gt;1. 概述&lt;/h4&gt;&#xA;&lt;p&gt;&lt;strong&gt;目的&lt;/strong&gt;：找到在固定资源约束下，基线网络的不同缩放维度之间的关系。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/efficientNet/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM - 2.预训练阶段</title>
       <link>http://localhost:1313/post/llm2/</link>
-      <pubDate>Tue, 22 Apr 2025 11:00:59 -0400</pubDate>
+      <pubDate>Sun, 27 Apr 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/llm2/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LLM2/0.png&#34; alt=&#34;0&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ResNet18</title>
+      <link>http://localhost:1313/post/resnet18/</link>
+      <pubDate>Thu, 24 Apr 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/resnet18/</guid>
+      <description>&lt;h3 id=&#34;1-退化现象&#34;&gt;1. 退化现象&lt;/h3&gt;&#xA;&lt;p&gt;ResNet 随着网络层不断的加深，模型的准确率&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;先是不断的提高，达到最大值（准确率饱和），&lt;/li&gt;&#xA;&lt;li&gt;然后随着网络深度的继续增加，模型准确率出现大幅度的降低。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;strong&gt;原因&lt;/strong&gt;：随着网络深度的不断增大，所引入的激活函数也越来越多，数据被映射到更加离散的空间，此时已经难以让数据回到原点。也就是说，神经网络将这些数据映射回原点所需要的计算量，已经远远超过我们所能承受的。&lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h3 id=&#34;2-快捷连接&#34;&gt;2. 快捷连接&lt;/h3&gt;&#xA;&lt;p&gt;核心思想：通过添加额外的连接来解决深度神经网络训练中的&lt;strong&gt;梯度消失和梯度爆炸&lt;/strong&gt;等问题，从而允许构建非常深的神经网络。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/resnet18/1.jpg&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>LLM - 1.基础理论</title>
@@ -132,7 +146,7 @@
       <link>http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/</link>
       <pubDate>Mon, 31 Mar 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/</guid>
-      <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h3 id=&#34;状态价值函数-vs-动作价值函数&#34;&gt;状态价值函数 vs 动作价值函数&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;状态价值函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;动作价值函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/2.png&#34; alt=&#34;2&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;优势函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;A(s,a)=Q(s,a)−V(s)&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;求解优势函数：&lt;strong&gt;广义优势估计&lt;/strong&gt;(GAE)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;广义优势估计&lt;/strong&gt;(GAE)&lt;/p&gt;&#xA;&lt;p&gt;通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ&lt;em&gt;γ&lt;/em&gt;和λ&lt;em&gt;λ&lt;/em&gt;的幂次衰减，实现平滑的回报估计。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/5.png&#34; alt=&#34;5&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;关系&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/3.png&#34; alt=&#34;3&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/4.png&#34; alt=&#34;4&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;h3 id=&#34;常见强化学习算法优缺点&#34;&gt;常见强化学习算法优缺点&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Q-Learning&lt;/strong&gt; - Off-policy - 值函数&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/QLearning/6.png&#34; alt=&#34;6&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;缺点：用表格存储动作价值。只在 环境的状态和动作都是离散的，并且空间都比较小 的情况下适用。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h3 id=&#34;状态价值函数-vs-动作价值函数&#34;&gt;状态价值函数 vs 动作价值函数&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;状态价值函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/1.png&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;动作价值函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/2.png&#34; alt=&#34;2&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;优势函数&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;在状态 s 下选择动作 a 比平均情况（即遵循当前策略）好多少&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;A(s,a)=Q(s,a)−V(s)&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;求解优势函数：&lt;strong&gt;广义优势估计&lt;/strong&gt;(GAE)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;广义优势估计&lt;/strong&gt;(GAE)&lt;/p&gt;&#xA;&lt;p&gt;通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ&lt;em&gt;γ&lt;/em&gt;和λ&lt;em&gt;λ&lt;/em&gt;的幂次衰减，实现平滑的回报估计。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RLconfused/5.png&#34; alt=&#34;5&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>Quantization</title>
