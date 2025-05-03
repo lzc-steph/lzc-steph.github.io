@@ -6,28 +6,21 @@
     <description>Recent content in LLM on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 29 Apr 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 02 May 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/llm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>LLM - 3.指令理解阶段(核心)</title>
+      <title>LLM - 3.指令理解阶段(核心) - 强化学习</title>
+      <link>http://localhost:1313/post/llm3.5/</link>
+      <pubDate>Fri, 02 May 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/llm3.5/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LLM3.5/0.png&#34; alt=&#34;0&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LLM - 3.指令理解阶段(核心) - 指令微调</title>
       <link>http://localhost:1313/post/llm3/</link>
-      <pubDate>Tue, 29 Apr 2025 11:00:59 -0400</pubDate>
+      <pubDate>Thu, 01 May 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/llm3/</guid>
-      <description>&lt;h1 id=&#34;1-指令微调&#34;&gt;1 指令微调&lt;/h1&gt;</description>
-    </item>
-    <item>
-      <title>LLM - 4.大模型增强</title>
-      <link>http://localhost:1313/post/llm4/</link>
-      <pubDate>Tue, 29 Apr 2025 11:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/post/llm4/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>LLM - 5.大模型应用</title>
-      <link>http://localhost:1313/post/llm5/</link>
-      <pubDate>Tue, 29 Apr 2025 11:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/post/llm5/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/LLM3/0.png&#34; alt=&#34;0&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>LLM - 2.预训练阶段</title>

@@ -47,7 +47,7 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-04-29T04:00:59-07:00">
+  <meta itemprop="datePublished" content="2025-05-02T11:00:59-04:00">
   <meta itemprop="dateModified" content="2026-04-29T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
@@ -153,6 +153,90 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        January 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/diffusion-model/" class="link black dim">
+        Diffusion Model
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="概述">概述</h1>
+<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
+<p><img src="/images/DM/19.png" alt="19"></p>
+<p>进一步：输入加入了文字表述</p>
+<p>目标：产生的图片与真实图片越接近越好</p>
+<h2 id="原理">原理</h2>
+<ul>
+<li>
+<p><strong>Reverse Process</strong>（多次Denoise）</p>
+<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
+</li>
+<li>
+<p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+</li>
+</ul>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
+    </div>
+  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        January 11, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/decision-tree/" class="link black dim">
+        Decision Tree
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/chapter1/1.png" alt="1"></p>
+<h2 id="熵和信息增益">熵和信息增益</h2>
+<p><strong>Measuring purity</strong></p>
+<p><img src="/images/chapter1/2.png" alt="2"></p>
+<p><img src="/images/chapter1/3.png" alt="3"></p>
+<p>选择信息增益更大的分裂特征</p>
+<p><img src="/images/chapter1/4.png" alt="4"></p>
+<h2 id="决策树训练递归">决策树训练(递归)</h2>
+<ol>
+<li>Start with all examples at the root node</li>
+<li>Calculate information gain for all possible features, and pick the one with the highest information gain</li>
+<li>Split dataset according to selected feature, and create left and right branches of the tree</li>
+<li>Keep repeating splitting process until stopping criteria is met:
+<ul>
+<li>When a node is 100% one class</li>
+<li>When splitting a node will result in the tree exceeding a maximum depth</li>
+<li>Information gain from additional splits is less than threshold</li>
+<li>When number of examples in a node is below a threshold</li>
+</ul>
+</li>
+</ol>
+    </div>
+  <a href="/post/decision-tree/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         January 4, 2025
       </div>
     
@@ -199,108 +283,6 @@
 
         </div>
       
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 2, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" class="link black dim">
-        强化学习-直观理解
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
-<h3 id="回归">回归</h3>
-<p>增加折现因子</p>
-<p><img src="/images/RL/1.png" alt="1"></p>
-<p><img src="/images/RL/2.png" alt="2"></p>
-<h3 id="强化学习的形式化">强化学习的形式化</h3>
-<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
-<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
-<p><img src="/images/RL/3.png" alt="3"></p>
-<ul>
-<li>
-<p><strong>状态动作值函数</strong>（Q-Function）</p>
-<p><strong>Q(s,a)</strong> = Return if you:</p>
-<ul>
-<li>start in state <em>s</em>.</li>
-<li>take action <em>a</em> (once).</li>
-<li>then behave optimally after that.</li>
-</ul>
-<p>The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.</p>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 29, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/vae/" class="link black dim">
-        VAE
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="普通自动编码器">普通自动编码器</h2>
-<p>目标：将高维度数据压缩成较小的表示</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ad01491f-ff96-44a7-9a2f-606c66461df8/%E6%88%AA%E5%B1%8F2024-12-30_19.27.19.png" alt="截屏2024-12-30 19.27.19.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/40f99add-baee-40ad-ab9b-45dc5f312af9/%E6%88%AA%E5%B1%8F2024-12-30_19.28.31.png" alt="截屏2024-12-30 19.28.31.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/99bd3fd9-fabb-421d-bcdb-0e6d0c5be310/%E6%88%AA%E5%B1%8F2024-12-30_19.29.08.png" alt="截屏2024-12-30 19.29.08.png"></p>
-<p>应用：</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/1b594f9d-d71f-4af3-b7c9-285e1dfffec6/%E6%88%AA%E5%B1%8F2024-12-30_19.29.47.png" alt="截屏2024-12-30 19.29.47.png"></p>
-<h2 id="去噪自动编码器">去噪自动编码器</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/a8e8568e-18b2-4281-a7af-05a627e6f5f0/%E6%88%AA%E5%B1%8F2024-12-30_19.35.42.png" alt="截屏2024-12-30 19.35.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/ce2c3930-ae83-40a9-b9d3-aa3f4f0246bd/%E6%88%AA%E5%B1%8F2024-12-30_19.36.58.png" alt="截屏2024-12-30 19.36.58.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/fdd726fa-7eb9-4b24-af63-f917ee593b1c/%E6%88%AA%E5%B1%8F2024-12-30_19.37.09.png" alt="截屏2024-12-30 19.37.09.png"></p>
-<h2 id="变分自动编码器">变分自动编码器</h2>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/f4509f09-0920-4a7e-b5ba-74cbec294241/%E6%88%AA%E5%B1%8F2024-12-30_19.39.12.png" alt="截屏2024-12-30 19.39.12.png"></p>
-<ul>
-<li>
-<p>损失函数</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/add2cf71-1094-4639-b2d5-699f551beb48/%E6%88%AA%E5%B1%8F2024-12-30_19.40.36.png" alt="截屏2024-12-30 19.40.36.png"></p>
-</li>
-</ul>
-<h3 id="reparameterization-trick重参数化">Reparameterization Trick(重参数化)</h3>
-<p>如何实现反向传播？</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/db9e763f-81d3-460f-81dc-b81242f41cdb/%E6%88%AA%E5%B1%8F2024-12-30_19.42.30.png" alt="截屏2024-12-30 19.42.30.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/e3fb22c3-4a30-4511-9457-4dc08d40b210/%E6%88%AA%E5%B1%8F2024-12-30_19.44.43.png" alt="截屏2024-12-30 19.44.43.png"></p>
-<ul>
-<li>
-<p>核心代码</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9c033e5a-8e28-4e82-ab6e-80d29dd08a20/%E6%88%AA%E5%B1%8F2024-12-30_19.45.33.png" alt="截屏2024-12-30 19.45.33.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/64564c69-b355-4559-95b2-2186d3cf9e08/%E6%88%AA%E5%B1%8F2024-12-30_19.45.42.png" alt="截屏2024-12-30 19.45.42.png"></p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/df9a2aa4-f700-4975-a5ca-f315eab2bcab/%E6%88%AA%E5%B1%8F2024-12-30_19.46.02.png" alt="截屏2024-12-30 19.46.02.png"></p>
-</li>
-</ul>
-<h3 id="解耦变分自编码器"><strong>解耦变分自编码器</strong></h3>
-<p>目的：确保潜在分布中的不同神经元互不相干，都在尝试学习输入数据中的不同内容。</p>
-<ul>
-<li>
-<p>解决方式：增加超参数$\beta$，衡量损失函数中的KL散度。</p>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/9501fd11-c948-42ff-ba18-807ca26a11eb/%E6%88%AA%E5%B1%8F2024-12-30_22.11.49.png" alt="截屏2024-12-30 22.11.49.png"></p>
-</li>
-</ul>
-<p><img src="https://prod-files-secure.s3.us-west-2.amazonaws.com/2da5ebdb-aecd-4b19-910d-af09587de5f1/d64275f8-60ea-4cd6-862a-d8d7821c8b3d/%E6%88%AA%E5%B1%8F2024-12-30_22.18.10.png" alt="截屏2024-12-30 22.18.10.png"></p>
-<p>$\beta$过小：过拟合</p>
-<p>$\beta$过大：失去输入中的大量细节</p>
-<p><strong>在强化学习中的作用</strong>：使Agent可以在压缩后的输入T空间上运行。</p>
-    </div>
-  <a href="/post/vae/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
     </aside>
     
     <ul class="pagination pagination-default">
@@ -309,9 +291,6 @@
       </li>
       <li class="page-item">
         <a href="/post/page/15/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/post/page/13/" aria-label="Page 13" class="page-link" role="button">13</a>
       </li>
       <li class="page-item">
         <a href="/post/page/14/" aria-label="Page 14" class="page-link" role="button">14</a>
@@ -326,10 +305,13 @@
         <a href="/post/page/17/" aria-label="Page 17" class="page-link" role="button">17</a>
       </li>
       <li class="page-item">
+        <a href="/post/page/18/" aria-label="Page 18" class="page-link" role="button">18</a>
+      </li>
+      <li class="page-item">
         <a href="/post/page/17/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/17/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/18/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

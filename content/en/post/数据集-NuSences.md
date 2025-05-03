@@ -2,7 +2,7 @@
 date: 2025-04-11T04:00:59-07:00
 description: ""
 featured_image: "/images/nuSences/pia.jpg"
-tags: ["RL", "AD", "data processing"]
+tags: ["AD", "data processing"]
 title: "数据集-NuSences"
 ---
 

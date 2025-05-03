@@ -77,7 +77,7 @@ EfficientNet：
 复合模型放缩 1. 概述 目的：找到在固定资源约束下，基线网络的不同缩放维度之间的关系。">
   <meta itemprop="datePublished" content="2025-04-29T04:00:59-07:00">
   <meta itemprop="dateModified" content="2025-04-29T04:00:59-07:00">
-  <meta itemprop="wordCount" content="51">
+  <meta itemprop="wordCount" content="76">
   <meta itemprop="keywords" content="CV">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="EfficientNet">
@@ -222,7 +222,7 @@ EfficientNet：
 <li>
 <p><strong>传统的模型缩放</strong>：</p>
 <p>任意增加 CNN 的深度或宽度，或使用更大的输入图像分辨率进行训练和评估。</p>
-<p>缺点：通常需要长时间的手动调优，并且仍然会经常产生次优的性能。</p>
+<p><strong>缺点</strong>：通常需要长时间的手动调优，并且仍然会经常产生次优的性能。</p>
 </li>
 <li>
 <p><strong><a href="https://arxiv.org/abs/1905.11946">EfficientNet</a></strong>：</p>
@@ -230,7 +230,7 @@ EfficientNet：
 <li>提出了一种新的模型缩放方法和 AutoML 技术，使用使用简单但高效的<strong>复合系数</strong>，均匀缩放深度/宽度/分辨率的所有维度。</li>
 <li>使用神经架构搜索来设计一个新的基线网络，并将其扩展以获得一系列模型，称为 EfficientNets。</li>
 </ol>
-<p>优点：更小、更快。</p>
+<p><strong>优点</strong>：更小、更快。</p>
 </li>
 </ul>
 <p> </p>
@@ -269,6 +269,35 @@ EfficientNet：
 <li>
 <p>EfficientNet-B0 的网络结构如下：</p>
 <p><img src="/images/efficientNet/3.png" alt="3"></p>
+<h5 id="主要组件"><strong>主要组件</strong></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">组件</th>
+          <th style="text-align: left">作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Stem</strong></td>
+          <td style="text-align: left">初始卷积（<code>_conv_stem</code>）+BN+Swish激活，快速下采样</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>MBConv Blocks</strong></td>
+          <td style="text-align: left">核心模块（含深度可分离卷积+SE注意力），共7个阶段（<code>_blocks</code>列表）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Head</strong></td>
+          <td style="text-align: left">最后的1x1卷积+池化（分类头）</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="mbconv-块结构"><strong>MBConv 块结构</strong></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>输入 <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#ae81ff">1</span>x1扩展卷积 <span style="color:#960050;background-color:#1e0010">→</span> 深度卷积 <span style="color:#960050;background-color:#1e0010">→</span> SE模块 <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#ae81ff">1</span>x1压缩卷积 <span style="color:#960050;background-color:#1e0010">→</span> 残差连接
+</span></span></code></pre></div><ul>
+<li><strong>深度可分离卷积</strong>：大幅减少计算量</li>
+<li><strong>SE（Squeeze-Excitation）</strong>：通道注意力机制，增强重要特征</li>
+</ul>
 </li>
 <li>
 <p>实验结果</p>

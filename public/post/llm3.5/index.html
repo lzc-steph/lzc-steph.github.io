@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>LLM - 3.指令理解阶段(核心) - 强化学习 | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/llm3.5/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/llm3.5/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="LLM - 3.指令理解阶段(核心) - 强化学习">
+  <meta property="og:description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-05-02T11:00:59-04:00">
+    <meta property="article:modified_time" content="2025-05-02T11:00:59-04:00">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="RL">
+
+  <meta itemprop="name" content="LLM - 3.指令理解阶段(核心) - 强化学习">
+  <meta itemprop="description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+  <meta itemprop="datePublished" content="2025-05-02T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-05-02T11:00:59-04:00">
+  <meta itemprop="wordCount" content="378">
+  <meta itemprop="keywords" content="LLM,RL">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LLM - 3.指令理解阶段(核心) - 强化学习">
+  <meta name="twitter:description" content="LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/LLM3.5/pia.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">LLM - 3.指令理解阶段(核心) - 强化学习</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              LLM 是 Large Language Model（大型语言模型）的缩写，是一种基于人工智能技术的自然语言处理模型。它通过大量的文本数据进行训练，能够理解和生成人类语言，广泛应用于文本生成、翻译、问答、摘要等任务。
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm3.5%2F&amp;subject=LLM&#43;-&#43;3.%E6%8C%87%E4%BB%A4%E7%90%86%E8%A7%A3%E9%98%B6%E6%AE%B5%28%E6%A0%B8%E5%BF%83%29&#43;-&#43;%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm3.5%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm3.5%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm3.5%2F&amp;summary=%0A&amp;title=LLM&#43;-&#43;3.%E6%8C%87%E4%BB%A4%E7%90%86%E8%A7%A3%E9%98%B6%E6%AE%B5%28%E6%A0%B8%E5%BF%83%29&#43;-&#43;%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fllm3.5%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">LLM - 3.指令理解阶段(核心) - 强化学习</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-05-02T11:00:59-04:00">May 2, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><img src="/images/LLM3.5/0.png" alt="0"></p>
+<ul>
+<li>
+<h4 id="监督微调的局限">监督微调的局限</h4>
+<ul>
+<li>高质量回复标注需耗费高昂人力成本</li>
+<li>交叉熵损失函数要求输出与答案逐字匹配，既无法适应语言的表达多样性，也难以解决输出对输入微小变动的敏感性</li>
+</ul>
+</li>
+<li>
+<h4 id="llm-rl-发展方向">LLM-RL 发展方向</h4>
+<ul>
+<li>
+<p><strong>基于人类反馈的强化学习 (RLHF)</strong></p>
+<p>通过<strong>奖励模型</strong>对生成文本进行整体质量评估，使模型自主探索更优的回复。</p>
+<p>通过生成-反馈的闭环机制持续优化，侧重人类价值对齐。</p>
+</li>
+<li>
+<p><strong>面向深度推理的强化学习框架</strong></p>
+<p>将复杂问题分解为<strong>长思维链</strong>（Chain-of-Thought）的决策序列，通过答案校验引导模型进行多步推理</p>
+<p>自主探索最优推理路径，专注复杂问题求解。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h2 id="1-强化学习概述">1 强化学习概述</h2>
+<p>核心：<strong>智能体</strong>与<strong>环境交互</strong>的问题，其目标是使智能体在复杂且不确定的环境中最大化奖励。</p>
+<ul>
+<li>
+<p><strong>策略</strong>是智能体的动作模型，决定了智能体的动作。</p>
+<p>基于价值的智能体显式地学习价值函数 Vπ(s) 或 Qπ(s,a)，隐式推导策略，典型算法如 Q-Learning。</p>
+</li>
+<li>
+<p><strong>价值</strong>函数的值是对未来奖励的预测，可以用它来评估状态的好坏。</p>
+<p>基于策略的智能体则直接学习策略函数 πθ (a|s)，价值函数隐式地表达在策略函数中，典型算法如 REINFORCE。</p>
+</li>
+<li>
+<p>演员**–**评论员智能体（Actor-critic Agent）则是把基于价值的智能体和基于策略的智能体结合起来，既学习策略函数又学习价值函数，通过两者的交互得到最佳的动作，典型算法如 PPO。</p>
+</li>
+</ul>
+<p> </p>
+<ul>
+<li>
+<h4 id="强化学习优势">强化学习优势</h4>
+<ol>
+<li>减少人工规则设计，让算法自主发现最优路径</li>
+<li>算法应通过计算规模扩展而非人工知识注入来提升能力</li>
+<li>专注构建通用长期优化架构的前瞻性</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h2 id="2-策略梯度方法">2. 策略梯度方法</h2>
+<p>思路：<strong>将策略本身参数化</strong>（例如用神经网络表示），直接通过梯度上升优化策略参数，让智能体更倾向于选择能带来高回报的动作。</p>
+<h3 id="21-策略梯度">2.1 策略梯度</h3>
+<p>直接优化策略函数 π(a|s; θ)，以最大化预期的回报（累计奖励）：</p>
+<p><img src="/images/LLM3.5/1.png" alt="1"></p>
+<p>使用梯度上升法优化参数 θ，计算期望回报的梯度为：</p>
+<p><img src="/images/LLM3.5/2.png" alt="2"></p>
+<p>引入基线降低策略梯度方法中回报 Rt 的方差</p>
+<p><img src="/images/LLM3.5/3.png" alt="3"></p>
+<p>常用的基线选择：<strong>状态价值函数 V(st)</strong></p>
+<p><img src="/images/LLM3.5/4.png" alt="4"></p>
+<p><strong>优势函数</strong>：衡量动作 at 相对于状态 st 的预期回报提升。</p>
+<p><img src="/images/LLM3.5/5.png" alt="5"></p>
+<p> </p>
+<h3 id="22-reinforce-算法">2.2 REINFORCE 算法</h3>
+<p>核心：通过蒙特卡洛采样方法直接估计策略梯度，利用轨迹的完整回报来更新策略参数 θ，从而最大化期望累积奖励。</p>
+<p><img src="/images/LLM3.5/6.png" alt="6"></p>
+<ul>
+<li>
+<p>引入 状态相关的基线 降低方差</p>
+<p><img src="/images/LLM3.5/7.png" alt="7"></p>
+</li>
+<li>
+<h4 id="缺点">缺点：</h4>
+<ul>
+<li>依赖<strong>完整轨迹采样</strong>的蒙特卡洛特性导致梯度估计方差过高，训练过程不稳定。</li>
+<li>必须等待整条轨迹结束后才能更新策略参数，在长周期任务或持续性环境中会大幅降低学习效率。</li>
+<li>每次策略更新后必须重新采样轨迹数据，样本利用率低下。</li>
+<li>适用于<strong>小规模离散动作空间场景</strong>。</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h3 id="23-广义优势估计">2.3 广义优势估计</h3>
+<p><strong>时序差分方法(TD)</strong>：基于动态规划的思想，通过引入 Bootstrapping 机制，即利用当前的价值估计来更新自身，而不必等待完整的轨迹结束。</p>
+<p><img src="/images/LLM3.5/8.png" alt="8"></p>
+<p>采样 k 步奖励：</p>
+<p><img src="/images/LLM3.5/9.png" alt="9"></p>
+<p><strong>广义优势估计（GAE）</strong>：优势函数定义为 k 步优势的指数平均：</p>
+<p><img src="/images/LLM3.5/10.png" alt="10"></p>
+<p><strong>引入 TD 误差</strong>：</p>
+<p><img src="/images/LLM3.5/11.png" alt="11"></p>
+<p>将 k步优势的计算转化为对每一步的 TD 误差的加权求和，从而降低了计算复杂度。将上述结果代入广义优势估计的公式：</p>
+<p><img src="/images/LLM3.5/12.png" alt="12"></p>
+<p> </p>
+<h3 id="24-近端策略优化算法-ppo">2.4 近端策略优化算法 (PPO)</h3>
+<ol>
+<li>
+<h4 id="重要性采样"><strong>重要性采样</strong></h4>
+<p>假设我们希望计算期望 Ex∼P(x)[f(x)]，但采样数据来自另一个分布 Q(x)，可以通过设置采样数据的权重来修正结果：</p>
+<p><img src="/images/LLM3.5/13.png" alt="13"></p>
+<ul>
+<li>
+<p>两个分布的差异不能过大，否则会导致以下问题：</p>
+<ol>
+<li><strong>高方差</strong>：当分布差异较大时，权重 P (x)/Q(x) 可能出现极端值，导致估计的期望值方差增大。</li>
+<li><strong>偏差</strong>：为了解决高方差问题，通常需要对权重进行裁剪或限制，这可能引入偏差。</li>
+</ol>
+</li>
+<li>
+<p>引入<strong>剪切机制</strong>，通过将权重限制在特定范围内来避免优化不稳定</p>
+<p><img src="/images/LLM3.5/14.png" alt="14"></p>
+</li>
+</ul>
+</li>
+<li>
+<h4 id="算法流程"><strong>算法流程</strong></h4>
+<p><img src="/images/LLM3.5/15.png" alt="15"></p>
+</li>
+</ol>
+<p> </p>
+<h3 id="25-rlooreinforce-leave-one-out">2.5 RLOO（REINFORCE Leave-One-Out）</h3>
+<p>通过利用多个在线样本构建更有效的基线来降低方差，从而提升算法性能。</p>
+<ol>
+<li>
+<h4 id="改进基线的构建方式"><strong>改进基线的构建方式</strong></h4>
+<p>REINFORCE 通常使用简单的移动平均基线，这种基线在处理复杂环境和多样本情况时存在一定局限性。</p>
+<p>RLOO 利用每次采样得到的多个样本之间的关系，为每个样本单独构建基线。RLOO 构建的基线为<strong>除 y(i) 之外的其他k−1 个样本奖励的平均值</strong>。</p>
+<ul>
+<li>
+<p>RLOO 的策略梯度估计公式为</p>
+<p><img src="/images/LLM3.5/16.png" alt="16"></p>
+</li>
+</ul>
+</li>
+<li>
+<h4 id="算法步骤"><strong>算法步骤</strong></h4>
+<p><img src="/images/LLM3.5/17.png" alt="17"></p>
+</li>
+<li>
+<p><strong>与 REINFORCE 算法对比</strong></p>
+<p>方差降低、利用了多个样本之间的关系、计算量增大。</p>
+</li>
+</ol>
+<p> </p>
+<h3 id="26-grpo">2.6 GRPO</h3>
+<p>Group Relative Policy Optimization（GRPO）旨在解决传统 PPO 在计算资源和训练稳定性方面的问题。它通过<strong>组奖励机制</strong>来估计基线。</p>
+<p>GRPO 从旧策略中抽取多个输出（形成组），利用组内奖励信息计算优势值，以此优化策略。减少了训练资源的消耗，在提升计算效率的同时，增强了训练过程的稳定性。</p>
+<p><img src="/images/LLM3.5/18.png" alt="18"></p>
+<p><em>Reference Model: 旧策略的副本，用于计算新策略与旧策略之间的 KL 散度</em></p>
+<ol>
+<li>
+<h4 id="优化目标函数的设计"><strong>优化目标函数的设计</strong></h4>
+<p><img src="/images/LLM3.5/19.png" alt="19"></p>
+<p>Ai,t 是基于组内奖励计算得到的优势值，它衡量了在时间步 t 采取动作 oi,t 相对于平均水平的优势程度。</p>
+<p>DKL[πθ ||πref] 用于约束当前策略 πθ 和参考策略 πref 之间的差异，确保策略不会偏离参考策略太远。</p>
+</li>
+<li>
+<h4 id="算法步骤-1"><strong>算法步骤</strong></h4>
+<ol>
+<li><strong>初始化策略参数</strong>：随机初始化当前策略模型 πθ 的参数 θ以及旧策略模型 πθold 的参数。</li>
+<li><strong>抽取组样本</strong>：计算优势值。</li>
+<li>更新策略参数：通过优化目标函数 JGRPO(θ) ，计算梯度并更新当前策略模型 πθ 的参数 θ。通常使用随机梯度下降（SGD）或其变种算法来进行参数更新。</li>
+<li>更新旧策略：将更新后的当前策略 πθ 的参数<strong>复制</strong>给旧策略模型 πθold ，为下一轮迭代做准备。</li>
+<li>重复迭代重复步骤 2 - 5，直到达到预设的训练轮数、策略收敛或满足其他停止条件。</li>
+</ol>
+</li>
+<li>
+<h4 id="与-ppo-的对比"><strong>与 PPO 的对比</strong></h4>
+<p>计算负担小、通过分组计算奖励，基线估计效率高、方差较高更稳定。</p>
+<p>优势：计算资源友好、稳定、应用效果好。</p>
+</li>
+</ol>
+<p> </p>
+<p> </p>
+<h2 id="3-推理模型的强化学习">3. 推理模型的强化学习</h2>
+<p>推理模型目标：优化推理能力（效率/准确性）</p>
+<h3 id="31-deepseek---r1">3.1 DeepSeek - R1</h3>
+<h4 id="1-deepseek-r1-zero基于基座模型的强化学习">1. DeepSeek-R1-Zero：基于基座模型的强化学习</h4>
+<ol>
+<li>
+<p><strong>强化学习算法</strong></p>
+<p>采用 <strong>GRPO</strong> 算法进行强化学习，通过从一组得分估计基线。</p>
+</li>
+<li>
+<p><strong>奖励建模</strong></p>
+<p>采用基于规则的奖励系统，包含两种奖励类型：</p>
+<ul>
+<li>准确性奖励：用于评估模型响应的正确性。</li>
+<li>格式奖励：促使模型将思考过程置于 ‘<!-- raw HTML omitted -->’ 和 ‘<!-- raw HTML omitted -->’ 标签之间，确保推理过程清晰呈现。</li>
+</ul>
+</li>
+<li>
+<p><strong>训练模板</strong></p>
+<p>推理过程和答案分别包含在 <!-- raw HTML omitted --> <!-- raw HTML omitted --> 和 <!-- raw HTML omitted --> <!-- raw HTML omitted --> 标签内</p>
+</li>
+<li>
+<p><strong>优势</strong></p>
+<ul>
+<li><strong>性能</strong>： pass@1 分数从初始的 15.6% 显著提升至 71.0%</li>
+<li><strong>自我进化过程</strong>：模型的思考时间和生成回答的长度不断增加</li>
+<li><strong>顿悟时刻</strong>：凸显了强化学习在激发模型智能方面的潜力</li>
+</ul>
+</li>
+<li>
+<p><strong>存在问题</strong>：可读性差、语言混合等。</p>
+</li>
+</ol>
+<p>DeepSeek-R1-Zero 首次验证了大语言模型的推理能力可通过纯强化学习激发，无需监督微调作为前期步骤。</p>
+<p> </p>
+<h4 id="2-deepseek-r1冷启动强化学习">2. DeepSeek-R1：冷启动强化学习</h4>
+<ol>
+<li>
+<p><strong>冷启动</strong></p>
+<p>为解决训练初期不稳定问题，DeepSeek-R1 构建并收集<strong>少量长思维链数据</strong>对 DeepSeek-V3-Base 模型进行微调，作为初始 RL 模型。</p>
+<p>优势：改善了输出的可读性；融入人类先验知识，提升了模型的性能潜力。</p>
+</li>
+<li>
+<p><strong>面向推理</strong>的强化学习</p>
+<p>在冷启动微调后，采用与 DeepSeek-R1-Zero 相同的<strong>大规模强化学习训练过程</strong>，聚焦于推理密集型任务。</p>
+<p>针对训练中发现的 CoT 语言混合问题，引入<strong>语言一致性奖励</strong>，根据 CoT 中目标语言单词的比例计算。</p>
+</li>
+<li>
+<p><strong>拒绝采样和监督微调</strong></p>
+<p>当面向推理的 RL 训练接近收敛时，利用此时的检查点收集用于后续轮次的监督微调数据。</p>
+<ul>
+<li><strong>推理数据</strong>：通过拒绝采样生成推理轨迹，扩展数据集。</li>
+<li><strong>非推理数据</strong>：对于写作、事实性问答、自我认知和翻译等非推理任务，复用 DeepSeek-V3 的 pipeline 和部分 SFT 数据集。</li>
+</ul>
+</li>
+<li>
+<p><strong>全场景强化学习</strong></p>
+<p>进行二次强化学习训练，旨在提升模型的有用性、无害性并进一步优化推理能力。</p>
+</li>
+</ol>
+<p>DeepSeek-R1 在多个推理任务中表现出色。</p>
+<p> </p>
+<h4 id="3-蒸馏赋予小模型推理能力">3. 蒸馏：赋予小模型推理能力</h4>
+<p>使用在 DeepSeek-R1 训练过程中收集的 800k 样本，对 Qwen 和 Llama 等开源模型进行<strong>直接微调</strong>。</p>
+<p>这种简单的蒸馏方法能显著提升小模型的推理能力。</p>
+<p> </p>
+<p> </p>
+<h3 id="32-kimi-k15">3.2 Kimi k1.5</h3>
+<p>有出色的推理性能、创新的技术架构通过长上下文扩展和改进的策略优化、高效的数据处理与训练。</p>
+<h4 id="1-数据集">1. 数据集</h4>
+<p><strong>强化学习提示数据集构建</strong>：3 个关键属性（多样覆盖、平衡难度、准确评估能力）</p>
+<p><strong>预训练数据集的构建与处理</strong>： 为保证数据高质量，采用多种清洗方法</p>
+<p><strong>微调数据集的构建</strong>： 文本示例 + 文本- 视觉示例</p>
+<p><strong>多模态数据</strong>： 标题数据、图像-文本交错数据、OCR 数据</p>
+<p> </p>
+<h4 id="2-算法创新">2. 算法创新</h4>
+<ol>
+<li>
+<p><strong>长上下文扩展</strong></p>
+<p>采用<strong>部分回放</strong>技术，通过重用之前轨迹的大部分来采样新轨迹，减少计算开销。</p>
+<p>即，部分展开系统将长响应分解为多个段，在多个迭代中逐步处理，加快训练速度。</p>
+</li>
+<li>
+<p><strong>Long2short</strong> 的上下文压缩策略</p>
+<ol>
+<li>
+<p><strong>模型合并</strong>：简单平均 长上下文模型 和 短上下文模型 的权重，获得无需训练的新模型，有助于保持泛化能力。</p>
+</li>
+<li>
+<p><strong>最短拒绝采样</strong>：对同一问题多次采样，选择最短的正确响应。</p>
+</li>
+<li>
+<p><strong>DPO</strong>：形成成对偏好数据用于 DPO 训练。</p>
+</li>
+<li>
+<p><strong>长到短强化学习</strong>：应用长度惩罚方案惩罚超长响应。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>改进的策略优化</strong></p>
+<ol>
+<li>
+<p>采样策略：采用<strong>课程采样</strong>和<strong>优先级采样</strong>策略。</p>
+<p>课程采样从简单任务开始训练，逐渐过渡到困难任务，利用数据的难度标签提高训练效率；</p>
+<p>优先级采样跟踪每个问题的成功率，按比例采样问题，使模型专注于薄弱领域。</p>
+</li>
+<li>
+<p><strong>长度惩罚</strong>：针对 RL 训练期间模型响应长度增加的问题，引入长度奖励限制 token 长度增长。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p> </p>
+<h4 id="3-训练架构及工程框架">3. 训练架构及工程框架</h4>
+<ul>
+<li>
+<p><strong>三个阶段</strong></p>
+<ol>
+<li>
+<p><strong>视觉语言预训练阶段</strong></p>
+<p>最初仅在语言数据上训练，随后逐步引入交错式视觉- 语言数据，获取多模态能力。</p>
+</li>
+<li>
+<p><strong>视觉语言冷却阶段</strong></p>
+<p>使用<strong>高质量</strong>的语言和视觉语言数据集训练，加入<strong>合成数据</strong>可提高在数学推理、基于知识的任务和代码生成方面的性能。</p>
+</li>
+<li>
+<p><strong>长上下文激活阶段</strong></p>
+<p>使用上采样的长上下文冷却数据训练，处理扩展序列任务。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>大规模 RL 训练系统</strong>：</p>
+<p>通过迭代同步方法操作，每次迭代包括展开阶段和训练阶段。</p>
+<ul>
+<li>展开阶段：生成响应序列并存储在重放缓冲区</li>
+<li>训练阶段：访问经验更新模型权重</li>
+</ul>
+</li>
+<li>
+<p><strong>混合部署框架</strong></p>
+<p>利用 Kubernetes Sidecar 容器共享 GPU 资源，实现训练和推理任务的并行。</p>
+</li>
+</ul>
+<p> </p>
+<p> </p>
+<h2 id="4-基于人类反馈的强化学习">4. 基于人类反馈的强化学习</h2>
+<p>基于人类反馈目标：对齐人类偏好（自然性/安全性）</p>
+<h3 id="41-基于人类反馈的强化学习流程">4.1 基于人类反馈的强化学习流程</h3>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/LLM3.5/20.png" alt="20"></p>
+<ol>
+<li><strong>环境采样</strong>：策略模型基于给定输入生成一系列的回复，奖励模型则对这些回复进行打分获得奖励。</li>
+<li><strong>优势估计</strong>：利用评论模型预测生成回复的未来累积奖励，并借助广义优势估计(GAE)算法估计优势函数，有助于准确地评估每次行动的好处。</li>
+<li><strong>优化调整</strong>：使用优势函数优化和调整策略模型，同时利用参考模型确保更新的策略不会</li>
+</ol>
+<p> </p>
+<h3 id="42-奖励模型">4.2 奖励模型</h3>
+<h4 id="1-数据收集">1. 数据收集</h4>
+<p><strong>3H 原则</strong>：帮助性 (Helpfulness)、 真实性 (Honesty) 、无害性 (Harmless)</p>
+<h4 id="2-模型训练">2. 模型训练</h4>
+<p>奖励模型通常基于 Transformer 结构的预训练语言模型，为文本序列中的<strong>最后一个标记</strong>分配一个<strong>标量奖励值</strong>，样本质量越好，奖励值越大。</p>
+<p>通常需要使用<strong>由相同输入生成的两个不同输出</strong>之间的配对比较数据集。</p>
+<ul>
+<li>
+<p><strong>模仿学习</strong></p>
+<p>目标：学习从输入到输出的映射，以便能够在类似的输入上生成类似的输出。</p>
+</li>
+<li>
+<p>引入  强化学习策略与初始监督模型之间的<strong>KL散度</strong> 到奖励函数中</p>
+<p>目的：促进了在策略空间中的探索；维持了学习过程的稳定性和一致性。</p>
+</li>
+</ul>
+<h4 id="3-开源数据">3. 开源数据</h4>
+<p>Summarize from Feedback 数据集、HH-RLHF 数据集、Stanford Human Preferences（SHP）数据集&hellip;</p>
+<p> </p>
+<p> </p>
+<h2 id="5-实践verl">5. 实践：verl</h2>
+<p>字节 + 港大：解决了传统 RL/RLHF 系统灵活性和效率不足的问题</p>
+<p>创新性采用<strong>混合编程模型</strong>，将控制流和计算流解耦。</p>
+<p>流程：训练脚本与参数配置、基于 Ray 分布式计算框架的训练流程、奖励函数配置。</p><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/llm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">LLM</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/rl/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">RL</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm3/">LLM - 3.指令理解阶段(核心) - 指令微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm2/">LLM - 2.预训练阶段</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm1/">LLM - 1.基础理论</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/bert/">BERT</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF/">强化学习-发展趋势</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">工具链-强化学习</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo/">PPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/trpo/">TRPO</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/actor-critic/">Actor-Critic</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/reinforce/">REINFORCE</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/dqn/">DQN (deep Q network)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/qlearing/">Q-learing</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9/">强化学习-易混淆点</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/ppo-%E5%8E%9F%E7%90%86/">PPO-直观理解</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
