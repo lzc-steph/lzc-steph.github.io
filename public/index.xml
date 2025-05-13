@@ -6,8 +6,15 @@
     <description>Recent content in AJ&#39;s blog on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 11 May 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 12 May 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>知识图谱</title>
+      <link>http://localhost:1313/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</link>
+      <pubDate>Mon, 12 May 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</guid>
+      <description>&lt;p&gt;知识图谱于14年出现，之后进入平稳期，23年由于大模型的出现再次火爆。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;大模型的幻觉问题的解决方式&#34;&gt;大模型的“幻觉”问题的解决方式&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;提高LLM的能力&lt;/li&gt;&#xA;&lt;li&gt;框定边界（大量符合逻辑的&lt;strong&gt;facts&lt;/strong&gt;），大模型在边界内通过自身的理解能力，提供回复&#xA;&lt;ul&gt;&#xA;&lt;li&gt;facts 来源于：一些网络/企业内部文档/企业内的数据库/结构化的知识图谱&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;知识图谱一种存储facts的方式&#34;&gt;知识图谱：一种存储facts的方式&lt;/h4&gt;&#xA;&lt;p&gt;采用了“实体&amp;amp;关系”的方法来存储信息&lt;/p&gt;&#xA;&lt;p&gt;区别于简单的图：包含多种实体和多种关系&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;知识图谱的优势&#34;&gt;知识图谱的优势&lt;/h4&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;关系直观&lt;/li&gt;&#xA;&lt;li&gt;抓住重要信息&lt;/li&gt;&#xA;&lt;li&gt;弥补文本到向量直接的关系（GraphRAG：KG与向量数据库融合）&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h2 id=&#34;rag-与知识图谱结合&#34;&gt;RAG 与知识图谱结合&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;知识图谱的必要性&#34;&gt;知识图谱的必要性&lt;/h4&gt;&#xA;&lt;p&gt;e.g：问题:“感冒常用药物的负作用”；数据库存储的是“冲剂” 的描述，对应段落刚好没有出现“感冒” 这个关键词；两者相似度不够高，无法匹配&lt;/p&gt;&#xA;&lt;p&gt;—— 使用知识图谱找到“感冒”和“冲剂”之间的&lt;strong&gt;关系&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
     <item>
       <title>LLM - 4.大模型增强 - RAG</title>
       <link>http://localhost:1313/post/llm4/</link>

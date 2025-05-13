@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KG on HomePage</title>
+    <link>http://localhost:1313/tags/kg/</link>
+    <description>Recent content in KG on HomePage</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 12 May 2025 11:00:59 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>知识图谱</title>
+      <link>http://localhost:1313/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</link>
+      <pubDate>Mon, 12 May 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</guid>
+      <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;发展历程&#34;&gt;发展历程&lt;/h4&gt;&#xA;&lt;p&gt;14、15年出现，之后进入平稳期，23年由于大模型的出现再次火爆。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;大模型的幻觉问题的解决方式&#34;&gt;大模型的“幻觉”问题的解决方式&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;提高LLM的能力&lt;/li&gt;&#xA;&lt;li&gt;框定边界（大量符合逻辑的&lt;strong&gt;facts&lt;/strong&gt;），大模型在边界内通过自身的理解能力，提供回复&#xA;&lt;ul&gt;&#xA;&lt;li&gt;facts 来源于：一些网络/企业内部文档/企业内的数据库/结构化的知识图谱&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;知识图谱一种存储facts的方式&#34;&gt;知识图谱：一种存储facts的方式&lt;/h4&gt;&#xA;&lt;p&gt;采用了“实体&amp;amp;关系”的方法来存储信息&lt;/p&gt;&#xA;&lt;p&gt;区别于简单的图：包含多种实体和多种关系&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;知识图谱的优势&#34;&gt;知识图谱的优势&lt;/h4&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;关系直观&lt;/li&gt;&#xA;&lt;li&gt;抓住重要信息&lt;/li&gt;&#xA;&lt;li&gt;弥补文本到向量直接的关系（GraphRAG：KG与向量数据库融合）&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h2 id=&#34;rag-与知识图谱结合&#34;&gt;RAG 与知识图谱结合&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;知识图谱的必要性&#34;&gt;知识图谱的必要性&lt;/h4&gt;&#xA;&lt;p&gt;e.g：问题是*“感冒常用药物的负作用”&lt;em&gt;；数据库存储的是&lt;/em&gt;“冲剂”* 的描述，对应段落刚好没有出现*“感冒”* 这个关键词；两者相似度不够高，无法匹配&lt;/p&gt;&#xA;&lt;p&gt;—— 使用知识图谱找到“感冒”和“冲剂”之间的&lt;strong&gt;关系&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;rag-与知识图谱如何结合&#34;&gt;RAG 与知识图谱如何结合&lt;/h4&gt;&#xA;&lt;p&gt;基于知识图谱扩充问题，将问题具像化&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;改写后的问题进入向量数据库，作为chunks&lt;/li&gt;&#xA;&lt;li&gt;改写后的问题进入知识图谱，检索出与问题对应的相关子图(subgraph)；子图由很多三元组(如感冒-治疗的药物有-冲剂)构成，将所有的三元组转化为文字形式&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;将上述两部分合在一起，构造新的上下文包含我们的潜在答案。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;h4 id=&#34;存在的问题&#34;&gt;存在的问题&lt;/h4&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;如何构建图谱：人工、通过LLM&amp;hellip;&lt;/li&gt;&#xA;&lt;li&gt;合并后存在冗余信息，如何过滤重复信息&lt;/li&gt;&#xA;&lt;li&gt;怎么抽取子图(k-hop)&lt;/li&gt;&#xA;&lt;li&gt;抽出的子图是否可再次在向量库中检索，得到结果后再次合并&lt;/li&gt;&#xA;&lt;li&gt;如何更好地融入结构信息，让LLM更好地理解结构信息&#xA;&lt;ul&gt;&#xA;&lt;li&gt;使用更结构化的prompt&lt;/li&gt;&#xA;&lt;li&gt;结合图模型技术&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
+  </channel>
+</rss>
