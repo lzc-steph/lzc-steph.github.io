@@ -25,9 +25,11 @@ title: "PPO"
 
   3. 自适应的 KL 惩罚项
 
-1. **Critic网络训练**：通过最小化`critic_loss = MSE(critic(states), td_target)`，让critic的价值估计更准确
+1. **Critic网络训练**：
+
+   通过最小化`critic_loss = MSE(critic(states), td_target)`，让critic的价值估计更准确
 2. **Actor网络更新**：
-   - TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向
+   - TD误差的广义形式(GAE)被用作优势函数，指导策略更新方向
    - 优势函数越大，表示该动作比平均表现更好，应被加强
 
 &nbsp;
@@ -40,7 +42,7 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
 
 ![2](/images/PPO2/2.png)
 
-+ dk 即为KL散度值。
++ dk 即为 KL 散度值。
 
   第一种情况 dk 小，说明安全，关注前项；第二种情况 dk 大，不安全，故乘 2 关注后一项。
 
@@ -52,7 +54,9 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
 
 ![3](/images/PPO2/3.png)
 
-前一项是原来的，后一项是要做截断的；保证更新幅度不会过大或过小。
+前一项是原来的，后一项是要做截断的；
+
+保证更新幅度不会过大或过小。
 
 ![4](/images/PPO2/4.png)
 
@@ -60,7 +64,7 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
 
 ## 5. PPO 代码实践
 
-大量实验表明，PPO-截断总是比 PPO-惩罚表现得更好。因此下面我们使用 **PPO-截断**的代码实现。
+大量实验表明，PPO-截断总是比 PPO-惩罚表现得更好。因此下面我们使用 **PPO-截断** 的代码实现。
 
 ![5](/images/PPO2/5.png)
 

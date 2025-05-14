@@ -31,10 +31,14 @@ TRPO 采用重要性采样 &mdash;-&gt; PPO 采用 clip 截断，限制新旧策
 
 
 
-Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确
+
+Critic网络训练：
+通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确
+
+
 Actor网络更新：
 
-TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向
+TD误差的广义形式(GAE)被用作优势函数，指导策略更新方向
 优势函数越大，表示该动作比平均表现更好，应被加强
 
 
@@ -77,7 +81,10 @@ PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放�
 PPO 的改进 TRPO 采用重要性采样 —-&gt; PPO 采用 clip 截断，限制新旧策略差异，避免更新过大。
 优势函数 At 选用多步时序差分
 自适应的 KL 惩罚项
-Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确 Actor网络更新： TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向 优势函数越大，表示该动作比平均表现更好，应被加强 3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
+Critic网络训练：
+通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确
+Actor网络更新：
+TD误差的广义形式(GAE)被用作优势函数，指导策略更新方向 优势函数越大，表示该动作比平均表现更好，应被加强 3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -92,10 +99,13 @@ Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)
 PPO 的改进 TRPO 采用重要性采样 —-&gt; PPO 采用 clip 截断，限制新旧策略差异，避免更新过大。
 优势函数 At 选用多步时序差分
 自适应的 KL 惩罚项
-Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确 Actor网络更新： TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向 优势函数越大，表示该动作比平均表现更好，应被加强 3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
+Critic网络训练：
+通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确
+Actor网络更新：
+TD误差的广义形式(GAE)被用作优势函数，指导策略更新方向 优势函数越大，表示该动作比平均表现更好，应被加强 3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
   <meta itemprop="datePublished" content="2025-04-03T04:00:59-07:00">
   <meta itemprop="dateModified" content="2025-04-03T04:00:59-07:00">
-  <meta itemprop="wordCount" content="749">
+  <meta itemprop="wordCount" content="754">
   <meta itemprop="keywords" content="RL">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="PPO">
@@ -105,7 +115,10 @@ Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)
 PPO 的改进 TRPO 采用重要性采样 —-&gt; PPO 采用 clip 截断，限制新旧策略差异，避免更新过大。
 优势函数 At 选用多步时序差分
 自适应的 KL 惩罚项
-Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确 Actor网络更新： TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向 优势函数越大，表示该动作比平均表现更好，应被加强 3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
+Critic网络训练：
+通过最小化critic_loss = MSE(critic(states), td_target)，让critic的价值估计更准确
+Actor网络更新：
+TD误差的广义形式(GAE)被用作优势函数，指导策略更新方向 优势函数越大，表示该动作比平均表现更好，应被加强 3. PPO-惩罚 PPO-惩罚（PPO-Penalty）：用拉格朗日乘数法将 KL 散度的限制放进了目标函数中，使其变成了一个无约束的优化问题，在迭代的过程中不断更新 KL 散度前的系数 beta。">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -219,7 +232,7 @@ Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F&amp;summary=1.&#43;%E8%AE%BA%E6%96%87%E8%AF%A6%E8%AF%BB&#43;Proximal&#43;Policy&#43;Optimization&#43;Algorithms%EF%BC%88Proximal%EF%BC%9A%E8%BF%91%E4%BC%BC%EF%BC%89%0A2.&#43;PPO&#43;%E5%9B%9E%E9%A1%BE&#43;TRPO&#43;%E4%BD%BF%E7%94%A8&#43;KL&#43;%E6%95%A3%E5%BA%A6%E7%BA%A6%E6%9D%9F&#43;policy&#43;%E7%9A%84%E6%9B%B4%E6%96%B0%E5%B9%85%E5%BA%A6%EF%BC%9B%E4%BD%BF%E7%94%A8%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E8%BF%91%E4%BC%BC%E4%BC%9A%E5%B8%A6%E6%9D%A5%E8%AF%AF%E5%B7%AE%EF%BC%88%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E7%9A%84%E9%80%9A%E7%97%85%EF%BC%89%EF%BC%9B%E8%A7%A3%E5%B8%A6%E7%BA%A6%E6%9D%9F%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E5%9B%B0%E9%9A%BE%0APPO&#43;%E7%9A%84%E6%94%B9%E8%BF%9B&#43;TRPO&#43;%E9%87%87%E7%94%A8%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7&#43;%26amp%3Bmdash%3B-%26amp%3Bgt%3B&#43;PPO&#43;%E9%87%87%E7%94%A8&#43;clip&#43;%E6%88%AA%E6%96%AD%EF%BC%8C%E9%99%90%E5%88%B6%E6%96%B0%E6%97%A7%E7%AD%96%E7%95%A5%E5%B7%AE%E5%BC%82%EF%BC%8C%E9%81%BF%E5%85%8D%E6%9B%B4%E6%96%B0%E8%BF%87%E5%A4%A7%E3%80%82%0A%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0&#43;At&#43;%E9%80%89%E7%94%A8%E5%A4%9A%E6%AD%A5%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%0A%E8%87%AA%E9%80%82%E5%BA%94%E7%9A%84&#43;KL&#43;%E6%83%A9%E7%BD%9A%E9%A1%B9%0ACritic%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%EF%BC%9A%E9%80%9A%E8%BF%87%E6%9C%80%E5%B0%8F%E5%8C%96critic_loss&#43;%3D&#43;MSE%28critic%28states%29%2C&#43;td_target%29%EF%BC%8C%E8%AE%A9critic%E7%9A%84%E4%BB%B7%E5%80%BC%E4%BC%B0%E8%AE%A1%E6%9B%B4%E5%87%86%E7%A1%AE&#43;Actor%E7%BD%91%E7%BB%9C%E6%9B%B4%E6%96%B0%EF%BC%9A&#43;TD%E8%AF%AF%E5%B7%AE%E7%9A%84%E5%B9%BF%E4%B9%89%E5%BD%A2%E5%BC%8F%EF%BC%88GAE%EF%BC%89%E8%A2%AB%E7%94%A8%E4%BD%9C%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%EF%BC%8C%E6%8C%87%E5%AF%BC%E7%AD%96%E7%95%A5%E6%9B%B4%E6%96%B0%E6%96%B9%E5%90%91&#43;%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%E8%B6%8A%E5%A4%A7%EF%BC%8C%E8%A1%A8%E7%A4%BA%E8%AF%A5%E5%8A%A8%E4%BD%9C%E6%AF%94%E5%B9%B3%E5%9D%87%E8%A1%A8%E7%8E%B0%E6%9B%B4%E5%A5%BD%EF%BC%8C%E5%BA%94%E8%A2%AB%E5%8A%A0%E5%BC%BA&#43;3.&#43;PPO-%E6%83%A9%E7%BD%9A&#43;PPO-%E6%83%A9%E7%BD%9A%EF%BC%88PPO-Penalty%EF%BC%89%EF%BC%9A%E7%94%A8%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E6%95%B0%E6%B3%95%E5%B0%86&#43;KL&#43;%E6%95%A3%E5%BA%A6%E7%9A%84%E9%99%90%E5%88%B6%E6%94%BE%E8%BF%9B%E4%BA%86%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E4%B8%AD%EF%BC%8C%E4%BD%BF%E5%85%B6%E5%8F%98%E6%88%90%E4%BA%86%E4%B8%80%E4%B8%AA%E6%97%A0%E7%BA%A6%E6%9D%9F%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%EF%BC%8C%E5%9C%A8%E8%BF%AD%E4%BB%A3%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0&#43;KL&#43;%E6%95%A3%E5%BA%A6%E5%89%8D%E7%9A%84%E7%B3%BB%E6%95%B0&#43;beta%E3%80%82%0A&amp;title=PPO&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F&amp;summary=1.&#43;%E8%AE%BA%E6%96%87%E8%AF%A6%E8%AF%BB&#43;Proximal&#43;Policy&#43;Optimization&#43;Algorithms%EF%BC%88Proximal%EF%BC%9A%E8%BF%91%E4%BC%BC%EF%BC%89%0A2.&#43;PPO&#43;%E5%9B%9E%E9%A1%BE&#43;TRPO&#43;%E4%BD%BF%E7%94%A8&#43;KL&#43;%E6%95%A3%E5%BA%A6%E7%BA%A6%E6%9D%9F&#43;policy&#43;%E7%9A%84%E6%9B%B4%E6%96%B0%E5%B9%85%E5%BA%A6%EF%BC%9B%E4%BD%BF%E7%94%A8%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%0A%E7%BC%BA%E7%82%B9%EF%BC%9A%E8%BF%91%E4%BC%BC%E4%BC%9A%E5%B8%A6%E6%9D%A5%E8%AF%AF%E5%B7%AE%EF%BC%88%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E7%9A%84%E9%80%9A%E7%97%85%EF%BC%89%EF%BC%9B%E8%A7%A3%E5%B8%A6%E7%BA%A6%E6%9D%9F%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E5%9B%B0%E9%9A%BE%0APPO&#43;%E7%9A%84%E6%94%B9%E8%BF%9B&#43;TRPO&#43;%E9%87%87%E7%94%A8%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7&#43;%26amp%3Bmdash%3B-%26amp%3Bgt%3B&#43;PPO&#43;%E9%87%87%E7%94%A8&#43;clip&#43;%E6%88%AA%E6%96%AD%EF%BC%8C%E9%99%90%E5%88%B6%E6%96%B0%E6%97%A7%E7%AD%96%E7%95%A5%E5%B7%AE%E5%BC%82%EF%BC%8C%E9%81%BF%E5%85%8D%E6%9B%B4%E6%96%B0%E8%BF%87%E5%A4%A7%E3%80%82%0A%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0&#43;At&#43;%E9%80%89%E7%94%A8%E5%A4%9A%E6%AD%A5%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%0A%E8%87%AA%E9%80%82%E5%BA%94%E7%9A%84&#43;KL&#43;%E6%83%A9%E7%BD%9A%E9%A1%B9%0ACritic%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%EF%BC%9A%0A%E9%80%9A%E8%BF%87%E6%9C%80%E5%B0%8F%E5%8C%96critic_loss&#43;%3D&#43;MSE%28critic%28states%29%2C&#43;td_target%29%EF%BC%8C%E8%AE%A9critic%E7%9A%84%E4%BB%B7%E5%80%BC%E4%BC%B0%E8%AE%A1%E6%9B%B4%E5%87%86%E7%A1%AE%0AActor%E7%BD%91%E7%BB%9C%E6%9B%B4%E6%96%B0%EF%BC%9A%0ATD%E8%AF%AF%E5%B7%AE%E7%9A%84%E5%B9%BF%E4%B9%89%E5%BD%A2%E5%BC%8F%28GAE%29%E8%A2%AB%E7%94%A8%E4%BD%9C%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%EF%BC%8C%E6%8C%87%E5%AF%BC%E7%AD%96%E7%95%A5%E6%9B%B4%E6%96%B0%E6%96%B9%E5%90%91&#43;%E4%BC%98%E5%8A%BF%E5%87%BD%E6%95%B0%E8%B6%8A%E5%A4%A7%EF%BC%8C%E8%A1%A8%E7%A4%BA%E8%AF%A5%E5%8A%A8%E4%BD%9C%E6%AF%94%E5%B9%B3%E5%9D%87%E8%A1%A8%E7%8E%B0%E6%9B%B4%E5%A5%BD%EF%BC%8C%E5%BA%94%E8%A2%AB%E5%8A%A0%E5%BC%BA&#43;3.&#43;PPO-%E6%83%A9%E7%BD%9A&#43;PPO-%E6%83%A9%E7%BD%9A%EF%BC%88PPO-Penalty%EF%BC%89%EF%BC%9A%E7%94%A8%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E6%95%B0%E6%B3%95%E5%B0%86&#43;KL&#43;%E6%95%A3%E5%BA%A6%E7%9A%84%E9%99%90%E5%88%B6%E6%94%BE%E8%BF%9B%E4%BA%86%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E4%B8%AD%EF%BC%8C%E4%BD%BF%E5%85%B6%E5%8F%98%E6%88%90%E4%BA%86%E4%B8%80%E4%B8%AA%E6%97%A0%E7%BA%A6%E6%9D%9F%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%EF%BC%8C%E5%9C%A8%E8%BF%AD%E4%BB%A3%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0&#43;KL&#43;%E6%95%A3%E5%BA%A6%E5%89%8D%E7%9A%84%E7%B3%BB%E6%95%B0&#43;beta%E3%80%82%0A&amp;title=PPO&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fppo%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -262,10 +275,14 @@ Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)
 </li>
 </ul>
 <ol>
-<li><strong>Critic网络训练</strong>：通过最小化<code>critic_loss = MSE(critic(states), td_target)</code>，让critic的价值估计更准确</li>
-<li><strong>Actor网络更新</strong>：
+<li>
+<p><strong>Critic网络训练</strong>：</p>
+<p>通过最小化<code>critic_loss = MSE(critic(states), td_target)</code>，让critic的价值估计更准确</p>
+</li>
+<li>
+<p><strong>Actor网络更新</strong>：</p>
 <ul>
-<li>TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向</li>
+<li>TD误差的广义形式(GAE)被用作优势函数，指导策略更新方向</li>
 <li>优势函数越大，表示该动作比平均表现更好，应被加强</li>
 </ul>
 </li>
@@ -276,7 +293,7 @@ Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)
 <p><img src="/images/PPO2/2.png" alt="2"></p>
 <ul>
 <li>
-<p>dk 即为KL散度值。</p>
+<p>dk 即为 KL 散度值。</p>
 <p>第一种情况 dk 小，说明安全，关注前项；第二种情况 dk 大，不安全，故乘 2 关注后一项。</p>
 </li>
 </ul>
@@ -284,11 +301,12 @@ Critic网络训练：通过最小化critic_loss = MSE(critic(states), td_target)
 <h2 id="4-ppo-截断">4. PPO-截断</h2>
 <p>在目标函数中进行限制，以保证新的参数和旧的参数的差距不会太大。</p>
 <p><img src="/images/PPO2/3.png" alt="3"></p>
-<p>前一项是原来的，后一项是要做截断的；保证更新幅度不会过大或过小。</p>
+<p>前一项是原来的，后一项是要做截断的；</p>
+<p>保证更新幅度不会过大或过小。</p>
 <p><img src="/images/PPO2/4.png" alt="4"></p>
 <p> </p>
 <h2 id="5-ppo-代码实践">5. PPO 代码实践</h2>
-<p>大量实验表明，PPO-截断总是比 PPO-惩罚表现得更好。因此下面我们使用 <strong>PPO-截断</strong>的代码实现。</p>
+<p>大量实验表明，PPO-截断总是比 PPO-惩罚表现得更好。因此下面我们使用 <strong>PPO-截断</strong> 的代码实现。</p>
 <p><img src="/images/PPO2/5.png" alt="5"></p>
 <ul>
 <li>

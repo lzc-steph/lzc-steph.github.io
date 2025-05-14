@@ -282,10 +282,14 @@
 </li>
 </ul>
 <ol>
-<li><strong>Critic网络训练</strong>：通过最小化<code>critic_loss = MSE(critic(states), td_target)</code>，让critic的价值估计更准确</li>
-<li><strong>Actor网络更新</strong>：
+<li>
+<p><strong>Critic网络训练</strong>：</p>
+<p>通过最小化<code>critic_loss = MSE(critic(states), td_target)</code>，让critic的价值估计更准确</p>
+</li>
+<li>
+<p><strong>Actor网络更新</strong>：</p>
 <ul>
-<li>TD误差的广义形式（GAE）被用作优势函数，指导策略更新方向</li>
+<li>TD误差的广义形式(GAE)被用作优势函数，指导策略更新方向</li>
 <li>优势函数越大，表示该动作比平均表现更好，应被加强</li>
 </ul>
 </li>
@@ -511,7 +515,7 @@
 </li>
 <li>
 <p><strong>广义优势估计</strong>(GAE)</p>
-<p>通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ<em>γ</em>和λ<em>λ</em>的幂次衰减，实现平滑的回报估计。</p>
+<p>通过指数加权平均不同步长的优势估计（从1步到无穷步），结合γ和λ的幂次衰减，实现平滑的回报估计。</p>
 <p><img src="/images/RLconfused/5.png" alt="5"></p>
 </li>
 </ol>
