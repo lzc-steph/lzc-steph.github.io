@@ -1,5 +1,5 @@
 ---
-date: 2026-05-11T11:00:59-04:00
+date: 2025-05-14T11:00:59-04:00
 description: "该论文提出了GoG，用于在不完整知识图谱（IKGQA）上进行问答任务。GoG将LLM同时作为代理和知识图谱，通过“思考-搜索-生成”框架动态整合外部知识图谱和LLM的内部知识。该方法有效缓解了LLM的知识不足和幻觉问题，为复杂问答任务提供了新思路。"
 featured_image: "/images/paper-GoG/tomo.jpg"
 tags: ["paper"]
@@ -30,30 +30,91 @@ title: "「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for 
 
     ![3](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/3.png)
 
-  + **Generate-on-Graph**
+  + **Generate-on-Graph**：Thinking-Searching-Generating
+
+    1. **思考**：LLMs分解问题，并确定是否进行进一步搜索 或 根据当前状态生成相关三元组
+    2. **搜索**：LLMs 使用预定义的工具（如 a KG engineer executing SPARQL queries）探索 KG 并过滤掉不相关的三元组。
+    3. **生成**：LLMs 根据探索的子图，利用其内部知识和推理能力生成所需的新事实三元组并进行验证。
+
+    GoG 重复上述步骤，直到获得足够的信息来回答问题。
 
     ![4](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/4.png)
 
+&nbsp;
 
+### 2 Related Work
 
++ #### Question Answering under Incomplete KG
 
+  通过相似性分数训练 KG 嵌入层来在 incomplete KG下预测答案。
 
-1. **研究背景**：
-   - **问题**：这篇文章旨在解决大型语言模型（LLMs）在处理复杂推理任务时存在的知识不足和幻觉问题。
-   - **难点**：该问题的研究难点在于现有的方法通常在完整的知识图谱上进行评估，而现实世界中的知识图谱往往是部分不完整的，这使得LLMs难以有效整合内部和外部的知识源。
-   - **相关工作**：现有工作主要集中在将LLMs与知识图谱结合，但这些方法大多在完整的知识图谱上进行评估，未能充分模拟真实世界的场景。
-2. **研究方法**：
-   - 提出了一个新的基准任务，称为不完整知识图谱问答（IKGQA），用于模拟现实世界中知识图谱不完整的情况，并构建了相应的IKGQA数据集。
-   - 提出了一个名为Generate-on-Graph（GoG）的训练方法，该方法通过Thinking-Searching-Generating框架，使LLMs能够生成新的三元组以回答不完整知识图谱中的问题。
-   - 具体来说，GoG包括三个主要步骤：Thinking（思考）、Searching（搜索）和Generating（生成）。在Thinking阶段，LLMs分解问题并决定是否需要进一步搜索或生成相关三元组；在Searching阶段，LLMs使用预定义的工具（如SPARQL查询）探索知识图谱并过滤无关三元组；在Generating阶段，LLMs利用其内部知识和推理能力生成所需的新三元组并进行验证。
-3. **实验设计**：
-   - 在两个广泛使用的知识图谱问答数据集（WebQuestionSP和Complex WebQuestion）上进行了实验，通过随机删除关键三元组来模拟不完整的知识图谱。
-   - 使用四个LLMs（GPT-3.5、GPT-4、Qwen-1.5-72B-Chat和LLaMA3-70B-Instruct）作为基础模型，并设置了不同的实验参数，如最大生成长度为256，温度参数为0.7，每个数据集使用3个提示进行实验。
-4. **结果与分析**：
-   - 实验结果表明，GoG在两个数据集上的表现优于所有基线方法，特别是在不完整的知识图谱设置下，GoG的平均Hits@1得分提高了5.0%。
-   - 具体而言，在WebQuestionSP数据集上，GoG在使用GPT-4作为基础模型时的Hits@1得分为84.4%，显著高于其他方法。在Complex WebQuestion数据集上，GoG在使用GPT-4时的Hits@1得分为80.3%，同样表现出色。
-   - 进一步的分析表明，GoG在处理复合值类型（CVTs）时表现尤为出色，能够有效利用邻居信息预测尾实体。
-5. **总体结论**：
-   - 提出了利用LLMs在不完整的知识图谱中进行问答的方法，并构建了相应的基准数据集。
-   - 实验结果表明，GoG能够有效整合LLMs的内部和外部知识，显著提升在不完整知识图谱中的问答性能。
-   - 未来的研究可以进一步探索如何更好地利用不同LLMs的优势，以应对更复杂的问答任务。
++ #### Unifying KGs and LLMs for KGQA
+
+  1. **语义解析 （SP） 方法**
+
+     使用 LLMs将问题转换为结构查询。然后，KG 引擎可以执行这些查询，以根据 KG 得出答案。
+
+     缺点：有效性在很大程度上取决于生成的查询的质量和 KG 的完整性。
+
+  2. **检索增强 （RA） 方法**
+
+     从 KG 中检索相关信息以提高推理性能。
+
++ #### LLM reasoning with Prompting
+
+  DecomP：通过将复杂任务分解为更简单的子任务，并将它们委托给特定于LLMs子任务来解决。
+
+  ReAct：LLMs 将 ReAct 视为与环境交互、并决定从外部来源检索信息的代理。
+
+&nbsp;
+
+### 3 Generate-on-Graph (GoG) 
+
+![5](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/5.png)
+
+1. #### Thinking
+
+   **将 LLM 作为与环境交互的代理以解决任务。**
+
+   对于每个步骤 i ，GoG 首先生成一个思想 ti∈ℒ （ℒ 是语言空间）以分解原始问题*（Thought 1）*，
+
+   并决定哪一个子问题应该下一个被解决*（Thought 2）*
+
+   或确定它是否有足够的信息来输出最终答案*（Thought 4）*。
+
+   &nbsp;
+
+   然后，基于这个想法 ti ，GoG 生成一个动作 ai∈𝒜 （𝒜 是动作空间）从 KG 中搜索信息*（Action 1, 2）*
+
+   或通过推理和内部知识生成更多信息*（Action 3）*
+
+   &nbsp;
+
+2. #### Searching
+
+   根据最终的想法 ti ，从目标实体 ei 的相邻实体中找到最相关的 top-k 实体 Ei。
+
+   + **Exploring**：GoG 首先使用预定义的 SPARQL queries 来获取链接到与目标实体 ei 连接的所有关系 Ri。
+   + **Filtering**：检索关系集 Ri 后，根据最后的想法 ti ，LLMs 被用于选择最相关的前 N 关系 Ri′ 。
+
+   最后，根据目标实体 et 和相关关系集 Ri′ 获取最相关的实体集 Ei 。
+
+   &nbsp;
+
+3. #### Generating
+
+   + **Choosing**：使用 BM25 Robertson 和 Zaragoza 从以前的观测中检索最相关的三元组。
+   + **Generating**：检索到相关三元组后，LLMs用于根据这些相关三元组及其内部知识生成新的事实三元组。生成过程将重复 n 多次，以尽量减少错误和幻觉。
+   + **Verifying**：用 LLMs 来验证生成的三元组，并选择那些更有可能准确的作为 Observation。
+
+   还可以LLMs生成以前未探索过的实体，将实体链接到 KG 中相应的机器标识符 （MID）。
+
+重复上述三个步骤，直到获得足够的信息，然后以 F⁢i⁢n⁢i⁢s⁢h⁢[ea] 的形式输出最终的答案（ea 代表答案实体）。
+
+&nbsp;
+
+#### 主要贡献
+
+1. 提出了利用LLMs在不完整的知识图谱中进行问答的方法，并构建了相应的基准数据集。
+2. 提出了 Generate-on-Graph （GoG），它使用 Thinking-Searching-Generating 框架来解决 IKGQA。
+3. 两个数据集上的实验结果表明了 GoG 的优越性，并证明 LLMs 可以与 IKGQA 相结合来回答复杂的问题。
