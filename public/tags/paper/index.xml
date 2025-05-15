@@ -6,14 +6,14 @@
     <description>Recent content in Paper on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 11 May 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 14 May 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/paper/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for Incomplete Knowledge Graph Question Answering</title>
       <link>http://localhost:1313/post/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBgenerate-on-graph-treat-llm-as-both-agent-and-kg-for-incomplete-knowledge-graph-question-answering/</link>
-      <pubDate>Sun, 11 May 2025 11:00:59 -0400</pubDate>
+      <pubDate>Wed, 14 May 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/post/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBgenerate-on-graph-treat-llm-as-both-agent-and-kg-for-incomplete-knowledge-graph-question-answering/</guid>
-      <description></description>
+      <description>&lt;p&gt;论文链接：https://arxiv.org/abs/2404.14741&lt;/p&gt;&#xA;&lt;p&gt;提出了一种称为 Generate-on-Graph(GoG) 的免训练方法，它可以在探索 KG 时，生成新的事实三元组。&lt;/p&gt;&#xA;&lt;p&gt;具体来说，在不完全知识图谱(IKGQA) 中，GoG 通过 Thinking-Searching-Generating 框架进行推理，它将 LLM 同时视为 Agent 和 KG。&lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

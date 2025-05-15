@@ -47,7 +47,7 @@
 
   <meta itemprop="name" content="AJ&#39;s blog">
   <meta itemprop="description" content="The Sternstunden of mankind are always just a small number of moments in which a single individual shapes history.">
-  <meta itemprop="datePublished" content="2025-05-13T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-05-14T11:00:59-04:00">
   <meta itemprop="dateModified" content="2026-05-11T11:00:59-04:00">
   <meta itemprop="wordCount" content="3">
   <meta name="twitter:card" content="summary">
@@ -179,6 +179,40 @@
       
           
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/post/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBgenerate-on-graph-treat-llm-as-both-agent-and-kg-for-incomplete-knowledge-graph-question-answering/" class="db grow">
+            <img src="http://localhost:1313/images/paper-GoG/tomo.jpg" class="img" alt="image from 「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for Incomplete Knowledge Graph Question Answering">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/post/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBgenerate-on-graph-treat-llm-as-both-agent-and-kg-for-incomplete-knowledge-graph-question-answering/" class="color-inherit dim link">
+            「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for Incomplete Knowledge Graph Question Answering
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p><a href="https://arxiv.org/abs/2404.14741">该论文</a>提出了一种称为 Generate-on-Graph(GoG) 的免训练方法，它可以在探索 KG 时，生成新的事实三元组。</p>
+<p>具体来说，在不完全知识图谱(IKGQA) 中，GoG 通过 Thinking-Searching-Generating 框架进行推理，它将 LLM 同时视为 Agent 和 KG。</p>
+<h3 id="1-introduction">1 Introduction</h3>
+<p><img src="/images/paper-GoG/1.png" alt="1"></p>
+        </div>
+          <a href="/post/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBgenerate-on-graph-treat-llm-as-both-agent-and-kg-for-incomplete-knowledge-graph-question-answering/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+            </div>
+          
+            <div class="relative w-100 mb4">
+              
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
           <a href="/post/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" class="db grow">
             <img src="http://localhost:1313/images/AcFunc/pia.jpg" class="img" alt="image from 激活函数">
           </a>
@@ -261,78 +295,18 @@
 
             </div>
           
-            <div class="relative w-100 mb4">
-              
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-          
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="db grow">
-            <img src="http://localhost:1313/images/KG/pia.jpg" class="img" alt="image from 知识图谱">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="color-inherit dim link">
-            知识图谱
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>知识图谱于14年出现，之后进入平稳期，23年由于大模型的出现再次火爆。</p>
-<ol>
-<li>
-<h4 id="大模型的幻觉问题的解决方式">大模型的“幻觉”问题的解决方式</h4>
-<ul>
-<li>提高LLM的能力</li>
-<li>框定边界（大量符合逻辑的<strong>facts</strong>），大模型在边界内通过自身的理解能力，提供回复
-<ul>
-<li>facts 来源于：一些网络/企业内部文档/企业内的数据库/结构化的知识图谱</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<h4 id="知识图谱一种存储facts的方式">知识图谱：一种存储facts的方式</h4>
-<p>采用了“实体&amp;关系”的方法来存储信息</p>
-<p>区别于简单的图：包含多种实体和多种关系</p>
-</li>
-<li>
-<h4 id="知识图谱的优势">知识图谱的优势</h4>
-<ol>
-<li>关系直观</li>
-<li>抓住重要信息</li>
-<li>弥补文本到向量直接的关系（GraphRAG：KG与向量数据库融合）</li>
-</ol>
-</li>
-</ol>
-<p> </p>
-<h2 id="rag-与知识图谱结合">RAG 与知识图谱结合</h2>
-<ol>
-<li>
-<h4 id="知识图谱的必要性">知识图谱的必要性</h4>
-<p>e.g：问题:“感冒常用药物的负作用”；数据库存储的是“冲剂” 的描述，对应段落刚好没有出现“感冒” 这个关键词；两者相似度不够高，无法匹配</p>
-<p>—— 使用知识图谱找到“感冒”和“冲剂”之间的<strong>关系</strong></p>
-</li>
-</ol>
-        </div>
-          <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-            </div>
-          
         </section>
 
         
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="link black dim">
+                知识图谱
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/post/llm4/" class="link black dim">
@@ -349,12 +323,6 @@
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/post/llm3/" class="link black dim">
                 LLM - 3.指令理解阶段(核心) - 指令微调
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/post/efficientnet/" class="link black dim">
-                EfficientNet
               </a>
             </h2>
           

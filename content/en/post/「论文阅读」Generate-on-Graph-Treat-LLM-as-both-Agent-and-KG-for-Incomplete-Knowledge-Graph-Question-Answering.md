@@ -6,29 +6,25 @@ tags: ["paper"]
 title: "「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for Incomplete Knowledge Graph Question Answering"
 ---
 
-论文链接：https://arxiv.org/abs/2404.14741
-
-提出了一种称为 Generate-on-Graph(GoG) 的免训练方法，它可以在探索 KG 时，生成新的事实三元组。
+[该论文](https://arxiv.org/abs/2404.14741)提出了一种称为 Generate-on-Graph(GoG) 的免训练方法，它可以在探索 KG 时，生成新的事实三元组。
 
 具体来说，在不完全知识图谱(IKGQA) 中，GoG 通过 Thinking-Searching-Generating 框架进行推理，它将 LLM 同时视为 Agent 和 KG。
 
-&nbsp;
-
-<!--more-->
-
 ### 1 Introduction
 
-![1](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/1.png)
+![1](/images/paper-GoG/1.png)
+
+<!--more-->
 
 + #### KG + LLM 结合的方法：
 
   + **语义解析(SP)方法**：使用 LLMs 将 nlp 问题转换为逻辑查询，然后通过在 KG 上执行这些逻辑查询来获得答案。
 
-    ![2](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/2.png)
+    ![2](/images/paper-GoG/2.png)
 
   + **检索增强(RA)方法**：从 KG 检索与问题相关的信息，作为外部知识以指导 LLMs 生成答案。
 
-    ![3](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/3.png)
+    ![3](/images/paper-GoG/3.png)
 
   + **Generate-on-Graph**：Thinking-Searching-Generating
 
@@ -38,7 +34,7 @@ title: "「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for 
 
     GoG 重复上述步骤，直到获得足够的信息来回答问题。
 
-    ![4](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/4.png)
+    ![4](/images/paper-GoG/4.png)
 
 &nbsp;
 
@@ -70,23 +66,18 @@ title: "「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for 
 
 ### 3 Generate-on-Graph (GoG) 
 
-![5](/Users/aijunyang/DearAJ.github.io/static/images/paper-GoG/5.png)
+![5](/images/paper-GoG/5.png)
 
 1. #### Thinking
 
    **将 LLM 作为与环境交互的代理以解决任务。**
 
-   对于每个步骤 i ，GoG 首先生成一个思想 ti∈ℒ （ℒ 是语言空间）以分解原始问题*（Thought 1）*，
+   + Thought 1：对于每个步骤 i ，GoG 首先生成一个思想 ti∈ℒ （ℒ 是语言空间）以分解原始问题，
 
-   并决定哪一个子问题应该下一个被解决*（Thought 2）*
-
-   或确定它是否有足够的信息来输出最终答案*（Thought 4）*。
-
-   &nbsp;
-
-   然后，基于这个想法 ti ，GoG 生成一个动作 ai∈𝒜 （𝒜 是动作空间）从 KG 中搜索信息*（Action 1, 2）*
-
-   或通过推理和内部知识生成更多信息*（Action 3）*
+   + Thought 2：并决定哪一个子问题应该下一个被解决
+   + Thought 4：或确定它是否有足够的信息来输出最终答案。
+   + Action 1, 2：然后，基于这个想法 ti ，GoG 生成一个动作 ai∈𝒜 （𝒜 是动作空间）从 KG 中搜索信息
+   + Action 3：或通过推理和内部知识生成更多信息
 
    &nbsp;
 
@@ -97,7 +88,7 @@ title: "「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for 
    + **Exploring**：GoG 首先使用预定义的 SPARQL queries 来获取链接到与目标实体 ei 连接的所有关系 Ri。
    + **Filtering**：检索关系集 Ri 后，根据最后的想法 ti ，LLMs 被用于选择最相关的前 N 关系 Ri′ 。
 
-   最后，根据目标实体 et 和相关关系集 Ri′ 获取最相关的实体集 Ei 。
+   最后，根据目标实体 et 和相关关系集 Ri′ 获取最相关的实体集 Ei 
 
    &nbsp;
 
