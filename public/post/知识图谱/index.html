@@ -48,7 +48,7 @@
   <meta itemprop="description" content="知识图谱(Knowledge Graph)是一种以图结构组织知识的技术，用节点表示实体、边表示关系，将信息转化为结构化网络。它整合多源数据，通过语义关联支持智能推理与应用，广泛应用于搜索、推荐、问答等领域，旨在提升机器对知识的理解和计算能力。">
   <meta itemprop="datePublished" content="2025-05-12T11:00:59-04:00">
   <meta itemprop="dateModified" content="2025-05-12T11:00:59-04:00">
-  <meta itemprop="wordCount" content="35">
+  <meta itemprop="wordCount" content="156">
   <meta itemprop="keywords" content="KG">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="知识图谱">
@@ -229,7 +229,7 @@
 <h4 id="rag-与知识图谱如何结合">RAG 与知识图谱如何结合</h4>
 <p>基于知识图谱扩充问题，将问题具像化</p>
 <ul>
-<li>改写后的问题进入向量数据库，作为chunks</li>
+<li>改写后的问题进入向量数据库，作为 chunks</li>
 <li>改写后的问题进入知识图谱，检索出与问题对应的相关子图(subgraph)；子图由很多三元组(如感冒-治疗的药物有-冲剂)构成，将所有的三元组转化为文字形式</li>
 </ul>
 <p>将上述两部分合在一起，构造新的上下文包含我们的潜在答案。</p>
@@ -237,19 +237,89 @@
 <li>
 <h4 id="存在的问题">存在的问题</h4>
 <ol>
-<li>如何构建图谱：人工、通过LLM&hellip;</li>
+<li>如何构建图谱：人工、通过 LLM&hellip;</li>
 <li>合并后存在冗余信息，如何过滤重复信息</li>
-<li>怎么抽取子图(k-hop)</li>
+<li>怎么抽取子图 (k-hop)</li>
 <li>抽出的子图是否可再次在向量库中检索，得到结果后再次合并</li>
-<li>如何更好地融入结构信息，让LLM更好地理解结构信息
+<li>如何更好地融入结构信息，让 LLM 更好地理解结构信息
 <ul>
-<li>使用更结构化的prompt</li>
+<li>使用更结构化的 prompt</li>
 <li>结合图模型技术</li>
 </ul>
 </li>
 </ol>
 </li>
-</ol><ul class="pa0">
+</ol>
+<p> </p>
+<h2 id="sparql">SPARQL</h2>
+<p><strong>SPARQL</strong> 是用于访问 RDF 的查询语言和协议。</p>
+<p>**RDF **是一组三元组，指的是两个事物和它们之间的直接关系，在语法上呈现为&quot;主语 + 谓语 + 宾语&quot;。</p>
+<p>每套谓语必须有一个明确的 URL，通过 URL 区分不同的谓语。RDF 官方定义了<a href="https://www.w3.org/1999/02/22-rdf-syntax-ns">一套常用的谓语</a>。</p>
+<p>URL 比较冗长，引用不方便。RDF 通常用前缀<code>rdf</code>表示，代表 URL 地址：</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns&gt;
+</span></span></code></pre></div></blockquote>
+<p>每个 URL 里面可以包含多种谓语，通过&quot;前缀 : 谓语&quot;的形式来区分。</p>
+<ul>
+<li>
+<p>比如，官方定义了一个&quot;type&quot;谓语，说明主语的类型，就可以用<code>rdf:type</code>表示。</p>
+<blockquote>
+<p>小明是学生。</p>
+</blockquote>
+<p>上面这句话，写成 RDF 三元组，就是下面的形式。</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>小明 rdf:type 学生.
+</span></span></code></pre></div></blockquote>
+</li>
+<li>
+<p>由于<code>rdf:type</code>是一个常用谓语，RDF 允许把它简写成<code>a</code>，因此&quot;小明是学生&quot;又可以表示成<code>小明 a 学生</code>。</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>小明 a 学生 .
+</span></span></code></pre></div></blockquote>
+</li>
+</ul>
+<p>注意：每个 RDF 三元组的结尾是一个英文的句号，用来区分多个三元组。</p>
+<p> </p>
+<ul>
+<li>
+<h4 id="语法示例">语法示例</h4>
+<p>&ldquo;甲壳虫是一个乐队，成员有 John Lennon、Paul McCartney、Ringo Starr 和George Harrison。&rdquo;</p>
+<p>这句话对应的三元组如下：</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>甲壳虫 rdf:type Band .
+</span></span><span style="display:flex;"><span>甲壳虫 :name <span style="color:#e6db74">&#34;甲壳虫&#34;</span> .
+</span></span><span style="display:flex;"><span>甲壳虫 :member John_Lennon .
+</span></span><span style="display:flex;"><span>甲壳虫 :member Paul_McCartney .
+</span></span><span style="display:flex;"><span>甲壳虫 :member Ringo_Starr .
+</span></span><span style="display:flex;"><span>甲壳虫 :member George_Harrison .
+</span></span></code></pre></div></blockquote>
+<p>上面例子中，<code>rdf:type</code>、<code>:name</code>、<code>:member</code>都是谓语。由于这些三元组的主语相同，RDF 允许将它们合并：</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>甲壳虫 a 乐队 ;
+</span></span><span style="display:flex;"><span>      :name <span style="color:#e6db74">&#34;甲壳虫&#34;</span> ;
+</span></span><span style="display:flex;"><span>      :member John_Lennon, Paul_McCartney, George_Harrison, Ringo_Starr .
+</span></span></code></pre></div></blockquote>
+<p>上面的代码中，主语相同的三元组采用合并写法时，每个三元组之间使用分号隔开，最后一个三元组采用句号结尾。</p>
+</li>
+</ul>
+<p> </p>
+<ul>
+<li>
+<h4 id="sparql-查询语言">SPARQL 查询语言</h4>
+<p>核心思想：根据给定的谓语动词，从三元组提取符合条件的主语或宾语：</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>SELECT &lt;variables&gt;
+</span></span><span style="display:flex;"><span>WHERE <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   &lt;graph pattern&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></blockquote>
+<p>上面代码中，<code>&lt;variables&gt;</code>是所要提取主语或宾语，<code>&lt;graph pattern&gt;</code>是所要查询的三元组模式。</p>
+</li>
+</ul><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/kg/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">KG</a>

@@ -1,12 +1,12 @@
 ---
 date: 2025-05-14T11:00:59-04:00
 description: "该论文提出了GoG，用于在不完整知识图谱（IKGQA）上进行问答任务。GoG将LLM同时作为代理和知识图谱，通过“思考-搜索-生成”框架动态整合外部知识图谱和LLM的内部知识。该方法有效缓解了LLM的知识不足和幻觉问题，为复杂问答任务提供了新思路。"
-featured_image: "/images/paper-GoG/tomo.jpg"
+featured_image: "/images/paper-GoG/tom.jpg"
 tags: ["paper"]
 title: "「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for Incomplete Knowledge Graph Question Answering"
 ---
 
-[该论文](https://arxiv.org/abs/2404.14741)提出了一种称为 Generate-on-Graph(GoG) 的免训练方法，它可以在探索 KG 时，生成新的事实三元组。
+[这篇论文](https://arxiv.org/abs/2404.14741)提出了一种称为 Generate-on-Graph(GoG) 的免训练方法，它可以在探索 KG 时，生成新的事实三元组。
 
 具体来说，在不完全知识图谱(IKGQA) 中，GoG 通过 Thinking-Searching-Generating 框架进行推理，它将 LLM 同时视为 Agent 和 KG。
 
@@ -104,7 +104,7 @@ title: "「论文阅读」Generate-on-Graph: Treat LLM as both Agent and KG for 
 
 &nbsp;
 
-#### 主要贡献
+### 主要贡献
 
 1. 提出了利用LLMs在不完整的知识图谱中进行问答的方法，并构建了相应的基准数据集。
 2. 提出了 Generate-on-Graph （GoG），它使用 Thinking-Searching-Generating 框架来解决 IKGQA。

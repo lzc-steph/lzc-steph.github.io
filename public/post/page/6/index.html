@@ -48,7 +48,7 @@
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
   <meta itemprop="datePublished" content="2025-05-14T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2026-05-11T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2026-04-29T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,6 +153,69 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        April 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bert/" class="link black dim">
+        BERT
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>名字来源：美国的一个动画片芝麻街里的主人公</p>
+<p>论文：https://arxiv.org/abs/1810.04805</p>
+<h3 id="nlp-里的迁移学习">NLP 里的迁移学习</h3>
+<ol>
+<li>
+<p><strong>在 bert 之前：使用预训练好的模型来抽取词、句子的特征</strong></p>
+<ul>
+<li>如用 word2vec 或 语言模型（当作embedding层）</li>
+<li>﻿不更新预训练好的模型</li>
+<li>﻿缺点
+<ul>
+<li>需要构建新的网络来抓取新任务需要的信息</li>
+<li>﻿Word2vec 忽略了时序信息，语言模型只看了一个方向</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>bert 的动机</strong></p>
+<ul>
+<li>
+<p>基于微调的 NLP 模型</p>
+<p>前面的层不用动，改最后一层的 output layer 即可</p>
+</li>
+<li>
+<p>预训练的模型抽取了足够多的信息，新的任务只需要增加一个简单的输出层</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h2 id="bert-架构">BERT 架构</h2>
+<p><strong>本质</strong>：一个砍掉解码器、只有编码器的 transformer</p>
+<p>bert 的工作：证明了效果非常好</p>
+<ul>
+<li>
+<p>两个版本：</p>
+<p><strong>Base</strong>: #blocks=12, hidden size=768, #heads=12,  #parameters=110M</p>
+<p>﻿﻿<strong>Large</strong>: #blocks=24, hidden size=1024, #heads=1, #parameter=340M</p>
+</li>
+<li>
+<p>﻿在大规模数据上训练&gt;3B词</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/bert/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         April 14, 2025
       </div>
     
@@ -231,61 +294,6 @@
 
         </div>
       
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 11, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="link black dim">
-        数据集-NuSences
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <ol>
-<li>
-<h4 id="内容">内容</h4>
-<p>nuScenes 包含 1000 个场景，大约 1.4M 的相机图像、390k LIDAR 扫描、1.4M 雷达扫描和 40k 关键帧中的 1.4M 对象边界框。</p>
-<p>nuScenes-lidarseg 包含 40000 个点云和 1000 个场景（850 个用于训练和验证的场景，以及 150 个用于测试的场景）中的 14 亿个注释点。</p>
-<p> </p>
-</li>
-<li>
-<h4 id="数据采集">数据采集</h4>
-<ol>
-<li>
-<p><strong>车辆设置</strong></p>
-<p><img src="/images/nuSences/1.png" alt="1"></p>
-<ol>
-<li>1 个旋转激光雷达 （Velodyne HDL32E）</li>
-<li>5 个远程雷达传感器 （Continental ARS 408-21）</li>
-<li>6 个相机 （Basler acA1600-60gc）</li>
-<li>1个 IMU &amp; GPS （高级导航空间版）</li>
-</ol>
-</li>
-<li>
-<p><strong>Sensor(传感器)校准 - 内外参</strong></p>
-<ol>
-<li>LIDAR extrinsics</li>
-<li>相机 extrinsics</li>
-<li>RADAR extrinsics</li>
-<li>相机 intrinsic 校准</li>
-</ol>
-</li>
-<li>
-<p><strong>Sensor(传感器)同步</strong></p>
-<p>实现跨模态数据对齐：当顶部 LIDAR 扫描相机 FOV 的中心时，会触发相机的曝光</p>
-</li>
-</ol>
-</li>
-</ol>
-    </div>
-  <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
     </aside>
     
     <ul class="pagination pagination-default">
@@ -314,7 +322,7 @@
         <a href="/post/page/7/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/19/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/20/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>

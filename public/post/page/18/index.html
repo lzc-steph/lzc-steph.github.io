@@ -48,7 +48,7 @@
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
   <meta itemprop="datePublished" content="2025-05-14T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2026-05-11T11:00:59-04:00">
+  <meta itemprop="dateModified" content="2026-04-29T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Articles">
@@ -153,6 +153,50 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        January 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/diffusion-model/" class="link black dim">
+        Diffusion Model
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="概述">概述</h1>
+<h2 id="影像生成模型本质上的共同目标">影像生成模型本质上的共同目标</h2>
+<p><img src="/images/DM/19.png" alt="19"></p>
+<p>进一步：输入加入了文字表述</p>
+<p>目标：产生的图片与真实图片越接近越好</p>
+<h2 id="原理">原理</h2>
+<ul>
+<li>
+<p><strong>Reverse Process</strong>（多次Denoise）</p>
+<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
+</li>
+<li>
+<p><strong>Forward Process</strong>:</p>
+<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
+</li>
+</ul>
+<p><img src="/images/DM/1.png" alt="1"></p>
+<ul>
+<li>
+<p>Denoise输入：图片 + 噪音程度</p>
+<p><img src="/images/DM/2.png" alt="2"></p>
+</li>
+</ul>
+<h3 id="denoise-model内部">Denoise Model内部</h3>
+<p><img src="/images/DM/3.png" alt="3"></p>
+    </div>
+  <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         January 11, 2025
       </div>
     
@@ -239,46 +283,6 @@
 
         </div>
       
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 2, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" class="link black dim">
-        强化学习-直观理解
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>不用告诉该怎么做，而是给定奖励函数，什么时候做好。</p>
-<h3 id="回归">回归</h3>
-<p>增加折现因子</p>
-<p><img src="/images/RL/1.png" alt="1"></p>
-<p><img src="/images/RL/2.png" alt="2"></p>
-<h3 id="强化学习的形式化">强化学习的形式化</h3>
-<p>A policy is a function $\pi(s) = a$ mapping from states to actions, that tells you what $action \space a$ to take in a given $state \space s$.</p>
-<p><strong>goal</strong>: Find a $policy \space \pi$ that tells you what $action (a = (s))$ to take in every $state (s)$ so as to maximize the return.</p>
-<p><img src="/images/RL/3.png" alt="3"></p>
-<ul>
-<li>
-<p><strong>状态动作值函数</strong>（Q-Function）</p>
-<p><strong>Q(s,a)</strong> = Return if you:</p>
-<ul>
-<li>start in state <em>s</em>.</li>
-<li>take action <em>a</em> (once).</li>
-<li>then behave optimally after that.</li>
-</ul>
-<p>The best possible return from state s is max$Q(s, a)$. The best possible action in state s is the action a that gives max$Q(s, a)$.</p>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
     </aside>
     
     <ul class="pagination pagination-default">
@@ -287,9 +291,6 @@
       </li>
       <li class="page-item">
         <a href="/post/page/17/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/post/page/15/" aria-label="Page 15" class="page-link" role="button">15</a>
       </li>
       <li class="page-item">
         <a href="/post/page/16/" aria-label="Page 16" class="page-link" role="button">16</a>
@@ -304,10 +305,13 @@
         <a href="/post/page/19/" aria-label="Page 19" class="page-link" role="button">19</a>
       </li>
       <li class="page-item">
+        <a href="/post/page/20/" aria-label="Page 20" class="page-link" role="button">20</a>
+      </li>
+      <li class="page-item">
         <a href="/post/page/19/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/post/page/19/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/20/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>
