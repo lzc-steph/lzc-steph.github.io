@@ -47,7 +47,7 @@
 
   <meta itemprop="name" content="Articles">
   <meta itemprop="description" content="The soul selects her own society, then shuts the door. To her divine majority, present no more.">
-  <meta itemprop="datePublished" content="2025-05-14T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-05-16T04:00:59-07:00">
   <meta itemprop="dateModified" content="2026-04-29T11:00:59-04:00">
   <meta itemprop="wordCount" content="2">
   <meta name="twitter:card" content="summary">
@@ -153,54 +153,48 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        April 19, 2025
+        April 24, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
-        工具链-carla
+      <a href="/post/resnet18/" class="link black dim">
+        ResNet18
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="0-预备">0 预备</h2>
-<p>下载 carla</p>
+      <h3 id="1-退化现象">1. 退化现象</h3>
+<p>ResNet 随着网络层不断的加深，模型的准确率</p>
 <ol>
-<li>
-<p>﻿﻿﻿Get Python from anaconda.com</p>
-</li>
-<li>
-<p>﻿﻿﻿Create virtual environment</p>
-<ul>
-<li>
-<p>﻿﻿launch anaconda prompt</p>
-</li>
-<li>
-<p>﻿﻿conda create &ndash;name carla-sim python=3.7</p>
-</li>
-<li>
-<p>﻿﻿activate carla-sim</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Install additional libraries via &ldquo;pip install&rdquo;:</p>
-<ul>
-<li>﻿﻿pip install carla, pygame, numpy, jupyter and opencv-python</li>
-</ul>
-</li>
+<li>先是不断的提高，达到最大值（准确率饱和），</li>
+<li>然后随着网络深度的继续增加，模型准确率出现大幅度的降低。</li>
 </ol>
+<p><strong>原因</strong>：随着网络深度的不断增大，所引入的激活函数也越来越多，数据被映射到更加离散的空间，此时已经难以让数据回到原点。也就是说，神经网络将这些数据映射回原点所需要的计算量，已经远远超过我们所能承受的。</p>
 <p> </p>
-<h2 id="1-基本构件块">1 基本构件块</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># all imports</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> carla 				<span style="color:#75715e"># the sim Library itself </span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random 			<span style="color:#75715e"># to pick random spawn point </span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2 					<span style="color:#75715e"># to work with images from cameras</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np 	<span style="color:#75715e"># in this example to change image representation - re-shaping</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># connect to the sim</span>
-</span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Client(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">2000</span>)
-</span></span></code></pre></div>
+<h3 id="2-快捷连接">2. 快捷连接</h3>
+<p>核心思想：通过添加额外的连接来解决深度神经网络训练中的<strong>梯度消失和梯度爆炸</strong>等问题，从而允许构建非常深的神经网络。</p>
+<p><img src="/images/resnet18/1.jpg" alt="1"></p>
     </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/resnet18/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm1/" class="link black dim">
+        LLM - 1.基础理论
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM1/0.png" alt="0"></p>
+    </div>
+  <a href="/post/llm1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>
@@ -246,49 +240,6 @@
 <p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
     </div>
   <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        工具链-深度学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="torch--cuda--nvidia"><strong>Torch + CUDA + NVIDIA</strong>：</h2>
-<ul>
-<li>
-<p>安装步骤：</p>
-<ol>
-<li>
-<p>去 Nvidia 官网下载 CUDA 并安装（核心：驱动+CUDA开发环境）</p>
-<p><img src="/images/DLtool/1.png" alt="1"></p>
-<p>检查：<code>nvidia-smi</code> 指令</p>
-</li>
-<li>
-<p>下载 Anaconda，用于运行 python 环境</p>
-</li>
-<li>
-<p>下载 GPU 版本的 pytorch</p>
-<p><img src="/images/DLtool/2.png" alt="2"></p>
-</li>
-<li>
-<p>可以开始跑深度学习了！</p>
-</li>
-</ol>
-</li>
-</ul>
-<p><strong>Torch</strong> 是一个深度学习框架，用于构建和训练神经网络，该可以利用<strong>CUDA</strong>在<strong>NVIDIA GPU</strong>上加速计算。通过在PyTorch中指定使用CUDA进行训练，可以在处理大数据集时大大提高计算效率。</p>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

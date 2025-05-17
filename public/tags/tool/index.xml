@@ -6,8 +6,22 @@
     <description>Recent content in Tool on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 17 Apr 2025 05:00:59 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 16 May 2025 04:00:59 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工具链 - docker</title>
+      <link>http://localhost:1313/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/</link>
+      <pubDate>Fri, 16 May 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/</guid>
+      <description>&lt;p&gt;虚拟机的缺点：OS 太重、慢。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/docker/1.JPG&#34; alt=&#34;1&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;容器技术：&lt;strong&gt;只隔离应用程序的运行时环境，但容器之间可共享同一操作系统。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/docker/2.JPG&#34; alt=&#34;2&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;容器技术的代表：docker&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>工具链-Carla</title>
+      <link>http://localhost:1313/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/</link>
+      <pubDate>Tue, 13 May 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/</guid>
+      <description>&lt;p&gt;官方文档：&lt;a href=&#34;https://carla.readthedocs.io/en/0.9.9/#getting-started&#34;&gt;https://carla.readthedocs.io/en/0.9.9/#getting-started&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Carla是一款开源的 &lt;em&gt;自动驾驶&lt;/em&gt; 仿真器，它基本可以用来帮助训练自动驾驶的所有模块，包括感知系统，Localization，规划系统等等。许多自动驾驶公司在进行实际路跑前都要在这Carla上先进行训练。&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-基本架构&#34;&gt;1. 基本架构&lt;/h3&gt;&#xA;&lt;h4 id=&#34;client-server-的交互形式&#34;&gt;Client-Server 的交互形式&lt;/h4&gt;&#xA;&lt;p&gt;Carla主要分为Server与Client两个模块&lt;/p&gt;</description>
+    </item>
     <item>
       <title>工具链-PyTorch</title>
       <link>http://localhost:1313/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/</link>

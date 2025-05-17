@@ -6,8 +6,15 @@
     <description>Recent content in Tags on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 14 May 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 16 May 2025 04:00:59 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tool</title>
+      <link>http://localhost:1313/tags/tool/</link>
+      <pubDate>Fri, 16 May 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/tags/tool/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Paper</title>
       <link>http://localhost:1313/tags/paper/</link>
@@ -20,6 +27,20 @@
       <link>http://localhost:1313/tags/deep-learning/</link>
       <pubDate>Tue, 13 May 2025 11:00:59 -0400</pubDate>
       <guid>http://localhost:1313/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automatic Driving</title>
+      <link>http://localhost:1313/tags/automatic-driving/</link>
+      <pubDate>Tue, 13 May 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/tags/automatic-driving/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RL</title>
+      <link>http://localhost:1313/tags/rl/</link>
+      <pubDate>Tue, 13 May 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/tags/rl/</guid>
       <description></description>
     </item>
     <item>
@@ -44,13 +65,6 @@
       <description></description>
     </item>
     <item>
-      <title>RL</title>
-      <link>http://localhost:1313/tags/rl/</link>
-      <pubDate>Fri, 02 May 2025 11:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/tags/rl/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>CV</title>
       <link>http://localhost:1313/tags/cv/</link>
       <pubDate>Tue, 29 Apr 2025 04:00:59 -0700</pubDate>
@@ -58,24 +72,10 @@
       <description></description>
     </item>
     <item>
-      <title>Automatic Driving</title>
-      <link>http://localhost:1313/tags/automatic-driving/</link>
-      <pubDate>Sat, 19 Apr 2025 04:00:59 -0700</pubDate>
-      <guid>http://localhost:1313/tags/automatic-driving/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Data Processing</title>
       <link>http://localhost:1313/tags/data-processing/</link>
       <pubDate>Thu, 17 Apr 2025 05:00:59 -0700</pubDate>
       <guid>http://localhost:1313/tags/data-processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tool</title>
-      <link>http://localhost:1313/tags/tool/</link>
-      <pubDate>Thu, 17 Apr 2025 05:00:59 -0700</pubDate>
-      <guid>http://localhost:1313/tags/tool/</guid>
       <description></description>
     </item>
     <item>

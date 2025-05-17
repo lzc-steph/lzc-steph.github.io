@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-05-14T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-05-14T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-05-16T04:00:59-07:00">
+  <meta itemprop="dateModified" content="2025-05-16T04:00:59-07:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -142,6 +142,187 @@
     <section class="ph4">
       
         <h2 class="f1">
+          <a href="/tags/tool/" class="link blue hover-black">
+            Tag: Tool
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/" class="link black dim">
+        工具链-docker
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>虚拟机的缺点：OS 太重、慢。</p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/docker/1.png" alt="1"></p>
+<p>容器技术：<strong>只隔离应用程序的运行时环境，但容器之间可以共享同一个操作系统。</strong></p>
+<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/docker/2.png" alt="2"></p>
+<p>容器技术的代表：docker</p>
+<p> </p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 13, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
+        工具链-Carla
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>官方文档：<a href="https://carla.readthedocs.io/en/0.9.9/#getting-started">https://carla.readthedocs.io/en/0.9.9/#getting-started</a></p>
+<p>Carla是一款开源的 <em>自动驾驶</em> 仿真器，它基本可以用来帮助训练自动驾驶的所有模块，包括感知系统，Localization，规划系统等等。许多自动驾驶公司在进行实际路跑前都要在这Carla上先进行训练。</p>
+<h3 id="1-基本架构">1. 基本架构</h3>
+<h4 id="client-server-的交互形式">Client-Server 的交互形式</h4>
+<p>Carla主要分为Server与Client两个模块</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="link black dim">
+        工具链-PyTorch
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-处理数据">1. 处理数据</h2>
+<p>PyTorch 有两个用于处理数据的基元： <code>torch.utils.data.DataLoader</code> 和 <code>torch.utils.data.Dataset</code>。
+<code>Dataset</code> 存储样本及其相应的标签，<code>DataLoader</code> 将 <code>Dataset</code> 包装成一个迭代器。</p>
+<ul>
+<li>
+<p>下面以 TorchVision 库模块里的 FashionMNIST 数据集为例：</p>
+<p>每个 TorchVision <code>Dataset</code> 都包含两个参数： <code>transform</code> 和 <code>target_transform</code> 分别修改样本和标签</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Download training data from open datasets.</span>
+</span></span><span style="display:flex;"><span>training_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download test data from open datasets.</span>
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>将 <code>Dataset</code> 作为参数传递给 <code>DataLoader</code> ，将一个可迭代对象包装在数据集上，支持自动批处理、采样、洗牌和多进程数据加载。</p>
+<p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-深度学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="torch--cuda--nvidia"><strong>Torch + CUDA + NVIDIA</strong>：</h2>
+<ul>
+<li>
+<p>安装步骤：</p>
+<ol>
+<li>
+<p>去 Nvidia 官网下载 CUDA 并安装（核心：驱动+CUDA开发环境）</p>
+<p><img src="/images/DLtool/1.png" alt="1"></p>
+<p>检查：<code>nvidia-smi</code> 指令</p>
+</li>
+<li>
+<p>下载 Anaconda，用于运行 python 环境</p>
+</li>
+<li>
+<p>下载 GPU 版本的 pytorch</p>
+<p><img src="/images/DLtool/2.png" alt="2"></p>
+</li>
+<li>
+<p>可以开始跑深度学习了！</p>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>Torch</strong> 是一个深度学习框架，用于构建和训练神经网络，该可以利用<strong>CUDA</strong>在<strong>NVIDIA GPU</strong>上加速计算。通过在PyTorch中指定使用CUDA进行训练，可以在处理大数据集时大大提高计算效率。</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-强化学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-gym">1. gym</h2>
+<p>官方文档：https://www.gymlibrary.dev</p>
+<ul>
+<li>
+<p>最小例子 <code>CartPole-v0</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>render()
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>step(env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()) <span style="color:#75715e"># take a random action</span>
+</span></span></code></pre></div></li>
+</ul>
+<p> </p>
+<h3 id="观测-observations">观测 (Observations)</h3>
+<p>在 Gym 仿真中，每一次回合开始，需要先执行 <code>reset()</code> 函数，返回<strong>初始观测信息，然后根据标志位 <code>done</code> 的状态，来决定是否进行下一次回合</strong>。代码表示：</p>
+<p> </p>
+<p><code>env.step()</code> 函数对每一步进行仿真，返回 4 个参数：</p>
+<ul>
+<li>
+<p><strong>观测</strong> Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；</p>
+</li>
+<li>
+<p><strong>奖励</strong> Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；</p>
+</li>
+<li>
+<p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/paper/" class="link blue hover-black">
             Tag: Paper
           </a>
@@ -163,32 +344,21 @@
 <h3 id="1-introduction">1 Introduction</h3>
 <p><strong>背景</strong>：非技术员工不懂 SPARQL；KG + LLMs 无法生成精确高效的 SPARQL 查询，且存在幻觉问题。</p>
 <p><strong>SparqLLM</strong>：被设计为 RAG 框架，可自动从自然语言问题生成 SPARQL 查询，同时生成最适当的数据可视化以返回获得的结果。</p>
+<p><img src="/images/paper-SparqLLM/1.png" alt="1"></p>
 <p><strong>目标</strong>：提高 KG 的准确性、可用性和可靠性，实现与语义数据的更直观和有效的交互。</p>
 <p> </p>
 <h3 id="2-related-work">2 Related Work</h3>
 <ul>
 <li>
-<h4 id="自然语言接口-nli">自然语言接口 (NLI)</h4>
-<p>将非结构化输入转换为 SPARQL 等正式查询语言，使非技术用户更容易访问基于 RDF 的知识图谱。</p>
+<p><strong>自然语言接口 (NLI)</strong>：将非结构化输入转换为 SPARQL 等正式查询语言，使非技术用户更容易访问基于 RDF 的知识图谱。</p>
 </li>
 <li>
-<h4 id="llms">LLMs</h4>
-<p>利用它们处理和生成复杂文本的能力，为自动生成查询提供了一个强大的框架，减少了人工干预的需要，使非专家用户也能访问知识图谱。</p>
+<p><strong>LLMs</strong>：利用它们处理和生成复杂文本的能力，为自动生成查询提供了一个强大的框架，减少了人工干预的需要，使非专家用户也能访问知识图谱。</p>
 </li>
 <li>
-<h4 id="基于模板的方法">基于模板的方法</h4>
-<p>通过为查询生成提供确定性框架来补充上述方法。</p>
-<p>e.g CatSQL 和基于 BERT 的方法等系统 通过将<strong>预定义模板</strong>与<strong>语义校正</strong>和<strong>上下文嵌入相结合</strong>来增强 SQL 生成。</p>
+<p><strong>基于模板的方法</strong>：通过为查询生成提供确定性框架来补充上述方法。</p>
 </li>
 </ul>
-<p><strong>缺陷</strong>：对预定义模式的依赖限制了处理复杂或模糊查询的灵活性；在针对不同领域扩展这些系统并确保与 KG 的无缝交互方面仍然存在挑战。</p>
-<p> </p>
-<h3 id="3-sparqllm">3 SparqLLM</h3>
-<p>SparqLLM 的 RAG 组件的设计和实现：</p>
-<p><img src="/Users/aijunyang/DearAJ.github.io/static/images/paper-SparqLLM/1.png" alt="1"></p>
-<p>该组件将自然语言查询转换为 SPARQL 查询，从而促进与 KG 的交互。</p>
-<p><strong>模板检索(Template Retrieval)</strong>：系统根据与用户问题的语义相似性识别最相关的 SPARQL 查询模板。</p>
-<p><strong>查询生成(Query Generation)</strong>：检索到的模板 与 用户的查询 和 KG 本体相结合，由 LLM 进行处理，以生成结构化的 SPARQL 查询。</p>
     </div>
   <a href="/post/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBaugmented-knowledge-graph-querying-leveraging-llms/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -312,424 +482,59 @@
         
       
         <h2 class="f1">
-          <a href="/tags/kg/" class="link blue hover-black">
-            Tag: KG
+          <a href="/tags/automatic-driving/" class="link blue hover-black">
+            Tag: Automatic Driving
           </a>
         </h2>
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        May 12, 2025
+        May 13, 2025
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="link black dim">
-        知识图谱
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
+        工具链-Carla
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>知识图谱于14年出现，之后进入平稳期，23年由于大模型的出现再次火爆。</p>
+      <p>官方文档：<a href="https://carla.readthedocs.io/en/0.9.9/#getting-started">https://carla.readthedocs.io/en/0.9.9/#getting-started</a></p>
+<p>Carla是一款开源的 <em>自动驾驶</em> 仿真器，它基本可以用来帮助训练自动驾驶的所有模块，包括感知系统，Localization，规划系统等等。许多自动驾驶公司在进行实际路跑前都要在这Carla上先进行训练。</p>
+<h3 id="1-基本架构">1. 基本架构</h3>
+<h4 id="client-server-的交互形式">Client-Server 的交互形式</h4>
+<p>Carla主要分为Server与Client两个模块</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 14, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
+        LSS代码
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>文章搬运，自用。</p>
+<p>论文：<a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
+<p>官方源码：<a href="https://github.com/nv-tlabs/lift-splat-shoot">lift-splat-shoot</a></p>
+<p> </p>
+<h4 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h4>
+<p>对于任意数量不同相机帧的图像直接提取场景的BEV表达；主要由三部分实现：</p>
 <ol>
-<li>
-<h4 id="大模型的幻觉问题的解决方式">大模型的“幻觉”问题的解决方式</h4>
-<ul>
-<li>提高LLM的能力</li>
-<li>框定边界（大量符合逻辑的<strong>facts</strong>），大模型在边界内通过自身的理解能力，提供回复
-<ul>
-<li>facts 来源于：一些网络/企业内部文档/企业内的数据库/结构化的知识图谱</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<h4 id="知识图谱一种存储facts的方式">知识图谱：一种存储facts的方式</h4>
-<p>采用了“实体&amp;关系”的方法来存储信息</p>
-<p>区别于简单的图：包含多种实体和多种关系</p>
-</li>
-<li>
-<h4 id="知识图谱的优势">知识图谱的优势</h4>
-<ol>
-<li>关系直观</li>
-<li>抓住重要信息</li>
-<li>弥补文本到向量直接的关系（GraphRAG：KG与向量数据库融合）</li>
+<li><strong>Lift</strong>：将每一个相机的图像帧根据相机的内参转换提升到 frustum（锥形）形状的点云空间中。</li>
+<li><strong>splate</strong>：将所有相机转换到锥形点云空间中的特征根据相机的内参 K 与相机相对于 ego 的外参T映射到栅格化的 3D 空间（BEV）中来融合多帧信息。</li>
+<li><strong>shoot</strong>：根据上述 BEV 的检测或分割结果来生成规划的路径 proposal；从而实现可解释的端到端的路径规划任务。</li>
 </ol>
-</li>
-</ol>
-<p> </p>
-<h2 id="rag-与知识图谱结合">RAG 与知识图谱结合</h2>
-<ol>
-<li>
-<h4 id="知识图谱的必要性">知识图谱的必要性</h4>
-<p>e.g：问题:“感冒常用药物的负作用”；数据库存储的是“冲剂” 的描述，对应段落刚好没有出现“感冒” 这个关键词；两者相似度不够高，无法匹配</p>
-<p>—— 使用知识图谱找到“感冒”和“冲剂”之间的<strong>关系</strong></p>
-</li>
-</ol>
+<p>注：LSS在训练的过程中并不需要激光雷达的点云来进行监督。</p>
     </div>
-  <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/%E8%80%83%E8%AF%95/" class="link blue hover-black">
-            Tag: 考试
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 12, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E4%B8%8A%E6%B5%B7%E5%88%9B%E6%99%BA%E5%AD%A6%E9%99%A22025pe%E8%80%83%E8%AF%95/" class="link black dim">
-        上海创智学院2025PE考试
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <blockquote>
-<p>注意：提示词都是用中文编写，若将中文直接翻译成英文，效果可能下降。</p>
-</blockquote>
-<h3 id="任务理解">任务理解</h3>
-<hr>
-<p>给定数据结构如下所示的数据：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">val.jsonl中，每⼀条数据的字段说明：</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;user_id&#34;</span>: <span style="color:#ae81ff">5737</span>, <span style="color:#75715e">// ⽤⼾编号
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;item_list&#34;</span>: [ <span style="color:#75715e">// ⽤⼾历史观看电影列表，按时间顺序排列，越靠后表⽰越近期观看
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">1836</span>, <span style="color:#e6db74">&#34;Last Days of Disco, The&#34;</span>], <span style="color:#75715e">// [电影ID, 电影名称]
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">3565</span>, <span style="color:#e6db74">&#34;Where the Heart Is&#34;</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 更多历史观看记录，⻓度不定
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;target_item&#34;</span>: [<span style="color:#ae81ff">1893</span>, <span style="color:#e6db74">&#34;Beyond Silence&#34;</span>], <span style="color:#75715e">// ⽤⼾实际观看的下⼀部电影 [电影ID, 电影名称]
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;candidates&#34;</span>: [ <span style="color:#75715e">// 推荐系统召回阶段得到的候选电影列表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">2492</span>, <span style="color:#e6db74">&#34;20 Dates&#34;</span>],
-</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">684</span>, <span style="color:#e6db74">&#34;Windows&#34;</span>],
-</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1893</span>, <span style="color:#e6db74">&#34;Beyond Silence&#34;</span>], <span style="color:#75715e">// 包含⽤⼾实际观看的下⼀部电影
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ... 更多候选电影，⻓度不定，⼀般为20个左右
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ]
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>我们需要将candidates列表按照匹配度进行重排序，列表第一个元素是最有可能（最喜欢）观看的电影，列表最后一个是最不可能（最不喜欢）的电影。</p>
-    </div>
-  <a href="/post/%E4%B8%8A%E6%B5%B7%E5%88%9B%E6%99%BA%E5%AD%A6%E9%99%A22025pe%E8%80%83%E8%AF%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="link black dim">
-        「复试」项目
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>尊敬的各位老师好！我叫yaj，本科就读于北京航空航天大学，计算机科学与技术专业。</p>
-<p>在校期间，我掌握了较扎实的数学基础和编程能力，通过查阅期刊论文了解最新科研动向。</p>
-<p>除此之外，我积极参与各类比赛并获得奖项，有效提升了我的工程实践能力。在毕业设计中，我独立完成从文献调研到模型实现的全流程工作，并且，该项目被获评为北航校级优秀毕设。</p>
-<p>在实践方面，我先后在中国软件与技术服公司、北京航空航天大学和清华大学进行实习。实习期间，我参与了世界模型、时间序列预测、强化学习和目标检测等人工智能相关项目。这些经历使我不仅掌握了深层技术，更形成了&quot;从理论到应用&quot;的完整研发视角。</p>
-<p>上海交通大学一直是我向往的学校，很希望能得到在贵校学习的机会。攻读研究生期间，我会专注于理论与实践的双向发展，深入学习技术背后的底层原理。我的目标是成为一名优秀的工程师，为这个行业做出实质性贡献。我深信计算机领域的技术发展，必将将推动社会的下一场变革。</p>
-<p>以上是我的自我介绍。非常感谢各位老师的聆听！</p>
-    </div>
-  <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 19, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="link black dim">
-        「复试」英语口语
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Good morning, professors. My name is Yang Aijun. I am from Beihang University, where I majored in Computer Science and Technology. During my undergraduate studies, I built a strong foundation in mathematics and programming, and I try to keep up with the latest developments in computer science by reviewing journal papers. I actively participated in various competitions, and earned awards for my efforts. And my graduation thesis was recognized as one of the most outstanding project at the school level.</p>
-<p>Additionally, I have gained practical experience through internships at China Software and Technology Company, Beihang University, and Tsinghua University. During these experiences, I worked on AI-related projects such as world models, time series prediction, reinforcement learning, and object detection. These experiences have greatly enhanced my skills and deepened my passion for computer science.</p>
-<p>As for my master studies, I plan to focus on both the theoretical and practical aspects of artificial intelligence, particularly reinforcement learning. My goal is to become an outstanding engineer and contribute meaningfully to this industry. I strongly believe that the progress made in these fields will drive significant changes in technology.</p>
-<p>That&rsquo;s all for my brief introdution. Thank you very much for taking the time to interview me.</p>
-<p> </p>
-<p>不要说自己英文不好，按照自己理解的逻辑即可。主要是靠英文能力，不是考内容。能表达自己听到的问题，流利回答，<strong>语速不要太快</strong>。有前置语言。所有的问题是没有标准答案的，要自信。</p>
-<p>有五到六个考官，面对主考官说即可。眼睛一定要面对老师。就算老师没关注我，也要注视老师，可眼神互动。</p>
-<p>不要说，自己可能回答的不够好，要展现自己的自信。</p>
-    </div>
-  <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/llm/" class="link blue hover-black">
-            Tag: LLM
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 11, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/llm4/" class="link black dim">
-        LLM - 4.大模型增强 - RAG
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/RAG/0-1.png" alt="0-1"></p>
-    </div>
-  <a href="/post/llm4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 2, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/llm3.5/" class="link black dim">
-        LLM - 3.指令理解阶段(核心) - 强化学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/LLM3.5/0.png" alt="0"></p>
-    </div>
-  <a href="/post/llm3.5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 1, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/llm3/" class="link black dim">
-        LLM - 3.指令理解阶段(核心) - 指令微调
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/LLM3/0.png" alt="0"></p>
-<p>指令微调又称有监督微调，旨在使模型具备指令遵循 （Instruction Following）能力。</p>
-<p>核心问题：<em>如何构造指令数据？如何高效低成本地进行指令微调训练？如何在语言模型基础上进一步扩大上下文？</em></p>
-    </div>
-  <a href="/post/llm3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 27, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/llm2/" class="link black dim">
-        LLM - 2.预训练阶段
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/LLM2/0.png" alt="0"></p>
-    </div>
-  <a href="/post/llm2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 20, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/llm1/" class="link black dim">
-        LLM - 1.基础理论
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><img src="/images/LLM1/0.png" alt="0"></p>
-    </div>
-  <a href="/post/llm1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 16, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/bert/" class="link black dim">
-        BERT
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>名字来源：美国的一个动画片芝麻街里的主人公</p>
-<p>论文：https://arxiv.org/abs/1810.04805</p>
-<h3 id="nlp-里的迁移学习">NLP 里的迁移学习</h3>
-<ol>
-<li>
-<p><strong>在 bert 之前：使用预训练好的模型来抽取词、句子的特征</strong></p>
-<ul>
-<li>如用 word2vec 或 语言模型（当作embedding层）</li>
-<li>﻿不更新预训练好的模型</li>
-<li>﻿缺点
-<ul>
-<li>需要构建新的网络来抓取新任务需要的信息</li>
-<li>﻿Word2vec 忽略了时序信息，语言模型只看了一个方向</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>bert 的动机</strong></p>
-<ul>
-<li>
-<p>基于微调的 NLP 模型</p>
-<p>前面的层不用动，改最后一层的 output layer 即可</p>
-</li>
-<li>
-<p>预训练的模型抽取了足够多的信息，新的任务只需要增加一个简单的输出层</p>
-</li>
-</ul>
-</li>
-</ol>
-<p> </p>
-<h2 id="bert-架构">BERT 架构</h2>
-<p><strong>本质</strong>：一个砍掉解码器、只有编码器的 transformer</p>
-<p>bert 的工作：证明了效果非常好</p>
-<ul>
-<li>
-<p>两个版本：</p>
-<p><strong>Base</strong>: #blocks=12, hidden size=768, #heads=12,  #parameters=110M</p>
-<p>﻿﻿<strong>Large</strong>: #blocks=24, hidden size=1024, #heads=1, #parameter=340M</p>
-</li>
-<li>
-<p>﻿在大规模数据上训练&gt;3B词</p>
-</li>
-</ul>
-    </div>
-  <a href="/post/bert/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 19, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%BE%AE%E8%B0%83/" class="link black dim">
-        微调
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="大模型预训练">大模型预训练</h2>
-<h4 id="1-从零开始的预训练">1 从零开始的预训练</h4>
-<h4 id="2-在已有开源模型基础上针对特定任务进行训练">2 在已有开源模型基础上针对特定任务进行训练</h4>
-<p> </p>
-<h3 id="lora">LoRa</h3>
-<p>通过化简权重矩阵，实现高效微调</p>
-<p><img src="/images/preTrain/1.png" alt="1"></p>
-<p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
-<p>训练参数量减少，但微调效果基本不变。</p>
-<ul>
-<li>
-<p>两个重要参数：</p>
-<p><img src="/images/preTrain/2.png" alt="2"></p>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/mllm/" class="link black dim">
-        MLLM
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="1基础">1基础</h1>
-<h2 id="1-特征提取">1. 特征提取</h2>
-<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
-<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
-<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
-<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
-<p> </p>
-<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
-<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
-<ul>
-<li>
-<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
-</li>
-<li>
-<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
-<p><img src="/images/MLLM/1.png" alt="1"></p>
-</li>
-</ul>
-<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
-<ul>
-<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
-<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
-</ul>
-    </div>
-  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        February 8, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/transformer/" class="link black dim">
-        transformer
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="一transformer架构">一、Transformer架构</h2>
-<ul>
-<li>
-<p>﻿基于编码器-解码器架构来处理序列对</p>
-</li>
-<li>
-<p>﻿跟使用注意力的seq2seq不同，Transformer是纯基于注意力</p>
-<ul>
-<li>
-<p>seq2seq</p>
-<p><img src="/images/trans/1.png" alt="1"></p>
-</li>
-<li>
-<p>transformer</p>
-<p><img src="/images/trans/2.jpg" alt="1"></p>
-</li>
-</ul>
-</li>
-</ul>
-    </div>
-  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -739,6 +544,28 @@
             Tag: RL
           </a>
         </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 13, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
+        工具链-Carla
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>官方文档：<a href="https://carla.readthedocs.io/en/0.9.9/#getting-started">https://carla.readthedocs.io/en/0.9.9/#getting-started</a></p>
+<p>Carla是一款开源的 <em>自动驾驶</em> 仿真器，它基本可以用来帮助训练自动驾驶的所有模块，包括感知系统，Localization，规划系统等等。许多自动驾驶公司在进行实际路跑前都要在这Carla上先进行训练。</p>
+<h3 id="1-基本架构">1. 基本架构</h3>
+<h4 id="client-server-的交互形式">Client-Server 的交互形式</h4>
+<p>Carla主要分为Server与Client两个模块</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
         
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
@@ -1310,6 +1137,429 @@
         
       
         <h2 class="f1">
+          <a href="/tags/kg/" class="link blue hover-black">
+            Tag: KG
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 12, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="link black dim">
+        知识图谱
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>知识图谱于14年出现，之后进入平稳期，23年由于大模型的出现再次火爆。</p>
+<ol>
+<li>
+<h4 id="大模型的幻觉问题的解决方式">大模型的“幻觉”问题的解决方式</h4>
+<ul>
+<li>提高LLM的能力</li>
+<li>框定边界（大量符合逻辑的<strong>facts</strong>），大模型在边界内通过自身的理解能力，提供回复
+<ul>
+<li>facts 来源于：一些网络/企业内部文档/企业内的数据库/结构化的知识图谱</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h4 id="知识图谱一种存储facts的方式">知识图谱：一种存储facts的方式</h4>
+<p>采用了“实体&amp;关系”的方法来存储信息</p>
+<p>区别于简单的图：包含多种实体和多种关系</p>
+</li>
+<li>
+<h4 id="知识图谱的优势">知识图谱的优势</h4>
+<ol>
+<li>关系直观</li>
+<li>抓住重要信息</li>
+<li>弥补文本到向量直接的关系（GraphRAG：KG与向量数据库融合）</li>
+</ol>
+</li>
+</ol>
+<p> </p>
+<h2 id="rag-与知识图谱结合">RAG 与知识图谱结合</h2>
+<ol>
+<li>
+<h4 id="知识图谱的必要性">知识图谱的必要性</h4>
+<p>e.g：问题:“感冒常用药物的负作用”；数据库存储的是“冲剂” 的描述，对应段落刚好没有出现“感冒” 这个关键词；两者相似度不够高，无法匹配</p>
+<p>—— 使用知识图谱找到“感冒”和“冲剂”之间的<strong>关系</strong></p>
+</li>
+</ol>
+    </div>
+  <a href="/post/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/%E8%80%83%E8%AF%95/" class="link blue hover-black">
+            Tag: 考试
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 12, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E4%B8%8A%E6%B5%B7%E5%88%9B%E6%99%BA%E5%AD%A6%E9%99%A22025pe%E8%80%83%E8%AF%95/" class="link black dim">
+        上海创智学院2025PE考试
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <blockquote>
+<p>注意：提示词都是用中文编写，若将中文直接翻译成英文，效果可能下降。</p>
+</blockquote>
+<h3 id="任务理解">任务理解</h3>
+<hr>
+<p>给定数据结构如下所示的数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">val.jsonl中，每⼀条数据的字段说明：</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;user_id&#34;</span>: <span style="color:#ae81ff">5737</span>, <span style="color:#75715e">// ⽤⼾编号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;item_list&#34;</span>: [ <span style="color:#75715e">// ⽤⼾历史观看电影列表，按时间顺序排列，越靠后表⽰越近期观看
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">1836</span>, <span style="color:#e6db74">&#34;Last Days of Disco, The&#34;</span>], <span style="color:#75715e">// [电影ID, 电影名称]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">3565</span>, <span style="color:#e6db74">&#34;Where the Heart Is&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... 更多历史观看记录，⻓度不定
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;target_item&#34;</span>: [<span style="color:#ae81ff">1893</span>, <span style="color:#e6db74">&#34;Beyond Silence&#34;</span>], <span style="color:#75715e">// ⽤⼾实际观看的下⼀部电影 [电影ID, 电影名称]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;candidates&#34;</span>: [ <span style="color:#75715e">// 推荐系统召回阶段得到的候选电影列表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    [<span style="color:#ae81ff">2492</span>, <span style="color:#e6db74">&#34;20 Dates&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">684</span>, <span style="color:#e6db74">&#34;Windows&#34;</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1893</span>, <span style="color:#e6db74">&#34;Beyond Silence&#34;</span>], <span style="color:#75715e">// 包含⽤⼾实际观看的下⼀部电影
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ... 更多候选电影，⻓度不定，⼀般为20个左右
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我们需要将candidates列表按照匹配度进行重排序，列表第一个元素是最有可能（最喜欢）观看的电影，列表最后一个是最不可能（最不喜欢）的电影。</p>
+    </div>
+  <a href="/post/%E4%B8%8A%E6%B5%B7%E5%88%9B%E6%99%BA%E5%AD%A6%E9%99%A22025pe%E8%80%83%E8%AF%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="link black dim">
+        「复试」项目
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>尊敬的各位老师好！我叫yaj，本科就读于北京航空航天大学，计算机科学与技术专业。</p>
+<p>在校期间，我掌握了较扎实的数学基础和编程能力，通过查阅期刊论文了解最新科研动向。</p>
+<p>除此之外，我积极参与各类比赛并获得奖项，有效提升了我的工程实践能力。在毕业设计中，我独立完成从文献调研到模型实现的全流程工作，并且，该项目被获评为北航校级优秀毕设。</p>
+<p>在实践方面，我先后在中国软件与技术服公司、北京航空航天大学和清华大学进行实习。实习期间，我参与了世界模型、时间序列预测、强化学习和目标检测等人工智能相关项目。这些经历使我不仅掌握了深层技术，更形成了&quot;从理论到应用&quot;的完整研发视角。</p>
+<p>上海交通大学一直是我向往的学校，很希望能得到在贵校学习的机会。攻读研究生期间，我会专注于理论与实践的双向发展，深入学习技术背后的底层原理。我的目标是成为一名优秀的工程师，为这个行业做出实质性贡献。我深信计算机领域的技术发展，必将将推动社会的下一场变革。</p>
+<p>以上是我的自我介绍。非常感谢各位老师的聆听！</p>
+    </div>
+  <a href="/post/%E5%A4%8D%E8%AF%95%E9%A1%B9%E7%9B%AE/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="link black dim">
+        「复试」英语口语
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Good morning, professors. My name is Yang Aijun. I am from Beihang University, where I majored in Computer Science and Technology. During my undergraduate studies, I built a strong foundation in mathematics and programming, and I try to keep up with the latest developments in computer science by reviewing journal papers. I actively participated in various competitions, and earned awards for my efforts. And my graduation thesis was recognized as one of the most outstanding project at the school level.</p>
+<p>Additionally, I have gained practical experience through internships at China Software and Technology Company, Beihang University, and Tsinghua University. During these experiences, I worked on AI-related projects such as world models, time series prediction, reinforcement learning, and object detection. These experiences have greatly enhanced my skills and deepened my passion for computer science.</p>
+<p>As for my master studies, I plan to focus on both the theoretical and practical aspects of artificial intelligence, particularly reinforcement learning. My goal is to become an outstanding engineer and contribute meaningfully to this industry. I strongly believe that the progress made in these fields will drive significant changes in technology.</p>
+<p>That&rsquo;s all for my brief introdution. Thank you very much for taking the time to interview me.</p>
+<p> </p>
+<p>不要说自己英文不好，按照自己理解的逻辑即可。主要是靠英文能力，不是考内容。能表达自己听到的问题，流利回答，<strong>语速不要太快</strong>。有前置语言。所有的问题是没有标准答案的，要自信。</p>
+<p>有五到六个考官，面对主考官说即可。眼睛一定要面对老师。就算老师没关注我，也要注视老师，可眼神互动。</p>
+<p>不要说，自己可能回答的不够好，要展现自己的自信。</p>
+    </div>
+  <a href="/post/%E5%A4%8D%E8%AF%95%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/llm/" class="link blue hover-black">
+            Tag: LLM
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 11, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm4/" class="link black dim">
+        LLM - 4.大模型增强 - RAG
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/RAG/0-1.png" alt="0-1"></p>
+    </div>
+  <a href="/post/llm4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 2, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm3.5/" class="link black dim">
+        LLM - 3.指令理解阶段(核心) - 强化学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM3.5/0.png" alt="0"></p>
+    </div>
+  <a href="/post/llm3.5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 1, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm3/" class="link black dim">
+        LLM - 3.指令理解阶段(核心) - 指令微调
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM3/0.png" alt="0"></p>
+<p>指令微调又称有监督微调，旨在使模型具备指令遵循 （Instruction Following）能力。</p>
+<p>核心问题：<em>如何构造指令数据？如何高效低成本地进行指令微调训练？如何在语言模型基础上进一步扩大上下文？</em></p>
+    </div>
+  <a href="/post/llm3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 27, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm2/" class="link black dim">
+        LLM - 2.预训练阶段
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM2/0.png" alt="0"></p>
+    </div>
+  <a href="/post/llm2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/llm1/" class="link black dim">
+        LLM - 1.基础理论
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/LLM1/0.png" alt="0"></p>
+    </div>
+  <a href="/post/llm1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/bert/" class="link black dim">
+        BERT
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>名字来源：美国的一个动画片芝麻街里的主人公</p>
+<p>论文：https://arxiv.org/abs/1810.04805</p>
+<h3 id="nlp-里的迁移学习">NLP 里的迁移学习</h3>
+<ol>
+<li>
+<p><strong>在 bert 之前：使用预训练好的模型来抽取词、句子的特征</strong></p>
+<ul>
+<li>如用 word2vec 或 语言模型（当作embedding层）</li>
+<li>﻿不更新预训练好的模型</li>
+<li>﻿缺点
+<ul>
+<li>需要构建新的网络来抓取新任务需要的信息</li>
+<li>﻿Word2vec 忽略了时序信息，语言模型只看了一个方向</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>bert 的动机</strong></p>
+<ul>
+<li>
+<p>基于微调的 NLP 模型</p>
+<p>前面的层不用动，改最后一层的 output layer 即可</p>
+</li>
+<li>
+<p>预训练的模型抽取了足够多的信息，新的任务只需要增加一个简单的输出层</p>
+</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<h2 id="bert-架构">BERT 架构</h2>
+<p><strong>本质</strong>：一个砍掉解码器、只有编码器的 transformer</p>
+<p>bert 的工作：证明了效果非常好</p>
+<ul>
+<li>
+<p>两个版本：</p>
+<p><strong>Base</strong>: #blocks=12, hidden size=768, #heads=12,  #parameters=110M</p>
+<p>﻿﻿<strong>Large</strong>: #blocks=24, hidden size=1024, #heads=1, #parameter=340M</p>
+</li>
+<li>
+<p>﻿在大规模数据上训练&gt;3B词</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/bert/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        March 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%BE%AE%E8%B0%83/" class="link black dim">
+        微调
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="大模型预训练">大模型预训练</h2>
+<h4 id="1-从零开始的预训练">1 从零开始的预训练</h4>
+<h4 id="2-在已有开源模型基础上针对特定任务进行训练">2 在已有开源模型基础上针对特定任务进行训练</h4>
+<p> </p>
+<h3 id="lora">LoRa</h3>
+<p>通过化简权重矩阵，实现高效微调</p>
+<p><img src="/images/preTrain/1.png" alt="1"></p>
+<p>将loraA与loraB相乘得到一个lora权重矩阵，将lora权重矩阵加在原始权重矩阵上，就得到了对原始网络的更新。</p>
+<p>训练参数量减少，但微调效果基本不变。</p>
+<ul>
+<li>
+<p>两个重要参数：</p>
+<p><img src="/images/preTrain/2.png" alt="2"></p>
+</li>
+</ul>
+    </div>
+  <a href="/post/%E5%BE%AE%E8%B0%83/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/mllm/" class="link black dim">
+        MLLM
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="1基础">1基础</h1>
+<h2 id="1-特征提取">1. 特征提取</h2>
+<h3 id="一cv中的特征提取"><strong>一、CV中的特征提取</strong></h3>
+<h4 id="1-传统方法手工设计特征"><strong>1. 传统方法（手工设计特征）</strong></h4>
+<p><strong>(1) 低级视觉特征</strong>：颜色、纹理、 边缘与形状&hellip;</p>
+<p><strong>(2) 中级语义特征</strong>：SIFT（尺度不变特征变换）、SURF（加速鲁棒特征）、LBP（局部二值模式）&hellip;</p>
+<p> </p>
+<h4 id="2-深度学习方法自动学习特征"><strong>2. 深度学习方法（自动学习特征）</strong></h4>
+<h5 id="1-卷积神经网络cnn"><strong>(1) 卷积神经网络（CNN）</strong></h5>
+<ul>
+<li>
+<p><strong>核心思想</strong>：通过卷积层提取局部特征，池化层降低维度，全连接层进行分类。</p>
+</li>
+<li>
+<p><strong>经典模型</strong>：LeNet-5、AlexNet、VGGNet、ResNet(使用残差可以训练更深的网络)&hellip;</p>
+<p><img src="/images/MLLM/1.png" alt="1"></p>
+</li>
+</ul>
+<h5 id="2-视觉transformervit"><strong>(2) 视觉Transformer（ViT）</strong></h5>
+<ul>
+<li><strong>核心思想</strong>：将图像分割为小块（patches），通过自注意力机制建模全局关系。</li>
+<li><strong>优势</strong>：无需局部卷积先验，直接建模长距离依赖; 在ImageNet等任务上超越传统CNN。</li>
+</ul>
+    </div>
+  <a href="/post/mllm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        February 8, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/transformer/" class="link black dim">
+        transformer
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="一transformer架构">一、Transformer架构</h2>
+<ul>
+<li>
+<p>﻿基于编码器-解码器架构来处理序列对</p>
+</li>
+<li>
+<p>﻿跟使用注意力的seq2seq不同，Transformer是纯基于注意力</p>
+<ul>
+<li>
+<p>seq2seq</p>
+<p><img src="/images/trans/1.png" alt="1"></p>
+</li>
+<li>
+<p>transformer</p>
+<p><img src="/images/trans/2.jpg" alt="1"></p>
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+  <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/cv/" class="link blue hover-black">
             Tag: CV
           </a>
@@ -1670,96 +1920,6 @@
         
       
         <h2 class="f1">
-          <a href="/tags/automatic-driving/" class="link blue hover-black">
-            Tag: Automatic Driving
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 19, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
-        工具链-carla
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="0-预备">0 预备</h2>
-<p>下载 carla</p>
-<ol>
-<li>
-<p>﻿﻿﻿Get Python from anaconda.com</p>
-</li>
-<li>
-<p>﻿﻿﻿Create virtual environment</p>
-<ul>
-<li>
-<p>﻿﻿launch anaconda prompt</p>
-</li>
-<li>
-<p>﻿﻿conda create &ndash;name carla-sim python=3.7</p>
-</li>
-<li>
-<p>﻿﻿activate carla-sim</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Install additional libraries via &ldquo;pip install&rdquo;:</p>
-<ul>
-<li>﻿﻿pip install carla, pygame, numpy, jupyter and opencv-python</li>
-</ul>
-</li>
-</ol>
-<p> </p>
-<h2 id="1-基本构件块">1 基本构件块</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># all imports</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> carla 				<span style="color:#75715e"># the sim Library itself </span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random 			<span style="color:#75715e"># to pick random spawn point </span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2 					<span style="color:#75715e"># to work with images from cameras</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np 	<span style="color:#75715e"># in this example to change image representation - re-shaping</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># connect to the sim</span>
-</span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> carla<span style="color:#f92672">.</span>Client(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">2000</span>)
-</span></span></code></pre></div>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 14, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="link black dim">
-        LSS代码
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>文章搬运，自用。</p>
-<p>论文：<a href="https://arxiv.org/abs/2008.05711">Lift, Splat, Shoot: Encoding Images From Arbitrary Camera Rigs by Implicitly Unprojecting to 3D</a></p>
-<p>官方源码：<a href="https://github.com/nv-tlabs/lift-splat-shoot">lift-splat-shoot</a></p>
-<p> </p>
-<h4 id="lift-splat-shoot图像bev安装与模型代码详解httpsblogcsdnnetqq_41366026articledetails133840315"><a href="https://blog.csdn.net/qq_41366026/article/details/133840315">Lift, Splat, Shoot图像BEV安装与模型代码详解</a></h4>
-<p>对于任意数量不同相机帧的图像直接提取场景的BEV表达；主要由三部分实现：</p>
-<ol>
-<li><strong>Lift</strong>：将每一个相机的图像帧根据相机的内参转换提升到 frustum（锥形）形状的点云空间中。</li>
-<li><strong>splate</strong>：将所有相机转换到锥形点云空间中的特征根据相机的内参 K 与相机相对于 ego 的外参T映射到栅格化的 3D 空间（BEV）中来融合多帧信息。</li>
-<li><strong>shoot</strong>：根据上述 BEV 的检测或分割结果来生成规划的路径 proposal；从而实现可解释的端到端的路径规划任务。</li>
-</ol>
-<p>注：LSS在训练的过程中并不需要激光雷达的点云来进行监督。</p>
-    </div>
-  <a href="/post/lss%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
           <a href="/tags/data-processing/" class="link blue hover-black">
             Tag: Data Processing
           </a>
@@ -1907,142 +2067,6 @@
 </ol>
     </div>
   <a href="/post/%E6%95%B0%E6%8D%AE%E9%9B%86-nusences/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/tool/" class="link blue hover-black">
-            Tag: Tool
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="link black dim">
-        工具链-PyTorch
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-处理数据">1. 处理数据</h2>
-<p>PyTorch 有两个用于处理数据的基元： <code>torch.utils.data.DataLoader</code> 和 <code>torch.utils.data.Dataset</code>。
-<code>Dataset</code> 存储样本及其相应的标签，<code>DataLoader</code> 将 <code>Dataset</code> 包装成一个迭代器。</p>
-<ul>
-<li>
-<p>下面以 TorchVision 库模块里的 FashionMNIST 数据集为例：</p>
-<p>每个 TorchVision <code>Dataset</code> 都包含两个参数： <code>transform</code> 和 <code>target_transform</code> 分别修改样本和标签</p>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Download training data from open datasets.</span>
-</span></span><span style="display:flex;"><span>training_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
-</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
-</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download test data from open datasets.</span>
-</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
-</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
-</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
-</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>将 <code>Dataset</code> 作为参数传递给 <code>DataLoader</code> ，将一个可迭代对象包装在数据集上，支持自动批处理、采样、洗牌和多进程数据加载。</p>
-<p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        工具链-深度学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="torch--cuda--nvidia"><strong>Torch + CUDA + NVIDIA</strong>：</h2>
-<ul>
-<li>
-<p>安装步骤：</p>
-<ol>
-<li>
-<p>去 Nvidia 官网下载 CUDA 并安装（核心：驱动+CUDA开发环境）</p>
-<p><img src="/images/DLtool/1.png" alt="1"></p>
-<p>检查：<code>nvidia-smi</code> 指令</p>
-</li>
-<li>
-<p>下载 Anaconda，用于运行 python 环境</p>
-</li>
-<li>
-<p>下载 GPU 版本的 pytorch</p>
-<p><img src="/images/DLtool/2.png" alt="2"></p>
-</li>
-<li>
-<p>可以开始跑深度学习了！</p>
-</li>
-</ol>
-</li>
-</ul>
-<p><strong>Torch</strong> 是一个深度学习框架，用于构建和训练神经网络，该可以利用<strong>CUDA</strong>在<strong>NVIDIA GPU</strong>上加速计算。通过在PyTorch中指定使用CUDA进行训练，可以在处理大数据集时大大提高计算效率。</p>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 4, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        工具链-强化学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-gym">1. gym</h2>
-<p>官方文档：https://www.gymlibrary.dev</p>
-<ul>
-<li>
-<p>最小例子 <code>CartPole-v0</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
-</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>reset()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>render()
-</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>step(env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()) <span style="color:#75715e"># take a random action</span>
-</span></span></code></pre></div></li>
-</ul>
-<p> </p>
-<h3 id="观测-observations">观测 (Observations)</h3>
-<p>在 Gym 仿真中，每一次回合开始，需要先执行 <code>reset()</code> 函数，返回<strong>初始观测信息，然后根据标志位 <code>done</code> 的状态，来决定是否进行下一次回合</strong>。代码表示：</p>
-<p> </p>
-<p><code>env.step()</code> 函数对每一步进行仿真，返回 4 个参数：</p>
-<ul>
-<li>
-<p><strong>观测</strong> Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；</p>
-</li>
-<li>
-<p><strong>奖励</strong> Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；</p>
-</li>
-<li>
-<p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
