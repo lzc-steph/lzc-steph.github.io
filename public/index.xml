@@ -6,8 +6,15 @@
     <description>Recent content in AJ&#39;s blog on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 16 May 2025 04:00:59 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 17 May 2025 11:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「书籍阅读」《鼠疫》加缪</title>
+      <link>http://localhost:1313/post/%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E9%BC%A0%E7%96%AB/</link>
+      <pubDate>Sat, 17 May 2025 11:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/post/%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E9%BC%A0%E7%96%AB/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;怎么做才能不浪费时间？&lt;/p&gt;&#xA;&lt;p&gt;在时间的漫长中体验时间。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;一场战争爆发时，人们说：“这仗打不长，因为那太愚蠢了。”毫无疑问，战争的确太愚蠢，然而愚蠢并不妨碍它打下去。倘若人不老去想自己，他会发觉蠢事有可能一直坚持干下去。在这方面，他们和大家一样，他们想的是他们自己，他们都是人本主义者：他们不相信天灾。天灾怎么能和人相比！因此大家想，这灾祸不是现实，它只是一场噩梦，很快就会过去。&lt;/p&gt;&#xA;&lt;p&gt;然而，噩梦不一定会消逝，它们一个接着一个，其间逝去的却是人，首先是那些人本主义者，因为那些人没有采取预防措施。他们的过失并非比别人严重，他们忘记了人应当谦虚，如此而已。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>工具链 - docker</title>
       <link>http://localhost:1313/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/</link>
@@ -426,7 +433,7 @@
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;我叫杨瑷珺，本科毕业于北京航空航天大学计算机科学与技术专业，预计于今年 9 月进入上海交通大学攻读计算机硕士学位。当前，我正在清华大学进行自动驾驶相关实习。我最近正在研究强化学习，MLLM 和生成式人工智能等领域。&lt;/p&gt;&#xA;&lt;p&gt;我的生日是11月23号（是的，我的幸运数字是23），我是射手座，enfj。我喜欢和朋友一起探店美食，喜欢弹钢琴。我最喜欢的歌手是泰勒斯威夫特。&lt;/p&gt;&#xA;&lt;p&gt;最近，我刚刚开始学习吉他。欢迎和我成为朋友！&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/tayme.HEIC&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;—from AJ23&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;</description>
+      <description>&lt;p&gt;我叫杨瑷珺，本科毕业于北京航空航天大学计算机科学与技术专业，预计于今年 9 月进入上海交通大学攻读计算机硕士学位。当前，我正在清华大学进行自动驾驶相关实习。我最近正在研究 RL、LLM 和 RAG 等领域。&lt;/p&gt;&#xA;&lt;p&gt;我的生日是11月23号（是的，我的幸运数字是23），我是射手座，enfj。我喜欢和朋友一起探店美食，喜欢弹钢琴。我最喜欢的歌手是泰勒斯威夫特。&lt;/p&gt;&#xA;&lt;p&gt;最近，我刚刚开始学习吉他。欢迎和我成为朋友！&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/images/tayme.HEIC&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;—from AJ23&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;</description>
     </item>
     <item>
       <title>Contact</title>

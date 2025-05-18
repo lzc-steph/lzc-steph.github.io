@@ -1,6 +1,6 @@
 ---
 date: 2025-05-16T04:00:59-07:00
-description: "Docker 通过容器技术将应用及其依赖环境打包成轻量级、可移植的独立单元，实现“一次构建，随处运行”。Docker 包含三大核心：镜像、容器和仓库。"
+description: "Docker 是一个用于开发、发布和运行应用的开放平台。Docker 使你能够将应用与基础设施分离，从而快速交付软件。"
 featured_image: "/images/docker/tomo.jpg"
 tags: ["tool"]
 title: "工具链 - docker"
@@ -40,7 +40,7 @@ title: "工具链 - docker"
 
   注：docker client 和docker demon 可运行在同一台机器上。
 
-&nbsp;
+![6](/images/docker/6.png)&nbsp;
 
 1. **docker build**
 

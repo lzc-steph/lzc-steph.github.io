@@ -2,7 +2,7 @@
 date: 2025-05-11T11:00:59-04:00
 description: "RAG（检索增强生成）是一种结合信息检索与文本生成的技术，其核心思想是在生成答案前，先从外部知识库中检索相关文档或信息作为参考，从而增强生成内容的准确性和事实性。"
 featured_image: "/images/RAG/pia.jpg"
-tags: ["LLM"]
+tags: ["LLM", "RAG"]
 title: "LLM - 4.大模型增强 - RAG"
 ---
 
