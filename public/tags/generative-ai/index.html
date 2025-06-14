@@ -158,26 +158,6 @@
 <p><img src="/images/DM/19.png" alt="19"></p>
 <p>进一步：输入加入了文字表述</p>
 <p>目标：产生的图片与真实图片越接近越好</p>
-<h2 id="原理">原理</h2>
-<ul>
-<li>
-<p><strong>Reverse Process</strong>（多次Denoise）</p>
-<p><strong>reconstructing meaningful data from noise</strong> by iteratively removing noise that was added during the <strong>forward process</strong>.</p>
-</li>
-<li>
-<p><strong>Forward Process</strong>:</p>
-<p>Gradually adds noise to data over multiple steps until the data becomes pure noise.</p>
-</li>
-</ul>
-<p><img src="/images/DM/1.png" alt="1"></p>
-<ul>
-<li>
-<p>Denoise输入：图片 + 噪音程度</p>
-<p><img src="/images/DM/2.png" alt="2"></p>
-</li>
-</ul>
-<h3 id="denoise-model内部">Denoise Model内部</h3>
-<p><img src="/images/DM/3.png" alt="3"></p>
     </div>
   <a href="/post/diffusion-model/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
@@ -210,24 +190,6 @@
 <p>T：transformer</p>
 </li>
 </ul>
-<p> </p>
-<ol>
-<li>
-<p>ChatGPT 真正做的事：文字接龙</p>
-<p><strong>Autoregressive Generation</strong>：逐个生成</p>
-<p><img src="/images/GA/3.png" alt="3"></p>
-<p><img src="/images/GA/4.png" alt="4"></p>
-</li>
-<li>
-<p><strong>token</strong></p>
-<p>文字接龙时可以选择的符号</p>
-<p><img src="/images/GA/5.png" alt="5"></p>
-</li>
-<li>
-<p>每次回答都随机（掷骰子）</p>
-<p><img src="/images/GA/6.png" alt="6"></p>
-</li>
-</ol>
     </div>
   <a href="/post/generativeai/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

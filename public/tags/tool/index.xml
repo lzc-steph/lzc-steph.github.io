@@ -6,8 +6,15 @@
     <description>Recent content in Tool on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 16 May 2025 04:00:59 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jun 2025 04:00:59 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RAG实践</title>
+      <link>http://localhost:1313/post/rag%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Thu, 12 Jun 2025 04:00:59 -0700</pubDate>
+      <guid>http://localhost:1313/post/rag%E5%AE%9E%E8%B7%B5/</guid>
+      <description>&lt;h2 id=&#34;rag-在做什么&#34;&gt;RAG 在做什么？&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/RAGprac/0.png&#34; alt=&#34;0&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;将语料库喂给LLM&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;文字分块向量化（利用LLM），从而基于向量相似度进行搜索&lt;/li&gt;&#xA;&lt;li&gt;将得到的向量存储到向量数据库中&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;搜索&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;将用户问题进行向量化，在向量数据库中进行搜索，得到相关内容&lt;/li&gt;&#xA;&lt;li&gt;将检索得到的相关内容（不一定相关）和关用户问题 一起传给 LLM&lt;/li&gt;&#xA;&lt;li&gt;LLM提取出相关信息，生成正确结果&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h2 id=&#34;llm-常见参数&#34;&gt;LLM 常见参数&lt;/h2&gt;&#xA;&lt;h4 id=&#34;temperature&#34;&gt;&lt;code&gt;temperature&lt;/code&gt;&lt;/h4&gt;&#xA;&lt;p&gt;控制生成文本的随机性。温度越高，生成的文本越随机和创造性；温度越低，文本越趋向于确定性和重复性。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;常见设置&lt;/strong&gt;：通常设置在0.7到1之间。较低的温度（如0.7）可以使生成的文本更加连贯和准确，而较高的温度（如1）则使文本更加多样和创造性。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h4 id=&#34;top_k&#34;&gt;&lt;code&gt;top_k&lt;/code&gt;&lt;/h4&gt;&#xA;&lt;p&gt;只从模型认为最可能的&lt;code&gt;k&lt;/code&gt;个词中选择下一个词。&lt;code&gt;k&lt;/code&gt;值越大，选择范围越广，生成的文本越多样；&lt;code&gt;k&lt;/code&gt;值越小，选择范围越窄，生成的文本越趋向于高概率的词。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;常见设置&lt;/strong&gt;：一般设置在40到100之间。较小的&lt;code&gt;k&lt;/code&gt;值可以提高文本的相关性和连贯性，而较大的&lt;code&gt;k&lt;/code&gt;值则增加了文本的多样性。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt; &lt;/p&gt;&#xA;&lt;h4 id=&#34;top_p&#34;&gt;&lt;code&gt;top_p&lt;/code&gt;&lt;/h4&gt;&#xA;&lt;p&gt;从概率累计达到&lt;code&gt;p&lt;/code&gt;的那一组词中随机选择下一个词。与Top-K不同，Top-P是动态的，依据每个上下文的不同而变化。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;常见设置&lt;/strong&gt;：通常设置在0.8到0.95之间。较低的&lt;code&gt;top_p&lt;/code&gt;值（如0.8）使生成的文本更加可预测和相关，而较高的值（如0.95）增加了文本的多样性和创造性。&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>工具链 - docker</title>
       <link>http://localhost:1313/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/</link>

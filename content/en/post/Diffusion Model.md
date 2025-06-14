@@ -16,7 +16,7 @@ title: "Diffusion Model"
 
 目标：产生的图片与真实图片越接近越好
 
-
+<!--more-->
 
 
 
@@ -39,8 +39,6 @@ title: "Diffusion Model"
 ### Denoise Model内部
 
 ![3](/images/DM/3.png)
-
-<!--more-->
 
 **Noise Predicter**: 预测noise长什么样
 

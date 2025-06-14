@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Prompting Guide | HomePage</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Prompt 是用户输入给 AI 模型的指令或问题，用于引导 AI 生成相应的回答或内容。">
+    <meta name="generator" content="Hugo 0.140.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/prompt/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/prompt/">
+  <meta property="og:site_name" content="HomePage">
+  <meta property="og:title" content="Prompting Guide">
+  <meta property="og:description" content="Prompt 是用户输入给 AI 模型的指令或问题，用于引导 AI 生成相应的回答或内容。">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-06-12T10:00:59-04:00">
+    <meta property="article:modified_time" content="2025-06-12T10:00:59-04:00">
+    <meta property="article:tag" content="LLM">
+
+  <meta itemprop="name" content="Prompting Guide">
+  <meta itemprop="description" content="Prompt 是用户输入给 AI 模型的指令或问题，用于引导 AI 生成相应的回答或内容。">
+  <meta itemprop="datePublished" content="2025-06-12T10:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-06-12T10:00:59-04:00">
+  <meta itemprop="wordCount" content="1814">
+  <meta itemprop="keywords" content="LLM">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Prompting Guide">
+  <meta name="twitter:description" content="Prompt 是用户输入给 AI 模型的指令或问题，用于引导 AI 生成相应的回答或内容。">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/images/prompt/tomo.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        HomePage
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About ME page">
+              About ME
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Prompting Guide</div>
+          
+            <div class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Prompt 是用户输入给 AI 模型的指令或问题，用于引导 AI 生成相应的回答或内容。
+            </div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Articles
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fprompt%2F&amp;subject=Prompting&#43;Guide"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a><a href="https://facebook.com/sharer/sharer.php?&amp;u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fprompt%2F"
+        class="ananke-social-link facebook no-underline"
+        title="Share on Facebook" aria-label="Share on Facebook"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+                
+              </span></a><a href="https://bsky.app/intent/compose?&amp;text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fprompt%2F"
+        class="ananke-social-link bluesky no-underline"
+        title="Share on Bluesky" aria-label="Share on Bluesky"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+                
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fprompt%2F&amp;summary=1.&#43;Agentic&#43;Workflows&#43;System&#43;Prompt&#43;Reminders&#43;%E5%9C%A8%E6%8F%90%E7%A4%BA%E4%B8%AD%E5%8C%85%E5%90%AB%E4%B8%89%E7%A7%8D%E5%85%B3%E9%94%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8F%90%E9%86%92%EF%BC%9A%0A%E6%8C%81%E4%B9%85%E6%80%A7&#43;%E7%A1%AE%E4%BF%9D%E6%A8%A1%E5%9E%8B%E7%90%86%E8%A7%A3%E5%AE%83%E6%AD%A3%E5%9C%A8%E8%BF%9B%E5%85%A5%E5%A4%9A%E6%B6%88%E6%81%AF%E8%BD%AE%E6%AC%A1%EF%BC%8C%E5%B9%B6%E9%98%B2%E6%AD%A2%E5%AE%83%E8%BF%87%E6%97%A9%E5%9C%B0%E5%B0%86%E6%8E%A7%E5%88%B6%E6%9D%83%E4%BA%A4%E8%BF%98%E7%BB%99%E7%94%A8%E6%88%B7%E3%80%82%E7%A4%BA%E4%BE%8B%E5%A6%82%E4%B8%8B%EF%BC%9A%0AYou&#43;are&#43;an&#43;agent&#43;-&#43;please&#43;keep&#43;going&#43;until&#43;the&#43;user%E2%80%99s&#43;query&#43;is&#43;completely&#43;resolved%2C&#43;before&#43;ending&#43;your&#43;turn&#43;and&#43;yielding&#43;back&#43;to&#43;the&#43;user.&#43;Only&#43;terminate&#43;your&#43;turn&#43;when&#43;you&#43;are&#43;sure&#43;that&#43;the&#43;problem&#43;is&#43;solved.&#43;%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8&#43;%E9%BC%93%E5%8A%B1%E6%A8%A1%E5%9E%8B%E5%85%85%E5%88%86%E5%88%A9%E7%94%A8%E5%85%B6%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%B9%B6%E9%99%8D%E4%BD%8E%E5%85%B6%E4%BA%A7%E7%94%9F%E5%B9%BB%E8%A7%89%E6%88%96%E7%8C%9C%E6%B5%8B%E7%AD%94%E6%A1%88%E7%9A%84%E5%8F%AF%E8%83%BD%E6%80%A7%E3%80%82%E7%A4%BA%E4%BE%8B%E5%A6%82%E4%B8%8B%EF%BC%9A%0AIf&#43;you&#43;are&#43;not&#43;sure&#43;about&#43;file&#43;content&#43;or&#43;codebase&#43;structure&#43;pertaining&#43;to&#43;the&#43;user%E2%80%99s&#43;request%2C&#43;use&#43;your&#43;tools&#43;to&#43;read&#43;files&#43;and&#43;gather&#43;the&#43;relevant&#43;information%3A&#43;do&#43;NOT&#43;guess&#43;or&#43;make&#43;up&#43;an&#43;answer.&#43;%E8%A7%84%E5%88%92&#43;%5B%E5%8F%AF%E9%80%89%5D&#43;%E5%8F%AF%E7%A1%AE%E4%BF%9D%E6%A8%A1%E5%9E%8B%E5%9C%A8%E6%96%87%E6%9C%AC%E4%B8%AD%E6%98%8E%E7%A1%AE%E8%A7%84%E5%88%92%E5%92%8C%E5%8F%8D%E6%98%A0%E6%AF%8F%E4%B8%AA%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E9%80%9A%E8%BF%87%E5%B0%86%E4%B8%80%E7%B3%BB%E5%88%97%E5%8D%95%E7%8B%AC%E7%9A%84%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%E9%93%BE%E6%8E%A5%E5%9C%A8%E4%B8%80%E8%B5%B7%E6%9D%A5%E5%AE%8C%E6%88%90%E4%BB%BB%E5%8A%A1%E3%80%82%E7%A4%BA%E4%BE%8B%E5%A6%82%E4%B8%8B%EF%BC%9A%0A&amp;title=Prompting&#43;Guide&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Fprompt%2F"
+        class="ananke-social-link linkedin no-underline"
+        title="Share on LinkedIn" aria-label="Share on LinkedIn"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">Prompting Guide</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-06-12T10:00:59-04:00">June 12, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="1-agentic-workflowshttpscookbookopenaicomexamplesgpt4-1_prompting_guidefeatured_ontalkpython1-agentic-workflows"><a href="https://cookbook.openai.com/examples/gpt4-1_prompting_guide?featured_on=talkpython#1-agentic-workflows">1. Agentic Workflows</a></h2>
+<h3 id="system-prompt-reminders">System Prompt Reminders</h3>
+<p>在提示中包含三种关键类型的提醒：</p>
+<ol>
+<li>
+<h4 id="持久性">持久性</h4>
+<p>确保模型理解它正在进入多消息轮次，并防止它过早地将控制权交还给用户。示例如下：</p>
+<pre tabindex="0"><code>You are an agent - please keep going until the user’s query is completely resolved, before ending your turn and yielding back to the user. Only terminate your turn when you are sure that the problem is solved.
+</code></pre></li>
+<li>
+<h4 id="工具调用">工具调用</h4>
+<p>鼓励模型充分利用其工具，并降低其产生幻觉或猜测答案的可能性。示例如下：</p>
+<pre tabindex="0"><code>If you are not sure about file content or codebase structure pertaining to the user’s request, use your tools to read files and gather the relevant information: do NOT guess or make up an answer.
+</code></pre></li>
+<li>
+<h4 id="规划-可选">规划 [可选]</h4>
+<p>可确保模型在文本中明确规划和反映每个工具调用，而不是通过将一系列单独的工具调用链接在一起来完成任务。示例如下：</p>
+<pre tabindex="0"><code>You MUST plan extensively before each function call, and reflect extensively on the outcomes of the previous function calls. DO NOT do this entire process by making function calls only, as this can impair your ability to solve the problem and think insightfully.
+</code></pre></li>
+</ol>
+<p> </p>
+<h3 id="tool-calls">Tool Calls</h3>
+<p>使用 API 解析的工具描述，将 tools 作为参数传递。</p>
+<p>应清楚地命名工具以表明其用途，并在工具的 “description” 字段中添加清晰、详细的描述。</p>
+<p> </p>
+<h3 id="prompting-induced-planning--chain-of-thought">Prompting-Induced Planning &amp; Chain-of-Thought</h3>
+<p>使用 Planning 提示组件来诱导模型在工具调用之间进行规划和反思，生成一个明确的、循序渐进的计划。</p>
+<p> </p>
+<h3 id="sample-prompt-swe-bench-verified">Sample Prompt: SWE-bench Verified</h3>
+<p>通用模式如下，包含有关工作流程和问题解决策略的详细说明。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> openai <span style="color:#f92672">import</span> OpenAI
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> OpenAI(
+</span></span><span style="display:flex;"><span>    api_key<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;OPENAI_API_KEY&#34;</span>, <span style="color:#e6db74">&#34;&lt;your OpenAI API key if not set as env var&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SYS_PROMPT_SWEBENCH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You will be tasked to fix an issue from an open-source repository.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Your thinking should be thorough and so it&#39;s fine if it&#39;s very long. You can think step by step before and after each action you decide to take.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You MUST iterate and keep going until the problem is solved.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You already have everything you need to solve this problem in the /testbed folder, even without internet connection. I want you to fully solve this autonomously before coming back to me.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Only terminate your turn when you are sure that the problem is solved. Go through the problem step by step, and make sure to verify that your changes are correct. NEVER end your turn without having solved the problem, and when you say you are going to make a tool call, make sure you ACTUALLY make the tool call, instead of ending your turn.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">THE PROBLEM CAN DEFINITELY BE SOLVED WITHOUT THE INTERNET.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Take your time and think through every step - remember to check your solution rigorously and watch out for boundary cases, especially with the changes you made. Your solution must be perfect. If not, continue working on it. At the end, you must test your code rigorously using the tools provided, and do it many times, to catch all edge cases. If it is not robust, iterate more and make it perfect. Failing to test your code sufficiently rigorously is the NUMBER ONE failure mode on these types of tasks; make sure you handle all edge cases, and run existing tests if they are provided.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You MUST plan extensively before each function call, and reflect extensively on the outcomes of the previous function calls. DO NOT do this entire process by making function calls only, as this can impair your ability to solve the problem and think insightfully.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># Workflow
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## High-Level Problem Solving Strategy
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. Understand the problem deeply. Carefully read the issue and think critically about what is required.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. Investigate the codebase. Explore relevant files, search for key functions, and gather context.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. Develop a clear, step-by-step plan. Break down the fix into manageable, incremental steps.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. Implement the fix incrementally. Make small, testable code changes.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. Debug as needed. Use debugging techniques to isolate and resolve issues.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">6. Test frequently. Run tests after each change to verify correctness.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">7. Iterate until the root cause is fixed and all tests pass.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">8. Reflect and validate comprehensively. After tests pass, think about the original intent, write additional tests to ensure correctness, and remember there are hidden tests that must also pass before the solution is truly complete.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Refer to the detailed sections below for more information on each step.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 1. Deeply Understand the Problem
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Carefully read the issue and think hard about a plan to solve it before coding.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 2. Codebase Investigation
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Explore relevant files and directories.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Search for key functions, classes, or variables related to the issue.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Read and understand relevant code snippets.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Identify the root cause of the problem.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Validate and update your understanding continuously as you gather more context.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 3. Develop a Detailed Plan
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Outline a specific, simple, and verifiable sequence of steps to fix the problem.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Break down the fix into small, incremental changes.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 4. Making Code Changes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Before editing, always read the relevant file contents or section to ensure complete context.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If a patch is not applied correctly, attempt to reapply it.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Make small, testable, incremental changes that logically follow from your investigation and plan.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 5. Debugging
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Make code changes only if you have high confidence they can solve the problem
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- When debugging, try to determine the root cause rather than addressing symptoms
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Debug for as long as needed to identify the root cause and identify a fix
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Use print statements, logs, or temporary code to inspect program state, including descriptive statements or error messages to understand what&#39;s happening
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- To test hypotheses, you can also add test statements or functions
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Revisit your assumptions if unexpected behavior occurs.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 6. Testing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Run tests frequently using `!python3 run_tests.py` (or equivalent).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- After each change, verify correctness by running relevant tests.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If tests fail, analyze failures and revise your patch.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Write additional tests if needed to capture important behaviors or edge cases.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ensure all tests pass before finalizing.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 7. Final Verification
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Confirm the root cause is fixed.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Review your solution for logic correctness and robustness.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Iterate until you are extremely confident the fix is complete and all tests pass.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## 8. Final Reflection and Additional Testing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Reflect carefully on the original intent of the user and the problem statement.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Think about potential edge cases or scenarios that may not be covered by existing tests.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Write additional tests that would need to pass to fully validate the correctness of your solution.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Run these new tests and ensure they all pass.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Be aware that there are additional hidden tests that must also pass for the solution to be successful.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Do not assume the task is complete just because the visible tests pass; continue refining until you are confident the fix is robust and comprehensive.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PYTHON_TOOL_DESCRIPTION <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;This function is used to execute Python code or terminal commands in a stateful Jupyter notebook environment. python will respond with the output of the execution or time out after 60.0 seconds. Internet access for this session is disabled. Do not make external web requests or API calls as they will fail. Just as in a Jupyter notebook, you may also execute terminal commands by calling this function with a terminal command, prefaced with an exclamation mark.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">In addition, for the purposes of this task, you can call this function with an `apply_patch` command as input.  `apply_patch` effectively allows you to execute a diff/patch against a file, but the format of the diff specification is unique to this task, so pay careful attention to these instructions. To use the `apply_patch` command, you should pass a message of the following structure as &#34;input&#34;:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">%%</span><span style="color:#e6db74">bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apply_patch &lt;&lt;&#34;EOF&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">*** Begin Patch
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[YOUR_PATCH]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">*** End Patch
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Where [YOUR_PATCH] is the actual content of your patch, specified in the following V4A diff format.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">*** [ACTION] File: [path/to/file] -&gt; ACTION can be one of Add, Update, or Delete.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">For each snippet of code that needs to be changed, repeat the following:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[context_before] -&gt; See below for further instructions on context.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- [old_code] -&gt; Precede the old code with a minus sign.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+ [new_code] -&gt; Precede the new, replacement code with a plus sign.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[context_after] -&gt; See below for further instructions on context.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">For instructions on [context_before] and [context_after]:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- By default, show 3 lines of code immediately above and 3 lines immediately below each change. If a change is within 3 lines of a previous change, do NOT duplicate the first change&#39;s [context_after] lines in the second change&#39;s [context_before] lines.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If 3 lines of context is insufficient to uniquely identify the snippet of code within the file, use the @@ operator to indicate the class or function to which the snippet belongs. For instance, we might have:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">@@ class BaseClass
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[3 lines of pre-context]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- [old_code]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+ [new_code]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[3 lines of post-context]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- If a code block is repeated so many times in a class or function such that even a single @@ statement and 3 lines of context cannot uniquely identify the snippet of code, you can use multiple `@@` statements to jump to the right context. For instance:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">@@ class BaseClass
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">@@ 	def method():
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[3 lines of pre-context]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- [old_code]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+ [new_code]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[3 lines of post-context]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Note, then, that we do not use line numbers in this diff format, as the context is enough to uniquely identify code. An example of a message that you might pass as &#34;input&#34; to this function, in order to apply a patch, is shown below.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">%%</span><span style="color:#e6db74">bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apply_patch &lt;&lt;&#34;EOF&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">*** Begin Patch
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">*** Update File: pygorithm/searching/binary_search.py
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">@@ class BaseClass
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">@@     def search():
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">-        pass
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+        raise NotImplementedError()
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">@@ class Subclass
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">@@     def search():
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">-        pass
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+        raise NotImplementedError()
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">*** End Patch
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">File references can only be relative, NEVER ABSOLUTE. After the apply_patch command is run, python will always say &#34;Done!&#34;, regardless of whether the patch was successfully applied or not. However, you can determine if there are issue and errors by looking at any warnings or logging lines printed BEFORE the &#34;Done!&#34; is output.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python_bash_patch_tool <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;function&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;python&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;description&#34;</span>: PYTHON_TOOL_DESCRIPTION,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;parameters&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;object&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;strict&#34;</span>: <span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;properties&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;input&#34;</span>: {
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34; The Python code, terminal command (prefaced by exclamation mark), or apply_patch command that you wish to execute.&#34;</span>,
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;required&#34;</span>: [<span style="color:#e6db74">&#34;input&#34;</span>],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Additional harness setup:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># - Add your repo to /testbed</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># - Add your issue to the first user message</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># - Note: Even though we used a single tool for python, bash, and apply_patch, we generally recommend defining more granular tools that are focused on a single function</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>responses<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>    instructions<span style="color:#f92672">=</span>SYS_PROMPT_SWEBENCH,
+</span></span><span style="display:flex;"><span>    model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-4.1-2025-04-14&#34;</span>,
+</span></span><span style="display:flex;"><span>    tools<span style="color:#f92672">=</span>[python_bash_patch_tool],
+</span></span><span style="display:flex;"><span>    input<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Please answer the following question:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Bug: Typerror...&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response<span style="color:#f92672">.</span>to_dict()[<span style="color:#e6db74">&#34;output&#34;</span>]
+</span></span></code></pre></div><p> </p>
+<h2 id="2-long-context">2. Long context</h2>
+<h3 id="tuning-context-reliance">Tuning Context Reliance</h3>
+<pre tabindex="0"><code># Instructions
+// for internal knowledge
+- Only use the documents in the provided External Context to answer the User Query. If you don&#39;t know the answer based on this context, you must respond &#34;I don&#39;t have the information needed to answer that&#34;, even if a user insists on you answering the question.
+// For internal and external knowledge
+- By default, use the provided external context to answer the User Query, but if other basic knowledge is needed to answer, and you&#39;re confident in the answer, you can use some of your own knowledge to help answer the question.
+</code></pre><p> </p>
+<h3 id="prompt-organization">Prompt Organization</h3>
+<p> </p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/llm/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">LLM</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/llm4/">LLM - 4.大模型增强 - RAG</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm3.5/">LLM - 3.指令理解阶段(核心) - 强化学习</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm3/">LLM - 3.指令理解阶段(核心) - 指令微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm2/">LLM - 2.预训练阶段</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/llm1/">LLM - 1.基础理论</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/bert/">BERT</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/%E5%BE%AE%E8%B0%83/">微调</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/mllm/">MLLM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/transformer/">transformer</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  HomePage 2025 
+  </a>
+    <div><div class="ananke-socials"><a href="https://www.facebook.com/patrick.kollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition facebook link dib z-999 pt3 pt0-l mr1"
+        title="follow on Facebook - Opens in a new window"
+        aria-label="follow on Facebook - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            
+          </span></a><a href="https://bsky.app/profile/kollitsch.dev" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition bluesky link dib z-999 pt3 pt0-l mr1"
+        title="follow on Bluesky - Opens in a new window"
+        aria-label="follow on Bluesky - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
+            
+          </span></a><a href="http://linkedin.com/in/patrickkollitsch" target="_blank" rel="noopener"
+        class="ananke-social-link link-transition linkedin link dib z-999 pt3 pt0-l mr1"
+        title="follow on LinkedIn - Opens in a new window"
+        aria-label="follow on LinkedIn - Opens in a new window">
+      <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+            
+          </span></a></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

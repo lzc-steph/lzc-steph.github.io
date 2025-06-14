@@ -634,7 +634,7 @@ Carla是一款开源的 自动驾驶 仿真器，它基本可以用来帮助训�
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># extra checks on predicted angle when values close to 360 degrees are returned</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> predicted_angle<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">300</span>:
 </span></span><span style="display:flex;"><span>        predicted_angle <span style="color:#f92672">=</span> predicted_angle<span style="color:#f92672">+</span><span style="color:#ae81ff">360</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#960050;background-color:#1e0010">p</span>redicted_angle <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">300</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> predicted_angle <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">300</span>:
 </span></span><span style="display:flex;"><span>        predicted_angle <span style="color:#f92672">=</span> predicted_angle <span style="color:#f92672">-</span><span style="color:#ae81ff">360</span>
 </span></span><span style="display:flex;"><span>    steer_input <span style="color:#f92672">=</span> predicted_angle
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># and conversion of to -1 to +1</span>

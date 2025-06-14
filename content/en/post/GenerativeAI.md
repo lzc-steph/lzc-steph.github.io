@@ -16,6 +16,8 @@ title: "Generative AI"
 
 + T：transformer
 
+<!--more-->
+
 &nbsp;
 
 1. ChatGPT 真正做的事：文字接龙
@@ -35,8 +37,6 @@ title: "Generative AI"
 3. 每次回答都随机（掷骰子）
 
    ![6](/images/GA/6.png)
-
-   <!--more-->
 
 4. 进化关键：**自督导式学习(预训练) ➡️ 督导式学习(微调) ➡️ 强化学习**
 
