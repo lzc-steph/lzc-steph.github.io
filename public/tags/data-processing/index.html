@@ -189,57 +189,6 @@
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
-        April 12, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="link black dim">
-        脚本使用
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h4 id="脚本学习">脚本学习</h4>
-<ol>
-<li>
-<p>python main.py train mini/trainval &ndash;dataroot=NUSCENES_ROOT &ndash;logdir=./runs &ndash;gpuid=0 tensorboard &ndash;logdir=./runs &ndash;bind_all</p>
-<h4 id="第一部分python-mainpy-train-minitrainval-">第一部分：<code>python main.py train mini/trainval ...</code></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python main.py train mini/trainval --dataroot<span style="color:#f92672">=</span>NUSCENES_ROOT --logdir<span style="color:#f92672">=</span>./runs --gpuid<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-</span></span></code></pre></div><p><strong>参数解析</strong>：</p>
-<ul>
-<li><code>train</code>：表示执行训练模式。</li>
-<li><code>mini/trainval</code>：数据集的子集（如训练集+验证集的迷你版本）。</li>
-<li><code>--dataroot=NUSCENES_ROOT</code>：指定数据集路径，需替换<code>NUSCENES_ROOT</code>为实际路径。</li>
-<li><code>--logdir=./runs</code>：训练日志和模型检查点会保存在<code>./runs</code>目录。</li>
-<li><code>--gpuid=0</code>：使用第0号GPU（如果有多块GPU）。</li>
-</ul>
-<p> </p>
-<p><strong>第二部分：<code>tensorboard --logdir=./runs --bind_all</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tensorboard --logdir<span style="color:#f92672">=</span>./runs --bind_all
-</span></span></code></pre></div><ol>
-<li>
-<p><strong>作用</strong>：</p>
-<p>启动TensorBoard服务，用于可视化训练过程中的指标（如损失曲线、准确率等）。</p>
-</li>
-<li>
-<p><strong>参数解析</strong>：</p>
-<ul>
-<li><code>--logdir=./runs</code>：指定TensorBoard读取的日志目录（与训练脚本的<code>--logdir</code>一致）。</li>
-<li><code>--bind_all</code>：允许通过网络访问TensorBoard（默认地址通常是<code>localhost:6006</code>）。</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-    </div>
-  <a href="/post/dp-%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
         April 11, 2025
       </div>
     

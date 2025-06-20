@@ -153,8 +153,8 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="rag-在做什么">RAG 在做什么？</h2>
-<p><img src="/images/RAGprac/0.png" alt="0"></p>
+      <h2 id="rag-整体框架">RAG 整体框架</h2>
+<p><img src="/images/RAGprac/0.jpg" alt="0"></p>
 <ul>
 <li>
 <p><strong>将语料库喂给LLM</strong></p>
@@ -173,25 +173,9 @@
 </li>
 </ul>
 <p> </p>
-<p> </p>
-<h2 id="llm-常见参数">LLM 常见参数</h2>
+<h3 id="llm-常见参数">LLM 常见参数</h3>
 <h4 id="temperature"><code>temperature</code></h4>
 <p>控制生成文本的随机性。温度越高，生成的文本越随机和创造性；温度越低，文本越趋向于确定性和重复性。</p>
-<ul>
-<li><strong>常见设置</strong>：通常设置在0.7到1之间。较低的温度（如0.7）可以使生成的文本更加连贯和准确，而较高的温度（如1）则使文本更加多样和创造性。</li>
-</ul>
-<p> </p>
-<h4 id="top_k"><code>top_k</code></h4>
-<p>只从模型认为最可能的<code>k</code>个词中选择下一个词。<code>k</code>值越大，选择范围越广，生成的文本越多样；<code>k</code>值越小，选择范围越窄，生成的文本越趋向于高概率的词。</p>
-<ul>
-<li><strong>常见设置</strong>：一般设置在40到100之间。较小的<code>k</code>值可以提高文本的相关性和连贯性，而较大的<code>k</code>值则增加了文本的多样性。</li>
-</ul>
-<p> </p>
-<h4 id="top_p"><code>top_p</code></h4>
-<p>从概率累计达到<code>p</code>的那一组词中随机选择下一个词。与Top-K不同，Top-P是动态的，依据每个上下文的不同而变化。</p>
-<ul>
-<li><strong>常见设置</strong>：通常设置在0.8到0.95之间。较低的<code>top_p</code>值（如0.8）使生成的文本更加可预测和相关，而较高的值（如0.95）增加了文本的多样性和创造性。</li>
-</ul>
     </div>
   <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
