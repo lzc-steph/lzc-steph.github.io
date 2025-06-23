@@ -2,7 +2,7 @@ theme = 'ananke'
 
 
 title = "Aijun"
-baseURL = 'https://dearaj.github.io/'
+baseURL = 'https://Steph.github.io/'
 resourceDir = "../resources"
 
 defaultContentLanguage = "en"
