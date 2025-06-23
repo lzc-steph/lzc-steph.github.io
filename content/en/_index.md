@@ -1,5 +1,5 @@
 ---
-title: "AJ's blog"
+title: "Steph's blog"
 
 description: "The Sternstunden of mankind are always just a small number of moments in which a single individual shapes history."
 # 1. To ensure Netlify triggers a build on our exampleSite instance, we need to change a file in the exampleSite directory.
