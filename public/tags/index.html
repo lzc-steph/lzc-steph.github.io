@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2025-06-17T11:00:59-04:00">
-  <meta itemprop="dateModified" content="2025-06-17T11:00:59-04:00">
+  <meta itemprop="datePublished" content="2025-06-20T10:00:59-04:00">
+  <meta itemprop="dateModified" content="2025-06-20T10:00:59-04:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -142,6 +142,144 @@
     <section class="ph4">
       
         <h2 class="f1">
+          <a href="/tags/langchain/" class="link blue hover-black">
+            Tag: Langchain
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        June 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/langchain-agent/" class="link black dim">
+        langchain - Agent
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/langchain-Agent/1.png" alt="1"></p>
+<p>可将 Agent 视为 state machine</p>
+<p> </p>
+<h3 id="agent_react_docstore">agent_react_docstore</h3>
+<p><img src="/images/langchain-Agent/2.png" alt="2"></p>
+    </div>
+  <a href="/post/langchain-agent/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        June 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/langchain-rag/" class="link black dim">
+        langchain - RAG
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains <span style="color:#f92672">import</span> create_history_aware_retriever, create_retrieval_chain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains.combine_documents <span style="color:#f92672">import</span> create_stuff_documents_chain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_community.vectorstores <span style="color:#f92672">import</span> Chroma
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_core.messages <span style="color:#f92672">import</span> HumanMessage, SystemMessage
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_core.prompts <span style="color:#f92672">import</span> ChatPromptTemplate, MessagesPlaceholder
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_openai <span style="color:#f92672">import</span> ChatOpenAI, OpenAIEmbeddings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load environment variables from .env</span>
+</span></span><span style="display:flex;"><span>load_dotenv()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the persistent directory</span>
+</span></span><span style="display:flex;"><span>current_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(__file__))
+</span></span><span style="display:flex;"><span>persistent_directory <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(current_dir, <span style="color:#e6db74">&#34;db&#34;</span>, <span style="color:#e6db74">&#34;chroma_db_with_metadata&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the embedding model</span>
+</span></span><span style="display:flex;"><span>embeddings <span style="color:#f92672">=</span> OpenAIEmbeddings(model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-embedding-3-small&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the existing vector store with the embedding function</span>
+</span></span><span style="display:flex;"><span>db <span style="color:#f92672">=</span> Chroma(persist_directory<span style="color:#f92672">=</span>persistent_directory, embedding_function<span style="color:#f92672">=</span>embeddings)
+</span></span></code></pre></div>
+    </div>
+  <a href="/post/langchain-rag/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/llm/" class="link blue hover-black">
+            Tag: LLM&#34;
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        June 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/langchain-agent/" class="link black dim">
+        langchain - Agent
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><img src="/images/langchain-Agent/1.png" alt="1"></p>
+<p>可将 Agent 视为 state machine</p>
+<p> </p>
+<h3 id="agent_react_docstore">agent_react_docstore</h3>
+<p><img src="/images/langchain-Agent/2.png" alt="2"></p>
+    </div>
+  <a href="/post/langchain-agent/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        June 19, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/langchain-rag/" class="link black dim">
+        langchain - RAG
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains <span style="color:#f92672">import</span> create_history_aware_retriever, create_retrieval_chain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains.combine_documents <span style="color:#f92672">import</span> create_stuff_documents_chain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_community.vectorstores <span style="color:#f92672">import</span> Chroma
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_core.messages <span style="color:#f92672">import</span> HumanMessage, SystemMessage
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_core.prompts <span style="color:#f92672">import</span> ChatPromptTemplate, MessagesPlaceholder
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_openai <span style="color:#f92672">import</span> ChatOpenAI, OpenAIEmbeddings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load environment variables from .env</span>
+</span></span><span style="display:flex;"><span>load_dotenv()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the persistent directory</span>
+</span></span><span style="display:flex;"><span>current_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(__file__))
+</span></span><span style="display:flex;"><span>persistent_directory <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(current_dir, <span style="color:#e6db74">&#34;db&#34;</span>, <span style="color:#e6db74">&#34;chroma_db_with_metadata&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the embedding model</span>
+</span></span><span style="display:flex;"><span>embeddings <span style="color:#f92672">=</span> OpenAIEmbeddings(model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-embedding-3-small&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the existing vector store with the embedding function</span>
+</span></span><span style="display:flex;"><span>db <span style="color:#f92672">=</span> Chroma(persist_directory<span style="color:#f92672">=</span>persistent_directory, embedding_function<span style="color:#f92672">=</span>embeddings)
+</span></span></code></pre></div>
+    </div>
+  <a href="/post/langchain-rag/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/book/" class="link blue hover-black">
             Tag: Book
           </a>
@@ -161,6 +299,13 @@
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <ul>
 <li>魅力创造了不能被满足的欲望，因为这种欲望的对象只存在于想象之中。魅力就是一个谎言。</li>
+</ul>
+<p> </p>
+<ul>
+<li>
+<p>未来不是真实的，它由一系列只存在于我们大脑中的可能性组成。这些可能性往往过于理想化，因为我们通常不会想象一个平庸的结果。在所有可能的世界中，我们倾向于考虑最好的那一个，这使得未来更具吸引力。</p>
+<p>而当未来变成了现在，兴奋、热情和充满精力的感觉消散了，多巴胺停止工作了。这样很多人感到失望，他们过于依附于多巴胺能的刺激，让自己逃离了现在，躲在自己想象的舒适世界里。“明天我们做什么？”他们一边咀嚼食物一边问自己，忘记了——他们也曾热切期待着这顿饭，但现在却对它视而不见。充满希望的旅途要比到达目的地更快乐。</p>
+</li>
 </ul>
 <p> </p>
 <ul>
@@ -202,6 +347,273 @@
 </ul>
     </div>
   <a href="/post/%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E9%BC%A0%E7%96%AB/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/rag/" class="link blue hover-black">
+            Tag: RAG&#34;
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        June 13, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="link black dim">
+        RAG实践
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="rag-整体框架">RAG 整体框架</h2>
+<p><img src="/images/RAGprac/0.jpg" alt="0"></p>
+<ul>
+<li>
+<p><strong>将语料库喂给LLM</strong></p>
+<ol>
+<li>文字分块向量化（利用LLM），从而基于向量相似度进行搜索</li>
+<li>将得到的向量存储到向量数据库中</li>
+</ol>
+</li>
+<li>
+<p><strong>搜索</strong></p>
+<ol>
+<li>将用户问题进行向量化，在向量数据库中进行搜索，得到相关内容</li>
+<li>将检索得到的相关内容（不一定相关）和关用户问题 一起传给 LLM</li>
+<li>LLM提取出相关信息，生成正确结果</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h3 id="llm-常见参数">LLM 常见参数</h3>
+<h4 id="temperature"><code>temperature</code></h4>
+<p>控制生成文本的随机性。温度越高，生成的文本越随机和创造性；温度越低，文本越趋向于确定性和重复性。</p>
+    </div>
+  <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/tool/" class="link blue hover-black">
+            Tag: Tool
+          </a>
+        </h2>
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        June 13, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="link black dim">
+        RAG实践
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="rag-整体框架">RAG 整体框架</h2>
+<p><img src="/images/RAGprac/0.jpg" alt="0"></p>
+<ul>
+<li>
+<p><strong>将语料库喂给LLM</strong></p>
+<ol>
+<li>文字分块向量化（利用LLM），从而基于向量相似度进行搜索</li>
+<li>将得到的向量存储到向量数据库中</li>
+</ol>
+</li>
+<li>
+<p><strong>搜索</strong></p>
+<ol>
+<li>将用户问题进行向量化，在向量数据库中进行搜索，得到相关内容</li>
+<li>将检索得到的相关内容（不一定相关）和关用户问题 一起传给 LLM</li>
+<li>LLM提取出相关信息，生成正确结果</li>
+</ol>
+</li>
+</ul>
+<p> </p>
+<h3 id="llm-常见参数">LLM 常见参数</h3>
+<h4 id="temperature"><code>temperature</code></h4>
+<p>控制生成文本的随机性。温度越高，生成的文本越随机和创造性；温度越低，文本越趋向于确定性和重复性。</p>
+    </div>
+  <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/" class="link black dim">
+        工具链 - docker
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>虚拟机的缺点：OS 太重、慢。</p>
+<p><img src="/images/docker/1.JPG" alt="1"></p>
+<p>容器技术：<strong>只隔离应用程序的运行时环境，但容器之间可共享同一操作系统。</strong></p>
+<p><img src="/images/docker/2.JPG" alt="2"></p>
+<p>容器技术的代表：docker</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        May 13, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
+        工具链-Carla
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>官方文档：<a href="https://carla.readthedocs.io/en/0.9.9/#getting-started">https://carla.readthedocs.io/en/0.9.9/#getting-started</a></p>
+<p>Carla是一款开源的 <em>自动驾驶</em> 仿真器，它基本可以用来帮助训练自动驾驶的所有模块，包括感知系统，Localization，规划系统等等。许多自动驾驶公司在进行实际路跑前都要在这Carla上先进行训练。</p>
+<h3 id="1-基本架构">1. 基本架构</h3>
+<h4 id="client-server-的交互形式">Client-Server 的交互形式</h4>
+<p>Carla主要分为Server与Client两个模块</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="link black dim">
+        工具链-PyTorch
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-处理数据">1. 处理数据</h2>
+<p>PyTorch 有两个用于处理数据的基元： <code>torch.utils.data.DataLoader</code> 和 <code>torch.utils.data.Dataset</code>。
+<code>Dataset</code> 存储样本及其相应的标签，<code>DataLoader</code> 将 <code>Dataset</code> 包装成一个迭代器。</p>
+<ul>
+<li>
+<p>下面以 TorchVision 库模块里的 FashionMNIST 数据集为例：</p>
+<p>每个 TorchVision <code>Dataset</code> 都包含两个参数： <code>transform</code> 和 <code>target_transform</code> 分别修改样本和标签</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Download training data from open datasets.</span>
+</span></span><span style="display:flex;"><span>training_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download test data from open datasets.</span>
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
+</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
+</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>将 <code>Dataset</code> 作为参数传递给 <code>DataLoader</code> ，将一个可迭代对象包装在数据集上，支持自动批处理、采样、洗牌和多进程数据加载。</p>
+<p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 17, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-深度学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="torch--cuda--nvidia"><strong>Torch + CUDA + NVIDIA</strong>：</h2>
+<ul>
+<li>
+<p>安装步骤：</p>
+<ol>
+<li>
+<p>去 Nvidia 官网下载 CUDA 并安装（核心：驱动+CUDA开发环境）</p>
+<p><img src="/images/DLtool/1.png" alt="1"></p>
+<p>检查：<code>nvidia-smi</code> 指令</p>
+</li>
+<li>
+<p>下载 Anaconda，用于运行 python 环境</p>
+</li>
+<li>
+<p>下载 GPU 版本的 pytorch</p>
+<p><img src="/images/DLtool/2.png" alt="2"></p>
+</li>
+<li>
+<p>可以开始跑深度学习了！</p>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>Torch</strong> 是一个深度学习框架，用于构建和训练神经网络，该可以利用<strong>CUDA</strong>在<strong>NVIDIA GPU</strong>上加速计算。通过在PyTorch中指定使用CUDA进行训练，可以在处理大数据集时大大提高计算效率。</p>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        April 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
+        工具链-强化学习
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="1-gym">1. gym</h2>
+<p>官方文档：https://www.gymlibrary.dev</p>
+<ul>
+<li>
+<p>最小例子 <code>CartPole-v0</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
+</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>render()
+</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>step(env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()) <span style="color:#75715e"># take a random action</span>
+</span></span></code></pre></div></li>
+</ul>
+<p> </p>
+<h3 id="观测-observations">观测 (Observations)</h3>
+<p>在 Gym 仿真中，每一次回合开始，需要先执行 <code>reset()</code> 函数，返回<strong>初始观测信息，然后根据标志位 <code>done</code> 的状态，来决定是否进行下一次回合</strong>。代码表示：</p>
+<p> </p>
+<p><code>env.step()</code> 函数对每一步进行仿真，返回 4 个参数：</p>
+<ul>
+<li>
+<p><strong>观测</strong> Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；</p>
+</li>
+<li>
+<p><strong>奖励</strong> Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；</p>
+</li>
+<li>
+<p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
+</li>
+</ul>
+    </div>
+  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         
@@ -504,273 +916,6 @@
 </ul>
     </div>
   <a href="/post/transformer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/rag/" class="link blue hover-black">
-            Tag: RAG&#34;
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        June 12, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="link black dim">
-        RAG实践
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="rag-整体框架">RAG 整体框架</h2>
-<p><img src="/images/RAGprac/0.jpg" alt="0"></p>
-<ul>
-<li>
-<p><strong>将语料库喂给LLM</strong></p>
-<ol>
-<li>文字分块向量化（利用LLM），从而基于向量相似度进行搜索</li>
-<li>将得到的向量存储到向量数据库中</li>
-</ol>
-</li>
-<li>
-<p><strong>搜索</strong></p>
-<ol>
-<li>将用户问题进行向量化，在向量数据库中进行搜索，得到相关内容</li>
-<li>将检索得到的相关内容（不一定相关）和关用户问题 一起传给 LLM</li>
-<li>LLM提取出相关信息，生成正确结果</li>
-</ol>
-</li>
-</ul>
-<p> </p>
-<h3 id="llm-常见参数">LLM 常见参数</h3>
-<h4 id="temperature"><code>temperature</code></h4>
-<p>控制生成文本的随机性。温度越高，生成的文本越随机和创造性；温度越低，文本越趋向于确定性和重复性。</p>
-    </div>
-  <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/tags/tool/" class="link blue hover-black">
-            Tag: Tool
-          </a>
-        </h2>
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        June 12, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="link black dim">
-        RAG实践
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="rag-整体框架">RAG 整体框架</h2>
-<p><img src="/images/RAGprac/0.jpg" alt="0"></p>
-<ul>
-<li>
-<p><strong>将语料库喂给LLM</strong></p>
-<ol>
-<li>文字分块向量化（利用LLM），从而基于向量相似度进行搜索</li>
-<li>将得到的向量存储到向量数据库中</li>
-</ol>
-</li>
-<li>
-<p><strong>搜索</strong></p>
-<ol>
-<li>将用户问题进行向量化，在向量数据库中进行搜索，得到相关内容</li>
-<li>将检索得到的相关内容（不一定相关）和关用户问题 一起传给 LLM</li>
-<li>LLM提取出相关信息，生成正确结果</li>
-</ol>
-</li>
-</ul>
-<p> </p>
-<h3 id="llm-常见参数">LLM 常见参数</h3>
-<h4 id="temperature"><code>temperature</code></h4>
-<p>控制生成文本的随机性。温度越高，生成的文本越随机和创造性；温度越低，文本越趋向于确定性和重复性。</p>
-    </div>
-  <a href="/post/rag%E5%AE%9E%E8%B7%B5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 16, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/" class="link black dim">
-        工具链 - docker
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>虚拟机的缺点：OS 太重、慢。</p>
-<p><img src="/images/docker/1.JPG" alt="1"></p>
-<p>容器技术：<strong>只隔离应用程序的运行时环境，但容器之间可共享同一操作系统。</strong></p>
-<p><img src="/images/docker/2.JPG" alt="2"></p>
-<p>容器技术的代表：docker</p>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-docker/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 13, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="link black dim">
-        工具链-Carla
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>官方文档：<a href="https://carla.readthedocs.io/en/0.9.9/#getting-started">https://carla.readthedocs.io/en/0.9.9/#getting-started</a></p>
-<p>Carla是一款开源的 <em>自动驾驶</em> 仿真器，它基本可以用来帮助训练自动驾驶的所有模块，包括感知系统，Localization，规划系统等等。许多自动驾驶公司在进行实际路跑前都要在这Carla上先进行训练。</p>
-<h3 id="1-基本架构">1. 基本架构</h3>
-<h4 id="client-server-的交互形式">Client-Server 的交互形式</h4>
-<p>Carla主要分为Server与Client两个模块</p>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-carla/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="link black dim">
-        工具链-PyTorch
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-处理数据">1. 处理数据</h2>
-<p>PyTorch 有两个用于处理数据的基元： <code>torch.utils.data.DataLoader</code> 和 <code>torch.utils.data.Dataset</code>。
-<code>Dataset</code> 存储样本及其相应的标签，<code>DataLoader</code> 将 <code>Dataset</code> 包装成一个迭代器。</p>
-<ul>
-<li>
-<p>下面以 TorchVision 库模块里的 FashionMNIST 数据集为例：</p>
-<p>每个 TorchVision <code>Dataset</code> 都包含两个参数： <code>transform</code> 和 <code>target_transform</code> 分别修改样本和标签</p>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Download training data from open datasets.</span>
-</span></span><span style="display:flex;"><span>training_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
-</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
-</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download test data from open datasets.</span>
-</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>FashionMNIST(
-</span></span><span style="display:flex;"><span>    root<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>,
-</span></span><span style="display:flex;"><span>    train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
-</span></span><span style="display:flex;"><span>    download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>    transform<span style="color:#f92672">=</span>ToTensor(),
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>将 <code>Dataset</code> 作为参数传递给 <code>DataLoader</code> ，将一个可迭代对象包装在数据集上，支持自动批处理、采样、洗牌和多进程数据加载。</p>
-<p>定义了一个 batch size 为 64，即 dataloader 迭代器中的每个元素将返回<strong>一个 64 features and labels 的 batch</strong>。</p>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-pytorch/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        工具链-深度学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="torch--cuda--nvidia"><strong>Torch + CUDA + NVIDIA</strong>：</h2>
-<ul>
-<li>
-<p>安装步骤：</p>
-<ol>
-<li>
-<p>去 Nvidia 官网下载 CUDA 并安装（核心：驱动+CUDA开发环境）</p>
-<p><img src="/images/DLtool/1.png" alt="1"></p>
-<p>检查：<code>nvidia-smi</code> 指令</p>
-</li>
-<li>
-<p>下载 Anaconda，用于运行 python 环境</p>
-</li>
-<li>
-<p>下载 GPU 版本的 pytorch</p>
-<p><img src="/images/DLtool/2.png" alt="2"></p>
-</li>
-<li>
-<p>可以开始跑深度学习了！</p>
-</li>
-</ol>
-</li>
-</ul>
-<p><strong>Torch</strong> 是一个深度学习框架，用于构建和训练神经网络，该可以利用<strong>CUDA</strong>在<strong>NVIDIA GPU</strong>上加速计算。通过在PyTorch中指定使用CUDA进行训练，可以在处理大数据集时大大提高计算效率。</p>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 4, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="link black dim">
-        工具链-强化学习
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-gym">1. gym</h2>
-<p>官方文档：https://www.gymlibrary.dev</p>
-<ul>
-<li>
-<p>最小例子 <code>CartPole-v0</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python3" data-lang="python3"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymenv <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#39;CartPole-v0&#39;</span>)
-</span></span><span style="display:flex;"><span>env<span style="color:#f92672">.</span>reset()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>render()
-</span></span><span style="display:flex;"><span>    env<span style="color:#f92672">.</span>step(env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()) <span style="color:#75715e"># take a random action</span>
-</span></span></code></pre></div></li>
-</ul>
-<p> </p>
-<h3 id="观测-observations">观测 (Observations)</h3>
-<p>在 Gym 仿真中，每一次回合开始，需要先执行 <code>reset()</code> 函数，返回<strong>初始观测信息，然后根据标志位 <code>done</code> 的状态，来决定是否进行下一次回合</strong>。代码表示：</p>
-<p> </p>
-<p><code>env.step()</code> 函数对每一步进行仿真，返回 4 个参数：</p>
-<ul>
-<li>
-<p><strong>观测</strong> Observation (Object)：当前 step 执行后，环境的观测(类型为对象)。例如，从相机获取的像素点，机器人各个关节的角度或棋盘游戏当前的状态等；</p>
-</li>
-<li>
-<p><strong>奖励</strong> Reward (Float): 执行上一步动作(action)后，智体(agent)获得的奖励，不同的环境中奖励值变化范围也不相同，但是强化学习的目标就是使得总奖励值最大；</p>
-</li>
-<li>
-<p><strong>完成</strong> Done (Boolen): 表示是否需要将环境重置 <code>env.reset</code>。</p>
-</li>
-</ul>
-    </div>
-  <a href="/post/%E5%B7%A5%E5%85%B7%E9%93%BE-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         

@@ -7,7 +7,10 @@
     <title>langchain - Agent | HomePage</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="
-可将 Agent 视为 state machine">
+可将 Agent 视为 state machine
+ 
+agent_react_docstore
+">
     <meta name="generator" content="Hugo 0.140.2">
     
     
@@ -37,7 +40,8 @@
     <meta property="og:url" content="http://localhost:1313/post/langchain-agent/">
   <meta property="og:site_name" content="HomePage">
   <meta property="og:title" content="langchain - Agent">
-  <meta property="og:description" content="可将 Agent 视为 state machine">
+  <meta property="og:description" content="可将 Agent 视为 state machine
+agent_react_docstore">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -47,14 +51,16 @@
     <meta property="article:tag" content="LLM&#34;">
 
   <meta itemprop="name" content="langchain - Agent">
-  <meta itemprop="description" content="可将 Agent 视为 state machine">
+  <meta itemprop="description" content="可将 Agent 视为 state machine
+agent_react_docstore">
   <meta itemprop="datePublished" content="2025-06-20T10:00:59-04:00">
   <meta itemprop="dateModified" content="2025-06-20T10:00:59-04:00">
-  <meta itemprop="wordCount" content="5">
+  <meta itemprop="wordCount" content="556">
   <meta itemprop="keywords" content="Langchain,LLM&#34;">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="langchain - Agent">
-  <meta name="twitter:description" content="可将 Agent 视为 state machine">
+  <meta name="twitter:description" content="可将 Agent 视为 state machine
+agent_react_docstore">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -168,7 +174,7 @@
         <span class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/></svg>
                 
-              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flangchain-agent%2F&amp;summary=%0A%E5%8F%AF%E5%B0%86&#43;Agent&#43;%E8%A7%86%E4%B8%BA&#43;state&#43;machine%0A&amp;title=langchain&#43;-&#43;Agent&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flangchain-agent%2F"
+              </span></a><a href="https://www.linkedin.com/shareArticle?&amp;mini=true&amp;source=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flangchain-agent%2F&amp;summary=%0A%E5%8F%AF%E5%B0%86&#43;Agent&#43;%E8%A7%86%E4%B8%BA&#43;state&#43;machine%0Aagent_react_docstore&#43;&amp;title=langchain&#43;-&#43;Agent&amp;url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2Flangchain-agent%2F"
         class="ananke-social-link linkedin no-underline"
         title="Share on LinkedIn" aria-label="Share on LinkedIn"
         target="_blank" rel="nofollow noopener noreferrer">
@@ -187,7 +193,155 @@
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><img src="/images/langchain-Agent/1.png" alt="1"></p>
-<p>可将 Agent 视为 state machine</p><ul class="pa0">
+<p>可将 Agent 视为 state machine</p>
+<p> </p>
+<h3 id="agent_react_docstore">agent_react_docstore</h3>
+<p><img src="/images/langchain-Agent/2.png" alt="2"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain <span style="color:#f92672">import</span> hub
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.agents <span style="color:#f92672">import</span> AgentExecutor, create_react_agent
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains <span style="color:#f92672">import</span> create_history_aware_retriever, create_retrieval_chain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains.combine_documents <span style="color:#f92672">import</span> create_stuff_documents_chain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_community.vectorstores <span style="color:#f92672">import</span> Chroma
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_core.messages <span style="color:#f92672">import</span> AIMessage, HumanMessage
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_core.prompts <span style="color:#f92672">import</span> ChatPromptTemplate, MessagesPlaceholder
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_core.tools <span style="color:#f92672">import</span> Tool
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain_openai <span style="color:#f92672">import</span> ChatOpenAI, OpenAIEmbeddings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load environment variables from .env file</span>
+</span></span><span style="display:flex;"><span>load_dotenv()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the existing Chroma vector store</span>
+</span></span><span style="display:flex;"><span>current_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(__file__))
+</span></span><span style="display:flex;"><span>db_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(current_dir, <span style="color:#e6db74">&#34;..&#34;</span>, <span style="color:#e6db74">&#34;..&#34;</span>, <span style="color:#e6db74">&#34;4_rag&#34;</span>, <span style="color:#e6db74">&#34;db&#34;</span>)
+</span></span><span style="display:flex;"><span>persistent_directory <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(db_dir, <span style="color:#e6db74">&#34;chroma_db_with_metadata&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if the Chroma vector store already exists</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(persistent_directory):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Loading existing vector store...&#34;</span>)
+</span></span><span style="display:flex;"><span>    db <span style="color:#f92672">=</span> Chroma(persist_directory<span style="color:#f92672">=</span>persistent_directory,
+</span></span><span style="display:flex;"><span>                embedding_function<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">FileNotFoundError</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;The directory </span><span style="color:#e6db74">{</span>persistent_directory<span style="color:#e6db74">}</span><span style="color:#e6db74"> does not exist. Please check the path.&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the embedding model</span>
+</span></span><span style="display:flex;"><span>embeddings <span style="color:#f92672">=</span> OpenAIEmbeddings(model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-embedding-3-small&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the existing vector store with the embedding function</span>
+</span></span><span style="display:flex;"><span>db <span style="color:#f92672">=</span> Chroma(persist_directory<span style="color:#f92672">=</span>persistent_directory,
+</span></span><span style="display:flex;"><span>            embedding_function<span style="color:#f92672">=</span>embeddings)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a retriever for querying the vector store</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># `search_type` specifies the type of search (e.g., similarity)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># `search_kwargs` contains additional arguments for the search (e.g., number of results to return)</span>
+</span></span><span style="display:flex;"><span>retriever <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>as_retriever(
+</span></span><span style="display:flex;"><span>    search_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;similarity&#34;</span>,
+</span></span><span style="display:flex;"><span>    search_kwargs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;k&#34;</span>: <span style="color:#ae81ff">3</span>},
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a ChatOpenAI model</span>
+</span></span><span style="display:flex;"><span>llm <span style="color:#f92672">=</span> ChatOpenAI(model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-4o&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Contextualize question prompt</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This system prompt helps the AI understand that it should reformulate the question</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># based on the chat history to make it a standalone question</span>
+</span></span><span style="display:flex;"><span>contextualize_q_system_prompt <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Given a chat history and the latest user question &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;which might reference context in the chat history, &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;formulate a standalone question which can be understood &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;without the chat history. Do NOT answer the question, just &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;reformulate it if needed and otherwise return it as is.&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a prompt template for contextualizing questions</span>
+</span></span><span style="display:flex;"><span>contextualize_q_prompt <span style="color:#f92672">=</span> ChatPromptTemplate<span style="color:#f92672">.</span>from_messages(
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">&#34;system&#34;</span>, contextualize_q_system_prompt),
+</span></span><span style="display:flex;"><span>        MessagesPlaceholder(<span style="color:#e6db74">&#34;chat_history&#34;</span>),
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">&#34;human&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{input}</span><span style="color:#e6db74">&#34;</span>),
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a history-aware retriever</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This uses the LLM to help reformulate the question based on chat history</span>
+</span></span><span style="display:flex;"><span>history_aware_retriever <span style="color:#f92672">=</span> create_history_aware_retriever(
+</span></span><span style="display:flex;"><span>    llm, retriever, contextualize_q_prompt
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Answer question prompt</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This system prompt helps the AI understand that it should provide concise answers</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># based on the retrieved context and indicates what to do if the answer is unknown</span>
+</span></span><span style="display:flex;"><span>qa_system_prompt <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;You are an assistant for question-answering tasks. Use &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;the following pieces of retrieved context to answer the &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;question. If you don&#39;t know the answer, just say that you &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;don&#39;t know. Use three sentences maximum and keep the answer &#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;concise.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{context}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a prompt template for answering questions</span>
+</span></span><span style="display:flex;"><span>qa_prompt <span style="color:#f92672">=</span> ChatPromptTemplate<span style="color:#f92672">.</span>from_messages(
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">&#34;system&#34;</span>, qa_system_prompt),
+</span></span><span style="display:flex;"><span>        MessagesPlaceholder(<span style="color:#e6db74">&#34;chat_history&#34;</span>),
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">&#34;human&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{input}</span><span style="color:#e6db74">&#34;</span>),
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a chain to combine documents for question answering</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># `create_stuff_documents_chain` feeds all retrieved context into the LLM</span>
+</span></span><span style="display:flex;"><span>question_answer_chain <span style="color:#f92672">=</span> create_stuff_documents_chain(llm, qa_prompt)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a retrieval chain that combines the history-aware retriever and the question answering chain</span>
+</span></span><span style="display:flex;"><span>rag_chain <span style="color:#f92672">=</span> create_retrieval_chain(
+</span></span><span style="display:flex;"><span>    history_aware_retriever, question_answer_chain)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set Up ReAct Agent with Document Store Retriever</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the ReAct Docstore Prompt</span>
+</span></span><span style="display:flex;"><span>react_docstore_prompt <span style="color:#f92672">=</span> hub<span style="color:#f92672">.</span>pull(<span style="color:#e6db74">&#34;hwchase17/react&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tools <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    Tool(
+</span></span><span style="display:flex;"><span>        name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Answer Question&#34;</span>,
+</span></span><span style="display:flex;"><span>        func<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> input, <span style="color:#f92672">**</span>kwargs: rag_chain<span style="color:#f92672">.</span>invoke(
+</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#34;input&#34;</span>: input, <span style="color:#e6db74">&#34;chat_history&#34;</span>: kwargs<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;chat_history&#34;</span>, [])}
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;useful for when you need to answer questions about the context&#34;</span>,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create the ReAct Agent with document store retriever</span>
+</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> create_react_agent(
+</span></span><span style="display:flex;"><span>    llm<span style="color:#f92672">=</span>llm,
+</span></span><span style="display:flex;"><span>    tools<span style="color:#f92672">=</span>tools,
+</span></span><span style="display:flex;"><span>    prompt<span style="color:#f92672">=</span>react_docstore_prompt,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>agent_executor <span style="color:#f92672">=</span> AgentExecutor<span style="color:#f92672">.</span>from_agent_and_tools(
+</span></span><span style="display:flex;"><span>    agent<span style="color:#f92672">=</span>agent, tools<span style="color:#f92672">=</span>tools, handle_parsing_errors<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chat_history <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    query <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;You: &#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> query<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;exit&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> agent_executor<span style="color:#f92672">.</span>invoke(
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;input&#34;</span>: query, <span style="color:#e6db74">&#34;chat_history&#34;</span>: chat_history})
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;AI: </span><span style="color:#e6db74">{</span>response[<span style="color:#e6db74">&#39;output&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Update history</span>
+</span></span><span style="display:flex;"><span>    chat_history<span style="color:#f92672">.</span>append(HumanMessage(content<span style="color:#f92672">=</span>query))
+</span></span><span style="display:flex;"><span>    chat_history<span style="color:#f92672">.</span>append(AIMessage(content<span style="color:#f92672">=</span>response[<span style="color:#e6db74">&#34;output&#34;</span>]))
+</span></span></code></pre></div><ul class="pa0">
   
    <li class="list di">
      <a href="/tags/langchain/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Langchain</a>

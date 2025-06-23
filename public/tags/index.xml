@@ -6,8 +6,22 @@
     <description>Recent content in Tags on HomePage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 17 Jun 2025 11:00:59 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 20 Jun 2025 10:00:59 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Langchain</title>
+      <link>http://localhost:1313/tags/langchain/</link>
+      <pubDate>Fri, 20 Jun 2025 10:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/tags/langchain/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM&#34;</title>
+      <link>http://localhost:1313/tags/llm/</link>
+      <pubDate>Fri, 20 Jun 2025 10:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/tags/llm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Book</title>
       <link>http://localhost:1313/tags/book/</link>
@@ -16,24 +30,24 @@
       <description></description>
     </item>
     <item>
-      <title>LLM</title>
-      <link>http://localhost:1313/tags/llm/</link>
-      <pubDate>Thu, 12 Jun 2025 10:00:59 -0400</pubDate>
-      <guid>http://localhost:1313/tags/llm/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>RAG&#34;</title>
       <link>http://localhost:1313/tags/rag/</link>
-      <pubDate>Thu, 12 Jun 2025 04:00:59 -0700</pubDate>
+      <pubDate>Fri, 13 Jun 2025 04:00:59 -0700</pubDate>
       <guid>http://localhost:1313/tags/rag/</guid>
       <description></description>
     </item>
     <item>
       <title>Tool</title>
       <link>http://localhost:1313/tags/tool/</link>
-      <pubDate>Thu, 12 Jun 2025 04:00:59 -0700</pubDate>
+      <pubDate>Fri, 13 Jun 2025 04:00:59 -0700</pubDate>
       <guid>http://localhost:1313/tags/tool/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM</title>
+      <link>http://localhost:1313/tags/llm/</link>
+      <pubDate>Thu, 12 Jun 2025 10:00:59 -0400</pubDate>
+      <guid>http://localhost:1313/tags/llm/</guid>
       <description></description>
     </item>
     <item>
